@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 10: Synchronization</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <style>
+    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
+    .reveal { font-size: 34px; }
+    .reveal ul { display: block; }
+    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
+    .reveal th, .reveal td { padding: 0.3em 0.7em; }
+    .reveal .small { font-size: 0.7em; }
+    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
+    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
+    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
+    .arrow { color: #3f51b5; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+        <section>
+      <h1>Unit 10</h1>
+      <h2>Synchronization</h2>
+      <p class="small">Multimedia and Application (BCA429CO)</p>
+    </section>
+
+    <section>
+      <h2>What is synchronization?</h2>
+      <ul>
+        <li>Temporal relation between media objects</li>
+        <li>Time-dependent ↔ time-dependent and time-independent</li>
+        <li>Example: sound and picture in TV; lip movement and speech</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Basic issues</h2>
+      <table>
+        <tr><th>Relation</th><th>Example</th></tr>
+        <tr><td>Content</td><td>Spreadsheet → graph</td></tr>
+        <tr><td>Spatial (layout)</td><td>Window area on the screen</td></tr>
+        <tr><td>Temporal</td><td>Video + audio of a concert</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Intra vs inter; live vs synthetic</h2>
+      <table>
+        <tr><th></th><th>Intra-object</th><th>Inter-object</th></tr>
+        <tr><td>Concerns</td><td>LDUs of one object</td><td>Between objects</td></tr>
+        <tr><td>Example</td><td>25 fps → 40 ms per frame</td><td>A/V, then pictures, then animation</td></tr>
+      </table>
+      <p class="small"><b>Live</b>: reproduce capture (video conference) · <b>Synthetic</b>: specified artificially (car-race path)</p>
+    </section>
+
+    <section>
+      <h2>Presentation requirements</h2>
+      <ul class="small">
+        <li><b>Skew</b> = time difference of related audio/video LDUs</li>
+        <li>Lip sync: <b>−80 ms … +80 ms</b></li>
+        <li>Pointer sync: audio ahead <b>750 ms</b>, pointer ahead <b>500 ms</b></li>
+        <li>Timeliness · continuity · latency · jitter</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Reference model: why?</h2>
+      <ul class="small">
+        <li>Several users and levels need synchronization</li>
+        <li>Each layer gives a <b>mechanism through an interface</b></li>
+        <li>Interfaces <b>specify</b> or <b>enforce</b> temporal relations</li>
+        <li>Layers can be used directly or by the layer above</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Four layers</h2>
+      <table>
+        <tr><th>Layer</th><th>Abstraction</th></tr>
+        <tr><td>Specification</td><td>Open layer: editors, authoring tools</td></tr>
+        <tr><td>Object</td><td>Complete synchronized presentation</td></tr>
+        <tr><td>Stream</td><td>Groups of streams, inter-stream sync</td></tr>
+        <tr><td>Media</td><td>One stream as LDUs: read / write</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Specification methods</h2>
+      <table>
+        <tr><th>Category</th><th>Idea</th></tr>
+        <tr><td>Interval-based</td><td>Relations between intervals</td></tr>
+        <tr><td>Axes-based</td><td>Global timer / virtual axes</td></tr>
+        <tr><td>Control-flow</td><td>Hierarchical, reference points, time Petri nets</td></tr>
+        <tr><td>Event-based</td><td>Start, stop, prepare on events</td></tr>
+      </table>
+      <p class="small">Scripts: textual scenario with full programming power (e.g. SMIL)</p>
+    </section>
+
+    <section>
+      <h2>Distributed environment</h2>
+      <ul class="small">
+        <li>Deliver the specification: before · extra channel · multiplexed</li>
+        <li>Location of synchronization · <b>clock synchronization</b></li>
+        <li>Multiple sinks</li>
+        <li><b>Multi-step</b>: acquisition → retrieval → delivery → transport → sink → output device</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Exam focus</h2>
+      <ul>
+        <li>Notion: relations, intra/inter, live/synthetic</li>
+        <li>±80 ms, 750 ms, 500 ms</li>
+        <li>Four-layer reference model</li>
+        <li>Specification categories and requirements</li>
+      </ul>
+    </section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+</script>
+</body>
+</html>

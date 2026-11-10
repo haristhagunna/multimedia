@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 4: Video and Animation</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <style>
+    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
+    .reveal { font-size: 34px; }
+    .reveal ul { display: block; }
+    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
+    .reveal th, .reveal td { padding: 0.3em 0.7em; }
+    .reveal .small { font-size: 0.7em; }
+    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
+    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
+    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
+    .arrow { color: #3f51b5; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section>
+      <h1>Unit 4</h1>
+      <h2>Video and Animation</h2>
+      <p class="small">Multimedia and Application (BCA429CO)</p>
+    </section>
+
+    <section>
+      <h2>What is video?</h2>
+      <ul>
+        <li>Image + audio; a sequence of <b>frames</b></li>
+        <li><b>Frame rate</b> in fps: 20 to 30 looks smooth</li>
+        <li>Persistence of vision merges the frames</li>
+        <li>Three aspects: <b>visual representation, transmission, digitization</b></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Visual representation: the measures</h2>
+      <ul class="small">
+        <li>Vertical detail and viewing distance</li>
+        <li>Horizontal detail and picture width</li>
+        <li>Total detail content · Depth perception</li>
+        <li>Luminance and chrominance</li>
+        <li>Temporal aspects of illumination</li>
+        <li>Continuity of motion · Flicker · Temporal aspect of bandwidth</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Kell factor</h2>
+      <p class="formula">effective vertical = active lines × 0.7</p><br>
+      <p class="formula">horizontal = aspect ratio × effective vertical</p>
+      <p class="small">PAL: 576 × 0.7 = <b>403.2</b>; 4/3 × 403.2 = <b>537.6</b></p>
+    </section>
+
+    <section>
+      <h2>Continuity of motion and flicker</h2>
+      <table>
+        <tr><th>Item</th><th>Value</th></tr>
+        <tr><td>Continuous motion</td><td>&gt; 15 fps</td></tr>
+        <tr><td>Smooth, filmed scene</td><td>≥ 30 fps</td></tr>
+        <tr><td>Film / NTSC / PAL</td><td>24 / 29.97 / 25 fps</td></tr>
+        <tr><td>Flicker-free refresh</td><td><b>≥ 50 Hz</b></td></tr>
+      </table>
+      <p class="small">Cures: raise refresh rate, or <b>interlaced scanning</b> (odd lines, then even lines)</p>
+    </section>
+
+    <section>
+      <h2>Video bandwidth</h2>
+      <p class="formula">B = a × b × c / 2</p>
+      <p class="small">a = pixels per line, b = lines, c = frame rate</p>
+      <p class="small">1312 × 800 × 100 / 2 = <b>52.48 MHz</b></p>
+    </section>
+
+    <section>
+      <h2>Colour signals</h2>
+      <table>
+        <tr><th>Signal</th><th>Idea</th></tr>
+        <tr><td>RGB</td><td>Three primaries; monitors; best colour</td></tr>
+        <tr><td>YUV</td><td>Y = 0.30R + 0.59G + 0.11B; U = 0.493(B−Y); V = 0.877(R−Y)</td></tr>
+        <tr><td>YIQ</td><td>NTSC; Q needs least bandwidth</td></tr>
+        <tr><td>Composite</td><td>All in one carrier; interference</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Digitization and computer video</h2>
+      <ul class="small">
+        <li><b>Sampling</b>: spatial position (M × N points)</li>
+        <li><b>Quantizing</b>: colour / grey levels</li>
+        <li>Standard: <b>CCIR-601</b> (ITU-R)</li>
+        <li>Raster: display controller → <b>refresh buffer</b> → video controller → monitor</li>
+        <li><b>CLUT</b>: pixel value = address of colour</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Raw video size</h2>
+      <p class="formula">frame = W × H × bits · rate = frame × fps</p>
+      <p class="small">352 × 288 × 16 = 1,622,016 bits<br>× 25 = 40,550,400 bit/s ≈ <b>4.83 MB/s</b></p>
+    </section>
+
+    <section>
+      <h2>Animation</h2>
+      <ul>
+        <li><b>Motion dynamics</b>: position (bouncing ball)</li>
+        <li><b>Update dynamics</b>: shape/size (flower blooming)</li>
+        <li>Based on <b>key frames</b></li>
+      </ul>
+      <div class="flow">
+        <div class="box">Input</div><span class="arrow">→</span>
+        <div class="box">Composition</div><span class="arrow">→</span>
+        <div class="box">Pencil test</div><span class="arrow">→</span>
+        <div class="box">In-between</div><span class="arrow">→</span>
+        <div class="box">Colours</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>In-betweening and CLUT</h2>
+      <ul class="small">
+        <li><b>Lerp</b>: straight-line interpolation, unrealistic for a thrown ball</li>
+        <li><b>Splines</b> smooth the path</li>
+        <li><b>CLUT animation</b>: cycle table colours, faster than new pixmaps</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Languages and control</h2>
+      <table>
+        <tr><th>Languages</th><th>Control</th></tr>
+        <tr><td>Linear list (Scefo, SMIL)</td><td>Full explicit (BBOP)</td></tr>
+        <tr><td>General purpose (ASAS)</td><td>Procedural</td></tr>
+        <tr><td>Graphical (GENESYS, DIAL)</td><td>Constraint-based (Sketchpad)</td></tr>
+        <tr><td></td><td>Live action: rotoscoping, data glove</td></tr>
+        <tr><td></td><td>Kinematics and dynamics</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Display and transmission</h2>
+      <ul class="small">
+        <li>≥ 10 (prefer 15–20) scan conversions/s → ≤ 100 ms per image</li>
+        <li><b>Double buffering</b>: display one, build the other</li>
+        <li><b>Symbolic</b>: fast to send, slower to display</li>
+        <li><b>Pixmap</b>: slower to send, fast to display</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Exam focus</h2>
+      <ul>
+        <li>Kell factor, bandwidth, raw size calculations</li>
+        <li>15 fps, 25/30 fps, 50 Hz</li>
+        <li>RGB / YUV / YIQ / composite</li>
+        <li>Animation control methods; double buffering; symbolic vs pixmap</li>
+      </ul>
+    </section>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+</script>
+</body>
+</html>

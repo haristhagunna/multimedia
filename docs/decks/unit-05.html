@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 5: Data Compression</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <style>
+    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
+    .reveal { font-size: 34px; }
+    .reveal ul { display: block; }
+    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
+    .reveal th, .reveal td { padding: 0.3em 0.7em; }
+    .reveal .small { font-size: 0.7em; }
+    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
+    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
+    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
+    .arrow { color: #3f51b5; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+        <section>
+      <h1>Unit 5</h1>
+      <h2>Data Compression</h2>
+      <p class="small">Multimedia and Application (BCA429CO)</p>
+    </section>
+
+    <section>
+      <h2>Why compress?</h2>
+      <ul>
+        <li>Reduce <b>storage</b>, <b>bandwidth</b> and transmitted volume</li>
+        <li>640×480×8 bit image = <b>300 KB</b></li>
+        <li>CD audio: 44.1 kHz × 16 bit × 2 = <b>1.41 Mbit/s</b></li>
+        <li>Needs: good quality, low complexity, bounded time</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Categories of coding</h2>
+      <table>
+        <tr><th></th><th>Entropy</th><th>Source</th><th>Hybrid</th></tr>
+        <tr><td>Semantics</td><td>Ignored</td><td>Used</td><td>Both</td></tr>
+        <tr><td>Loss</td><td>Lossless</td><td>Lossy</td><td>Lossy</td></tr>
+        <tr><td>Examples</td><td>RLE, Huffman, arithmetic</td><td>DCT, prediction</td><td>JPEG, MPEG, H.261, DVI</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Run-length encoding</h2>
+      <table>
+        <tr><th>Input</th><th>Output</th></tr>
+        <tr><td>aaaabbcccccddd</td><td>a4b2c5d3</td></tr>
+        <tr><td>0001111100011</td><td>(0,3)(1,5)(0,3)(1,2)</td></tr>
+        <tr><td>abcd</td><td>a1b1c1d1 (doubles!)</td></tr>
+      </table>
+      <p class="small">Lossless; good for bitmaps</p>
+    </section>
+
+    <section>
+      <h2>Huffman coding</h2>
+      <ul class="small">
+        <li>David Huffman, 1951; <b>prefix rule</b></li>
+        <li>Frequent symbol → short code</li>
+        <li>Merge the two smallest; left = 0, right = 1</li>
+        <li>Time θ(n log n)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Huffman example</h2>
+      <p class="small">A=5, B=1, C=6, D=3 (15 chars, 120 bits)</p>
+      <table>
+        <tr><th>Char</th><th>Code</th><th>Bits</th></tr>
+        <tr><td>C</td><td>0</td><td>6</td></tr>
+        <tr><td>A</td><td>11</td><td>10</td></tr>
+        <tr><td>B</td><td>100</td><td>3</td></tr>
+        <tr><td>D</td><td>101</td><td>9</td></tr>
+      </table>
+      <p class="small">Data 28 + chars 32 + tree 15 = <b>75 bits</b></p>
+    </section>
+
+    <section>
+      <h2>Arithmetic, prediction, adaptive</h2>
+      <ul class="small">
+        <li><b>Arithmetic</b>: one codeword for a whole string (interval in 0–1)</li>
+        <li><b>Prediction</b>: code the difference from a predicted value</li>
+        <li><b>Adaptive</b>: statistics learned while coding (adaptive Huffman, LZW)</li>
+        <li class="small">Prediction and adaptive: textbook material, not in lecturer notes</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>JPEG pipeline</h2>
+      <div class="flow">
+        <div class="box">Colour transform</div><span class="arrow">→</span>
+        <div class="box">8×8 blocks</div><span class="arrow">→</span>
+        <div class="box">DCT</div><span class="arrow">→</span>
+        <div class="box">Quantization</div><span class="arrow">→</span>
+        <div class="box">Zigzag</div><span class="arrow">→</span>
+        <div class="box">Huffman</div>
+      </div>
+      <p class="small">Loss happens in <b>quantization</b></p>
+    </section>
+
+    <section>
+      <h2>DCT and quantization</h2>
+      <ul class="small">
+        <li>DCT splits a block into <b>frequencies</b>: 1 DC + 63 AC</li>
+        <li>Information sits in <b>low frequencies</b></li>
+        <li>64-entry table divides coefficients; high frequencies → 0</li>
+        <li>Zigzag groups the zeros</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>JPEG modes</h2>
+      <table>
+        <tr><th></th><th>Sequential</th><th>Expanded</th></tr>
+        <tr><td>Bits/sample</td><td>8</td><td>8 or 12</td></tr>
+        <tr><td>Entropy</td><td>Huffman</td><td>Huffman + arithmetic</td></tr>
+        <tr><td>Build-up</td><td>Sequential</td><td>Sequential + progressive</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>MPEG redundancy</h2>
+      <table>
+        <tr><th>Spatial</th><th>Temporal</th></tr>
+        <tr><td>Within a frame</td><td>Between frames</td></tr>
+        <tr><td>Macroblock, DCT, quantization, entropy</td><td>Motion estimation + compensation</td></tr>
+      </table>
+      <p class="small">Video ≤ 1,856,000 bit/s · audio 32–448 kbit/s</p>
+    </section>
+
+    <section>
+      <h2>MPEG frames</h2>
+      <table>
+        <tr><th>Frame</th><th>Reference</th><th>Compression</th></tr>
+        <tr><td>I</td><td>None (JPEG-like)</td><td>Low</td></tr>
+        <tr><td>P</td><td>Previous I/P</td><td>High</td></tr>
+        <tr><td>B</td><td>Past + future</td><td>Highest</td></tr>
+      </table>
+      <p class="small">GOP = frames between I-frames · display I B B P B B P · B needs re-ordering</p>
+    </section>
+
+    <section>
+      <h2>H.261 and DVI</h2>
+      <ul class="small">
+        <li><b>H.261 (px64)</b>: videoconferencing, p × 64 kbit/s, p = 1…30; CIF / QCIF</li>
+        <li><b>DVI</b>: interactive video on CD-ROM; PLV and RTV</li>
+        <li class="small">Beyond the lecturer's notes</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Exam focus</h2>
+      <ul>
+        <li>Huffman tree, code table, total bits</li>
+        <li>RLE; lossless vs lossy; three categories</li>
+        <li>JPEG steps and where loss occurs</li>
+        <li>MPEG I, P, B frames and GOP</li>
+      </ul>
+    </section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+</script>
+</body>
+</html>

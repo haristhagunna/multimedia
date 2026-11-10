@@ -1,0 +1,50 @@
+/* Custom admonition: "exam" (orange) for high-yield exam tips */
+:root {
+  --md-admonition-icon--exam: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2 1 9l11 7 9-5.73V17h2V9L12 2M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82Z"/></svg>');
+  --md-admonition-icon--source: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6m4 18H6V4h7v5h5v11Z"/></svg>');
+}
+
+.md-typeset .admonition.exam,
+.md-typeset details.exam {
+  border-color: #e65100;
+}
+.md-typeset .exam > .admonition-title,
+.md-typeset .exam > summary {
+  background-color: rgba(230, 81, 0, 0.1);
+}
+.md-typeset .exam > .admonition-title::before,
+.md-typeset .exam > summary::before {
+  background-color: #e65100;
+  -webkit-mask-image: var(--md-admonition-icon--exam);
+  mask-image: var(--md-admonition-icon--exam);
+}
+
+/* Custom admonition: "source" (grey) shows which lecturer file a section follows */
+.md-typeset .admonition.source,
+.md-typeset details.source {
+  border-color: #78909c;
+}
+.md-typeset .source > .admonition-title,
+.md-typeset .source > summary {
+  background-color: rgba(120, 144, 156, 0.1);
+}
+.md-typeset .source > .admonition-title::before,
+.md-typeset .source > summary::before {
+  background-color: #78909c;
+  -webkit-mask-image: var(--md-admonition-icon--source);
+  mask-image: var(--md-admonition-icon--source);
+}
+
+/* Slide deck frame on the "Class Slides" pages */
+.slide-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 6px;
+}
+
+/* Slightly roomier tables for comparison grids */
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  padding: 0.6em 0.9em;
+}

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 3: Image and Graphics</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <style>
+    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
+    .reveal { font-size: 34px; }
+    .reveal ul { display: block; }
+    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
+    .reveal th, .reveal td { padding: 0.3em 0.7em; }
+    .reveal .small { font-size: 0.7em; }
+    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
+    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
+    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
+    .arrow { color: #3f51b5; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section>
+      <h1>Unit 3</h1>
+      <h2>Image and Graphics</h2>
+      <p class="small">Multimedia and Application (BCA429CO)</p>
+    </section>
+
+    <section>
+      <h2>What is an image?</h2>
+      <ul>
+        <li>Spatial representation of an object or scene</li>
+        <li>Digital image = matrix of values <b>I(r, c)</b></li>
+        <li><b>Pixel</b>: smallest addressable element</li>
+        <li><b>Bitmap</b>: the array of pixels; <b>resolution</b> = number of pixels</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Image vs graphics</h2>
+      <table>
+        <tr><th></th><th>Graphics</th><th>Image</th></tr>
+        <tr><td>Made of</td><td>Objects: lines, curves, circles</td><td>Pixels (bitmap)</td></tr>
+        <tr><td>Semantics</td><td>Aware</td><td>Ignored</td></tr>
+        <tr><td>Editing</td><td>Object by object</td><td>Enhance / retouch only</td></tr>
+        <tr><td>Storage</td><td>Small</td><td>Large</td></tr>
+        <tr><td>Display</td><td>Needs processing</td><td>None needed</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Bitmap size</h2>
+      <p class="formula">bytes = width × height × bits per pixel / 8</p>
+      <table>
+        <tr><th>Example</th><th>Result</th></tr>
+        <tr><td>16 × 16, 1 bit</td><td><b>32 bytes</b></td></tr>
+        <tr><td>100 × 100, 1 bit</td><td><b>1,250 bytes ≈ 1.22 KB</b></td></tr>
+        <tr><td>960 × 640, 24 bit</td><td><b>1,843,200 bytes ≈ 1.76 MB</b></td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Colour depth</h2>
+      <table>
+        <tr><th>Bits per pixel</th><th>Colours</th></tr>
+        <tr><td>1</td><td>2</td></tr>
+        <tr><td>4</td><td>16</td></tr>
+        <tr><td>8 (pseudo colour)</td><td>256</td></tr>
+        <tr><td>24 (true colour)</td><td>16,777,216 (R, G, B × 256 levels)</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Image and graphics formats</h2>
+      <ul class="small">
+        <li><b>Capturing</b>: spatial resolution + bits per pixel</li>
+        <li><b>Storage</b>: 2D matrix; GIF, JPEG, TIFF, PNG, BMP</li>
+        <li><b>Graphics</b>: primitives (line, circle...) + attributes (style, width, colour)</li>
+        <li>Pros: less data, easy editing · Con: conversion to pixels</li>
+        <li>Packages: <b>SRGP, PHIGS, GKS</b></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Synthesis and analysis</h2>
+      <div class="flow">
+        <div class="box">Model</div><span class="arrow">→ synthesis →</span>
+        <div class="box">Picture</div><span class="arrow">→ analysis →</span>
+        <div class="box">Description</div>
+      </div>
+      <p class="small">Synthesis: user interfaces, desktop publishing, simulation and animation</p>
+    </section>
+
+    <section>
+      <h2>Interactive graphics framework</h2>
+      <div class="flow">
+        <div class="box">Application model</div><span class="arrow">→</span>
+        <div class="box">Application program<br>(extract + convert)</div><span class="arrow">→</span>
+        <div class="box">Graphics system<br>(output + input transformations)</div><span class="arrow">→</span>
+        <div class="box">Display hardware</div>
+      </div>
+      <p class="small"><b>Motion dynamics</b>: flight simulator · <b>Update dynamics</b>: shape or colour changes</p>
+    </section>
+
+    <section>
+      <h2>Raster display</h2>
+      <ul class="small">
+        <li>CRT: phosphor dots, electron gun</li>
+        <li><b>Refresh buffer</b> holds the image</li>
+        <li><b>Video controller</b> reads it row by row, top to bottom</li>
+        <li><b>Horizontal retrace</b> between rows</li>
+        <li><b>Display controller</b> interprets commands</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Dithering (halftoning)</h2>
+      <ul class="small">
+        <li>Shades from fewer colours; uses the eye's <b>spatial integration</b></li>
+        <li><b>Clustered-dot</b>: laser printers · <b>Dispersed-dot</b>: CRTs</li>
+        <li><b>2 × 2</b> matrix → <b>5</b> intensities</li>
+        <li>R, G, B: 5 × 5 × 5 = <b>125 colours</b></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Image analysis and recognition</h2>
+      <div class="flow">
+        <div class="box">Formatting</div><span class="arrow">→</span>
+        <div class="box">Conditioning</div><span class="arrow">→</span>
+        <div class="box">Labeling</div><span class="arrow">→</span>
+        <div class="box">Grouping</div><span class="arrow">→</span>
+        <div class="box">Extracting</div><span class="arrow">→</span>
+        <div class="box">Matching</div>
+      </div>
+      <p class="small">Applications: aerial photos, space probes, X-ray, CAT scans, robot vision, OCR</p>
+    </section>
+
+    <section>
+      <h2>Image transmission</h2>
+      <table>
+        <tr><th>Format</th><th>Size</th></tr>
+        <tr><td>Raw</td><td>Resolution × quantization<br>640×480×8 = 2,457,600 bits = 307,200 bytes</td></tr>
+        <tr><td>Compressed</td><td>Depends on JPEG/MPEG and rate</td></tr>
+        <tr><td>Symbolic</td><td>Size of the primitive structure</td></tr>
+      </table>
+      <p class="small">Network needs: <b>bursty</b>, <b>reliable</b>; time dependence not dominant</p>
+    </section>
+
+    <section>
+      <h2>Exam focus</h2>
+      <ul>
+        <li>Image vs graphics table</li>
+        <li>Bitmap size calculations; 125 colours</li>
+        <li>Three-component graphics framework</li>
+        <li>Recognition steps; raw size formula</li>
+      </ul>
+    </section>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+</script>
+</body>
+</html>

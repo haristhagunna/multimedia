@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 2: Sound and Audio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <style>
+    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
+    .reveal { font-size: 34px; }
+    .reveal ul { display: block; }
+    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
+    .reveal th, .reveal td { padding: 0.3em 0.7em; }
+    .reveal .small { font-size: 0.7em; }
+    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
+    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
+    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
+    .arrow { color: #3f51b5; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section>
+      <h1>Unit 2</h1>
+      <h2>Sound and Audio</h2>
+      <p class="small">Multimedia and Application (BCA429CO)</p>
+    </section>
+
+    <section>
+      <h2>What is sound?</h2>
+      <ul>
+        <li>Physical phenomenon produced by <b>vibration of matter</b></li>
+        <li>Air-pressure variations travel as a <b>wave</b></li>
+        <li><b>Waveform</b> repeats at regular intervals: one <b>period</b></li>
+        <li><b>Periodic</b>: instruments, vowels · <b>Non-periodic</b>: coughs, "s", "t", "f"</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Frequency and amplitude</h2>
+      <table>
+        <tr><th></th><th>Frequency</th><th>Amplitude</th></tr>
+        <tr><td>Meaning</td><td>Periods per second (1/period)</td><td>Displacement from mean pressure</td></tr>
+        <tr><td>Unit</td><td>Hz</td><td>dB</td></tr>
+        <tr><td>Perceived as</td><td>Pitch</td><td>Loudness</td></tr>
+      </table>
+      <p class="small">Infrasound 0–20 Hz · <b>Audible 20 Hz–20 kHz</b> · Ultrasound 20 kHz–1 GHz · Hypersound 1 GHz–10 THz</p>
+    </section>
+
+    <section>
+      <h2>Sound vs audio</h2>
+      <table>
+        <tr><th>Sound</th><th>Audio</th></tr>
+        <tr><td>Mechanical wave energy</td><td>Electrical energy (analog / digital signal)</td></tr>
+        <tr><td>The action: vibration</td><td>The end result: technology to hear it</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Analog to digital</h2>
+      <div class="flow">
+        <div class="box">Sound wave</div><span class="arrow">→</span>
+        <div class="box">Microphone</div><span class="arrow">→</span>
+        <div class="box">ADC: sample + quantize</div><span class="arrow">→</span>
+        <div class="box">Numbers</div><span class="arrow">→</span>
+        <div class="box">DAC</div><span class="arrow">→</span>
+        <div class="box">Speaker</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Sampling and quantization</h2>
+      <ul>
+        <li><b>Nyquist</b>: sampling rate ≥ 2 × highest frequency</li>
+        <li>CD: <b>44,100 Hz</b> → up to <b>22,050 Hz</b></li>
+        <li>Quantization: <b>3-bit = 8</b>, <b>8-bit = 256</b>, <b>16-bit = 65,536</b> levels</li>
+        <li>Fewer bits → lower quality</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Quality versus file size</h2>
+      <p class="formula">S = R × (b / 8) × C × D</p>
+      <p class="small">R rate (samples/s) · b bits · C channels (1 mono, 2 stereo) · D seconds</p>
+      <p class="small"><b>10 s stereo, 44.1 kHz, 16-bit</b> = 44100 × 2 × 2 × 10 = <b>1,764,000 bytes ≈ 1.68 MB</b></p>
+    </section>
+
+    <section>
+      <h2>Audio file formats</h2>
+      <table>
+        <tr><th>Format</th><th>Note</th></tr>
+        <tr><td>WAV</td><td>Microsoft; Windows; RIFF</td></tr>
+        <tr><td>AU</td><td>Sun; UNIX; plays on many platforms</td></tr>
+        <tr><td>RA</td><td>RealAudio; streaming; up to 18× compression</td></tr>
+        <tr><td>AIFF</td><td>Apple; up to 32 bits</td></tr>
+        <tr><td>MPEG</td><td>At least 14:1 compression</td></tr>
+      </table>
+      <p class="small"><b>Lossy</b>: MP3, AAC, OGG, WMA · <b>Lossless</b>: FLAC, ALAC, APE</p>
+    </section>
+
+    <section>
+      <h2>MIDI</h2>
+      <ul>
+        <li><b>Musical Instrument Digital Interface</b> (early 1980s)</li>
+        <li>Stores <b>instructions</b>, not samples</li>
+        <li>Two parts: <b>hardware</b> (port, cable) + <b>data format</b></li>
+        <li>Message: start of note + intensity</li>
+        <li><b>16 channels</b> · <b>128 instruments</b> (0 piano, 12 marimba, 40 violin, 73 flute)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>MIDI vs SMPTE</h2>
+      <table>
+        <tr><th></th><th>MIDI</th><th>SMPTE</th></tr>
+        <tr><td>Purpose</td><td>Exchange musical information</td><td>Sync audio with video</td></tr>
+        <tr><td>Format</td><td>Messages</td><td>HH:MM:SS:FF</td></tr>
+        <tr><td>Bandwidth</td><td>Light</td><td>More than MIDI supports</td></tr>
+      </table>
+      <p class="small">Frame rates: 24 film · 25 PAL · 29.97 NTSC · 30 video</p>
+    </section>
+
+    <section>
+      <h2>Speech: basic notions</h2>
+      <ul class="small">
+        <li><b>Phone</b>: smallest speech sound unit</li>
+        <li><b>Allophones</b>: variants of a phone</li>
+        <li><b>Morph</b>: smallest unit that carries meaning</li>
+        <li><b>Voiced</b>: vocal cords oscillate (m, v, l)</li>
+        <li><b>Unvoiced</b>: vocal cords open (f, s)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Speech generation</h2>
+      <table>
+        <tr><th>Time-dependent</th><th>Frequency-dependent</th></tr>
+        <tr><td>Join stored units: phones, diphones, syllables, words</td><td>Formant synthesis (vocal-tract model)</td></tr>
+        <tr><td>Natural; big databases</td><td>Flexible, small storage; less natural</td></tr>
+      </table>
+      <div class="flow">
+        <div class="box">Text</div><span class="arrow">→</span>
+        <div class="box">Transcription (dictionary)</div><span class="arrow">→</span>
+        <div class="box">Sound script</div><span class="arrow">→</span>
+        <div class="box">Synthesis</div><span class="arrow">→</span>
+        <div class="box">Speech</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Speech analysis and recognition</h2>
+      <ul class="small">
+        <li><b>Who?</b> identification and verification (acoustic fingerprint)</li>
+        <li><b>What?</b> recognition and understanding</li>
+        <li><b>How?</b> manner: angry or calm</li>
+      </ul>
+      <div class="flow">
+        <div class="box">Acoustic + phonetic</div><span class="arrow">→</span>
+        <div class="box">Syntactical</div><span class="arrow">→</span>
+        <div class="box">Semantic</div><span class="arrow">→</span>
+        <div class="box">Understood speech</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Speech transmission</h2>
+      <table>
+        <tr><th>Principle</th><th>Idea</th></tr>
+        <tr><td>PCM</td><td>Digitise waveform; accuracy over reduction</td></tr>
+        <tr><td>Source encoding</td><td>Use signal properties: silence suppression, channel vocoder</td></tr>
+        <tr><td>Recognition / synthesis</td><td>Recognise at sender, synthesise at receiver</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Exam focus</h2>
+      <ul>
+        <li>Nyquist, quantization and the <b>file-size calculation</b></li>
+        <li><b>MIDI</b> and <b>MIDI vs SMPTE</b></li>
+        <li>Speech generation: two methods, two-step synthesis</li>
+        <li>Speech analysis, recognition steps, transmission principles</li>
+      </ul>
+    </section>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 12: Multimedia Application</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <style>
+    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
+    .reveal { font-size: 34px; }
+    .reveal ul { display: block; }
+    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
+    .reveal th, .reveal td { padding: 0.3em 0.7em; }
+    .reveal .small { font-size: 0.7em; }
+    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
+    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
+    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
+    .arrow { color: #3f51b5; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+        <section>
+      <h1>Unit 12</h1>
+      <h2>Multimedia Application</h2>
+      <p class="small">Multimedia and Application (BCA429CO)</p>
+    </section>
+
+    <section>
+      <h2>Application classes</h2>
+      <table>
+        <tr><th>Class</th><th>Key point</th></tr>
+        <tr><td>Games</td><td>Very large market</td></tr>
+        <tr><td>Repositories</td><td>Play-back only; indexed</td></tr>
+        <tr><td>Interactive TV / VoD</td><td>Set-top box, cable</td></tr>
+        <tr><td>Conferencing, hypermedia mail</td><td>Whiteboard, sharing</td></tr>
+        <tr><td>Shared workspace / executive environment</td><td>Remote output vs local run</td></tr>
+        <tr><td>Business workflow</td><td>Object-oriented databases</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Types and components</h2>
+      <ul class="small">
+        <li><b>Types</b>: home / entertainment · business (dedicated, departmental, enterprise-wide)</li>
+        <li><b>Input</b>: scanner, workstation, video capture, studio</li>
+        <li><b>Output</b>: workstation, teleconferencing studio, print, fax, gateway</li>
+        <li><b>Storage</b>: database, image, voice mail, audio, video servers, duplication station</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Development cycle</h2>
+      <div class="flow">
+        <div class="box">Planning + costing</div>
+        <span class="arrow">→</span>
+        <div class="box">Designing</div>
+        <span class="arrow">→</span>
+        <div class="box">Producing</div>
+        <span class="arrow">→</span>
+        <div class="box">Testing</div>
+        <span class="arrow">→</span>
+        <div class="box">Delivering</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Planning and design</h2>
+      <ul class="small">
+        <li>Limits: <b>hardware</b>, software cost, contents (copyright), skills</li>
+        <li><b>Storyboard</b>: every screen, sound, navigation</li>
+        <li>Architecture: linear · hierarchical · non-linear · composite</li>
+        <li>User-friendly: easy to learn, effective, prompt feedback</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Production, testing, delivery</h2>
+      <ul class="small">
+        <li>Rights: license before use (nine protected work types)</li>
+        <li><b>Alpha</b>: in-house · <b>Beta</b>: representative outside users</li>
+        <li>Deliver by CD-ROM or Internet</li>
+        <li>Include media, runtime libraries, drivers, helper programs, installer</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Video on demand</h2>
+      <ul class="small">
+        <li>Server → network → set-top box → TV</li>
+        <li><b>True VoD</b>: stream per user · <b>Near VoD</b>: staggered starts</li>
+        <li>MPEG-2 ≈ 4–6 Mbit/s per stream; 1 Gbit/s ≈ 250 streams at 4 Mbit/s</li>
+        <li><i>Textbook material</i></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Video conferencing</h2>
+      <ul class="small">
+        <li>Point-to-point and multipoint (MCU)</li>
+        <li>Whiteboard, application sharing</li>
+        <li>Delay ≤ 150 ms; lip sync ±80 ms</li>
+        <li>H.320 (ISDN), H.323 · <i>Textbook material</i></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Other application areas</h2>
+      <ul class="small">
+        <li><b>Education</b>: CBT, e-learning, simulations</li>
+        <li><b>Industry</b>: training, kiosks, remote maintenance</li>
+        <li><b>Digital libraries</b>: metadata, indexing, preservation</li>
+        <li><b>Entertainment</b>, <b>media editors</b>, trends: streaming, VR/AR, AI, 5G</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Exam focus</h2>
+      <ul>
+        <li>Application classes and components</li>
+        <li>Five-stage development cycle; storyboard; alpha / beta</li>
+        <li>Short notes: VoD, conferencing, digital library</li>
+      </ul>
+    </section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+</script>
+</body>
+</html>

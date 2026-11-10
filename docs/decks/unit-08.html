@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 8: Multimedia Communication System</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <style>
+    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
+    .reveal { font-size: 34px; }
+    .reveal ul { display: block; }
+    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
+    .reveal th, .reveal td { padding: 0.3em 0.7em; }
+    .reveal .small { font-size: 0.7em; }
+    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
+    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
+    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
+    .arrow { color: #3f51b5; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+        <section>
+      <h1>Unit 8</h1>
+      <h2>Multimedia Communication System</h2>
+      <p class="small">Multimedia and Application (BCA429CO)</p>
+    </section>
+
+    <section>
+      <h2>Multimedia vs data communication</h2>
+      <table>
+        <tr><th></th><th>Data</th><th>Multimedia</th></tr>
+        <tr><td>Volume</td><td>Small</td><td>Very large</td></tr>
+        <tr><td>Time</td><td>Not critical</td><td>Delay + jitter critical</td></tr>
+        <tr><td>Loss</td><td>Not tolerated</td><td>Some tolerated</td></tr>
+        <tr><td>Pattern</td><td>Point to point</td><td>Multicast, continuous</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Layered view</h2>
+      <div class="flow">
+        <div class="box">Application subsystem</div>
+        <span class="arrow">→</span>
+        <div class="box">Transport subsystem</div>
+        <span class="arrow">→</span>
+        <div class="box">Network (Ethernet, ATM, IP)</div>
+      </div>
+      <p class="small">QoS and resource management span all layers</p>
+    </section>
+
+    <section>
+      <h2>Application subsystem</h2>
+      <ul class="small">
+        <li><b>CSCW</b>: video conference, whiteboard, shared applications</li>
+        <li><b>Session management</b>: setup, membership, media, <b>floor control</b></li>
+        <li>Centralised (MCU) or distributed</li>
+        <li>Multimedia mail (MIME)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Transport requirements</h2>
+      <ul class="small">
+        <li>High throughput · bounded delay · small jitter</li>
+        <li>QoS support · <b>multicast</b></li>
+        <li>Timeliness over perfect reliability</li>
+        <li>Synchronisation · low overhead</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Internet real-time protocols</h2>
+      <table>
+        <tr><th>Protocol</th><th>Role</th></tr>
+        <tr><td>RTP</td><td>Seq. numbers, time stamps over UDP</td></tr>
+        <tr><td>RTCP</td><td>Quality feedback, sync</td></tr>
+        <tr><td>RTSP</td><td>Play / pause / seek</td></tr>
+        <tr><td>RSVP</td><td>Reserve resources</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Playout buffer and error control</h2>
+      <ul class="small">
+        <li>Playout delay absorbs <b>jitter</b></li>
+        <li><b>ARQ</b>: reliable but delays</li>
+        <li><b>FEC</b>: repair without resend</li>
+        <li><b>Concealment</b>: repeat or interpolate</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>QoS parameters</h2>
+      <table>
+        <tr><th>Parameter</th><th>Meaning</th></tr>
+        <tr><td>Throughput</td><td>e.g. 1.5 Mbit/s for MPEG-1</td></tr>
+        <tr><td>Delay</td><td>≤ 150 ms interactive</td></tr>
+        <tr><td>Jitter</td><td>Delay variation</td></tr>
+        <tr><td>Loss</td><td>Fraction lost</td></tr>
+      </table>
+      <p class="small">Guarantees: deterministic · statistical · best effort</p>
+    </section>
+
+    <section>
+      <h2>QoS management</h2>
+      <div class="flow">
+        <div class="box">Specify</div>
+        <span class="arrow">→</span>
+        <div class="box">Negotiate</div>
+        <span class="arrow">→</span>
+        <div class="box">Admit</div>
+        <span class="arrow">→</span>
+        <div class="box">Reserve</div>
+        <span class="arrow">→</span>
+        <div class="box">Monitor</div>
+        <span class="arrow">→</span>
+        <div class="box">Adapt</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Traffic shaping</h2>
+      <ul class="small">
+        <li><b>Leaky bucket</b>: constant output rate</li>
+        <li><b>Token bucket</b>: rate r, size b → bursts ≤ b</li>
+        <li>Max in interval t ≈ <b>b + r·t</b></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Exam focus</h2>
+      <ul>
+        <li>Requirements of the transport subsystem</li>
+        <li>RTP / RTCP / RSVP roles</li>
+        <li>QoS parameters and management chain</li>
+        <li>Leaky vs token bucket</li>
+      </ul>
+    </section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+</script>
+</body>
+</html>

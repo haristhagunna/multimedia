@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 1: Multimedia System</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <style>
+    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
+    .reveal { font-size: 34px; }
+    .reveal ul { display: block; }
+    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
+    .reveal th, .reveal td { padding: 0.3em 0.7em; }
+    .reveal .small { font-size: 0.7em; }
+    .stack { display: flex; flex-direction: column; gap: 10px; width: 80%; margin: 0 auto; }
+    .layer { border: 3px solid; border-radius: 8px; padding: 8px 14px; font-size: 0.7em; text-align: left; }
+    .app { border-color: #2e7d32; background: #e8f5e9; }
+    .sys { border-color: #00838f; background: #e0f7fa; }
+    .dev { border-color: #6d4c41; background: #efebe9; }
+    .sync { margin-top: 10px; font-size: 0.65em; color: #ad1457; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section>
+      <h1>Unit 1</h1>
+      <h2>Multimedia System</h2>
+      <p class="small">Multimedia and Application (BCA429CO)</p>
+    </section>
+
+    <section>
+      <h2>What is multimedia?</h2>
+      <ul>
+        <li><b>Medium</b>: means for distribution and presentation of information</li>
+        <li><b>Multimedia</b>: computer-controlled <b>integration</b> of text, graphics, images, audio, video, animation</li>
+        <li>Represented, stored, transmitted and processed <b>digitally</b></li>
+        <li>Delivered <b>interactively</b></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Building blocks</h2>
+      <table>
+        <tr><th>Element</th><th>Key idea</th></tr>
+        <tr><td>Text</td><td>HTML began as simple text display</td></tr>
+        <tr><td>Audio</td><td>Vibration heard by the ear: speech, effects, music</td></tr>
+        <tr><td>Graphics</td><td>2D figures, drawn by hand or computer</td></tr>
+        <tr><td>Video</td><td>Capture, record, process, transmit moving pictures</td></tr>
+        <tr><td>Animation</td><td>Rapid image sequence: persistence of vision</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>History</h2>
+      <ul class="small">
+        <li><b>1966</b>: Bob Goldstein coins "multimedia"</li>
+        <li><b>1972</b>: Atari's Pong, graphics + sound</li>
+        <li><b>1977</b>: Apple II (colour graphics)</li>
+        <li><b>1981 / 1984</b>: IBM PC / Macintosh with GUI and mouse</li>
+        <li><b>1990s</b>: "multimedia" the overused term</li>
+        <li><b>2000s on</b>: streaming, VR, AR</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Aspects of multimedia</h2>
+      <ul>
+        <li><b>Interactivity</b></li>
+        <li><b>Integration</b></li>
+        <li><b>Hyperlinking</b></li>
+        <li><b>User control</b></li>
+        <li><b>Multisensory experience</b></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Linear vs non-linear</h2>
+      <ul>
+        <li><b>Linear</b>: fixed order (book, film)</li>
+        <li><b>Non-linear</b>: user controls content (games, interactive video)</li>
+        <li><b>Hypertext</b>: read by following links</li>
+        <li><b>Hypermedia</b>: links to any media; the WWW</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Four characteristics</h2>
+      <table>
+        <tr><th>Characteristic</th><th>Meaning</th></tr>
+        <tr><td>Computer controlled</td><td>Computer drives production, storage, transmission, presentation</td></tr>
+        <tr><td>Integrated</td><td>All media and devices under one computer</td></tr>
+        <tr><td>Digitally represented</td><td>Analog converted to digital</td></tr>
+        <tr><td>Interactive</td><td>User picks time, order, speed</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Global structure</h2>
+      <div class="stack">
+        <div class="layer app"><b>Application domain</b>: Tools and Applications · Documents · User Interface · Programming Abstractions</div>
+        <div class="layer sys"><b>System domain</b>: Database Systems · Operating Systems · Communication Systems · Computer Technology</div>
+        <div class="layer dev"><b>Device domain</b>: Storage · Compression · Network · Sound · Image/Graphics · Video/Animation</div>
+        <div class="sync">A vertical <b>Synchronization</b> layer (cross domain) spans all three</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Six classes of media</h2>
+      <table>
+        <tr><th>Medium</th><th>Central question</th></tr>
+        <tr><td>Perception</td><td>How do humans sense it?</td></tr>
+        <tr><td>Representation</td><td>How is it coded?</td></tr>
+        <tr><td>Presentation</td><td>Which devices deliver / take it in?</td></tr>
+        <tr><td>Storage</td><td>How is it stored?</td></tr>
+        <tr><td>Transmission</td><td>What carries it?</td></tr>
+        <tr><td>Information exchange</td><td>Which carrier moves it between places?</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Media concepts</h2>
+      <ul>
+        <li><b>Representation space</b>: visual (paper, screen), acoustic (mono, stereo)</li>
+        <li><b>Representation values</b>: continuous or discrete</li>
+        <li><b>Representation dimensions</b>: spatial (2D, 3D) and temporal</li>
+      </ul>
+      <p class="small"><b>Discrete</b> = time-independent (document) · <b>Continuous</b> = time-dependent (movie)</p>
+    </section>
+
+    <section>
+      <h2>Properties of a multimedia system</h2>
+      <ul>
+        <li><b>Combination of media</b>: needs discrete <i>and</i> continuous</li>
+        <li><b>Independence</b>: several levels</li>
+        <li><b>Computer-supported integration</b>: programmable control</li>
+      </ul>
+      <p class="small">Text + pictures alone is <b>not</b> multimedia.</p>
+    </section>
+
+    <section>
+      <h2>Transmission modes</h2>
+      <table>
+        <tr><th>Mode</th><th>Idea</th><th>Example</th></tr>
+        <tr><td>Asynchronous</td><td>Byte-level sync, gaps allowed</td><td>WWW, e-mail, keyboard</td></tr>
+        <tr><td>Synchronous</td><td>No start/stop bits, clocks</td><td>–</td></tr>
+        <tr><td>Isochronous</td><td>Fixed, steady rate</td><td><b>Best for multimedia</b></td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Challenges</h2>
+      <ul class="small">
+        <li>Synchronization and sequencing</li>
+        <li>Latency and delay on networks</li>
+        <li>Large storage, very high bandwidth</li>
+        <li>Complex algorithms and hardware</li>
+        <li>Analysis and indexing harder than text</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Components</h2>
+      <p>Capture → Storage → Communication → Computer system → Display</p>
+      <p class="small">Camera, microphone · hard disk, SSD, DVD · Ethernet, internet · processor, RAM, sound and display cards · monitor, speakers, projector</p>
+    </section>
+
+    <section>
+      <h2>Exam focus</h2>
+      <ul>
+        <li>Six media classes with central questions</li>
+        <li>Draw the global structure</li>
+        <li>Define multimedia; four characteristics; three properties</li>
+        <li>Discrete vs continuous; why text + pictures is not multimedia</li>
+      </ul>
+    </section>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+</script>
+</body>
+</html>

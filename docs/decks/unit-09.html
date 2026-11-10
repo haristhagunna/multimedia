@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 9: Documents, Hypertext and MHEG</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <style>
+    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
+    .reveal { font-size: 34px; }
+    .reveal ul { display: block; }
+    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
+    .reveal th, .reveal td { padding: 0.3em 0.7em; }
+    .reveal .small { font-size: 0.7em; }
+    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
+    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
+    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
+    .arrow { color: #3f51b5; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+        <section>
+      <h1>Unit 9</h1>
+      <h2>Documents, Hypertext and MHEG</h2>
+      <p class="small">Multimedia and Application (BCA429CO)</p>
+    </section>
+
+    <section>
+      <h2>Multimedia documents</h2>
+      <ul>
+        <li>Discrete + continuous media with spatial, temporal, logical relations</li>
+        <li><b>Logical</b> structure · <b>layout</b> structure · <b>content</b></li>
+        <li>Forms: formatted · processable · formatted processable</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Manipulation of multimedia data</h2>
+      <div class="flow">
+        <div class="box">Capture</div>
+        <span class="arrow">→</span>
+        <div class="box">Edit</div>
+        <span class="arrow">→</span>
+        <div class="box">Integrate</div>
+        <span class="arrow">→</span>
+        <div class="box">Store / retrieve</div>
+        <span class="arrow">→</span>
+        <div class="box">Convert</div>
+        <span class="arrow">→</span>
+        <div class="box">Present / interchange</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Hypertext, hypermedia, multimedia</h2>
+      <table>
+        <tr><th></th><th>Media</th><th>Navigation</th></tr>
+        <tr><td>Multimedia</td><td>Several</td><td>May be linear</td></tr>
+        <tr><td>Hypertext</td><td>Text only</td><td>Non-linear (links)</td></tr>
+        <tr><td>Hypermedia</td><td>Several</td><td>Non-linear (links)</td></tr>
+      </table>
+      <p class="small">Hypermedia = hypertext + multimedia</p>
+    </section>
+
+    <section>
+      <h2>History</h2>
+      <ul class="small">
+        <li><b>Memex</b> – Vannevar Bush, 1945</li>
+        <li><b>Hypertext</b> – Ted Nelson, 1965 (Xanadu)</li>
+        <li>HyperCard 1987 · World Wide Web 1989–91</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Nodes, links and anchors</h2>
+      <ul class="small">
+        <li><b>Node</b>: unit of information (may be composite)</li>
+        <li><b>Link</b>: source → destination; uni/bidirectional; embedded or external</li>
+        <li><b>Anchor</b>: active part (word, picture area, video range)</li>
+        <li>Problems: lost in hyperspace → maps, history, bookmarks</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Dexter model</h2>
+      <table>
+        <tr><th>Layer</th><th>Role</th></tr>
+        <tr><td>Run-time</td><td>Presentation and interaction</td></tr>
+        <tr><td>Storage</td><td>Nodes and links</td></tr>
+        <tr><td>Within-component</td><td>Content of nodes</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>SGML</h2>
+      <ul class="small">
+        <li>ISO 8879 · meta-language for markup</li>
+        <li><b>DTD</b> defines elements, structure, attributes</li>
+        <li>Logical structure only; layout left to application</li>
+        <li>HTML = SGML application; XML = subset</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>ODA</h2>
+      <ul class="small">
+        <li>ISO 8613 · interchange of documents</li>
+        <li><b>Logical</b> and <b>layout</b> structure; document profile</li>
+        <li>Content: character, raster graphics, geometric graphics</li>
+        <li>Forms FF, PF, FPF</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>MHEG</h2>
+      <ul class="small">
+        <li>ISO 13522 · <b>final-form</b> multimedia objects</li>
+        <li>Classes: content, composite, action, <b>link</b>, script, descriptor, container</li>
+        <li>Time, space, interaction → interactive TV (MHEG-5)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Exam focus</h2>
+      <ul>
+        <li>Hypertext vs hypermedia vs multimedia</li>
+        <li>Dexter model diagram</li>
+        <li>SGML DTD example · ODA structures</li>
+        <li>MHEG classes; SGML / ODA / MHEG table</li>
+      </ul>
+    </section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+</script>
+</body>
+</html>

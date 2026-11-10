@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 11: Abstraction of Programming</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <style>
+    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
+    .reveal { font-size: 34px; }
+    .reveal ul { display: block; }
+    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
+    .reveal th, .reveal td { padding: 0.3em 0.7em; }
+    .reveal .small { font-size: 0.7em; }
+    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
+    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
+    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
+    .arrow { color: #3f51b5; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+        <section>
+      <h1>Unit 11</h1>
+      <h2>Abstraction of Programming</h2>
+      <p class="small">Multimedia and Application (BCA429CO)</p>
+    </section>
+
+    <section>
+      <h2>Why abstraction?</h2>
+      <ul>
+        <li>Applications are procedural and <b>hardware dependent</b></li>
+        <li>Changing a device → re-implementation</li>
+        <li>Abstraction levels: different detail for <b>representing, accessing, manipulating</b> data</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Abstraction levels</h2>
+      <div class="flow">
+        <div class="box">Device</div>
+        <span class="arrow">→</span>
+        <div class="box">Library</div>
+        <span class="arrow">→</span>
+        <div class="box">System software</div>
+        <span class="arrow">→</span>
+        <div class="box">Toolkit</div>
+        <span class="arrow">→</span>
+        <div class="box">Higher language</div>
+        <span class="arrow">→</span>
+        <div class="box">Object-oriented</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Libraries and system software</h2>
+      <ul class="small">
+        <li><b>Library</b>: device functions; supplied with hardware; many, differing abstraction</li>
+        <li><b>System software</b>: device access in the OS; RM / EDF schedulers</li>
+        <li><b>Nemo</b>: supervisor call + system, device, application domains</li>
+        <li><b>Time capsule</b>: LDU + data + life span · <b>Stream</b>: source → sink; <b>MCI</b> in Windows</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Toolkits</h2>
+      <ul class="small">
+        <li>Abstract from the physical layer</li>
+        <li>Uniform interface for all devices</li>
+        <li>Client-server paradigm · hide process structures</li>
+        <li>Same toolkit on all platforms: a wish (costs performance)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Media in a language</h2>
+      <table>
+        <tr><th>View</th><th>Idea</th><th>Operations</th></tr>
+        <tr><td>Types</td><td>Like <i>char</i></td><td>Assign, mix a·x + b·y</td></tr>
+        <tr><td>Files</td><td>Stream = file</td><td>open, read, mix, activate, close</td></tr>
+        <tr><td>Processes</td><td>Life = connection</td><td>create, send messages</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Language requirements</h2>
+      <ul class="small">
+        <li>Parallel processes (compile time and dynamic)</li>
+        <li><b>IPC</b>: understand time requirements, transmit and process on time</li>
+        <li>No new language: <b>language extension</b></li>
+        <li>Examples: OCCAM-2, Ada</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>OO basics</h2>
+      <table>
+        <tr><th>Concept</th><th>Example</th></tr>
+        <tr><td>Class / object</td><td>Circle: x, y, radius; findArea()</td></tr>
+        <tr><td>Inheritance (is-a)</td><td>Cow is a Mammal</td></tr>
+        <tr><td>Polymorphism</td><td>findArea() of Circle and Square</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Multimedia class approaches</h2>
+      <ul class="small">
+        <li>Application-specific and <b>application-generic</b> metaphors</li>
+        <li><b>Devices</b> as classes (start, stop, seek)</li>
+        <li><b>Processing units</b>: Lego-like data-flow path</li>
+        <li><b>Media</b> class hierarchy · communication classes (information, presentation, transport)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>BMO, SMO, CMO</h2>
+      <ul class="small">
+        <li><b>SG:BMO</b>: definite length · <b>ST:BMO</b>: undetermined duration</li>
+        <li><b>SMO</b> = BMO + two headers</li>
+        <li><b>CMO</b> = SMOs + <b>orchestration</b> header (time) + <b>concatenation</b> header (logic, space)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Exam focus</h2>
+      <ul>
+        <li>Abstraction-level diagram</li>
+        <li>Media as types / files / processes</li>
+        <li>OO concepts and multimedia classes</li>
+        <li>BMO / SMO / CMO</li>
+      </ul>
+    </section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+</script>
+</body>
+</html>

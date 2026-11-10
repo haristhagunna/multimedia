@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 7: Multimedia Operating System</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <style>
+    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
+    .reveal { font-size: 34px; }
+    .reveal ul { display: block; }
+    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
+    .reveal th, .reveal td { padding: 0.3em 0.7em; }
+    .reveal .small { font-size: 0.7em; }
+    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
+    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
+    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
+    .arrow { color: #3f51b5; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+        <section>
+      <h1>Unit 7</h1>
+      <h2>Multimedia Operating System</h2>
+      <p class="small">Multimedia and Application (BCA429CO)</p>
+    </section>
+
+    <section>
+      <h2>Why a special OS?</h2>
+      <ul>
+        <li>Continuous media have <b>time constraints</b> (25 fps → one frame per 40 ms)</li>
+        <li>Ordinary OS: fair, but <b>no timing guarantee</b></li>
+        <li>Needs: real-time processing, resource management, QoS, continuous-media file system, low jitter</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Real time</h2>
+      <table>
+        <tr><th></th><th>Hard</th><th>Soft</th></tr>
+        <tr><td>Deadline miss</td><td>Failure</td><td>Tolerated</td></tr>
+        <tr><td>Guarantee</td><td>Deterministic</td><td>Statistical / best effort</td></tr>
+        <tr><td>Example</td><td>Flight control</td><td>Video playback</td></tr>
+      </table>
+      <p class="small">Real-time = correct value <b>and</b> correct time</p>
+    </section>
+
+    <section>
+      <h2>Resource management</h2>
+      <ul class="small">
+        <li><b>Active</b>: CPU, network adapter · <b>Passive</b>: memory, bandwidth, buffers</li>
+        <li>QoS request → resource requirement</li>
+        <li><b>Admission control</b> → reserve or reject</li>
+        <li>Guarantees: deterministic (worst case), statistical, best effort</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Continuous media resource model (LBAP)</h2>
+      <ul class="small">
+        <li><b>M</b> max message size · <b>R</b> max rate · <b>B</b> max burst</li>
+        <li>Messages in interval t ≤ <b>B + R·t</b></li>
+        <li>Example: R = 25/s, B = 3 → ≤ 53 in 2 s</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Periodic task model</h2>
+      <ul class="small">
+        <li><b>C</b> compute time · <b>P</b> period · D = P</li>
+        <li>Utilisation <b>U = C / P</b>; total U = Σ C/P</li>
+        <li>Video: 10 ms every 40 ms → U = 0.25</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>EDF and RM</h2>
+      <table>
+        <tr><th></th><th>EDF</th><th>RM</th></tr>
+        <tr><td>Priority</td><td>Dynamic: nearest deadline</td><td>Static: shortest period</td></tr>
+        <tr><td>Test</td><td><b>U ≤ 1</b></td><td>U ≤ n(2<sup>1/n</sup> − 1)</td></tr>
+        <tr><td>Bound</td><td>100 %</td><td>0.828 (n=2), → 0.693</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Example: both succeed</h2>
+      <table>
+        <tr><th>Task</th><th>C</th><th>P</th></tr>
+        <tr><td>T1</td><td>1</td><td>4</td></tr>
+        <tr><td>T2</td><td>2</td><td>6</td></tr>
+      </table>
+      <p class="small">U = 0.583 &lt; 0.828 → RM works. Order: T1 | T2 T2 | – | T1 | – | T2 T2 | T1</p>
+    </section>
+
+    <section>
+      <h2>Example: EDF wins</h2>
+      <table>
+        <tr><th>Task</th><th>C</th><th>P</th></tr>
+        <tr><td>T1</td><td>2</td><td>5</td></tr>
+        <tr><td>T2</td><td>4</td><td>7</td></tr>
+      </table>
+      <p class="small">U = 0.971: EDF schedulable. RM: T2 misses its deadline at 7</p>
+    </section>
+
+    <section>
+      <h2>System architecture</h2>
+      <div class="flow">
+        <div class="box">Applications</div>
+        <span class="arrow">→</span>
+        <div class="box">API / toolkits</div>
+        <span class="arrow">→</span>
+        <div class="box">QoS + resource managers</div>
+        <span class="arrow">→</span>
+        <div class="box">Real-time kernel</div>
+        <span class="arrow">→</span>
+        <div class="box">FS · Network · Drivers</div>
+      </div>
+      <p class="small">Approaches: extend a conventional OS · real-time micro-kernel · dedicated multimedia OS</p>
+    </section>
+
+    <section>
+      <h2>Exam focus</h2>
+      <ul>
+        <li>Requirements of a multimedia OS; hard vs soft real time</li>
+        <li>LBAP (M, R, B); admission control</li>
+        <li>EDF vs RM: test + timeline</li>
+        <li>Architecture diagram</li>
+      </ul>
+    </section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+</script>
+</body>
+</html>

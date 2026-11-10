@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 6: Optical Storage Media</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <style>
+    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
+    .reveal { font-size: 34px; }
+    .reveal ul { display: block; }
+    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
+    .reveal th, .reveal td { padding: 0.3em 0.7em; }
+    .reveal .small { font-size: 0.7em; }
+    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
+    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
+    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
+    .arrow { color: #3f51b5; font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+        <section>
+      <h1>Unit 6</h1>
+      <h2>Optical Storage Media</h2>
+      <p class="small">Multimedia and Application (BCA429CO)</p>
+    </section>
+
+    <section>
+      <h2>Basic technology</h2>
+      <ul class="small">
+        <li>Spiral track of <b>pits and lands</b>; transition = <b>1</b>, between = 0s</li>
+        <li>Track pitch 1.6 µm ≈ 16,000 tpi</li>
+        <li>Layers: <b>substrate, reflective, protective</b></li>
+        <li>Advantages: density, dust-proof, no head crash, error correction</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>The family and the Books</h2>
+      <table>
+        <tr><th>Book</th><th>Standard</th></tr>
+        <tr><td>Red</td><td>CD-DA</td></tr>
+        <tr><td>Yellow</td><td>CD-ROM (ISO 9660 logical)</td></tr>
+        <tr><td>Green</td><td>CD-I</td></tr>
+        <tr><td>Orange</td><td>CD-WO (II), CD-MO (I)</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>CD-DA numbers</h2>
+      <table>
+        <tr><th>Item</th><th>Value</th></tr>
+        <tr><td>Sampling / bits</td><td>44.1 kHz, 16 bit, PCM</td></tr>
+        <tr><td>Data rate</td><td>1,411,200 bit/s</td></tr>
+        <tr><td>S/N</td><td>98 dB</td></tr>
+        <tr><td>74 min capacity</td><td>≈ 747 MB</td></tr>
+        <tr><td>Rotation</td><td>CLV</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Eight-to-Fourteen Modulation</h2>
+      <ul class="small">
+        <li>≥ 2 zeros between ones (laser resolution)</li>
+        <li>≤ 10 zeros in a row (clock recovery)</li>
+        <li>8 bits → <b>14</b> channel bits (256 of 267 patterns)</li>
+        <li>+ <b>3 merging bits</b> between codewords</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Error handling: CIRC</h2>
+      <ul class="small">
+        <li><b>Reed-Solomon</b>, two levels: 4 correction bytes per 24 data bytes</li>
+        <li><b>Interleaving</b> over adjacent frames</li>
+        <li>Corrects bursts of 4,000 bits (≈ 2.5 mm)</li>
+        <li>Interpolates up to 12,300 bits (≈ 7 mm)</li>
+        <li>Error rate ≈ 10⁻⁸</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>CD-DA frame and streams</h2>
+      <p class="small">24 audio + 8 parity + 1 control = 33 bytes → <b>588</b> channel bits (with EFM and sync)</p>
+      <table>
+        <tr><th>Stream</th><th>Rate</th></tr>
+        <tr><td>Audio</td><td>1.41 Mbit/s</td></tr>
+        <tr><td>Data</td><td>1.94 Mbit/s</td></tr>
+        <tr><td>Channel</td><td>4.32 Mbit/s</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>CD-ROM modes</h2>
+      <table>
+        <tr><th></th><th>Mode 1</th><th>Mode 2</th></tr>
+        <tr><td>User bytes / block</td><td>2,048</td><td>2,336</td></tr>
+        <tr><td>EDC / ECC</td><td>4 / 276</td><td>none</td></tr>
+        <tr><td>Capacity</td><td>≈ 650 MB</td><td>≈ 741.85 MB</td></tr>
+        <tr><td>Rate (1×)</td><td>150 KB/s</td><td>171 KB/s</td></tr>
+      </table>
+      <p class="small">2,352 bytes/block · 75 blocks/s · 333,000 blocks</p>
+    </section>
+
+    <section>
+      <h2>ISO 9660 and CD-ROM/XA</h2>
+      <ul class="small">
+        <li><b>ISO 9660</b>: directory tree, path table, 16-block system area</li>
+        <li><b>XA</b> (Philips, Sony, Microsoft 1988): interleaved media in one track</li>
+        <li><b>Form 1</b>: 2,048 B + ECC (text, programs)</li>
+        <li><b>Form 2</b>: 2,324 B, EDC only (audio, video)</li>
+        <li>XA audio levels B and C (ADPCM)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>CD-I, Bridge and Photo CD</h2>
+      <ul class="small">
+        <li><b>CD-I</b> (Green Book): CD-RTOS, decoder, audio levels A/B/C</li>
+        <li><b>CD-I Ready</b>: pregap ≥ 182 s</li>
+        <li><b>Bridge disc</b>: mode 2; plays on XA and CD-I</li>
+        <li><b>Photo CD</b>: ImagePac, 5 resolutions, 3–6 MB per photo</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Laser Vision and DVD</h2>
+      <table>
+        <tr><th></th><th>CD</th><th>DVD</th></tr>
+        <tr><td>Laser</td><td>780 nm</td><td>650 / 635 nm</td></tr>
+        <tr><td>Track pitch</td><td>1.6 µm</td><td>0.74 µm</td></tr>
+        <tr><td>Capacity</td><td>650 MB</td><td>4.7 / 8.5 / 9.4 GB</td></tr>
+        <tr><td>Video</td><td>MPEG-1</td><td>MPEG-2</td></tr>
+      </table>
+      <p class="small">Laser Vision: analogue, 30 cm, ≈ 2.6 GB</p>
+    </section>
+
+    <section>
+      <h2>Blu-ray</h2>
+      <ul class="small">
+        <li>405 nm blue-violet laser, track pitch 0.32 µm</li>
+        <li>25 GB (1 layer), 50 GB (2 layers)</li>
+        <li>HD video; BD-ROM, BD-R, BD-RE</li>
+        <li class="small">Beyond the lecturer's notes</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>CD-WO and CD-MO</h2>
+      <table>
+        <tr><th></th><th>CD-WO</th><th>CD-MO</th></tr>
+        <tr><td>Principle</td><td>Heat changes absorption layer (irreversible)</td><td>Heat + magnetic field; light polarization on read</td></tr>
+        <tr><td>Rewrite</td><td>No</td><td>Yes</td></tr>
+        <tr><td>Special</td><td>Sessions ≤ 99; regular / hybrid</td><td>Premastered + rewritable area</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Exam focus</h2>
+      <ul>
+        <li>CD-DA numbers, EFM rules, CIRC</li>
+        <li>CD-ROM mode 1 vs 2; XA forms</li>
+        <li>CD vs DVD table</li>
+        <li>CD-WO principle and sessions; CD-MO</li>
+      </ul>
+    </section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+</script>
+</body>
+</html>
