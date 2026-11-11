@@ -416,3 +416,21 @@ body { -webkit-font-smoothing: antialiased; }
   .md-typeset .admonition, .md-typeset details, .md-typeset table:not([class]) { box-shadow: none; break-inside: avoid; }
   body::after { content: "(c) 2026 Er. Harish Thagunna. All rights reserved."; display: block; margin-top: 2rem; font-size: 10pt; text-align: center; }
 }
+
+/* ---------- Simulators ---------- */
+.sim { border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--card-bg); box-shadow: var(--shadow-1); padding: 1rem 1.2rem; margin: 1rem 0 2rem; }
+.sim-controls { display: flex; flex-wrap: wrap; gap: .7rem 1.4rem; align-items: center; margin-bottom: .8rem; }
+.sim-ctl { display: flex; align-items: center; gap: .5rem; font-size: .72rem; font-weight: 650; }
+.sim-ctl input[type=range] { accent-color: var(--brand-2); width: 9rem; }
+.sim-ctl b { min-width: 2.2rem; color: var(--md-primary-fg-color); }
+.sim-text { font: inherit; padding: .4em .7em; border-radius: var(--radius-sm); border: 1.5px solid var(--card-border); background: var(--soft); color: var(--md-default-fg-color); color-scheme: light dark; }
+.sim-text[type=text] { min-width: 18rem; }
+.sim-svg { width: 100%; height: auto; max-height: 340px; background: color-mix(in srgb, var(--soft) 60%, transparent); border-radius: var(--radius-sm); }
+.sim-out { margin-top: .6rem; font-size: .78rem; }
+.sim-out p { margin: .3em 0; }
+.sim .ok { color: #10b981; font-weight: 700; } .sim .bad { color: #ef4444; font-weight: 700; }
+.sim-row { display: flex; gap: .8rem; align-items: center; margin: .3rem 0; font-size: .75rem; }
+.sim-row input { width: 4.5rem; font: inherit; padding: .25em .5em; border-radius: 8px; border: 1.5px solid var(--card-border); background: var(--soft); color: var(--md-default-fg-color); }
+.sim-grid3 { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; }
+.sim-fig { margin: 0; text-align: center; font-size: .68rem; color: var(--md-default-fg-color--light); }
+.sim-fig canvas { border: 1px solid var(--card-border); border-radius: 6px; }
