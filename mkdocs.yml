@@ -258,6 +258,11 @@ nav:
       - Mock exam 2: revision/mock-exam-2.md
   - Labs:
       - Interactive simulators: labs/simulators.md
+  - Instructor:
+      - instructor/index.md
+      - Week plan: instructor/week-plan.md
+      - Assignments: instructor/assignments.md
+      - Question bank: instructor/question-bank.md
   - About: about.md
 
 exclude_docs: |

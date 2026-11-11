@@ -369,9 +369,10 @@ def unit_deck(n, cfgunits):
             plain = (f'<section><h2><small>{k}</small>In plain words</h2><div class="trio">'
                      f'<div class="card c1"><div class="ct">The idea</div><p>{en["plain"]}</p></div>'
                      f'<div class="card c2"><div class="ct">Real-life picture</div><p>{en["real"]}</p></div>'
-                     f'<div class="card c3"><div class="ct">Remember it</div><p>{en["hook"]}</p></div></div></section>')
+                     f'<div class="card c3"><div class="ct">Remember it</div><p>{en["hook"]}</p></div></div>'
+                     f'<aside class="notes"><p><b>Say:</b> {en["plain"]}</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: {en["real"]})</p><p><b>Board:</b> write the memory hook: {en["hook"]}</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section>')
             tc = "".join(f'<div class="card term"><b>{a}</b><span>{b}</span></div>' for a, b in en["terms"])
-            terms = f'<section><h2><small>{k}</small>Key terms</h2><div class="terms">{tc}</div></section>'
+            terms = f'<section><h2><small>{k}</small>Key terms</h2><div class="terms">{tc}</div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section>'
         stack = [intro_slide] + ([plain] if plain else []) + [vh(x) for x in pre] + slides + ([terms] if terms else []) + [vh(x) for x in post]
         all_html.extend(slides)
         sections.append(f'<section data-topic="{html.escape(k)}">' + "".join(stack) + "</section>")
