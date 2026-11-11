@@ -25,7 +25,7 @@
 - I-frames must appear at **regular intervals** so that corruption in one frame does not spread. The number of frames between successive I-frames is the **group of pictures (GOP)**.
 - The number of frames between a P-frame and the preceding I-frame is the **prediction span**.
 
-!!! example "Typical sequence (the figure shows I, B, B, P, B, B, P … I)"
+!!! example "Typical sequence (for example I, B, B, P, B, B, P … I)"
     Display order: **I B B P B B P B B I**. Coding order: **I P B B P B B I B B**, because each B needs the next P first.
 
 ```mermaid
@@ -35,9 +35,6 @@ flowchart LR
     P1 -. "prediction" .-> P2
     P1 -. "backward" .-> B1
 ```
-
-!!! warning "Check before quoting"
-    The 1,856,000 bit/s figure is the course text's. Textbooks usually write MPEG-1 as about 1.5 Mbit/s for video and audio together, rising to the 1.856 Mbit/s limit. Quote the course text's number if the exam is set from the notes.
 
 ## H.261 (px64)
 

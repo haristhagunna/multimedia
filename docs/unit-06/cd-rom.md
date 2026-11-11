@@ -25,8 +25,8 @@ flowchart TB
 - 74 min × 60 × 75 = **333,000 blocks**.
 
 !!! warning "Watch out"
-    - Some notes say "1 block = **32** frames". 2,352 ÷ 24 audio bytes per frame = **98 frames per block** (98 × 588 bits = 57,624 bits = 7,203 channel bytes, ).
-    - A figure of "330,000 blocks" is sometimes printed; the correct count is **333,000**.
+    - A block holds **98 frames** (2,352 ÷ 24 audio bytes per frame; 98 × 588 channel bits = 57,624 bits = 7,203 bytes).
+    - Do not round the block count to 330,000: it is exactly **333,000**.
 
 ## Mode 1 block (2,352 bytes)
 

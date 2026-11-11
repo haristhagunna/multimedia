@@ -1,6 +1,6 @@
 # Speech Analysis
 
-**Speech analysis** (speech input) asks three questions about a spoken signal. The figure draws it as a tree: *Speech analysis* splits into **Who?** (*verification* and *identification*), **What?** (*recognition* and *understanding*) and **How?**.
+**Speech analysis** (speech input) asks three questions about a spoken signal. It is often drawn as a tree: *Speech analysis* splits into **Who?** (*verification* and *identification*), **What?** (*recognition* and *understanding*) and **How?**.
 
 ```mermaid
 flowchart TB
@@ -22,7 +22,7 @@ Human speech has characteristics that are **determined by the speaker**. Speech 
 
 ## What has been said?
 
-This task analyses **what was said**: to **recognise and understand** the speech signal itself. A corresponding **text** is generated from the speech sequence. Applications named in the notes:
+This task analyses **what was said**: to **recognise and understand** the speech signal itself. A corresponding **text** is generated from the speech sequence. Applications:
 
 - A **speech-controlled typewriter**
 - A **translation system**
@@ -53,7 +53,7 @@ Recognition systems differ along four contexts:
 
 ### The recognition principle (Figure 3-13)
 
-The principle is **"extract characteristics to reduce data."** The figure shows:
+The principle is **"extract characteristics to reduce data."** A typical diagram shows:
 
 1. **Speech analysis** (on a special chip): parameters, response and **property extraction** from the speech signal.
 2. **Pattern recognition** (on the main processor): **comparison with reference** material and a **decision**.
@@ -79,7 +79,7 @@ Applying the principle gives three analysis stages, each using a **knowledge sou
 | **Syntactical analysis** | **Syntax** |
 | **Semantic analysis** | **Semantics** |
 
-The output of the last stage is **understood speech**. In the figure each stage can feed back to the previous one.
+The output of the last stage is **understood speech**. In the usual diagram each stage can feed back to the previous one.
 
 !!! exam "Exam tip"
     "Explain speech recognition" is a likely long question. Give the **definition**, the **four contexts**, and the **three-stage diagram** (acoustic/phonetic → syntactical → semantic), each labelled with its knowledge source.

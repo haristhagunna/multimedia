@@ -114,7 +114,7 @@ Write your own answer on paper first, then click to reveal the model answer. Mar
     - C. Fixed-rate delivery
     - D. Parallel bit transfer
 
-    **Answer: B.** A describes synchronous, C isochronous. D is not a transmission mode in the notes.
+    **Answer: B.** A describes synchronous, C isochronous. D is not a transmission mode.
 
 ??? question "17. Which statement about 'combination of media' is correct?"
     - A. Any two media make a multimedia application

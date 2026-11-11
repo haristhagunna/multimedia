@@ -18,7 +18,7 @@ A **sound signal** can be stored as a **digitised sequence of samples**. But **m
 | **Hardware** | Connects the equipment. It adds a **MIDI port** to an instrument, specifies a **MIDI cable**, and processes the **electrical signals** over the cable. |
 | **Data format** | Encodes the information the hardware processes. It does **not** encode individual sampling values; instead it uses a specific data format for each instrument, covering the **start and end of a score**, the **basic frequency**, the **loudness** and the **instrument itself**. |
 
-The figure shows a laptop (the digital audio workstation) connected to a synthesizer, a MIDI keyboard and an audio interface with **USB, audio and MIDI cables**.
+A typical diagram shows a laptop (the digital audio workstation) connected to a synthesizer, a MIDI keyboard and an audio interface with **USB, audio and MIDI cables**.
 
 ## MIDI messages
 
@@ -79,7 +79,7 @@ This is a classic assignment question, so expect it in the exam.
 
 ## MIDI software
 
-| Type | Purpose | Examples from the notes |
+| Type | Purpose | Examples |
 |---|---|---|
 | **MIDI player** | Plays MIDI music | Windows Media Player, the Creative MIDI player that comes with the sound card, freeware/shareware players such as Midigate and Yamaha Midplug |
 | **MIDI sequencer** | Records, edits and plays MIDI | Cakewalk Express, Home Studio, Professional; Cubasis; Encore; Voyetra MIDI Orchestrator Plus |

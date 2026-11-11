@@ -4,7 +4,7 @@
 
 The **ITU-R** (International Telecommunications Union – Radiocommunications Branch) defined **Recommendation CCIR-601** to standardise digitization of video pictures. Variants exist for **TV broadcasting, video telephony and videoconferencing**.
 
-Video digitizers differ in **image resolution, quantization and frame rate**. Example from the notes: SGI **VINO** digitizer for NTSC: **640 × 480, 8 bits/pixel, 4 frames/second**.
+Video digitizers differ in **image resolution, quantization and frame rate**. Example: SGI **VINO** digitizer for NTSC: **640 × 480, 8 bits/pixel, 4 frames/second**.
 
 ## Raster display architecture
 
@@ -49,13 +49,13 @@ Video formats use **lossy compression** to cut file size while keeping quality.
 $$\text{Frame size} = \text{width} \times \text{height} \times \text{bits per pixel}$$
 $$\text{Data rate} = \text{frame size} \times \text{frame rate}$$
 
-!!! example "Worked example from the notes: PAL, 352 × 288, 16 bits/pixel, 25 fps"
+!!! example "Worked example: PAL, 352 × 288, 16 bits/pixel, 25 fps"
     - Frame size = 352 × 288 × 16 = **1,622,016 bits** (= 202,752 bytes, about 202.5 KB with decimal kilobytes).
     - Data rate = 1,622,016 × 25 = **40,550,400 bits/s**.
     - In MB/s: 40,550,400 ÷ (8 × 1024 × 1024) = **4.83 MB/s**.
 
 !!! warning "Units"
-    The notes convert the frame to KB using 1000 but the rate to MB using 1024 × 1024. In the exam state which unit you use. 202,752 bytes ÷ 1024 = 198 KB.
+    Be consistent: state whether you use 1000 or 1024 for KB and MB. For example 202,752 bytes ÷ 1024 = 198 KB.
 
 !!! exam "Quick practice"
     640 × 480, 24-bit, 30 fps: frame = 921,600 bytes; rate = 27,648,000 bytes/s ≈ **26.4 MB/s**; one minute ≈ **1.55 GB**.

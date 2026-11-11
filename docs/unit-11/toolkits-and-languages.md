@@ -19,7 +19,7 @@ Media can be seen in three ways inside a language.
 
 ### 1. Media as types
 
-Audio and video are **data types**, just as **character** is the type for text (the smallest addressable element). A program can copy, compare, delete, read, store and display them, and use them in other data structures. Example from the notes (OCCAM-2, derived from **Communicating Sequential Processes** for **transputers**): two audio LDUs from two microphones are read in parallel and **mixed**:
+Audio and video are **data types**, just as **character** is the type for text (the smallest addressable element). A program can copy, compare, delete, read, store and display them, and use them in other data structures. Example (OCCAM-2, derived from **Communicating Sequential Processes** for **transputers**): two audio LDUs from two microphones are read in parallel and **mixed**:
 
 ```
 a, b REAL;
@@ -31,9 +31,6 @@ WHILE
   ldu.left_mixed := a * ldu.left1 + b * ldu.left2;
 END WHILE
 ```
-
-!!! warning "Listing slips"
-    Printed listings of this example are often garbled (for example "ldu.left-mixed", a stray `\_`, and "COBEGIN" inside a `WHILE`). The idea is clear: two parallel input processes and a weighted sum **a·ldu1 + b·ldu2**.
 
 ### 2. Media as files
 

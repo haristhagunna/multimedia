@@ -1,184 +1,1481 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit 6: Optical Storage Media</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
-  <style>
-    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
-    .reveal { font-size: 34px; }
-    .reveal ul { display: block; }
-    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
-    .reveal th, .reveal td { padding: 0.3em 0.7em; }
-    .reveal .small { font-size: 0.7em; }
-    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
-    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
-    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
-    .arrow { color: #3f51b5; font-weight: bold; }
-  
-    .reveal-viewport{background:radial-gradient(60% 80% at 15% 10%,#2a2f6b 0%,transparent 60%),radial-gradient(50% 70% at 90% 90%,#5b1f63 0%,transparent 60%),#0b0d17}
-    .reveal h1,.reveal h2,.reveal h3{background:linear-gradient(120deg,#a5b4fc,#f0abfc 60%,#fda4af);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.02em}
-    .copyright-foot{position:fixed;left:0;right:0;bottom:6px;text-align:center;font:600 11px Inter,system-ui,sans-serif;color:#9a9cc4;z-index:30;pointer-events:none}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="author" content="Er. Harish Thagunna">
+<title>Unit 6: Optical Storage Media - Class slides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<style>
+:root{--g:linear-gradient(120deg,#818cf8,#c084fc 55%,#f472b6);--card:rgba(255,255,255,.055);--line:rgba(255,255,255,.12);--mut:#aab0d6;--ac:#a5b4fc}
+html,body{background:#080a14}
+.reveal-viewport{background:radial-gradient(55% 70% at 12% 8%,rgba(99,102,241,.35),transparent 65%),radial-gradient(50% 65% at 92% 95%,rgba(236,72,153,.26),transparent 65%),radial-gradient(40% 50% at 85% 10%,rgba(6,182,212,.14),transparent 70%),#080a14}
+.reveal{font-family:Inter,system-ui,sans-serif;font-size:27px;color:#e8eaff;font-weight:400}
+.reveal .slides section{text-align:left;height:100%}
+.reveal h1,.reveal h2,.reveal h3{font-family:Inter,system-ui,sans-serif;text-transform:none;letter-spacing:-.025em;font-weight:800;margin:0 0 .45em}
+.reveal h2{font-size:1.5em;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.15}
+.reveal h2 small{display:block;font-size:.42em;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);-webkit-text-fill-color:var(--mut);font-weight:700;margin-bottom:.35em}
+.reveal h3{font-size:1.05em;color:#fff}
+.reveal h4{font-size:.9em;color:var(--ac);margin:.6em 0 .2em}
+.reveal p{margin:.35em 0;line-height:1.45}
+.reveal ul,.reveal ol{display:block;margin:.3em 0 .3em 1.1em;width:calc(100% - 1.1em)}
+.reveal li{margin:.3em 0;line-height:1.38}
+.reveal ul li::marker{color:#c084fc}.reveal ol li::marker{color:#818cf8;font-weight:700}
+.reveal strong{color:#fff;font-weight:700}.reveal em{color:#d9dcff}
+.reveal a{color:var(--ac)}
+.reveal code{font-family:'JetBrains Mono',monospace;font-size:.85em;background:rgba(129,140,248,.16);border-radius:6px;padding:.06em .35em;color:#e0e4ff}
+.reveal pre{width:100%;box-shadow:none;font-size:.62em;margin:.5em 0}
+.reveal pre code{display:block;padding:.8em 1em;border-radius:12px;background:rgba(0,0,0,.4);border:1px solid var(--line);max-height:none}
+.reveal mark{background:linear-gradient(transparent 55%,rgba(244,114,182,.4) 55%);color:inherit}
+.reveal table{margin:.5em 0;border-collapse:separate;border-spacing:0;font-size:.66em;width:100%;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.reveal th{background:rgba(129,140,248,.2);font-weight:700;color:#fff;text-align:left;padding:.5em .8em}
+.reveal td{padding:.42em .8em;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.reveal tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+.dense{font-size:.86em}.xdense{font-size:.74em}
+.callout{border:1px solid var(--line);border-left:5px solid #818cf8;border-radius:12px;background:var(--card);padding:.55em 1em;margin:.7em 0;font-size:.88em}
+.callout .ct{font-size:.68em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.15em;color:#a5b4fc}
+.callout p,.callout li{margin:.2em 0}.callout>*:last-child{margin-bottom:0}
+.callout.exam{border-left-color:#fb923c;background:rgba(251,146,60,.09)}.callout.exam .ct{color:#fdba74}
+.callout.warn{border-left-color:#f87171;background:rgba(248,113,113,.09)}.callout.warn .ct{color:#fca5a5}
+.callout.tip{border-left-color:#34d399;background:rgba(52,211,153,.09)}.callout.tip .ct{color:#6ee7b7}
+.callout.ex{border-left-color:#c084fc;background:rgba(192,132,252,.09)}.callout.ex .ct{color:#d8b4fe}
+aside.notes{display:none}
+.callout.split .sp{display:grid;grid-template-columns:1fr 1.1fr;gap:1em;align-items:center}
+.callout.split .diagram svg{max-height:430px}
+.diagram{text-align:center;margin:.4em 0}.diagram svg{max-width:100%;height:auto;max-height:470px;width:auto}
+.diagram.tall svg{max-height:540px}
+.diagram .cap,.cap{font-size:.55em;color:var(--mut);margin-top:.3em;text-align:center}
+.vis{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:.5em;text-align:center}
+.vis svg{max-width:100%;height:auto;max-height:480px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1em;align-items:start}
+.two>*{min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6em .9em}
+.q{font-weight:700;color:#fff}
+.chk{border:1px solid rgba(192,132,252,.5);border-radius:14px;padding:.7em 1em;background:rgba(192,132,252,.08);margin:.5em 0}
+.chk .lab{font-size:.55em;letter-spacing:.14em;font-weight:800;color:#d8b4fe;text-transform:uppercase}
+.opts{list-style:none;margin:.4em 0!important;padding:0;display:grid;gap:.35em}
+.opts li{margin:0;padding:.4em .8em;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.ans{margin-top:.6em;padding:.5em .9em;border-radius:10px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.5)}
+.agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:.55em}
+.agenda .card{display:flex;gap:.7em;align-items:center;font-size:.85em;font-weight:600}
+.agenda .n{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:800;font-size:.85em;color:#fff}
+.title-slide{display:flex!important;flex-direction:column;justify-content:center;height:100%}
+.title-slide .kick{font-size:.62em;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);font-weight:700;margin-bottom:1em}
+.title-slide h1{font-size:2.9em;line-height:1.02;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:.25em}
+.title-slide .by{font-size:.8em;color:var(--mut);margin-top:1.2em}
+.chips{display:flex;gap:.6em;flex-wrap:wrap;margin-top:1.2em}
+.chips span{font-size:.55em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.35em .9em;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.sec{display:flex!important;flex-direction:column;justify-content:center;height:100%}
+.sec .no{font-size:5em;font-weight:900;line-height:1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+.sec h2{font-size:2.1em}
+.sec .lead{color:var(--mut);font-size:.85em;max-width:80%}
+#hud{position:fixed;left:18px;top:12px;z-index:30;font:700 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8e94c4;pointer-events:none}
+.copyright-foot{position:fixed;left:0;right:0;bottom:8px;text-align:center;font:600 11px Inter,system-ui,sans-serif;color:#7f86b8;z-index:30;pointer-events:none}
+.reveal .progress{height:4px;color:#c084fc}
+.reveal .controls{color:#a5b4fc}
+.reveal .slide-number{background:transparent;color:#8e94c4;font-size:12px;font-weight:700;right:14px;bottom:8px}
+.reveal .fragment.highlight-current-blue.current-fragment{color:#a5b4fc}
+.reveal .katex{font-size:1.05em}.reveal .arithmatex{color:#fff}
+.reveal .arithmatex.block,.reveal div.arithmatex{margin:.5em 0;text-align:center}
+@media print{#hud,.copyright-foot{display:none}}
+</style>
 </head>
 <body>
-<div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div>
-<div class="reveal">
-  <div class="slides">
-
-        <section>
-      <h1>Unit 6</h1>
-      <h2>Optical Storage Media</h2>
-      <p class="small">Multimedia and Application (BCA429CO)</p>
-    </section>
-
-    <section>
-      <h2>Basic technology</h2>
-      <ul class="small">
-        <li>Spiral track of <b>pits and lands</b>; transition = <b>1</b>, between = 0s</li>
-        <li>Track pitch 1.6 µm ≈ 16,000 tpi</li>
-        <li>Layers: <b>substrate, reflective, protective</b></li>
-        <li>Advantages: density, dust-proof, no head crash, error correction</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>The family and the Books</h2>
-      <table>
-        <tr><th>Book</th><th>Standard</th></tr>
-        <tr><td>Red</td><td>CD-DA</td></tr>
-        <tr><td>Yellow</td><td>CD-ROM (ISO 9660 logical)</td></tr>
-        <tr><td>Green</td><td>CD-I</td></tr>
-        <tr><td>Orange</td><td>CD-WO (II), CD-MO (I)</td></tr>
-      </table>
-    </section>
-
-    <section>
-      <h2>CD-DA numbers</h2>
-      <table>
-        <tr><th>Item</th><th>Value</th></tr>
-        <tr><td>Sampling / bits</td><td>44.1 kHz, 16 bit, PCM</td></tr>
-        <tr><td>Data rate</td><td>1,411,200 bit/s</td></tr>
-        <tr><td>S/N</td><td>98 dB</td></tr>
-        <tr><td>74 min capacity</td><td>≈ 747 MB</td></tr>
-        <tr><td>Rotation</td><td>CLV</td></tr>
-      </table>
-    </section>
-
-    <section>
-      <h2>Eight-to-Fourteen Modulation</h2>
-      <ul class="small">
-        <li>≥ 2 zeros between ones (laser resolution)</li>
-        <li>≤ 10 zeros in a row (clock recovery)</li>
-        <li>8 bits → <b>14</b> channel bits (256 of 267 patterns)</li>
-        <li>+ <b>3 merging bits</b> between codewords</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Error handling: CIRC</h2>
-      <ul class="small">
-        <li><b>Reed-Solomon</b>, two levels: 4 correction bytes per 24 data bytes</li>
-        <li><b>Interleaving</b> over adjacent frames</li>
-        <li>Corrects bursts of 4,000 bits (≈ 2.5 mm)</li>
-        <li>Interpolates up to 12,300 bits (≈ 7 mm)</li>
-        <li>Error rate ≈ 10⁻⁸</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>CD-DA frame and streams</h2>
-      <p class="small">24 audio + 8 parity + 1 control = 33 bytes → <b>588</b> channel bits (with EFM and sync)</p>
-      <table>
-        <tr><th>Stream</th><th>Rate</th></tr>
-        <tr><td>Audio</td><td>1.41 Mbit/s</td></tr>
-        <tr><td>Data</td><td>1.94 Mbit/s</td></tr>
-        <tr><td>Channel</td><td>4.32 Mbit/s</td></tr>
-      </table>
-    </section>
-
-    <section>
-      <h2>CD-ROM modes</h2>
-      <table>
-        <tr><th></th><th>Mode 1</th><th>Mode 2</th></tr>
-        <tr><td>User bytes / block</td><td>2,048</td><td>2,336</td></tr>
-        <tr><td>EDC / ECC</td><td>4 / 276</td><td>none</td></tr>
-        <tr><td>Capacity</td><td>≈ 650 MB</td><td>≈ 741.85 MB</td></tr>
-        <tr><td>Rate (1×)</td><td>150 KB/s</td><td>171 KB/s</td></tr>
-      </table>
-      <p class="small">2,352 bytes/block · 75 blocks/s · 333,000 blocks</p>
-    </section>
-
-    <section>
-      <h2>ISO 9660 and CD-ROM/XA</h2>
-      <ul class="small">
-        <li><b>ISO 9660</b>: directory tree, path table, 16-block system area</li>
-        <li><b>XA</b> (Philips, Sony, Microsoft 1988): interleaved media in one track</li>
-        <li><b>Form 1</b>: 2,048 B + ECC (text, programs)</li>
-        <li><b>Form 2</b>: 2,324 B, EDC only (audio, video)</li>
-        <li>XA audio levels B and C (ADPCM)</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>CD-I, Bridge and Photo CD</h2>
-      <ul class="small">
-        <li><b>CD-I</b> (Green Book): CD-RTOS, decoder, audio levels A/B/C</li>
-        <li><b>CD-I Ready</b>: pregap ≥ 182 s</li>
-        <li><b>Bridge disc</b>: mode 2; plays on XA and CD-I</li>
-        <li><b>Photo CD</b>: ImagePac, 5 resolutions, 3–6 MB per photo</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Laser Vision and DVD</h2>
-      <table>
-        <tr><th></th><th>CD</th><th>DVD</th></tr>
-        <tr><td>Laser</td><td>780 nm</td><td>650 / 635 nm</td></tr>
-        <tr><td>Track pitch</td><td>1.6 µm</td><td>0.74 µm</td></tr>
-        <tr><td>Capacity</td><td>650 MB</td><td>4.7 / 8.5 / 9.4 GB</td></tr>
-        <tr><td>Video</td><td>MPEG-1</td><td>MPEG-2</td></tr>
-      </table>
-      <p class="small">Laser Vision: analogue, 30 cm, ≈ 2.6 GB</p>
-    </section>
-
-    <section>
-      <h2>Blu-ray</h2>
-      <ul class="small">
-        <li>405 nm blue-violet laser, track pitch 0.32 µm</li>
-        <li>25 GB (1 layer), 50 GB (2 layers)</li>
-        <li>HD video; BD-ROM, BD-R, BD-RE</li>
-        <li class="small">Extra reading</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>CD-WO and CD-MO</h2>
-      <table>
-        <tr><th></th><th>CD-WO</th><th>CD-MO</th></tr>
-        <tr><td>Principle</td><td>Heat changes absorption layer (irreversible)</td><td>Heat + magnetic field; light polarization on read</td></tr>
-        <tr><td>Rewrite</td><td>No</td><td>Yes</td></tr>
-        <tr><td>Special</td><td>Sessions ≤ 99; regular / hybrid</td><td>Premastered + rewritable area</td></tr>
-      </table>
-    </section>
-
-    <section>
-      <h2>Exam focus</h2>
-      <ul>
-        <li>CD-DA numbers, EFM rules, CIRC</li>
-        <li>CD-ROM mode 1 vs 2; XA forms</li>
-        <li>CD vs DVD table</li>
-        <li>CD-WO principle and sessions; CD-MO</li>
-      </ul>
-    </section>
-
-</div>
-</div>
+<div id="hud"></div>
+<div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved. &middot; Press <b>?</b> for shortcuts, <b>Esc</b> for overview</div>
+<div class="reveal"><div class="slides">
+<section class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 6<br>Optical Storage Media</h1><p style="max-width:75%;color:#aab0d6">CD-DA, CD-ROM, XA, DVD, Blu-ray, CD-WO and CD-MO.</p><div class="chips"><span>4 teaching hours</span><span>6 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></section>
+<section><h2><small>Roadmap</small>What we will cover</h2><div class="agenda"><div class="card"><span class="n">1</span>Basic Technology</div><div class="card"><span class="n">2</span>Video Disks: Laser Vision, DVD and Blu-ray</div><div class="card"><span class="n">3</span>CD Audio (CD-DA)</div><div class="card"><span class="n">4</span>CD-ROM and CD-ROM/XA</div><div class="card"><span class="n">5</span>CD-I, CD-I Ready, Bridge and Photo CD</div><div class="card"><span class="n">6</span>CD-WO and CD-MO</div></div></section>
+<section data-topic="Basic Technology"><section class="sec"><div class="no">01</div><h2>Basic Technology</h2><div class="lead">Unit 6 &middot; topic 1 of 6</div></section><section class=""><h2><small>Basic Technology</small>History</h2><table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1973</td>
+<td>Video Long Play (VLP) published (Philips Technical Review)</td>
+</tr>
+<tr>
+<td>1983</td>
+<td>CD-DA available (Philips and Sony), <strong>Red Book</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>CD-ROM: <strong>Yellow Book</strong> (physical), High Sierra proposal, <strong>ISO 9660</strong> (logical)</td>
+</tr>
+<tr>
+<td>1986–88</td>
+<td><strong>CD-I</strong> announced; <strong>Green Book</strong> (1988); CD-ROM/XA announced (Philips, Sony, Microsoft, 1988)</td>
+</tr>
+<tr>
+<td>1987</td>
+<td>DVI first presented</td>
+</tr>
+<tr>
+<td></td>
+<td>CD-WO and CD-MO: <strong>Orange Book</strong></td>
+</tr>
+<tr>
+<td>1996</td>
+<td><strong>DVD</strong></td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-06/basic-technology/">Basic Technology</a></aside></section><section class="dense"><h2><small>Basic Technology</small>Pits and lands</h2><ul>
+<li class="fragment fade-up">Information is stored in a <strong>spiral-shaped track</strong> as a series of <strong>pits and lands</strong> in the substrate layer.</li>
+<li class="fragment fade-up">A <strong>transition from pit to land or land to pit = '1'</strong>; <strong>between transitions a run of '0's</strong>. (This is differential NRZ coding.)</li>
+<li class="fragment fade-up">Track density about <strong>16,000 turns per inch (tpi)</strong>: track pitch <strong>1.6 µm</strong> (a floppy disk has 96 tpi).</li>
+<li class="fragment fade-up">The laser is focused on the <strong>reflective layer</strong>: <strong>lands reflect almost totally, pits scatter</strong> the light, so the reflected light level changes.</li>
+</ul><div class="callout ex"><div class="ct">Check</div>
+<p>25.4 mm ÷ 1.6 µm = 15,875 ≈ <strong>16,000 tpi</strong>.</p>
+</div><aside class="notes">Source note: <a href="../../unit-06/basic-technology/">Basic Technology</a></aside></section><section class="xdense"><h2><small>Basic Technology</small>Physical structure (three layers) <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm69c3d3951f33" role="graphics-document document" viewbox="0 0 276 636" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm69c3d3951f33{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm69c3d3951f33 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm69c3d3951f33 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm69c3d3951f33 .error-icon{fill:#1c2150;}#mm69c3d3951f33 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm69c3d3951f33 .edge-thickness-normal{stroke-width:1px;}#mm69c3d3951f33 .edge-thickness-thick{stroke-width:3.5px;}#mm69c3d3951f33 .edge-pattern-solid{stroke-dasharray:0;}#mm69c3d3951f33 .edge-thickness-invisible{stroke-width:0;fill:none;}#mm69c3d3951f33 .edge-pattern-dashed{stroke-dasharray:3;}#mm69c3d3951f33 .edge-pattern-dotted{stroke-dasharray:2;}#mm69c3d3951f33 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm69c3d3951f33 .marker.cross{stroke:#a5b4fc;}#mm69c3d3951f33 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm69c3d3951f33 p{margin:0;}#mm69c3d3951f33 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm69c3d3951f33 .cluster-label text{fill:#e3deaf;}#mm69c3d3951f33 .cluster-label span{color:#e3deaf;}#mm69c3d3951f33 .cluster-label span p{background-color:transparent;}#mm69c3d3951f33 .label text,#mm69c3d3951f33 span{fill:#f4f4ff;color:#f4f4ff;}#mm69c3d3951f33 .node rect,#mm69c3d3951f33 .node circle,#mm69c3d3951f33 .node ellipse,#mm69c3d3951f33 .node polygon,#mm69c3d3951f33 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm69c3d3951f33 .rough-node .label text,#mm69c3d3951f33 .node .label text,#mm69c3d3951f33 .image-shape .label,#mm69c3d3951f33 .icon-shape .label{text-anchor:middle;}#mm69c3d3951f33 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm69c3d3951f33 .rough-node .label,#mm69c3d3951f33 .node .label,#mm69c3d3951f33 .image-shape .label,#mm69c3d3951f33 .icon-shape .label{text-align:center;}#mm69c3d3951f33 .node.clickable{cursor:pointer;}#mm69c3d3951f33 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm69c3d3951f33 .arrowheadPath{fill:#0b0b0b;}#mm69c3d3951f33 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm69c3d3951f33 .flowchart-link{stroke:#a5b4fc;fill:none;}#mm69c3d3951f33 .edgeLabel{background-color:#12152b;text-align:center;}#mm69c3d3951f33 .edgeLabel p{background-color:#12152b;}#mm69c3d3951f33 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm69c3d3951f33 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm69c3d3951f33 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm69c3d3951f33 .cluster text{fill:#e3deaf;}#mm69c3d3951f33 .cluster span{color:#e3deaf;}#mm69c3d3951f33 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm69c3d3951f33 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm69c3d3951f33 rect.text{fill:none;stroke-width:0;}#mm69c3d3951f33 .icon-shape,#mm69c3d3951f33 .image-shape{background-color:#12152b;text-align:center;}#mm69c3d3951f33 .icon-shape p,#mm69c3d3951f33 .image-shape p{background-color:#12152b;padding:2px;}#mm69c3d3951f33 .icon-shape .label rect,#mm69c3d3951f33 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm69c3d3951f33 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm69c3d3951f33 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm69c3d3951f33 .node .neo-node{stroke:#818cf8;}#mm69c3d3951f33 [data-look="neo"].node rect,#mm69c3d3951f33 [data-look="neo"].cluster rect,#mm69c3d3951f33 [data-look="neo"].node polygon{stroke:url(#mm69c3d3951f33-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm69c3d3951f33 [data-look="neo"].swimlane.cluster rect{filter:none;}#mm69c3d3951f33 [data-look="neo"].node path{stroke:url(#mm69c3d3951f33-gradient);stroke-width:1px;}#mm69c3d3951f33 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm69c3d3951f33 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm69c3d3951f33 [data-look="neo"].node circle{stroke:url(#mm69c3d3951f33-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm69c3d3951f33 [data-look="neo"].node circle .state-start{fill:#000000;}#mm69c3d3951f33 [data-look="neo"].icon-shape .icon{fill:url(#mm69c3d3951f33-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm69c3d3951f33 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm69c3d3951f33-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm69c3d3951f33 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm69c3d3951f33_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm69c3d3951f33_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm69c3d3951f33_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm69c3d3951f33_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm69c3d3951f33_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm69c3d3951f33_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm69c3d3951f33_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm69c3d3951f33_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm69c3d3951f33_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm69c3d3951f33_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm69c3d3951f33_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm69c3d3951f33_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,65L138,69.167C138,73.333,138,81.667,138,89.333C138,97,138,104,138,107.5L138,111" data-edge="true" data-et="edge" data-id="L_L_P_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5Ijo2NX0seyJ4IjoxMzgsInkiOjkwfSx7IngiOjEzOCwieSI6MTE1fV0=" id="mm69c3d3951f33-L_L_P_0" marker-end="url(#mm69c3d3951f33_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,199L138,203.167C138,207.333,138,215.667,138,223.333C138,231,138,238,138,241.5L138,245" data-edge="true" data-et="edge" data-id="L_P_R_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5IjoxOTl9LHsieCI6MTM4LCJ5IjoyMjR9LHsieCI6MTM4LCJ5IjoyNDl9XQ==" id="mm69c3d3951f33-L_P_R_0" marker-end="url(#mm69c3d3951f33_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,333L138,337.167C138,341.333,138,349.667,138,357.333C138,365,138,372,138,375.5L138,379" data-edge="true" data-et="edge" data-id="L_R_S_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5IjozMzN9LHsieCI6MTM4LCJ5IjozNTh9LHsieCI6MTM4LCJ5IjozODN9XQ==" id="mm69c3d3951f33-L_R_S_0" marker-end="url(#mm69c3d3951f33_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,494L138,498.167C138,502.333,138,510.667,138,518.333C138,526,138,533,138,536.5L138,540" data-edge="true" data-et="edge" data-id="L_S_LASER_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5Ijo0OTR9LHsieCI6MTM4LCJ5Ijo1MTl9LHsieCI6MTM4LCJ5Ijo1NDR9XQ==" id="mm69c3d3951f33-L_S_LASER_0" marker-end="url(#mm69c3d3951f33_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_L_P_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_P_R_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_R_S_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_S_LASER_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm69c3d3951f33-flowchart-L-0" transform="translate(138, 36.5)"><rect class="basic label-container" height="57" style="" width="106.171875" x="-53.0859375" y="-28.5"></rect><g class="label" style="" transform="translate(-23.0859375, -13.5)"><rect></rect><foreignobject height="27" width="46.171875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Label</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm69c3d3951f33-flowchart-P-1" transform="translate(138, 157)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Protective layer (carrier)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm69c3d3951f33-flowchart-R-3" transform="translate(138, 291)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Reflective layer (very thin aluminium)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm69c3d3951f33-flowchart-S-5" transform="translate(138, 438.5)"><rect class="basic label-container" height="111" style="" width="260" x="-130" y="-55.5"></rect><g class="label" style="" transform="translate(-100, -40.5)"><rect></rect><foreignobject height="81" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Transparent substrate: polycarbonate with pits and lands</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm69c3d3951f33-flowchart-LASER-7" transform="translate(138, 586)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Laser enters from below</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm69c3d3951f33-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm69c3d3951f33-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm69c3d3951f33-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><ol>
+<li class="fragment fade-up"><strong>Transparent substrate</strong> (polycarbonate) with pits and lands, transparent for the laser beam.</li>
+<li class="fragment fade-up"><strong>Reflective layer</strong> (aluminium, very thin).</li>
+<li class="fragment fade-up"><strong>Protective layer</strong> (polycarbonate, used as carrier) with the label.</li>
+</ol><aside class="notes">Source note: <a href="../../unit-06/basic-technology/">Basic Technology</a></aside></section><section class=""><h2><small>Basic Technology</small>Physical structure (three layers) <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><p>Disc thickness about <strong>1.2 mm</strong>.</p><h3>Player mechanism</h3><p>A <strong>laser</strong> beam is reflected from below the disc; a <strong>prism</strong> diverts the reflected beam to a <strong>photo cell</strong>; a <strong>lens</strong> focuses the beam. The wavelength is about 780 nm and it can be focused on a spot of about 1 µm.</p><aside class="notes">Source note: <a href="../../unit-06/basic-technology/">Basic Technology</a></aside></section><section class="dense"><h2><small>Basic Technology</small>Advantages of optical storage media</h2><table>
+<thead>
+<tr>
+<th>Advantage</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>High data density</strong></td>
+<td><strong>1.66 bits/µm</strong> of track; 16,000 tpi against 96 tpi</td>
+</tr>
+<tr>
+<td><strong>Long-term storage</strong></td>
+<td>Surface is <strong>out of focus</strong>, so insensitive to dust and scratches</td>
+</tr>
+<tr>
+<td><strong>Few head crashes</strong></td>
+<td>Distance between head and surface <strong>&gt; 1 mm</strong></td>
+</tr>
+<tr>
+<td><strong>Adequate error correction</strong></td>
+<td>See <a href="cd-audio.md">CD-DA</a></td>
+</tr>
+<tr>
+<td><strong>Each digital disc equals the master</strong></td>
+<td>Copies are exact</td>
+</tr>
+</tbody>
+</table><div class="callout exam"><div class="ct">Exam tip</div>
+<p>A 5-mark "Explain how data is stored and read on a CD" = spiral track, pits/lands, 1 at every transition, three layers, laser reflection.</p>
+</div><aside class="notes">Source note: <a href="../../unit-06/basic-technology/">Basic Technology</a></aside></section><section class="dense"><h2><small>Basic Technology</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">How are bits represented on a CD?</p><div class="fragment ans">
+<p>A change between pit and land (either way) is a 1; no change gives 0s between the 1s.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Why are CDs insensitive to dust and scratches?</p><div class="fragment ans">
+<p>The reading laser is focused on the reflective layer, so dirt on the outer surface is out of focus.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-06/basic-technology/">Basic Technology</a></aside></section><section><h2><small>Basic Technology</small>Cross-section of a compact disc</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 731.52 313.92" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T17:40:37.011916</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 313.92 
+L 731.52 313.92 
+L 731.52 0 
+L 0 0 
+L 0 313.92 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 35.76 84.384 
+L 575.76 84.384 
+L 575.76 57.168 
+L 35.76 57.168 
+z
+" clip-path="url(#p21cdbe5703)" style="fill: #3b2a6b; stroke: #818cf8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 35.76 108.576 
+L 575.76 108.576 
+L 575.76 84.384 
+L 35.76 84.384 
+z
+" clip-path="url(#p21cdbe5703)" style="fill: #7c85ff; stroke: #818cf8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 35.76 193.248 
+L 575.76 193.248 
+L 575.76 108.576 
+L 35.76 108.576 
+z
+" clip-path="url(#p21cdbe5703)" style="fill: #161a3a; stroke: #818cf8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 77.76 120.672 
+L 131.76 120.672 
+L 131.76 108.576 
+L 77.76 108.576 
+z
+" clip-path="url(#p21cdbe5703)" style="fill: #0b0d1c; stroke: #f472b6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 161.76 120.672 
+L 191.76 120.672 
+L 191.76 108.576 
+L 161.76 108.576 
+z
+" clip-path="url(#p21cdbe5703)" style="fill: #0b0d1c; stroke: #f472b6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 269.76 120.672 
+L 323.76 120.672 
+L 323.76 108.576 
+L 269.76 108.576 
+z
+" clip-path="url(#p21cdbe5703)" style="fill: #0b0d1c; stroke: #f472b6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 365.76 120.672 
+L 395.76 120.672 
+L 395.76 108.576 
+L 365.76 108.576 
+z
+" clip-path="url(#p21cdbe5703)" style="fill: #0b0d1c; stroke: #f472b6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 455.76 120.672 
+L 509.76 120.672 
+L 509.76 108.576 
+L 455.76 108.576 
+z
+" clip-path="url(#p21cdbe5703)" style="fill: #0b0d1c; stroke: #f472b6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 257.76 277.92 
+L 323.76 277.92 
+L 296.76 108.576 
+z
+" clip-path="url(#p21cdbe5703)" style="fill: #fb923c; opacity: 0.35; stroke: #fb923c; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="305.76" y="73.936252" transform="rotate(-0 305.76 73.936252)">Label / lacquer</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #0b0d1c" x="305.76" y="99.337852" transform="rotate(-0 305.76 99.337852)">Reflective aluminium layer</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="305.76" y="153.769852" transform="rotate(-0 305.76 153.769852)">Polycarbonate (clear plastic)</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #f472b6" x="104.76" y="129.744" transform="rotate(-0 104.76 129.744)">pit</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #34d399" x="203.76" y="129.744" transform="rotate(-0 203.76 129.744)">land</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #fb923c" x="290.76" y="296.064" transform="rotate(-0 290.76 296.064)">Laser beam from below (~780 nm)</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(611.76 99.12468)">read from the</text>
+    <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(611.76 111.127414)">underside</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(611.76 165.699312)">Land: beam reflected</text>
+    <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(611.76 177.702047)">Pit: scattered/less</text>
+    <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(611.76 189.704781)">light → bit pattern</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p21cdbe5703">
+   <rect x="5.76" y="5.76" width="720" height="302.4"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">Data is a spiral track of pits and lands; the transition between them, not the pit itself, encodes a 1.</div></section></section>
+<section data-topic="Video Disks: Laser Vision, DVD and Blu-ray"><section class="sec"><div class="no">02</div><h2>Video Disks: Laser Vision, DVD and Blu-ray</h2><div class="lead">Unit 6 &middot; topic 2 of 6</div></section><section class=""><h2><small>Video Disks: Laser Vision, DVD and Blu-ray</small>Laser Vision</h2><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stores</td>
+<td><strong>Video and audio</strong></td>
+</tr>
+<tr>
+<td>Encoding</td>
+<td><strong>Analogue</strong></td>
+</tr>
+<tr>
+<td>Quality</td>
+<td>High quality of reproduced data</td>
+</tr>
+<tr>
+<td>Diameter</td>
+<td>about <strong>30 cm</strong></td>
+</tr>
+<tr>
+<td>Capacity</td>
+<td>about <strong>2.6 GB</strong></td>
+</tr>
+<tr>
+<td>Origin</td>
+<td>Video Long Play (VLP), described in 1973</td>
+</tr>
+</tbody>
+</table><p>Principles: mix of audio and video, <strong>frequency modulation</strong>, and <strong>no quantization of pit length</strong> (pit length is analogue).</p><aside class="notes">Source note: <a href="../../unit-06/video-disks/">Video Disks: Laser Vision, DVD and Blu-ray</a></aside></section><section class=""><h2><small>Video Disks: Laser Vision, DVD and Blu-ray</small>DVD: Digital Video (Versatile) Disk <span style="opacity:.55;font-size:.6em">(1/3)</span></h2><ul>
+<li class="fragment fade-up">Goal: store an <strong>entire high-quality digital movie on a single side</strong> of a disc.</li>
+<li class="fragment fade-up">Same size as CD, so drives stay <strong>backward compatible</strong>; higher capacity from <strong>shorter pits and lands</strong> and <strong>tighter tracks</strong>; <strong>EFM Plus</strong> error correction, more robust than the CD scheme.</li>
+<li class="fragment fade-up">Formats: <strong>single-sided single-layer</strong>; <strong>single-sided double-layer</strong> (laser switches focus); <strong>double-sided</strong> (disc must be flipped).</li>
+</ul><aside class="notes">Source note: <a href="../../unit-06/video-disks/">Video Disks: Laser Vision, DVD and Blu-ray</a></aside></section><section class="xdense"><h2><small>Video Disks: Laser Vision, DVD and Blu-ray</small>DVD: Digital Video (Versatile) Disk <span style="opacity:.55;font-size:.6em">(2/3)</span></h2><table>
+<thead>
+<tr>
+<th></th>
+<th>CD</th>
+<th>DVD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Diameter / thickness</td>
+<td>120 mm / 1.2 mm</td>
+<td>120 mm / 1.2 mm</td>
+</tr>
+<tr>
+<td>Laser wavelength</td>
+<td><strong>780 nm</strong> (infrared)</td>
+<td><strong>650 and 635 nm</strong> (red)</td>
+</tr>
+<tr>
+<td>Track pitch</td>
+<td><strong>1.6 µm</strong></td>
+<td><strong>0.74 µm</strong></td>
+</tr>
+<tr>
+<td>Min. pit/land length</td>
+<td><strong>0.83 µm</strong></td>
+<td><strong>0.4 µm</strong></td>
+</tr>
+<tr>
+<td>Layers / sides</td>
+<td>1 / 1</td>
+<td>1 or 2 / 1 or 2</td>
+</tr>
+<tr>
+<td>Capacity</td>
+<td>about <strong>650 MB</strong></td>
+<td><strong>4.7 GB</strong> single layer, <strong>8.5 GB</strong> dual layer, <strong>9.4 GB</strong> double-sided</td>
+</tr>
+<tr>
+<td>Video data rate</td>
+<td>about 1.5 Mbit/s</td>
+<td>1–10 Mbit/s variable</td>
+</tr>
+<tr>
+<td>Video compression</td>
+<td><strong>MPEG-1</strong></td>
+<td><strong>MPEG-2</strong></td>
+</tr>
+<tr>
+<td>Video capacity</td>
+<td>about 1 hour</td>
+<td>more than 4 hours (dual layer)</td>
+</tr>
+<tr>
+<td>Sound</td>
+<td>2-channel MPEG</td>
+<td>2-channel PCM, 5.1-channel AC-3, up to 8 streams</td>
+</tr>
+<tr>
+<td>Subtitles</td>
+<td>–</td>
+<td>up to 32 languages</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-06/video-disks/">Video Disks: Laser Vision, DVD and Blu-ray</a></aside></section><section class=""><h2><small>Video Disks: Laser Vision, DVD and Blu-ray</small>DVD: Digital Video (Versatile) Disk <span style="opacity:.55;font-size:.6em">(3/3)</span></h2><p><strong>DVD variants:</strong> <strong>DVD-ROM</strong> (data), <strong>DVD-Video</strong> (movies), <strong>DVD-Audio</strong>, <strong>DVD-R</strong> (record once), <strong>DVD-RAM</strong> (erasable, rewritable). <strong>Devices:</strong> DVD movie player (consumer), DVD-ROM drive (computer).</p><div class="callout ex"><div class="ct">Capacity gain</div>
+<p>4.7 GB ÷ 650 MB ≈ <strong>7.2 times</strong> a CD (4,700 ÷ 650).</p>
+</div><aside class="notes">Source note: <a href="../../unit-06/video-disks/">Video Disks: Laser Vision, DVD and Blu-ray</a></aside></section><section class=""><h2><small>Video Disks: Laser Vision, DVD and Blu-ray</small>Blu-ray disc <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><ul>
+<li class="fragment fade-up">A third generation of the same idea: <strong>shorter wavelength</strong> and <strong>tighter tracks</strong>.</li>
+<li class="fragment fade-up"><strong>Blue-violet laser, 405 nm</strong> (hence the name); <strong>numerical aperture 0.85</strong>; track pitch <strong>0.32 µm</strong>.</li>
+<li class="fragment fade-up">Capacity <strong>25 GB</strong> single layer, <strong>50 GB</strong> dual layer, same 120 mm size, so players are backward compatible with CD and DVD.</li>
+<li class="fragment fade-up">Thin <strong>0.1 mm cover layer</strong> over the data, so the lens can be very close.</li>
+<li class="fragment fade-up">Stores <strong>high-definition (HD) video</strong> with modern codecs (MPEG-2, H.264, VC-1). Variants: <strong>BD-ROM, BD-R, BD-RE</strong>.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-06/video-disks/">Video Disks: Laser Vision, DVD and Blu-ray</a></aside></section><section class=""><h2><small>Video Disks: Laser Vision, DVD and Blu-ray</small>Blu-ray disc <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><table>
+<thead>
+<tr>
+<th></th>
+<th>CD</th>
+<th>DVD</th>
+<th>Blu-ray</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Laser</td>
+<td>780 nm infrared</td>
+<td>650 nm red</td>
+<td><strong>405 nm</strong> blue-violet</td>
+</tr>
+<tr>
+<td>Track pitch</td>
+<td>1.6 µm</td>
+<td>0.74 µm</td>
+<td><strong>0.32 µm</strong></td>
+</tr>
+<tr>
+<td>Capacity (1 layer)</td>
+<td>650 MB</td>
+<td>4.7 GB</td>
+<td><strong>25 GB</strong></td>
+</tr>
+</tbody>
+</table><div class="callout exam"><div class="ct">Exam tip</div>
+<p>"Differentiate CD and DVD" is a table question: copy the table above. Add one line that DVD gains capacity from a <strong>shorter wavelength, smaller pits, tighter tracks and two layers</strong>.</p>
+</div><aside class="notes">Source note: <a href="../../unit-06/video-disks/">Video Disks: Laser Vision, DVD and Blu-ray</a></aside></section><section class="dense"><h2><small>Video Disks: Laser Vision, DVD and Blu-ray</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Why is Laser Vision called analogue?</p><div class="fragment ans">
+<p>Video and audio are frequency modulated and pit lengths are not quantized.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">List three reasons DVD holds more than CD.</p><div class="fragment ans">
+<p>Red laser with shorter wavelength, track pitch 0.74 µm instead of 1.6 µm, shorter pits (0.4 µm), plus dual layers.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-06/video-disks/">Video Disks: Laser Vision, DVD and Blu-ray</a></aside></section><section><h2><small>Video Disks: Laser Vision, DVD and Blu-ray</small>Capacity ladder: CD to DVD</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 607.790938 261.195757" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T17:40:37.066422</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 261.195757 
+L 607.790938 261.195757 
+L 607.790938 0 
+L 0 0 
+L 0 261.195757 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 44.030937 224.43107 
+L 602.030937 224.43107 
+L 602.030937 8.21507 
+L 44.030937 8.21507 
+L 44.030937 224.43107 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="ma4ec053ef3" d="M 0 0 
+L 0 3.5 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#ma4ec053ef3" x="102.477578" y="224.43107" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="102.477578" y="239.028726" transform="rotate(-0 102.477578 239.028726)">CD</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#ma4ec053ef3" x="212.754258" y="224.43107" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(196.736289 240.029703)">DVD-5</text>
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(195.439414 252.032437)">1 layer</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#ma4ec053ef3" x="323.030938" y="224.43107" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(307.012969 240.029703)">DVD-9</text>
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(303.111406 252.032437)">2 layers</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#ma4ec053ef3" x="433.307617" y="224.43107" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(414.108399 240.029703)">DVD-10</text>
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(415.688086 252.032437)">2 sides</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#ma4ec053ef3" x="543.584297" y="224.43107" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(524.385078 240.029703)">DVD-18</text>
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(502.86711 252.032437)">2 sides, 2 layers</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6">
+      <path d="M 44.030937 224.43107 
+L 602.030937 224.43107 
+" clip-path="url(#pff1d67fff5)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.4; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_7">
+      <defs>
+       <path id="m786a7696bc" d="M 0 0 
+L -3.5 0 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m786a7696bc" x="44.030937" y="224.43107" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030937" y="228.989664" transform="rotate(-0 37.030937 228.989664)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_8">
+      <path d="M 44.030937 200.205188 
+L 602.030937 200.205188 
+" clip-path="url(#pff1d67fff5)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.4; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m786a7696bc" x="44.030937" y="200.205188" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030937" y="204.763781" transform="rotate(-0 37.030937 204.763781)">2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_10">
+      <path d="M 44.030937 175.979305 
+L 602.030937 175.979305 
+" clip-path="url(#pff1d67fff5)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.4; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m786a7696bc" x="44.030937" y="175.979305" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030937" y="180.537899" transform="rotate(-0 37.030937 180.537899)">4</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_12">
+      <path d="M 44.030937 151.753423 
+L 602.030937 151.753423 
+" clip-path="url(#pff1d67fff5)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.4; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m786a7696bc" x="44.030937" y="151.753423" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030937" y="156.312017" transform="rotate(-0 37.030937 156.312017)">6</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_14">
+      <path d="M 44.030937 127.52754 
+L 602.030937 127.52754 
+" clip-path="url(#pff1d67fff5)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.4; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m786a7696bc" x="44.030937" y="127.52754" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030937" y="132.086134" transform="rotate(-0 37.030937 132.086134)">8</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_16">
+      <path d="M 44.030937 103.301658 
+L 602.030937 103.301658 
+" clip-path="url(#pff1d67fff5)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.4; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#m786a7696bc" x="44.030937" y="103.301658" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030937" y="107.860252" transform="rotate(-0 37.030937 107.860252)">10</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_18">
+      <path d="M 44.030937 79.075776 
+L 602.030937 79.075776 
+" clip-path="url(#pff1d67fff5)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.4; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m786a7696bc" x="44.030937" y="79.075776" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030937" y="83.634369" transform="rotate(-0 37.030937 83.634369)">12</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_20">
+      <path d="M 44.030937 54.849893 
+L 602.030937 54.849893 
+" clip-path="url(#pff1d67fff5)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.4; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#m786a7696bc" x="44.030937" y="54.849893" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030937" y="59.408487" transform="rotate(-0 37.030937 59.408487)">14</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_22">
+      <path d="M 44.030937 30.624011 
+L 602.030937 30.624011 
+" clip-path="url(#pff1d67fff5)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.4; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#m786a7696bc" x="44.030937" y="30.624011" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030937" y="35.182605" transform="rotate(-0 37.030937 35.182605)">16</text>
+     </g>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="14.878125" y="116.32307" transform="rotate(-90 14.878125 116.32307)">capacity (GB)</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 69.394574 224.43107 
+L 135.560582 224.43107 
+L 135.560582 216.557658 
+L 69.394574 216.557658 
+z
+" clip-path="url(#pff1d67fff5)" style="fill: #818cf8"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 179.671254 224.43107 
+L 245.837262 224.43107 
+L 245.837262 167.500246 
+L 179.671254 167.500246 
+z
+" clip-path="url(#pff1d67fff5)" style="fill: #c084fc"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 289.947934 224.43107 
+L 356.113941 224.43107 
+L 356.113941 121.47107 
+L 289.947934 121.47107 
+z
+" clip-path="url(#pff1d67fff5)" style="fill: #f472b6"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 400.224613 224.43107 
+L 466.390621 224.43107 
+L 466.390621 110.569423 
+L 400.224613 110.569423 
+z
+" clip-path="url(#pff1d67fff5)" style="fill: #22d3ee"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 510.501293 224.43107 
+L 576.667301 224.43107 
+L 576.667301 18.51107 
+L 510.501293 18.51107 
+z
+" clip-path="url(#pff1d67fff5)" style="fill: #fb923c"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 44.030937 224.43107 
+L 44.030937 8.21507 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 44.030937 224.43107 
+L 602.030937 224.43107 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="102.477578" y="212.923776" transform="rotate(-0 102.477578 212.923776)">0.65 GB</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="212.754258" y="163.866364" transform="rotate(-0 212.754258 163.866364)">4.7 GB</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="323.030938" y="117.837187" transform="rotate(-0 323.030938 117.837187)">8.5 GB</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="433.307617" y="106.93554" transform="rotate(-0 433.307617 106.93554)">9.4 GB</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="543.584297" y="14.877187" transform="rotate(-0 543.584297 14.877187)">17.0 GB</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pff1d67fff5">
+   <rect x="44.030937" y="8.21507" width="558" height="216.216"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">Shorter laser wavelength and a tighter track pitch (0.74 µm vs 1.6 µm) give DVD about 7× the capacity of a CD.</div></section></section>
+<section data-topic="CD Audio (CD-DA)"><section class="sec"><div class="no">03</div><h2>CD Audio (CD-DA)</h2><div class="lead">Unit 6 &middot; topic 3 of 6</div></section><section class="dense"><h2><small>CD Audio (CD-DA)</small>Characteristics <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Developed by</td>
+<td>Philips and Sony (available <strong>1983</strong>)</td>
+</tr>
+<tr>
+<td>Diameter</td>
+<td><strong>120 mm</strong></td>
+</tr>
+<tr>
+<td>Rotation</td>
+<td><strong>Constant linear velocity (CLV)</strong>: rotations per second depend on the head position</td>
+</tr>
+<tr>
+<td>Track</td>
+<td>One spiral, about <strong>20,000 turns</strong> (an LP has 850)</td>
+</tr>
+<tr>
+<td>Sampling / quantization</td>
+<td><strong>44,100 Hz, 16 bit</strong>, <strong>PCM</strong>, stereo</td>
+</tr>
+<tr>
+<td>Audio data rate</td>
+<td>44,100 × 16 × 2 = <strong>1,411,200 bit/s = 176.4 KB/s</strong></td>
+</tr>
+<tr>
+<td>S/N</td>
+<td>about 6 dB per bit, 16 bit gives <strong>98 dB</strong> (LP/tape 50–60 dB)</td>
+</tr>
+<tr>
+<td>Playing time</td>
+<td>maximum <strong>74 min</strong></td>
+</tr>
+<tr>
+<td>Capacity (no error correction)</td>
+<td>74 × 60 × 1,411,200 = <strong>6,265,728,000 bit ≈ 747 MB</strong></td>
+</tr>
+</tbody>
+</table><p>Pit and land lengths are <strong>multiples of 0.3 µm</strong>.</p><aside class="notes">Source note: <a href="../../unit-06/cd-audio/">CD Audio (CD-DA)</a></aside></section><section class=""><h2><small>CD Audio (CD-DA)</small>Characteristics <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout ex"><div class="ct">Check</div>
+<p>6,265,728,000 ÷ 8 = 783,216,000 bytes; ÷ 1,048,576 = <strong>746.9 MB</strong>.</p>
+</div><aside class="notes">Source note: <a href="../../unit-06/cd-audio/">CD Audio (CD-DA)</a></aside></section><section class="xdense"><h2><small>CD Audio (CD-DA)</small>Eight-to-Fourteen Modulation (EFM)</h2><p><strong>Why a special code?</strong></p><ul>
+<li>The laser has limited resolution: transitions cannot be too close, so <strong>at least two 0s between two 1s</strong>.</li>
+<li>The clock is recovered from the transitions: <strong>not more than 10 consecutive 0s</strong>.</li>
+</ul><p><strong>EFM:</strong> each <strong>8-bit</strong> value is coded with <strong>14 bits</strong>. 267 fourteen-bit patterns satisfy the rules and <strong>256 are used</strong> (those cheapest to implement in gates).</p><p>When 14-bit values are concatenated the rules could be broken, so <strong>three merging bits</strong> are added between them. Each byte therefore uses <strong>17 channel bits</strong> (14 + 3).</p><div class="callout exam"><div class="ct">Exam tip</div>
+<p>Study the <strong>rule</strong> (min 2 zeros, max 10 zeros, 3 merging bits) rather than memorising one example.</p>
+</div><aside class="notes">Source note: <a href="../../unit-06/cd-audio/">CD Audio (CD-DA)</a></aside></section><section class=""><h2><small>CD Audio (CD-DA)</small>Error handling</h2><p>Scratches, dust and fingerprints cause <strong>burst errors</strong>, which must be <strong>detected and corrected</strong>. Re-sending (ARQ) is impossible on a disc, so <strong>forward error correction (FEC)</strong> is used.</p><aside class="notes">Source note: <a href="../../unit-06/cd-audio/">CD Audio (CD-DA)</a></aside></section><section class=""><h2><small>Error handling</small>CIRC: Cross Interleaved Reed-Solomon Code <span style="opacity:.55;font-size:.6em">(1/3)</span></h2><p>Two levels:</p><ol>
+<li><strong>Reed-Solomon at byte level (EDC and ECC):</strong> two groups, each with <strong>4 correction bytes for 24 data bytes</strong>. The first group corrects <strong>single-byte</strong> errors; the second corrects <strong>double-byte</strong> errors and <strong>detects</strong> further errors.</li>
+<li><strong>Frame interleaving:</strong> consecutive data bytes and their ECC bytes are <strong>spread over adjacent frames</strong>, turning a burst into scattered small errors.</li>
+</ol><p>Performance: error rate about <strong>10⁻⁸</strong> (about 1 bit in 100 million); bursts of <strong>4,000 data bits (about 2.5 mm)</strong> are corrected exactly; errors up to <strong>12,300 data bits (about 7 mm)</strong> are repaired by <strong>interpolation</strong>.</p><aside class="notes">Source note: <a href="../../unit-06/cd-audio/">CD Audio (CD-DA)</a></aside></section><section class=""><h2><small>Error handling</small>CIRC: Cross Interleaved Reed-Solomon Code <span style="opacity:.55;font-size:.6em">(2/3)</span></h2><div class="callout warn"><div class="ct">Watch out</div>
+<p>A common calculation multiplies 4,000 × 0.3 µm and writes "about 2.5 mm". The product is 1.2 mm; the <strong>2.5 mm and 7 mm</strong> figures are the usual quoted values. Learn the figures 4,000 bits/2.5 mm and 12,300 bits/7 mm.</p>
+</div><aside class="notes">Source note: <a href="../../unit-06/cd-audio/">CD Audio (CD-DA)</a></aside></section><section class="dense"><h2><small>Error handling</small>CIRC: Cross Interleaved Reed-Solomon Code <span style="opacity:.55;font-size:.6em">(3/3)</span></h2><div class="callout"><div class="ct">Extra: error-control theory</div>
+<ul>
+<li><strong>Error detection</strong> with a polynomial: treat data as A(x), divide by generator G(x), send the remainder; the receiver divides again. A <strong>parity bit</strong> (G(x) = x + 1) detects an odd number of errors but misses an even number.</li>
+<li><strong>FEC</strong> works by choosing codewords with large <strong>Hamming distance</strong>: if the minimum distance is 2t + 1, any error of t bits or fewer can be corrected.</li>
+<li><strong>2-D parity</strong> (row and column) can locate and correct a single error, but several errors can produce a wrong "correction".</li>
+<li>For many receivers an <strong>XOR</strong> repair packet (c = a₁ ⊕ a₂ ⊕ … ⊕ aₙ) lets any receiver that lost one packet rebuild it.</li>
+</ul>
+</div><aside class="notes">Source note: <a href="../../unit-06/cd-audio/">CD Audio (CD-DA)</a></aside></section><section class=""><h2><small>CD Audio (CD-DA)</small>Frames</h2><p>One <strong>frame</strong>:</p><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audio data</td>
+<td>2 groups of 12 bytes (<strong>24 bytes</strong>)</td>
+</tr>
+<tr>
+<td>Error detection/correction</td>
+<td>2 groups of 4 parity bytes (<strong>8 bytes</strong>, Reed-Solomon)</td>
+</tr>
+<tr>
+<td>Control and display</td>
+<td><strong>1 byte</strong>; its bits are called P, Q, R, S, T, U, V, W; the same bit of 98 frames forms a <strong>subchannel</strong> (e.g. subchannel P marks audio versus data, Q holds the table of contents and time)</td>
+</tr>
+<tr>
+<td>Synchronization pattern</td>
+<td>12 ones + 12 zeros + 3 merging bits = <strong>27 bits</strong>, a unique pattern marking the frame start</td>
+</tr>
+</tbody>
+</table><p>Each frame has 24 + 8 + 1 = <strong>33 bytes</strong>, each coded in 17 bits = 561 bits, plus the 27-bit sync = <strong>588 channel bits</strong>.</p><aside class="notes">Source note: <a href="../../unit-06/cd-audio/">CD Audio (CD-DA)</a></aside></section><section class=""><h2><small>CD Audio (CD-DA)</small>Three data streams</h2><table>
+<thead>
+<tr>
+<th>Stream</th>
+<th>Content</th>
+<th>Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Audio bit stream</strong></td>
+<td>16-bit stereo PCM, 44.1 kHz</td>
+<td><strong>1.41 × 10⁶ bit/s</strong> (1,411,200)</td>
+</tr>
+<tr>
+<td><strong>Data bit stream</strong></td>
+<td>audio + parity bytes + control and display byte</td>
+<td><strong>1.94 × 10⁶ bit/s</strong></td>
+</tr>
+<tr>
+<td><strong>Channel bit stream</strong></td>
+<td>data + EFM + merging bits + sync</td>
+<td><strong>4.32 × 10⁶ bit/s</strong></td>
+</tr>
+</tbody>
+</table><div class="callout ex"><div class="ct">Check</div>
+<p>Frames per second = 176,400 ÷ 24 = 7,350. Data: 7,350 × 33 × 8 = 1,940,400 bit/s. Channel: 7,350 × 588 = 4,321,800 bit/s.</p>
+</div><aside class="notes">Source note: <a href="../../unit-06/cd-audio/">CD Audio (CD-DA)</a></aside></section><section class=""><h2><small>CD Audio (CD-DA)</small>Areas and random access</h2><ul>
+<li class="fragment fade-up"><strong>Lead-in area:</strong> table of contents, start of each track.</li>
+<li class="fragment fade-up"><strong>Program area:</strong> up to <strong>99 tracks</strong>, typically one song per track.</li>
+<li class="fragment fade-up"><strong>Lead-out area:</strong> lets the player leave the program area in a controlled way.</li>
+<li class="fragment fade-up"><strong>Index points:</strong> <strong>IP0</strong> = start of track, <strong>IP1</strong> = start of audio data; the part between them is the <strong>track pregap</strong>.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-06/cd-audio/">CD Audio (CD-DA)</a></aside></section><section class=""><h2><small>CD Audio (CD-DA)</small>Summary and limits</h2><p>CD-DA suits typical damage in audio and is the <strong>base of the whole CD family</strong>. But it was <strong>not conceived for video</strong> (different ECC/EDC needed) or <strong>discrete data</strong> (error rate too high), and does not allow simultaneous playback of several media.</p><div class="callout exam"><div class="ct">Exam tip</div>
+<p>Learn the three numbers 1,411,200 bit/s, 74 min ≈ 747 MB and 588 bits per frame, and the two EFM rules. CIRC is always "Reed-Solomon in two levels plus interleaving".</p>
+</div><aside class="notes">Source note: <a href="../../unit-06/cd-audio/">CD Audio (CD-DA)</a></aside></section><section class="dense"><h2><small>CD Audio (CD-DA)</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Why is EFM used?</p><div class="fragment ans">
+<p>To keep at least two and at most ten zeros between ones so the laser can resolve transitions and the clock can be recovered.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Why interleaving?</p><div class="fragment ans">
+<p>Burst errors hit consecutive bytes; spreading bytes over adjacent frames leaves only a few bytes in error per code word, which Reed-Solomon can correct.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-06/cd-audio/">CD Audio (CD-DA)</a></aside></section></section>
+<section data-topic="CD-ROM and CD-ROM/XA"><section class="sec"><div class="no">04</div><h2>CD-ROM and CD-ROM/XA</h2><div class="lead">Unit 6 &middot; topic 4 of 6</div></section><section class=""><h2><small>CD-ROM and CD-ROM/XA</small>Why CD-ROM differs from CD-DA</h2><p>Computer data is <strong>much more sensitive to errors</strong> than audio (no repetition, interpolation or dropping possible) and needs <strong>smaller units for random access</strong>. So CD-ROM adds <strong>extra error correction</strong> and uses <strong>blocks</strong> (sectors) instead of whole tracks.</p><h3>Standard: Yellow Book</h3><ul>
+<li class="fragment fade-up"><strong>Mode 1</strong>: for <strong>any data</strong> (computer data).</li>
+<li class="fragment fade-up"><strong>Mode 2</strong>: for <strong>compressed audio and video</strong> data.</li>
+<li class="fragment fade-up">They <strong>cannot be combined within a single track</strong>; a track holds only CD-DA audio or only CD-ROM data.</li>
+<li class="fragment fade-up"><strong>Mixed-mode disc</strong>: data tracks first, then audio tracks.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-06/cd-rom/">CD-ROM and CD-ROM/XA</a></aside></section><section class="dense"><h2><small>CD-ROM and CD-ROM/XA</small>Structure: from audio bits to blocks <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm5fb813629b88" role="graphics-document document" viewbox="0 0 276 690" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm5fb813629b88{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm5fb813629b88 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm5fb813629b88 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm5fb813629b88 .error-icon{fill:#1c2150;}#mm5fb813629b88 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm5fb813629b88 .edge-thickness-normal{stroke-width:1px;}#mm5fb813629b88 .edge-thickness-thick{stroke-width:3.5px;}#mm5fb813629b88 .edge-pattern-solid{stroke-dasharray:0;}#mm5fb813629b88 .edge-thickness-invisible{stroke-width:0;fill:none;}#mm5fb813629b88 .edge-pattern-dashed{stroke-dasharray:3;}#mm5fb813629b88 .edge-pattern-dotted{stroke-dasharray:2;}#mm5fb813629b88 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm5fb813629b88 .marker.cross{stroke:#a5b4fc;}#mm5fb813629b88 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm5fb813629b88 p{margin:0;}#mm5fb813629b88 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm5fb813629b88 .cluster-label text{fill:#e3deaf;}#mm5fb813629b88 .cluster-label span{color:#e3deaf;}#mm5fb813629b88 .cluster-label span p{background-color:transparent;}#mm5fb813629b88 .label text,#mm5fb813629b88 span{fill:#f4f4ff;color:#f4f4ff;}#mm5fb813629b88 .node rect,#mm5fb813629b88 .node circle,#mm5fb813629b88 .node ellipse,#mm5fb813629b88 .node polygon,#mm5fb813629b88 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm5fb813629b88 .rough-node .label text,#mm5fb813629b88 .node .label text,#mm5fb813629b88 .image-shape .label,#mm5fb813629b88 .icon-shape .label{text-anchor:middle;}#mm5fb813629b88 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm5fb813629b88 .rough-node .label,#mm5fb813629b88 .node .label,#mm5fb813629b88 .image-shape .label,#mm5fb813629b88 .icon-shape .label{text-align:center;}#mm5fb813629b88 .node.clickable{cursor:pointer;}#mm5fb813629b88 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm5fb813629b88 .arrowheadPath{fill:#0b0b0b;}#mm5fb813629b88 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm5fb813629b88 .flowchart-link{stroke:#a5b4fc;fill:none;}#mm5fb813629b88 .edgeLabel{background-color:#12152b;text-align:center;}#mm5fb813629b88 .edgeLabel p{background-color:#12152b;}#mm5fb813629b88 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm5fb813629b88 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm5fb813629b88 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm5fb813629b88 .cluster text{fill:#e3deaf;}#mm5fb813629b88 .cluster span{color:#e3deaf;}#mm5fb813629b88 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm5fb813629b88 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm5fb813629b88 rect.text{fill:none;stroke-width:0;}#mm5fb813629b88 .icon-shape,#mm5fb813629b88 .image-shape{background-color:#12152b;text-align:center;}#mm5fb813629b88 .icon-shape p,#mm5fb813629b88 .image-shape p{background-color:#12152b;padding:2px;}#mm5fb813629b88 .icon-shape .label rect,#mm5fb813629b88 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm5fb813629b88 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm5fb813629b88 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm5fb813629b88 .node .neo-node{stroke:#818cf8;}#mm5fb813629b88 [data-look="neo"].node rect,#mm5fb813629b88 [data-look="neo"].cluster rect,#mm5fb813629b88 [data-look="neo"].node polygon{stroke:url(#mm5fb813629b88-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm5fb813629b88 [data-look="neo"].swimlane.cluster rect{filter:none;}#mm5fb813629b88 [data-look="neo"].node path{stroke:url(#mm5fb813629b88-gradient);stroke-width:1px;}#mm5fb813629b88 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm5fb813629b88 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm5fb813629b88 [data-look="neo"].node circle{stroke:url(#mm5fb813629b88-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm5fb813629b88 [data-look="neo"].node circle .state-start{fill:#000000;}#mm5fb813629b88 [data-look="neo"].icon-shape .icon{fill:url(#mm5fb813629b88-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm5fb813629b88 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm5fb813629b88-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm5fb813629b88 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm5fb813629b88_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm5fb813629b88_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm5fb813629b88_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm5fb813629b88_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm5fb813629b88_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm5fb813629b88_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm5fb813629b88_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm5fb813629b88_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm5fb813629b88_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm5fb813629b88_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm5fb813629b88_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm5fb813629b88_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,65L138,69.167C138,73.333,138,81.667,138,89.333C138,97,138,104,138,107.5L138,111" data-edge="true" data-et="edge" data-id="L_A_B_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5Ijo2NX0seyJ4IjoxMzgsInkiOjkwfSx7IngiOjEzOCwieSI6MTE1fV0=" id="mm5fb813629b88-L_A_B_0" marker-end="url(#mm5fb813629b88_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,199L138,203.167C138,207.333,138,215.667,138,223.333C138,231,138,238,138,241.5L138,245" data-edge="true" data-et="edge" data-id="L_B_C_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5IjoxOTl9LHsieCI6MTM4LCJ5IjoyMjR9LHsieCI6MTM4LCJ5IjoyNDl9XQ==" id="mm5fb813629b88-L_B_C_0" marker-end="url(#mm5fb813629b88_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,387L138,391.167C138,395.333,138,403.667,138,411.333C138,419,138,426,138,429.5L138,433" data-edge="true" data-et="edge" data-id="L_C_D_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5IjozODd9LHsieCI6MTM4LCJ5Ijo0MTJ9LHsieCI6MTM4LCJ5Ijo0Mzd9XQ==" id="mm5fb813629b88-L_C_D_0" marker-end="url(#mm5fb813629b88_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,548L138,552.167C138,556.333,138,564.667,138,572.333C138,580,138,587,138,590.5L138,594" data-edge="true" data-et="edge" data-id="L_D_E_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5Ijo1NDh9LHsieCI6MTM4LCJ5Ijo1NzN9LHsieCI6MTM4LCJ5Ijo1OTh9XQ==" id="mm5fb813629b88-L_D_E_0" marker-end="url(#mm5fb813629b88_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_A_B_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_B_C_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_C_D_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_E_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm5fb813629b88-flowchart-A-0" transform="translate(138, 36.5)"><rect class="basic label-container" height="57" style="" width="239.640625" x="-119.8203125" y="-28.5"></rect><g class="label" style="" transform="translate(-89.8203125, -13.5)"><rect></rect><foreignobject height="27" width="179.640625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Audio bits 1.41 Mbit/s</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm5fb813629b88-flowchart-B-1" transform="translate(138, 157)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>+ CIRC, control and display: 1.94 Mbit/s</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm5fb813629b88-flowchart-C-3" transform="translate(138, 318)"><rect class="basic label-container" height="138" style="" width="260" x="-130" y="-69"></rect><g class="label" style="" transform="translate(-100, -54)"><rect></rect><foreignobject height="108" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>+ EFM, merging bits, sync: frame of 588 channel bits, 4.32 Mbit/s</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm5fb813629b88-flowchart-D-5" transform="translate(138, 492.5)"><rect class="basic label-container" height="111" style="" width="260" x="-130" y="-55.5"></rect><g class="label" style="" transform="translate(-100, -40.5)"><rect></rect><foreignobject height="81" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>98 frames = 1 block: 2352 data bytes (7203 channel bytes)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm5fb813629b88-flowchart-E-7" transform="translate(138, 640)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>About 333,000 blocks per CD</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm5fb813629b88-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm5fb813629b88-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm5fb813629b88-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><ul>
+<li><strong>75 blocks per second</strong> (single speed). 1,411,200 ÷ 75 ÷ 8 = <strong>2,352 bytes per block</strong>.</li>
+<li>74 min × 60 × 75 = <strong>333,000 blocks</strong>.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-06/cd-rom/">CD-ROM and CD-ROM/XA</a></aside></section><section class=""><h2><small>CD-ROM and CD-ROM/XA</small>Structure: from audio bits to blocks <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout warn"><div class="ct">Watch out</div>
+<ul>
+<li>A block holds <strong>98 frames</strong> (2,352 ÷ 24 audio bytes per frame; 98 × 588 channel bits = 57,624 bits = 7,203 bytes).</li>
+<li>Do not round the block count to 330,000: it is exactly <strong>333,000</strong>.</li>
+</ul>
+</div><aside class="notes">Source note: <a href="../../unit-06/cd-rom/">CD-ROM and CD-ROM/XA</a></aside></section><section class="dense"><h2><small>CD-ROM and CD-ROM/XA</small>Mode 1 block (2,352 bytes)</h2><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sync</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Header (minutes, seconds, block number, mode)</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>User data</strong></td>
+<td><strong>2,048</strong></td>
+</tr>
+<tr>
+<td>EDC (error detection)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Blank (unused)</td>
+<td>8</td>
+</tr>
+<tr>
+<td>ECC (Reed-Solomon)</td>
+<td>276</td>
+</tr>
+</tbody>
+</table><ul>
+<li class="fragment fade-up">Error rate after correction <strong>10⁻¹²</strong>.</li>
+<li class="fragment fade-up"><strong>Capacity</strong> = 333,000 × 2,048 = <strong>681,984,000 bytes ≈ 650 MB</strong>.</li>
+<li class="fragment fade-up"><strong>Data rate</strong> = 2,048 × 75 = 153,600 bytes/s ≈ <strong>150 KB/s</strong> (single speed).</li>
+<li class="fragment fade-up">Used by most CD-ROM applications.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-06/cd-rom/">CD-ROM and CD-ROM/XA</a></aside></section><section class=""><h2><small>CD-ROM and CD-ROM/XA</small>Mode 2 block</h2><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sync</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Header</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>User data</strong></td>
+<td><strong>2,336</strong></td>
+</tr>
+</tbody>
+</table><ul>
+<li class="fragment fade-up">Capacity = 333,000 × 2,336 = 777,888,000 bytes ≈ <strong>741.85 MB</strong>.</li>
+<li class="fragment fade-up">Data rate = 2,336 × 75 = <strong>171 KB/s</strong> (single speed).</li>
+<li class="fragment fade-up">Problem: <strong>mixing mode 1 and mode 2 blocks</strong> in one track.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-06/cd-rom/">CD-ROM and CD-ROM/XA</a></aside></section><section class=""><h2><small>CD-ROM and CD-ROM/XA</small>Average access time</h2><ul>
+<li class="fragment fade-up"><strong>Synchronization time</strong>: adapt the internal clock (milliseconds).</li>
+<li class="fragment fade-up"><strong>Seek time</strong>: move the laser to the radius, at most <strong>1 s</strong>.</li>
+<li class="fragment fade-up"><strong>Rotation delay</strong> (CLV): find the sector and adapt disc speed, about <strong>300 ms</strong>.</li>
+<li class="fragment fade-up">Maximum access time <strong>&gt; 1 s</strong>; average <strong>&gt; 300 ms</strong> (with caching). Reading <strong>audio and other data simultaneously in mode 1 is not possible</strong>.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-06/cd-rom/">CD-ROM and CD-ROM/XA</a></aside></section><section class="dense"><h2><small>CD-ROM and CD-ROM/XA</small>File system</h2><ul>
+<li class="fragment fade-up">CD-ROM itself has <strong>no logical file format and no directory specification</strong>.</li>
+<li class="fragment fade-up"><strong>High Sierra proposal</strong>: industry group, the first file system, leading to <strong>ISO 9660</strong>.</li>
+<li class="fragment fade-up"><strong>ISO 9660</strong>: <strong>directory tree</strong> with file information; <strong>path table</strong> (list of all directories, direct access to files at any level); <strong>file interleaving</strong>.</li>
+<li class="fragment fade-up">First track: <strong>16 blocks (sectors 0–15) system area</strong>, then volume descriptors: <strong>primary descriptor</strong> (length of file system, length and address of path table), supplementary descriptors, and a <strong>volume descriptor terminator</strong>.</li>
+<li class="fragment fade-up"><strong>Logical block size</strong> 512, 1,024 or 2,048 bytes (powers of 2); files begin at the start of a logical block.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-06/cd-rom/">CD-ROM and CD-ROM/XA</a></aside></section><section class="xdense"><h2><small>CD-ROM and CD-ROM/XA</small>CD-ROM Extended Architecture (CD-ROM/XA)</h2><ul>
+<li class="fragment fade-up">Announced <strong>1988</strong> by <strong>Philips, Sony and Microsoft</strong>. Goal: <strong>simultaneous transfer of various media</strong>.</li>
+<li class="fragment fade-up">Based on <strong>CD-ROM mode 2, ISO 9660 and CD-I</strong>; an extension of the Yellow Book.</li>
+<li class="fragment fade-up"><strong>Blocks of different media are interleaved in the same track</strong>; a new track type carries compressed audio (<strong>ADPCM</strong>), video, images, text and programs.</li>
+<li class="fragment fade-up">Two block formats:</li>
+</ul><table>
+<thead>
+<tr>
+<th></th>
+<th>Form 1</th>
+<th>Form 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fields</td>
+<td>sync 12, header 4, <strong>subheader 8</strong>, user data <strong>2,048</strong>, EDC 4, ECC 276</td>
+<td>sync 12, header 4, subheader 8, user data <strong>2,324</strong>, EDC 4</td>
+</tr>
+<tr>
+<td>Use</td>
+<td><strong>Text and program data</strong> (better error handling)</td>
+<td><strong>Compressed audio and video</strong></td>
+</tr>
+<tr>
+<td>Error handling</td>
+<td>EDC + ECC</td>
+<td>EDC only (4 bytes)</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>–</td>
+<td><strong>13 % more</strong> user bytes (2,324 ÷ 2,048 = 1.135)</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-06/cd-rom/">CD-ROM and CD-ROM/XA</a></aside></section><section class=""><h2><small>CD-ROM Extended Architecture (CD-ROM/XA)</small>CD-ROM/XA audio levels</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>CD audio</th>
+<th>Level B stereo</th>
+<th>Level B mono</th>
+<th>Level C stereo</th>
+<th>Level C mono</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compression</td>
+<td>1</td>
+<td>4 : 1</td>
+<td>8 : 1</td>
+<td>8 : 1</td>
+<td>16 : 1</td>
+</tr>
+<tr>
+<td>Coding</td>
+<td>PCM</td>
+<td>ADPCM</td>
+<td>ADPCM</td>
+<td>ADPCM</td>
+<td>ADPCM</td>
+</tr>
+<tr>
+<td>Sampling</td>
+<td>44,100 Hz</td>
+<td>37,800 Hz</td>
+<td>37,800 Hz</td>
+<td>18,900 Hz</td>
+<td>18,900 Hz</td>
+</tr>
+<tr>
+<td>Capacity</td>
+<td>74 min</td>
+<td>4 h 48 min</td>
+<td>9 h 36 min</td>
+<td>9 h 36 min</td>
+<td>19 h 12 min</td>
+</tr>
+<tr>
+<td>Data rate</td>
+<td>176 KB/s</td>
+<td>43 KB/s</td>
+<td>22 KB/s</td>
+<td>22 KB/s</td>
+<td>11 KB/s</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-06/cd-rom/">CD-ROM and CD-ROM/XA</a></aside></section><section class=""><h2><small>CD-ROM Extended Architecture (CD-ROM/XA)</small>Drawbacks of XA</h2><ul>
+<li>Compression is only <strong>referenced</strong>; coding and decoding are not part of CD technology. <strong>MPEG audio is not compatible</strong> (MPEG does not use ADPCM).</li>
+<li>Interleaving different data in one track needs a <strong>special disc layout</strong>, a suitable audio level and <strong>complex application development</strong>.</li>
+</ul><div class="callout exam"><div class="ct">Exam tip</div>
+<p>The favourite is "Compare CD-ROM mode 1 and mode 2" (2,048 vs 2,336 user bytes; EDC/ECC present vs absent; 650 MB vs 741.85 MB; 150 vs 171 KB/s) and "Explain the CD-ROM/XA forms".</p>
+</div><aside class="notes">Source note: <a href="../../unit-06/cd-rom/">CD-ROM and CD-ROM/XA</a></aside></section><section class="dense"><h2><small>CD-ROM and CD-ROM/XA</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Why does mode 1 hold less user data than mode 2?</p><div class="fragment ans">
+<p>Mode 1 spends bytes on EDC, blank and 276 ECC bytes for reliability; mode 2 has none, so 2,336 bytes are user data.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Calculate the capacity of a mode-1 CD.</p><div class="fragment ans">
+<p>333,000 blocks × 2,048 bytes = 681,984,000 bytes ≈ 650 MB.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-06/cd-rom/">CD-ROM and CD-ROM/XA</a></aside></section><section><h2><small>CD-ROM and CD-ROM/XA</small>Sector layout: CD-DA vs CD-ROM modes</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 569.52 233.28" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T17:40:37.032772</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 233.28 
+L 569.52 233.28 
+L 569.52 0 
+L 0 0 
+L 0 233.28 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 74.417718 65.695135 
+L 563.76 65.695135 
+L 563.76 29.734054 
+L 74.417718 29.734054 
+z
+" clip-path="url(#pafd74599ef)" style="fill: #22d3ee; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 74.417718 119.636757 
+L 76.914362 119.636757 
+L 76.914362 83.675676 
+L 74.417718 83.675676 
+z
+" clip-path="url(#pafd74599ef)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 76.914362 119.636757 
+L 77.746577 119.636757 
+L 77.746577 83.675676 
+L 76.914362 83.675676 
+z
+" clip-path="url(#pafd74599ef)" style="fill: #c084fc; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 77.746577 119.636757 
+L 503.840537 119.636757 
+L 503.840537 83.675676 
+L 77.746577 83.675676 
+z
+" clip-path="url(#pafd74599ef)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 503.840537 119.636757 
+L 504.672752 119.636757 
+L 504.672752 83.675676 
+L 503.840537 83.675676 
+z
+" clip-path="url(#pafd74599ef)" style="fill: #fb923c; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 504.672752 119.636757 
+L 506.337181 119.636757 
+L 506.337181 83.675676 
+L 504.672752 83.675676 
+z
+" clip-path="url(#pafd74599ef)" style="fill: #9aa0cc; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 506.337181 119.636757 
+L 563.76 119.636757 
+L 563.76 83.675676 
+L 506.337181 83.675676 
+z
+" clip-path="url(#pafd74599ef)" style="fill: #34d399; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 74.417718 173.578378 
+L 76.914362 173.578378 
+L 76.914362 137.617297 
+L 74.417718 137.617297 
+z
+" clip-path="url(#pafd74599ef)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 76.914362 173.578378 
+L 77.746577 173.578378 
+L 77.746577 137.617297 
+L 76.914362 137.617297 
+z
+" clip-path="url(#pafd74599ef)" style="fill: #c084fc; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 77.746577 173.578378 
+L 563.76 173.578378 
+L 563.76 137.617297 
+L 77.746577 137.617297 
+z
+" clip-path="url(#pafd74599ef)" style="fill: #7c85ff; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #0b0d1c" x="319.088859" y="50.312641" transform="rotate(-0 319.088859 50.312641)">Audio data (2,352 bytes)</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #e8eaff" x="68.176107" y="50.572016" transform="rotate(-0 68.176107 50.572016)">CD-DA</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #0b0d1c" x="290.793557" y="104.254263" transform="rotate(-0 290.793557 104.254263)">User data (2,048 bytes)</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #0b0d1c" x="535.048591" y="104.253872" transform="rotate(-0 535.048591 104.253872)">ECC (276)</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #e8eaff" x="68.176107" y="104.514068" transform="rotate(-0 68.176107 104.514068)">Mode 1</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #0b0d1c" x="320.753289" y="158.195885" transform="rotate(-0 320.753289 158.195885)">User data (2,336 bytes)</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #e8eaff" x="68.176107" y="158.455689" transform="rotate(-0 68.176107 158.455689)">Mode 2</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="319.088859" y="128.627027" transform="rotate(-0 319.088859 128.627027)">Sync 12 · Header 4 · EDC 4 · reserved 8</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="319.088859" y="218.52973" transform="rotate(-0 319.088859 218.52973)">Every sector is 2,352 bytes; 75 sectors per second</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pafd74599ef">
+   <rect x="5.76" y="5.76" width="558" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">Mode 1 adds error detection/correction (EDC/ECC) for computer data (2,048 user bytes). Mode 2 keeps 2,336 user bytes for audio/video.</div></section></section>
+<section data-topic="CD-I, CD-I Ready, Bridge and Photo CD"><section class="sec"><div class="no">05</div><h2>CD-I, CD-I Ready, Bridge and Photo CD</h2><div class="lead">Unit 6 &middot; topic 5 of 6</div></section><section class=""><h2><small>CD-I, CD-I Ready, Bridge and Photo CD</small>CD-I, CD-I Ready, Bridge and Photo CD</h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mmc001c087bd33" role="graphics-document document" viewbox="0 0 741.78125 421" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mmc001c087bd33{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmc001c087bd33 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmc001c087bd33 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmc001c087bd33 .error-icon{fill:#1c2150;}#mmc001c087bd33 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mmc001c087bd33 .edge-thickness-normal{stroke-width:1px;}#mmc001c087bd33 .edge-thickness-thick{stroke-width:3.5px;}#mmc001c087bd33 .edge-pattern-solid{stroke-dasharray:0;}#mmc001c087bd33 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmc001c087bd33 .edge-pattern-dashed{stroke-dasharray:3;}#mmc001c087bd33 .edge-pattern-dotted{stroke-dasharray:2;}#mmc001c087bd33 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mmc001c087bd33 .marker.cross{stroke:#a5b4fc;}#mmc001c087bd33 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mmc001c087bd33 p{margin:0;}#mmc001c087bd33 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mmc001c087bd33 .cluster-label text{fill:#e3deaf;}#mmc001c087bd33 .cluster-label span{color:#e3deaf;}#mmc001c087bd33 .cluster-label span p{background-color:transparent;}#mmc001c087bd33 .label text,#mmc001c087bd33 span{fill:#f4f4ff;color:#f4f4ff;}#mmc001c087bd33 .node rect,#mmc001c087bd33 .node circle,#mmc001c087bd33 .node ellipse,#mmc001c087bd33 .node polygon,#mmc001c087bd33 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mmc001c087bd33 .rough-node .label text,#mmc001c087bd33 .node .label text,#mmc001c087bd33 .image-shape .label,#mmc001c087bd33 .icon-shape .label{text-anchor:middle;}#mmc001c087bd33 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmc001c087bd33 .rough-node .label,#mmc001c087bd33 .node .label,#mmc001c087bd33 .image-shape .label,#mmc001c087bd33 .icon-shape .label{text-align:center;}#mmc001c087bd33 .node.clickable{cursor:pointer;}#mmc001c087bd33 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mmc001c087bd33 .arrowheadPath{fill:#0b0b0b;}#mmc001c087bd33 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mmc001c087bd33 .flowchart-link{stroke:#a5b4fc;fill:none;}#mmc001c087bd33 .edgeLabel{background-color:#12152b;text-align:center;}#mmc001c087bd33 .edgeLabel p{background-color:#12152b;}#mmc001c087bd33 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmc001c087bd33 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mmc001c087bd33 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mmc001c087bd33 .cluster text{fill:#e3deaf;}#mmc001c087bd33 .cluster span{color:#e3deaf;}#mmc001c087bd33 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mmc001c087bd33 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mmc001c087bd33 rect.text{fill:none;stroke-width:0;}#mmc001c087bd33 .icon-shape,#mmc001c087bd33 .image-shape{background-color:#12152b;text-align:center;}#mmc001c087bd33 .icon-shape p,#mmc001c087bd33 .image-shape p{background-color:#12152b;padding:2px;}#mmc001c087bd33 .icon-shape .label rect,#mmc001c087bd33 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmc001c087bd33 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmc001c087bd33 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmc001c087bd33 .node .neo-node{stroke:#818cf8;}#mmc001c087bd33 [data-look="neo"].node rect,#mmc001c087bd33 [data-look="neo"].cluster rect,#mmc001c087bd33 [data-look="neo"].node polygon{stroke:url(#mmc001c087bd33-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc001c087bd33 [data-look="neo"].swimlane.cluster rect{filter:none;}#mmc001c087bd33 [data-look="neo"].node path{stroke:url(#mmc001c087bd33-gradient);stroke-width:1px;}#mmc001c087bd33 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc001c087bd33 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mmc001c087bd33 [data-look="neo"].node circle{stroke:url(#mmc001c087bd33-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc001c087bd33 [data-look="neo"].node circle .state-start{fill:#000000;}#mmc001c087bd33 [data-look="neo"].icon-shape .icon{fill:url(#mmc001c087bd33-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc001c087bd33 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mmc001c087bd33-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc001c087bd33 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mmc001c087bd33_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc001c087bd33_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc001c087bd33_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc001c087bd33_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mmc001c087bd33_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc001c087bd33_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc001c087bd33_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc001c087bd33_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mmc001c087bd33_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmc001c087bd33_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmc001c087bd33_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mmc001c087bd33_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M168.906,170.887L159.434,175.239C149.961,179.591,131.016,188.296,121.543,198.398C112.07,208.5,112.07,220,112.07,225.75L112.07,231.5" data-edge="true" data-et="edge" data-id="L_CDDA_MM_0" data-look="classic" data-points="W3sieCI6MTY4LjkwNjI1LCJ5IjoxNzAuODg3MTE4NDE2NjM4N30seyJ4IjoxMTIuMDcwMzEyNSwieSI6MTk3fSx7IngiOjExMi4wNzAzMTI1LCJ5IjoyMzUuNX1d" id="mmc001c087bd33-L_CDDA_MM_0" marker-end="url(#mmc001c087bd33_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M288.125,170.887L297.598,175.239C307.07,179.591,326.016,188.296,335.488,198.398C344.961,208.5,344.961,220,344.961,225.75L344.961,231.5" data-edge="true" data-et="edge" data-id="L_CDDA_CDI_0" data-look="classic" data-points="W3sieCI6Mjg4LjEyNSwieSI6MTcwLjg4NzExODQxNjYzODd9LHsieCI6MzQ0Ljk2MDkzNzUsInkiOjE5N30seyJ4IjozNDQuOTYwOTM3NSwieSI6MjM1LjV9XQ==" id="mmc001c087bd33-L_CDDA_CDI_0" marker-end="url(#mmc001c087bd33_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M603.781,65L603.781,69.167C603.781,73.333,603.781,81.667,603.781,89.333C603.781,97,603.781,104,603.781,107.5L603.781,111" data-edge="true" data-et="edge" data-id="L_ROM_XA_0" data-look="classic" data-points="W3sieCI6NjAzLjc4MTI1LCJ5Ijo2NX0seyJ4Ijo2MDMuNzgxMjUsInkiOjkwfSx7IngiOjYwMy43ODEyNSwieSI6MTE1fV0=" id="mmc001c087bd33-L_ROM_XA_0" marker-end="url(#mmc001c087bd33_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M603.781,172L603.781,176.167C603.781,180.333,603.781,188.667,603.781,196.333C603.781,204,603.781,211,603.781,214.5L603.781,218" data-edge="true" data-et="edge" data-id="L_XA_BR_0" data-look="classic" data-points="W3sieCI6NjAzLjc4MTI1LCJ5IjoxNzJ9LHsieCI6NjAzLjc4MTI1LCJ5IjoxOTd9LHsieCI6NjAzLjc4MTI1LCJ5IjoyMjJ9XQ==" id="mmc001c087bd33-L_XA_BR_0" marker-end="url(#mmc001c087bd33_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M344.961,292.5L344.961,298.917C344.961,305.333,344.961,318.167,357.641,329.825C370.321,341.484,395.681,351.969,408.362,357.211L421.042,362.453" data-edge="true" data-et="edge" data-id="L_CDI_CDIfull_0" data-look="classic" data-points="W3sieCI6MzQ0Ljk2MDkzNzUsInkiOjI5Mi41fSx7IngiOjM0NC45NjA5Mzc1LCJ5IjozMzF9LHsieCI6NDI0LjczODI4MTI1LCJ5IjozNjMuOTgxMDg5MDc2MDM2MX1d" id="mmc001c087bd33-L_CDI_CDIfull_0" marker-end="url(#mmc001c087bd33_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M603.781,306L603.781,310.167C603.781,314.333,603.781,322.667,591.101,332.075C578.421,341.484,553.061,351.969,540.381,357.211L527.7,362.453" data-edge="true" data-et="edge" data-id="L_BR_CDIfull_0" data-look="classic" data-points="W3sieCI6NjAzLjc4MTI1LCJ5IjozMDZ9LHsieCI6NjAzLjc4MTI1LCJ5IjozMzF9LHsieCI6NTI0LjAwMzkwNjI1LCJ5IjozNjMuOTgxMDg5MDc2MDM2MX1d" id="mmc001c087bd33-L_BR_CDIfull_0" marker-end="url(#mmc001c087bd33_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_CDDA_MM_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_CDDA_CDI_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_ROM_XA_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_XA_BR_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_CDI_CDIfull_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_BR_CDIfull_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mmc001c087bd33-flowchart-CDDA-0" transform="translate(228.515625, 143.5)"><rect class="basic label-container" height="57" style="" width="119.21875" x="-59.609375" y="-28.5"></rect><g class="label" style="" transform="translate(-29.609375, -13.5)"><rect></rect><foreignobject height="27" width="59.21875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>CD-DA</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc001c087bd33-flowchart-MM-1" transform="translate(112.0703125, 264)"><rect class="basic label-container" height="57" style="" width="208.140625" x="-104.0703125" y="-28.5"></rect><g class="label" style="" transform="translate(-74.0703125, -13.5)"><rect></rect><foreignobject height="27" width="148.140625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Mixed-mode disc</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc001c087bd33-flowchart-CDI-3" transform="translate(344.9609375, 264)"><rect class="basic label-container" height="57" style="" width="157.640625" x="-78.8203125" y="-28.5"></rect><g class="label" style="" transform="translate(-48.8203125, -13.5)"><rect></rect><foreignobject height="27" width="97.640625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>CD-I Ready</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc001c087bd33-flowchart-ROM-4" transform="translate(603.78125, 36.5)"><rect class="basic label-container" height="57" style="" width="136.03125" x="-68.015625" y="-28.5"></rect><g class="label" style="" transform="translate(-38.015625, -13.5)"><rect></rect><foreignobject height="27" width="76.03125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>CD-ROM</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc001c087bd33-flowchart-XA-5" transform="translate(603.78125, 143.5)"><rect class="basic label-container" height="57" style="" width="167.21875" x="-83.609375" y="-28.5"></rect><g class="label" style="" transform="translate(-53.609375, -13.5)"><rect></rect><foreignobject height="27" width="107.21875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>CD-ROM/XA</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc001c087bd33-flowchart-BR-7" transform="translate(603.78125, 264)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>CD-I Bridge disc (e.g. Photo CD)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc001c087bd33-flowchart-CDIfull-9" transform="translate(474.37109375, 384.5)"><rect class="basic label-container" height="57" style="" width="99.265625" x="-49.6328125" y="-28.5"></rect><g class="label" style="" transform="translate(-19.6328125, -13.5)"><rect></rect><foreignobject height="27" width="39.265625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>CD-I</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mmc001c087bd33-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mmc001c087bd33-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mmc001c087bd33-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-06/cd-i-and-photo-cd/">CD-I, CD-I Ready, Bridge and Photo CD</a></aside></section><section class=""><h2><small>CD-I, CD-I Ready, Bridge and Photo CD</small>CD-Interactive (CD-I)</h2><ul>
+<li class="fragment fade-up">Developed by <strong>Philips and Sony</strong>; announced <strong>1986</strong>; <strong>Green Book 1988</strong> (extension of the Red and Yellow Books). Aimed at the <strong>consumer market</strong>.</li>
+<li class="fragment fade-up">A <strong>system</strong>: CD-ROM-based format with interleaving of different media, compression algorithms, <strong>software</strong> and <strong>hardware (decoder)</strong>.</li>
+<li class="fragment fade-up"><strong>CD-RTOS</strong>: real-time operating system, an extension of <strong>OS-9</strong>.</li>
+<li class="fragment fade-up">Hardware: <strong>680xx processor</strong>, video and audio chips, CD player with CD-DA parts, mouse/joystick interface, CD controller, connection to RGB monitor or TV; size of a video recorder.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-06/cd-i-and-photo-cd/">CD-I, CD-I Ready, Bridge and Photo CD</a></aside></section><section class=""><h2><small>CD-Interactive (CD-I)</small>CD-I audio levels</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>CD-DA</th>
+<th>CD-I A (hi-fi)</th>
+<th>CD-I B (mid-fi)</th>
+<th>CD-I C (speech)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sampling</td>
+<td>44.1 kHz</td>
+<td>37.8 kHz</td>
+<td>37.8 kHz</td>
+<td>18.9 kHz</td>
+</tr>
+<tr>
+<td>Bandwidth</td>
+<td>20 kHz</td>
+<td>17 kHz</td>
+<td>17 kHz</td>
+<td>8.5 kHz</td>
+</tr>
+<tr>
+<td>Coding</td>
+<td>16-bit PCM</td>
+<td>8-bit ADPCM</td>
+<td>4-bit ADPCM</td>
+<td>4-bit ADPCM</td>
+</tr>
+<tr>
+<td>S/N</td>
+<td>98 dB</td>
+<td>90 dB</td>
+<td>60 dB</td>
+<td>60 dB</td>
+</tr>
+<tr>
+<td>Playing time (stereo / mono)</td>
+<td>74 min</td>
+<td>2.4 h / 4.8 h</td>
+<td>4.8 h / 9.6 h</td>
+<td>9.6 h / 19.2 h</td>
+</tr>
+<tr>
+<td>Fidelity</td>
+<td>CD</td>
+<td>LP</td>
+<td>FM</td>
+<td>AM</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-06/cd-i-and-photo-cd/">CD-I, CD-I Ready, Bridge and Photo CD</a></aside></section><section class=""><h2><small>CD-Interactive (CD-I)</small>CD-I video</h2><table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Description</th>
+<th>Size per image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>YUV</strong> (natural images)</td>
+<td>360 × 240, 18 bit/pixel, 262,144 colours</td>
+<td>360 × 240 × 18 bit = <strong>194,400 bytes</strong></td>
+</tr>
+<tr>
+<td><strong>CLUT</strong> (simple graphics)</td>
+<td>720 × 240, 4 bit/pixel, 16 colours</td>
+<td>720 × 240 × 4 bit = <strong>86,400 bytes</strong></td>
+</tr>
+<tr>
+<td><strong>RGB</strong> (very good graphics)</td>
+<td>360 × 240, 5 bit per component + 1 = 16 bit</td>
+<td>360 × 240 × 16 bit = <strong>172,800 bytes</strong></td>
+</tr>
+<tr>
+<td>Animations with few colours</td>
+<td>Run-length coding</td>
+<td>about 10,000–20,000 bytes/image</td>
+</tr>
+</tbody>
+</table><p>Video can also be coded with <strong>MPEG</strong>.</p><aside class="notes">Source note: <a href="../../unit-06/cd-i-and-photo-cd/">CD-I, CD-I Ready, Bridge and Photo CD</a></aside></section><section class=""><h2><small>CD-I, CD-I Ready, Bridge and Photo CD</small>CD-I Ready format</h2><ul><li class="fragment fade-up">A disc playable on <strong>both CD-DA and CD-I players</strong>.</li><li class="fragment fade-up">The <strong>track pregap</strong> (normally 2–3 s) is extended to <strong>at least 182 s</strong> and carries the CD-I data.</li><li class="fragment fade-up">Audio players ignore it.</li><li class="fragment fade-up">Three play modes: (1) standard audio only, (2) read and display the pregap data only, (3) load the pregap information into the player's RAM, then play audio while showing it.</li></ul><h3>CD-I Bridge disc</h3><p>Playable on <strong>CD-ROM/XA players and CD-I players</strong>. All data tracks are in <strong>CD-ROM mode 2</strong>; <strong>no CD-I tracks appear in the table of contents</strong>.</p><aside class="notes">Source note: <a href="../../unit-06/cd-i-and-photo-cd/">CD-I, CD-I Ready, Bridge and Photo CD</a></aside></section><section class=""><h2><small>CD-I, CD-I Ready, Bridge and Photo CD</small>Photo CD <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><ul>
+<li class="fragment fade-up">By <strong>Eastman Kodak and Philips</strong>, announced <strong>1990</strong>; an example of a <strong>bridge disc</strong>, based on <strong>CD-WO</strong>. Readable on Photo CD, CD-I and CD-ROM/XA players; written by special Photo CD or CD-WO writers.</li>
+<li class="fragment fade-up">Photos taken with conventional cameras are <strong>digitized</strong> (8 bits luminance and 8 bits for each chrominance component) and written to the CD.</li>
+<li class="fragment fade-up">Each photo is stored as an <strong>ImagePac</strong> with <strong>five resolutions (hierarchical coding)</strong>, about <strong>3–6 MB</strong> per ImagePac.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-06/cd-i-and-photo-cd/">CD-I, CD-I Ready, Bridge and Photo CD</a></aside></section><section class=""><h2><small>CD-I, CD-I Ready, Bridge and Photo CD</small>Photo CD <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><table>
+<thead>
+<tr>
+<th>Image type</th>
+<th>Compression</th>
+<th>Lines</th>
+<th>Columns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base/16</td>
+<td>none</td>
+<td>128</td>
+<td>192</td>
+</tr>
+<tr>
+<td>Base/4</td>
+<td>none</td>
+<td>256</td>
+<td>384</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>none</td>
+<td>512</td>
+<td>768</td>
+</tr>
+<tr>
+<td>4 Base</td>
+<td>compressed</td>
+<td>1,024</td>
+<td>1,536</td>
+</tr>
+<tr>
+<td>16 Base</td>
+<td>compressed</td>
+<td>2,048</td>
+<td>3,072</td>
+</tr>
+</tbody>
+</table><p>Uses: professional and private applications, simultaneous display of several images, image editing, integration into documents.</p><aside class="notes">Source note: <a href="../../unit-06/cd-i-and-photo-cd/">CD-I, CD-I Ready, Bridge and Photo CD</a></aside></section><section class="dense"><h2><small>CD-I, CD-I Ready, Bridge and Photo CD</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">What makes a disc a 'bridge disc'?</p><div class="fragment ans">
+<p>It works in both CD-ROM/XA and CD-I players: all data in mode 2 and no CD-I tracks in the TOC (example: Photo CD).</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">How is the 16 Base Photo CD image 'hierarchical'?</p><div class="fragment ans">
+<p>Each photo has five resolutions stored together, from 128 × 192 up to 2,048 × 3,072.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-06/cd-i-and-photo-cd/">CD-I, CD-I Ready, Bridge and Photo CD</a></aside></section></section>
+<section data-topic="CD-WO and CD-MO"><section class="sec"><div class="no">06</div><h2>CD-WO and CD-MO</h2><div class="lead">Unit 6 &middot; topic 6 of 6</div></section><section class=""><h2><small>CD-WO and CD-MO</small>CD-WO and CD-MO</h2><p>Both are defined in the <strong>Orange Book</strong>: <strong>Part II = CD-WO</strong>, <strong>Part I = CD-MO</strong>. They extend the CD family from read-only (RO) to write-once (WO) and read/write (R/W).</p><aside class="notes">Source note: <a href="../../unit-06/cd-wo-and-cd-mo/">CD-WO and CD-MO</a></aside></section><section class="xdense"><h2><small>CD-WO and CD-MO</small>CD Write-Once (CD-WO) <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p><strong>Layers</strong> (from the top): protective layer, reflective layer, <strong>absorption layer</strong>, substrate (with a <strong>pre-grooved track</strong>).</p><p><strong>Principle</strong></p><ul>
+<li class="fragment fade-up">A <strong>pre-grooved track</strong> guides the writing laser.</li>
+<li class="fragment fade-up">An <strong>absorption layer</strong> sits between the substrate and the reflective layer.</li>
+<li class="fragment fade-up">A stronger write laser <strong>heats the absorption layer</strong>, causing an <strong>irreversible change of its reflection characteristics</strong>, which acts as the pits. The data <strong>cannot be erased</strong>.</li>
+<li class="fragment fade-up">A CD-WO can be <strong>played in CD-DA players</strong>.</li>
+</ul><p><strong>Sessions</strong></p><p>A CD player needs a table of contents. A CD-WO is written in <strong>sessions</strong>, each with a <strong>lead-in, data part and lead-out</strong>; <strong>new sessions can be added</strong>, up to <strong>99 sessions</strong>.</p><aside class="notes">Source note: <a href="../../unit-06/cd-wo-and-cd-mo/">CD-WO and CD-MO</a></aside></section><section class="xdense"><h2><small>CD-WO and CD-MO</small>CD Write-Once (CD-WO) <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mmc43c6a49ca13" role="graphics-document document" viewbox="0 0 1231.28125 73" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mmc43c6a49ca13{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmc43c6a49ca13 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmc43c6a49ca13 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmc43c6a49ca13 .error-icon{fill:#1c2150;}#mmc43c6a49ca13 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mmc43c6a49ca13 .edge-thickness-normal{stroke-width:1px;}#mmc43c6a49ca13 .edge-thickness-thick{stroke-width:3.5px;}#mmc43c6a49ca13 .edge-pattern-solid{stroke-dasharray:0;}#mmc43c6a49ca13 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmc43c6a49ca13 .edge-pattern-dashed{stroke-dasharray:3;}#mmc43c6a49ca13 .edge-pattern-dotted{stroke-dasharray:2;}#mmc43c6a49ca13 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mmc43c6a49ca13 .marker.cross{stroke:#a5b4fc;}#mmc43c6a49ca13 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mmc43c6a49ca13 p{margin:0;}#mmc43c6a49ca13 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mmc43c6a49ca13 .cluster-label text{fill:#e3deaf;}#mmc43c6a49ca13 .cluster-label span{color:#e3deaf;}#mmc43c6a49ca13 .cluster-label span p{background-color:transparent;}#mmc43c6a49ca13 .label text,#mmc43c6a49ca13 span{fill:#f4f4ff;color:#f4f4ff;}#mmc43c6a49ca13 .node rect,#mmc43c6a49ca13 .node circle,#mmc43c6a49ca13 .node ellipse,#mmc43c6a49ca13 .node polygon,#mmc43c6a49ca13 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mmc43c6a49ca13 .rough-node .label text,#mmc43c6a49ca13 .node .label text,#mmc43c6a49ca13 .image-shape .label,#mmc43c6a49ca13 .icon-shape .label{text-anchor:middle;}#mmc43c6a49ca13 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmc43c6a49ca13 .rough-node .label,#mmc43c6a49ca13 .node .label,#mmc43c6a49ca13 .image-shape .label,#mmc43c6a49ca13 .icon-shape .label{text-align:center;}#mmc43c6a49ca13 .node.clickable{cursor:pointer;}#mmc43c6a49ca13 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mmc43c6a49ca13 .arrowheadPath{fill:#0b0b0b;}#mmc43c6a49ca13 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mmc43c6a49ca13 .flowchart-link{stroke:#a5b4fc;fill:none;}#mmc43c6a49ca13 .edgeLabel{background-color:#12152b;text-align:center;}#mmc43c6a49ca13 .edgeLabel p{background-color:#12152b;}#mmc43c6a49ca13 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmc43c6a49ca13 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mmc43c6a49ca13 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mmc43c6a49ca13 .cluster text{fill:#e3deaf;}#mmc43c6a49ca13 .cluster span{color:#e3deaf;}#mmc43c6a49ca13 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mmc43c6a49ca13 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mmc43c6a49ca13 rect.text{fill:none;stroke-width:0;}#mmc43c6a49ca13 .icon-shape,#mmc43c6a49ca13 .image-shape{background-color:#12152b;text-align:center;}#mmc43c6a49ca13 .icon-shape p,#mmc43c6a49ca13 .image-shape p{background-color:#12152b;padding:2px;}#mmc43c6a49ca13 .icon-shape .label rect,#mmc43c6a49ca13 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmc43c6a49ca13 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmc43c6a49ca13 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmc43c6a49ca13 .node .neo-node{stroke:#818cf8;}#mmc43c6a49ca13 [data-look="neo"].node rect,#mmc43c6a49ca13 [data-look="neo"].cluster rect,#mmc43c6a49ca13 [data-look="neo"].node polygon{stroke:url(#mmc43c6a49ca13-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc43c6a49ca13 [data-look="neo"].swimlane.cluster rect{filter:none;}#mmc43c6a49ca13 [data-look="neo"].node path{stroke:url(#mmc43c6a49ca13-gradient);stroke-width:1px;}#mmc43c6a49ca13 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc43c6a49ca13 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mmc43c6a49ca13 [data-look="neo"].node circle{stroke:url(#mmc43c6a49ca13-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc43c6a49ca13 [data-look="neo"].node circle .state-start{fill:#000000;}#mmc43c6a49ca13 [data-look="neo"].icon-shape .icon{fill:url(#mmc43c6a49ca13-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc43c6a49ca13 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mmc43c6a49ca13-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc43c6a49ca13 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mmc43c6a49ca13_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc43c6a49ca13_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc43c6a49ca13_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc43c6a49ca13_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mmc43c6a49ca13_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc43c6a49ca13_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc43c6a49ca13_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc43c6a49ca13_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mmc43c6a49ca13_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmc43c6a49ca13_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmc43c6a49ca13_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mmc43c6a49ca13_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M133.25,36.5L137.417,36.5C141.583,36.5,149.917,36.5,157.583,36.5C165.25,36.5,172.25,36.5,175.75,36.5L179.25,36.5" data-edge="true" data-et="edge" data-id="L_LI1_D1_0" data-look="classic" data-points="W3sieCI6MTMzLjI1LCJ5IjozNi41fSx7IngiOjE1OC4yNSwieSI6MzYuNX0seyJ4IjoxODMuMjUsInkiOjM2LjV9XQ==" id="mmc43c6a49ca13-L_LI1_D1_0" marker-end="url(#mmc43c6a49ca13_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M340.266,36.5L344.432,36.5C348.599,36.5,356.932,36.5,364.599,36.5C372.266,36.5,379.266,36.5,382.766,36.5L386.266,36.5" data-edge="true" data-et="edge" data-id="L_D1_LO1_0" data-look="classic" data-points="W3sieCI6MzQwLjI2NTYyNSwieSI6MzYuNX0seyJ4IjozNjUuMjY1NjI1LCJ5IjozNi41fSx7IngiOjM5MC4yNjU2MjUsInkiOjM2LjV9XQ==" id="mmc43c6a49ca13-L_D1_LO1_0" marker-end="url(#mmc43c6a49ca13_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M527.859,36.5L532.026,36.5C536.193,36.5,544.526,36.5,552.193,36.5C559.859,36.5,566.859,36.5,570.359,36.5L573.859,36.5" data-edge="true" data-et="edge" data-id="L_LO1_LI2_0" data-look="classic" data-points="W3sieCI6NTI3Ljg1OTM3NSwieSI6MzYuNX0seyJ4Ijo1NTIuODU5Mzc1LCJ5IjozNi41fSx7IngiOjU3Ny44NTkzNzUsInkiOjM2LjV9XQ==" id="mmc43c6a49ca13-L_LO1_LI2_0" marker-end="url(#mmc43c6a49ca13_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M703.109,36.5L707.276,36.5C711.443,36.5,719.776,36.5,727.443,36.5C735.109,36.5,742.109,36.5,745.609,36.5L749.109,36.5" data-edge="true" data-et="edge" data-id="L_LI2_D2_0" data-look="classic" data-points="W3sieCI6NzAzLjEwOTM3NSwieSI6MzYuNX0seyJ4Ijo3MjguMTA5Mzc1LCJ5IjozNi41fSx7IngiOjc1My4xMDkzNzUsInkiOjM2LjV9XQ==" id="mmc43c6a49ca13-L_LI2_D2_0" marker-end="url(#mmc43c6a49ca13_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M910.125,36.5L914.292,36.5C918.458,36.5,926.792,36.5,934.458,36.5C942.125,36.5,949.125,36.5,952.625,36.5L956.125,36.5" data-edge="true" data-et="edge" data-id="L_D2_LO2_0" data-look="classic" data-points="W3sieCI6OTEwLjEyNSwieSI6MzYuNX0seyJ4Ijo5MzUuMTI1LCJ5IjozNi41fSx7IngiOjk2MC4xMjUsInkiOjM2LjV9XQ==" id="mmc43c6a49ca13-L_D2_LO2_0" marker-end="url(#mmc43c6a49ca13_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M1097.719,36.5L1101.885,36.5C1106.052,36.5,1114.385,36.5,1122.052,36.5C1129.719,36.5,1136.719,36.5,1140.219,36.5L1143.719,36.5" data-edge="true" data-et="edge" data-id="L_LO2_M_0" data-look="classic" data-points="W3sieCI6MTA5Ny43MTg3NSwieSI6MzYuNX0seyJ4IjoxMTIyLjcxODc1LCJ5IjozNi41fSx7IngiOjExNDcuNzE4NzUsInkiOjM2LjV9XQ==" id="mmc43c6a49ca13-L_LO2_M_0" marker-end="url(#mmc43c6a49ca13_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_LI1_D1_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_D1_LO1_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_LO1_LI2_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_LI2_D2_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_D2_LO2_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_LO2_M_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mmc43c6a49ca13-flowchart-LI1-0" transform="translate(70.625, 36.5)"><rect class="basic label-container" height="57" style="" width="125.25" x="-62.625" y="-28.5"></rect><g class="label" style="" transform="translate(-32.625, -13.5)"><rect></rect><foreignobject height="27" width="65.25"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Lead-in</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc43c6a49ca13-flowchart-D1-1" transform="translate(261.7578125, 36.5)"><rect class="basic label-container" height="57" style="" width="157.015625" x="-78.5078125" y="-28.5"></rect><g class="label" style="" transform="translate(-48.5078125, -13.5)"><rect></rect><foreignobject height="27" width="97.015625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Information</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc43c6a49ca13-flowchart-LO1-2" transform="translate(459.0625, 36.5)"><rect class="basic label-container" height="57" style="" width="137.59375" x="-68.796875" y="-28.5"></rect><g class="label" style="" transform="translate(-38.796875, -13.5)"><rect></rect><foreignobject height="27" width="77.59375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Lead-out</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc43c6a49ca13-flowchart-LI2-3" transform="translate(640.484375, 36.5)"><rect class="basic label-container" height="57" style="" width="125.25" x="-62.625" y="-28.5"></rect><g class="label" style="" transform="translate(-32.625, -13.5)"><rect></rect><foreignobject height="27" width="65.25"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Lead-in</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc43c6a49ca13-flowchart-D2-4" transform="translate(831.6171875, 36.5)"><rect class="basic label-container" height="57" style="" width="157.015625" x="-78.5078125" y="-28.5"></rect><g class="label" style="" transform="translate(-48.5078125, -13.5)"><rect></rect><foreignobject height="27" width="97.015625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Information</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc43c6a49ca13-flowchart-LO2-5" transform="translate(1028.921875, 36.5)"><rect class="basic label-container" height="57" style="" width="137.59375" x="-68.796875" y="-28.5"></rect><g class="label" style="" transform="translate(-38.796875, -13.5)"><rect></rect><foreignobject height="27" width="77.59375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Lead-out</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc43c6a49ca13-flowchart-M-6" transform="translate(1185.5, 36.5)"><rect class="basic label-container" height="57" style="" width="75.5625" x="-37.78125" y="-28.5"></rect><g class="label" style="" transform="translate(-7.78125, -13.5)"><rect></rect><foreignobject height="27" width="15.5625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>...</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mmc43c6a49ca13-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mmc43c6a49ca13-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mmc43c6a49ca13-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><table>
+<thead>
+<tr>
+<th></th>
+<th>Regular CD-WO</th>
+<th>Hybrid CD-WO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sessions</td>
+<td><strong>One</strong></td>
+<td><strong>Several</strong></td>
+</tr>
+</tbody>
+</table><p>Players made before <strong>1992</strong> can read only the <strong>first session</strong>.</p><aside class="notes">Source note: <a href="../../unit-06/cd-wo-and-cd-mo/">CD-WO and CD-MO</a></aside></section><section class=""><h2><small>CD-WO and CD-MO</small>CD Magneto-Optical (CD-MO) <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p><strong>Features:</strong> write, read, <strong>erase and rewrite</strong>. Orange Book Part I. Capacity about <strong>650 MB</strong> (double-sided), data rate about <strong>1.2 Mbit/s</strong>.</p><p><strong>Principle of the magneto-optical technique</strong></p><table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Write</strong></td>
+<td><strong>Heat</strong> a block and apply a magnetic field (about <strong>10 × the earth's field</strong>); the single elements are <strong>polarized</strong></td>
+</tr>
+<tr>
+<td><strong>Erase</strong></td>
+<td>Apply a <strong>constant magnetic field</strong> while <strong>heating the block</strong></td>
+</tr>
+<tr>
+<td><strong>Read</strong></td>
+<td>The <strong>polarization of the light</strong> is influenced by the magnetic properties of the surface</td>
+</tr>
+</tbody>
+</table><p><strong>Areas</strong></p><aside class="notes">Source note: <a href="../../unit-06/cd-wo-and-cd-mo/">CD-WO and CD-MO</a></aside></section><section class=""><h2><small>CD-WO and CD-MO</small>CD Magneto-Optical (CD-MO) <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><ul>
+<li><strong>Optional premastered area:</strong> read-only, readable on any CD player, uses Red, Yellow and Green Book specifications.</li>
+<li><strong>Rewritable area:</strong> uses different magneto-optical encoding, <strong>incompatible with other CDs</strong> and <strong>cannot be read by standard CD players</strong>.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-06/cd-wo-and-cd-mo/">CD-WO and CD-MO</a></aside></section><section class="dense"><h2><small>CD-WO and CD-MO</small>Overall summary of the CD family <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><ul>
+<li class="fragment fade-up">Features: usable for <strong>all kinds of storage</strong>, wide application area, <strong>large capacity</strong>, based on CD-DA (except CD-MO), specifications built sequentially.</li>
+<li class="fragment fade-up">Disadvantages: <strong>long average access time</strong>; <strong>incompatibility of CD-MO</strong>.</li>
+<li class="fragment fade-up">Future (the common view): CDs with <strong>more storage and faster retrieval</strong>, and <strong>smaller discs with similar capacity</strong>.</li>
+</ul><table>
+<thead>
+<tr>
+<th></th>
+<th>CD-ROM</th>
+<th>CD-WO</th>
+<th>CD-MO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Write</td>
+<td>No (pressed)</td>
+<td><strong>Once</strong></td>
+<td><strong>Many times</strong></td>
+</tr>
+<tr>
+<td>Principle</td>
+<td>Pits stamped</td>
+<td>Heat changes absorption layer</td>
+<td>Heat + magnetic polarization</td>
+</tr>
+<tr>
+<td>Standard</td>
+<td>Yellow</td>
+<td>Orange II</td>
+<td>Orange I</td>
+</tr>
+<tr>
+<td>Compatible with CD players</td>
+<td>Yes</td>
+<td>Yes (CD-DA players can play)</td>
+<td><strong>Rewritable area: No</strong></td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-06/cd-wo-and-cd-mo/">CD-WO and CD-MO</a></aside></section><section class=""><h2><small>CD-WO and CD-MO</small>Overall summary of the CD family <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout exam"><div class="ct">Exam tip</div>
+<p>"Explain the principle of CD-WO" needs: pre-grooved track, absorption layer, irreversible heating, sessions and 99-session limit, regular vs hybrid. For CD-MO give write/erase/read.</p>
+</div><aside class="notes">Source note: <a href="../../unit-06/cd-wo-and-cd-mo/">CD-WO and CD-MO</a></aside></section><section class="dense"><h2><small>CD-WO and CD-MO</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Why can a CD-WO not be rewritten?</p><div class="fragment ans">
+<p>The heating changes the absorption layer irreversibly.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Why can't standard CD players read the rewritable area of a CD-MO?</p><div class="fragment ans">
+<p>It uses magneto-optical encoding (polarization of light) unlike pits and lands.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-06/cd-wo-and-cd-mo/">CD-WO and CD-MO</a></aside></section></section>
+<section data-topic="Exam recap"><section><h2><small>Revision</small>Exam focus recap (1/2)</h2><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div></section><section><h2><small>Revision</small>Exam focus recap (2/2)</h2><div class="callout exam"><div class="ct">Exam tip</div></section></section>
+<section data-topic="Quick check"><section class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></section><section><h2><small>Quick check 1 / 6</small>24. In CD-DA the sampling rate and quantization are</h2><ul class="opts"><li>A. 22.05 kHz, 8 bit</li><li>B. 44.1 kHz, 16 bit</li><li>C. 48 kHz, 24 bit</li><li>D. 44.1 kHz, 8 bit</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 2 / 6</small>25. User bytes in a CD-ROM mode 1 block</h2><ul class="opts"><li>A. 2,352</li><li>B. 2,336</li><li>C. 2,048</li><li>D. 2,324</li></ul><div class="fragment ans"><strong>Answer: C.</strong></div></section><section><h2><small>Quick check 3 / 6</small>26. Which Book defines CD-ROM?</h2><ul class="opts"><li>A. Red</li><li>B. Yellow</li><li>C. Green</li><li>D. Orange</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 4 / 6</small>27. EFM converts</h2><ul class="opts"><li>A. 8 bits into 14 bits</li><li>B. 14 bits into 8 bits</li><li>C. 16 bits into 24 bits</li><li>D. 4 bits into 8 bits</li></ul><div class="fragment ans"><strong>Answer: A.</strong></div></section><section><h2><small>Quick check 5 / 6</small>28. The maximum number of sessions on a CD-WO is</h2><ul class="opts"><li>A. 9</li><li>B. 50</li><li>C. 99</li><li>D. 255</li></ul><div class="fragment ans"><strong>Answer: C.</strong></div></section><section><h2><small>Quick check 6 / 6</small>29. A DVD single-layer, single-sided disc holds about</h2><ul class="opts"><li>A. 650 MB</li><li>B. 4.7 GB</li><li>C. 8.5 GB</li><li>D. 25 GB</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section></section>
+<section class="title-slide"><div class="kick">End of Unit 6</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></section>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/zoom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/math.js"></script>
 <script>
-  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+Reveal.initialize({width:1280,height:720,margin:.04,hash:true,slideNumber:'c/t',progress:true,controls:true,controlsTutorial:false,
+  transition:'slide',backgroundTransition:'fade',autoAnimateDuration:.5,fragments:true,navigationMode:'default',
+  center:false,pdfSeparateFragments:false,
+  math:{katex:{trust:true}},
+  plugins:[RevealNotes,RevealSearch,RevealZoom,RevealMath.KaTeX]});
+function hud(){var s=Reveal.getCurrentSlide();var t=s&&s.parentNode&&s.parentNode.getAttribute&&s.parentNode.getAttribute('data-topic');
+  var h=document.getElementById('hud');h.textContent='Unit 6'+(t?' · '+t:'');}
+Reveal.on('ready',hud);Reveal.on('slidechanged',hud);
 </script>
 </body>
 </html>

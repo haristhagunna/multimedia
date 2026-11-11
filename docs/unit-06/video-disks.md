@@ -33,9 +33,6 @@ Principles: mix of audio and video, **frequency modulation**, and **no quantizat
 | Sound | 2-channel MPEG | 2-channel PCM, 5.1-channel AC-3, up to 8 streams |
 | Subtitles | – | up to 32 languages |
 
-!!! warning "Watch out"
-    The DVD wavelength is printed as "650 and 635 **mm**"; it is **nm**.
-
 **DVD variants:** **DVD-ROM** (data), **DVD-Video** (movies), **DVD-Audio**, **DVD-R** (record once), **DVD-RAM** (erasable, rewritable). **Devices:** DVD movie player (consumer), DVD-ROM drive (computer).
 
 !!! example "Capacity gain"

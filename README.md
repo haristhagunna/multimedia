@@ -34,3 +34,12 @@ To add a page, create the `.md` file in the unit folder and add it under that un
 ## Copyright
 
 (c) 2026 Er. Harish Thagunna. All rights reserved. See LICENSE.
+
+## Rebuilding the class slides
+
+The decks in `docs/decks/` are generated from the topic notes and `tools/visuals.py`:
+
+    python tools/build_decks.py        # all units
+    python tools/build_decks.py 5 6    # selected units
+
+Needs `markdown`, `pymdown-extensions`, `beautifulsoup4`, `matplotlib`, `numpy` and the Mermaid CLI (`mmdc`).

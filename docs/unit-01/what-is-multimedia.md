@@ -63,9 +63,6 @@ A graphic is a **two-dimensional figure or illustration**. It may be produced ma
 | **1990s** | "Multimedia" was probably one of the most overused terms of the decade. The field sat at the crossroads of computing, telecommunications, publishing, consumer audio-video electronics, and television/movie/broadcasting. |
 | **2000s–present** | The Internet and **streaming services** made multimedia more accessible and interactive. Virtual reality, augmented reality and interactive media give more immersive experiences. |
 
-!!! exam "Exam tip"
-    The notes call the Apple II "the first computer to use color graphics". Safer wording in your own answer: "an early, popular computer with colour graphics".
-
 ## Aspects of multimedia
 
 | Aspect | Meaning |
@@ -83,7 +80,7 @@ A graphic is a **two-dimensional figure or illustration**. It may be produced ma
 
 **Hypertext** is text meant to be read **non-linearly by following links**. **Hypermedia** extends the links beyond text to graphics, images, sound and video. The **World Wide Web** is the best example.
 
-The figure contrasts an open book labelled *linear* with a stack of pages joined by curved arrows through red "hot spots" labelled *hypertext, non-linear*.
+A common diagram contrasts an open book labelled *linear* with a stack of pages joined by curved arrows through red "hot spots" labelled *hypertext, non-linear*.
 
 !!! info "Extra"
     Hypertext, hypermedia and the standards behind them return in Unit 9.
@@ -98,7 +95,7 @@ Two typical illustrations: a desktop **video-conference** set-up, and an **MPEG-
 ## Checkpoint
 
 ??? question "Why is 'a combination of many media' not a complete definition of multimedia?"
-    Because the course text's definitions also require that the media be **integrated under computer control**, **represented digitally**, and (usually) delivered **interactively**. A slideshow of printed photos beside a radio is many media, but not multimedia.
+    Because the textbook's definitions also require that the media be **integrated under computer control**, **represented digitally**, and (usually) delivered **interactively**. A slideshow of printed photos beside a radio is many media, but not multimedia.
 
 ??? question "Which element depends on persistence of vision?"
     **Animation**: a rapid sequence of still images that the eye blends into apparent motion.

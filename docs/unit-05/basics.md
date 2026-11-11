@@ -11,7 +11,7 @@
 
 Uncompressed graphics, audio and video need considerable storage.
 
-| Medium | Uncompressed requirement (from the notes) |
+| Medium | Uncompressed requirement |
 |---|---|
 | Text | **2 bytes** for every 8 × 8 pixel character; in a 640 × 480 window that is 80 × 60 = 4,800 characters, about **9,600 bytes** |
 | Bitmap, 256 colours | 1 byte/pixel; 640 × 480 = **307,200 bytes ≈ 300 KB** |

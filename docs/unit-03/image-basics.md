@@ -44,7 +44,7 @@ A **bitmap** with **1 bit per pixel** is a **monochrome** image (this is what ve
 
 ### Worked example 1: a 16 × 16 bitmap
 
-The figure shows a black cat drawn on a 16 × 16 grid, with the 0s and 1s printed beside it.
+A typical diagram shows a black cat drawn on a 16 × 16 grid, with the 0s and 1s printed beside it.
 
 | Step | Working |
 |---|---|

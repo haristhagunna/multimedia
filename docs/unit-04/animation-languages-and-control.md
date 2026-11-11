@@ -6,7 +6,7 @@
 
 Text-based scripts where each event gives **start frame, end frame and action**, written sequentially like a list. Easy to follow; used in early multimedia and timeline-based engines.
 
-!!! example "From the notes"
+!!! example "Example"
     `42, 53, B, ROTATE "PALM", 1, 30` means: between frames 42 and 53 rotate the object PALM about axis 1 by 30 degrees, the amount per frame being taken from table B.
 
 Examples: **Scefo** (SCEne FOrmat); **SMIL** (Synchronized Multimedia Integration Language) with `<seq>` and `<par>`; a traffic light script: `00s setColor light RED`, `05s … YELLOW`, `07s … GREEN`, `12s … RED`.
@@ -47,9 +47,6 @@ Control is **independent of the language** used to describe the animation.
 - **Kinematics**: **position and velocity** of points. "The cube is at the origin at t = 0 and moves with constant acceleration in direction (1, 1, 5)."
 - **Dynamics**: includes the **physical laws** (Newton): acceleration is proportional to force, the constant being the mass. "At t = 0 the cube is at (0, 100, 0) m, has mass 100 g, and gravity acts on it."
 - Knowing kinematics and dynamics at a point lets us determine the **next point** of the motion.
-
-!!! warning "Watch out"
-    Some notes say "constant acceleration" in a *kinematic* example, but acceleration normally comes from forces. Treat it simply as an example of a description by motion values with no forces.
 
 !!! exam "Exam tip"
     "Explain any three methods of controlling animation" is common: pick explicit, procedural and constraint-based, with one example each.

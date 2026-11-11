@@ -96,7 +96,7 @@ Modern visual output uses **raster display devices**, which display primitives i
 - After each row the beam returns to the start of the next row: this is the **horizontal retrace**.
 - A **display controller** receives and interprets the sequence of output commands. In low-end systems such as **personal computers** it is implemented **in software**, as part of a graphics library, and the **refresh buffer is part of CPU memory**.
 
-The figure shows the **computer host interface** sending **display commands** to the **display controller**, which writes the **scanned image** into the **refresh buffer**; the **video controller** reads that buffer and drives the monitor; mouse and keyboard send **interaction data** back to the display controller.
+A typical diagram shows the **computer host interface** sending **display commands** to the **display controller**, which writes the **scanned image** into the **refresh buffer**; the **video controller** reads that buffer and drives the monitor; mouse and keyboard send **interaction data** back to the display controller.
 
 ```mermaid
 flowchart LR

@@ -1,141 +1,570 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit 12: Multimedia Application</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
-  <style>
-    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
-    .reveal { font-size: 34px; }
-    .reveal ul { display: block; }
-    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
-    .reveal th, .reveal td { padding: 0.3em 0.7em; }
-    .reveal .small { font-size: 0.7em; }
-    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
-    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
-    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
-    .arrow { color: #3f51b5; font-weight: bold; }
-  
-    .reveal-viewport{background:radial-gradient(60% 80% at 15% 10%,#2a2f6b 0%,transparent 60%),radial-gradient(50% 70% at 90% 90%,#5b1f63 0%,transparent 60%),#0b0d17}
-    .reveal h1,.reveal h2,.reveal h3{background:linear-gradient(120deg,#a5b4fc,#f0abfc 60%,#fda4af);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.02em}
-    .copyright-foot{position:fixed;left:0;right:0;bottom:6px;text-align:center;font:600 11px Inter,system-ui,sans-serif;color:#9a9cc4;z-index:30;pointer-events:none}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="author" content="Er. Harish Thagunna">
+<title>Unit 12: Multimedia Application - Class slides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<style>
+:root{--g:linear-gradient(120deg,#818cf8,#c084fc 55%,#f472b6);--card:rgba(255,255,255,.055);--line:rgba(255,255,255,.12);--mut:#aab0d6;--ac:#a5b4fc}
+html,body{background:#080a14}
+.reveal-viewport{background:radial-gradient(55% 70% at 12% 8%,rgba(99,102,241,.35),transparent 65%),radial-gradient(50% 65% at 92% 95%,rgba(236,72,153,.26),transparent 65%),radial-gradient(40% 50% at 85% 10%,rgba(6,182,212,.14),transparent 70%),#080a14}
+.reveal{font-family:Inter,system-ui,sans-serif;font-size:27px;color:#e8eaff;font-weight:400}
+.reveal .slides section{text-align:left;height:100%}
+.reveal h1,.reveal h2,.reveal h3{font-family:Inter,system-ui,sans-serif;text-transform:none;letter-spacing:-.025em;font-weight:800;margin:0 0 .45em}
+.reveal h2{font-size:1.5em;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.15}
+.reveal h2 small{display:block;font-size:.42em;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);-webkit-text-fill-color:var(--mut);font-weight:700;margin-bottom:.35em}
+.reveal h3{font-size:1.05em;color:#fff}
+.reveal h4{font-size:.9em;color:var(--ac);margin:.6em 0 .2em}
+.reveal p{margin:.35em 0;line-height:1.45}
+.reveal ul,.reveal ol{display:block;margin:.3em 0 .3em 1.1em;width:calc(100% - 1.1em)}
+.reveal li{margin:.3em 0;line-height:1.38}
+.reveal ul li::marker{color:#c084fc}.reveal ol li::marker{color:#818cf8;font-weight:700}
+.reveal strong{color:#fff;font-weight:700}.reveal em{color:#d9dcff}
+.reveal a{color:var(--ac)}
+.reveal code{font-family:'JetBrains Mono',monospace;font-size:.85em;background:rgba(129,140,248,.16);border-radius:6px;padding:.06em .35em;color:#e0e4ff}
+.reveal pre{width:100%;box-shadow:none;font-size:.62em;margin:.5em 0}
+.reveal pre code{display:block;padding:.8em 1em;border-radius:12px;background:rgba(0,0,0,.4);border:1px solid var(--line);max-height:none}
+.reveal mark{background:linear-gradient(transparent 55%,rgba(244,114,182,.4) 55%);color:inherit}
+.reveal table{margin:.5em 0;border-collapse:separate;border-spacing:0;font-size:.66em;width:100%;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.reveal th{background:rgba(129,140,248,.2);font-weight:700;color:#fff;text-align:left;padding:.5em .8em}
+.reveal td{padding:.42em .8em;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.reveal tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+.dense{font-size:.86em}.xdense{font-size:.74em}
+.callout{border:1px solid var(--line);border-left:5px solid #818cf8;border-radius:12px;background:var(--card);padding:.55em 1em;margin:.7em 0;font-size:.88em}
+.callout .ct{font-size:.68em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.15em;color:#a5b4fc}
+.callout p,.callout li{margin:.2em 0}.callout>*:last-child{margin-bottom:0}
+.callout.exam{border-left-color:#fb923c;background:rgba(251,146,60,.09)}.callout.exam .ct{color:#fdba74}
+.callout.warn{border-left-color:#f87171;background:rgba(248,113,113,.09)}.callout.warn .ct{color:#fca5a5}
+.callout.tip{border-left-color:#34d399;background:rgba(52,211,153,.09)}.callout.tip .ct{color:#6ee7b7}
+.callout.ex{border-left-color:#c084fc;background:rgba(192,132,252,.09)}.callout.ex .ct{color:#d8b4fe}
+aside.notes{display:none}
+.callout.split .sp{display:grid;grid-template-columns:1fr 1.1fr;gap:1em;align-items:center}
+.callout.split .diagram svg{max-height:430px}
+.diagram{text-align:center;margin:.4em 0}.diagram svg{max-width:100%;height:auto;max-height:470px;width:auto}
+.diagram.tall svg{max-height:540px}
+.diagram .cap,.cap{font-size:.55em;color:var(--mut);margin-top:.3em;text-align:center}
+.vis{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:.5em;text-align:center}
+.vis svg{max-width:100%;height:auto;max-height:480px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1em;align-items:start}
+.two>*{min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6em .9em}
+.q{font-weight:700;color:#fff}
+.chk{border:1px solid rgba(192,132,252,.5);border-radius:14px;padding:.7em 1em;background:rgba(192,132,252,.08);margin:.5em 0}
+.chk .lab{font-size:.55em;letter-spacing:.14em;font-weight:800;color:#d8b4fe;text-transform:uppercase}
+.opts{list-style:none;margin:.4em 0!important;padding:0;display:grid;gap:.35em}
+.opts li{margin:0;padding:.4em .8em;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.ans{margin-top:.6em;padding:.5em .9em;border-radius:10px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.5)}
+.agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:.55em}
+.agenda .card{display:flex;gap:.7em;align-items:center;font-size:.85em;font-weight:600}
+.agenda .n{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:800;font-size:.85em;color:#fff}
+.title-slide{display:flex!important;flex-direction:column;justify-content:center;height:100%}
+.title-slide .kick{font-size:.62em;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);font-weight:700;margin-bottom:1em}
+.title-slide h1{font-size:2.9em;line-height:1.02;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:.25em}
+.title-slide .by{font-size:.8em;color:var(--mut);margin-top:1.2em}
+.chips{display:flex;gap:.6em;flex-wrap:wrap;margin-top:1.2em}
+.chips span{font-size:.55em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.35em .9em;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.sec{display:flex!important;flex-direction:column;justify-content:center;height:100%}
+.sec .no{font-size:5em;font-weight:900;line-height:1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+.sec h2{font-size:2.1em}
+.sec .lead{color:var(--mut);font-size:.85em;max-width:80%}
+#hud{position:fixed;left:18px;top:12px;z-index:30;font:700 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8e94c4;pointer-events:none}
+.copyright-foot{position:fixed;left:0;right:0;bottom:8px;text-align:center;font:600 11px Inter,system-ui,sans-serif;color:#7f86b8;z-index:30;pointer-events:none}
+.reveal .progress{height:4px;color:#c084fc}
+.reveal .controls{color:#a5b4fc}
+.reveal .slide-number{background:transparent;color:#8e94c4;font-size:12px;font-weight:700;right:14px;bottom:8px}
+.reveal .fragment.highlight-current-blue.current-fragment{color:#a5b4fc}
+.reveal .katex{font-size:1.05em}.reveal .arithmatex{color:#fff}
+.reveal .arithmatex.block,.reveal div.arithmatex{margin:.5em 0;text-align:center}
+@media print{#hud,.copyright-foot{display:none}}
+</style>
 </head>
 <body>
-<div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div>
-<div class="reveal">
-  <div class="slides">
-
-        <section>
-      <h1>Unit 12</h1>
-      <h2>Multimedia Application</h2>
-      <p class="small">Multimedia and Application (BCA429CO)</p>
-    </section>
-
-    <section>
-      <h2>Application classes</h2>
-      <table>
-        <tr><th>Class</th><th>Key point</th></tr>
-        <tr><td>Games</td><td>Very large market</td></tr>
-        <tr><td>Repositories</td><td>Play-back only; indexed</td></tr>
-        <tr><td>Interactive TV / VoD</td><td>Set-top box, cable</td></tr>
-        <tr><td>Conferencing, hypermedia mail</td><td>Whiteboard, sharing</td></tr>
-        <tr><td>Shared workspace / executive environment</td><td>Remote output vs local run</td></tr>
-        <tr><td>Business workflow</td><td>Object-oriented databases</td></tr>
-      </table>
-    </section>
-
-    <section>
-      <h2>Types and components</h2>
-      <ul class="small">
-        <li><b>Types</b>: home / entertainment · business (dedicated, departmental, enterprise-wide)</li>
-        <li><b>Input</b>: scanner, workstation, video capture, studio</li>
-        <li><b>Output</b>: workstation, teleconferencing studio, print, fax, gateway</li>
-        <li><b>Storage</b>: database, image, voice mail, audio, video servers, duplication station</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Development cycle</h2>
-      <div class="flow">
-        <div class="box">Planning + costing</div>
-        <span class="arrow">→</span>
-        <div class="box">Designing</div>
-        <span class="arrow">→</span>
-        <div class="box">Producing</div>
-        <span class="arrow">→</span>
-        <div class="box">Testing</div>
-        <span class="arrow">→</span>
-        <div class="box">Delivering</div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Planning and design</h2>
-      <ul class="small">
-        <li>Limits: <b>hardware</b>, software cost, contents (copyright), skills</li>
-        <li><b>Storyboard</b>: every screen, sound, navigation</li>
-        <li>Architecture: linear · hierarchical · non-linear · composite</li>
-        <li>User-friendly: easy to learn, effective, prompt feedback</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Production, testing, delivery</h2>
-      <ul class="small">
-        <li>Rights: license before use (nine protected work types)</li>
-        <li><b>Alpha</b>: in-house · <b>Beta</b>: representative outside users</li>
-        <li>Deliver by CD-ROM or Internet</li>
-        <li>Include media, runtime libraries, drivers, helper programs, installer</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Video on demand</h2>
-      <ul class="small">
-        <li>Server → network → set-top box → TV</li>
-        <li><b>True VoD</b>: stream per user · <b>Near VoD</b>: staggered starts</li>
-        <li>MPEG-2 ≈ 4–6 Mbit/s per stream; 1 Gbit/s ≈ 250 streams at 4 Mbit/s</li>
-        <li><i>Textbook material</i></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Video conferencing</h2>
-      <ul class="small">
-        <li>Point-to-point and multipoint (MCU)</li>
-        <li>Whiteboard, application sharing</li>
-        <li>Delay ≤ 150 ms; lip sync ±80 ms</li>
-        <li>H.320 (ISDN), H.323 · <i>Textbook material</i></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Other application areas</h2>
-      <ul class="small">
-        <li><b>Education</b>: CBT, e-learning, simulations</li>
-        <li><b>Industry</b>: training, kiosks, remote maintenance</li>
-        <li><b>Digital libraries</b>: metadata, indexing, preservation</li>
-        <li><b>Entertainment</b>, <b>media editors</b>, trends: streaming, VR/AR, AI, 5G</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Exam focus</h2>
-      <ul>
-        <li>Application classes and components</li>
-        <li>Five-stage development cycle; storyboard; alpha / beta</li>
-        <li>Short notes: VoD, conferencing, digital library</li>
-      </ul>
-    </section>
-
-</div>
-</div>
+<div id="hud"></div>
+<div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved. &middot; Press <b>?</b> for shortcuts, <b>Esc</b> for overview</div>
+<div class="reveal"><div class="slides">
+<section class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 12<br>Multimedia Application</h1><p style="max-width:75%;color:#aab0d6">Application classes, systems and the development cycle.</p><div class="chips"><span>2 teaching hours</span><span>4 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></section>
+<section><h2><small>Roadmap</small>What we will cover</h2><div class="agenda"><div class="card"><span class="n">1</span>Application Classes</div><div class="card"><span class="n">2</span>System Types and Components</div><div class="card"><span class="n">3</span>Development Cycle</div><div class="card"><span class="n">4</span>Application Areas in Detail</div></div></section>
+<section data-topic="Application Classes"><section class="sec"><div class="no">01</div><h2>Application Classes</h2><div class="lead">Unit 12 &middot; topic 1 of 4</div></section><section class="dense"><h2><small>Application Classes</small>Application Classes <span style="opacity:.55;font-size:.6em">(1/3)</span></h2><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Game systems</strong></td>
+<td>The <strong>leaders in using multimedia technology</strong> because the <strong>market is very large</strong> and demands on quality, although intense, <strong>are not crucial to the success</strong></td>
+</tr>
+<tr>
+<td><strong>Multimedia repositories</strong></td>
+<td>Mostly <strong>play-back-only</strong> systems. <strong>End users do not usually add information</strong>; input and output of the workflow are <strong>independent</strong>. Like games, but the <strong>database is much larger</strong> and the <strong>data needs indexing</strong></td>
+</tr>
+<tr>
+<td><strong>Interactive TV and video on demand</strong></td>
+<td>Usually developed from <strong>cable TV technology</strong>. The <strong>set-top box</strong> connects the <strong>digital network</strong> to the <strong>TV</strong> and other home appliances (telephone, fax). Besides the cable converter function it offers a <strong>full interactive multimedia interface</strong> to services; <strong>standardising the interfaces</strong> (set-top box to network and to home appliance) is <strong>critical</strong></td>
+</tr>
+<tr>
+<td><strong>Video/phone conferencing and hypermedia mail</strong></td>
+<td><strong>Seeing the other person</strong> is a major improvement over voice only. More functions: <strong>interactive whiteboard</strong>, sharing <strong>paper-based diagrams</strong>, sharing <strong>computer output</strong>. <strong>Video messages are kept longer</strong> than voice messages, so need <strong>much more storage</strong></td>
+</tr>
+<tr>
+<td><strong>Shared workspaces and executive environments</strong></td>
+<td><strong>Shared workspace:</strong> a user runs applications and the output appears on <strong>screens at remote locations</strong>. <strong>Shared executive environment:</strong> users at different places <strong>run the same application on their own workstation with the same data</strong></td>
+</tr>
+<tr>
+<td><strong>Business process workflow applications</strong></td>
+<td>Depend on the <strong>business process</strong> being served. <strong>Traditional relational databases must be extended</strong> to handle multimedia elements; <strong>object-oriented databases</strong> are a <strong>more natural medium</strong> for multimedia objects</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-12/application-classes/">Application Classes</a></aside></section><section class=""><h2><small>Application Classes</small>Application Classes <span style="opacity:.55;font-size:.6em">(2/3)</span></h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mmbdf23d522362" role="graphics-document document" viewbox="0 0 1587.09375 261" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mmbdf23d522362{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmbdf23d522362 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmbdf23d522362 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmbdf23d522362 .error-icon{fill:#1c2150;}#mmbdf23d522362 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mmbdf23d522362 .edge-thickness-normal{stroke-width:1px;}#mmbdf23d522362 .edge-thickness-thick{stroke-width:3.5px;}#mmbdf23d522362 .edge-pattern-solid{stroke-dasharray:0;}#mmbdf23d522362 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmbdf23d522362 .edge-pattern-dashed{stroke-dasharray:3;}#mmbdf23d522362 .edge-pattern-dotted{stroke-dasharray:2;}#mmbdf23d522362 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mmbdf23d522362 .marker.cross{stroke:#a5b4fc;}#mmbdf23d522362 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mmbdf23d522362 p{margin:0;}#mmbdf23d522362 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mmbdf23d522362 .cluster-label text{fill:#e3deaf;}#mmbdf23d522362 .cluster-label span{color:#e3deaf;}#mmbdf23d522362 .cluster-label span p{background-color:transparent;}#mmbdf23d522362 .label text,#mmbdf23d522362 span{fill:#f4f4ff;color:#f4f4ff;}#mmbdf23d522362 .node rect,#mmbdf23d522362 .node circle,#mmbdf23d522362 .node ellipse,#mmbdf23d522362 .node polygon,#mmbdf23d522362 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mmbdf23d522362 .rough-node .label text,#mmbdf23d522362 .node .label text,#mmbdf23d522362 .image-shape .label,#mmbdf23d522362 .icon-shape .label{text-anchor:middle;}#mmbdf23d522362 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmbdf23d522362 .rough-node .label,#mmbdf23d522362 .node .label,#mmbdf23d522362 .image-shape .label,#mmbdf23d522362 .icon-shape .label{text-align:center;}#mmbdf23d522362 .node.clickable{cursor:pointer;}#mmbdf23d522362 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mmbdf23d522362 .arrowheadPath{fill:#0b0b0b;}#mmbdf23d522362 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mmbdf23d522362 .flowchart-link{stroke:#a5b4fc;fill:none;}#mmbdf23d522362 .edgeLabel{background-color:#12152b;text-align:center;}#mmbdf23d522362 .edgeLabel p{background-color:#12152b;}#mmbdf23d522362 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmbdf23d522362 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mmbdf23d522362 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mmbdf23d522362 .cluster text{fill:#e3deaf;}#mmbdf23d522362 .cluster span{color:#e3deaf;}#mmbdf23d522362 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mmbdf23d522362 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mmbdf23d522362 rect.text{fill:none;stroke-width:0;}#mmbdf23d522362 .icon-shape,#mmbdf23d522362 .image-shape{background-color:#12152b;text-align:center;}#mmbdf23d522362 .icon-shape p,#mmbdf23d522362 .image-shape p{background-color:#12152b;padding:2px;}#mmbdf23d522362 .icon-shape .label rect,#mmbdf23d522362 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmbdf23d522362 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmbdf23d522362 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmbdf23d522362 .node .neo-node{stroke:#818cf8;}#mmbdf23d522362 [data-look="neo"].node rect,#mmbdf23d522362 [data-look="neo"].cluster rect,#mmbdf23d522362 [data-look="neo"].node polygon{stroke:url(#mmbdf23d522362-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmbdf23d522362 [data-look="neo"].swimlane.cluster rect{filter:none;}#mmbdf23d522362 [data-look="neo"].node path{stroke:url(#mmbdf23d522362-gradient);stroke-width:1px;}#mmbdf23d522362 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmbdf23d522362 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mmbdf23d522362 [data-look="neo"].node circle{stroke:url(#mmbdf23d522362-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmbdf23d522362 [data-look="neo"].node circle .state-start{fill:#000000;}#mmbdf23d522362 [data-look="neo"].icon-shape .icon{fill:url(#mmbdf23d522362-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmbdf23d522362 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mmbdf23d522362-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmbdf23d522362 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mmbdf23d522362_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmbdf23d522362_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmbdf23d522362_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmbdf23d522362_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mmbdf23d522362_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmbdf23d522362_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmbdf23d522362_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmbdf23d522362_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mmbdf23d522362_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmbdf23d522362_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmbdf23d522362_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mmbdf23d522362_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M591.66,64.027L509.839,72.856C428.018,81.685,264.376,99.342,182.555,116.171C100.734,133,100.734,149,100.734,157L100.734,165" data-edge="true" data-et="edge" data-id="L_A_G_0" data-look="classic" data-points="W3sieCI6NTkxLjY2MDE1NjI1LCJ5Ijo2NC4wMjc0NDEzODM1MTg4fSx7IngiOjEwMC43MzQzNzUsInkiOjExN30seyJ4IjoxMDAuNzM0Mzc1LCJ5IjoxNjl9XQ==" id="mmbdf23d522362-L_A_G_0" marker-end="url(#mmbdf23d522362_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M591.66,72.024L547.413,79.52C503.167,87.016,414.673,102.008,370.426,117.504C326.18,133,326.18,149,326.18,157L326.18,165" data-edge="true" data-et="edge" data-id="L_A_R_0" data-look="classic" data-points="W3sieCI6NTkxLjY2MDE1NjI1LCJ5Ijo3Mi4wMjM4NDM2MjM3NTY3fSx7IngiOjMyNi4xNzk2ODc1LCJ5IjoxMTd9LHsieCI6MzI2LjE3OTY4NzUsInkiOjE2OX1d" id="mmbdf23d522362-L_A_R_0" marker-end="url(#mmbdf23d522362_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M629.141,92L619.963,96.167C610.784,100.333,592.427,108.667,583.249,120.833C574.07,133,574.07,149,574.07,157L574.07,165" data-edge="true" data-et="edge" data-id="L_A_I_0" data-look="classic" data-points="W3sieCI6NjI5LjE0MTE0OTcyMDE0OTMsInkiOjkyfSx7IngiOjU3NC4wNzAzMTI1LCJ5IjoxMTd9LHsieCI6NTc0LjA3MDMxMjUsInkiOjE2OX1d" id="mmbdf23d522362-L_A_I_0" marker-end="url(#mmbdf23d522362_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M814.179,92L823.358,96.167C832.536,100.333,850.893,108.667,860.072,116.333C869.25,124,869.25,131,869.25,134.5L869.25,138" data-edge="true" data-et="edge" data-id="L_A_V_0" data-look="classic" data-points="W3sieCI6ODE0LjE3OTE2Mjc3OTg1MDcsInkiOjkyfSx7IngiOjg2OS4yNSwieSI6MTE3fSx7IngiOjg2OS4yNSwieSI6MTQyfV0=" id="mmbdf23d522362-L_A_V_0" marker-end="url(#mmbdf23d522362_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M851.66,69.035L906.258,77.029C960.857,85.023,1070.053,101.012,1124.652,114.756C1179.25,128.5,1179.25,140,1179.25,145.75L1179.25,151.5" data-edge="true" data-et="edge" data-id="L_A_S_0" data-look="classic" data-points="W3sieCI6ODUxLjY2MDE1NjI1LCJ5Ijo2OS4wMzQ1MTMzNzI1NDQ2N30seyJ4IjoxMTc5LjI1LCJ5IjoxMTd9LHsieCI6MTE3OS4yNSwieSI6MTU1LjV9XQ==" id="mmbdf23d522362-L_A_S_0" marker-end="url(#mmbdf23d522362_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M851.66,61.652L954.579,70.877C1057.497,80.101,1263.335,98.551,1366.253,115.775C1469.172,133,1469.172,149,1469.172,157L1469.172,165" data-edge="true" data-et="edge" data-id="L_A_B_0" data-look="classic" data-points="W3sieCI6ODUxLjY2MDE1NjI1LCJ5Ijo2MS42NTE5OTEyNDE3NzYxfSx7IngiOjE0NjkuMTcxODc1LCJ5IjoxMTd9LHsieCI6MTQ2OS4xNzE4NzUsInkiOjE2OX1d" id="mmbdf23d522362-L_A_B_0" marker-end="url(#mmbdf23d522362_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_A_G_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_A_R_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_A_I_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_A_V_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_A_S_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_A_B_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mmbdf23d522362-flowchart-A-0" transform="translate(721.66015625, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Multimedia applications</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmbdf23d522362-flowchart-G-1" transform="translate(100.734375, 197.5)"><rect class="basic label-container" height="57" style="" width="185.46875" x="-92.734375" y="-28.5"></rect><g class="label" style="" transform="translate(-62.734375, -13.5)"><rect></rect><foreignobject height="27" width="125.46875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Game systems</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmbdf23d522362-flowchart-R-3" transform="translate(326.1796875, 197.5)"><rect class="basic label-container" height="57" style="" width="165.421875" x="-82.7109375" y="-28.5"></rect><g class="label" style="" transform="translate(-52.7109375, -13.5)"><rect></rect><foreignobject height="27" width="105.421875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Repositories</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmbdf23d522362-flowchart-I-5" transform="translate(574.0703125, 197.5)"><rect class="basic label-container" height="57" style="" width="230.359375" x="-115.1796875" y="-28.5"></rect><g class="label" style="" transform="translate(-85.1796875, -13.5)"><rect></rect><foreignobject height="27" width="170.359375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Interactive TV / VoD</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmbdf23d522362-flowchart-V-7" transform="translate(869.25, 197.5)"><rect class="basic label-container" height="111" style="" width="260" x="-130" y="-55.5"></rect><g class="label" style="" transform="translate(-100, -40.5)"><rect></rect><foreignobject height="81" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Video and phone conferencing, hypermedia mail</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmbdf23d522362-flowchart-S-9" transform="translate(1179.25, 197.5)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Shared workspace, executive environment</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmbdf23d522362-flowchart-B-11" transform="translate(1469.171875, 197.5)"><rect class="basic label-container" height="57" style="" width="219.84375" x="-109.921875" y="-28.5"></rect><g class="label" style="" transform="translate(-79.921875, -13.5)"><rect></rect><foreignobject height="27" width="159.84375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Business workflow</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mmbdf23d522362-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mmbdf23d522362-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mmbdf23d522362-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-12/application-classes/">Application Classes</a></aside></section><section class=""><h2><small>Application Classes</small>Application Classes <span style="opacity:.55;font-size:.6em">(3/3)</span></h2><div class="callout exam"><div class="ct">Exam tip</div>
+<p>Learn one distinguishing sentence per class: games = big market; repositories = play-back only, indexed; interactive TV = set-top box; conferencing = whiteboard, sharing; shared workspace vs shared executive environment; workflow = object-oriented databases.</p>
+</div><aside class="notes">Source note: <a href="../../unit-12/application-classes/">Application Classes</a></aside></section><section class=""><h2><small>Application Classes</small>Checkpoint <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Differentiate shared workspace and shared executive environment.</p><div class="fragment ans">
+<p>Shared workspace: one site runs the application, others see its output. Shared executive environment: each site runs the same application locally on the same data.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-12/application-classes/">Application Classes</a></aside></section><section class=""><h2><small>Application Classes</small>Checkpoint <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">What is a set-top box?</p><div class="fragment ans">
+<p>The device connecting the digital network to the TV and home appliances, providing interactive multimedia services.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-12/application-classes/">Application Classes</a></aside></section></section>
+<section data-topic="System Types and Components"><section class="sec"><div class="no">02</div><h2>System Types and Components</h2><div class="lead">Unit 12 &middot; topic 2 of 4</div></section><section class=""><h2><small>System Types and Components</small>Types of multimedia systems</h2><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Home / entertainment systems</strong></td>
+<td><strong>Mostly interactive but not live</strong>; the interaction is <strong>completely pre-programmed</strong>. May include a <strong>PC and a set-top box plus a TV</strong>, connected to a <strong>cable service</strong> or an Internet service</td>
+</tr>
+<tr>
+<td><strong>Business systems: dedicated</strong></td>
+<td>Creation, storage and manipulation of multimedia objects happen <strong>completely within the system</strong></td>
+</tr>
+<tr>
+<td><strong>Business systems: departmental</strong></td>
+<td>Use a <strong>LAN</strong> for <strong>shared object storage management and processing</strong>; support a specific business process shared by most users in the department</td>
+</tr>
+<tr>
+<td><strong>Business systems: enterprise-wide</strong></td>
+<td><strong>Many LANs and WANs interconnected</strong>; share departmental or enterprise-level storage and processing; support <strong>local, departmental and inter-departmental</strong> applications</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-12/system-types-and-components/">System Types and Components</a></aside></section><section class=""><h2><small>System Types and Components</small>Components of a multimedia system</h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm2c8f22434789" role="graphics-document document" viewbox="0 0 690.34375 73" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm2c8f22434789{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm2c8f22434789 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm2c8f22434789 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm2c8f22434789 .error-icon{fill:#1c2150;}#mm2c8f22434789 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm2c8f22434789 .edge-thickness-normal{stroke-width:1px;}#mm2c8f22434789 .edge-thickness-thick{stroke-width:3.5px;}#mm2c8f22434789 .edge-pattern-solid{stroke-dasharray:0;}#mm2c8f22434789 .edge-thickness-invisible{stroke-width:0;fill:none;}#mm2c8f22434789 .edge-pattern-dashed{stroke-dasharray:3;}#mm2c8f22434789 .edge-pattern-dotted{stroke-dasharray:2;}#mm2c8f22434789 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm2c8f22434789 .marker.cross{stroke:#a5b4fc;}#mm2c8f22434789 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm2c8f22434789 p{margin:0;}#mm2c8f22434789 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm2c8f22434789 .cluster-label text{fill:#e3deaf;}#mm2c8f22434789 .cluster-label span{color:#e3deaf;}#mm2c8f22434789 .cluster-label span p{background-color:transparent;}#mm2c8f22434789 .label text,#mm2c8f22434789 span{fill:#f4f4ff;color:#f4f4ff;}#mm2c8f22434789 .node rect,#mm2c8f22434789 .node circle,#mm2c8f22434789 .node ellipse,#mm2c8f22434789 .node polygon,#mm2c8f22434789 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm2c8f22434789 .rough-node .label text,#mm2c8f22434789 .node .label text,#mm2c8f22434789 .image-shape .label,#mm2c8f22434789 .icon-shape .label{text-anchor:middle;}#mm2c8f22434789 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm2c8f22434789 .rough-node .label,#mm2c8f22434789 .node .label,#mm2c8f22434789 .image-shape .label,#mm2c8f22434789 .icon-shape .label{text-align:center;}#mm2c8f22434789 .node.clickable{cursor:pointer;}#mm2c8f22434789 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm2c8f22434789 .arrowheadPath{fill:#0b0b0b;}#mm2c8f22434789 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm2c8f22434789 .flowchart-link{stroke:#a5b4fc;fill:none;}#mm2c8f22434789 .edgeLabel{background-color:#12152b;text-align:center;}#mm2c8f22434789 .edgeLabel p{background-color:#12152b;}#mm2c8f22434789 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm2c8f22434789 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm2c8f22434789 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm2c8f22434789 .cluster text{fill:#e3deaf;}#mm2c8f22434789 .cluster span{color:#e3deaf;}#mm2c8f22434789 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm2c8f22434789 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm2c8f22434789 rect.text{fill:none;stroke-width:0;}#mm2c8f22434789 .icon-shape,#mm2c8f22434789 .image-shape{background-color:#12152b;text-align:center;}#mm2c8f22434789 .icon-shape p,#mm2c8f22434789 .image-shape p{background-color:#12152b;padding:2px;}#mm2c8f22434789 .icon-shape .label rect,#mm2c8f22434789 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm2c8f22434789 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm2c8f22434789 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm2c8f22434789 .node .neo-node{stroke:#818cf8;}#mm2c8f22434789 [data-look="neo"].node rect,#mm2c8f22434789 [data-look="neo"].cluster rect,#mm2c8f22434789 [data-look="neo"].node polygon{stroke:url(#mm2c8f22434789-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm2c8f22434789 [data-look="neo"].swimlane.cluster rect{filter:none;}#mm2c8f22434789 [data-look="neo"].node path{stroke:url(#mm2c8f22434789-gradient);stroke-width:1px;}#mm2c8f22434789 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm2c8f22434789 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm2c8f22434789 [data-look="neo"].node circle{stroke:url(#mm2c8f22434789-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm2c8f22434789 [data-look="neo"].node circle .state-start{fill:#000000;}#mm2c8f22434789 [data-look="neo"].icon-shape .icon{fill:url(#mm2c8f22434789-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm2c8f22434789 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm2c8f22434789-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm2c8f22434789 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm2c8f22434789_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm2c8f22434789_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm2c8f22434789_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm2c8f22434789_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm2c8f22434789_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm2c8f22434789_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm2c8f22434789_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm2c8f22434789_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm2c8f22434789_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm2c8f22434789_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm2c8f22434789_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm2c8f22434789_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M186.688,36.5L190.854,36.5C195.021,36.5,203.354,36.5,211.021,36.5C218.688,36.5,225.688,36.5,229.188,36.5L232.688,36.5" data-edge="true" data-et="edge" data-id="L_I_S_0" data-look="classic" data-points="W3sieCI6MTg2LjY4NzUsInkiOjM2LjV9LHsieCI6MjExLjY4NzUsInkiOjM2LjV9LHsieCI6MjM2LjY4NzUsInkiOjM2LjV9XQ==" id="mm2c8f22434789-L_I_S_0" marker-end="url(#mm2c8f22434789_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M438.828,36.5L442.995,36.5C447.161,36.5,455.495,36.5,463.161,36.5C470.828,36.5,477.828,36.5,481.328,36.5L484.828,36.5" data-edge="true" data-et="edge" data-id="L_S_O_0" data-look="classic" data-points="W3sieCI6NDM4LjgyODEyNSwieSI6MzYuNX0seyJ4Ijo0NjMuODI4MTI1LCJ5IjozNi41fSx7IngiOjQ4OC44MjgxMjUsInkiOjM2LjV9XQ==" id="mm2c8f22434789-L_S_O_0" marker-end="url(#mm2c8f22434789_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_I_S_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_S_O_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm2c8f22434789-flowchart-I-0" transform="translate(97.34375, 36.5)"><rect class="basic label-container" height="57" style="" width="178.6875" x="-89.34375" y="-28.5"></rect><g class="label" style="" transform="translate(-59.34375, -13.5)"><rect></rect><foreignobject height="27" width="118.6875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Input systems</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm2c8f22434789-flowchart-S-1" transform="translate(337.7578125, 36.5)"><rect class="basic label-container" height="57" style="" width="202.140625" x="-101.0703125" y="-28.5"></rect><g class="label" style="" transform="translate(-71.0703125, -13.5)"><rect></rect><foreignobject height="27" width="142.140625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Storage systems</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm2c8f22434789-flowchart-O-2" transform="translate(585.5859375, 36.5)"><rect class="basic label-container" height="57" style="" width="193.515625" x="-96.7578125" y="-28.5"></rect><g class="label" style="" transform="translate(-66.7578125, -13.5)"><rect></rect><foreignobject height="27" width="133.515625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Output systems</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm2c8f22434789-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm2c8f22434789-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm2c8f22434789-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-12/system-types-and-components/">System Types and Components</a></aside></section><section class=""><h2><small>Components of a multimedia system</small>Multimedia input systems</h2><table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scanning node</strong></td>
+<td>Captures <strong>still images and document images</strong></td>
+</tr>
+<tr>
+<td><strong>User workstation</strong></td>
+<td>May serve as <strong>voice and video input</strong> node</td>
+</tr>
+<tr>
+<td><strong>Video capture node</strong></td>
+<td>Needed because video capture needs <strong>special hardware and software</strong></td>
+</tr>
+<tr>
+<td><strong>Professional studio</strong></td>
+<td>For <strong>high-quality, professional</strong> multimedia objects</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-12/system-types-and-components/">System Types and Components</a></aside></section><section class=""><h2><small>Components of a multimedia system</small>Multimedia output systems</h2><table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>User workstation</strong></td>
+<td>Output node for text, graphics, image, audio, video</td>
+</tr>
+<tr>
+<td><strong>Teleconferencing studio</strong></td>
+<td>A professional studio with <strong>multiple monitors, sound systems and channel-switching controls</strong></td>
+</tr>
+<tr>
+<td><strong>Print server</strong></td>
+<td><strong>Hard-copy</strong> output of text, graphics and images</td>
+</tr>
+<tr>
+<td><strong>Fax server</strong></td>
+<td>Data arriving through the <strong>telephone channel</strong></td>
+</tr>
+<tr>
+<td><strong>Gateway nodes</strong></td>
+<td>Communication with <strong>other systems</strong></td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-12/system-types-and-components/">System Types and Components</a></aside></section><section class="dense"><h2><small>Components of a multimedia system</small>Multimedia storage systems <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>Need <strong>large on-line storage as well as near-line and off-line storage</strong>, and the ability to <strong>duplicate</strong> objects.</p><table>
+<thead>
+<tr>
+<th>Server</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Database server</strong></td>
+<td>Normal database needs of a multimedia application</td>
+</tr>
+<tr>
+<td><strong>Image server</strong></td>
+<td><strong>Storage and indexing</strong> of document images and graphics</td>
+</tr>
+<tr>
+<td><strong>Voice mail server</strong></td>
+<td>Voice messages</td>
+</tr>
+<tr>
+<td><strong>Audio server</strong></td>
+<td>Manages <strong>digitised voice and audio objects</strong>; can do <strong>isochronous playback</strong></td>
+</tr>
+<tr>
+<td><strong>Video server</strong></td>
+<td>Must maintain <strong>constant playback speed</strong> and handle <strong>very large data volumes</strong></td>
+</tr>
+<tr>
+<td><strong>Duplication station</strong></td>
+<td><strong>High-speed duplication</strong> to recordable CDs, optical disks, etc.</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-12/system-types-and-components/">System Types and Components</a></aside></section><section class=""><h2><small>Components of a multimedia system</small>Multimedia storage systems <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout exam"><div class="ct">Exam tip</div>
+<p>"List the components of a multimedia system" = input (scanner, workstation, video capture, studio), storage (the six servers), output (workstation, teleconferencing studio, print, fax, gateway).</p>
+</div><aside class="notes">Source note: <a href="../../unit-12/system-types-and-components/">System Types and Components</a></aside></section><section class="xdense"><h2><small>System Types and Components</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Differentiate dedicated, departmental and enterprise-wide business systems.</p><div class="fragment ans">
+<p>Dedicated: all inside one system. Departmental: LAN-based shared storage and processing for a department. Enterprise-wide: many interconnected LANs and WANs.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Why does a video server differ from an image server?</p><div class="fragment ans">
+<p>It must keep a constant playback rate and handle very large data volumes.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-12/system-types-and-components/">System Types and Components</a></aside></section></section>
+<section data-topic="Development Cycle"><section class="sec"><div class="no">03</div><h2>Development Cycle</h2><div class="lead">Unit 12 &middot; topic 3 of 4</div></section><section><h2><small>Development Cycle</small>The cycle at a glance</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 731.52 328.32" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T17:40:37.503189</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 328.32 
+L 731.52 328.32 
+L 731.52 0 
+L 0 0 
+L 0 328.32 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 28.56 183.168 
+L 132.96 183.168 
+Q 137.76 183.168 137.76 178.0992 
+L 137.76 105.8688 
+Q 137.76 100.8 132.96 100.8 
+L 28.56 100.8 
+Q 23.76 100.8 23.76 105.8688 
+L 23.76 178.0992 
+Q 23.76 183.168 28.56 183.168 
+z
+" clip-path="url(#p271bd8a9b7)" style="fill: #27306b; stroke: #818cf8; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 142.762075 141.984 
+Q 151.261513 141.984 157.972096 141.984 
+" clip-path="url(#p271bd8a9b7)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 152.372096 139.184 
+L 157.972096 141.984 
+L 152.372096 144.784 
+z
+" clip-path="url(#p271bd8a9b7)" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 166.56 183.168 
+L 270.96 183.168 
+Q 275.76 183.168 275.76 178.0992 
+L 275.76 105.8688 
+Q 275.76 100.8 270.96 100.8 
+L 166.56 100.8 
+Q 161.76 100.8 161.76 105.8688 
+L 161.76 178.0992 
+Q 161.76 183.168 166.56 183.168 
+z
+" clip-path="url(#p271bd8a9b7)" style="fill: #27306b; stroke: #c084fc; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 280.762075 141.984 
+Q 289.261513 141.984 295.972096 141.984 
+" clip-path="url(#p271bd8a9b7)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 290.372096 139.184 
+L 295.972096 141.984 
+L 290.372096 144.784 
+z
+" clip-path="url(#p271bd8a9b7)" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 304.56 183.168 
+L 408.96 183.168 
+Q 413.76 183.168 413.76 178.0992 
+L 413.76 105.8688 
+Q 413.76 100.8 408.96 100.8 
+L 304.56 100.8 
+Q 299.76 100.8 299.76 105.8688 
+L 299.76 178.0992 
+Q 299.76 183.168 304.56 183.168 
+z
+" clip-path="url(#p271bd8a9b7)" style="fill: #27306b; stroke: #f472b6; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 418.762075 141.984 
+Q 427.261513 141.984 433.972096 141.984 
+" clip-path="url(#p271bd8a9b7)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 428.372096 139.184 
+L 433.972096 141.984 
+L 428.372096 144.784 
+z
+" clip-path="url(#p271bd8a9b7)" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 442.56 183.168 
+L 546.96 183.168 
+Q 551.76 183.168 551.76 178.0992 
+L 551.76 105.8688 
+Q 551.76 100.8 546.96 100.8 
+L 442.56 100.8 
+Q 437.76 100.8 437.76 105.8688 
+L 437.76 178.0992 
+Q 437.76 183.168 442.56 183.168 
+z
+" clip-path="url(#p271bd8a9b7)" style="fill: #27306b; stroke: #fb923c; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 556.762075 141.984 
+Q 565.261513 141.984 571.972096 141.984 
+" clip-path="url(#p271bd8a9b7)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 566.372096 139.184 
+L 571.972096 141.984 
+L 566.372096 144.784 
+z
+" clip-path="url(#p271bd8a9b7)" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 580.56 183.168 
+L 684.96 183.168 
+Q 689.76 183.168 689.76 178.0992 
+L 689.76 105.8688 
+Q 689.76 100.8 684.96 100.8 
+L 580.56 100.8 
+Q 575.76 100.8 575.76 105.8688 
+L 575.76 178.0992 
+Q 575.76 183.168 580.56 183.168 
+z
+" clip-path="url(#p271bd8a9b7)" style="fill: #27306b; stroke: #34d399; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 675.924368 190.309207 
+Q 377.757192 320.700021 81.024126 190.933911 
+" clip-path="url(#p271bd8a9b7)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #9aa0cc; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 85.033058 195.743117 
+L 81.024126 190.933911 
+L 87.276851 190.61229 
+z
+" clip-path="url(#p271bd8a9b7)" style="fill: #9aa0cc; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #9aa0cc; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="17.76" y="24.768" transform="rotate(-0 17.76 24.768)">Multimedia development cycle</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(60.598164 138.070631)">1 Plan</text>
+    <text style="font-weight: 700; font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(60.214531 151.872877)">&amp; cost</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(190.48168 138.070182)">2 Design</text>
+    <text style="font-weight: 700; font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(166.907578 151.873326)">(storyboard, UI)</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(324.398281 138.070182)">3 Develop</text>
+    <text style="font-weight: 700; font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(323.324648 151.873326)">&amp; produce</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(475.528047 138.069732)">4 Test</text>
+    <text style="font-weight: 700; font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(467.403477 151.872877)">&amp; debug</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="632.76" y="144.971754" transform="rotate(-0 632.76 144.971754)">5 Deliver</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="377.76" y="303.552" transform="rotate(-0 377.76 303.552)">iterate: feedback from testing and users returns to design</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p271bd8a9b7">
+   <rect x="5.76" y="5.76" width="720" height="316.8"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap"></div></section><section class=""><h2><small>Development Cycle</small>Development Cycle</h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm9a0bb5d1a363" role="graphics-document document" viewbox="0 0 1323.78125 100" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm9a0bb5d1a363{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm9a0bb5d1a363 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm9a0bb5d1a363 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm9a0bb5d1a363 .error-icon{fill:#1c2150;}#mm9a0bb5d1a363 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm9a0bb5d1a363 .edge-thickness-normal{stroke-width:1px;}#mm9a0bb5d1a363 .edge-thickness-thick{stroke-width:3.5px;}#mm9a0bb5d1a363 .edge-pattern-solid{stroke-dasharray:0;}#mm9a0bb5d1a363 .edge-thickness-invisible{stroke-width:0;fill:none;}#mm9a0bb5d1a363 .edge-pattern-dashed{stroke-dasharray:3;}#mm9a0bb5d1a363 .edge-pattern-dotted{stroke-dasharray:2;}#mm9a0bb5d1a363 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm9a0bb5d1a363 .marker.cross{stroke:#a5b4fc;}#mm9a0bb5d1a363 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm9a0bb5d1a363 p{margin:0;}#mm9a0bb5d1a363 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm9a0bb5d1a363 .cluster-label text{fill:#e3deaf;}#mm9a0bb5d1a363 .cluster-label span{color:#e3deaf;}#mm9a0bb5d1a363 .cluster-label span p{background-color:transparent;}#mm9a0bb5d1a363 .label text,#mm9a0bb5d1a363 span{fill:#f4f4ff;color:#f4f4ff;}#mm9a0bb5d1a363 .node rect,#mm9a0bb5d1a363 .node circle,#mm9a0bb5d1a363 .node ellipse,#mm9a0bb5d1a363 .node polygon,#mm9a0bb5d1a363 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm9a0bb5d1a363 .rough-node .label text,#mm9a0bb5d1a363 .node .label text,#mm9a0bb5d1a363 .image-shape .label,#mm9a0bb5d1a363 .icon-shape .label{text-anchor:middle;}#mm9a0bb5d1a363 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm9a0bb5d1a363 .rough-node .label,#mm9a0bb5d1a363 .node .label,#mm9a0bb5d1a363 .image-shape .label,#mm9a0bb5d1a363 .icon-shape .label{text-align:center;}#mm9a0bb5d1a363 .node.clickable{cursor:pointer;}#mm9a0bb5d1a363 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm9a0bb5d1a363 .arrowheadPath{fill:#0b0b0b;}#mm9a0bb5d1a363 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm9a0bb5d1a363 .flowchart-link{stroke:#a5b4fc;fill:none;}#mm9a0bb5d1a363 .edgeLabel{background-color:#12152b;text-align:center;}#mm9a0bb5d1a363 .edgeLabel p{background-color:#12152b;}#mm9a0bb5d1a363 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm9a0bb5d1a363 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm9a0bb5d1a363 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm9a0bb5d1a363 .cluster text{fill:#e3deaf;}#mm9a0bb5d1a363 .cluster span{color:#e3deaf;}#mm9a0bb5d1a363 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm9a0bb5d1a363 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm9a0bb5d1a363 rect.text{fill:none;stroke-width:0;}#mm9a0bb5d1a363 .icon-shape,#mm9a0bb5d1a363 .image-shape{background-color:#12152b;text-align:center;}#mm9a0bb5d1a363 .icon-shape p,#mm9a0bb5d1a363 .image-shape p{background-color:#12152b;padding:2px;}#mm9a0bb5d1a363 .icon-shape .label rect,#mm9a0bb5d1a363 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm9a0bb5d1a363 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm9a0bb5d1a363 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm9a0bb5d1a363 .node .neo-node{stroke:#818cf8;}#mm9a0bb5d1a363 [data-look="neo"].node rect,#mm9a0bb5d1a363 [data-look="neo"].cluster rect,#mm9a0bb5d1a363 [data-look="neo"].node polygon{stroke:url(#mm9a0bb5d1a363-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm9a0bb5d1a363 [data-look="neo"].swimlane.cluster rect{filter:none;}#mm9a0bb5d1a363 [data-look="neo"].node path{stroke:url(#mm9a0bb5d1a363-gradient);stroke-width:1px;}#mm9a0bb5d1a363 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm9a0bb5d1a363 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm9a0bb5d1a363 [data-look="neo"].node circle{stroke:url(#mm9a0bb5d1a363-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm9a0bb5d1a363 [data-look="neo"].node circle .state-start{fill:#000000;}#mm9a0bb5d1a363 [data-look="neo"].icon-shape .icon{fill:url(#mm9a0bb5d1a363-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm9a0bb5d1a363 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm9a0bb5d1a363-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm9a0bb5d1a363 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm9a0bb5d1a363_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm9a0bb5d1a363_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm9a0bb5d1a363_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm9a0bb5d1a363_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm9a0bb5d1a363_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm9a0bb5d1a363_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm9a0bb5d1a363_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm9a0bb5d1a363_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm9a0bb5d1a363_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm9a0bb5d1a363_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm9a0bb5d1a363_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm9a0bb5d1a363_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M263.234,50L267.401,50C271.568,50,279.901,50,287.568,50C295.234,50,302.234,50,305.734,50L309.234,50" data-edge="true" data-et="edge" data-id="L_P_D_0" data-look="classic" data-points="W3sieCI6MjYzLjIzNDM3NSwieSI6NTB9LHsieCI6Mjg4LjIzNDM3NSwieSI6NTB9LHsieCI6MzEzLjIzNDM3NSwieSI6NTB9XQ==" id="mm9a0bb5d1a363-L_P_D_0" marker-end="url(#mm9a0bb5d1a363_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M479.516,50L483.682,50C487.849,50,496.182,50,503.849,50C511.516,50,518.516,50,522.016,50L525.516,50" data-edge="true" data-et="edge" data-id="L_D_V_0" data-look="classic" data-points="W3sieCI6NDc5LjUxNTYyNSwieSI6NTB9LHsieCI6NTA0LjUxNTYyNSwieSI6NTB9LHsieCI6NTI5LjUxNTYyNSwieSI6NTB9XQ==" id="mm9a0bb5d1a363-L_D_V_0" marker-end="url(#mm9a0bb5d1a363_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M789.516,50L793.682,50C797.849,50,806.182,50,813.849,50C821.516,50,828.516,50,832.016,50L835.516,50" data-edge="true" data-et="edge" data-id="L_V_T_0" data-look="classic" data-points="W3sieCI6Nzg5LjUxNTYyNSwieSI6NTB9LHsieCI6ODE0LjUxNTYyNSwieSI6NTB9LHsieCI6ODM5LjUxNTYyNSwieSI6NTB9XQ==" id="mm9a0bb5d1a363-L_V_T_0" marker-end="url(#mm9a0bb5d1a363_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M1099.516,50L1103.682,50C1107.849,50,1116.182,50,1123.849,50C1131.516,50,1138.516,50,1142.016,50L1145.516,50" data-edge="true" data-et="edge" data-id="L_T_L_0" data-look="classic" data-points="W3sieCI6MTA5OS41MTU2MjUsInkiOjUwfSx7IngiOjExMjQuNTE1NjI1LCJ5Ijo1MH0seyJ4IjoxMTQ5LjUxNTYyNSwieSI6NTB9XQ==" id="mm9a0bb5d1a363-L_T_L_0" marker-end="url(#mm9a0bb5d1a363_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_P_D_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_V_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_V_T_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_T_L_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm9a0bb5d1a363-flowchart-P-0" transform="translate(135.6171875, 50)"><rect class="basic label-container" height="57" style="" width="255.234375" x="-127.6171875" y="-28.5"></rect><g class="label" style="" transform="translate(-97.6171875, -13.5)"><rect></rect><foreignobject height="27" width="195.234375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>1. Planning and costing</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm9a0bb5d1a363-flowchart-D-1" transform="translate(396.375, 50)"><rect class="basic label-container" height="57" style="" width="166.28125" x="-83.140625" y="-28.5"></rect><g class="label" style="" transform="translate(-53.140625, -13.5)"><rect></rect><foreignobject height="27" width="106.28125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>2. Designing</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm9a0bb5d1a363-flowchart-V-2" transform="translate(659.515625, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>3. Developing and producing</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm9a0bb5d1a363-flowchart-T-3" transform="translate(969.515625, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>4. Testing and debugging</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm9a0bb5d1a363-flowchart-L-4" transform="translate(1232.6484375, 50)"><rect class="basic label-container" height="57" style="" width="166.265625" x="-83.1328125" y="-28.5"></rect><g class="label" style="" transform="translate(-53.1328125, -13.5)"><rect></rect><foreignobject height="27" width="106.265625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>5. Delivering</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm9a0bb5d1a363-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm9a0bb5d1a363-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm9a0bb5d1a363-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-12/development-cycle/">Development Cycle</a></aside></section><section class=""><h2><small>Development Cycle</small>1. Planning and costing <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>Main concerns:</p><ul>
+<li class="fragment fade-up">capture the <strong>ideas and requirements</strong> of you or your clients;</li>
+<li class="fragment fade-up">identify the <strong>potential audience and users</strong>;</li>
+<li class="fragment fade-up">find the <strong>benefit</strong> of developing the application;</li>
+<li class="fragment fade-up">evaluate <strong>feasibility and cost</strong> of the whole project (production, testing, delivery).</li>
+</ul><p>A <strong>"back-of-the-envelope" or "paper napkin"</strong> approach is often used: capture ideas and judge feasibility quickly. The most important considerations:</p><aside class="notes">Source note: <a href="../../unit-12/development-cycle/">Development Cycle</a></aside></section><section class=""><h2><small>Development Cycle</small>1. Planning and costing <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hardware</strong></td>
+<td>The <strong>most common limiting factor</strong> for development time and end users: poor or no sound device, <strong>limited storage</strong>, <strong>very narrow network bandwidth</strong></td>
+</tr>
+<tr>
+<td><strong>Software</strong></td>
+<td><strong>Development software is expensive</strong>; software needed by end users adds up</td>
+</tr>
+<tr>
+<td><strong>Contents</strong></td>
+<td>Existing material may <strong>not match</strong> needs, may be <strong>copyrighted</strong> (permission may be refused); new material is <strong>expensive and slow</strong></td>
+</tr>
+<tr>
+<td><strong>Skills</strong></td>
+<td>Very broad: <strong>computer, artistic and application-domain</strong> skills</td>
+</tr>
+</tbody>
+</table><p>It helps to build a <strong>pilot project or prototype</strong> first.</p><aside class="notes">Source note: <a href="../../unit-12/development-cycle/">Development Cycle</a></aside></section><section class=""><h2><small>Development Cycle</small>2. Designing</h2><p>A <strong>creative activity</strong> needing computer skills, <strong>talent in graphic arts, video and music</strong>, and knowledge of the <strong>subject area</strong>.</p><h3>Storyboarding</h3><p>A <strong>storyboard</strong> describes the project <strong>in exact detail with words and sketches</strong> for each <strong>screen image, sound and navigational choice</strong>. It can be very detailed (every screen down to <strong>colour, shade, text and attributes</strong>) or only a schematic guide, drawn on <strong>paper</strong> or with a <strong>computer tool</strong>.</p><aside class="notes">Source note: <a href="../../unit-12/development-cycle/">Development Cycle</a></aside></section><section class=""><h2><small>2. Designing</small>Architecture</h2><p>The <strong>arrangement of the multimedia information</strong>; a well-organised document lets users find information efficiently; start early. Types:</p><table>
+<thead>
+<tr>
+<th>Architecture</th>
+<th>Structure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linear</strong></td>
+<td>One path from start to end</td>
+</tr>
+<tr>
+<td><strong>Hierarchical</strong></td>
+<td>Tree of menus and sub-menus</td>
+</tr>
+<tr>
+<td><strong>Non-linear</strong></td>
+<td>Free links between nodes (hypermedia)</td>
+</tr>
+<tr>
+<td><strong>Composite</strong></td>
+<td>A mix of the above</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-12/development-cycle/">Development Cycle</a></aside></section><section class=""><h2><small>2. Designing</small>User interface <span style="opacity:.55;font-size:.6em">(1/3)</span></h2><ul><li class="fragment fade-up">The emphasis is on <strong>multimedia presentation</strong>; <strong>content selection</strong> is the key and is limited by the <strong>size and complexity</strong> of the presentation, the <strong>quality of information</strong>, <strong>display hardware limits</strong>, and the need for <strong>completeness and coherence</strong>.</li><li class="fragment fade-up">Media must be <strong>"adequate"</strong>: to teach tennis, <strong>graphics and video</strong> suit better than text.</li><li class="fragment fade-up"><strong>Coordination</strong> means composing the media.</li></ul><p><strong>Interface techniques</strong> (the remote <strong>camera surveillance</strong> example: a camera server on a serial interface, a remote client sends commands, video is digitised, compressed and sent):</p><aside class="notes">Source note: <a href="../../unit-12/development-cycle/">Development Cycle</a></aside></section><section class=""><h2><small>2. Designing</small>User interface <span style="opacity:.55;font-size:.6em">(2/3)</span></h2><ul>
+<li class="fragment fade-up"><strong>Keyboard</strong>: fixed commands on keys.</li>
+<li class="fragment fade-up"><strong>Buttons</strong> in a GUI: clicking "left" pans left.</li>
+<li class="fragment fade-up"><strong>Scroll bars</strong> beside the video window.</li>
+<li class="fragment fade-up"><strong>Special device</strong>: a <strong>joystick</strong> is more natural.</li>
+<li class="fragment fade-up"><strong>Direct manipulation of the video window</strong>: click a point to centre the camera there.</li>
+</ul><p><strong>User-friendliness</strong> is the primary goal, though what it means and how to measure it are not always clear:</p><aside class="notes">Source note: <a href="../../unit-12/development-cycle/">Development Cycle</a></aside></section><section class="dense"><h2><small>2. Designing</small>User interface <span style="opacity:.55;font-size:.6em">(3/3)</span></h2><ul>
+<li class="fragment fade-up"><strong>Easy to learn</strong> and <strong>easy to remember</strong> instructions (for occasional and daily users);</li>
+<li class="fragment fade-up"><strong>Effective instructions</strong>: logically connected functions presented together and similarly; <strong>graphical symbols</strong> beat text; media <strong>exchangeable</strong> between applications;</li>
+<li class="fragment fade-up"><strong>Prompt feedback</strong> after each user action;</li>
+<li class="fragment fade-up">Usable by <strong>professional and occasional</strong> users.</li>
+</ul><h3>3. Developing and producing</h3><p>Production is when the project is <strong>actually rendered</strong>. Tasks: <strong>acquire all media elements</strong>, <strong>compose</strong> them according to the storyboard, <strong>track media elements</strong> and <strong>track progress</strong>, and have a way (or an expert) to <strong>solve technical problems quickly</strong>.</p><aside class="notes">Source note: <a href="../../unit-12/development-cycle/">Development Cycle</a></aside></section><section class=""><h2><small>3. Developing and producing</small>Rights and permissions</h2><ul><li class="fragment fade-up">You must know who <strong>owns</strong> acquired content.</li><li class="fragment fade-up">There are <strong>nine types of protected works</strong>: <strong>literary, dramatic, musical, artistic works; sound recordings, cinematograph films, television broadcasts, sound broadcasts, published editions of works</strong>.</li><li class="fragment fade-up"><strong>License the rights before use</strong>; you may negotiate <strong>outright ownership</strong> or a <strong>licence</strong>.</li><li class="fragment fade-up">Questions to settle: <strong>how</strong> the material will be used and distributed; <strong>fixed period</strong>?; <strong>exclusive or non-exclusive</strong>?; <strong>where</strong> distributed?; does the owner have <strong>authority</strong> to assign rights?; <strong>remuneration</strong>?</li></ul><aside class="notes">Source note: <a href="../../unit-12/development-cycle/">Development Cycle</a></aside></section><section class=""><h2><small>Development Cycle</small>4. Testing and debugging</h2><p>An important and time-consuming phase.</p><table>
+<thead>
+<tr>
+<th></th>
+<th>Alpha testing</th>
+<th>Beta testing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who</td>
+<td><strong>Internal</strong>, the in-house team</td>
+<td>A <strong>wider range of testers</strong>, <strong>representative of real users</strong>, <strong>not those who built it</strong></td>
+</tr>
+</tbody>
+</table><p>The product is used by many users who know little about computers and on <strong>many platforms and configurations</strong>, so test <strong>widely</strong>.</p><aside class="notes">Source note: <a href="../../unit-12/development-cycle/">Development Cycle</a></aside></section><section class="dense"><h2><small>Development Cycle</small>5. Delivering</h2><ul><li class="fragment fade-up">Plan delivery <strong>early</strong>.</li><li class="fragment fade-up"><strong>CD-ROM and the Internet</strong> are the two most popular means (today also app stores and streaming).</li><li class="fragment fade-up">Plan <strong>installation and use</strong>.</li><li class="fragment fade-up">The distribution must include <strong>all media elements</strong> (clips), <strong>runtime libraries</strong> (Director runtime), <strong>drivers</strong> (DirectX), <strong>helper programs</strong> (QuickTime viewer, Acrobat reader) and the <strong>installation program and compression/decompression programs</strong>.</li></ul><div class="callout exam"><div class="ct">Exam tip</div>
+<p>The five stages are a certain question. Add storyboard, architectures and alpha/beta testing for full marks.</p>
+</div><aside class="notes">Source note: <a href="../../unit-12/development-cycle/">Development Cycle</a></aside></section><section class="dense"><h2><small>Development Cycle</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Differentiate alpha and beta testing.</p><div class="fragment ans">
+<p>Alpha: internal, in-house testers. Beta: wider group of representative users who were not part of the production.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Name the four types of architecture.</p><div class="fragment ans">
+<p>Linear, hierarchical, non-linear, composite.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-12/development-cycle/">Development Cycle</a></aside></section></section>
+<section data-topic="Application Areas in Detail"><section class="sec"><div class="no">04</div><h2>Application Areas in Detail</h2><div class="lead">Unit 12 &middot; topic 4 of 4</div></section><section class=""><h2><small>Application Areas in Detail</small>Application Areas in Detail</h2><div class="callout"><div class="ct">Extra</div>
+<p>The course material covers application <em>classes</em>, system types and components and the development cycle only. This page is written from standard textbook knowledge to cover the rest of syllabus 12.1–12.4. Check details against your prescribed textbook.</p>
+</div><aside class="notes">Source note: <a href="../../unit-12/application-areas/">Application Areas in Detail</a></aside></section><section class="dense"><h2><small>Application Areas in Detail</small>12.1 Video on demand (VoD) <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p><strong>Video on demand</strong> lets a user <strong>select and watch a video at any time</strong>, with <strong>VCR-like controls</strong> (play, pause, fast forward, rewind).</p><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm3ef78fc3941f" role="graphics-document document" viewbox="0 0 1047.828125 100" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm3ef78fc3941f{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm3ef78fc3941f .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm3ef78fc3941f .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm3ef78fc3941f .error-icon{fill:#1c2150;}#mm3ef78fc3941f .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm3ef78fc3941f .edge-thickness-normal{stroke-width:1px;}#mm3ef78fc3941f .edge-thickness-thick{stroke-width:3.5px;}#mm3ef78fc3941f .edge-pattern-solid{stroke-dasharray:0;}#mm3ef78fc3941f .edge-thickness-invisible{stroke-width:0;fill:none;}#mm3ef78fc3941f .edge-pattern-dashed{stroke-dasharray:3;}#mm3ef78fc3941f .edge-pattern-dotted{stroke-dasharray:2;}#mm3ef78fc3941f .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm3ef78fc3941f .marker.cross{stroke:#a5b4fc;}#mm3ef78fc3941f svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm3ef78fc3941f p{margin:0;}#mm3ef78fc3941f .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm3ef78fc3941f .cluster-label text{fill:#e3deaf;}#mm3ef78fc3941f .cluster-label span{color:#e3deaf;}#mm3ef78fc3941f .cluster-label span p{background-color:transparent;}#mm3ef78fc3941f .label text,#mm3ef78fc3941f span{fill:#f4f4ff;color:#f4f4ff;}#mm3ef78fc3941f .node rect,#mm3ef78fc3941f .node circle,#mm3ef78fc3941f .node ellipse,#mm3ef78fc3941f .node polygon,#mm3ef78fc3941f .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm3ef78fc3941f .rough-node .label text,#mm3ef78fc3941f .node .label text,#mm3ef78fc3941f .image-shape .label,#mm3ef78fc3941f .icon-shape .label{text-anchor:middle;}#mm3ef78fc3941f .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm3ef78fc3941f .rough-node .label,#mm3ef78fc3941f .node .label,#mm3ef78fc3941f .image-shape .label,#mm3ef78fc3941f .icon-shape .label{text-align:center;}#mm3ef78fc3941f .node.clickable{cursor:pointer;}#mm3ef78fc3941f .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm3ef78fc3941f .arrowheadPath{fill:#0b0b0b;}#mm3ef78fc3941f .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm3ef78fc3941f .flowchart-link{stroke:#a5b4fc;fill:none;}#mm3ef78fc3941f .edgeLabel{background-color:#12152b;text-align:center;}#mm3ef78fc3941f .edgeLabel p{background-color:#12152b;}#mm3ef78fc3941f .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm3ef78fc3941f .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm3ef78fc3941f .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm3ef78fc3941f .cluster text{fill:#e3deaf;}#mm3ef78fc3941f .cluster span{color:#e3deaf;}#mm3ef78fc3941f div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm3ef78fc3941f .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm3ef78fc3941f rect.text{fill:none;stroke-width:0;}#mm3ef78fc3941f .icon-shape,#mm3ef78fc3941f .image-shape{background-color:#12152b;text-align:center;}#mm3ef78fc3941f .icon-shape p,#mm3ef78fc3941f .image-shape p{background-color:#12152b;padding:2px;}#mm3ef78fc3941f .icon-shape .label rect,#mm3ef78fc3941f .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm3ef78fc3941f .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm3ef78fc3941f .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm3ef78fc3941f .node .neo-node{stroke:#818cf8;}#mm3ef78fc3941f [data-look="neo"].node rect,#mm3ef78fc3941f [data-look="neo"].cluster rect,#mm3ef78fc3941f [data-look="neo"].node polygon{stroke:url(#mm3ef78fc3941f-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm3ef78fc3941f [data-look="neo"].swimlane.cluster rect{filter:none;}#mm3ef78fc3941f [data-look="neo"].node path{stroke:url(#mm3ef78fc3941f-gradient);stroke-width:1px;}#mm3ef78fc3941f [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm3ef78fc3941f [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm3ef78fc3941f [data-look="neo"].node circle{stroke:url(#mm3ef78fc3941f-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm3ef78fc3941f [data-look="neo"].node circle .state-start{fill:#000000;}#mm3ef78fc3941f [data-look="neo"].icon-shape .icon{fill:url(#mm3ef78fc3941f-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm3ef78fc3941f [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm3ef78fc3941f-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm3ef78fc3941f :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm3ef78fc3941f_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm3ef78fc3941f_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm3ef78fc3941f_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm3ef78fc3941f_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm3ef78fc3941f_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm3ef78fc3941f_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm3ef78fc3941f_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm3ef78fc3941f_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm3ef78fc3941f_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm3ef78fc3941f_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm3ef78fc3941f_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm3ef78fc3941f_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M268,50L272.167,50C276.333,50,284.667,50,292.333,50C300,50,307,50,310.5,50L314,50" data-edge="true" data-et="edge" data-id="L_S_N_0" data-look="classic" data-points="W3sieCI6MjY4LCJ5Ijo1MH0seyJ4IjoyOTMsInkiOjUwfSx7IngiOjMxOCwieSI6NTB9XQ==" id="mm3ef78fc3941f-L_S_N_0" marker-end="url(#mm3ef78fc3941f_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M578,50L582.167,50C586.333,50,594.667,50,602.333,50C610,50,617,50,620.5,50L624,50" data-edge="true" data-et="edge" data-id="L_N_B_0" data-look="classic" data-points="W3sieCI6NTc4LCJ5Ijo1MH0seyJ4Ijo2MDMsInkiOjUwfSx7IngiOjYyOCwieSI6NTB9XQ==" id="mm3ef78fc3941f-L_N_B_0" marker-end="url(#mm3ef78fc3941f_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M828.953,50L833.12,50C837.286,50,845.62,50,853.286,50C860.953,50,867.953,50,871.453,50L874.953,50" data-edge="true" data-et="edge" data-id="L_B_TV_0" data-look="classic" data-points="W3sieCI6ODI4Ljk1MzEyNSwieSI6NTB9LHsieCI6ODUzLjk1MzEyNSwieSI6NTB9LHsieCI6ODc4Ljk1MzEyNSwieSI6NTB9XQ==" id="mm3ef78fc3941f-L_B_TV_0" marker-end="url(#mm3ef78fc3941f_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_S_N_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_N_B_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_B_TV_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm3ef78fc3941f-flowchart-S-0" transform="translate(138, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Video server (disk arrays, archive)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm3ef78fc3941f-flowchart-N-1" transform="translate(448, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Network (cable, ADSL, fibre, Internet)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm3ef78fc3941f-flowchart-B-2" transform="translate(728.4765625, 50)"><rect class="basic label-container" height="57" style="" width="200.953125" x="-100.4765625" y="-28.5"></rect><g class="label" style="" transform="translate(-70.4765625, -13.5)"><rect></rect><foreignobject height="27" width="140.953125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Set-top box / PC</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm3ef78fc3941f-flowchart-TV-3" transform="translate(959.390625, 50)"><rect class="basic label-container" height="57" style="" width="160.875" x="-80.4375" y="-28.5"></rect><g class="label" style="" transform="translate(-50.4375, -13.5)"><rect></rect><foreignobject height="27" width="100.875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>TV / display</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm3ef78fc3941f-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm3ef78fc3941f-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm3ef78fc3941f-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-12/application-areas/">Application Areas in Detail</a></aside></section><section class="dense"><h2><small>Application Areas in Detail</small>12.1 Video on demand (VoD) <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>True VoD</strong></td>
+<td>Each user gets an <strong>individual stream</strong>, started instantly, full interactivity</td>
+</tr>
+<tr>
+<td><strong>Near VoD</strong></td>
+<td>The same film is started on <strong>several channels at staggered times</strong> (for example every 15 min); users wait for the next start; much cheaper</td>
+</tr>
+</tbody>
+</table><p>Requirements: <strong>large server storage and bandwidth</strong> (MPEG-1 about 1.5 Mbit/s, MPEG-2 about 4 to 6 Mbit/s per stream), <strong>real-time disk scheduling</strong>, <strong>admission control</strong> and <strong>QoS guarantees</strong>, <strong>billing and security</strong>.</p><div class="callout ex"><div class="ct">Server capacity</div>
+<p>A server with 1 Gbit/s output can serve about 1,000 ÷ 4 = <strong>250</strong> MPEG-2 streams at 4 Mbit/s each.</p>
+</div><aside class="notes">Source note: <a href="../../unit-12/application-areas/">Application Areas in Detail</a></aside></section><section class=""><h2><small>Application Areas in Detail</small>12.2 Video conferencing</h2><p><strong>Video conferencing</strong> carries <strong>audio and video</strong> (plus shared tools) between <strong>two or more sites</strong> in real time.</p><ul>
+<li class="fragment fade-up"><strong>Point to point</strong> and <strong>multipoint</strong> (a <strong>multipoint control unit, MCU</strong>, mixes or switches streams).</li>
+<li class="fragment fade-up"><strong>Desktop</strong> and <strong>room-based</strong> systems; features: <strong>shared whiteboard, application sharing, file transfer, chat</strong>.</li>
+<li class="fragment fade-up"><strong>Requirements:</strong> <strong>low delay (about 150 ms or less)</strong>, small jitter, <strong>lip synchronisation (±80 ms)</strong>, <strong>bandwidth adaptation</strong>, <strong>echo cancellation</strong>.</li>
+<li class="fragment fade-up"><strong>Standards:</strong> <strong>H.320</strong> (ISDN), <strong>H.323</strong> (packet networks), H.261 video coding (<a href="../unit-05/mpeg-h261-dvi.md">Unit 5</a>), and <strong>SIP</strong> with RTP today.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-12/application-areas/">Application Areas in Detail</a></aside></section><section class="dense"><h2><small>Application Areas in Detail</small>12.3 Educational and industrial applications</h2><ul><li class="fragment fade-up"><strong>Educational:</strong> <strong>computer-based training (CBT)</strong>, <strong>e-learning</strong> and <strong>virtual classrooms</strong>, <strong>simulations and virtual laboratories</strong>, <strong>educational games</strong>, <strong>multimedia encyclopedias</strong>, <strong>interactive tutorials</strong> with self-assessment.</li><li class="fragment fade-up">Benefits: <strong>self-paced</strong>, <strong>rich explanation</strong> with animation and video, <strong>immediate feedback</strong>.</li><li class="fragment fade-up">Limits: development cost and the need for good instructional design.</li></ul><p><strong>Industrial:</strong> <strong>employee training</strong> and <strong>safety simulations</strong>, <strong>product demonstration and catalogues</strong>, <strong>kiosks</strong>, <strong>CAD/CAM visualisation</strong>, <strong>process monitoring</strong> with video and sensor data, <strong>remote maintenance</strong> with video and annotation, <strong>corporate presentations</strong>.</p><aside class="notes">Source note: <a href="../../unit-12/application-areas/">Application Areas in Detail</a></aside></section><section class="dense"><h2><small>Application Areas in Detail</small>12.4 Information systems, archives, entertainment, editors, trends <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p><strong>Information systems (kiosks):</strong> public <strong>touch-screen terminals</strong> giving <strong>maps, timetables, tourist and government information</strong>; need <strong>simple navigation</strong> and <strong>robust hardware</strong>.</p><ul><li class="fragment fade-up"><strong>Multimedia archives and digital libraries:</strong> collections of <strong>text, images, audio and video</strong> stored <strong>digitally</strong> with <strong>metadata</strong>.</li><li class="fragment fade-up">Needs: <strong>digitisation and compression</strong>, <strong>indexing</strong> (text, <strong>content-based retrieval</strong> of images and video), <strong>search</strong>, <strong>long-term preservation</strong>, <strong>access control and copyright</strong>, <strong>distributed access</strong> over networks.</li><li class="fragment fade-up">Examples: national archives, museum collections, film and music archives.</li></ul><p><strong>Media entertainment:</strong> <strong>computer games</strong>, <strong>interactive and digital TV</strong>, <strong>music and video streaming</strong>, <strong>special effects</strong> in films, <strong>theme-park rides</strong>.</p><aside class="notes">Source note: <a href="../../unit-12/application-areas/">Application Areas in Detail</a></aside></section><section class="dense"><h2><small>Application Areas in Detail</small>12.4 Information systems, archives, entertainment, editors, trends <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><p><strong>Media editors:</strong> tools to create and modify media: <strong>image editors</strong> (Photoshop), <strong>audio editors</strong>, <strong>non-linear video editors</strong> (cut, effects, transitions on a timeline), <strong>animation tools</strong> (Flash, Maya), <strong>authoring tools</strong> that integrate media.</p><p><strong>Trends:</strong> <strong>streaming</strong> and <strong>mobile multimedia</strong>, <strong>high-definition and 4K video</strong> with efficient codecs, <strong>virtual, augmented and mixed reality</strong>, <strong>cloud-based</strong> services, <strong>AI-assisted</strong> creation, search and captioning, <strong>5G</strong> low-latency networks, <strong>social and user-generated</strong> media.</p><div class="callout exam"><div class="ct">Exam tip</div>
+<p>For "short notes", give a definition, a block diagram or a list of requirements, and two examples. For VoD always name true vs near VoD.</p>
+</div><aside class="notes">Source note: <a href="../../unit-12/application-areas/">Application Areas in Detail</a></aside></section><section class="dense"><h2><small>Application Areas in Detail</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Differentiate true and near video on demand.</p><div class="fragment ans">
+<p>True: separate stream per user, immediate start. Near: staggered start times on shared channels.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">List the requirements of a digital library.</p><div class="fragment ans">
+<p>Digitisation and compression, indexing and retrieval, preservation, access control and copyright, networked access.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-12/application-areas/">Application Areas in Detail</a></aside></section></section>
+<section data-topic="Exam recap"><section><h2><small>Revision</small>Exam focus recap (1/1)</h2><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div></section></section>
+<section data-topic="Quick check"><section class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></section><section><h2><small>Quick check 1 / 4</small>18. Which testing is done by the in-house team?</h2><ul class="opts"><li>A. Alpha</li><li>B. Beta</li><li>C. Gamma</li><li>D. Pilot only</li></ul><div class="fragment ans"><strong>Answer: A.</strong></div></section><section><h2><small>Quick check 2 / 4</small>19. The most common limiting factor in the planning stage is</h2><ul class="opts"><li>A. Hardware</li><li>B. Title</li><li>C. Colour</li><li>D. Font</li></ul><div class="fragment ans"><strong>Answer: A.</strong></div></section><section><h2><small>Quick check 3 / 4</small>20. Which architecture has a tree of menus?</h2><ul class="opts"><li>A. Linear</li><li>B. Hierarchical</li><li>C. Non-linear</li><li>D. Composite only</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 4 / 4</small>21. Near video on demand uses</h2><ul class="opts"><li>A. A stream per user</li><li>B. Staggered starts on shared channels</li><li>C. No server</li><li>D. Only CD-ROM</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section></section>
+<section class="title-slide"><div class="kick">End of Unit 12</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></section>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/zoom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/math.js"></script>
 <script>
-  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+Reveal.initialize({width:1280,height:720,margin:.04,hash:true,slideNumber:'c/t',progress:true,controls:true,controlsTutorial:false,
+  transition:'slide',backgroundTransition:'fade',autoAnimateDuration:.5,fragments:true,navigationMode:'default',
+  center:false,pdfSeparateFragments:false,
+  math:{katex:{trust:true}},
+  plugins:[RevealNotes,RevealSearch,RevealZoom,RevealMath.KaTeX]});
+function hud(){var s=Reveal.getCurrentSlide();var t=s&&s.parentNode&&s.parentNode.getAttribute&&s.parentNode.getAttribute('data-topic');
+  var h=document.getElementById('hud');h.textContent='Unit 12'+(t?' · '+t:'');}
+Reveal.on('ready',hud);Reveal.on('slidechanged',hud);
 </script>
 </body>
 </html>

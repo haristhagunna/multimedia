@@ -37,7 +37,7 @@ flowchart LR
 $$P(t) = (1-t)\,P_{start} + t\,P_{end}, \quad 0 \le t \le 1$$
 
 !!! info "Extra"
-    The lerp formula is standard and is not written in the notes. Example: start x = 0, end x = 100, 5 in-betweens means t = 1/6, 2/6, …: x ≈ 16.7, 33.3, 50, 66.7, 83.3.
+    The lerp formula is standard. Example: start x = 0, end x = 100, 5 in-betweens means t = 1/6, 2/6, …: x ≈ 16.7, 33.3, 50, 66.7, 83.3.
 
 ## Changing colours with a CLUT
 

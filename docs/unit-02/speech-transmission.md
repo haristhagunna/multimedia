@@ -14,9 +14,6 @@ There are **three principles**:
 - A **straightforward technique for digitising an analog signal (waveform)** is **PCM**.
 - PCM **prioritises the accurate representation of the audio signal over data reduction.**
 
-!!! warning "The figure shows a different technique"
-    The picture on the PCM slide is headed **Pulse Width Modulation**: the *width* of each pulse follows the amplitude of the sample. That is a different technique. In **PCM** each sample's amplitude is measured, **quantized** and written as a **binary code**, exactly the sampling and quantization process on the [Digital Audio](digital-audio.md) page. Do not draw pulse widths in a PCM answer.
-
 ## 2. Source encoding
 
 An **alternative method**: some transformations **depend on the original signal type**. An audio signal has certain characteristics that can be **exploited in compression**.
@@ -24,7 +21,7 @@ An **alternative method**: some transformations **depend on the original signal 
 - **Suppressing silence** in speech sequences is a typical example. It depends entirely on the **meaning (semantics) of the signal**.
 - **Parametric systems** use source encoding. They use **speech-specific characteristics** to reduce data, for example the **channel vocoder**.
 
-The figure shows the components of a transmission system using source encoding:
+A typical diagram shows the components of a transmission system using source encoding:
 
 ```mermaid
 flowchart TB

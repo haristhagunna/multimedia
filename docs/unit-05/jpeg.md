@@ -23,7 +23,7 @@ flowchart LR
 Decompression reverses the steps: **decoding → de-quantization → inverse DCT → up-sampling → colour transform back**.
 
 !!! info "Extra"
-    The course text's schematic lists colour transform (RGB to YUV) and down-sampling before DCT. The reason is the same as in [Video](../unit-04/video-transmission.md): the eye is less sensitive to chrominance, so Cb and Cr can be stored at lower resolution (for example one sample per 2 × 2 pixels).
+    The standard schematic lists colour transform (RGB to YUV) and down-sampling before DCT. The reason is the same as in [Video](../unit-04/video-transmission.md): the eye is less sensitive to chrominance, so Cb and Cr can be stored at lower resolution (for example one sample per 2 × 2 pixels).
 
 ## Discrete Cosine Transform (DCT)
 

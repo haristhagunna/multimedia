@@ -34,7 +34,7 @@ A **run** is a sequence in which the same value occurs in many consecutive eleme
 6. Repeat until one node (the root) remains.
 7. Label **left edges 0** and **right edges 1**. A character's code is the path from the root.
 
-!!! example "Worked example from the notes (15 characters, 8 bits each = 120 bits)"
+!!! example "Worked example (15 characters, 8 bits each = 120 bits)"
     Frequencies: **A = 5, B = 1, C = 6, D = 3**.
 
     1. Smallest two: B(1) + D(3) → node **4** (B left, D right).
@@ -63,10 +63,7 @@ A **run** is a sequence in which the same value occurs in many consecutive eleme
 
     **Decoding:** walk from the root; 0 goes left, 1 goes right; at a leaf output the character and restart. `101` → 1 (to node 9), 0 (to node 4), 1 (D) = **D**.
 
-!!! warning "Slips"
-    Step 7 is printed three times ("Repeat steps 3 to 5…"), and it says "repeat steps 3 to 5" when it should repeat steps 4 and 5 (the leaves already exist). The figures that show the tree are pictures; the table of codes (C = 0, A = 11, B = 100, D = 101) matches the tree drawn above.
-
-!!! example "A second example to practise (not in the notes)"
+!!! example "A second example to practise"
     Frequencies per 100 characters: A 45, B 13, C 12, D 16, E 9, F 5.
     Merges: F5 + E9 = 14; C12 + B13 = 25; 14 + D16 = 30; 25 + 30 = 55; A45 + 55 = 100.
     One valid code set: **A = 0, C = 100, B = 101, F = 1100, E = 1101, D = 111**.

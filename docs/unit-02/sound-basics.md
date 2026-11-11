@@ -12,11 +12,11 @@ When matter vibrates, **pressure variations** are created in the surrounding air
 - The waveform repeats the same shape at regular intervals. One such interval is called a **period**.
 - Natural sound waves are **never perfectly smooth or uniformly periodic**.
 
-The figure shows air pressure plotted against time as a smooth wave: the vertical distance from the middle line to a peak is the **amplitude**, and the horizontal distance of one full repeat is **one period**.
+A typical diagram shows air pressure plotted against time as a smooth wave: the vertical distance from the middle line to a peak is the **amplitude**, and the horizontal distance of one full repeat is **one period**.
 
 ### Periodic and non-periodic sound
 
-| | Examples from the notes |
+| | Examples |
 |---|---|
 | **Periodic** sound | Musical instruments, vowel sounds, whistling wind, bird songs |
 | **Non-periodic** sound | Unpitched percussion instruments, coughs, sneezes, rushing water, consonants such as "t", "f" and "s" |

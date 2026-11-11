@@ -69,7 +69,7 @@ Production is when the project is **actually rendered**. Tasks: **acquire all me
 
 ### Rights and permissions
 
-You must know who **owns** acquired content. The notes list **nine types of protected works**: **literary, dramatic, musical, artistic works; sound recordings, cinematograph films, television broadcasts, sound broadcasts, published editions of works**. **License the rights before use**; you may negotiate **outright ownership** or a **licence**. Questions to settle: **how** the material will be used and distributed; **fixed period**?; **exclusive or non-exclusive**?; **where** distributed?; does the owner have **authority** to assign rights?; **remuneration**?
+You must know who **owns** acquired content. There are **nine types of protected works**: **literary, dramatic, musical, artistic works; sound recordings, cinematograph films, television broadcasts, sound broadcasts, published editions of works**. **License the rights before use**; you may negotiate **outright ownership** or a **licence**. Questions to settle: **how** the material will be used and distributed; **fixed period**?; **exclusive or non-exclusive**?; **where** distributed?; does the owner have **authority** to assign rights?; **remuneration**?
 
 ## 4. Testing and debugging
 

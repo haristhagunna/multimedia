@@ -2,7 +2,7 @@
 
 ## What is a multimedia system?
 
-Two wordings appear in the course text's notes.
+Two common wordings:
 
 - A **multimedia system** is a system capable of **processing multimedia data and applications**. It is characterised by the **processing, storage, generation and manipulation** of multimedia information. 
 - A system that involves **generation, representation, storage, transmission, search and retrieval** of multimedia information. It also involves **processing and analysis, including compression**, and includes multimedia **hardware, software and network**. 
@@ -41,7 +41,7 @@ Two wordings appear in the course text's notes.
 
 ## Components of a multimedia system
 
-| Component | Examples from the notes |
+| Component | Examples |
 |---|---|
 | **Capture devices** | Video camera, video recorder, microphone, keyboards and mice, graphics tablets, 3D input devices, tactile sensors, VR devices, digitising hardware |
 | **Storage devices** | Hard disks, SSD, CD-ROM, DVD, Blu-ray |

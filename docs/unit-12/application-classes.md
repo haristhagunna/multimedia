@@ -1,6 +1,6 @@
 # Application Classes
 
-| Class | Description from the notes |
+| Class | Description |
 |---|---|
 | **Game systems** | The **leaders in using multimedia technology** because the **market is very large** and demands on quality, although intense, **are not crucial to the success** |
 | **Multimedia repositories** | Mostly **play-back-only** systems. **End users do not usually add information**; input and output of the workflow are **independent**. Like games, but the **database is much larger** and the **data needs indexing** |

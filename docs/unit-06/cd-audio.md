@@ -30,8 +30,8 @@ Pit and land lengths are **multiples of 0.3 µm**.
 
 When 14-bit values are concatenated the rules could be broken, so **three merging bits** are added between them. Each byte therefore uses **17 channel bits** (14 + 3).
 
-!!! warning "Typo"
-    The example shows "8 bit data 111101000 11100010", where the first value has 9 digits. It should be 8 bits. Study the **rule** (min 2 zeros, max 10 zeros, 3 merging bits) rather than the example.
+!!! exam "Exam tip"
+    Study the **rule** (min 2 zeros, max 10 zeros, 3 merging bits) rather than memorising one example.
 
 ## Error handling
 

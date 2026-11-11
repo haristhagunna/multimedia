@@ -1,7 +1,7 @@
 # Classification of Media
 
 !!! exam "Exam tip"
-    This is the largest block in all slides: seven slides each. Expect a direct question such as "Classify media" or "Explain the types of media with examples".
+    This is the most examinable block of the unit. Expect a direct question such as "Classify media" or "Explain the types of media with examples".
 
 A **medium** is the means for distribution and presentation of information. Media can be classified by different criteria. These notes use **six categories**, each defined by a **central question**.
 

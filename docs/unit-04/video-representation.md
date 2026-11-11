@@ -29,7 +29,7 @@ $$\text{Effective vertical resolution} = \text{active scan lines} \times \text{K
 
 $$\text{Required horizontal resolution} = \text{aspect ratio} \times \text{effective vertical resolution}$$
 
-!!! example "Worked example from the notes (PAL)"
+!!! example "Worked example (PAL)"
     Active lines = 576. Effective vertical = 576 × 0.7 = **403.2 lines**. Required horizontal = 4/3 × 403.2 = **537.6**.
 
 ## 2. Horizontal detail and picture width
@@ -52,7 +52,7 @@ The **total number of picture elements** = vertical × horizontal elements. It m
 - For transmission and storage a different split is used: **one luminance (brightness) signal Y** and **two colour-difference (chrominance) signals U and V**.
 - **Y = 0.30R + 0.59G + 0.11B**, **U = c₁(B − Y)**, **V = c₂(R − Y)**, where c₁ and c₂ are constants.
 - Luminance is measured in **nits**. Too high gives glare, too low a dull image.
-- The notes recall colour mixing: yellow + red = orange, yellow + blue = green.
+- Recall colour mixing: yellow + red = orange, yellow + blue = green.
 
 ## 6. Temporal aspects of illumination
 
@@ -90,9 +90,6 @@ where **a** = pixels per line (horizontal), **b** = lines (vertical), **c** = fr
 
 !!! example "Worked example"
     a = 1312, b = 800, c = 100 Hz: 1312 × 800 × 100 / 2 = **52,480,000 Hz = 52.48 MHz**.
-
-!!! warning "Watch out"
-    Some printed notes say "124 × 786 are visible". These look like typing errors for about 1024 × 768; they do not enter the calculation. Use a, b, c as above.
 
 !!! info "Extra"
     The list is not numbered consistently (a "4" may appear twice, and "8. Flicker" may follow "6."). The nine measures in the order above are the standard list. The flicker minimum is written as 50 cycles/s or 50 Hz. They are the same.

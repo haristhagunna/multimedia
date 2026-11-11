@@ -1,156 +1,863 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit 8: Multimedia Communication System</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
-  <style>
-    .reveal h1, .reveal h2 { color: #3f51b5; text-transform: none; }
-    .reveal { font-size: 34px; }
-    .reveal ul { display: block; }
-    .reveal table { margin: 0.5em auto; font-size: 0.7em; }
-    .reveal th, .reveal td { padding: 0.3em 0.7em; }
-    .reveal .small { font-size: 0.7em; }
-    .reveal .formula { font-size: 1.1em; background: #f3f4fb; border-radius: 8px; padding: 0.4em 0.8em; display: inline-block; }
-    .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; font-size: 0.65em; }
-    .box { border: 2px solid #3f51b5; border-radius: 8px; padding: 6px 12px; background: #e8eaf6; }
-    .arrow { color: #3f51b5; font-weight: bold; }
-  
-    .reveal-viewport{background:radial-gradient(60% 80% at 15% 10%,#2a2f6b 0%,transparent 60%),radial-gradient(50% 70% at 90% 90%,#5b1f63 0%,transparent 60%),#0b0d17}
-    .reveal h1,.reveal h2,.reveal h3{background:linear-gradient(120deg,#a5b4fc,#f0abfc 60%,#fda4af);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.02em}
-    .copyright-foot{position:fixed;left:0;right:0;bottom:6px;text-align:center;font:600 11px Inter,system-ui,sans-serif;color:#9a9cc4;z-index:30;pointer-events:none}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="author" content="Er. Harish Thagunna">
+<title>Unit 8: Multimedia Communication - Class slides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<style>
+:root{--g:linear-gradient(120deg,#818cf8,#c084fc 55%,#f472b6);--card:rgba(255,255,255,.055);--line:rgba(255,255,255,.12);--mut:#aab0d6;--ac:#a5b4fc}
+html,body{background:#080a14}
+.reveal-viewport{background:radial-gradient(55% 70% at 12% 8%,rgba(99,102,241,.35),transparent 65%),radial-gradient(50% 65% at 92% 95%,rgba(236,72,153,.26),transparent 65%),radial-gradient(40% 50% at 85% 10%,rgba(6,182,212,.14),transparent 70%),#080a14}
+.reveal{font-family:Inter,system-ui,sans-serif;font-size:27px;color:#e8eaff;font-weight:400}
+.reveal .slides section{text-align:left;height:100%}
+.reveal h1,.reveal h2,.reveal h3{font-family:Inter,system-ui,sans-serif;text-transform:none;letter-spacing:-.025em;font-weight:800;margin:0 0 .45em}
+.reveal h2{font-size:1.5em;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.15}
+.reveal h2 small{display:block;font-size:.42em;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);-webkit-text-fill-color:var(--mut);font-weight:700;margin-bottom:.35em}
+.reveal h3{font-size:1.05em;color:#fff}
+.reveal h4{font-size:.9em;color:var(--ac);margin:.6em 0 .2em}
+.reveal p{margin:.35em 0;line-height:1.45}
+.reveal ul,.reveal ol{display:block;margin:.3em 0 .3em 1.1em;width:calc(100% - 1.1em)}
+.reveal li{margin:.3em 0;line-height:1.38}
+.reveal ul li::marker{color:#c084fc}.reveal ol li::marker{color:#818cf8;font-weight:700}
+.reveal strong{color:#fff;font-weight:700}.reveal em{color:#d9dcff}
+.reveal a{color:var(--ac)}
+.reveal code{font-family:'JetBrains Mono',monospace;font-size:.85em;background:rgba(129,140,248,.16);border-radius:6px;padding:.06em .35em;color:#e0e4ff}
+.reveal pre{width:100%;box-shadow:none;font-size:.62em;margin:.5em 0}
+.reveal pre code{display:block;padding:.8em 1em;border-radius:12px;background:rgba(0,0,0,.4);border:1px solid var(--line);max-height:none}
+.reveal mark{background:linear-gradient(transparent 55%,rgba(244,114,182,.4) 55%);color:inherit}
+.reveal table{margin:.5em 0;border-collapse:separate;border-spacing:0;font-size:.66em;width:100%;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.reveal th{background:rgba(129,140,248,.2);font-weight:700;color:#fff;text-align:left;padding:.5em .8em}
+.reveal td{padding:.42em .8em;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.reveal tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+.dense{font-size:.86em}.xdense{font-size:.74em}
+.callout{border:1px solid var(--line);border-left:5px solid #818cf8;border-radius:12px;background:var(--card);padding:.55em 1em;margin:.7em 0;font-size:.88em}
+.callout .ct{font-size:.68em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.15em;color:#a5b4fc}
+.callout p,.callout li{margin:.2em 0}.callout>*:last-child{margin-bottom:0}
+.callout.exam{border-left-color:#fb923c;background:rgba(251,146,60,.09)}.callout.exam .ct{color:#fdba74}
+.callout.warn{border-left-color:#f87171;background:rgba(248,113,113,.09)}.callout.warn .ct{color:#fca5a5}
+.callout.tip{border-left-color:#34d399;background:rgba(52,211,153,.09)}.callout.tip .ct{color:#6ee7b7}
+.callout.ex{border-left-color:#c084fc;background:rgba(192,132,252,.09)}.callout.ex .ct{color:#d8b4fe}
+aside.notes{display:none}
+.callout.split .sp{display:grid;grid-template-columns:1fr 1.1fr;gap:1em;align-items:center}
+.callout.split .diagram svg{max-height:430px}
+.diagram{text-align:center;margin:.4em 0}.diagram svg{max-width:100%;height:auto;max-height:470px;width:auto}
+.diagram.tall svg{max-height:540px}
+.diagram .cap,.cap{font-size:.55em;color:var(--mut);margin-top:.3em;text-align:center}
+.vis{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:.5em;text-align:center}
+.vis svg{max-width:100%;height:auto;max-height:480px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1em;align-items:start}
+.two>*{min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6em .9em}
+.q{font-weight:700;color:#fff}
+.chk{border:1px solid rgba(192,132,252,.5);border-radius:14px;padding:.7em 1em;background:rgba(192,132,252,.08);margin:.5em 0}
+.chk .lab{font-size:.55em;letter-spacing:.14em;font-weight:800;color:#d8b4fe;text-transform:uppercase}
+.opts{list-style:none;margin:.4em 0!important;padding:0;display:grid;gap:.35em}
+.opts li{margin:0;padding:.4em .8em;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.ans{margin-top:.6em;padding:.5em .9em;border-radius:10px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.5)}
+.agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:.55em}
+.agenda .card{display:flex;gap:.7em;align-items:center;font-size:.85em;font-weight:600}
+.agenda .n{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:800;font-size:.85em;color:#fff}
+.title-slide{display:flex!important;flex-direction:column;justify-content:center;height:100%}
+.title-slide .kick{font-size:.62em;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);font-weight:700;margin-bottom:1em}
+.title-slide h1{font-size:2.9em;line-height:1.02;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:.25em}
+.title-slide .by{font-size:.8em;color:var(--mut);margin-top:1.2em}
+.chips{display:flex;gap:.6em;flex-wrap:wrap;margin-top:1.2em}
+.chips span{font-size:.55em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.35em .9em;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.sec{display:flex!important;flex-direction:column;justify-content:center;height:100%}
+.sec .no{font-size:5em;font-weight:900;line-height:1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+.sec h2{font-size:2.1em}
+.sec .lead{color:var(--mut);font-size:.85em;max-width:80%}
+#hud{position:fixed;left:18px;top:12px;z-index:30;font:700 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8e94c4;pointer-events:none}
+.copyright-foot{position:fixed;left:0;right:0;bottom:8px;text-align:center;font:600 11px Inter,system-ui,sans-serif;color:#7f86b8;z-index:30;pointer-events:none}
+.reveal .progress{height:4px;color:#c084fc}
+.reveal .controls{color:#a5b4fc}
+.reveal .slide-number{background:transparent;color:#8e94c4;font-size:12px;font-weight:700;right:14px;bottom:8px}
+.reveal .fragment.highlight-current-blue.current-fragment{color:#a5b4fc}
+.reveal .katex{font-size:1.05em}.reveal .arithmatex{color:#fff}
+.reveal .arithmatex.block,.reveal div.arithmatex{margin:.5em 0;text-align:center}
+@media print{#hud,.copyright-foot{display:none}}
+</style>
 </head>
 <body>
-<div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div>
-<div class="reveal">
-  <div class="slides">
-
-        <section>
-      <h1>Unit 8</h1>
-      <h2>Multimedia Communication System</h2>
-      <p class="small">Multimedia and Application (BCA429CO)</p>
-    </section>
-
-    <section>
-      <h2>Multimedia vs data communication</h2>
-      <table>
-        <tr><th></th><th>Data</th><th>Multimedia</th></tr>
-        <tr><td>Volume</td><td>Small</td><td>Very large</td></tr>
-        <tr><td>Time</td><td>Not critical</td><td>Delay + jitter critical</td></tr>
-        <tr><td>Loss</td><td>Not tolerated</td><td>Some tolerated</td></tr>
-        <tr><td>Pattern</td><td>Point to point</td><td>Multicast, continuous</td></tr>
-      </table>
-    </section>
-
-    <section>
-      <h2>Layered view</h2>
-      <div class="flow">
-        <div class="box">Application subsystem</div>
-        <span class="arrow">→</span>
-        <div class="box">Transport subsystem</div>
-        <span class="arrow">→</span>
-        <div class="box">Network (Ethernet, ATM, IP)</div>
-      </div>
-      <p class="small">QoS and resource management span all layers</p>
-    </section>
-
-    <section>
-      <h2>Application subsystem</h2>
-      <ul class="small">
-        <li><b>CSCW</b>: video conference, whiteboard, shared applications</li>
-        <li><b>Session management</b>: setup, membership, media, <b>floor control</b></li>
-        <li>Centralised (MCU) or distributed</li>
-        <li>Multimedia mail (MIME)</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Transport requirements</h2>
-      <ul class="small">
-        <li>High throughput · bounded delay · small jitter</li>
-        <li>QoS support · <b>multicast</b></li>
-        <li>Timeliness over perfect reliability</li>
-        <li>Synchronisation · low overhead</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Internet real-time protocols</h2>
-      <table>
-        <tr><th>Protocol</th><th>Role</th></tr>
-        <tr><td>RTP</td><td>Seq. numbers, time stamps over UDP</td></tr>
-        <tr><td>RTCP</td><td>Quality feedback, sync</td></tr>
-        <tr><td>RTSP</td><td>Play / pause / seek</td></tr>
-        <tr><td>RSVP</td><td>Reserve resources</td></tr>
-      </table>
-    </section>
-
-    <section>
-      <h2>Playout buffer and error control</h2>
-      <ul class="small">
-        <li>Playout delay absorbs <b>jitter</b></li>
-        <li><b>ARQ</b>: reliable but delays</li>
-        <li><b>FEC</b>: repair without resend</li>
-        <li><b>Concealment</b>: repeat or interpolate</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>QoS parameters</h2>
-      <table>
-        <tr><th>Parameter</th><th>Meaning</th></tr>
-        <tr><td>Throughput</td><td>e.g. 1.5 Mbit/s for MPEG-1</td></tr>
-        <tr><td>Delay</td><td>≤ 150 ms interactive</td></tr>
-        <tr><td>Jitter</td><td>Delay variation</td></tr>
-        <tr><td>Loss</td><td>Fraction lost</td></tr>
-      </table>
-      <p class="small">Guarantees: deterministic · statistical · best effort</p>
-    </section>
-
-    <section>
-      <h2>QoS management</h2>
-      <div class="flow">
-        <div class="box">Specify</div>
-        <span class="arrow">→</span>
-        <div class="box">Negotiate</div>
-        <span class="arrow">→</span>
-        <div class="box">Admit</div>
-        <span class="arrow">→</span>
-        <div class="box">Reserve</div>
-        <span class="arrow">→</span>
-        <div class="box">Monitor</div>
-        <span class="arrow">→</span>
-        <div class="box">Adapt</div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Traffic shaping</h2>
-      <ul class="small">
-        <li><b>Leaky bucket</b>: constant output rate</li>
-        <li><b>Token bucket</b>: rate r, size b → bursts ≤ b</li>
-        <li>Max in interval t ≈ <b>b + r·t</b></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Exam focus</h2>
-      <ul>
-        <li>Requirements of the transport subsystem</li>
-        <li>RTP / RTCP / RSVP roles</li>
-        <li>QoS parameters and management chain</li>
-        <li>Leaky vs token bucket</li>
-      </ul>
-    </section>
-
-</div>
-</div>
+<div id="hud"></div>
+<div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved. &middot; Press <b>?</b> for shortcuts, <b>Esc</b> for overview</div>
+<div class="reveal"><div class="slides">
+<section class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 8<br>Multimedia Communication</h1><p style="max-width:75%;color:#aab0d6">Application and transport subsystems, QoS and protocols.</p><div class="chips"><span>4 teaching hours</span><span>4 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></section>
+<section><h2><small>Roadmap</small>What we will cover</h2><div class="agenda"><div class="card"><span class="n">1</span>Introduction</div><div class="card"><span class="n">2</span>Application Subsystem</div><div class="card"><span class="n">3</span>Transport Subsystem</div><div class="card"><span class="n">4</span>QoS and Resource Management</div></div></section>
+<section data-topic="Introduction"><section class="sec"><div class="no">01</div><h2>Introduction</h2><div class="lead">Unit 8 &middot; topic 1 of 4</div></section><section class="dense"><h2><small>Introduction</small>Introduction</h2><p><strong>Multimedia communication</strong> is the exchange of multimedia data (text, image, audio, video) between systems over a network, often with <strong>real-time</strong> requirements, in a <strong>distributed</strong> environment.</p><h3>Why it is harder than data communication</h3><table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Traditional data</th>
+<th>Multimedia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Volume</td>
+<td>Small</td>
+<td><strong>Very large</strong> (video of several Mbit/s)</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>Not critical</td>
+<td><strong>Delay and jitter</strong> critical for continuous media</td>
+</tr>
+<tr>
+<td>Loss</td>
+<td>Not tolerated (retransmit)</td>
+<td><strong>Some loss tolerated</strong> (audio, video)</td>
+</tr>
+<tr>
+<td>Pattern</td>
+<td>Bursty, point to point</td>
+<td><strong>Continuous and bursty</strong>, often <strong>multicast</strong></td>
+</tr>
+<tr>
+<td>Synchronisation</td>
+<td>None</td>
+<td><strong>Between streams</strong> (lip sync)</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-08/introduction/">Introduction</a></aside></section><section class=""><h2><small>Introduction</small>Communication patterns</h2><ul>
+<li><strong>Point to point (unicast)</strong>, <strong>point to multipoint (multicast, broadcast)</strong>, <strong>multipoint to multipoint</strong> (conferencing).</li>
+<li><strong>Interactive</strong> (conference, delay about 150 ms or less one way) and <strong>retrieval</strong> (video on demand, start-up delay tolerated).</li>
+</ul><aside class="notes">Source note: <a href="../../unit-08/introduction/">Introduction</a></aside></section><section class="dense"><h2><small>Introduction</small>Layered view</h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm66c090f2e160" role="graphics-document document" viewbox="0 0 276 449" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm66c090f2e160{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm66c090f2e160 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm66c090f2e160 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm66c090f2e160 .error-icon{fill:#1c2150;}#mm66c090f2e160 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm66c090f2e160 .edge-thickness-normal{stroke-width:1px;}#mm66c090f2e160 .edge-thickness-thick{stroke-width:3.5px;}#mm66c090f2e160 .edge-pattern-solid{stroke-dasharray:0;}#mm66c090f2e160 .edge-thickness-invisible{stroke-width:0;fill:none;}#mm66c090f2e160 .edge-pattern-dashed{stroke-dasharray:3;}#mm66c090f2e160 .edge-pattern-dotted{stroke-dasharray:2;}#mm66c090f2e160 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm66c090f2e160 .marker.cross{stroke:#a5b4fc;}#mm66c090f2e160 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm66c090f2e160 p{margin:0;}#mm66c090f2e160 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm66c090f2e160 .cluster-label text{fill:#e3deaf;}#mm66c090f2e160 .cluster-label span{color:#e3deaf;}#mm66c090f2e160 .cluster-label span p{background-color:transparent;}#mm66c090f2e160 .label text,#mm66c090f2e160 span{fill:#f4f4ff;color:#f4f4ff;}#mm66c090f2e160 .node rect,#mm66c090f2e160 .node circle,#mm66c090f2e160 .node ellipse,#mm66c090f2e160 .node polygon,#mm66c090f2e160 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm66c090f2e160 .rough-node .label text,#mm66c090f2e160 .node .label text,#mm66c090f2e160 .image-shape .label,#mm66c090f2e160 .icon-shape .label{text-anchor:middle;}#mm66c090f2e160 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm66c090f2e160 .rough-node .label,#mm66c090f2e160 .node .label,#mm66c090f2e160 .image-shape .label,#mm66c090f2e160 .icon-shape .label{text-align:center;}#mm66c090f2e160 .node.clickable{cursor:pointer;}#mm66c090f2e160 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm66c090f2e160 .arrowheadPath{fill:#0b0b0b;}#mm66c090f2e160 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm66c090f2e160 .flowchart-link{stroke:#a5b4fc;fill:none;}#mm66c090f2e160 .edgeLabel{background-color:#12152b;text-align:center;}#mm66c090f2e160 .edgeLabel p{background-color:#12152b;}#mm66c090f2e160 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm66c090f2e160 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm66c090f2e160 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm66c090f2e160 .cluster text{fill:#e3deaf;}#mm66c090f2e160 .cluster span{color:#e3deaf;}#mm66c090f2e160 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm66c090f2e160 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm66c090f2e160 rect.text{fill:none;stroke-width:0;}#mm66c090f2e160 .icon-shape,#mm66c090f2e160 .image-shape{background-color:#12152b;text-align:center;}#mm66c090f2e160 .icon-shape p,#mm66c090f2e160 .image-shape p{background-color:#12152b;padding:2px;}#mm66c090f2e160 .icon-shape .label rect,#mm66c090f2e160 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm66c090f2e160 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm66c090f2e160 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm66c090f2e160 .node .neo-node{stroke:#818cf8;}#mm66c090f2e160 [data-look="neo"].node rect,#mm66c090f2e160 [data-look="neo"].cluster rect,#mm66c090f2e160 [data-look="neo"].node polygon{stroke:url(#mm66c090f2e160-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm66c090f2e160 [data-look="neo"].swimlane.cluster rect{filter:none;}#mm66c090f2e160 [data-look="neo"].node path{stroke:url(#mm66c090f2e160-gradient);stroke-width:1px;}#mm66c090f2e160 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm66c090f2e160 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm66c090f2e160 [data-look="neo"].node circle{stroke:url(#mm66c090f2e160-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm66c090f2e160 [data-look="neo"].node circle .state-start{fill:#000000;}#mm66c090f2e160 [data-look="neo"].icon-shape .icon{fill:url(#mm66c090f2e160-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm66c090f2e160 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm66c090f2e160-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm66c090f2e160 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm66c090f2e160_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm66c090f2e160_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm66c090f2e160_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm66c090f2e160_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm66c090f2e160_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm66c090f2e160_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm66c090f2e160_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm66c090f2e160_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm66c090f2e160_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm66c090f2e160_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm66c090f2e160_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm66c090f2e160_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,146L138,150.167C138,154.333,138,162.667,138,170.333C138,178,138,185,138,188.5L138,192" data-edge="true" data-et="edge" data-id="L_A_T_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5IjoxNDZ9LHsieCI6MTM4LCJ5IjoxNzF9LHsieCI6MTM4LCJ5IjoxOTZ9XQ==" id="mm66c090f2e160-L_A_T_0" marker-end="url(#mm66c090f2e160_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,307L138,311.167C138,315.333,138,323.667,138,331.333C138,339,138,346,138,349.5L138,353" data-edge="true" data-et="edge" data-id="L_T_N_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5IjozMDd9LHsieCI6MTM4LCJ5IjozMzJ9LHsieCI6MTM4LCJ5IjozNTd9XQ==" id="mm66c090f2e160-L_T_N_0" marker-end="url(#mm66c090f2e160_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_A_T_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_T_N_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm66c090f2e160-flowchart-A-0" transform="translate(138, 77)"><rect class="basic label-container" height="138" style="" width="260" x="-130" y="-69"></rect><g class="label" style="" transform="translate(-100, -54)"><rect></rect><foreignobject height="108" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Application subsystem: conference control, session, collaboration</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm66c090f2e160-flowchart-T-1" transform="translate(138, 251.5)"><rect class="basic label-container" height="111" style="" width="260" x="-130" y="-55.5"></rect><g class="label" style="" transform="translate(-100, -40.5)"><rect></rect><foreignobject height="81" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Transport subsystem: transport protocols, QoS, multicast</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm66c090f2e160-flowchart-N-3" transform="translate(138, 399)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Network subsystem: Ethernet, ATM, IP, ISDN</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm66c090f2e160-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm66c090f2e160-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm66c090f2e160-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><p>The textbook divides a multimedia communication system into an <strong>application subsystem</strong> and a <strong>transport subsystem</strong> on top of the network, with <strong>QoS and resource management</strong> across all of them.</p><aside class="notes">Source note: <a href="../../unit-08/introduction/">Introduction</a></aside></section><section class=""><h2><small>Introduction</small>Network requirements</h2><ol>
+<li class="fragment fade-up"><strong>High and guaranteed bandwidth</strong>.</li>
+<li class="fragment fade-up"><strong>Bounded end-to-end delay</strong> and <strong>low jitter</strong>.</li>
+<li class="fragment fade-up"><strong>Multicast</strong> support.</li>
+<li class="fragment fade-up"><strong>Reliability</strong> adjusted to the medium (some errors acceptable).</li>
+<li class="fragment fade-up"><strong>QoS guarantees</strong> and resource reservation.</li>
+</ol><aside class="notes">Source note: <a href="../../unit-08/introduction/">Introduction</a></aside></section><section class=""><h2><small>Introduction</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Why is multimedia traffic harder to carry than file transfer?</p><div class="fragment ans">
+<p>It needs large bandwidth, bounded delay and jitter, multicast and stream synchronisation; it tolerates some loss but not late delivery.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-08/introduction/">Introduction</a></aside></section></section>
+<section data-topic="Application Subsystem"><section class="sec"><div class="no">02</div><h2>Application Subsystem</h2><div class="lead">Unit 8 &middot; topic 2 of 4</div></section><section class="dense"><h2><small>Application Subsystem</small>Application Subsystem</h2><p>The application subsystem contains the services that make <strong>collaborative and distributed multimedia applications</strong> possible. It uses the transport subsystem below it.</p><h3>Collaborative computing</h3><p><strong>Computer-supported cooperative work (CSCW)</strong>: people at different places work together with shared multimedia tools: video conferencing, shared whiteboard, shared applications, shared documents.</p><ul>
+<li><strong>Synchronous</strong> (same time, for example a video conference) and <strong>asynchronous</strong> (different times, for example multimedia mail).</li>
+<li><strong>Shared workspace</strong>: one application's output is shown at several sites. <strong>Shared execution environment</strong>: each site runs the same application on the same data.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-08/application-subsystem/">Application Subsystem</a></aside></section><section class="dense"><h2><small>Application Subsystem</small>Session management</h2><p>A <strong>session</strong> is the period during which the participants and their media connections exist. Session management covers:</p><table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Session setup and teardown</strong></td>
+<td>Create and end the session; announce it (<strong>session directory</strong>)</td>
+</tr>
+<tr>
+<td><strong>Membership</strong></td>
+<td>Who joins or leaves; <strong>invitation</strong>, <strong>rendezvous</strong> (finding the partners)</td>
+</tr>
+<tr>
+<td><strong>Media management</strong></td>
+<td>Which streams (audio, video, whiteboard) each participant uses; <strong>configuration</strong></td>
+</tr>
+<tr>
+<td><strong>Floor (conference) control</strong></td>
+<td>Who may speak or control the shared tool now: <strong>floor control</strong> policies (chair-controlled, first come first served)</td>
+</tr>
+<tr>
+<td><strong>QoS negotiation</strong></td>
+<td>Agree on the quality each stream uses</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-08/application-subsystem/">Application Subsystem</a></aside></section><section class=""><h2><small>Application Subsystem</small>Architectures</h2><ul>
+<li><strong>Centralised</strong>: a <strong>multipoint control unit (MCU)</strong> receives all streams and mixes or switches them.</li>
+<li><strong>Distributed</strong>: every participant sends to all others (multicast), no central mixer.</li>
+</ul><h3>Multimedia mail and messaging</h3><p>Messages carrying text, images, audio and video. Large messages need <strong>storage</strong>; <strong>MIME</strong> describes the media types in the body.</p><aside class="notes">Source note: <a href="../../unit-08/application-subsystem/">Application Subsystem</a></aside></section><section class="dense"><h2><small>Application Subsystem</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">What is floor control?</p><div class="fragment ans">
+<p>A mechanism that decides which participant may use a shared resource or speak at a given time, to avoid conflicts.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Differentiate synchronous and asynchronous collaboration.</p><div class="fragment ans">
+<p>Synchronous: at the same time (video conference). Asynchronous: at different times (multimedia mail).</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-08/application-subsystem/">Application Subsystem</a></aside></section></section>
+<section data-topic="Transport Subsystem"><section class="sec"><div class="no">03</div><h2>Transport Subsystem</h2><div class="lead">Unit 8 &middot; topic 3 of 4</div></section><section class=""><h2><small>Transport Subsystem</small>Requirements on a multimedia transport subsystem</h2><ol>
+<li class="fragment fade-up"><strong>High throughput</strong> for large continuous streams.</li>
+<li class="fragment fade-up"><strong>Bounded delay and small jitter</strong> (about 150 ms end-to-end for interactive audio and video).</li>
+<li class="fragment fade-up"><strong>QoS support</strong>: applications can specify and get guaranteed service.</li>
+<li class="fragment fade-up"><strong>Multicast</strong> for group communication.</li>
+<li class="fragment fade-up"><strong>Suitable error handling</strong>: continuous media prefer <strong>timeliness over perfect reliability</strong>.</li>
+<li class="fragment fade-up"><strong>Synchronisation support</strong> between streams (time stamps).</li>
+<li class="fragment fade-up"><strong>Efficient processing</strong>: low protocol overhead, no extra copying.</li>
+</ol><aside class="notes">Source note: <a href="../../unit-08/transport-subsystem/">Transport Subsystem</a></aside></section><section class=""><h2><small>Transport Subsystem</small>Why TCP is unsuitable and UDP is not enough</h2><table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>For multimedia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TCP</strong></td>
+<td>Retransmission and congestion control add <strong>delay and jitter</strong>; <strong>no multicast</strong></td>
+</tr>
+<tr>
+<td><strong>UDP</strong></td>
+<td>Fast, supports multicast, but <strong>no ordering, timing or feedback</strong></td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-08/transport-subsystem/">Transport Subsystem</a></aside></section><section class=""><h2><small>Transport Subsystem</small>Real-time protocols on the Internet</h2><table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RTP</strong> (Real-time Transport Protocol)</td>
+<td>Runs over UDP; carries <strong>payload type, sequence number and time stamp</strong> so the receiver can reorder, detect loss and play out at the right time</td>
+</tr>
+<tr>
+<td><strong>RTCP</strong> (RTP Control Protocol)</td>
+<td>Sends <strong>feedback on quality</strong> (loss, jitter), source identification and helps <strong>synchronise</strong> audio and video</td>
+</tr>
+<tr>
+<td><strong>RTSP</strong> (Real-Time Streaming Protocol)</td>
+<td>Remote <strong>control</strong> of streams (play, pause, seek)</td>
+</tr>
+<tr>
+<td><strong>RSVP</strong> (Resource Reservation Protocol)</td>
+<td><strong>Reserves</strong> network resources along a path</td>
+</tr>
+<tr>
+<td><strong>ST-II</strong></td>
+<td>Stream protocol with resource reservation and multicast</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-08/transport-subsystem/">Transport Subsystem</a></aside></section><section class=""><h2><small>Real-time protocols on the Internet</small>Playout buffer</h2><p>The receiver delays playback by a small <strong>playout delay</strong> held in a buffer, absorbing jitter. A larger buffer removes more jitter but increases delay.</p><div class="callout ex"><div class="ct">Playout delay</div>
+<p>If packets arrive between 40 and 90 ms after sending, jitter is 50 ms. A playout delay of 90 ms from the send time makes every packet available when needed; the cost is 90 ms of latency.</p>
+</div><aside class="notes">Source note: <a href="../../unit-08/transport-subsystem/">Transport Subsystem</a></aside></section><section class=""><h2><small>Transport Subsystem</small>Error control</h2><ul>
+<li class="fragment fade-up"><strong>ARQ</strong> (retransmission): reliable but adds delay; used only for data and when time allows.</li>
+<li class="fragment fade-up"><strong>FEC</strong> (forward error correction): redundancy lets the receiver repair loss without retransmission.</li>
+<li class="fragment fade-up"><strong>Concealment</strong>: repeat or interpolate missing audio or video parts.</li>
+</ul><h3>Networks</h3><p><strong>Ethernet</strong> (shared, no guarantee), <strong>FDDI</strong>, <strong>ATM</strong> (cells of 53 bytes, built-in QoS classes), <strong>ISDN</strong> (64 kbit/s channels), and today <strong>IP networks with DiffServ or IntServ</strong>.</p><aside class="notes">Source note: <a href="../../unit-08/transport-subsystem/">Transport Subsystem</a></aside></section><section class="dense"><h2><small>Transport Subsystem</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Why is RTP used over UDP rather than TCP?</p><div class="fragment ans">
+<p>UDP avoids retransmission delay and supports multicast; RTP adds sequence numbers and time stamps for ordering and playout.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">What does a playout buffer do?</p><div class="fragment ans">
+<p>Absorbs delay variation (jitter) so media plays smoothly, at the cost of extra delay.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-08/transport-subsystem/">Transport Subsystem</a></aside></section><section><h2><small>Transport Subsystem</small>RTP header layout</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 739.632187 285.12" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T17:40:37.368719</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 285.12 
+L 739.632187 285.12 
+L 739.632187 0 
+L 0 0 
+L 0 285.12 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 8.464063 113.76 
+L 53.464062 113.76 
+L 53.464062 59.76 
+L 8.464063 59.76 
+z
+" clip-path="url(#p7f8c814ee7)" style="fill: #1c2150; stroke: #818cf8; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 53.464062 113.76 
+L 75.964062 113.76 
+L 75.964062 59.76 
+L 53.464062 59.76 
+z
+" clip-path="url(#p7f8c814ee7)" style="fill: #1c2150; stroke: #818cf8; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 75.964062 113.76 
+L 98.464062 113.76 
+L 98.464062 59.76 
+L 75.964062 59.76 
+z
+" clip-path="url(#p7f8c814ee7)" style="fill: #1c2150; stroke: #818cf8; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 98.464062 113.76 
+L 188.464063 113.76 
+L 188.464063 59.76 
+L 98.464062 59.76 
+z
+" clip-path="url(#p7f8c814ee7)" style="fill: #1c2150; stroke: #818cf8; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 188.464063 113.76 
+L 210.964063 113.76 
+L 210.964063 59.76 
+L 188.464063 59.76 
+z
+" clip-path="url(#p7f8c814ee7)" style="fill: #1c2150; stroke: #c084fc; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 210.964063 113.76 
+L 368.464063 113.76 
+L 368.464063 59.76 
+L 210.964063 59.76 
+z
+" clip-path="url(#p7f8c814ee7)" style="fill: #1c2150; stroke: #c084fc; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 368.464063 113.76 
+L 728.464062 113.76 
+L 728.464062 59.76 
+L 368.464063 59.76 
+z
+" clip-path="url(#p7f8c814ee7)" style="fill: #1c2150; stroke: #f472b6; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 8.464063 178.56 
+L 728.464062 178.56 
+L 728.464062 124.56 
+L 8.464063 124.56 
+z
+" clip-path="url(#p7f8c814ee7)" style="fill: #1c2150; stroke: #22d3ee; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 8.464063 243.36 
+L 728.464062 243.36 
+L 728.464062 189.36 
+L 8.464063 189.36 
+z
+" clip-path="url(#p7f8c814ee7)" style="fill: #1c2150; stroke: #34d399; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="8.464063" y="30.96" transform="rotate(-0 8.464063 30.96)">RTP fixed header (32-bit words)</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="30.964063" y="89.847539" transform="rotate(-0 30.964063 89.847539)">V=2</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="64.714062" y="89.847539" transform="rotate(-0 64.714062 89.847539)">P</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="87.214062" y="89.847539" transform="rotate(-0 87.214062 89.847539)">X</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="143.464063" y="89.847539" transform="rotate(-0 143.464063 89.847539)">CC</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="199.714063" y="89.847539" transform="rotate(-0 199.714063 89.847539)">M</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="289.714063" y="89.847949" transform="rotate(-0 289.714063 89.847949)">payload type</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="548.464062" y="89.847949" transform="rotate(-0 548.464062 89.847949)">sequence number</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="368.464063" y="154.647949" transform="rotate(-0 368.464063 154.647949)">timestamp</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="368.464063" y="219.447949" transform="rotate(-0 368.464063 219.447949)">SSRC (synchronisation source identifier)</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 8.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="8.464063" y="52.56" transform="rotate(-0 8.464063 52.56)">0</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 8.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="188.464063" y="52.56" transform="rotate(-0 188.464063 52.56)">8</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 8.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="368.464063" y="52.56" transform="rotate(-0 368.464063 52.56)">16</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 8.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="548.464062" y="52.56" transform="rotate(-0 548.464062 52.56)">24</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 8.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="728.464062" y="52.56" transform="rotate(-0 728.464062 52.56)">32</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p7f8c814ee7">
+   <rect x="8.464063" y="5.76" width="720" height="273.6"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">Sequence numbers detect loss and reordering; timestamps let the receiver play media at the right time and measure jitter.</div></section></section>
+<section data-topic="QoS and Resource Management"><section class="sec"><div class="no">04</div><h2>QoS and Resource Management</h2><div class="lead">Unit 8 &middot; topic 4 of 4</div></section><section class=""><h2><small>QoS and Resource Management</small>QoS and Resource Management</h2><p><strong>Quality of Service (QoS)</strong> is the set of parameters describing how well a service is delivered, and the <strong>guarantee</strong> that it will be delivered at that level.</p><h3>QoS layers</h3><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Example parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>User (perceptual)</strong></td>
+<td>Picture quality (good, fair), sound quality (CD, phone)</td>
+</tr>
+<tr>
+<td><strong>Application</strong></td>
+<td>Frame rate, resolution, colour depth, compression method</td>
+</tr>
+<tr>
+<td><strong>System</strong></td>
+<td>CPU time, memory, buffers</td>
+</tr>
+<tr>
+<td><strong>Network</strong></td>
+<td><strong>Throughput</strong>, <strong>delay</strong>, <strong>jitter</strong>, <strong>loss rate</strong></td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-08/qos/">QoS and Resource Management</a></aside></section><section class="dense"><h2><small>QoS and Resource Management</small>Network QoS parameters</h2><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Throughput (bandwidth)</strong></td>
+<td>Data rate needed (for example 1.5 Mbit/s for MPEG-1 video)</td>
+</tr>
+<tr>
+<td><strong>Delay (latency)</strong></td>
+<td>End-to-end time; <strong>≤ 150 ms</strong> for interactive audio</td>
+</tr>
+<tr>
+<td><strong>Jitter</strong></td>
+<td>Variation of delay; audio can tolerate about 10 ms</td>
+</tr>
+<tr>
+<td><strong>Loss / error rate</strong></td>
+<td>Fraction lost; audio and video tolerate small loss</td>
+</tr>
+</tbody>
+</table><h3>Guarantee classes</h3><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Guaranteed (deterministic)</strong></td>
+<td>Always met; worst-case reservation</td>
+</tr>
+<tr>
+<td><strong>Predictive / statistical</strong></td>
+<td>Met with a given probability</td>
+</tr>
+<tr>
+<td><strong>Best effort</strong></td>
+<td>No guarantee</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-08/qos/">QoS and Resource Management</a></aside></section><section class=""><h2><small>QoS and Resource Management</small>QoS management steps <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mmdbead6ec236e" role="graphics-document document" viewbox="0 0 1569.28125 100" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mmdbead6ec236e{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmdbead6ec236e .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmdbead6ec236e .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmdbead6ec236e .error-icon{fill:#1c2150;}#mmdbead6ec236e .error-text{fill:#e3deaf;stroke:#e3deaf;}#mmdbead6ec236e .edge-thickness-normal{stroke-width:1px;}#mmdbead6ec236e .edge-thickness-thick{stroke-width:3.5px;}#mmdbead6ec236e .edge-pattern-solid{stroke-dasharray:0;}#mmdbead6ec236e .edge-thickness-invisible{stroke-width:0;fill:none;}#mmdbead6ec236e .edge-pattern-dashed{stroke-dasharray:3;}#mmdbead6ec236e .edge-pattern-dotted{stroke-dasharray:2;}#mmdbead6ec236e .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mmdbead6ec236e .marker.cross{stroke:#a5b4fc;}#mmdbead6ec236e svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mmdbead6ec236e p{margin:0;}#mmdbead6ec236e .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mmdbead6ec236e .cluster-label text{fill:#e3deaf;}#mmdbead6ec236e .cluster-label span{color:#e3deaf;}#mmdbead6ec236e .cluster-label span p{background-color:transparent;}#mmdbead6ec236e .label text,#mmdbead6ec236e span{fill:#f4f4ff;color:#f4f4ff;}#mmdbead6ec236e .node rect,#mmdbead6ec236e .node circle,#mmdbead6ec236e .node ellipse,#mmdbead6ec236e .node polygon,#mmdbead6ec236e .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mmdbead6ec236e .rough-node .label text,#mmdbead6ec236e .node .label text,#mmdbead6ec236e .image-shape .label,#mmdbead6ec236e .icon-shape .label{text-anchor:middle;}#mmdbead6ec236e .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmdbead6ec236e .rough-node .label,#mmdbead6ec236e .node .label,#mmdbead6ec236e .image-shape .label,#mmdbead6ec236e .icon-shape .label{text-align:center;}#mmdbead6ec236e .node.clickable{cursor:pointer;}#mmdbead6ec236e .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mmdbead6ec236e .arrowheadPath{fill:#0b0b0b;}#mmdbead6ec236e .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mmdbead6ec236e .flowchart-link{stroke:#a5b4fc;fill:none;}#mmdbead6ec236e .edgeLabel{background-color:#12152b;text-align:center;}#mmdbead6ec236e .edgeLabel p{background-color:#12152b;}#mmdbead6ec236e .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmdbead6ec236e .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mmdbead6ec236e .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mmdbead6ec236e .cluster text{fill:#e3deaf;}#mmdbead6ec236e .cluster span{color:#e3deaf;}#mmdbead6ec236e div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mmdbead6ec236e .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mmdbead6ec236e rect.text{fill:none;stroke-width:0;}#mmdbead6ec236e .icon-shape,#mmdbead6ec236e .image-shape{background-color:#12152b;text-align:center;}#mmdbead6ec236e .icon-shape p,#mmdbead6ec236e .image-shape p{background-color:#12152b;padding:2px;}#mmdbead6ec236e .icon-shape .label rect,#mmdbead6ec236e .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmdbead6ec236e .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmdbead6ec236e .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmdbead6ec236e .node .neo-node{stroke:#818cf8;}#mmdbead6ec236e [data-look="neo"].node rect,#mmdbead6ec236e [data-look="neo"].cluster rect,#mmdbead6ec236e [data-look="neo"].node polygon{stroke:url(#mmdbead6ec236e-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmdbead6ec236e [data-look="neo"].swimlane.cluster rect{filter:none;}#mmdbead6ec236e [data-look="neo"].node path{stroke:url(#mmdbead6ec236e-gradient);stroke-width:1px;}#mmdbead6ec236e [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmdbead6ec236e [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mmdbead6ec236e [data-look="neo"].node circle{stroke:url(#mmdbead6ec236e-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmdbead6ec236e [data-look="neo"].node circle .state-start{fill:#000000;}#mmdbead6ec236e [data-look="neo"].icon-shape .icon{fill:url(#mmdbead6ec236e-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmdbead6ec236e [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mmdbead6ec236e-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmdbead6ec236e :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mmdbead6ec236e_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmdbead6ec236e_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmdbead6ec236e_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmdbead6ec236e_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mmdbead6ec236e_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmdbead6ec236e_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmdbead6ec236e_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmdbead6ec236e_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mmdbead6ec236e_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmdbead6ec236e_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmdbead6ec236e_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mmdbead6ec236e_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M196.547,50L200.714,50C204.88,50,213.214,50,220.88,50C228.547,50,235.547,50,239.047,50L242.547,50" data-edge="true" data-et="edge" data-id="L_S_N_0" data-look="classic" data-points="W3sieCI6MTk2LjU0Njg3NSwieSI6NTB9LHsieCI6MjIxLjU0Njg3NSwieSI6NTB9LHsieCI6MjQ2LjU0Njg3NSwieSI6NTB9XQ==" id="mmdbead6ec236e-L_S_N_0" marker-end="url(#mmdbead6ec236e_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M425.703,50L429.87,50C434.036,50,442.37,50,450.036,50C457.703,50,464.703,50,468.203,50L471.703,50" data-edge="true" data-et="edge" data-id="L_N_A_0" data-look="classic" data-points="W3sieCI6NDI1LjcwMzEyNSwieSI6NTB9LHsieCI6NDUwLjcwMzEyNSwieSI6NTB9LHsieCI6NDc1LjcwMzEyNSwieSI6NTB9XQ==" id="mmdbead6ec236e-L_N_A_0" marker-end="url(#mmdbead6ec236e_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M709.328,50L713.495,50C717.661,50,725.995,50,733.661,50C741.328,50,748.328,50,751.828,50L755.328,50" data-edge="true" data-et="edge" data-id="L_A_R_0" data-look="classic" data-points="W3sieCI6NzA5LjMyODEyNSwieSI6NTB9LHsieCI6NzM0LjMyODEyNSwieSI6NTB9LHsieCI6NzU5LjMyODEyNSwieSI6NTB9XQ==" id="mmdbead6ec236e-L_A_R_0" marker-end="url(#mmdbead6ec236e_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M941.281,50L945.448,50C949.615,50,957.948,50,965.615,50C973.281,50,980.281,50,983.781,50L987.281,50" data-edge="true" data-et="edge" data-id="L_R_M_0" data-look="classic" data-points="W3sieCI6OTQxLjI4MTI1LCJ5Ijo1MH0seyJ4Ijo5NjYuMjgxMjUsInkiOjUwfSx7IngiOjk5MS4yODEyNSwieSI6NTB9XQ==" id="mmdbead6ec236e-L_R_M_0" marker-end="url(#mmdbead6ec236e_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M1251.281,50L1255.448,50C1259.615,50,1267.948,50,1275.615,50C1283.281,50,1290.281,50,1293.781,50L1297.281,50" data-edge="true" data-et="edge" data-id="L_M_D_0" data-look="classic" data-points="W3sieCI6MTI1MS4yODEyNSwieSI6NTB9LHsieCI6MTI3Ni4yODEyNSwieSI6NTB9LHsieCI6MTMwMS4yODEyNSwieSI6NTB9XQ==" id="mmdbead6ec236e-L_M_D_0" marker-end="url(#mmdbead6ec236e_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_S_N_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_N_A_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_A_R_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_R_M_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_M_D_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mmdbead6ec236e-flowchart-S-0" transform="translate(102.2734375, 50)"><rect class="basic label-container" height="57" style="" width="188.546875" x="-94.2734375" y="-28.5"></rect><g class="label" style="" transform="translate(-64.2734375, -13.5)"><rect></rect><foreignobject height="27" width="128.546875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>1. Specification</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmdbead6ec236e-flowchart-N-1" transform="translate(336.125, 50)"><rect class="basic label-container" height="57" style="" width="179.15625" x="-89.578125" y="-28.5"></rect><g class="label" style="" transform="translate(-59.578125, -13.5)"><rect></rect><foreignobject height="27" width="119.15625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>2. Negotiation</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmdbead6ec236e-flowchart-A-2" transform="translate(592.515625, 50)"><rect class="basic label-container" height="57" style="" width="233.625" x="-116.8125" y="-28.5"></rect><g class="label" style="" transform="translate(-86.8125, -13.5)"><rect></rect><foreignobject height="27" width="173.625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>3. Admission control</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmdbead6ec236e-flowchart-R-3" transform="translate(850.3046875, 50)"><rect class="basic label-container" height="57" style="" width="181.953125" x="-90.9765625" y="-28.5"></rect><g class="label" style="" transform="translate(-60.9765625, -13.5)"><rect></rect><foreignobject height="27" width="121.953125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>4. Reservation</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmdbead6ec236e-flowchart-M-4" transform="translate(1121.28125, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>5. Monitoring and enforcement</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmdbead6ec236e-flowchart-D-5" transform="translate(1431.28125, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>6. Adaptation / renegotiation</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mmdbead6ec236e-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mmdbead6ec236e-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mmdbead6ec236e-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-08/qos/">QoS and Resource Management</a></aside></section><section class=""><h2><small>QoS and Resource Management</small>QoS management steps <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><ol>
+<li class="fragment fade-up"><strong>Specification:</strong> the user states the QoS (for example flow specification: rate, delay, loss).</li>
+<li class="fragment fade-up"><strong>Negotiation:</strong> user, application and network agree on achievable values.</li>
+<li class="fragment fade-up"><strong>Admission control:</strong> accept only if existing guarantees stay safe.</li>
+<li class="fragment fade-up"><strong>Resource reservation:</strong> reserve bandwidth, CPU and buffers (RSVP).</li>
+<li class="fragment fade-up"><strong>Monitoring and enforcement (policing):</strong> check that the sender keeps to its specification and the network keeps its promise.</li>
+<li class="fragment fade-up"><strong>Adaptation:</strong> if QoS drops, the application lowers its rate (for example fewer frames) or renegotiates.</li>
+</ol><aside class="notes">Source note: <a href="../../unit-08/qos/">QoS and Resource Management</a></aside></section><section class="dense"><h2><small>QoS and Resource Management</small>Traffic shaping</h2><p>To keep the traffic within the agreed specification, the sender (or network) <strong>shapes</strong> it.</p><ul>
+<li><strong>Leaky bucket:</strong> data enters a bucket and leaves at a <strong>constant rate</strong>, smoothing bursts; excess overflows (dropped).</li>
+<li><strong>Token bucket:</strong> tokens arrive at rate <em>r</em> into a bucket of size <em>b</em>; a packet needs a token. Allows <strong>bursts up to b</strong> while keeping the <strong>average rate r</strong>.</li>
+</ul><div class="callout ex"><div class="ct">Token bucket</div>
+<p>r = 100 packets/s, b = 20 tokens. After a quiet period the bucket is full; a burst of 20 packets can go at once, then the sender is limited to 100 packets/s. In any interval <em>t</em> the maximum is about <strong>b + r·t</strong> (compare the LBAP in <a href="../unit-07/resource-management.md">Unit 7</a>).</p>
+</div><aside class="notes">Source note: <a href="../../unit-08/qos/">QoS and Resource Management</a></aside></section><section class="dense"><h2><small>QoS and Resource Management</small>Resource management in the communication system</h2><ul>
+<li class="fragment fade-up">Resources: <strong>link bandwidth, router/switch buffers, CPU of end systems</strong>.</li>
+<li class="fragment fade-up">The <strong>end-to-end guarantee</strong> needs <strong>resource reservation at every hop</strong> plus <strong>scheduling</strong> (for example weighted fair queuing) in routers.</li>
+<li class="fragment fade-up"><strong>Scalability</strong> and <strong>cost</strong> are the practical difficulties; many networks use <strong>DiffServ</strong> (classes) instead of per-flow reservation.</li>
+</ul><div class="callout exam"><div class="ct">Exam tip</div>
+<p>A five-mark "QoS" answer: define QoS, list throughput, delay, jitter, loss, the three guarantee classes and the negotiation → admission → reservation → monitoring chain.</p>
+</div><aside class="notes">Source note: <a href="../../unit-08/qos/">QoS and Resource Management</a></aside></section><section class="dense"><h2><small>QoS and Resource Management</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Differentiate leaky bucket and token bucket.</p><div class="fragment ans">
+<p>Leaky bucket outputs at a fixed rate (no bursts out); token bucket allows bursts up to the bucket size while keeping an average rate.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">What is admission control in a network?</p><div class="fragment ans">
+<p>A decision whether a new flow can be accepted without violating guarantees already given.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-08/qos/">QoS and Resource Management</a></aside></section><section><h2><small>QoS and Resource Management</small>Traffic shaping with a token bucket</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 607.790938 268.280937" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T17:40:37.332404</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 268.280937 
+L 607.790938 268.280937 
+L 607.790938 0 
+L 0 0 
+L 0 268.280937 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 44.030938 227.52 
+L 602.030938 227.52 
+L 602.030938 5.76 
+L 44.030938 5.76 
+L 44.030938 227.52 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 69.394574 227.52 
+L 69.394574 5.76 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m8e004ed47d" d="M 0 0 
+L 0 3.5 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m8e004ed47d" x="69.394574" y="227.52" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="69.394574" y="243.637187" transform="rotate(-0 69.394574 243.637187)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 170.849119 227.52 
+L 170.849119 5.76 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m8e004ed47d" x="170.849119" y="227.52" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="170.849119" y="243.637187" transform="rotate(-0 170.849119 243.637187)">2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 272.303665 227.52 
+L 272.303665 5.76 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m8e004ed47d" x="272.303665" y="227.52" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="272.303665" y="243.637187" transform="rotate(-0 272.303665 243.637187)">4</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 373.75821 227.52 
+L 373.75821 5.76 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m8e004ed47d" x="373.75821" y="227.52" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="373.75821" y="243.637187" transform="rotate(-0 373.75821 243.637187)">6</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 475.212756 227.52 
+L 475.212756 5.76 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m8e004ed47d" x="475.212756" y="227.52" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="475.212756" y="243.637187" transform="rotate(-0 475.212756 243.637187)">8</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 576.667301 227.52 
+L 576.667301 5.76 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m8e004ed47d" x="576.667301" y="227.52" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="576.667301" y="243.637187" transform="rotate(-0 576.667301 243.637187)">10</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="323.030937" y="259.638125" transform="rotate(-0 323.030937 259.638125)">time</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_13">
+      <path d="M 44.030938 217.44 
+L 602.030938 217.44 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <defs>
+       <path id="m22b175e737" d="M 0 0 
+L -3.5 0 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m22b175e737" x="44.030938" y="217.44" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030938" y="221.998594" transform="rotate(-0 37.030938 221.998594)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_15">
+      <path d="M 44.030938 192.24 
+L 602.030938 192.24 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m22b175e737" x="44.030938" y="192.24" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030938" y="196.798594" transform="rotate(-0 37.030938 196.798594)">2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_17">
+      <path d="M 44.030938 167.04 
+L 602.030938 167.04 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m22b175e737" x="44.030938" y="167.04" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030938" y="171.598594" transform="rotate(-0 37.030938 171.598594)">4</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_19">
+      <path d="M 44.030938 141.84 
+L 602.030938 141.84 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m22b175e737" x="44.030938" y="141.84" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030938" y="146.398594" transform="rotate(-0 37.030938 146.398594)">6</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_21">
+      <path d="M 44.030938 116.64 
+L 602.030938 116.64 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m22b175e737" x="44.030938" y="116.64" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030938" y="121.198594" transform="rotate(-0 37.030938 121.198594)">8</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_23">
+      <path d="M 44.030938 91.44 
+L 602.030938 91.44 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m22b175e737" x="44.030938" y="91.44" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030938" y="95.998594" transform="rotate(-0 37.030938 95.998594)">10</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_25">
+      <path d="M 44.030938 66.24 
+L 602.030938 66.24 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#m22b175e737" x="44.030938" y="66.24" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030938" y="70.798594" transform="rotate(-0 37.030938 70.798594)">12</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_27">
+      <path d="M 44.030938 41.04 
+L 602.030938 41.04 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#m22b175e737" x="44.030938" y="41.04" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030938" y="45.598594" transform="rotate(-0 37.030938 45.598594)">14</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_29">
+      <path d="M 44.030938 15.84 
+L 602.030938 15.84 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#m22b175e737" x="44.030938" y="15.84" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="37.030938" y="20.398594" transform="rotate(-0 37.030938 20.398594)">16</text>
+     </g>
+    </g>
+    <g id="text_17">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="14.878125" y="116.64" transform="rotate(-90 14.878125 116.64)">data sent</text>
+    </g>
+   </g>
+   <g id="line2d_31">
+    <path d="M 69.394574 167.04 
+L 576.667301 15.84 
+L 576.667301 15.84 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #34d399; stroke-width: 2.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_32">
+    <path d="M 69.394574 217.44 
+L 69.394574 217.44 
+L 69.394574 179.64 
+L 120.121847 179.64 
+L 120.121847 154.44 
+L 180.994574 154.44 
+L 180.994574 141.84 
+L 323.030937 141.84 
+L 323.030937 91.44 
+L 439.703665 91.44 
+L 439.703665 53.64 
+L 525.940028 53.64 
+L 525.940028 28.44 
+L 576.667301 28.44 
+" clip-path="url(#p865be00c45)" style="fill: none; stroke: #f472b6; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 44.030938 227.52 
+L 44.030938 5.76 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 44.030938 227.52 
+L 602.030937 227.52 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #34d399" x="77.003665" y="155.7" transform="rotate(-0 77.003665 155.7)">burst allowance b</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; fill: #34d399" transform="translate(462.459769 90.303458) rotate(-18)">average rate r</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_33">
+     <path d="M 53.480938 19.513359 
+L 63.980938 19.513359 
+L 74.480938 19.513359 
+" style="fill: none; stroke: #34d399; stroke-width: 2.4; stroke-linecap: square"/>
+    </g>
+    <g id="text_20">
+     <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="82.880938" y="23.188359" transform="rotate(-0 82.880938 23.188359)">token-bucket envelope  b + r·t</text>
+    </g>
+    <g id="line2d_34">
+     <path d="M 53.480938 35.26418 
+L 63.980938 35.26418 
+L 74.480938 35.26418 
+" style="fill: none; stroke: #f472b6; stroke-width: 2.2; stroke-linecap: square"/>
+    </g>
+    <g id="text_21">
+     <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="82.880938" y="38.93918" transform="rotate(-0 82.880938 38.93918)">actual arrivals (cumulative bursts)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p865be00c45">
+   <rect x="44.030938" y="5.76" width="558" height="221.76"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">A flow conforms if its cumulative traffic never exceeds b + r·t: bursts up to b are allowed, the long-term rate is limited to r.</div></section></section>
+<section data-topic="Exam recap"><section><h2><small>Revision</small>Exam focus recap (1/1)</h2><div class="callout exam"><div class="ct">Exam tip</div></section></section>
+<section data-topic="Quick check"><section class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></section><section><h2><small>Quick check 1 / 4</small>15. RTP normally runs over</h2><ul class="opts"><li>A. TCP</li><li>B. UDP</li><li>C. ATM only</li><li>D. HTTP only</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 2 / 4</small>16. Jitter is</h2><ul class="opts"><li>A. Average delay</li><li>B. Variation of delay</li><li>C. Loss rate</li><li>D. Bandwidth</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 3 / 4</small>17. Which shaper allows bursts?</h2><ul class="opts"><li>A. Leaky bucket</li><li>B. Token bucket</li><li>C. Neither</li><li>D. Both exactly the same</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 4 / 4</small>18. Interactive audio end-to-end delay should be at most about</h2><ul class="opts"><li>A. 15 ms</li><li>B. 150 ms</li><li>C. 1.5 s</li><li>D. 15 s</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section></section>
+<section class="title-slide"><div class="kick">End of Unit 8</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></section>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/zoom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/math.js"></script>
 <script>
-  Reveal.initialize({ hash: true, controls: true, progress: true, slideNumber: 'c/t', width: 1100, height: 650 });
+Reveal.initialize({width:1280,height:720,margin:.04,hash:true,slideNumber:'c/t',progress:true,controls:true,controlsTutorial:false,
+  transition:'slide',backgroundTransition:'fade',autoAnimateDuration:.5,fragments:true,navigationMode:'default',
+  center:false,pdfSeparateFragments:false,
+  math:{katex:{trust:true}},
+  plugins:[RevealNotes,RevealSearch,RevealZoom,RevealMath.KaTeX]});
+function hud(){var s=Reveal.getCurrentSlide();var t=s&&s.parentNode&&s.parentNode.getAttribute&&s.parentNode.getAttribute('data-topic');
+  var h=document.getElementById('hud');h.textContent='Unit 8'+(t?' · '+t:'');}
+Reveal.on('ready',hud);Reveal.on('slidechanged',hud);
 </script>
 </body>
 </html>

@@ -9,7 +9,7 @@ The smooth, continuous curve of a sound wave **cannot be stored directly** in a 
 3. The conversion is done by an **Analog-to-Digital Converter (ADC)**.
 4. The reverse is done by a **Digital-to-Analog Converter (DAC)**.
 
-An example of an ADC is the **AM79C30A digital subscriber controller chip**. The figure shows the smooth pressure wave on the left and, on the right, the same wave as a row of vertical bars (the **samples**) whose heights follow the wave.
+An example of an ADC is the **AM79C30A digital subscriber controller chip**. A typical diagram shows the smooth pressure wave on the left and, on the right, the same wave as a row of vertical bars (the **samples**) whose heights follow the wave.
 
 ```mermaid
 flowchart LR
@@ -27,7 +27,7 @@ The rate at which a continuous waveform is sampled is the **sampling rate**, mea
 !!! exam "Nyquist sampling theorem"
     **For lossless digitization, the sampling rate should be at least twice the maximum frequency response.**
 
-**Example from the notes.** The CD standard sampling rate is **44,100 Hz**: the waveform is sampled 44,100 times per second. A rate of 44,100 Hz can only represent frequencies **up to 22,050 Hz**, which is why it covers the audible range up to 20 kHz.
+**Example.** The CD standard sampling rate is **44,100 Hz**: the waveform is sampled 44,100 times per second. A rate of 44,100 Hz can only represent frequencies **up to 22,050 Hz**, which is why it covers the audible range up to 20 kHz.
 
 $$f_s \ge 2 f_{max} \qquad\Longleftrightarrow\qquad f_{max} \le \frac{f_s}{2}$$
 
@@ -64,7 +64,7 @@ $$S = R \times \frac{b}{8} \times C \times D$$
 
 Note: 1 KB = 1024 bytes and 1 MB = 1024 KB.
 
-### Worked example from the notes
+### Worked example
 
 *Record 10 seconds of stereo music at 44.1 kHz, 16 bits.*
 
@@ -81,7 +81,7 @@ High-quality sound files are very big, but the size can be reduced by **compress
 
 ## Audio file formats
 
-| Format | Full name / origin | Key points from the notes |
+| Format | Full name / origin | Key points |
 |---|---|---|
 | **WAV** | Waveform; developed by **Microsoft**; subset of RIFF | Most commonly used on Windows. Offers several encoding methods (including Wave or PCM), so check the player supports the one you use for Internet sound. |
 | **AU** | **Sun Audio**; Sun Microsystems | For UNIX, NeXT and Sun SPARC workstations. A 16-bit compressed format, fairly common on the Web because it plays on the widest number of platforms. |

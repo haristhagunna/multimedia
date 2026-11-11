@@ -1,6 +1,6 @@
 # Glossary
 
-Hover over any abbreviation in the notes to see its full form. Key definitions:
+Hover over any abbreviation in the topic pages to see its full form. Key definitions:
 
 | Term | Meaning |
 |---|---|

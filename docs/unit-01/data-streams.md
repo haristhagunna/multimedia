@@ -2,9 +2,6 @@
 
 This page covers syllabus item 1.3, **data stream characteristics for traditional and continuous media**.
 
-!!! info "Extra"
-    The syllabus covers this item through two ideas: **discrete versus continuous media** (see [Media Concepts and Properties](media-concepts-and-properties.md#representation-dimensions)) and the **three transmission modes** below. No further data-stream attributes (such as rate or periodicity) appear in the course text's notes.
-
 ## Serial transmission
 
 Multimedia communication is **generally transmitted serially: one bit at a time**. The three modes below differ in *how the receiver stays in step with the sender*.
@@ -16,7 +13,7 @@ Multimedia communication is **generally transmitted serially: one bit at a time*
 - Examples: **WWW, e-mail, keyboard**.
 
 !!! info "Extra"
-    Because there is no shared clock, each byte is wrapped with a **start bit and a stop bit** so the receiver knows where it begins and ends. That is why the course text notes that *synchronous* transmission has **no start and stop bits**.
+    Because there is no shared clock, each byte is wrapped with a **start bit and a stop bit** so the receiver knows where it begins and ends. That is why the textbook notes that *synchronous* transmission has **no start and stop bits**.
 
 ## Synchronous transmission
 
@@ -35,7 +32,7 @@ Multimedia communication is **generally transmitted serially: one bit at a time*
 |---|---|---|---|
 | Timing unit | Byte level | Clock shared by sender and receiver | Fixed, steady rate |
 | Gaps allowed? | Yes, between bytes | Clock-driven | Data arrives at a steady rate |
-| Start/stop bits | Used (implied) | **None** | Not stated in the notes |
+| Start/stop bits | Used (implied) | **None** | Not specified |
 | Best for | Random, bursty traffic | Clock-aligned transfer | **Multimedia** |
 | Examples | WWW, e-mail, keyboard | – | Audio and video streams |
 

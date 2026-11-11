@@ -55,7 +55,7 @@ Primitives and attributes are a **higher-level** description of the image. At so
 
 ### Graphics packages
 
-| Package | Note from the notes |
+| Package | Note |
 |---|---|
 | **SRGP** (Simple Raster Graphics Package) | Includes the primitives-to-bitmap conversion (one-way conversion to bit/pixmap) |
 | **PHIGS** (Programmer's Hierarchical Interactive Graphics System) | A graphics standard of this type |

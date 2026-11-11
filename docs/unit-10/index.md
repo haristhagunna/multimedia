@@ -18,7 +18,7 @@
 Also: [Class Slides](slides.md) and [Practice Questions](practice.md).
 
 !!! info "Two versions of the layer names"
-    Textbooks name the layers **media, stream, object, specification**. Some slides use **media, stream, session, sync** with everyday examples (YouTube, Netflix). These notes use the textbook version and mention the other on the reference-model page.
+    Textbooks name the layers **media, stream, object, specification**. Some courses use **media, stream, session, sync** with everyday examples (YouTube, Netflix). These notes use the textbook version and mention the other on the reference-model page.
 
 !!! info "About syllabus item 10.6"
     The syllabus prints 10.6 with no title. The remaining topic of the chapter is **synchronization in a distributed environment**, so that is what page 10.6 covers. Please confirm the intended title with your department.

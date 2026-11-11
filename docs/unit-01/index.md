@@ -30,9 +30,6 @@ By the end of this unit you should be able to:
 | 1.2 Notation | [Media Concepts and Properties](media-concepts-and-properties.md) | Partial (see note) |
 | 1.3 Data stream characteristics | [Data Streams and Transmission Modes](data-streams.md) | Partial (see note) |
 
-!!! info "Extra"
-    The syllabus never uses the word *notation* and say little about data-stream characteristics beyond discrete versus continuous media and the three transmission modes. The pages above cover exactly what the course text taught for these two items. If your teacher goes deeper on either, add it to your notes.
-
 ## Reading order
 
 1. [What Is Multimedia?](what-is-multimedia.md)
@@ -48,7 +45,7 @@ By the end of this unit you should be able to:
 These weights are estimates based on how much space each topic usually gets. They are not from a past paper.
 
 !!! exam "Most likely questions"
-    - **Classification of media** (the six categories with examples). It has the most slides in all slides.
+    - **Classification of media** (the six categories with examples). This is the most examinable topic of the unit.
     - **Global structure** (draw and explain the three domains and the synchronization layer).
     - **Define multimedia**, and **characteristics / properties** of a multimedia system.
     - **Discrete versus continuous** media, and why text plus pictures is not multimedia.

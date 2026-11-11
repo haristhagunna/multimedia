@@ -39,9 +39,6 @@ flowchart TB
 
 Video can also be coded with **MPEG**.
 
-!!! warning "Slip in the slide"
-    The RGB mode is said to give "65538 colours"; 2¹⁶ = **65,536**.
-
 ## CD-I Ready format
 
 A disc playable on **both CD-DA and CD-I players**. The **track pregap** (normally 2–3 s) is extended to **at least 182 s** and carries the CD-I data. Audio players ignore it. Three play modes: (1) standard audio only, (2) read and display the pregap data only, (3) load the pregap information into the player's RAM, then play audio while showing it.
@@ -63,9 +60,6 @@ Playable on **CD-ROM/XA players and CD-I players**. All data tracks are in **CD-
 | Base | none | 512 | 768 |
 | 4 Base | compressed | 1,024 | 1,536 |
 | 16 Base | compressed | 2,048 | 3,072 |
-
-!!! warning "Label slip"
-    The extracted slide labels the second row "base/14"; the sequence 128 → 256 → 512 shows it is **base/4**.
 
 Uses: professional and private applications, simultaneous display of several images, image editing, integration into documents.
 

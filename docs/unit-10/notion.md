@@ -4,7 +4,7 @@
 
 The word **synchronization** refers to **time**. In multimedia it means the **temporal relation between media objects** in the system: between **time-dependent** (continuous) objects and between time-dependent and **time-independent** (discrete) ones. A common example is the synchronization of **visual and acoustical information in television**.
 
-Slide-deck view: coordinating several media types in time to give a **seamless presentation**, for example lip movement matching speech.
+In short: coordinating several media types in time to give a **seamless presentation**, for example lip movement matching speech.
 
 ## Basic synchronization issues
 
@@ -53,7 +53,7 @@ flowchart TB
     A graph that depends on the data of a spreadsheet.
 
 ??? question "What is the display time of one frame in a 30 fps video?"
-    1 ÷ 30 s ≈ 33.3 ms. (The notes' 25 fps case gives 40 ms.)
+    1 ÷ 30 s ≈ 33.3 ms. (25 fps gives 40 ms.)
 
 ??? question "Is video conferencing live or synthetic synchronization?"
     Live, because the capture-time relations must be reproduced.
