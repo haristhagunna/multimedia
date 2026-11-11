@@ -31,6 +31,22 @@ EXT = ["admonition", "attr_list", "def_list", "tables", "md_in_html", "pymdownx.
 EXTCFG = {"pymdownx.arithmatex": {"generic": True}}
 BUDGET = 14.0
 
+def prerender_math(h):
+    """Render arithmatex spans with KaTeX at build time (no browser plugin needed)."""
+    import json
+    pat = re.compile(r'<(span|div) class="arithmatex">(\\\(|\\\[)(.*?)(\\\)|\\\])</\1>', re.S)
+    items = [(m.group(0), m.group(3), m.group(2) == "\\[") for m in pat.finditer(h)]
+    if not items: return h
+    env = dict(os.environ, KATEX_PATH="/opt/npm-tools/node_modules/katex")
+    try:
+        r = subprocess.run(["node", os.path.join(ROOT, "tools", "katex_render.js")], input=json.dumps([{"tex": html.unescape(t), "display": d} for _, t, d in items]), capture_output=True, text=True, env=env, timeout=60)
+        out = json.loads(r.stdout)
+    except Exception as e:
+        print("katex failed", e); return h
+    for (orig, _, d), rendered in zip(items, out):
+        h = h.replace(orig, f'<span class="mathx{" blk" if d else ""}">{rendered}</span>', 1)
+    return h
+
 def md2html(text):
     return markdown.markdown(text, extensions=EXT, extension_configs=EXTCFG, output_format="html")
 
@@ -368,6 +384,7 @@ def unit_deck(n, cfgunits):
     body = "\n".join(sections)
     # never force display on <section> itself (reveal.js toggles it): wrap in an inner div instead
     body = re.sub(r'<section class="(sec|title-slide)">(.*?)</section>', r'<section><div class="\1">\2</div></section>', body, flags=re.S)
+    body = prerender_math(body)
     out = TEMPLATE.replace("@@N@@", str(n)).replace("@@TITLE@@", title).replace("@@SLIDES@@", body)
     open(os.path.join(DOCS, "decks", f"unit-{n:02d}.html"), "w", encoding="utf-8").write(out)
     cnt = out.count("<section")

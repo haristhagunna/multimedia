@@ -80,28 +80,27 @@ aside.notes{display:none}
 .reveal .controls{color:#a5b4fc}
 .reveal .slide-number{background:transparent;color:#8e94c4;font-size:12px;font-weight:700;right:14px;bottom:8px}
 .reveal .fragment.highlight-current-blue.current-fragment{color:#a5b4fc}
-.reveal .katex{font-size:1.05em}.reveal .arithmatex{color:#fff}
+.reveal .katex{font-size:1.05em}.mathx.blk{display:block;text-align:center;margin:.4em 0}.reveal .arithmatex{color:#fff}
 .reveal .arithmatex.block,.reveal div.arithmatex{margin:.5em 0;text-align:center}
 @media print{#hud,.copyright-foot{display:none}}
 </style>
 </head>
 <body>
 <div id="hud"></div>
+<div id="loaderr" style="display:none;position:fixed;inset:0;z-index:99;padding:12vh 8vw;background:#080a14;color:#e8eaff;font:600 20px Inter,system-ui,sans-serif">The slide engine could not be loaded.<br><br><span style="font-weight:400;color:#aab0d6">These slides need an internet connection to load reveal.js from cdn.jsdelivr.net. Check your connection or any ad-blocker / firewall, then reload.</span></div>
 <div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved. &middot; Press <b>?</b> for shortcuts, <b>Esc</b> for overview</div>
 <div class="reveal"><div class="slides">
 @@SLIDES@@
 </div></div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>window.__t=setTimeout(function(){if(!window.Reveal){var m=document.getElementById("loaderr");if(m)m.style.display="block";}},5000);</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js" onerror="document.getElementById('loaderr').style.display='block'"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/notes.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/search.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/zoom.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/math.js"></script>
 <script>
+var plugins=[];['RevealNotes','RevealSearch','RevealZoom'].forEach(function(n){if(window[n])plugins.push(window[n]);});
 Reveal.initialize({width:1280,height:720,margin:.04,hash:true,slideNumber:'c/t',progress:true,controls:true,controlsTutorial:false,
-  transition:'slide',backgroundTransition:'fade',autoAnimateDuration:.5,fragments:true,navigationMode:'default',
-  center:false,pdfSeparateFragments:false,
-  math:{katex:{trust:true}},
-  plugins:[RevealNotes,RevealSearch,RevealZoom,RevealMath.KaTeX]});
+  transition:'slide',backgroundTransition:'fade',autoAnimateDuration:.5,fragments:true,center:false,plugins:plugins});
 function hud(){var s=Reveal.getCurrentSlide();var t=s&&s.parentNode&&s.parentNode.getAttribute&&s.parentNode.getAttribute('data-topic');
   var h=document.getElementById('hud');h.textContent='Unit @@N@@'+(t?' · '+t:'');}
 Reveal.on('ready',hud);Reveal.on('slidechanged',hud);

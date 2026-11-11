@@ -80,13 +80,14 @@ aside.notes{display:none}
 .reveal .controls{color:#a5b4fc}
 .reveal .slide-number{background:transparent;color:#8e94c4;font-size:12px;font-weight:700;right:14px;bottom:8px}
 .reveal .fragment.highlight-current-blue.current-fragment{color:#a5b4fc}
-.reveal .katex{font-size:1.05em}.reveal .arithmatex{color:#fff}
+.reveal .katex{font-size:1.05em}.mathx.blk{display:block;text-align:center;margin:.4em 0}.reveal .arithmatex{color:#fff}
 .reveal .arithmatex.block,.reveal div.arithmatex{margin:.5em 0;text-align:center}
 @media print{#hud,.copyright-foot{display:none}}
 </style>
 </head>
 <body>
 <div id="hud"></div>
+<div id="loaderr" style="display:none;position:fixed;inset:0;z-index:99;padding:12vh 8vw;background:#080a14;color:#e8eaff;font:600 20px Inter,system-ui,sans-serif">The slide engine could not be loaded.<br><br><span style="font-weight:400;color:#aab0d6">These slides need an internet connection to load reveal.js from cdn.jsdelivr.net. Check your connection or any ad-blocker / firewall, then reload.</span></div>
 <div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved. &middot; Press <b>?</b> for shortcuts, <b>Esc</b> for overview</div>
 <div class="reveal"><div class="slides">
 <section><div class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 1<br>Multimedia System</h1><p style="max-width:75%;color:#aab0d6">What multimedia is, its structure, media types and data streams.</p><div class="chips"><span>3 teaching hours</span><span>6 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></div></section>
@@ -233,7 +234,7 @@ aside.notes{display:none}
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:55:20.260308</dc:date>
+    <dc:date>2026-11-11T17:59:03.065588</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1172,7 +1173,7 @@ L 552.080938 249.696
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:55:20.343742</dc:date>
+    <dc:date>2026-11-11T17:59:03.146647</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1653,7 +1654,7 @@ L 398.16 47.081739
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:55:20.370046</dc:date>
+    <dc:date>2026-11-11T17:59:03.174609</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1977,17 +1978,15 @@ L 573.12 48.96
 <section data-topic="Quick check"><section><div class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></div></section><section><h2><small>Quick check 1 / 6</small>10. Which pairing is correct?</h2><ul class="opts"><li>A. Perception medium: how information is coded in the computer</li><li>B. Presentation medium: the devices through which information is delivered to and introduced into the computer</li><li>C. Storage medium: what information is transmitted over</li><li>D. Information exchange medium: how humans sense information</li></ul><div class="fragment ans"><strong>Answer: B.</strong> A describes the representation medium, C the transmission medium, and D the perception medium.</div></section><section><h2><small>Quick check 2 / 6</small>11. A monitor is best classified as a</h2><ul class="opts"><li>A. Perception medium</li><li>B. Representation medium</li><li>C. Presentation medium</li><li>D. Transmission medium</li></ul><div class="fragment ans"><strong>Answer: C.</strong> A screen is an output (presentation) device. Perception is the human sense that receives the image.</div></section><section><h2><small>Quick check 3 / 6</small>12. Which of these is a continuous (time-dependent) medium?</h2><ul class="opts"><li>A. A text document</li><li>B. A still photograph</li><li>C. A movie</li><li>D. A page of ASCII characters</li></ul><div class="fragment ans"><strong>Answer: C.</strong> A movie's information depends on its time of occurrence. The others have no time component.</div></section><section><h2><small>Quick check 4 / 6</small>13. Which transmission mode is best for multimedia?</h2><ul class="opts"><li>A. Asynchronous</li><li>B. Synchronous</li><li>C. Isochronous</li><li>D. Parallel</li></ul><div class="fragment ans"><strong>Answer: C.</strong> Isochronous transfer is at a fixed, steady rate. Asynchronous allows gaps between bytes; synchronous removes start and stop bits and relies on shared clocks; parallel is not one of the three modes, and multimedia communication is generally serial.</div></section><section><h2><small>Quick check 5 / 6</small>14. In the global structure, compression, storage and network belong to the</h2><ul class="opts"><li>A. Application domain</li><li>B. System domain</li><li>C. Device domain</li><li>D. Synchronization layer</li></ul><div class="fragment ans"><strong>Answer: C.</strong> The system domain holds operating, database and communication systems; the application domain holds tools, documents, user interface and programming abstractions.</div></section><section><h2><small>Quick check 6 / 6</small>15. Which is NOT one of the four basic characteristics of a multimedia system?</h2><ul class="opts"><li>A. Computer controlled</li><li>B. Integrated</li><li>C. Analog representation</li><li>D. Interactive</li></ul><div class="fragment ans"><strong>Answer: C.</strong> Multimedia information must be represented <strong>digitally</strong>.</div></section></section>
 <section><div class="title-slide"><div class="kick">End of Unit 1</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></div></section>
 </div></div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>window.__t=setTimeout(function(){if(!window.Reveal){var m=document.getElementById("loaderr");if(m)m.style.display="block";}},5000);</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js" onerror="document.getElementById('loaderr').style.display='block'"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/notes.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/search.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/zoom.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/math.js"></script>
 <script>
+var plugins=[];['RevealNotes','RevealSearch','RevealZoom'].forEach(function(n){if(window[n])plugins.push(window[n]);});
 Reveal.initialize({width:1280,height:720,margin:.04,hash:true,slideNumber:'c/t',progress:true,controls:true,controlsTutorial:false,
-  transition:'slide',backgroundTransition:'fade',autoAnimateDuration:.5,fragments:true,navigationMode:'default',
-  center:false,pdfSeparateFragments:false,
-  math:{katex:{trust:true}},
-  plugins:[RevealNotes,RevealSearch,RevealZoom,RevealMath.KaTeX]});
+  transition:'slide',backgroundTransition:'fade',autoAnimateDuration:.5,fragments:true,center:false,plugins:plugins});
 function hud(){var s=Reveal.getCurrentSlide();var t=s&&s.parentNode&&s.parentNode.getAttribute&&s.parentNode.getAttribute('data-topic');
   var h=document.getElementById('hud');h.textContent='Unit 1'+(t?' · '+t:'');}
 Reveal.on('ready',hud);Reveal.on('slidechanged',hud);

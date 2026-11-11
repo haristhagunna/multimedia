@@ -80,13 +80,14 @@ aside.notes{display:none}
 .reveal .controls{color:#a5b4fc}
 .reveal .slide-number{background:transparent;color:#8e94c4;font-size:12px;font-weight:700;right:14px;bottom:8px}
 .reveal .fragment.highlight-current-blue.current-fragment{color:#a5b4fc}
-.reveal .katex{font-size:1.05em}.reveal .arithmatex{color:#fff}
+.reveal .katex{font-size:1.05em}.mathx.blk{display:block;text-align:center;margin:.4em 0}.reveal .arithmatex{color:#fff}
 .reveal .arithmatex.block,.reveal div.arithmatex{margin:.5em 0;text-align:center}
 @media print{#hud,.copyright-foot{display:none}}
 </style>
 </head>
 <body>
 <div id="hud"></div>
+<div id="loaderr" style="display:none;position:fixed;inset:0;z-index:99;padding:12vh 8vw;background:#080a14;color:#e8eaff;font:600 20px Inter,system-ui,sans-serif">The slide engine could not be loaded.<br><br><span style="font-weight:400;color:#aab0d6">These slides need an internet connection to load reveal.js from cdn.jsdelivr.net. Check your connection or any ad-blocker / firewall, then reload.</span></div>
 <div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved. &middot; Press <b>?</b> for shortcuts, <b>Esc</b> for overview</div>
 <div class="reveal"><div class="slides">
 <section><div class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 10<br>Synchronization</h1><p style="max-width:75%;color:#aab0d6">Skew, reference model, specification and distributed sync.</p><div class="chips"><span>4 teaching hours</span><span>5 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></div></section>
@@ -175,7 +176,7 @@ aside.notes{display:none}
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:55:21.729604</dc:date>
+    <dc:date>2026-11-11T17:59:04.565279</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -401,7 +402,7 @@ L 641.76 303.691034
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:55:21.710844</dc:date>
+    <dc:date>2026-11-11T17:59:04.538331</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -687,17 +688,15 @@ L 580.240313 205.344
 <section data-topic="Quick check"><section><div class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></div></section><section><h2><small>Quick check 1 / 4</small>15. A 25 fps video needs each frame displayed for</h2><ul class="opts"><li>A. 25 ms</li><li>B. 40 ms</li><li>C. 80 ms</li><li>D. 250 ms</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 2 / 4</small>16. The layer with no explicit interface is the</h2><ul class="opts"><li>A. Media layer</li><li>B. Stream layer</li><li>C. Object layer</li><li>D. Specification layer</li></ul><div class="fragment ans"><strong>Answer: D.</strong></div></section><section><h2><small>Quick check 3 / 4</small>17. Pointing ahead of audio is tolerated up to</h2><ul class="opts"><li>A. 80 ms</li><li>B. 500 ms</li><li>C. 750 ms</li><li>D. 1000 ms</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 4 / 4</small>18. Time Petri nets belong to which specification category?</h2><ul class="opts"><li>A. Interval-based</li><li>B. Axes-based</li><li>C. Control-flow based</li><li>D. Event-based</li></ul><div class="fragment ans"><strong>Answer: C.</strong></div></section></section>
 <section><div class="title-slide"><div class="kick">End of Unit 10</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></div></section>
 </div></div>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>window.__t=setTimeout(function(){if(!window.Reveal){var m=document.getElementById("loaderr");if(m)m.style.display="block";}},5000);</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js" onerror="document.getElementById('loaderr').style.display='block'"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/notes.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/search.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/zoom.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/math.js"></script>
 <script>
+var plugins=[];['RevealNotes','RevealSearch','RevealZoom'].forEach(function(n){if(window[n])plugins.push(window[n]);});
 Reveal.initialize({width:1280,height:720,margin:.04,hash:true,slideNumber:'c/t',progress:true,controls:true,controlsTutorial:false,
-  transition:'slide',backgroundTransition:'fade',autoAnimateDuration:.5,fragments:true,navigationMode:'default',
-  center:false,pdfSeparateFragments:false,
-  math:{katex:{trust:true}},
-  plugins:[RevealNotes,RevealSearch,RevealZoom,RevealMath.KaTeX]});
+  transition:'slide',backgroundTransition:'fade',autoAnimateDuration:.5,fragments:true,center:false,plugins:plugins});
 function hud(){var s=Reveal.getCurrentSlide();var t=s&&s.parentNode&&s.parentNode.getAttribute&&s.parentNode.getAttribute('data-topic');
   var h=document.getElementById('hud');h.textContent='Unit 10'+(t?' · '+t:'');}
 Reveal.on('ready',hud);Reveal.on('slidechanged',hud);
