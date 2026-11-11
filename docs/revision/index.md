@@ -7,6 +7,7 @@ Everything you need in the final days: formulas, definitions, a checklist and a 
 - **[Formula sheet](formula-sheet.md)**: every formula in the course with a worked example.
 - **[Glossary](glossary.md)**: key terms and abbreviations in one place.
 - **[Exam checklist](exam-checklist.md)**: what to be able to do for each unit.
+- **[Mock exams](mock-exam-1.md)**: two timed 60-mark papers with marking schemes ([Paper 2](mock-exam-2.md)).
 - **[Revision planner](planner.md)**: enter your exam date, get a daily plan.
 
 </div>

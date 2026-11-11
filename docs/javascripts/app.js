@@ -95,7 +95,7 @@
   /* interactive MCQs + tools on practice pages */
   function practice() {
     var h1 = document.querySelector(".md-content h1");
-    if (!h1 || !/Practice Questions/i.test(h1.textContent) || document.querySelector(".practice-tools")) return;
+    if (!h1 || !/Practice Questions|Mock Exam/i.test(h1.textContent) || document.querySelector(".practice-tools")) return;
     var qs = Array.prototype.slice.call(document.querySelectorAll("details.question"));
     var mcqs = [], score = { r: 0, w: 0 };
     var tools = document.createElement("div"); tools.className = "practice-tools";
@@ -130,6 +130,37 @@
       if (a === "open" || a === "close") qs.forEach(function (d) { d.open = a === "open"; });
       if (a === "fc") flash(qs);
     };
+  }
+
+  /* mock exam timer + scorer */
+  function mock() {
+    var t = document.querySelector(".mock-timer"); if (!t || t.dataset.ready) return; t.dataset.ready = 1;
+    var total = +t.dataset.minutes * 60, left = total, run = null;
+    t.innerHTML = '<span class="mt-time">--:--</span><button class="btn-s primary" data-m="go">Start</button><button class="btn-s" data-m="reset">Reset</button><span class="mt-note">Full marks ' + t.dataset.total + '</span>';
+    var disp = t.querySelector(".mt-time"), go = t.querySelector('[data-m="go"]');
+    function fmt(s) { var h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (h ? h + ":" : "") + String(m).padStart(h ? 2 : 1, "0") + ":" + String(x).padStart(2, "0"); }
+    function paint() { disp.textContent = fmt(Math.max(left, 0)); t.classList.toggle("low", left <= 600 && left > 0); t.classList.toggle("done", left <= 0); }
+    function stop() { clearInterval(run); run = null; go.textContent = left <= 0 ? "Time up" : "Resume"; }
+    t.onclick = function (e) {
+      var a = e.target.dataset && e.target.dataset.m; if (!a) return;
+      if (a === "reset") { stop(); left = total; go.textContent = "Start"; paint(); return; }
+      if (left <= 0) return;
+      if (run) { stop(); return; }
+      go.textContent = "Pause"; var end = Date.now() + left * 1000;
+      run = setInterval(function () { left = Math.round((end - Date.now()) / 1000); paint(); if (left <= 0) stop(); }, 500);
+    };
+    paint(); disp.textContent = fmt(total);
+    var sc = document.querySelector(".mock-scorer"); if (!sc) return;
+    var secs = [["Section A (MCQ, auto-marked)", 10, true], ["Section B", 30], ["Section C", 20]];
+    sc.innerHTML = '<h2>Score yourself</h2>' + secs.map(function (s, i) { return '<label class="ms-row"><span>' + s[0] + ' / ' + s[1] + '</span>' + (s[2] ? '<output data-i="0">0</output>' : '<input type="number" min="0" max="' + s[1] + '" step="0.5" data-i="' + i + '" placeholder="0">') + '</label>'; }).join("") + '<div class="ms-total">Total: <b>0</b> / ' + sc.dataset.total + ' <span></span></div>';
+    function sum() {
+      var tot = 0; sc.querySelectorAll("input").forEach(function (x) { var v = Math.min(Math.max(+x.value || 0, 0), +x.max); tot += v; });
+      var a = (document.querySelector(".practice-tools .score") || {}).textContent || ""; var m = a.match(/(\d+) \//); var r = m ? +m[1] : 0;
+      sc.querySelector("output").textContent = r; tot += r;
+      var pct = tot / +sc.dataset.total * 100; sc.querySelector(".ms-total b").textContent = tot;
+      sc.querySelector(".ms-total span").textContent = tot ? "(" + Math.round(pct) + "% - " + (pct >= 80 ? "distinction range" : pct >= 60 ? "good, tighten weak units" : pct >= 40 ? "pass range, keep practising" : "revise the units you lost marks in") + ")" : "";
+    }
+    sc.addEventListener("input", sum); document.addEventListener("click", function () { setTimeout(sum, 50); });
   }
 
   /* flashcards */
@@ -208,7 +239,7 @@
   }
 
   function init() {
-    if (document.querySelector(".md-content")) { bar(); track(); nav(); unitBars(); practice(); planner(); counters(); countdown(); }
+    if (document.querySelector(".md-content")) { bar(); track(); nav(); unitBars(); practice(); mock(); planner(); counters(); countdown(); }
     document.querySelectorAll(".md-nav__link").length && nav();
   }
   window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });

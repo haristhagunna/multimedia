@@ -253,6 +253,8 @@ nav:
       - Glossary: revision/glossary.md
       - Exam checklist: revision/exam-checklist.md
       - Revision planner: revision/planner.md
+      - Mock exam 1: revision/mock-exam-1.md
+      - Mock exam 2: revision/mock-exam-2.md
   - Labs:
       - Interactive simulators: labs/simulators.md
   - About: about.md
