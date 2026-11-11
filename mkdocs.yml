@@ -257,7 +257,15 @@ nav:
       - Mock exam 1: revision/mock-exam-1.md
       - Mock exam 2: revision/mock-exam-2.md
   - Labs:
+      - labs/index.md
       - Interactive simulators: labs/simulators.md
+      - "1 Sampling and aliasing": labs/lab-sampling.md
+      - "2 Images and colour": labs/lab-images.md
+      - "3 FFmpeg": labs/lab-ffmpeg.md
+      - "4 Huffman and RLE": labs/lab-huffman.md
+      - "5 DCT and quantization": labs/lab-dct.md
+      - "6 Scheduling": labs/lab-scheduler.md
+      - "7 Sync drift": labs/lab-sync.md
   - Instructor:
       - instructor/index.md
       - Week plan: instructor/week-plan.md
