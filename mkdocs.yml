@@ -2,8 +2,10 @@ site_name: Multimedia and Application
 site_author: Er. Harish Thagunna
 site_description: Complete exam-ready notes, class slides, interactive practice and revision tools for BCA429CO Multimedia and Application, by Er. Harish Thagunna.
 copyright: "&copy; 2026 Er. Harish Thagunna. All rights reserved."
-# site_url: https://thagunnaharish1-netizen.github.io/multimedia/
-# repo_url: https://github.com/thagunnaharish1-netizen/multimedia
+site_url: https://thagunnaharish1-netizen.github.io/multimedia/
+repo_url: https://github.com/thagunnaharish1-netizen/multimedia
+repo_name: multimedia
+edit_uri: edit/main/docs/
 
 hooks:
   - hooks/site.py
@@ -12,6 +14,7 @@ theme:
   name: material
   custom_dir: overrides
   language: en
+  favicon: assets/favicon.png
   font:
     text: Inter
     code: JetBrains Mono
@@ -254,6 +257,7 @@ nav:
       - Exam checklist: revision/exam-checklist.md
       - Revision planner: revision/planner.md
       - Cheat sheets: revision/cheat-sheets.md
+      - Nepali glossary: revision/nepali-glossary.md
       - Mock exam 1: revision/mock-exam-1.md
       - Mock exam 2: revision/mock-exam-2.md
   - Labs:

@@ -4,6 +4,14 @@
   <meta name="author" content="Er. Harish Thagunna">
   <meta name="copyright" content="&copy; 2026 Er. Harish Thagunna. All rights reserved.">
   <meta name="theme-color" content="#4f46e5">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ page.title ~ ' - ' if page and page.title and not page.is_homepage }}Multimedia and Application">
+  <meta property="og:description" content="{{ (page.meta.description if page and page.meta and page.meta.description) or config.site_description }}">
+  <meta property="og:image" content="{{ config.site_url }}assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ config.site_url }}assets/og-image.png">
   <meta property="og:site_name" content="Multimedia and Application by Er. Harish Thagunna">
 {% endblock %}
 

@@ -43,3 +43,19 @@ The decks in `docs/decks/` are generated from the topic notes and `tools/visuals
     python tools/build_decks.py 5 6    # selected units
 
 Needs `markdown`, `pymdown-extensions`, `beautifulsoup4`, `matplotlib`, `numpy` and the Mermaid CLI (`mmdc`).
+
+## Custom domain (optional)
+
+1. Buy a domain (for example `multimedia.example.com`) and add a `CNAME` DNS record pointing to `thagunnaharish1-netizen.github.io`.
+2. In the GitHub repository open **Settings → Pages → Custom domain**, enter the domain and tick **Enforce HTTPS**.
+3. Put the same domain in `site_url` in `mkdocs.yml` (the share image and canonical links use it) and push.
+
+## Regenerating generated content
+
+```bash
+python3 tools/build_cheatsheets.py   # revision/cheat-sheets.md
+python3 tools/build_instructor.py    # instructor pages and question-bank.csv
+python3 tools/build_labs.py          # lab pages (embeds tested code)
+python3 tools/build_assets.py        # share image and favicon
+python3 tools/build_decks.py         # class decks
+```

@@ -464,3 +464,4 @@ body { -webkit-font-smoothing: antialiased; }
   .cheat-terms dl { grid-template-columns: 9rem 1fr; }
 }
 @media (max-width: 600px) { .cheat-terms dl { grid-template-columns: 1fr; } }
+.report-err { margin-top: 2rem; padding-top: .8rem; border-top: 1px dashed var(--md-default-fg-color--lighter); font-size: .7rem; opacity: .8; } @media print { .report-err { display: none; } }

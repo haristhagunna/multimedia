@@ -132,6 +132,15 @@
     };
   }
 
+  /* report-an-error link */
+  function report() {
+    var art = document.querySelector(".md-content__inner"); if (!art || art.querySelector(".report-err") || /\/decks\//.test(location.pathname)) return;
+    var h1 = document.querySelector(".md-content h1"), t = h1 ? h1.textContent.replace(/[\u00b6\s]+/g, " ").trim() : document.title;
+    var url = "https://github.com/thagunnaharish1-netizen/multimedia/issues/new?title=" + encodeURIComponent("Error report: " + t) + "&body=" + encodeURIComponent("Page: " + location.href + "\n\nWhat is wrong?\n\nWhat should it say?\n");
+    var p = document.createElement("p"); p.className = "report-err"; p.innerHTML = '<a href="' + url + '" target="_blank" rel="noopener">Found a mistake on this page? Report it</a> &middot; &copy; 2026 Er. Harish Thagunna';
+    art.appendChild(p);
+  }
+
   /* mock exam timer + scorer */
   function mock() {
     var t = document.querySelector(".mock-timer"); if (!t || t.dataset.ready) return; t.dataset.ready = 1;
@@ -239,7 +248,7 @@
   }
 
   function init() {
-    if (document.querySelector(".md-content")) { bar(); track(); nav(); unitBars(); practice(); mock(); planner(); counters(); countdown(); }
+    if (document.querySelector(".md-content")) { bar(); track(); nav(); unitBars(); practice(); mock(); report(); planner(); counters(); countdown(); }
     document.querySelectorAll(".md-nav__link").length && nav();
   }
   window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
