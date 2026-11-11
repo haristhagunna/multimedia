@@ -1,8 +1,5 @@
 # Resource Management
 
-!!! info "Not in the previous lecturer's notes"
-    Written from the syllabus and standard textbook knowledge (mainly Steinmetz and Nahrstedt, *Multimedia: Computing, Communications and Applications*). Check details against your prescribed textbook.
-
 ## Resources
 
 A **resource** is anything a process needs to run.

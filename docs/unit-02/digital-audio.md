@@ -1,8 +1,5 @@
 # Digital Audio and File Formats
 
-!!! source "Source"
-    *Unit 2 – Sound & Audio System* pp. 8–13 (representation) and pp. 52–56 (file formats).
-
 ## Computer representation of sound
 
 The smooth, continuous curve of a sound wave **cannot be stored directly** in a computer. Instead:
@@ -12,7 +9,7 @@ The smooth, continuous curve of a sound wave **cannot be stored directly** in a 
 3. The conversion is done by an **Analog-to-Digital Converter (ADC)**.
 4. The reverse is done by a **Digital-to-Analog Converter (DAC)**.
 
-The lecturer's example of an ADC is the **AM79C30A digital subscriber controller chip**. The figure shows the smooth pressure wave on the left and, on the right, the same wave as a row of vertical bars (the **samples**) whose heights follow the wave.
+An example of an ADC is the **AM79C30A digital subscriber controller chip**. The figure shows the smooth pressure wave on the left and, on the right, the same wave as a row of vertical bars (the **samples**) whose heights follow the wave.
 
 ```mermaid
 flowchart LR
@@ -40,7 +37,7 @@ The value of each sample must be stored as a **discrete** number. The **resoluti
 
 | Bits per sample | Number of levels | Example |
 |---|---|---|
-| 3-bit | 2³ = **8** | The lecturer's illustration of coarse quantization |
+| 3-bit | 2³ = **8** | An illustration of coarse quantization |
 | 8-bit | 2⁸ = **256** | Lower quality |
 | 16-bit | 2¹⁶ = **65,536** | CD quality |
 
@@ -75,7 +72,7 @@ $$S = 44100 \times \frac{16}{8} \times 2 \times 10 = 1{,}764{,}000\ \text{bytes}
 
 High-quality sound files are very big, but the size can be reduced by **compression**.
 
-!!! info "Beyond the lecturer's notes: two extra practice calculations"
+!!! info "Extra: two extra practice calculations"
     - **Mono, 8 kHz, 8-bit, 1 minute:** S = 8000 × (8/8) × 1 × 60 = **480,000 bytes ≈ 468.75 KB**.
     - **Stereo, 44.1 kHz, 16-bit, 3 minutes (180 s):** S = 44100 × (16/8) × 2 × 180 = **31,752,000 bytes ≈ 30.3 MB**.
 

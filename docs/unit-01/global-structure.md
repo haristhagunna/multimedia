@@ -1,8 +1,5 @@
 # Global Structure of Multimedia
 
-!!! source "Source"
-    *Unit 1 – Introduction* pp. 11–19 (figure on p. 12); *mul c1* pp. 22–27 (figure on p. 22).
-
 !!! exam "Exam tip"
     This is the one diagram you are most likely to be asked to **draw and explain**. Practise redrawing it from memory until you can place every box.
 
@@ -48,9 +45,9 @@ flowchart TB
     Y -.-> D
 ```
 
-In the lecturer's figure the three domains are stacked as boxes, with a **tall vertical bar labelled Synchronization** along the left side that spans all three.
+In the figure the three domains are stacked as boxes, with a **tall vertical bar labelled Synchronization** along the left side that spans all three.
 
-| Layer | Boxes in the lecturer's figure |
+| Layer | Boxes in the figure |
 |---|---|
 | **Application domain** | *Tools and Applications* (full-width bar); below it *Documents*, *User Interface*, *Programming Abstractions* |
 | **System domain** | *Database Systems*, *Operating Systems*, *Communication Systems*; below them a full-width bar, *Computer Technology* |
@@ -91,10 +88,10 @@ A **vertical layer that affects all levels of the system**. Synchronization is t
 - It is critical for **video conferencing, movies and e-learning**.
 - Poor synchronization causes **audio-video mismatch** and a poor user experience.
 
-*mul c1* calls this layer the **cross domain**: it handles the temporal relationships among media across all domains. Unit 10 is devoted to it.
+Some sources call this layer the **cross domain**: it handles the temporal relationships among media across all domains. Unit 10 is devoted to it.
 
-!!! info "Beyond the lecturer's notes"
-    The small numbers printed inside the boxes of the *mul c1* figure (3 to 17) are labels from the original textbook figure. The lecturer does not explain them, so ignore them in the exam.
+!!! info "Extra"
+    The small numbers printed inside the boxes of the usual textbook figure (3 to 17) are labels from the original textbook figure. They are not explained, so ignore them in the exam.
 
 ## Where students go wrong
 

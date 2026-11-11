@@ -1,8 +1,5 @@
 # Hypertext, Hypermedia and Multimedia
 
-!!! info "Not in the previous lecturer's notes"
-    Written from the syllabus and standard textbook knowledge (mainly Steinmetz and Nahrstedt, *Multimedia: Computing, Communications and Applications*). Check details against your prescribed textbook.
-
 ## Hypertext
 
 **Hypertext** is **text organised as a network of linked nodes** that the reader can follow in a **non-linear** order, in contrast with ordinary text that is read from start to end.

@@ -37,12 +37,11 @@ Unit 1 told you *what* multimedia is. This unit starts the tour of the individua
 6. [Speech Transmission](speech-transmission.md)
 7. [Practice Questions](practice.md)
 
-!!! source "Lecturer file"
-    *Unit 2 – Sound & Audio System* (56 slides, many of them figures). The lecturer set one assignment in this unit: **"Differentiate between MIDI and SMPTE with a suitable example."** The answer is on the [MIDI](midi.md#midi-versus-smpte) page.
+A typical assignment in this unit: **"Differentiate between MIDI and SMPTE with a suitable example."** The answer is on the [MIDI](midi.md#midi-versus-smpte) page.
 
 ## What to expect in the exam
 
-These weights are inferred from how much space the lecturer gave each topic. They are not from a past paper.
+These weights are estimates based on how much space each topic usually gets. They are not from a past paper.
 
 !!! exam "Most likely questions"
     - **Sampling, Nyquist theorem, quantization** and the **file-size calculation**.

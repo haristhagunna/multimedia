@@ -1,8 +1,5 @@
 # Presentation Requirements
 
-!!! source "Source"
-    *Unit 10 – Synchronization* handout pp. 2–3; slide deck p. 5.
-
 For correct delivery at the user interface, synchronization is essential. A **presentation requirement** consists of:
 
 - for **intra-object** synchronization: the **accuracy of delays** in presenting the **LDUs** (logical data units);
@@ -30,7 +27,7 @@ In a **CSCW** (computer-supported cooperative work) environment, cameras and mic
 | **Audio ahead of pointing** | **750 ms** |
 | **Pointing ahead of audio** | **500 ms** |
 
-## Other requirements from the slide deck
+## Other requirements
 
 | Requirement | Meaning | Example |
 |---|---|---|
@@ -41,9 +38,9 @@ In a **CSCW** (computer-supported cooperative work) environment, cameras and mic
 | **Jitter** | Variation of delay | Choppy audio in a video call |
 
 !!! warning "Wording"
-    The slide deck states lip sync as "< 80 ms" and the handout as "−80 ms to +80 ms". They agree: the allowed band is **±80 ms**.
+    Lip sync is sometimes stated as "< 80 ms" and sometimes as "−80 ms to +80 ms". They agree: the allowed band is **±80 ms**.
 
-!!! info "Beyond the lecturer's notes"
+!!! info "Extra"
     Textbooks also give bounds for other combinations (for example audio with animation, audio with image slides, audio-audio), generally looser than for lip sync. Check the prescribed textbook if your exam is set from it.
 
 !!! exam "Exam tip"

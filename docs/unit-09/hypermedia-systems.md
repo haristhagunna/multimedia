@@ -1,8 +1,5 @@
 # Hypermedia Systems: Architecture, Nodes and Pointers
 
-!!! info "Not in the previous lecturer's notes"
-    Written from the syllabus and standard textbook knowledge (mainly Steinmetz and Nahrstedt, *Multimedia: Computing, Communications and Applications*). Check details against your prescribed textbook.
-
 ## Nodes
 
 A **node** (also card, page, frame) is a unit of information: text, image, audio, video, or a **composite** node containing other nodes. Good practice: one node per **single idea**, so it can be linked in several contexts.

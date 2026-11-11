@@ -1,8 +1,5 @@
 # Multimedia Documents
 
-!!! info "Not in the previous lecturer's notes"
-    Written from the syllabus and standard textbook knowledge (mainly Steinmetz and Nahrstedt, *Multimedia: Computing, Communications and Applications*). Check details against your prescribed textbook.
-
 ## What is a document?
 
 A **document** is a **structured** collection of information intended for presentation to a reader. A **multimedia document** combines **discrete media** (text, graphics, images) and **continuous media** (audio, video, animation) with **temporal, spatial and logical relations** among them.

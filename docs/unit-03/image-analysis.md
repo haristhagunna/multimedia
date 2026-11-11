@@ -1,11 +1,8 @@
 # Image Analysis and Recognition
 
-!!! source "Source"
-    *Unit 3 – Image and Graphics* pp. 38–46; *mul c3* pp. 31–46.
-
 ## Image analysis
 
-**Image analysis** is concerned with **techniques for extracting descriptions of objects from images**. In *mul c3* terms, image-processing algorithms **alter an input image to create a new image**, or **extract image descriptions** (shape, position, orientation) for **higher-level analysis**.
+**Image analysis** is concerned with **techniques for extracting descriptions of objects from images**. In some textbooks' terms, image-processing algorithms **alter an input image to create a new image**, or **extract image descriptions** (shape, position, orientation) for **higher-level analysis**.
 
 Analysis techniques include:
 
@@ -56,7 +53,7 @@ The **difficulty** of recognition depends on the **kind of object, the backgroun
 ## Steps of image recognition
 
 !!! exam "Exam tip"
-    This is a likely long question. The two lecturer files give **slightly different lists**: *Unit 3* gives **six steps** (including **Grouping**); *mul c3* gives **five** (no grouping). Learn the **six** and write them in this order. Mention grouping with one line.
+    This is a likely long question. Different books give **slightly different lists**: some give **six steps** (including **Grouping**), some **five** (no grouping). Learn the **six** and write them in this order. Mention grouping with one line.
 
 ```mermaid
 flowchart LR
@@ -71,7 +68,7 @@ flowchart LR
 |---|---|---|
 | 1 | **Formatting** | **Capture the image** from a camera and bring it into **digital form**: a pixel representation. |
 | 2 | **Conditioning** | **Preprocess** the data to make it suitable for recognition. Suppress **noise and background**, which hide informative patterns, and highlight the interesting parts. Tasks: **noise reduction, image enhancement, normalisation, feature extraction**. |
-| 3 | **Labeling** | Assign **labels** to the structure. In *mul c3*: analyse adjacent pixels to find structure such as **edges** (**edge detection** finds continuous adjacent pixels that differ greatly in intensity or colour; a **threshold** filters out insignificant edges) and **corners**; edges and corners are **labelled**. In *Unit 3*: assign **semantic labels or categories** to objects or patterns. |
+| 3 | **Labeling** | Assign **labels** to the structure. In other treatments: analyse adjacent pixels to find structure such as **edges** (**edge detection** finds continuous adjacent pixels that differ greatly in intensity or colour; a **threshold** filters out insignificant edges) and **corners**; edges and corners are **labelled**. In the main slides: assign **semantic labels or categories** to objects or patterns. |
 | 4 | **Grouping** | **Organise similar objects or patterns** into groups, for example with **clustering** to form coherent regions. *(Unit 3 only.)* |
 | 5 | **Extracting** | Compute a **list of properties for each group of pixels**: **centroid, area, orientation, spatial moments, gray-tone moments, number of holes, average curvature**. It also describes the **topological relationship** between groups. Techniques: edge detection, texture analysis, shape analysis. |
 | 6 | **Matching** | **Compare each object** in the image with **previously stored models or templates** and determine the **best match**. Uses similarity measures, template matching or classifiers. |

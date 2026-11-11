@@ -1,8 +1,5 @@
 # Types and Components of Multimedia Systems
 
-!!! source "Source"
-    *Unit 12 – multimedia-application* slides 9–15.
-
 ## Types of multimedia systems
 
 | Type | Description |

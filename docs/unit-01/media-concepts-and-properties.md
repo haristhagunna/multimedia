@@ -1,9 +1,6 @@
 # Media Concepts and Properties
 
-!!! source "Source"
-    *Unit 1 – Introduction* pp. 27–35.
-
-This page covers the part of syllabus item 1.2 that deals with **properties and notation**. The lecturer never uses the word *notation*; the closest material is **Media Concepts**, the three things every medium defines.
+This page covers the part of syllabus item 1.2 that deals with **properties and notation**. The syllabus never uses the word *notation*; the closest material is **Media Concepts**, the three things every medium defines.
 
 ## Media concepts
 
@@ -43,7 +40,7 @@ A representation space has a **spatial** dimension and a **temporal** dimension.
 | Examples | Text, still images, a document | Audio, video, a movie |
 
 !!! exam "Same words, two meanings"
-    The lecturer uses "continuous" and "discrete" for **representation values** (a continuous wave versus a digital character) and again for **media types** by time dependence. In an exam, say which one you mean. The "text plus pictures is not multimedia" argument below uses the **time-dependence** meaning.
+    These notes use "continuous" and "discrete" for **representation values** (a continuous wave versus a digital character) and again for **media types** by time dependence. In an exam, say which one you mean. The "text plus pictures is not multimedia" argument below uses the **time-dependence** meaning.
 
 ## Properties of a multimedia system
 

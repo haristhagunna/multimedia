@@ -1,8 +1,5 @@
 # Synchronization in a Distributed Environment (item 10.6)
 
-!!! source "Source"
-    *Unit 10 – Synchronization* handout p. 4. The syllabus prints no title for 10.6; this is the handout's remaining section, so confirm it with your department.
-
 Synchronization is **more complex** in a distributed environment than in a local one, because the source, the network and the sink are separate and have separate clocks. The elements:
 
 1. **Transport of the synchronization specification.** Three approaches:

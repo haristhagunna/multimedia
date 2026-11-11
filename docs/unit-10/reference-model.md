@@ -1,8 +1,5 @@
 # Reference Model for Multimedia Synchronization
 
-!!! source "Source"
-    *Unit 10 – Synchronization* handout pp. 3–4; slide deck p. 6.
-
 ## Why a reference model?
 
 Synchronization is needed at several points and by several kinds of users, from a device programmer to an author. A **reference model** divides the problem into **layers**, each giving a **synchronization mechanism through an interface**.
@@ -13,7 +10,7 @@ Synchronization is needed at several points and by several kinds of users, from 
 
 It lets us compare existing systems, place each function where it belongs, and design new systems in a modular way.
 
-## The four layers (handout)
+## The four layers 
 
 ```mermaid
 flowchart TB
@@ -29,12 +26,12 @@ flowchart TB
 | **Object layer** | **All media types**; hides the difference between **discrete and continuous** media | The complete, **synchronized presentation** | Takes a **synchronization specification** as input; **computes and executes the presentation schedule** including discrete objects and **calls to the stream layer**; closes the gap between the needs of a synchronized presentation and the stream services |
 | **Specification layer** | Tools | An **open layer with no explicit interface** | **Synchronization editors, multimedia document editors, authoring systems**; **converts** specifications to the object-layer format; **maps user-level QoS** to the qualities of the object-layer interface |
 
-## The slide deck's version
+## Another naming used in some slides
 
-The slide deck names the layers **Media** (raw files such as .mp4, .mp3), **Stream** (streams and buffering, for example YouTube), **Session** (manages sessions, for example Netflix) and **Sync** (coordinates all media timing).
+Some slides name the layers **Media** (raw files such as .mp4, .mp3), **Stream** (streams and buffering, for example YouTube), **Session** (manages sessions, for example Netflix) and **Sync** (coordinates all media timing).
 
 !!! warning "Which to write in the exam"
-    The handout (media, stream, **object, specification**) follows the textbook and the assignment questions ask for the "four-layer synchronization reference model". Write the handout version and, if useful, add one line that some slides call the upper layers "session" and "sync".
+    The textbook version (media, stream, **object, specification**) is standard and the assignment questions ask for the "four-layer synchronization reference model". Write the textbook version and, if useful, add one line that some slides call the upper layers "session" and "sync".
 
 !!! exam "Exam tip"
     A common 8-mark question: "Why is a reference model required? Discuss the four-layer model." Give the reasons above, a four-row table, and the idea that **each layer uses the one below**.

@@ -1,8 +1,5 @@
 # Quality of Service and Resource Management
 
-!!! info "Not in the previous lecturer's notes"
-    Written from the syllabus and standard textbook knowledge (mainly Steinmetz and Nahrstedt, *Multimedia: Computing, Communications and Applications*). Check details against your prescribed textbook.
-
 **Quality of Service (QoS)** is the set of parameters describing how well a service is delivered, and the **guarantee** that it will be delivered at that level.
 
 ## QoS layers

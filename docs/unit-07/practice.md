@@ -2,9 +2,6 @@
 
 Write your own answer on paper first, then click to reveal the model answer.
 
-!!! info "Not in the previous lecturer's notes"
-    This unit and its questions come from the syllabus and standard textbook knowledge.
-
 ## Short answer
 
 ??? question "1. Why do multimedia applications need a special operating system? (4 marks)"

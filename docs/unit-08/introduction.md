@@ -1,8 +1,5 @@
 # Introduction to Multimedia Communication
 
-!!! info "Not in the previous lecturer's notes"
-    Written from the syllabus and standard textbook knowledge (mainly Steinmetz and Nahrstedt, *Multimedia: Computing, Communications and Applications*). Check details against your prescribed textbook.
-
 **Multimedia communication** is the exchange of multimedia data (text, image, audio, video) between systems over a network, often with **real-time** requirements, in a **distributed** environment.
 
 ## Why it is harder than data communication

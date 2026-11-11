@@ -1,8 +1,5 @@
 # Run-Length and Huffman Coding
 
-!!! source "Source"
-    *Unit 5* pp. 10–16; *Huffman Coding* pp. 1–5.
-
 ## Run-length encoding (RLE)
 
 A **run** is a sequence in which the same value occurs in many consecutive elements. RLE stores each run as **(value, count)** instead of repeating it. It is **lossless**.
@@ -66,7 +63,7 @@ A **run** is a sequence in which the same value occurs in many consecutive eleme
 
     **Decoding:** walk from the root; 0 goes left, 1 goes right; at a leaf output the character and restart. `101` → 1 (to node 9), 0 (to node 4), 1 (D) = **D**.
 
-!!! warning "Slips in the lecturer's file"
+!!! warning "Slips"
     Step 7 is printed three times ("Repeat steps 3 to 5…"), and it says "repeat steps 3 to 5" when it should repeat steps 4 and 5 (the leaves already exist). The figures that show the tree are pictures; the table of codes (C = 0, A = 11, B = 100, D = 101) matches the tree drawn above.
 
 !!! example "A second example to practise (not in the notes)"
@@ -86,7 +83,7 @@ A **run** is a sequence in which the same value occurs in many consecutive eleme
 - Unlike Huffman (one codeword per character), arithmetic coding gives **one codeword for a whole string**.
 - First divide the range **0 to 1** into segments, one per character (including a **termination character**), each segment sized by the character's **probability**. The message narrows the interval step by step.
 
-!!! info "Beyond the lecturer's notes"
+!!! info "Extra"
     Example: A = 0.6, B = 0.4. Message **AB**: A selects [0, 0.6); inside it B takes the upper 0.4 share, [0.36, 0.6). Any number in [0.36, 0.6), such as 0.5, identifies "AB" (given the symbol count or an end symbol). Arithmetic coding can code a symbol in fractions of a bit, so it can beat Huffman.
 
 ## Checkpoint

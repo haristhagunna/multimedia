@@ -1,19 +1,16 @@
 # The Multimedia System
 
-!!! source "Source"
-    *Unit 1 – Introduction* pp. 10, 36–38; *mul c1* pp. 11–21.
-
 ## What is a multimedia system?
 
-Two wordings appear in the lecturer's notes.
+Two wordings appear in the course text's notes.
 
-- A **multimedia system** is a system capable of **processing multimedia data and applications**. It is characterised by the **processing, storage, generation and manipulation** of multimedia information. (*Unit 1*, p. 10)
-- A system that involves **generation, representation, storage, transmission, search and retrieval** of multimedia information. It also involves **processing and analysis, including compression**, and includes multimedia **hardware, software and network**. (*mul c1*, p. 11)
+- A **multimedia system** is a system capable of **processing multimedia data and applications**. It is characterised by the **processing, storage, generation and manipulation** of multimedia information. 
+- A system that involves **generation, representation, storage, transmission, search and retrieval** of multimedia information. It also involves **processing and analysis, including compression**, and includes multimedia **hardware, software and network**. 
 
 ## The four basic characteristics
 
 !!! exam "Exam tip"
-    This is one of the most repeated topics: both decks list the four characteristics, and *mul c1* gives each its own slide. Learn the four names **and** one supporting detail for each.
+    This is one of the most repeated topics: the four characteristics are always asked. Learn the four names **and** one supporting detail for each.
 
 | # | Characteristic | What it means |
 |---|---|---|

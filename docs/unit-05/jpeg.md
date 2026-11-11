@@ -1,8 +1,5 @@
 # JPEG
 
-!!! source "Source"
-    *Unit 5* pp. 22–36 (including the lecturer's hand-drawn JPEG schematic and DCT slides).
-
 **JPEG (Joint Photographic Experts Group)** is a **lossy** standard for compressing pictures and graphics. (MPEG compresses video, MP3 audio.) It is a **hybrid** coder.
 
 ## Why JPEG works on 8 × 8 blocks
@@ -25,8 +22,8 @@ flowchart LR
 
 Decompression reverses the steps: **decoding → de-quantization → inverse DCT → up-sampling → colour transform back**.
 
-!!! info "Beyond the lecturer's notes"
-    The lecturer's schematic lists colour transform (RGB to YUV) and down-sampling before DCT. The reason is the same as in [Video](../unit-04/video-transmission.md): the eye is less sensitive to chrominance, so Cb and Cr can be stored at lower resolution (for example one sample per 2 × 2 pixels).
+!!! info "Extra"
+    The course text's schematic lists colour transform (RGB to YUV) and down-sampling before DCT. The reason is the same as in [Video](../unit-04/video-transmission.md): the eye is less sensitive to chrominance, so Cb and Cr can be stored at lower resolution (for example one sample per 2 × 2 pixels).
 
 ## Discrete Cosine Transform (DCT)
 
@@ -60,7 +57,7 @@ flowchart LR
     Z["Zigzag scan: low frequency first, zeros last"] --> R["Run-length of zeros"] --> H["Huffman / arithmetic coding"]
 ```
 
-## JPEG modes in the lecturer's notes
+## JPEG modes
 
 | | Lossy sequential DCT-based mode | Expanded lossy DCT-based mode |
 |---|---|---|
@@ -69,8 +66,8 @@ flowchart LR
 | Build-up | **Sequential**: parts of the picture are drawn one after another | Sequential **and progressive** |
 | Progressive | – | A very rough picture appears first and is **refined progressively** by **layered coding** |
 
-!!! info "Beyond the lecturer's notes"
-    JPEG also defines a **lossless mode** (predictive, no DCT) and a **hierarchical mode** (multiple resolutions). These are named in many textbooks (four modes in total) but not in the lecturer's slides.
+!!! info "Extra"
+    JPEG also defines a **lossless mode** (predictive, no DCT) and a **hierarchical mode** (multiple resolutions). These are named in many textbooks (four modes in total).
 
 !!! exam "Exam tip"
     Answer "Explain the JPEG compression process" with the five-block diagram (DCT → quantization → zigzag/run-length → Huffman) and one sentence on where the loss occurs (quantization).

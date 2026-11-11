@@ -1,12 +1,9 @@
 # Data Streams and Transmission Modes
 
-!!! source "Source"
-    *mul c1* pp. 28–31; time dependence of media from *Unit 1 – Introduction* pp. 30–31.
-
 This page covers syllabus item 1.3, **data stream characteristics for traditional and continuous media**.
 
-!!! info "Beyond the lecturer's notes"
-    The lecturer covers this item through two ideas: **discrete versus continuous media** (see [Media Concepts and Properties](media-concepts-and-properties.md#representation-dimensions)) and the **three transmission modes** below. No further data-stream attributes (such as rate or periodicity) appear in the lecturer's notes.
+!!! info "Extra"
+    The syllabus covers this item through two ideas: **discrete versus continuous media** (see [Media Concepts and Properties](media-concepts-and-properties.md#representation-dimensions)) and the **three transmission modes** below. No further data-stream attributes (such as rate or periodicity) appear in the course text's notes.
 
 ## Serial transmission
 
@@ -18,8 +15,8 @@ Multimedia communication is **generally transmitted serially: one bit at a time*
 - There may be **gaps between bytes**, which makes it good for **random** communication.
 - Examples: **WWW, e-mail, keyboard**.
 
-!!! info "Beyond the lecturer's notes"
-    Because there is no shared clock, each byte is wrapped with a **start bit and a stop bit** so the receiver knows where it begins and ends. That is why the lecturer notes that *synchronous* transmission has **no start and stop bits**.
+!!! info "Extra"
+    Because there is no shared clock, each byte is wrapped with a **start bit and a stop bit** so the receiver knows where it begins and ends. That is why the course text notes that *synchronous* transmission has **no start and stop bits**.
 
 ## Synchronous transmission
 
@@ -44,7 +41,7 @@ Multimedia communication is **generally transmitted serially: one bit at a time*
 
 ## Why multimedia needs a steady rate
 
-Continuous media only make sense if they arrive **on time and in order**: a late audio sample is a click, a late video frame is a stutter. That is why the lecturer calls isochronous transfer "best for multimedia", and why the challenges of **latency, delay and synchronization** keep returning (see [The Multimedia System](multimedia-system.md#challenges-of-multimedia-computing)).
+Continuous media only make sense if they arrive **on time and in order**: a late audio sample is a click, a late video frame is a stutter. That is why it is called isochronous transfer "best for multimedia", and why the challenges of **latency, delay and synchronization** keep returning (see [The Multimedia System](multimedia-system.md#challenges-of-multimedia-computing)).
 
 !!! exam "Do not confuse these"
     **Synchronization** (the cross-domain layer that coordinates media in time) is **not** the same as **synchronous transmission** (a transmission mode where sender and receiver share a clock). Name each one clearly in your answers.

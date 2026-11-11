@@ -1,8 +1,5 @@
 # CD-WO and CD-MO
 
-!!! source "Source"
-    *Unit 6 – cd* pp. 58–66.
-
 Both are defined in the **Orange Book**: **Part II = CD-WO**, **Part I = CD-MO**. They extend the CD family from read-only (RO) to write-once (WO) and read/write (R/W).
 
 ## CD Write-Once (CD-WO)
@@ -52,7 +49,7 @@ Players made before **1992** can read only the **first session**.
 
 - Features: usable for **all kinds of storage**, wide application area, **large capacity**, based on CD-DA (except CD-MO), specifications built sequentially.
 - Disadvantages: **long average access time**; **incompatibility of CD-MO**.
-- Future (the lecturer's view): CDs with **more storage and faster retrieval**, and **smaller discs with similar capacity**.
+- Future (the common view): CDs with **more storage and faster retrieval**, and **smaller discs with similar capacity**.
 
 | | CD-ROM | CD-WO | CD-MO |
 |---|---|---|---|

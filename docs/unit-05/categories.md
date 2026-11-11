@@ -1,8 +1,5 @@
 # Categories of Coding
 
-!!! source "Source"
-    *Unit 5* pp. 9, 16–22.
-
 ```mermaid
 flowchart TB
     A["Coding techniques"] --> E["Entropy coding (lossless)"]

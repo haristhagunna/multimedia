@@ -1,8 +1,5 @@
 # Synchronization Specification
 
-!!! source "Source"
-    *Unit 10 – Synchronization* handout pp. 5–6; slide deck p. 7.
-
 A **synchronization specification** of a multimedia object describes **all temporal dependencies** of the objects it contains. It is **produced with the tools of the specification layer** and **used at the interface to the object layer**.
 
 ## What it contains
@@ -50,7 +47,7 @@ Slide-deck techniques: **timeline models** (Gantt style), **time-stamping** (for
 !!! example "Interval-based example"
     Slide 1 (10 s) is shown during the narration clip (10 s); slide 2 starts when slide 1 ends and the animation **overlaps** the last 5 s of slide 2. Each statement relates two intervals.
 
-!!! info "Beyond the lecturer's notes"
+!!! info "Extra"
     The thirteen interval relations of Allen's algebra (before, meets, overlaps, starts, during, finishes, equals and their inverses) underlie interval-based specification. Time Petri nets use places and transitions with durations. Learn the names above, not the formalism, unless your teacher asks.
 
 !!! exam "Exam tip"

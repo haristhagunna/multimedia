@@ -1,8 +1,5 @@
 # Video Transmission and Digitization
 
-!!! source "Source"
-    *Unit 4* pp. 18–25; *mul c4* pp. 35–46.
-
 ## Transmission standards and colour encoding
 
 - Transmission standards: **NTSC** (National Television System Committee) and **PAL** (Phase Alternating Line).
@@ -31,18 +28,18 @@ $$U = 0.493\,(B - Y) \qquad V = 0.877\,(R - Y)$$
 - **Y** is luminance, **U** is the blue chrominance, **V** is the red chrominance.
 - Because chrominance carries less information, U and V are **scaled down** (the 0.493 and 0.877 factors) to save bandwidth.
 - A **black-and-white TV** can use Y alone to show a colour broadcast.
-- mul c4 says YUV uses **two wires** (one for luminance, one for combined chrominance), gives **less crosstalk** and is also known as **S-video**.
+- YUV is sometimes described as using **two wires** (one for luminance, one for combined chrominance), gives **less crosstalk** and is also known as **S-video**.
 
-!!! warning "Source inconsistency"
-    *Unit 4* shows its YUV and YIQ equations only as pictures. The numbers 0.493 and 0.877 are printed in *mul c4* (p. 38). The coefficients 0.30, 0.59, 0.11 sum to 1, as they must.
+!!! warning "Watch out"
+    The factors 0.493 and 0.877 are the usual scaling constants. The coefficients 0.30, 0.59, 0.11 sum to 1, as they must.
 
 ## YIQ signal
 
 - Similar to YUV, used by the **NTSC** colour system. **Y** is luminance, **I** and **Q** are chrominance.
 - It takes advantage of **human colour response**: the eye is more sensitive to **orange–blue (I)** than to **purple–green (Q)**, so **Q needs less bandwidth**.
 
-!!! info "Beyond the lecturer's notes"
-    The standard NTSC equations are Y = 0.299R + 0.587G + 0.114B, I = 0.596R − 0.274G − 0.322B, Q = 0.211R − 0.523G + 0.312B. The lecturer's slides give them only as pictures, so learn the *idea* (Y plus two chrominance, Q needs least bandwidth) and quote the equations only if your teacher expects them.
+!!! info "Extra"
+    The standard NTSC equations are Y = 0.299R + 0.587G + 0.114B, I = 0.596R − 0.274G − 0.322B, Q = 0.211R − 0.523G + 0.312B. Slides often show them only as pictures, so learn the *idea* (Y plus two chrominance, Q needs least bandwidth) and quote the equations only if your teacher expects them.
 
 ## Composite signal
 
@@ -70,8 +67,8 @@ flowchart LR
 !!! exam "Exam tip"
     A frequent 5-mark question: "Differentiate component and composite video." Component: separate R,G,B or Y,U,V or Y,I,Q signals, best quality, more bandwidth. Composite: one signal, cheap, interference between Y and chroma.
 
-!!! info "Beyond the lecturer's notes"
-    *mul c4* p. 45 repeats the Unit 3 text "image synthesis and image analysis" under the heading Digitization. It does not describe video digitization, so use the Unit 4 wording above.
+!!! info "Extra"
+    Do not confuse video digitization (sampling and quantizing) with image synthesis and analysis from Unit 3.
 
 ## Checkpoint
 

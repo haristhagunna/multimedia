@@ -1,9 +1,6 @@
 # Speech Analysis
 
-!!! source "Source"
-    *Unit 2 – Sound & Audio System* pp. 39–45.
-
-**Speech analysis** (speech input) asks three questions about a spoken signal. The lecturer's figure (Figure 2.10) draws it as a tree: *Speech analysis* splits into **Who?** (*verification* and *identification*), **What?** (*recognition* and *understanding*) and **How?**.
+**Speech analysis** (speech input) asks three questions about a spoken signal. The figure draws it as a tree: *Speech analysis* splits into **Who?** (*verification* and *identification*), **What?** (*recognition* and *understanding*) and **How?**.
 
 ```mermaid
 flowchart TB
@@ -56,7 +53,7 @@ Recognition systems differ along four contexts:
 
 ### The recognition principle (Figure 3-13)
 
-The principle is **"extract characteristics to reduce data."** The lecturer's figure shows:
+The principle is **"extract characteristics to reduce data."** The figure shows:
 
 1. **Speech analysis** (on a special chip): parameters, response and **property extraction** from the speech signal.
 2. **Pattern recognition** (on the main processor): **comparison with reference** material and a **decision**.

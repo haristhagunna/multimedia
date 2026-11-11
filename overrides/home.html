@@ -1,0 +1,110 @@
+{% extends "main.html" %}
+{% block tabs %}{{ super() }}{% endblock %}
+{% block site_nav %}{% endblock %}
+{% block content %}
+{% set st = config.extra.stats %}
+<div class="home">
+
+  <section class="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <p class="hero__eyebrow"><span class="dot"></span> BCA429CO &middot; Year I, Semester I</p>
+      <h1 class="hero__title">Multimedia<br><span class="grad">and Application</span></h1>
+      <p class="hero__lead">The complete, exam-ready study companion: deep notes, class slides, interactive practice and revision tools for all {{ st.units }} units.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="{{ 'unit-01/' | url }}">Start with Unit 1 {% include ".icons/material/arrow-right.svg" %}</a>
+        <a class="btn btn--ghost" href="{{ 'revision/' | url }}">Revision hub</a>
+        <a class="btn btn--ghost" href="{{ 'syllabus/' | url }}">Syllabus</a>
+      </div>
+      <p class="hero__author">Written and maintained by <strong>Er. Harish Thagunna</strong></p>
+    </div>
+    <div class="hero__stats">
+      <div class="stat"><span class="stat__num" data-count="{{ st.units }}">{{ st.units }}</span><span class="stat__label">Units</span></div>
+      <div class="stat"><span class="stat__num" data-count="{{ st.notes }}">{{ st.notes }}</span><span class="stat__label">Topic notes</span></div>
+      <div class="stat"><span class="stat__num" data-count="{{ st.practice_questions }}">{{ st.practice_questions }}</span><span class="stat__label">Practice questions</span></div>
+      <div class="stat"><span class="stat__num" data-count="{{ st.decks }}">{{ st.decks }}</span><span class="stat__label">Slide decks</span></div>
+    </div>
+  </section>
+
+  <section class="dash">
+    <div class="card dash__progress">
+      <div class="ring" id="overall-ring" data-pct="0">
+        <svg viewBox="0 0 120 120"><circle class="ring__bg" cx="60" cy="60" r="52"/><circle class="ring__fg" cx="60" cy="60" r="52"/></svg>
+        <div class="ring__text"><span id="overall-pct">0%</span><small>complete</small></div>
+      </div>
+      <div>
+        <h3>Your progress</h3>
+        <p id="overall-text">Mark pages as complete while you study. Your progress is saved in this browser.</p>
+        <p class="dash__resume" id="resume-wrap" hidden><a id="resume-link" class="btn btn--small btn--primary" href="#">Continue where you left off</a></p>
+      </div>
+    </div>
+    <div class="card dash__exam">
+      <h3>Exam countdown</h3>
+      <div class="countdown" id="countdown"><span class="countdown__num" id="cd-days">&ndash;</span><span class="countdown__label" id="cd-label">days to go</span></div>
+      <label class="field">Exam date <input type="date" id="exam-date"></label>
+      <a class="link-arrow" href="{{ 'revision/planner/' | url }}">Build my revision plan {% include ".icons/material/arrow-right.svg" %}</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>All units</h2>
+      <p>Every unit has an overview, class slides, topic notes and practice questions.</p>
+    </div>
+    <div class="unit-grid">
+    {% for u in config.extra.units %}
+      {% set slug = 'unit-%02d' % u.n %}
+      <article class="unit-card" data-unit="{{ u.n }}" data-pages="{{ u.pages }}" style="--i: {{ loop.index0 }}">
+        <a class="unit-card__link" href="{{ (slug ~ '/') | url }}" aria-label="Unit {{ u.n }}: {{ u.title }}"></a>
+        <div class="unit-card__top">
+          <span class="unit-card__icon">{% set ic = {'layers':'layers-triple','wave':'waveform','image':'image-multiple','video':'video','compress':'zip-box','disc':'disc','cpu':'cpu-64-bit','network':'lan','link':'link-variant','clock':'clock-outline','code':'code-braces','app':'application-cog'}[u.icon] %}{% include ".icons/material/" ~ ic ~ ".svg" %}</span>
+          <span class="unit-card__num">Unit {{ '%02d' % u.n }}</span>
+        </div>
+        <h3>{{ u.title }}</h3>
+        <p>{{ u.blurb }}</p>
+        <div class="unit-card__meta"><span>{{ u.hours }} hrs</span><span>Weeks {{ u.weeks }}</span></div>
+        <div class="bar"><span class="bar__fill" style="width:0%"></span></div>
+        <div class="unit-card__foot">
+          <span class="unit-card__pct">0% done</span>
+          <span class="unit-card__links"><a href="{{ (slug ~ '/slides/') | url }}">Slides</a><a href="{{ (slug ~ '/practice/') | url }}">Practice</a></span>
+        </div>
+      </article>
+    {% endfor %}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__head">
+      <h2>Built for how students actually revise</h2>
+      <p>Everything you need between the first lecture and the last paper.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature"><span class="feature__icon">{% include ".icons/material/head-lightbulb-outline.svg" %}</span><h3>Deep, exam-ready notes</h3><p>Every syllabus topic explained in full, with tables, diagrams, worked numericals and exam tips.</p></div>
+      <div class="feature"><span class="feature__icon">{% include ".icons/material/check-decagram.svg" %}</span><h3>Interactive MCQs</h3><p>Tap an option for instant feedback and a running score on every practice page.</p></div>
+      <div class="feature"><span class="feature__icon">{% include ".icons/material/cards-outline.svg" %}</span><h3>Flashcard mode</h3><p>Flip through every question of a unit, shuffle them and track what you know.</p></div>
+      <div class="feature"><span class="feature__icon">{% include ".icons/material/presentation.svg" %}</span><h3>Class slides</h3><p>A full slide deck for each unit, ready to present or revise from, in full screen.</p></div>
+      <div class="feature"><span class="feature__icon">{% include ".icons/material/chart-donut.svg" %}</span><h3>Progress tracking</h3><p>Mark pages complete, see unit rings fill up and resume exactly where you stopped.</p></div>
+      <div class="feature"><span class="feature__icon">{% include ".icons/material/calculator-variant.svg" %}</span><h3>Formula sheet</h3><p>All numerical formulas of the course on one page, with worked checks.</p></div>
+      <div class="feature"><span class="feature__icon">{% include ".icons/material/book-alphabet.svg" %}</span><h3>Glossary tooltips</h3><p>Hover any abbreviation (PCM, DCT, QoS, MHEG ...) for its full meaning, anywhere in the notes.</p></div>
+      <div class="feature"><span class="feature__icon">{% include ".icons/material/calendar-clock.svg" %}</span><h3>Revision planner</h3><p>Pick your exam date and get a day-by-day plan weighted by unit hours.</p></div>
+      <div class="feature"><span class="feature__icon">{% include ".icons/material/magnify.svg" %}</span><h3>Instant search</h3><p>Find any term across all notes as you type; works offline once loaded.</p></div>
+    </div>
+  </section>
+
+  <section class="section path">
+    <div class="section__head"><h2>How to study from this site</h2></div>
+    <ol class="steps">
+      <li><strong>Skim</strong> the unit overview and the class slides for the big picture.</li>
+      <li><strong>Read</strong> the topic notes in order, answering each checkpoint first.</li>
+      <li><strong>Practise</strong> with the MCQs and flashcards, then write long answers on paper.</li>
+      <li><strong>Revise</strong> from the Formula sheet, Glossary and Exam checklist before the paper.</li>
+    </ol>
+  </section>
+
+  <section class="credit">
+    <p>&copy; 2026 <strong>Er. Harish Thagunna</strong>. All rights reserved.</p>
+    <p class="credit__small">Original study material for BCA429CO Multimedia and Application. Do not copy, republish or redistribute without written permission.</p>
+  </section>
+</div>
+{% endblock %}

@@ -17,15 +17,11 @@
 
 Also: [Class Slides](slides.md) and [Practice Questions](practice.md).
 
-## Lecturer files followed
-
-*Unit 10 – Synchronization* (a "Chapter 9 – Synchronization" handout from a Pokhara University copy of Steinmetz and Nahrstedt) and *Unit 10 – Synchronization_Presentation* (a short slide deck).
-
-!!! warning "The two files disagree"
-    The handout's reference model has the layers **media, stream, object, specification**. The slide deck lists **media, stream, session, sync** and gives everyday examples (YouTube, Netflix). The handout matches the textbook, so these notes use it and mention the slide-deck version on the reference-model page.
+!!! info "Two versions of the layer names"
+    Textbooks name the layers **media, stream, object, specification**. Some slides use **media, stream, session, sync** with everyday examples (YouTube, Netflix). These notes use the textbook version and mention the other on the reference-model page.
 
 !!! info "About syllabus item 10.6"
-    The syllabus prints 10.6 with no title. The handout's remaining topic is **synchronization in a distributed environment**, so that is what page 10.6 covers. Please confirm the intended title with your department.
+    The syllabus prints 10.6 with no title. The remaining topic of the chapter is **synchronization in a distributed environment**, so that is what page 10.6 covers. Please confirm the intended title with your department.
 
 !!! exam "Where marks come from"
-    The handout ends with assignment questions: *why a reference model is required and how it is defined*, *importance of synchronization and the four-layer model*, and *synchronization specification*. Expect them.
+    Typical assignment questions are: *why a reference model is required and how it is defined*, *importance of synchronization and the four-layer model*, and *synchronization specification*. Expect them.

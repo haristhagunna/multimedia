@@ -1,8 +1,5 @@
 # Basic Sound Concepts
 
-!!! source "Source"
-    *Unit 2 – Sound & Audio System* pp. 2–7 and 14.
-
 ## What is sound?
 
 **Sound is the physical phenomenon produced by the vibration of matter.**
@@ -15,7 +12,7 @@ When matter vibrates, **pressure variations** are created in the surrounding air
 - The waveform repeats the same shape at regular intervals. One such interval is called a **period**.
 - Natural sound waves are **never perfectly smooth or uniformly periodic**.
 
-The lecturer's figure shows air pressure plotted against time as a smooth wave: the vertical distance from the middle line to a peak is the **amplitude**, and the horizontal distance of one full repeat is **one period**.
+The figure shows air pressure plotted against time as a smooth wave: the vertical distance from the middle line to a peak is the **amplitude**, and the horizontal distance of one full repeat is **one period**.
 
 ### Periodic and non-periodic sound
 
@@ -62,8 +59,8 @@ Loudness is measured in **decibels (dB)**:
 | **Frequency** | Periods per second (Hz) | Pitch |
 | **Amplitude** | Displacement from the mean pressure | Loudness (volume) |
 
-!!! info "Beyond the lecturer's notes"
-    The lecturer links amplitude to loudness. The usual pairing for frequency is **pitch** (higher frequency, higher note); the lecturer mentions pitch only later, in the speech section.
+!!! info "Extra"
+    Amplitude is linked amplitude to loudness. The usual pairing for frequency is **pitch** (higher frequency, higher note); pitch is mentioned only later, in the speech section.
 
 ## Sound versus audio
 

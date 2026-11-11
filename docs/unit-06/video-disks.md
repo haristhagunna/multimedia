@@ -1,8 +1,5 @@
 # Video Disks: Laser Vision, DVD and Blu-ray
 
-!!! source "Source"
-    *Unit 6 – cd* pp. 10–11 (Laser Vision), pp. 49–52 (DVD). **Blu-ray is not in the lecturer's notes.**
-
 ## Laser Vision
 
 | Feature | Value |
@@ -36,7 +33,7 @@ Principles: mix of audio and video, **frequency modulation**, and **no quantizat
 | Sound | 2-channel MPEG | 2-channel PCM, 5.1-channel AC-3, up to 8 streams |
 | Subtitles | – | up to 32 languages |
 
-!!! warning "Slip in the lecturer's slide"
+!!! warning "Watch out"
     The DVD wavelength is printed as "650 and 635 **mm**"; it is **nm**.
 
 **DVD variants:** **DVD-ROM** (data), **DVD-Video** (movies), **DVD-Audio**, **DVD-R** (record once), **DVD-RAM** (erasable, rewritable). **Devices:** DVD movie player (consumer), DVD-ROM drive (computer).
@@ -45,9 +42,6 @@ Principles: mix of audio and video, **frequency modulation**, and **no quantizat
     4.7 GB ÷ 650 MB ≈ **7.2 times** a CD (4,700 ÷ 650).
 
 ## Blu-ray disc
-
-!!! info "Not in the previous lecturer's notes"
-    Written from standard textbook knowledge, to complete syllabus item 6.2. Check the figures against your prescribed textbook.
 
 - A third generation of the same idea: **shorter wavelength** and **tighter tracks**.
 - **Blue-violet laser, 405 nm** (hence the name); **numerical aperture 0.85**; track pitch **0.32 µm**.

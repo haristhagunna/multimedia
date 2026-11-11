@@ -64,7 +64,7 @@ Write your own answer on paper first, then click to reveal the model answer. Mar
     Video and audio, analogue, frequency modulation, no quantization of pit length, about 30 cm, 2.6 GB; from VLP (1973).
 
 ??? question "20. Briefly describe Blu-ray. (4 marks)"
-    405 nm blue-violet laser, track pitch 0.32 µm, 25/50 GB, HD video. *(Beyond the lecturer's notes.)*
+    405 nm blue-violet laser, track pitch 0.32 µm, 25/50 GB, HD video. *(Extra.)*
 
 ??? question "21. Explain the principle of CD-WO and CD-MO. (8 marks)"
     See [CD-WO and CD-MO](cd-wo-and-cd-mo.md): pre-groove, absorption layer, irreversible heating, sessions; MO write, erase, read; premastered and rewritable areas; incompatibility.

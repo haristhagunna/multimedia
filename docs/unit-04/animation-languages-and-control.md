@@ -1,8 +1,5 @@
 # Animation Languages and Control
 
-!!! source "Source"
-    *Unit 4* pp. 42–50; *mul c4* pp. 58–66.
-
 ## Animation languages (three categories)
 
 ### 1. Linear-list notations
@@ -51,8 +48,8 @@ Control is **independent of the language** used to describe the animation.
 - **Dynamics**: includes the **physical laws** (Newton): acceleration is proportional to force, the constant being the mass. "At t = 0 the cube is at (0, 100, 0) m, has mass 100 g, and gravity acts on it."
 - Knowing kinematics and dynamics at a point lets us determine the **next point** of the motion.
 
-!!! warning "Source inconsistency"
-    The lecturer says "constant acceleration" in a *kinematic* example, but acceleration normally comes from forces. Treat it simply as an example of a description by motion values with no forces.
+!!! warning "Watch out"
+    Some notes say "constant acceleration" in a *kinematic* example, but acceleration normally comes from forces. Treat it simply as an example of a description by motion values with no forces.
 
 !!! exam "Exam tip"
     "Explain any three methods of controlling animation" is common: pick explicit, procedural and constraint-based, with one example each.

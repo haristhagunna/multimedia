@@ -1,8 +1,5 @@
 # Process Management and Real-Time Scheduling
 
-!!! info "Not in the previous lecturer's notes"
-    Written from the syllabus and standard textbook knowledge (mainly Steinmetz and Nahrstedt, *Multimedia: Computing, Communications and Applications*). Check details against your prescribed textbook.
-
 ## Real-time processing requirement
 
 For continuous media the **process manager** must schedule processes so that every periodic task meets its deadline. A periodic task is described by:

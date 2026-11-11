@@ -1,8 +1,5 @@
 # Image Transmission
 
-!!! source "Source"
-    *Unit 3 – Image and Graphics* pp. 47–51; *mul c3* pp. 47–49.
-
 **Image transmission** is the sending of **digital images through computer networks**.
 
 ## Requirements on the network
@@ -37,8 +34,8 @@ $$\text{Size} = \text{Spatial resolution} \times \text{Pixel quantization}$$
 
 $$640 \times 480 \times 8 = 2{,}457{,}600 \text{ bits} = 307{,}200 \text{ bytes}$$
 
-!!! warning "A wrong unit in one of the slides"
-    *mul c3* (p. 48) says this image needs "307.2 **MB**". That is a slip. 307,200 bytes is about **307.2 KB**, as *Unit 3* and the pseudo-colour slide in *mul c3* (p. 10) show. Write **307,200 bytes (about 300 KB)** in the exam.
+!!! warning "A wrong unit"
+    Some notes say this image needs "307.2 **MB**". That is a slip: 307,200 bytes is about **307.2 KB**. Write **307,200 bytes (about 300 KB)** in the exam.
 
 ### 2. Compressed image data transmission
 
@@ -63,8 +60,8 @@ The image is represented by **symbolic data**: **image primitives** (for example
 | Typical use | Video digitiser output | **JPEG, MPEG** | **Computer graphics** |
 | Relative size | Largest | Much smaller | Usually smallest |
 
-!!! info "Beyond the lecturer's notes"
-    The "relative size" row is a typical ordering, not a rule: a very complex drawing could produce a symbolic description larger than a compressed small photo. The lecturer only states how each size is determined.
+!!! info "Extra"
+    The "relative size" row is a typical ordering, not a rule: a very complex drawing could produce a symbolic description larger than a compressed small photo. Only states how each size is determined.
 
 ## Checkpoint
 

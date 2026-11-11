@@ -1,11 +1,8 @@
 # Speech Transmission
 
-!!! source "Source"
-    *Unit 2 – Sound & Audio System* pp. 46–51.
-
 **Speech transmission** is the field of **highly efficient encoding of speech signals** so they can be sent at a **low data rate** while keeping **noticeable quality loss to a minimum**.
 
-The lecturer names **three principles**:
+There are **three principles**:
 
 1. **Pulse Code Modulation (PCM)**
 2. **Source coding**
@@ -17,7 +14,7 @@ The lecturer names **three principles**:
 - A **straightforward technique for digitising an analog signal (waveform)** is **PCM**.
 - PCM **prioritises the accurate representation of the audio signal over data reduction.**
 
-!!! warning "The lecturer's PCM figure shows a different technique"
+!!! warning "The figure shows a different technique"
     The picture on the PCM slide is headed **Pulse Width Modulation**: the *width* of each pulse follows the amplitude of the sample. That is a different technique. In **PCM** each sample's amplitude is measured, **quantized** and written as a **binary code**, exactly the sampling and quantization process on the [Digital Audio](digital-audio.md) page. Do not draw pulse widths in a PCM answer.
 
 ## 2. Source encoding
@@ -27,7 +24,7 @@ An **alternative method**: some transformations **depend on the original signal 
 - **Suppressing silence** in speech sequences is a typical example. It depends entirely on the **meaning (semantics) of the signal**.
 - **Parametric systems** use source encoding. They use **speech-specific characteristics** to reduce data, for example the **channel vocoder**.
 
-The lecturer's figure (Figure 3-15) shows the components of a transmission system using source encoding:
+The figure shows the components of a transmission system using source encoding:
 
 ```mermaid
 flowchart TB

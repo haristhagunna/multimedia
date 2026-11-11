@@ -1,12 +1,9 @@
 # Classification of Media
 
-!!! source "Source"
-    *Unit 1 – Introduction* pp. 20–26; *mul c1* pp. 32–39.
-
 !!! exam "Exam tip"
-    This is the largest block in both lecturer decks: seven slides each. Expect a direct question such as "Classify media" or "Explain the types of media with examples".
+    This is the largest block in all slides: seven slides each. Expect a direct question such as "Classify media" or "Explain the types of media with examples".
 
-A **medium** is the means for distribution and presentation of information. Media can be classified by different criteria. The lecturer uses **six categories**, each defined by a **central question**.
+A **medium** is the means for distribution and presentation of information. Media can be classified by different criteria. These notes use **six categories**, each defined by a **central question**.
 
 !!! tip "Remember it by asking the question"
     If you cannot decide which category something belongs to, ask each central question in turn. The one that fits is the answer.
@@ -33,10 +30,10 @@ Perception media help humans **sense their environment**. The answer to the cent
 
 Defined by the **internal computer representation** of information: the formats used to code each kind of media.
 
-- **Text** is coded in **ASCII** (*mul c1* also names EBCDIC).
+- **Text** is coded in **ASCII** .
 - **Graphics** are coded according to the **CEPT** or **CAPTAIN** videotext standards.
 - **Images** can be stored in **JPEG** format.
-- **Audio** streams are coded with **PCM** (*mul c1*).
+- **Audio** streams are coded with **PCM** .
 - **Audio-video sequences** can be coded in different TV standards (**PAL, NTSC, SECAM**) and stored in the computer in **MPEG** format.
 
 ## Presentation medium
@@ -48,7 +45,7 @@ The **tools and devices for the input and output** of information.
 
 ## Storage medium
 
-The **data carrier** that enables storage of information: hard disk, CD-ROM and similar. *mul c1* adds microfilm, floppy disk and SSD.
+The **data carrier** that enables storage of information: hard disk, CD-ROM and similar. Microfilm, floppy disk and SSD also count.
 
 ## Transmission medium
 
@@ -58,8 +55,8 @@ The different **information carriers that enable continuous data transmission**:
 
 Includes **all information carriers for transmission**: that is, **all storage and transmission media**. Information can be exchanged by **transporting a storage medium** to the destination, or **through computer networks** such as an **electronic mailing system**.
 
-!!! warning "A contradiction in the lecturer's slides"
-    The summary slide (*Unit 1*, p. 20) lists the information exchange medium as "VR, Cloud, Internet". The detailed slides (*Unit 1*, p. 26 and *mul c1*, p. 39) define it as **storage plus transmission media**, for example e-mail. Use the detailed definition in the exam.
+!!! warning "Watch out"
+    Some summaries list the information exchange medium as "VR, Cloud, Internet". The full definition is **storage plus transmission media**, for example e-mail. Use the full definition in the exam.
 
 ## Common confusions
 
@@ -79,4 +76,4 @@ Includes **all information carriers for transmission**: that is, **all storage a
     The **representation** medium: for example **ASCII** for text and **JPEG** for images (also PCM for audio, PAL/NTSC/SECAM and MPEG for video).
 
 ??? question "Explain the information exchange medium with an example."
-    It covers **all storage and transmission media**: information can travel by moving a storage medium to the destination, or over a network. An **electronic mailing system** is the lecturer's example.
+    It covers **all storage and transmission media**: information can travel by moving a storage medium to the destination, or over a network. An **electronic mailing system** is the course example.

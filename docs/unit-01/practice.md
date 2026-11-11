@@ -84,7 +84,7 @@ Write your own answer on paper first, then click to reveal the model answer. Mar
 
     **Answer: C.** A movie's information depends on its time of occurrence. The others have no time component.
 
-??? question "13. Which transmission mode does the lecturer call best for multimedia?"
+??? question "13. Which transmission mode is best for multimedia?"
     - A. Asynchronous
     - B. Synchronous
     - C. Isochronous

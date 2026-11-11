@@ -1,8 +1,5 @@
 # Abstraction Levels and Libraries
 
-!!! source "Source"
-    *Unit 11 – Abstractions for Programming* pp. 1–2.
-
 ## The state of the art (introduction)
 
 Most commercially available multimedia applications are written in **procedure-oriented languages**. Application code is highly **dependent on the hardware**, so changing a multimedia device often needs **re-implementation**. Operating system extensions try to solve this, and there are different ways to **access and represent multimedia data**.

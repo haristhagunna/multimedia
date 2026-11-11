@@ -1,7 +1,7 @@
 # Application Areas in Detail
 
-!!! info "Beyond the lecturer's notes"
-    The lecturer's file covers application *classes*, system types and components and the development cycle only. This page is written from standard textbook knowledge to cover the rest of syllabus 12.1–12.4. Check details against your prescribed textbook.
+!!! info "Extra"
+    The course material covers application *classes*, system types and components and the development cycle only. This page is written from standard textbook knowledge to cover the rest of syllabus 12.1–12.4. Check details against your prescribed textbook.
 
 ## 12.1 Video on demand (VoD)
 

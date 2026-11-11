@@ -1,8 +1,5 @@
 # Application Classes
 
-!!! source "Source"
-    *Unit 12 – multimedia-application* slides 1–8, 39.
-
 | Class | Description from the notes |
 |---|---|
 | **Game systems** | The **leaders in using multimedia technology** because the **market is very large** and demands on quality, although intense, **are not crucial to the success** |

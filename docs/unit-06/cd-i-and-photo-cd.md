@@ -1,8 +1,5 @@
 # CD-I, CD-I Ready, Bridge Disc and Photo CD
 
-!!! source "Source"
-    *Unit 6 – cd* pp. 41–57 (these slides are an extra beyond the syllabus wording; read them for context and calculations).
-
 ```mermaid
 flowchart TB
     CDDA["CD-DA"] --> MM["Mixed-mode disc"]

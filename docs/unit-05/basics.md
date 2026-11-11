@@ -1,8 +1,5 @@
 # Basic Concepts and Coding Requirements
 
-!!! source "Source"
-    *Unit 5 – Data Compression* pp. 2–8.
-
 ## Why compress?
 
 - To **reduce the volume of data** to be transmitted.
@@ -26,7 +23,7 @@ Uncompressed graphics, audio and video need considerable storage.
     - Audio: 44,100 × 16 × 2 = **1,411,200 bits/s ≈ 172 KB/s ≈ 10.1 MB per minute**.
     - Video: 640 × 480 × 8 bits × 25 fps = 61,440,000 bits/s ≈ **7.3 MB/s**.
 
-The lecturer also says "90 % of raw audio can be deleted without affecting the quality". Treat this as an illustration of **irrelevance**: much of the signal cannot be heard.
+It is also said that "90 % of raw audio can be deleted without affecting the quality". Treat this as an illustration of **irrelevance**: much of the signal cannot be heard.
 
 ## Coding requirements for multimedia
 
@@ -34,7 +31,7 @@ The lecturer also says "90 % of raw audio can be deleted without affecting the q
 2. For cost-effective implementation, the **complexity** of the technique should be **minimal**.
 3. The **processing time** of the algorithm must **not exceed a certain span** (real-time for continuous media).
 
-!!! info "Beyond the lecturer's notes"
+!!! info "Extra"
     Textbooks add **dialogue-mode requirements** (end-to-end delay below about 150 ms; compression must be symmetric) and **retrieval-mode requirements** (fast forward/rewind, random access). They also define the **compression ratio = original size ÷ compressed size**. Example: 300 KB compressed to 30 KB is 10 : 1.
 
 ## Lossless and lossy

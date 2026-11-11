@@ -1,8 +1,5 @@
 # System Architecture
 
-!!! info "Not in the previous lecturer's notes"
-    Written from the syllabus and standard textbook knowledge (mainly Steinmetz and Nahrstedt, *Multimedia: Computing, Communications and Applications*). Check details against your prescribed textbook.
-
 ## Goal
 
 Provide, on top of the hardware, a **real-time environment** that serves continuous media with guaranteed QoS **together with** ordinary applications.

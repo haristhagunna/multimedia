@@ -1,8 +1,5 @@
 # What Is Multimedia?
 
-!!! source "Source"
-    *Unit 1 – Introduction* pp. 2–9 and 39; *mul c1* pp. 3–10.
-
 ## Medium and multimedia
 
 The word is built from **multi** (many, much, multiple) and **medium**.
@@ -11,11 +8,11 @@ A **medium** is the **means for distribution and presentation of information**. 
 
 ### Three definitions to know
 
-| From | Definition |
+| Version | Definition |
 |---|---|
-| Unit 1, p. 2 | A combination of **text, graphics, sound, animation and video** delivered **interactively** to the user by electronic or digitally manipulated means. |
-| Unit 1, p. 3 | The field concerned with the **computer-controlled integration** of text, graphics, drawings, still and moving images (video), animation, audio and any other media, where every type of information can be **represented, stored, transmitted and processed digitally**. |
-| *mul c1*, p. 5 | **Digital information** represented through audio, video and animation, in addition to traditional media such as text, graphics and images; an **integration** of these media, stored, transmitted and processed digitally. |
+| Short | A combination of **text, graphics, sound, animation and video** delivered **interactively** to the user by electronic or digitally manipulated means. |
+| Field-based | The field concerned with the **computer-controlled integration** of text, graphics, drawings, still and moving images (video), animation, audio and any other media, where every type of information can be **represented, stored, transmitted and processed digitally**. |
+| Digital-information | **Digital information** represented through audio, video and animation, in addition to traditional media such as text, graphics and images; an **integration** of these media, stored, transmitted and processed digitally. |
 
 All three agree on the same core ideas: **integration of several media**, **digital** representation, and (in the first definition) **interactive** delivery.
 
@@ -46,7 +43,7 @@ A graphic is a **two-dimensional figure or illustration**. It may be produced ma
 
 **Animation** is the **rapid display of a sequence of images** of 2D artwork or model positions to create an illusion of movement. It is an optical illusion caused by **persistence of vision**.
 
-!!! info "Beyond the lecturer's notes"
+!!! info "Extra"
     Persistence of vision means the eye keeps an image for a short moment after it disappears, so frames shown quickly one after another blend into smooth motion.
 
 | Element | What it is | Key idea to remember |
@@ -67,7 +64,7 @@ A graphic is a **two-dimensional figure or illustration**. It may be produced ma
 | **2000s–present** | The Internet and **streaming services** made multimedia more accessible and interactive. Virtual reality, augmented reality and interactive media give more immersive experiences. |
 
 !!! exam "Exam tip"
-    The lecturer calls the Apple II "the first computer to use color graphics". Safer wording in your own answer: "an early, popular computer with colour graphics".
+    The notes call the Apple II "the first computer to use color graphics". Safer wording in your own answer: "an early, popular computer with colour graphics".
 
 ## Aspects of multimedia
 
@@ -86,22 +83,22 @@ A graphic is a **two-dimensional figure or illustration**. It may be produced ma
 
 **Hypertext** is text meant to be read **non-linearly by following links**. **Hypermedia** extends the links beyond text to graphics, images, sound and video. The **World Wide Web** is the best example.
 
-The lecturer's figure (*mul c1*, p. 9) contrasts an open book labelled *linear* with a stack of pages joined by curved arrows through red "hot spots" labelled *hypertext, non-linear*.
+The figure contrasts an open book labelled *linear* with a stack of pages joined by curved arrows through red "hot spots" labelled *hypertext, non-linear*.
 
-!!! info "Beyond the lecturer's notes"
+!!! info "Extra"
     Hypertext, hypermedia and the standards behind them return in Unit 9.
 
 ## Multimedia applications
 
-- *Unit 1* list: **WWW, education, medicine, communication, broadcasting, entertainment and games, industry, commercial**.
-- *mul c1* list: **digital video editing, electronic newspaper, WWW, games, encyclopedia, home shopping, interactive TV, video conferencing, video on demand**.
+- One common list: **WWW, education, medicine, communication, broadcasting, entertainment and games, industry, commercial**.
+- Another list: **digital video editing, electronic newspaper, WWW, games, encyclopedia, home shopping, interactive TV, video conferencing, video on demand**.
 
-*mul c1* also shows two pictures: a desktop **video-conference** set-up, and an **MPEG-4 delivery** diagram in which a live camera and encoder feed an **IP network** that reaches wired PCs, GPRS/EDGE/3G phones and a home RF network, with servers and embedded players at the edges.
+Two typical illustrations: a desktop **video-conference** set-up, and an **MPEG-4 delivery** diagram in which a live camera and encoder feed an **IP network** that reaches wired PCs, GPRS/EDGE/3G phones and a home RF network, with servers and embedded players at the edges.
 
 ## Checkpoint
 
 ??? question "Why is 'a combination of many media' not a complete definition of multimedia?"
-    Because the lecturer's definitions also require that the media be **integrated under computer control**, **represented digitally**, and (usually) delivered **interactively**. A slideshow of printed photos beside a radio is many media, but not multimedia.
+    Because the course text's definitions also require that the media be **integrated under computer control**, **represented digitally**, and (usually) delivered **interactively**. A slideshow of printed photos beside a radio is many media, but not multimedia.
 
 ??? question "Which element depends on persistence of vision?"
     **Animation**: a rapid sequence of still images that the eye blends into apparent motion.

@@ -18,10 +18,6 @@
 
 Also: [Class Slides](slides.md) and [Practice Questions](practice.md).
 
-## Lecturer files followed
-
-*Unit 4 – Video and Animation* and *mul c4* (Steinmetz and Nahrstedt, chapter 4, slides by Dinesh Maharjan).
-
 ## Formulas to memorise
 
 | Quantity | Formula |

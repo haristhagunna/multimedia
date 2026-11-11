@@ -1,8 +1,5 @@
 # Image Synthesis and Graphics Systems
 
-!!! source "Source"
-    *Unit 3 – Image and Graphics* pp. 20–37; *mul c3* pp. 15–29.
-
 ## Computer image processing
 
 Two linked ideas, opposite in direction:
@@ -39,11 +36,11 @@ Graphics are not limited to static images; they can **vary dynamically**. A user
 | Meaning | Objects are **moved or activated relative to a static observer's viewpoint**. Objects may also be static while their **environment moves**. | The **actual change of shape, colour or other properties** of the objects being viewed |
 | Example | **Flight simulator** | **Deformation of an in-flight aeroplane structure** |
 
-**Interactive versus non-interactive graphics** (*mul c3*): **non-interactive** graphics is passive, with **no communication** between user and computer (the user has no control; a **screen saver** is the example). **Interactive** graphics involves communication between user and computer.
+**Interactive versus non-interactive graphics** : **non-interactive** graphics is passive, with **no communication** between user and computer (the user has no control; a **screen saver** is the example). **Interactive** graphics involves communication between user and computer.
 
 ## Framework of an interactive graphics system
 
-The high-level framework of almost any interactive graphics system (for example **SRGP**) has **three software components**. *mul c3* adds a fourth part, the graphics hardware.
+The high-level framework of almost any interactive graphics system (for example **SRGP**) has **three software components**. Some sources add a fourth part, the graphics hardware.
 
 ```mermaid
 flowchart LR
@@ -99,7 +96,7 @@ Modern visual output uses **raster display devices**, which display primitives i
 - After each row the beam returns to the start of the next row: this is the **horizontal retrace**.
 - A **display controller** receives and interprets the sequence of output commands. In low-end systems such as **personal computers** it is implemented **in software**, as part of a graphics library, and the **refresh buffer is part of CPU memory**.
 
-The lecturer's architecture figure shows the **computer host interface** sending **display commands** to the **display controller**, which writes the **scanned image** into the **refresh buffer**; the **video controller** reads that buffer and drives the monitor; mouse and keyboard send **interaction data** back to the display controller.
+The figure shows the **computer host interface** sending **display commands** to the **display controller**, which writes the **scanned image** into the **refresh buffer**; the **video controller** reads that buffer and drives the monitor; mouse and keyboard send **interaction data** back to the display controller.
 
 ```mermaid
 flowchart LR
@@ -139,7 +136,7 @@ Each of the three channels (**red, green, blue**) can show **5 intensities** wit
 $$5 \times 5 \times 5 = 125 \text{ colour combinations}$$
 
 !!! warning "A contradictory phrase"
-    One *mul c3* slide says dithering is "done by random arrangement of pixels". The main notes describe **ordered** dithering (clustered-dot and dispersed-dot). Use **ordered** in the exam.
+    One source says dithering is "done by random arrangement of pixels". The main notes describe **ordered** dithering (clustered-dot and dispersed-dot). Use **ordered** in the exam.
 
 ## Checkpoint
 

@@ -1,8 +1,5 @@
 # Transport Subsystem
 
-!!! info "Not in the previous lecturer's notes"
-    Written from the syllabus and standard textbook knowledge (mainly Steinmetz and Nahrstedt, *Multimedia: Computing, Communications and Applications*). Check details against your prescribed textbook.
-
 ## Requirements on a multimedia transport subsystem
 
 1. **High throughput** for large continuous streams.

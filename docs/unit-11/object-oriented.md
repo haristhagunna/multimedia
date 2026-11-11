@@ -1,8 +1,5 @@
 # Object-Oriented Approaches
 
-!!! source "Source"
-    *Unit 11 – Abstractions for Programming* pp. 6–10.
-
 The **object-oriented (OO) approach** was introduced to **reduce complexity** and to enable **reuse of software components**. Its basic ideas are **data encapsulation** and **inheritance**, with **classes, objects and methods** instead of functions and data structures.
 
 ## Basic concepts

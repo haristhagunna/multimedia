@@ -1,8 +1,5 @@
 # Computer Video Format
 
-!!! source "Source"
-    *Unit 4* pp. 26–34; *mul c4* pp. 47–49.
-
 ## Standard for digitization: CCIR-601
 
 The **ITU-R** (International Telecommunications Union – Radiocommunications Branch) defined **Recommendation CCIR-601** to standardise digitization of video pictures. Variants exist for **TV broadcasting, video telephony and videoconferencing**.
@@ -32,8 +29,8 @@ A range of colour values is stored in a table; each **pixel value is an address*
 
 CGA (Color Graphics Adapter) · EGA (Enhanced Graphics Adapter) · VGA (Video Graphics Array) · 8514/A display adapter mode · XGA (Extended Graphics Array) · Super VGA (SVGA).
 
-!!! info "Beyond the lecturer's notes"
-    The resolution table of these standards is a picture in the lecturer's slides. Commonly quoted: CGA 320 × 200 (4 colours), EGA 640 × 350 (16), VGA 640 × 480 (16) or 320 × 200 (256), SVGA 800 × 600 and above. Check against your textbook before quoting.
+!!! info "Extra"
+    The resolution table of these standards is often shown only as a picture. Commonly quoted: CGA 320 × 200 (4 colours), EGA 640 × 350 (16), VGA 640 × 480 (16) or 320 × 200 (256), SVGA 800 × 600 and above. Check against your textbook before quoting.
 
 ## Video file formats
 
@@ -58,7 +55,7 @@ $$\text{Data rate} = \text{frame size} \times \text{frame rate}$$
     - In MB/s: 40,550,400 ÷ (8 × 1024 × 1024) = **4.83 MB/s**.
 
 !!! warning "Units"
-    The lecturer converts the frame to KB using 1000 but the rate to MB using 1024 × 1024. In the exam state which unit you use. 202,752 bytes ÷ 1024 = 198 KB.
+    The notes convert the frame to KB using 1000 but the rate to MB using 1024 × 1024. In the exam state which unit you use. 202,752 bytes ÷ 1024 = 198 KB.
 
 !!! exam "Quick practice"
     640 × 480, 24-bit, 30 fps: frame = 921,600 bytes; rate = 27,648,000 bytes/s ≈ **26.4 MB/s**; one minute ≈ **1.55 GB**.

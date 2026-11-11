@@ -1,8 +1,5 @@
 # Notion of Synchronization
 
-!!! source "Source"
-    *Unit 10 – Synchronization* handout pp. 1–2; slide deck pp. 2–4.
-
 ## Introduction
 
 The word **synchronization** refers to **time**. In multimedia it means the **temporal relation between media objects** in the system: between **time-dependent** (continuous) objects and between time-dependent and **time-independent** (discrete) ones. A common example is the synchronization of **visual and acoustical information in television**.
@@ -41,7 +38,7 @@ flowchart TB
 | Goal | **Exactly reproduce the temporal relations as they were at capture** | Temporal relations are **artificially specified** |
 | Example | **Video conferencing** | Moving along the path of a **car race** (a pre-authored presentation) |
 
-## Hard and soft synchronization (slide deck)
+## Hard and soft synchronization
 
 - **Hard sync:** strict timing, for example a **live news broadcast**.
 - **Soft sync:** some delay is acceptable, for example **offline playback**.

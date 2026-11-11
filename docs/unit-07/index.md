@@ -5,9 +5,6 @@
 !!! success "Ready"
     Topic notes, practice questions and class slides are complete for this unit.
 
-!!! info "Not in the previous lecturer's notes"
-    Written from the syllabus and standard textbook knowledge (mainly Steinmetz and Nahrstedt, *Multimedia: Computing, Communications and Applications*). Check details against your prescribed textbook.
-
 ## What this unit covers
 
 | Syllabus topic | Notes page |

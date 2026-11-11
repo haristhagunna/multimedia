@@ -1,13 +1,10 @@
 # Animation Display and Transmission
 
-!!! source "Source"
-    *Unit 4* pp. 51–54; *mul c4* pp. 67–73.
-
 ## Display of animation
 
 - Animated objects (lines, polygons, …) must be **scan-converted into a pixmap in the frame buffer**. To show a rotating object, successive views from slightly different positions are scan-converted one after another.
 - A raster screen sweeps **one row at a time, top to bottom**; the **refresh buffer** holds the intensity values for the next picture.
-- Scan conversion must be done **at least 10 (preferably 15 to 20) times per second**, so a new image must be created in **no more than 100 ms**. (*mul c4*: at 20 fps manipulation, scan conversion and display must be completed within **50 ms**.)
+- Scan conversion must be done **at least 10 (preferably 15 to 20) times per second**, so a new image must be created in **no more than 100 ms**. 
 - Erasing and redrawing within that time is impossible with a **single** buffer; it gives a distracting effect.
 
 ### Double buffering

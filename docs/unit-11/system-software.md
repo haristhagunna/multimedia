@@ -1,8 +1,5 @@
 # System Software
 
-!!! source "Source"
-    *Unit 11 – Abstractions for Programming* pp. 2–3.
-
 Instead of a separate library per device, **device access becomes part of the operating system**. Continuous-data processing needs **real-time schedulers** (see [Unit 7](../unit-07/scheduling.md)).
 
 ## Example: the Nemo system

@@ -1,8 +1,5 @@
 # Toolkits and Higher Programming Languages
 
-!!! source "Source"
-    *Unit 11 – Abstractions for Programming* pp. 4–6.
-
 ## Toolkits
 
 **Toolkits** control audio and video processing **in a programming environment**. They **represent interfaces at the system-software level**, can be embedded into programming languages or object-oriented environments, and are used to:
@@ -36,7 +33,7 @@ END WHILE
 ```
 
 !!! warning "Listing slips"
-    The handout's listing is garbled (for example "ldu.left-mixed", a stray `\_`, and "COBEGIN" inside a `WHILE`). The idea is clear: two parallel input processes and a weighted sum **a·ldu1 + b·ldu2**.
+    Printed listings of this example are often garbled (for example "ldu.left-mixed", a stray `\_`, and "COBEGIN" inside a `WHILE`). The idea is clear: two parallel input processes and a weighted sum **a·ldu1 + b·ldu2**.
 
 ### 2. Media as files
 

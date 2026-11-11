@@ -1,8 +1,5 @@
 # CD Audio (CD-DA)
 
-!!! source "Source"
-    *Unit 6 – cd* pp. 12–25; *Unit 6 – optical-storage-media* pp. 5–20.
-
 ## Characteristics
 
 | Item | Value |
@@ -33,7 +30,7 @@ Pit and land lengths are **multiples of 0.3 µm**.
 
 When 14-bit values are concatenated the rules could be broken, so **three merging bits** are added between them. Each byte therefore uses **17 channel bits** (14 + 3).
 
-!!! warning "Typo in the lecturer's example"
+!!! warning "Typo"
     The example shows "8 bit data 111101000 11100010", where the first value has 9 digits. It should be 8 bits. Study the **rule** (min 2 zeros, max 10 zeros, 3 merging bits) rather than the example.
 
 ## Error handling
@@ -49,10 +46,10 @@ Two levels:
 
 Performance: error rate about **10⁻⁸** (about 1 bit in 100 million); bursts of **4,000 data bits (about 2.5 mm)** are corrected exactly; errors up to **12,300 data bits (about 7 mm)** are repaired by **interpolation**.
 
-!!! warning "Arithmetic in the lecturer's slide"
-    The slide multiplies 4,000 × 0.3 µm and writes "about 2.5 mm". The product is 1.2 mm; the **2.5 mm and 7 mm** figures are the usual quoted values. Learn the figures 4,000 bits/2.5 mm and 12,300 bits/7 mm.
+!!! warning "Watch out"
+    A common calculation multiplies 4,000 × 0.3 µm and writes "about 2.5 mm". The product is 1.2 mm; the **2.5 mm and 7 mm** figures are the usual quoted values. Learn the figures 4,000 bits/2.5 mm and 12,300 bits/7 mm.
 
-!!! info "Beyond the slides: the theory the second file starts"
+!!! info "Extra: error-control theory"
     - **Error detection** with a polynomial: treat data as A(x), divide by generator G(x), send the remainder; the receiver divides again. A **parity bit** (G(x) = x + 1) detects an odd number of errors but misses an even number.
     - **FEC** works by choosing codewords with large **Hamming distance**: if the minimum distance is 2t + 1, any error of t bits or fewer can be corrected.
     - **2-D parity** (row and column) can locate and correct a single error, but several errors can produce a wrong "correction".

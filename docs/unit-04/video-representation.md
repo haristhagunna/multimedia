@@ -1,8 +1,5 @@
 # Video and Visual Representation
 
-!!! source "Source"
-    *Unit 4 – Video and Animation* pp. 3–17; *mul c4* pp. 3–34.
-
 ## What is video?
 
 - **Video** is a combination of **image and audio**. It consists of a set of **still images called frames**, displayed at a fixed speed called the **frame rate** (frames per second, **fps**).
@@ -20,7 +17,7 @@ flowchart LR
     V --> C["Digitization"]
 ```
 
-The goal of **visual representation** is to give the observer as realistic a picture of a scene as possible, so the picture must convey the **spatial and temporal content** of the scene accurately. The lecturer lists the following measures.
+The goal of **visual representation** is to give the observer as realistic a picture of a scene as possible, so the picture must convey the **spatial and temporal content** of the scene accurately. DVI appears as the following measures.
 
 ## 1. Vertical detail and viewing distance
 
@@ -79,7 +76,7 @@ Two ways to cure flicker:
 1. **Raise the refresh rate**. Beyond a limit this may damage the hardware.
 2. **Interlaced scanning**: in the first pass the **odd lines** are drawn, in the second the **even lines**. Each frame has **two fields** and the refresh rate seen by the eye doubles.
 
-!!! example "625-line system (mul c4)"
+!!! example "625-line system"
     625 lines per frame → **312.5 lines per field**, of which **292.5 are active (trace) lines** and **20 are vertical retrace**. The same holds for the second field.
 
 ## 9. Temporal aspect of video bandwidth
@@ -91,14 +88,14 @@ $$\text{Horizontal scan frequency} = b \times c \qquad \text{Video bandwidth} = 
 
 where **a** = pixels per line (horizontal), **b** = lines (vertical), **c** = frame rate.
 
-!!! example "Worked example from mul c4"
+!!! example "Worked example"
     a = 1312, b = 800, c = 100 Hz: 1312 × 800 × 100 / 2 = **52,480,000 Hz = 52.48 MHz**.
 
-!!! warning "A slip in the lecturer's slide"
-    The slide says "124 × 786 are visible". These look like typing errors for about 1024 × 768; they do not enter the calculation. Use a, b, c as above.
+!!! warning "Watch out"
+    Some printed notes say "124 × 786 are visible". These look like typing errors for about 1024 × 768; they do not enter the calculation. Use a, b, c as above.
 
-!!! info "Beyond the lecturer's notes"
-    The lecturer's list is not numbered consistently (mul c4 uses "4" twice, and refers to "8. Flicker" after "6."). The nine measures in the order above match *Unit 4*. Also, mul c4 writes the flicker minimum as 50 cycles/s; Unit 4 writes 50 Hz. They are the same.
+!!! info "Extra"
+    The list is not numbered consistently (a "4" may appear twice, and "8. Flicker" may follow "6."). The nine measures in the order above are the standard list. The flicker minimum is written as 50 cycles/s or 50 Hz. They are the same.
 
 !!! exam "Exam tip"
     "Explain the visual representation of video" is usually answered with the headings above, one or two lines each. Always give the three numbers: **15 fps** (continuity), **25/30 fps** (smooth), **50 Hz** (flicker).

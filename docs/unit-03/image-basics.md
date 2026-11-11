@@ -1,8 +1,5 @@
 # Image and Graphics Basics
 
-!!! source "Source"
-    *Unit 3 – Image and Graphics* pp. 2–13; *mul c3* pp. 3–11.
-
 ## What is an image?
 
 An **image** is a **spatial representation of an object**: a two-dimensional or three-dimensional scene, or another image. Abstractly, an image is a **continuous function defining a rectangular region of a plane**.
@@ -47,7 +44,7 @@ A **bitmap** with **1 bit per pixel** is a **monochrome** image (this is what ve
 
 ### Worked example 1: a 16 × 16 bitmap
 
-The lecturer's figure shows a black cat drawn on a 16 × 16 grid, with the 0s and 1s printed beside it.
+The figure shows a black cat drawn on a 16 × 16 grid, with the 0s and 1s printed beside it.
 
 | Step | Working |
 |---|---|
@@ -58,7 +55,7 @@ The lecturer's figure shows a black cat drawn on a 16 × 16 grid, with the 0s an
 
 ### Worked example 2: a 640 × 480 bitmap
 
-*mul c3* states a 640 × 480 bitmap needs **37.5 KB**: 640 × 480 = 307,200 bits, ÷ 8 = 38,400 bytes, ÷ 1024 = **37.5 KB**.
+A 640 × 480 bitmap needs **37.5 KB**: 640 × 480 = 307,200 bits, ÷ 8 = 38,400 bytes, ÷ 1024 = **37.5 KB**.
 
 ## Bitmap resolution
 
@@ -108,8 +105,8 @@ The **depth** of an image is the **number of bits used to represent each pixel**
 
 $$\text{Size (bits)} = \text{width} \times \text{height} \times \text{bits per pixel} \qquad \text{Size (bytes)} = \frac{\text{width} \times \text{height} \times \text{bits per pixel}}{8}$$
 
-!!! warning "KB means two things in the lecturer's slides"
-    The slide on pseudo and true colour says a 640 × 480 24-bit image needs **921.6 KB** (that divides by **1000**). The slide on stored image format says **900K** (that divides by **1024**). Both come from 640 × 480 × 3 = **921,600 bytes**. In the exam, **state the byte count first**, then give the KB value and say which you divided by.
+!!! warning "KB can mean two things"
+    A 640 × 480 24-bit image is sometimes quoted as **921.6 KB** (dividing by **1000**) and sometimes as **900K** (dividing by **1024**). Both come from 640 × 480 × 3 = **921,600 bytes**. In the exam, **state the byte count first**, then give the KB value and say which you divided by.
 
 ## Checkpoint
 

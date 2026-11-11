@@ -1,8 +1,5 @@
 # Introduction and Real Time
 
-!!! info "Not in the previous lecturer's notes"
-    Written from the syllabus and standard textbook knowledge (mainly Steinmetz and Nahrstedt, *Multimedia: Computing, Communications and Applications*). Check details against your prescribed textbook.
-
 ## Why an ordinary OS is not enough
 
 An **operating system (OS)** manages the hardware resources (CPU, memory, disk, network) and offers them to applications. Conventional OSs were designed for **discrete data** and fairness: they give each process a fair share, with no promise about *when* a result appears.

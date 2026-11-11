@@ -2,9 +2,6 @@
 
 Write your own answer on paper first, then click to reveal the model answer.
 
-!!! info "Not in the previous lecturer's notes"
-    This unit and its questions come from the syllabus and standard textbook knowledge.
-
 ## Short answer
 
 ??? question "1. Define a multimedia document and a document architecture. (3 marks)"

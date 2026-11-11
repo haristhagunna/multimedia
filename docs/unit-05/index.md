@@ -3,7 +3,7 @@
 **6 hours · approx. weeks 6–7**
 
 !!! success "Ready"
-    Topic notes, practice questions and class slides are complete for this unit. Parts marked *Beyond the lecturer's notes* were written from standard textbook knowledge because the lecturer's files do not cover them.
+    Topic notes, practice questions and class slides are complete for this unit. Parts marked *Extra* go beyond the core topics and come from standard textbook knowledge.
 
 ## What this unit covers
 
@@ -17,13 +17,6 @@
 | 5.4 MPEG, H.261 (px64) and DVI | [MPEG, H.261 and DVI](mpeg-h261-dvi.md) |
 
 Also: [Class Slides](slides.md) and [Practice Questions](practice.md).
-
-## Lecturer files followed
-
-*Unit 5 – Data Compression* and *Huffman Coding*.
-
-!!! info "Known gaps in the lecturer's notes"
-    The lecturer has **no section on prediction coding or adaptive compression**, and mentions **H.261 and DVI only by name**. Those parts are written from textbook knowledge and carry a banner.
 
 ## Quick map
 

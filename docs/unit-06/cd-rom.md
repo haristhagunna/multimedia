@@ -1,8 +1,5 @@
 # CD-ROM and CD-ROM/XA
 
-!!! source "Source"
-    *Unit 6 – cd* pp. 26–40; *Unit 6 – optical-storage-media* pp. 21–28.
-
 ## Why CD-ROM differs from CD-DA
 
 Computer data is **much more sensitive to errors** than audio (no repetition, interpolation or dropping possible) and needs **smaller units for random access**. So CD-ROM adds **extra error correction** and uses **blocks** (sectors) instead of whole tracks.
@@ -27,9 +24,9 @@ flowchart TB
 - **75 blocks per second** (single speed). 1,411,200 ÷ 75 ÷ 8 = **2,352 bytes per block**.
 - 74 min × 60 × 75 = **333,000 blocks**.
 
-!!! warning "Two slips in the lecturer's slides"
-    - The slide says "1 block = **32** frames". 2,352 ÷ 24 audio bytes per frame = **98 frames per block** (98 × 588 bits = 57,624 bits = 7,203 channel bytes, which the same slide shows).
-    - The structure slide says "330,000 blocks"; the correct figure used elsewhere is **333,000**.
+!!! warning "Watch out"
+    - Some notes say "1 block = **32** frames". 2,352 ÷ 24 audio bytes per frame = **98 frames per block** (98 × 588 bits = 57,624 bits = 7,203 channel bytes, ).
+    - A figure of "330,000 blocks" is sometimes printed; the correct count is **333,000**.
 
 ## Mode 1 block (2,352 bytes)
 

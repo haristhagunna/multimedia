@@ -1,34 +1,59 @@
 site_name: Multimedia and Application
-site_description: Exam-ready study notes, class slides and practice questions for BCA429CO Multimedia and Application.
-# site_url: https://YOUR-GITHUB-USERNAME.github.io/multimedia-and-application/
-# repo_url: https://github.com/YOUR-GITHUB-USERNAME/multimedia-and-application
+site_author: Er. Harish Thagunna
+site_description: Complete exam-ready notes, class slides, interactive practice and revision tools for BCA429CO Multimedia and Application, by Er. Harish Thagunna.
+copyright: "&copy; 2026 Er. Harish Thagunna. All rights reserved."
+# site_url: https://thagunnaharish1-netizen.github.io/multimedia/
+# repo_url: https://github.com/thagunnaharish1-netizen/multimedia
+
+hooks:
+  - hooks/site.py
 
 theme:
   name: material
+  custom_dir: overrides
   language: en
+  font:
+    text: Inter
+    code: JetBrains Mono
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: deep orange
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: deep orange
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
   features:
+    - announce.dismiss
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
     - navigation.indexes
     - navigation.top
     - navigation.footer
     - toc.follow
     - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
+    - content.tooltips
+    - content.footnote.tooltips
+
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
 
 extra_css:
   - stylesheets/extra.css
@@ -36,18 +61,49 @@ extra_css:
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - javascripts/app.js
+
+extra:
+  exam_date_hint: "Set your exam date in the Revision planner"
+  units:
+    - {n: 1,  title: "Multimedia System",              hours: 3, weeks: "1",     blurb: "What multimedia is, its structure, media types and data streams.", icon: "layers"}
+    - {n: 2,  title: "Sound and Audio",                hours: 4, weeks: "2–3",   blurb: "Sound physics, digital audio, MIDI and speech processing.", icon: "wave"}
+    - {n: 3,  title: "Image and Graphics",             hours: 4, weeks: "3–4",   blurb: "Bitmaps, formats, graphics systems, dithering and recognition.", icon: "image"}
+    - {n: 4,  title: "Video and Animation",            hours: 4, weeks: "4–5",   blurb: "Video signals, colour models, computer video and animation.", icon: "video"}
+    - {n: 5,  title: "Data Compression",               hours: 6, weeks: "6–7",   blurb: "Huffman, run-length, JPEG, MPEG and coding categories.", icon: "compress"}
+    - {n: 6,  title: "Optical Storage Media",          hours: 4, weeks: "8–9",   blurb: "CD-DA, CD-ROM, XA, DVD, Blu-ray, CD-WO and CD-MO.", icon: "disc"}
+    - {n: 7,  title: "Multimedia Operating System",    hours: 4, weeks: "9–10",  blurb: "Real time, resource management, EDF and rate monotonic.", icon: "cpu"}
+    - {n: 8,  title: "Multimedia Communication",       hours: 4, weeks: "10–11", blurb: "Application and transport subsystems, QoS and protocols.", icon: "network"}
+    - {n: 9,  title: "Documents, Hypertext and MHEG",  hours: 4, weeks: "12–13", blurb: "Hypermedia, the Dexter model, SGML, ODA and MHEG.", icon: "link"}
+    - {n: 10, title: "Synchronization",                hours: 4, weeks: "13–14", blurb: "Skew, reference model, specification and distributed sync.", icon: "clock"}
+    - {n: 11, title: "Abstraction of Programming",     hours: 2, weeks: "14–15", blurb: "Libraries, toolkits, languages and object-oriented design.", icon: "code"}
+    - {n: 12, title: "Multimedia Application",         hours: 2, weeks: "15",    blurb: "Application classes, systems and the development cycle.", icon: "app"}
 
 markdown_extensions:
+  - abbr
   - admonition
   - attr_list
   - def_list
+  - footnotes
   - md_in_html
   - tables
   - toc:
       permalink: true
   - pymdownx.details
+  - pymdownx.mark
+  - pymdownx.caret
+  - pymdownx.tilde
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets:
+      base_path: ["."]
+      auto_append:
+        - docs/includes/abbreviations.md
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -61,126 +117,141 @@ markdown_extensions:
       generic: true
 
 nav:
-  - Welcome: index.md
-  - Course Syllabus: syllabus.md
-  - Course Map: course-map.md
-  - "Unit 1 · Multimedia System":
-      - unit-01/index.md
-      - Class Slides: unit-01/slides.md
-      - Topic Notes:
-          - What Is Multimedia?: unit-01/what-is-multimedia.md
-          - The Multimedia System: unit-01/multimedia-system.md
-          - Global Structure: unit-01/global-structure.md
-          - Classification of Media: unit-01/media-classification.md
-          - Media Concepts and Properties: unit-01/media-concepts-and-properties.md
-          - Data Streams and Transmission Modes: unit-01/data-streams.md
-      - Practice Questions: unit-01/practice.md
-  - "Unit 2 · Sound and Audio":
-      - unit-02/index.md
-      - Class Slides: unit-02/slides.md
-      - Topic Notes:
-          - Basic Sound Concepts: unit-02/sound-basics.md
-          - Digital Audio and File Formats: unit-02/digital-audio.md
-          - MIDI: unit-02/midi.md
-          - Speech Generation: unit-02/speech-generation.md
-          - Speech Analysis: unit-02/speech-analysis.md
-          - Speech Transmission: unit-02/speech-transmission.md
-      - Practice Questions: unit-02/practice.md
-  - "Unit 3 · Image and Graphics":
-      - unit-03/index.md
-      - Class Slides: unit-03/slides.md
-      - Topic Notes:
-          - Image and Graphics Basics: unit-03/image-basics.md
-          - Image and Graphics Formats: unit-03/formats.md
-          - Image Synthesis and Graphics Systems: unit-03/synthesis-and-graphics-systems.md
-          - Image Analysis and Recognition: unit-03/image-analysis.md
-          - Image Transmission: unit-03/image-transmission.md
-      - Practice Questions: unit-03/practice.md
-  - "Unit 4 · Video and Animation":
-      - unit-04/index.md
-      - Class Slides: unit-04/slides.md
-      - Topic Notes:
-          - Video and Visual Representation: unit-04/video-representation.md
-          - Video Transmission and Digitization: unit-04/video-transmission.md
-          - Computer Video Format: unit-04/computer-video-format.md
-          - Animation Basics: unit-04/animation-basics.md
-          - Animation Languages and Control: unit-04/animation-languages-and-control.md
-          - Animation Display and Transmission: unit-04/animation-display-and-transmission.md
-      - Practice Questions: unit-04/practice.md
-  - "Unit 5 · Data Compression":
-      - unit-05/index.md
-      - Class Slides: unit-05/slides.md
-      - Topic Notes:
-          - Basic Concepts and Coding Requirements: unit-05/basics.md
-          - Categories of Coding: unit-05/categories.md
-          - Run-Length and Huffman Coding: unit-05/rle-and-huffman.md
-          - Prediction and Adaptive Compression: unit-05/prediction-and-adaptive.md
-          - JPEG: unit-05/jpeg.md
-          - MPEG, H.261 and DVI: unit-05/mpeg-h261-dvi.md
-      - Practice Questions: unit-05/practice.md
-  - "Unit 6 · Optical Storage Media":
-      - unit-06/index.md
-      - Class Slides: unit-06/slides.md
-      - Topic Notes:
-          - Basic Technology: unit-06/basic-technology.md
-          - "Video Disks: Laser Vision, DVD and Blu-ray": unit-06/video-disks.md
-          - CD Audio (CD-DA): unit-06/cd-audio.md
-          - CD-ROM and CD-ROM/XA: unit-06/cd-rom.md
-          - CD-I, CD-I Ready, Bridge and Photo CD: unit-06/cd-i-and-photo-cd.md
-          - CD-WO and CD-MO: unit-06/cd-wo-and-cd-mo.md
-      - Practice Questions: unit-06/practice.md
-  - "Unit 7 · Multimedia Operating System":
-      - unit-07/index.md
-      - Class Slides: unit-07/slides.md
-      - Topic Notes:
-          - Introduction and Real Time: unit-07/introduction-real-time.md
-          - Resource Management: unit-07/resource-management.md
-          - Process Management and Real-Time Scheduling: unit-07/scheduling.md
-          - System Architecture: unit-07/system-architecture.md
-      - Practice Questions: unit-07/practice.md
-  - "Unit 8 · Multimedia Communication System":
-      - unit-08/index.md
-      - Class Slides: unit-08/slides.md
-      - Topic Notes:
-          - Introduction: unit-08/introduction.md
-          - Application Subsystem: unit-08/application-subsystem.md
-          - Transport Subsystem: unit-08/transport-subsystem.md
-          - QoS and Resource Management: unit-08/qos.md
-      - Practice Questions: unit-08/practice.md
-  - "Unit 9 · Documents, Hypertext and MHEG":
-      - unit-09/index.md
-      - Class Slides: unit-09/slides.md
-      - Topic Notes:
-          - Multimedia Documents: unit-09/documents.md
-          - Hypertext and Hypermedia: unit-09/hypertext.md
-          - Hypermedia Systems: unit-09/hypermedia-systems.md
-          - SGML, ODA and MHEG: unit-09/sgml-oda-mheg.md
-      - Practice Questions: unit-09/practice.md
-  - "Unit 10 · Synchronization":
-      - unit-10/index.md
-      - Class Slides: unit-10/slides.md
-      - Topic Notes:
-          - Notion of Synchronization: unit-10/notion.md
-          - Presentation Requirements: unit-10/presentation-requirements.md
-          - Reference Model: unit-10/reference-model.md
-          - Synchronization Specification: unit-10/specification.md
-          - Synchronization in a Distributed Environment: unit-10/distributed.md
-      - Practice Questions: unit-10/practice.md
-  - "Unit 11 · Abstraction of Programming":
-      - unit-11/index.md
-      - Class Slides: unit-11/slides.md
-      - Topic Notes:
-          - Abstraction Levels and Libraries: unit-11/abstraction-levels.md
-          - System Software: unit-11/system-software.md
-          - Toolkits and Higher Programming Languages: unit-11/toolkits-and-languages.md
-          - Object-Oriented Approaches: unit-11/object-oriented.md
-      - Practice Questions: unit-11/practice.md
-  - "Unit 12 · Multimedia Application":
-      - unit-12/index.md
-      - Class Slides: unit-12/slides.md
-      - Topic Notes:
-          - Application Classes: unit-12/application-classes.md
-          - System Types and Components: unit-12/system-types-and-components.md
-          - Development Cycle: unit-12/development-cycle.md
-          - Application Areas in Detail: unit-12/application-areas.md
-      - Practice Questions: unit-12/practice.md
+  - Home: index.md
+  - Course:
+      - Syllabus: syllabus.md
+      - Course map: course-map.md
+  - "Units 1–3":
+      - "Unit 1 · Multimedia System":
+          - Overview: unit-01/index.md
+          - Class slides: unit-01/slides.md
+          - Topic notes:
+              - What Is Multimedia?: unit-01/what-is-multimedia.md
+              - The Multimedia System: unit-01/multimedia-system.md
+              - Global Structure: unit-01/global-structure.md
+              - Classification of Media: unit-01/media-classification.md
+              - Media Concepts and Properties: unit-01/media-concepts-and-properties.md
+              - Data Streams and Transmission Modes: unit-01/data-streams.md
+          - Practice questions: unit-01/practice.md
+      - "Unit 2 · Sound and Audio":
+          - Overview: unit-02/index.md
+          - Class slides: unit-02/slides.md
+          - Topic notes:
+              - Basic Sound Concepts: unit-02/sound-basics.md
+              - Digital Audio and File Formats: unit-02/digital-audio.md
+              - MIDI: unit-02/midi.md
+              - Speech Generation: unit-02/speech-generation.md
+              - Speech Analysis: unit-02/speech-analysis.md
+              - Speech Transmission: unit-02/speech-transmission.md
+          - Practice questions: unit-02/practice.md
+      - "Unit 3 · Image and Graphics":
+          - Overview: unit-03/index.md
+          - Class slides: unit-03/slides.md
+          - Topic notes:
+              - Image and Graphics Basics: unit-03/image-basics.md
+              - Image and Graphics Formats: unit-03/formats.md
+              - Image Synthesis and Graphics Systems: unit-03/synthesis-and-graphics-systems.md
+              - Image Analysis and Recognition: unit-03/image-analysis.md
+              - Image Transmission: unit-03/image-transmission.md
+          - Practice questions: unit-03/practice.md
+  - "Units 4–6":
+      - "Unit 4 · Video and Animation":
+          - Overview: unit-04/index.md
+          - Class slides: unit-04/slides.md
+          - Topic notes:
+              - Video and Visual Representation: unit-04/video-representation.md
+              - Video Transmission and Digitization: unit-04/video-transmission.md
+              - Computer Video Format: unit-04/computer-video-format.md
+              - Animation Basics: unit-04/animation-basics.md
+              - Animation Languages and Control: unit-04/animation-languages-and-control.md
+              - Animation Display and Transmission: unit-04/animation-display-and-transmission.md
+          - Practice questions: unit-04/practice.md
+      - "Unit 5 · Data Compression":
+          - Overview: unit-05/index.md
+          - Class slides: unit-05/slides.md
+          - Topic notes:
+              - Basic Concepts and Coding Requirements: unit-05/basics.md
+              - Categories of Coding: unit-05/categories.md
+              - Run-Length and Huffman Coding: unit-05/rle-and-huffman.md
+              - Prediction and Adaptive Compression: unit-05/prediction-and-adaptive.md
+              - JPEG: unit-05/jpeg.md
+              - "MPEG, H.261 and DVI": unit-05/mpeg-h261-dvi.md
+          - Practice questions: unit-05/practice.md
+      - "Unit 6 · Optical Storage Media":
+          - Overview: unit-06/index.md
+          - Class slides: unit-06/slides.md
+          - Topic notes:
+              - Basic Technology: unit-06/basic-technology.md
+              - "Video Disks: Laser Vision, DVD and Blu-ray": unit-06/video-disks.md
+              - CD Audio (CD-DA): unit-06/cd-audio.md
+              - CD-ROM and CD-ROM/XA: unit-06/cd-rom.md
+              - "CD-I, CD-I Ready, Bridge and Photo CD": unit-06/cd-i-and-photo-cd.md
+              - CD-WO and CD-MO: unit-06/cd-wo-and-cd-mo.md
+          - Practice questions: unit-06/practice.md
+  - "Units 7–9":
+      - "Unit 7 · Multimedia Operating System":
+          - Overview: unit-07/index.md
+          - Class slides: unit-07/slides.md
+          - Topic notes:
+              - Introduction and Real Time: unit-07/introduction-real-time.md
+              - Resource Management: unit-07/resource-management.md
+              - Process Management and Real-Time Scheduling: unit-07/scheduling.md
+              - System Architecture: unit-07/system-architecture.md
+          - Practice questions: unit-07/practice.md
+      - "Unit 8 · Multimedia Communication System":
+          - Overview: unit-08/index.md
+          - Class slides: unit-08/slides.md
+          - Topic notes:
+              - Introduction: unit-08/introduction.md
+              - Application Subsystem: unit-08/application-subsystem.md
+              - Transport Subsystem: unit-08/transport-subsystem.md
+              - QoS and Resource Management: unit-08/qos.md
+          - Practice questions: unit-08/practice.md
+      - "Unit 9 · Documents, Hypertext and MHEG":
+          - Overview: unit-09/index.md
+          - Class slides: unit-09/slides.md
+          - Topic notes:
+              - Multimedia Documents: unit-09/documents.md
+              - Hypertext and Hypermedia: unit-09/hypertext.md
+              - Hypermedia Systems: unit-09/hypermedia-systems.md
+              - "SGML, ODA and MHEG": unit-09/sgml-oda-mheg.md
+          - Practice questions: unit-09/practice.md
+  - "Units 10–12":
+      - "Unit 10 · Synchronization":
+          - Overview: unit-10/index.md
+          - Class slides: unit-10/slides.md
+          - Topic notes:
+              - Notion of Synchronization: unit-10/notion.md
+              - Presentation Requirements: unit-10/presentation-requirements.md
+              - Reference Model: unit-10/reference-model.md
+              - Synchronization Specification: unit-10/specification.md
+              - Synchronization in a Distributed Environment: unit-10/distributed.md
+          - Practice questions: unit-10/practice.md
+      - "Unit 11 · Abstraction of Programming":
+          - Overview: unit-11/index.md
+          - Class slides: unit-11/slides.md
+          - Topic notes:
+              - Abstraction Levels and Libraries: unit-11/abstraction-levels.md
+              - System Software: unit-11/system-software.md
+              - Toolkits and Higher Programming Languages: unit-11/toolkits-and-languages.md
+              - Object-Oriented Approaches: unit-11/object-oriented.md
+          - Practice questions: unit-11/practice.md
+      - "Unit 12 · Multimedia Application":
+          - Overview: unit-12/index.md
+          - Class slides: unit-12/slides.md
+          - Topic notes:
+              - Application Classes: unit-12/application-classes.md
+              - System Types and Components: unit-12/system-types-and-components.md
+              - Development Cycle: unit-12/development-cycle.md
+              - Application Areas in Detail: unit-12/application-areas.md
+          - Practice questions: unit-12/practice.md
+  - Revision hub:
+      - revision/index.md
+      - Formula sheet: revision/formula-sheet.md
+      - Glossary: revision/glossary.md
+      - Exam checklist: revision/exam-checklist.md
+      - Revision planner: revision/planner.md
+  - About: about.md
+
+exclude_docs: |
+  includes/

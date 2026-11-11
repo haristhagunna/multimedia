@@ -1,8 +1,5 @@
 # Basic Technology
 
-!!! source "Source"
-    *Unit 6 – cd* pp. 3–8; *Unit 6 – optical-storage-media* pp. 2–5.
-
 ## History
 
 | Year | Event |

@@ -47,7 +47,7 @@ Write your own answer on paper first, then click to reveal the model answer. Mar
     GOP: number of frames between successive I-frames. Prediction span: number of frames between a P-frame and the preceding I-frame.
 
 ??? question "15. What is px64? (2 marks)"
-    The H.261 data rate p × 64 kbit/s (p = 1…30) for videoconferencing over ISDN. *(Beyond the lecturer's notes.)*
+    The H.261 data rate p × 64 kbit/s (p = 1…30) for videoconferencing over ISDN. *(Extra.)*
 
 ## Long answer
 
@@ -64,7 +64,7 @@ Write your own answer on paper first, then click to reveal the model answer. Mar
     Use the tables in [MPEG](../unit-05/mpeg-h261-dvi.md): intra-frame (macroblock, DCT, quantization, entropy), inter-frame (motion estimation, vectors, compensation, residual), I/P/B frames, GOP, rate limits.
 
 ??? question "20. Explain prediction coding and adaptive compression. (5 marks)"
-    See [Prediction and Adaptive Compression](prediction-and-adaptive.md): code differences from predicted values; adaptive methods learn statistics while coding (adaptive Huffman, LZW). *(Beyond the lecturer's notes.)*
+    See [Prediction and Adaptive Compression](prediction-and-adaptive.md): code differences from predicted values; adaptive methods learn statistics while coding (adaptive Huffman, LZW). *(Extra.)*
 
 ??? question "21. Explain arithmetic coding and compare it with Huffman. (5 marks)"
     One codeword for a whole string; interval 0–1 split by probabilities, narrowed per symbol, termination character; Huffman uses one codeword per symbol (whole number of bits).

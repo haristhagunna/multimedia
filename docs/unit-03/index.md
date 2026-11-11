@@ -34,23 +34,20 @@ Sound was one stream of numbers over time. An **image** is a **grid** of numbers
 5. [Image Transmission](image-transmission.md)
 6. [Practice Questions](practice.md)
 
-!!! source "Lecturer files"
-    *Unit 3 – Image and Graphics* (51 slides) and *mul c3* (49 slides). The two overlap; where they differ or contradict each other, the notes say so.
-
 ## What to expect in the exam
 
-These weights are inferred from how much space the lecturer gave each topic. They are not from a past paper.
+These weights are estimates based on how much space each topic usually gets. They are not from a past paper.
 
 !!! exam "Most likely questions"
     - **Image versus graphics** (a comparison table).
-    - **Bitmap size calculations** (worked examples appear in the slides).
+    - **Bitmap size calculations** (worked examples appear in these notes).
     - **Image synthesis and analysis**: definitions, applications, and the three-component graphics framework.
     - **Dithering** and the **125 colours** calculation.
     - **Image recognition steps**, and the three **image transmission** formats with the raw-size formula.
 
 ## Before Next Class
 
-- [ ] Redo the three lecturer size examples (16×16, 100×100, 960×640) without looking.
+- [ ] Redo the three size examples (16×16, 100×100, 960×640) without looking.
 - [ ] Learn the image-versus-graphics table.
 - [ ] List the recognition steps in order, with one line each.
 - [ ] Skim the [Unit 4 overview](../unit-04/index.md).

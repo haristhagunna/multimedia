@@ -1,8 +1,5 @@
 # Animation Basics
 
-!!! source "Source"
-    *Unit 4* pp. 35–41; *mul c4* pp. 50–57.
-
 ## What is animation?
 
 - **Animation** is making something look and feel alive: it covers **all changes that have a visual effect** (time-varying position, shape, colour, transparency, structure, texture).
@@ -39,7 +36,7 @@ flowchart LR
 
 $$P(t) = (1-t)\,P_{start} + t\,P_{end}, \quad 0 \le t \le 1$$
 
-!!! info "Beyond the lecturer's notes"
+!!! info "Extra"
     The lerp formula is standard and is not written in the notes. Example: start x = 0, end x = 100, 5 in-betweens means t = 1/6, 2/6, …: x ≈ 16.7, 33.3, 50, 66.7, 83.3.
 
 ## Changing colours with a CLUT
@@ -47,8 +44,8 @@ $$P(t) = (1-t)\,P_{start} + t\,P_{end}, \quad 0 \le t \le 1$$
 - Colours are changed by **manipulating the colour look-up table in the frame buffer**. The simplest method is to **cycle the colours** in the table, changing the colour of various parts of the image.
 - **CLUT animation is faster** than sending a whole new pixmap to the frame buffer for every frame.
 
-!!! warning "Source inconsistency"
-    *mul c4* slide 56 repeats the "Input process" text under the "In-between process" title (a copy slip). Use the in-between description above.
+!!! warning "Watch out"
+    Do not mix up the input process (digitizing drawings) with in-betweening (computing intermediate frames).
 
 !!! exam "Exam tip"
     Typical questions: "What is in-betweening? Why are splines used?" and "Explain CLUT animation." Give the lerp weakness (ball path) explicitly.

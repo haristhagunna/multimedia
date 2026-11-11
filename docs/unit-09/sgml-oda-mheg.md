@@ -1,8 +1,5 @@
 # Document Architecture: SGML, ODA and MHEG
 
-!!! info "Not in the previous lecturer's notes"
-    Written from the syllabus and standard textbook knowledge (mainly Steinmetz and Nahrstedt, *Multimedia: Computing, Communications and Applications*). Check details against your prescribed textbook.
-
 ## SGML: Standard Generalized Markup Language (ISO 8879, 1986)
 
 - A **meta-language** for defining **markup languages**. The document is **text with tags** that mark its **logical structure**; **layout is not specified** (left to the application).

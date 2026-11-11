@@ -1,8 +1,5 @@
 # The Multimedia Development Cycle
 
-!!! source "Source"
-    *Unit 12 – multimedia-application* slides 16–38.
-
 ```mermaid
 flowchart LR
     P["1. Planning and costing"] --> D["2. Designing"] --> V["3. Developing and producing"] --> T["4. Testing and debugging"] --> L["5. Delivering"]

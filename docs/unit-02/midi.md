@@ -1,8 +1,5 @@
 # MIDI
 
-!!! source "Source"
-    *Unit 2 – Sound & Audio System* pp. 15–26.
-
 ## Why MIDI exists
 
 A **sound signal** can be stored as a **digitised sequence of samples**. But **music** can also be described in a **symbolic way**, the way a printed score lists notes. Computers and electronic musical instruments use a similar technique, and most of them use **MIDI (Musical Instrument Digital Interface)**, a standard developed in the **early 1980s**.
@@ -21,7 +18,7 @@ A **sound signal** can be stored as a **digitised sequence of samples**. But **m
 | **Hardware** | Connects the equipment. It adds a **MIDI port** to an instrument, specifies a **MIDI cable**, and processes the **electrical signals** over the cable. |
 | **Data format** | Encodes the information the hardware processes. It does **not** encode individual sampling values; instead it uses a specific data format for each instrument, covering the **start and end of a score**, the **basic frequency**, the **loudness** and the **instrument itself**. |
 
-The lecturer's figure shows a laptop (the digital audio workstation) connected to a synthesizer, a MIDI keyboard and an audio interface with **USB, audio and MIDI cables**.
+The figure shows a laptop (the digital audio workstation) connected to a synthesizer, a MIDI keyboard and an audio interface with **USB, audio and MIDI cables**.
 
 ## MIDI messages
 
@@ -48,8 +45,8 @@ The MIDI data format is **digital**, and data are grouped into **MIDI messages**
 - It keeps all connected devices **playing in time** with each other, which is crucial for **rhythm and tempo** in live performances and recordings.
 - As an alternative, the **SMPTE clock** allows receiver-sender synchronisation.
 
-!!! warning "A number in the slide that does not match the MIDI standard"
-    The lecturer's slide says the MIDI clock sends **2 timing ticks per quarter note**. The MIDI specification itself defines **24 timing clocks per quarter note**. If your exam follows the lecturer's slides, write the slide's wording; know the standard figure too.
+!!! warning "A number that does not match the MIDI standard"
+    Some sources say the MIDI clock sends **2 timing ticks per quarter note**. The MIDI specification itself defines **24 timing clocks per quarter note**. Always quote the standard figure of 24 in exams.
 
 ### SMPTE timing code
 
@@ -69,7 +66,7 @@ The MIDI data format is **digital**, and data are grouped into **MIDI messages**
 
 ## MIDI versus SMPTE
 
-The lecturer set this as an assignment, so expect it as an exam question.
+This is a classic assignment question, so expect it in the exam.
 
 | | **MIDI** | **SMPTE** |
 |---|---|---|

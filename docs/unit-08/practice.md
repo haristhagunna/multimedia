@@ -2,9 +2,6 @@
 
 Write your own answer on paper first, then click to reveal the model answer.
 
-!!! info "Not in the previous lecturer's notes"
-    This unit and its questions come from the syllabus and standard textbook knowledge.
-
 ## Short answer
 
 ??? question "1. Why is multimedia communication more demanding than ordinary data communication? (4 marks)"

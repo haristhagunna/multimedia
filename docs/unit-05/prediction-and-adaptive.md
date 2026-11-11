@@ -1,8 +1,5 @@
 # Prediction and Adaptive Compression
 
-!!! info "Not in the previous lecturer's notes"
-    The lecturer's files do not cover this syllabus item (5.3). It is written from standard textbook knowledge so the syllabus is complete. Check the wording against your prescribed textbook before the exam.
-
 ## Prediction (differential) coding
 
 **Idea:** neighbouring samples or pixels are similar, so instead of coding each value we **predict** it from earlier values and code only the **prediction error (difference)**. Differences are small and cluster near zero, so they need fewer bits (and entropy coding handles them well).
