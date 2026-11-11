@@ -529,3 +529,187 @@ def u12():
     ax.text(6.2, .3, "iterate: feedback from testing and users returns to design", ha="center", color=MU, fontsize=11)
     add(12, "development-cycle", "start", "The cycle at a glance", svg(f))
 u12()
+
+# ======================= SECOND BATCH (extra student visuals) =======================
+def batch2():
+    # U2 time vs frequency domain
+    f = fig(10, 3.8)
+    t = np.linspace(0, .02, 1200); fr = [(200, 1.0, IN), (500, .6, VI), (1000, .35, PK)]
+    sig = sum(a * np.sin(2 * np.pi * fq * t) for fq, a, _ in fr)
+    ax = f.add_subplot(1, 2, 1); ax.plot(t * 1000, sig, color=CY, lw=1.8); ax.set_xlabel("time (ms)"); ax.set_title("Time domain: what a microphone sees", fontsize=11); ax.set_yticks([])
+    ax = f.add_subplot(1, 2, 2)
+    for fq, a, c in fr: ax.vlines(fq, 0, a, color=c, lw=5); ax.text(fq, a + .05, f"{fq} Hz", ha="center", color=c, fontsize=10, fontweight="bold")
+    ax.set_xlim(0, 1300); ax.set_ylim(0, 1.3); ax.set_xlabel("frequency (Hz)"); ax.set_yticks([]); ax.set_title("Frequency domain: the same sound as 3 tones", fontsize=11)
+    add(2, "sound-basics", "end", "One sound, two views", svg(f), "Any sound is a sum of sine waves. The spectrum shows which frequencies are present and how strong each is.")
+
+    # U2 mu-law companding
+    f = fig(8, 4.2); ax = f.add_subplot(); x = np.linspace(0, 1, 400)
+    for mu, c in ((255, PK), (100, VI), (10, CY)): ax.plot(x, np.log1p(mu * x) / np.log1p(mu), color=c, lw=2.2, label=f"μ = {mu}")
+    ax.plot(x, x, color=MU, ls="--", lw=1.4, label="linear (no companding)")
+    ax.set_xlabel("input amplitude |x|"); ax.set_ylabel("output F(x)"); ax.legend(frameon=False, labelcolor=TX, loc="lower right"); ax.grid(alpha=.3)
+    ax.text(.03, .86, "F(x) = ln(1 + μ|x|) / ln(1 + μ)", fontsize=12, color=TX)
+    add(2, "speech-transmission", "end", "Companding: more levels for quiet sounds", svg(f), "Telephone systems use μ-law (μ = 255) or A-law so quiet speech gets finer steps than loud speech: 8 bits sound like about 12.")
+
+    # U2 formants (illustrative)
+    f = fig(9, 3.6); ax = f.add_subplot(); fq = np.linspace(0, 4000, 800)
+    def pk(c, w, h): return h * np.exp(-((fq - c) / w) ** 2)
+    env = pk(700, 110, 1) + pk(1200, 130, .8) + pk(2600, 200, .5) + .05
+    ax.fill_between(fq, env, color=IN, alpha=.35); ax.plot(fq, env, color=IN, lw=2)
+    for c, l in ((700, "F1"), (1200, "F2"), (2600, "F3")): ax.text(c, env[np.argmin(abs(fq - c))] + .05, l, ha="center", color=PK, fontweight="bold", fontsize=13)
+    ax.set_xlabel("frequency (Hz)"); ax.set_yticks([]); ax.set_title("Vowel spectrum envelope (illustrative, vowel like /a/)", fontsize=11)
+    add(2, "speech-generation", "end", "Formants: the peaks that make a vowel", svg(f), "The vocal tract strengthens certain frequency bands (formants). Their positions identify the vowel, so synthesisers recreate them.")
+
+    # U3 colour depth + resolution
+    f = fig(10, 3.9)
+    ax = f.add_subplot(2, 1, 1); ax.axis("off")
+    g = np.linspace(0, 1, 256)
+    for i, b in enumerate((1, 2, 4, 8)):
+        lv = 2 ** b; q = np.floor(g * lv) / (lv - 1) if lv > 1 else g; q = np.clip(q, 0, 1)
+        ax.imshow(np.tile(q, (6, 1)), cmap="gray", extent=(0, 10, -i * 1.2, -i * 1.2 + 1), aspect="auto", vmin=0, vmax=1)
+        ax.text(10.2, -i * 1.2 + .5, f"{b}-bit = {lv} levels", va="center", fontsize=11)
+    ax.set_xlim(0, 13); ax.set_ylim(-3.8, 1.1); ax.set_title("Colour depth (grey levels)", fontsize=11)
+    N = 64; yy, xx = np.mgrid[-1:1:N * 1j, -1:1:N * 1j]; img = np.clip(((xx ** 2 + yy ** 2) < .6).astype(float) * .85 + .1 * (xx + 1), 0, 1)
+    for i, n in enumerate((64, 16, 8, 4)):
+        ax = f.add_subplot(2, 4, 5 + i); sm = img.reshape(n, N // n, n, N // n).mean(axis=(1, 3)); ax.imshow(sm, cmap="gray", interpolation="nearest", vmin=0, vmax=1); ax.axis("off"); ax.set_title(f"{n} × {n} pixels", fontsize=10)
+    add(3, "image-basics", "end", "Resolution and colour depth", svg(f), "Fewer pixels lose detail (blocks appear); fewer bits per pixel lose smooth shading (banding).")
+
+    # U3 transmission time
+    f = fig(9, 3.9); ax = f.add_subplot()
+    bits = 640 * 480 * 8; links = [("56 kbit/s\nmodem", 56e3), ("64 kbit/s\nISDN", 64e3), ("1 Mbit/s\nDSL", 1e6), ("10 Mbit/s\nEthernet", 10e6), ("100 Mbit/s", 100e6)]
+    tt = [bits / r for _, r in links]; b = ax.bar(range(5), tt, color=[PK, VI, IN, CY, GR], width=.6); ax.set_yscale("log")
+    for r, v in zip(b, tt): ax.text(r.get_x() + r.get_width() / 2, v * 1.25, f"{v:.3g} s", ha="center", fontweight="bold")
+    ax.set_xticks(range(5)); ax.set_xticklabels([l for l, _ in links], fontsize=10); ax.set_ylabel("seconds (log)"); ax.set_ylim(.01, 200); ax.grid(axis="y", alpha=.3); ax.set_axisbelow(True)
+    add(3, "image-transmission", "end", "How long does a 640×480, 8-bit image take?", svg(f), "307,200 bytes = 2,457,600 bits. Time = bits ÷ link rate (ignoring protocol overhead).")
+
+    # U4 aspect ratios + TV standards
+    f = fig(10, 3.9)
+    ax = f.add_subplot(1, 2, 1); ax.set_aspect("equal"); ax.axis("off"); ax.set_xlim(-.5, 17); ax.set_ylim(-1.5, 10)
+    ax.add_patch(Rectangle((0, 0), 4 * 1.6, 3 * 1.6, fc="#27306b", ec=IN, lw=2)); ax.text(3.2, 2.4, "4:3", ha="center", va="center", fontsize=16, fontweight="bold"); ax.text(3.2, -.9, "Standard TV", ha="center", fontsize=10.5, color=MU)
+    ax.add_patch(Rectangle((7.2, 0), 16 * .6, 9 * .6, fc="#3b2a6b", ec=PK, lw=2)); ax.text(12, 2.7, "16:9", ha="center", va="center", fontsize=16, fontweight="bold"); ax.text(12, -.9, "HDTV / wide", ha="center", fontsize=10.5, color=MU)
+    ax = f.add_subplot(1, 2, 2); ax.axis("off"); ax.set_xlim(0, 10); ax.set_ylim(0, 6)
+    rows = [("Standard", "Lines", "Frame rate"), ("NTSC", "525", "~30 fps (29.97)"), ("PAL", "625", "25 fps"), ("SECAM", "625", "25 fps"), ("HDTV", "720 / 1080", "24 to 60 fps")]
+    for i, r in enumerate(rows):
+        y = 5 - i * 1.05
+        ax.add_patch(Rectangle((0, y - .4), 10, .85, fc="#27306b" if i == 0 else "#12152b", ec="#2a2f5c"))
+        for j, (c, x) in enumerate(zip(r, (.2, 3.2, 5.6))): ax.text(x, y, c, va="center", fontsize=11, fontweight="bold" if i == 0 else "normal")
+    add(4, "video-representation", "end", "Aspect ratios and TV standards", svg(f), "Aspect ratio = width : height. PAL frame time 40 ms; NTSC about 33.3 ms.")
+
+    # U4 double buffering
+    f, ax = blank(10, 3.6, (0, 14), (0, 4))
+    box(ax, .3, 1.8, 3, 1.1, "Program draws\nframe N+1", ec=VI, fs=11.5); box(ax, 4.6, 2.5, 3.3, 1, "Back buffer\n(hidden)", ec=PK, fs=11.5); box(ax, 4.6, .6, 3.3, 1, "Front buffer\n(shown)", ec=GR, fs=11.5)
+    box(ax, 10, 1.4, 3.4, 1.4, "Monitor\nshows frame N", ec=CY, fs=11.5)
+    arrow(ax, (3.3, 2.5), (4.6, 3.0), c=MU); arrow(ax, (7.9, 1.1), (10, 1.7), c=MU)
+    ax.add_patch(FancyArrowPatch((6.25, 2.5), (6.25, 1.6), arrowstyle="<|-|>", mutation_scale=14, color=YE, lw=2)); ax.text(6.4, 2.05, "swap", color=YE, fontweight="bold", fontsize=11)
+    ax.text(7, .1, "The viewer never sees a half-drawn frame because drawing happens off-screen.", ha="center", color=MU, fontsize=10.5)
+    add(4, "animation-display-and-transmission", "end", "Double buffering", svg(f))
+
+    # U5 DCT demo
+    f = fig(10, 3.7)
+    n = 8; x_, y_ = np.meshgrid(np.arange(n), np.arange(n))
+    blk = 128 + 50 * np.sin(x_ / 7 * 1.6) + 30 * (y_ / 7) + 6 * ((x_ + y_) % 2)
+    C = np.array([[math.sqrt(1 / n) if k == 0 else math.sqrt(2 / n) * math.cos((2 * i + 1) * k * math.pi / (2 * n)) for i in range(n)] for k in range(n)])
+    D = C @ (blk - 128) @ C.T
+    Q = np.array([[16, 11, 10, 16, 24, 40, 51, 61], [12, 12, 14, 19, 26, 58, 60, 55], [14, 13, 16, 24, 40, 57, 69, 56], [14, 17, 22, 29, 51, 87, 80, 62], [18, 22, 37, 56, 68, 109, 103, 77], [24, 35, 55, 64, 81, 104, 113, 92], [49, 64, 78, 87, 103, 121, 120, 101], [72, 92, 95, 98, 112, 100, 103, 99]])
+    Dq = np.round(D / Q)
+    ax = f.add_subplot(1, 3, 1); ax.imshow(blk, cmap="gray", vmin=0, vmax=255); ax.set_title("8×8 block (pixels)", fontsize=10.5); ax.axis("off")
+    ax = f.add_subplot(1, 3, 2); ax.imshow(np.abs(D), cmap="magma"); ax.set_title("DCT: energy in top-left", fontsize=10.5); ax.axis("off")
+    from matplotlib.colors import ListedColormap
+    ax = f.add_subplot(1, 3, 3); ax.imshow((Dq != 0).astype(int), cmap=ListedColormap(["#12152b", PK]), vmin=0, vmax=1); ax.set_title(f"After quantization: only\n{int((Dq != 0).sum())} of 64 coefficients non-zero (pink)", fontsize=10.5); ax.axis("off")
+    add(5, "jpeg", "start", "Why DCT + quantization works", svg(f), "Smooth image blocks put almost all their energy in a few low-frequency coefficients; quantization turns the rest into zeros that compress to almost nothing. (Computed with the standard JPEG luminance quantization table.)")
+
+    # U6 NRZI pit/land -> bits
+    f, ax = blank(10, 3.4, (0, 16), (0, 3.4))
+    bits = "0100100010010000100"; x = .5; level = 0; xs = []
+    ax.text(.1, 3.1, "Reading a track: each pit-land transition is a 1, flat stretches are 0s", fontsize=12.5, fontweight="bold")
+    pts = [(x, 1)]
+    for i, b in enumerate(bits):
+        if b == "1": level ^= 1
+        pts.append((x + i * .8, 1.3 + level * .8)); pts.append((x + (i + 1) * .8, 1.3 + level * .8))
+    ax.step([p[0] for p in pts], [p[1] for p in pts], where="post", color=CY, lw=2.2) if False else None
+    xx_, yy_ = [], []; level = 0
+    for i, b in enumerate(bits):
+        if b == "1": level ^= 1
+        xx_ += [x + i * .8, x + (i + 1) * .8]; yy_ += [1.2 + level * .9] * 2
+    ax.plot(xx_, yy_, color=CY, lw=2.4)
+    for i, b in enumerate(bits):
+        ax.text(x + i * .8 + .4, .55, b, ha="center", fontsize=12, family="monospace", color=PK if b == "1" else MU, fontweight="bold")
+        if b == "1": ax.plot([x + i * .8, x + i * .8], [1.1, 2.2], color=PK, ls=":", lw=1)
+    ax.text(.4, 2.45, "land (high)", color=CY, fontsize=9.5); ax.text(.4, 1.0, "pit (low)", color=CY, fontsize=9.5)
+    ax.text(8, .05, "This is NRZI-style reading. EFM then limits runs to 2–10 zeros between 1s.", ha="center", color=MU, fontsize=10)
+    add(6, "basic-technology", "end", "From pits and lands to bits", svg(f), "The laser detects a change in reflected light; the length of each flat stretch tells how many 0s follow the 1.")
+
+    # U6 disc zones
+    f = fig(6.4, 6.4); ax = f.add_subplot(); ax.set_aspect("equal"); ax.axis("off"); ax.set_xlim(-6.4, 6.4); ax.set_ylim(-6.4, 6.4)
+    for r, c, lab in ((6, "#1c2150", ""), (5.6, "#27306b", "lead-out"), (5.0, "#3b2a6b", ""), (2.6, "#27306b", "lead-in"), (2.2, "#0b0d1c", "")):
+        ax.add_patch(Circle((0, 0), r, fc=c, ec=IN, lw=1.2))
+    ax.add_patch(Circle((0, 0), 5.0, fc="#3b2a6b", ec=IN)); ax.add_patch(Circle((0, 0), 2.6, fc="#27306b", ec=IN)); ax.add_patch(Circle((0, 0), 1.0, fc="#080a14", ec=MU))
+    th = np.linspace(0, 6 * 2 * np.pi, 800); rr = 2.7 + (4.9 - 2.7) * th / th.max(); ax.plot(rr * np.cos(th), rr * np.sin(th), color=PK, lw=1.2)
+    ax.text(0, 3.8, "program area\n(audio / data)", ha="center", color="#fff", fontsize=11, fontweight="bold"); ax.text(0, 2.2, "", ha="center")
+    ax.text(0, -1.8, "lead-in", ha="center", color=YE, fontsize=10.5); ax.text(0, -5.35, "lead-out", ha="center", color=YE, fontsize=10.5); ax.text(0, 0, "hole\n15 mm", ha="center", va="center", fontsize=9, color=MU)
+    ax.annotate("", xy=(6, -6.2), xytext=(-6, -6.2), arrowprops=dict(arrowstyle="<->", color=MU)); ax.text(0, -6.45, "120 mm", ha="center", color=MU, fontsize=10)
+    add(6, "basic-technology", "end", "Zones of a compact disc", svg(f), "One spiral track runs from the lead-in (table of contents) at the inside, through the program area, to the lead-out at the outside.")
+
+    # U7 periodic task
+    f = fig(10, 3.4); ax = f.add_subplot(); P, C_ = 5, 2
+    for k in range(3):
+        s = k * P; ax.add_patch(Rectangle((s + .4, 0), C_, .8, fc=IN, ec="#0b0d1c")); ax.text(s + .4 + C_ / 2, .4, "C", ha="center", va="center", fontweight="bold")
+        ax.annotate("", xy=(s, 1.9), xytext=(s, .85), arrowprops=dict(arrowstyle="-|>", color=GR, lw=2)); ax.text(s, 2.05, "release", color=GR, ha="center", fontsize=9.5)
+        ax.plot([s + P] * 2, [.0, 1.6], color=PK, ls="--", lw=1.6)
+    ax.text(P - .1, 1.75, "deadline = next release", color=PK, ha="right", fontsize=9.5)
+    ax.annotate("", xy=(0, -.45), xytext=(P, -.45), arrowprops=dict(arrowstyle="<->", color=MU)); ax.text(P / 2, -.8, "period P", ha="center", color=MU)
+    ax.set_xlim(-.5, 15.5); ax.set_ylim(-1.1, 2.6); ax.axis("off")
+    add(7, "introduction-real-time", "end", "A periodic task: release, computation C and deadline", svg(f), "Each period the task must receive C units of CPU time before its deadline. Its utilisation is C/P (here 2/5 = 0.4).")
+
+    # U8 jitter & playout buffer
+    f = fig(10, 3.9); ax = f.add_subplot(); rng = np.random.RandomState(4)
+    n = 10; send = np.arange(n); delay = 1.6 + rng.rand(n) * 1.6; arr = send + delay; play = send + 3.4
+    for i in range(n):
+        ax.plot([send[i], arr[i]], [1, 0], color="#4b5190", lw=1); ax.plot(send[i], 1, "o", color=IN, ms=7); ax.plot(arr[i], 0, "o", color=PK, ms=7); ax.plot(play[i], -1, "s", color=GR, ms=7)
+    ax.set_yticks([1, 0, -1]); ax.set_yticklabels(["sent (regular)", "arrived (jitter)", "played (after buffer)"]); ax.set_xlabel("time")
+    ax.annotate("", xy=(send[0], -1.5), xytext=(play[0], -1.5), arrowprops=dict(arrowstyle="<->", color=GR)); ax.text((send[0] + play[0]) / 2, -1.85, "playout delay (buffer)", ha="center", color=GR, fontsize=10.5)
+    ax.set_ylim(-2.2, 1.5); ax.spines["left"].set_visible(False)
+    add(8, "qos", "end", "Jitter and the playout buffer", svg(f), "Packets leave at a steady rate but arrive unevenly. Holding them in a buffer and playing at a fixed later time restores the steady rhythm, at the cost of extra delay.")
+
+    # U9 SGML flow
+    f, ax = blank(10, 3.6, (0, 14), (0, 4))
+    box(ax, .3, 2.6, 3.3, .9, "DTD\n(rules of the language)", ec=VI, fs=11); box(ax, .3, .5, 3.3, .9, "Document instance\n(marked-up text)", ec=IN, fs=11)
+    box(ax, 5.2, 1.5, 2.6, 1.1, "SGML parser\n(validates)", ec=PK, fs=11.5, bold=True); box(ax, 9.4, 2.6, 3.8, .9, "Formatter\n(print / screen)", ec=GR, fs=11); box(ax, 9.4, .5, 3.8, .9, "Other programs\n(search, convert)", ec=CY, fs=11)
+    arrow(ax, (3.6, 3.05), (5.2, 2.3), c=MU); arrow(ax, (3.6, .95), (5.2, 1.8), c=MU); arrow(ax, (7.8, 2.3), (9.4, 3.05), c=MU); arrow(ax, (7.8, 1.8), (9.4, .95), c=MU)
+    ax.text(7, .05, "Content is kept separate from layout, so one document can be used in many ways.", ha="center", color=MU, fontsize=10.5)
+    add(9, "sgml-oda-mheg", "end", "How SGML works", svg(f))
+
+    # U10 drift skew
+    f = fig(9, 3.8); ax = f.add_subplot(); t = np.linspace(0, 200, 200); skew = t * 1.0
+    ax.plot(t, skew, color=PK, lw=2.4, label="skew from 0.1 % clock difference (1 ms per second)")
+    ax.axhspan(-80, 80, color=GR, alpha=.2); ax.text(120, 30, "lip-sync tolerance (±80 ms)", color=GR, fontsize=10.5); ax.axvline(80, color=OR, ls="--"); ax.text(82, 150, "limit reached\nafter 80 s", color=OR, fontsize=10.5)
+    ax.set_xlabel("time (s)"); ax.set_ylabel("audio–video skew (ms)"); ax.legend(frameon=False, labelcolor=TX, loc="upper left"); ax.set_ylim(-20, 220); ax.grid(alpha=.25)
+    add(10, "distributed", "end", "Why clock drift matters", svg(f), "A 0.1 % difference between sender and receiver clocks adds 1 ms of skew every second: after 80 s it is already outside the lip-sync limit, and after 10 minutes it is 0.6 s.")
+
+    # U12 VoD + conferencing
+    f, ax = blank(10.5, 4.2, (0, 21), (0, 4.4))
+    ax.text(.2, 4.1, "Video on demand", fontweight="bold", fontsize=12.5, color=PK)
+    box(ax, .2, 2.2, 2.6, .9, "Video server\n(disks)", ec=IN, fs=10.5); box(ax, 3.5, 2.2, 2.2, .9, "Network", ec=VI, fs=10.5); box(ax, 6.4, 2.2, 1.9, .9, "Set-top box", ec=GR, fs=10.5); box(ax, 8.9, 2.2, 1.2, .9, "TV", ec=CY, fs=10.5)
+    for a, b in ((2.8, 3.5), (5.7, 6.4), (8.3, 8.9)): arrow(ax, (a, 2.65), (b, 2.65), c=MU)
+    arrow(ax, (7.3, 2.1), (1.5, 2.1), c=YE, lw=1.2); ax.text(4.4, 1.7, "user commands (play, pause, rewind)", color=YE, fontsize=9.5, ha="center")
+    ax.text(11.8, 4.1, "Conferencing with an MCU", fontweight="bold", fontsize=12.5, color=PK)
+    box(ax, 14.9, 1.8, 2.4, 1.1, "MCU\n(mixes streams)", ec=PK, fs=10.5, bold=True)
+    for (x, y, l) in ((11.8, 3.2, "Site A"), (11.8, .5, "Site B"), (19.2, 3.2, "Site C"), (19.2, .5, "Site D")):
+        box(ax, x, y, 1.7, .7, l, ec=IN, fs=10); ax.plot([x + .85, 16.1], [y + .35, 2.35], color=MU, lw=1.3)
+    add(12, "application-areas", "end", "Two typical architectures", svg(f), "VoD is a one-way, server-to-viewer service with a return channel for commands. Multi-party conferencing often uses a Multipoint Control Unit to mix audio and video.")
+batch2()
+
+# ---------------- authentic references per unit (for the 'Sources and further reading' slide) ----------------
+SRC = {
+ 1: ["R. Steinmetz and K. Nahrstedt, <em>Multimedia Fundamentals, Vol. 1: Media Coding and Content Processing</em>, Prentice Hall.", "R. Steinmetz and K. Nahrstedt, <em>Multimedia: Computing, Communications and Applications</em>, Prentice Hall, 1995.", "Z.-N. Li and M. S. Drew, <em>Fundamentals of Multimedia</em>, Pearson / Springer."],
+ 2: ["Steinmetz and Nahrstedt, <em>Multimedia Fundamentals Vol. 1</em>, chapter on sound and audio.", "H. Nyquist, 'Certain topics in telegraph transmission theory', 1928; C. E. Shannon, 'Communication in the presence of noise', 1949.", "MIDI Manufacturers Association, <em>MIDI 1.0 Detailed Specification</em>. ITU-T G.711 (PCM, μ-law / A-law)."],
+ 3: ["Steinmetz and Nahrstedt, <em>Multimedia Fundamentals Vol. 1</em>, chapter on graphics and images.", "R. C. Gonzalez and R. E. Woods, <em>Digital Image Processing</em>, Pearson.", "J. D. Foley et al., <em>Computer Graphics: Principles and Practice</em>, Addison-Wesley."],
+ 4: ["Steinmetz and Nahrstedt, <em>Multimedia Fundamentals Vol. 1</em>, chapters on video and animation.", "ITU-R BT.601 (digital studio video) and ITU-R BT.709 (HDTV).", "Li and Drew, <em>Fundamentals of Multimedia</em>, video chapters."],
+ 5: ["D. A. Huffman, 'A method for the construction of minimum-redundancy codes', <em>Proc. IRE</em>, 1952.", "G. K. Wallace, 'The JPEG still picture compression standard', <em>Communications of the ACM</em>, 1991; ITU-T T.81 / ISO/IEC 10918-1.", "ISO/IEC 11172 (MPEG-1), ISO/IEC 13818 (MPEG-2), ITU-T H.261."],
+ 6: ["IEC 60908 (Compact Disc Digital Audio, 'Red Book'); ECMA-130 (CD-ROM); ISO 9660 (CD-ROM file system).", "Steinmetz and Nahrstedt, <em>Multimedia Fundamentals Vol. 1</em>, optical storage chapter.", "DVD Forum and Blu-ray Disc Association format overviews."],
+ 7: ["C. L. Liu and J. W. Layland, 'Scheduling algorithms for multiprogramming in a hard-real-time environment', <em>Journal of the ACM</em>, 1973.", "R. Steinmetz and K. Nahrstedt, <em>Multimedia Systems</em>, Springer, chapters on operating systems.", "A. Burns and A. Wellings, <em>Real-Time Systems and Programming Languages</em>, Addison-Wesley."],
+ 8: ["H. Schulzrinne et al., <em>RTP: A Transport Protocol for Real-Time Applications</em>, IETF RFC 3550.", "F. Halsall, <em>Multimedia Communications</em>, Addison-Wesley.", "Steinmetz and Nahrstedt, <em>Multimedia Systems</em>, networking chapters."],
+ 9: ["ISO 8879 (SGML), ISO 8613 (ODA), ISO/IEC 13522 (MHEG).", "V. Bush, 'As we may think', <em>The Atlantic Monthly</em>, 1945.", "F. Halasz and M. Schwartz, 'The Dexter hypertext reference model', <em>Communications of the ACM</em>, 1994."],
+ 10: ["R. Steinmetz, 'Synchronization properties in multimedia systems', <em>IEEE JSAC</em>, 1990.", "G. Blakowski and R. Steinmetz, 'A media synchronization survey: reference model, specification and case studies', <em>IEEE JSAC</em>, 1996.", "Steinmetz and Nahrstedt, <em>Multimedia Systems</em>, synchronization chapter."],
+ 11: ["Steinmetz and Nahrstedt, <em>Multimedia Systems</em>, chapter on abstractions for programming.", "C. A. R. Hoare, <em>Communicating Sequential Processes</em>, Prentice Hall (background to OCCAM).", "Vendor documentation of multimedia toolkits and media frameworks."],
+ 12: ["Steinmetz and Nahrstedt, <em>Multimedia Systems</em>, chapter on multimedia applications.", "T. Vaughan, <em>Multimedia: Making It Work</em>, McGraw-Hill (development cycle).", "Li and Drew, <em>Fundamentals of Multimedia</em>, application chapters."],
+}

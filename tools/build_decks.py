@@ -17,13 +17,15 @@ CACHE = os.path.join(ROOT, "tools", ".mmcache")
 os.makedirs(CACHE, exist_ok=True)
 TEMPLATE = open(os.path.join(ROOT, "tools", "deck_template.html")).read()
 try:
-    from visuals import VIS
+    from visuals import VIS, SRC
+    from enrich import E as ENRICH
 except Exception:
     sys.path.insert(0, os.path.join(ROOT, "tools"))
     try:
-        from visuals import VIS
+        from visuals import VIS, SRC
+        from enrich import E as ENRICH
     except Exception as e:
-        print("no visuals:", e); VIS = {}
+        print("no visuals:", e); VIS = {}; SRC = {}; ENRICH = {}
 
 EXT = ["admonition", "attr_list", "def_list", "tables", "md_in_html", "pymdownx.details",
        "pymdownx.arithmatex", "pymdownx.superfences", "pymdownx.mark", "pymdownx.caret", "pymdownx.tilde",
@@ -361,7 +363,16 @@ def unit_deck(n, cfgunits):
             return f'<section><h2><small>{k}</small>{x[2]}</h2><div class="vis">{x[3]}</div><div class="cap">{x[4] if len(x) > 4 else ""}</div></section>'
         intro_slide = (f'<section class="sec"><div class="no">{ti + 1:02d}</div><h2>{k}</h2>'
                        f'<div class="lead">Unit {n} &middot; topic {ti + 1} of {len(topics)}</div></section>')
-        stack = [intro_slide] + [vh(x) for x in pre] + slides + [vh(x) for x in post]
+        en = ENRICH.get(n, {}).get(os.path.basename(v)[:-3])
+        plain = terms = None
+        if en:
+            plain = (f'<section><h2><small>{k}</small>In plain words</h2><div class="trio">'
+                     f'<div class="card c1"><div class="ct">The idea</div><p>{en["plain"]}</p></div>'
+                     f'<div class="card c2"><div class="ct">Real-life picture</div><p>{en["real"]}</p></div>'
+                     f'<div class="card c3"><div class="ct">Remember it</div><p>{en["hook"]}</p></div></div></section>')
+            tc = "".join(f'<div class="card term"><b>{a}</b><span>{b}</span></div>' for a, b in en["terms"])
+            terms = f'<section><h2><small>{k}</small>Key terms</h2><div class="terms">{tc}</div></section>'
+        stack = [intro_slide] + ([plain] if plain else []) + [vh(x) for x in pre] + slides + ([terms] if terms else []) + [vh(x) for x in post]
         all_html.extend(slides)
         sections.append(f'<section data-topic="{html.escape(k)}">' + "".join(stack) + "</section>")
     # exam recap
@@ -375,6 +386,11 @@ def unit_deck(n, cfgunits):
         if cur: chunks.append(cur)
         rs = "".join(f'<section><h2><small>Revision</small>Exam focus recap ({i + 1}/{len(chunks)})</h2>{"".join(c)}</section>' for i, c in enumerate(chunks))
         sections.append('<section data-topic="Exam recap">' + rs + "</section>")
+    refs = SRC.get(n)
+    if refs:
+        li = "".join(f"<li>{r}</li>" for r in refs)
+        sections.append(f'<section data-topic="Sources"><section><h2><small>Go deeper</small>Sources and further reading</h2><ul class="small">{li}</ul>'
+                        f'<div class="callout"><div class="ct">About the figures</div><p>Charts and diagrams in this deck were drawn for this course from standard formulas, specifications and textbook knowledge. They are original drawings, not copies of figures from any publication.</p></div></section></section>')
     q = quiz_slides(d, n)
     if q:
         sections.append('<section data-topic="Quick check"><section class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></section>' + "".join(q) + "</section>")

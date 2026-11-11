@@ -61,6 +61,9 @@ aside.notes{display:none}
 .opts{list-style:none;margin:.4em 0!important;padding:0;display:grid;gap:.35em}
 .opts li{margin:0;padding:.4em .8em;border:1px solid var(--line);border-radius:10px;background:var(--card)}
 .ans{margin-top:.6em;padding:.5em .9em;border-radius:10px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.5)}
+.trio{display:grid;grid-template-columns:1fr;gap:.6em}.trio .card{padding:.55em 1em}.trio .card .ct{font-size:.55em;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.1em}.trio .card p{margin:.1em 0;font-size:.95em}
+.trio .c1{border-left:5px solid #818cf8}.trio .c1 .ct{color:#a5b4fc}.trio .c2{border-left:5px solid #34d399}.trio .c2 .ct{color:#6ee7b7}.trio .c3{border-left:5px solid #fb923c}.trio .c3 .ct{color:#fdba74}
+.terms{display:grid;grid-template-columns:1fr 1fr;gap:.55em}.card.term{display:flex;flex-direction:column;gap:.1em;padding:.45em .85em}.card.term b{color:#c4b5fd;font-size:.95em}.card.term span{font-size:.74em;line-height:1.35;color:#dfe2ff}
 .agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:.55em}
 .agenda .card{display:flex;gap:.7em;align-items:center;font-size:.85em;font-weight:600}
 .agenda .n{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:800;font-size:.85em;color:#fff}
@@ -92,7 +95,7 @@ aside.notes{display:none}
 <div class="reveal"><div class="slides">
 <section><div class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 4<br>Video and Animation</h1><p style="max-width:75%;color:#aab0d6">Video signals, colour models, computer video and animation.</p><div class="chips"><span>4 teaching hours</span><span>6 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></div></section>
 <section><h2><small>Roadmap</small>What we will cover</h2><div class="agenda"><div class="card"><span class="n">1</span>Video and Visual Representation</div><div class="card"><span class="n">2</span>Video Transmission and Digitization</div><div class="card"><span class="n">3</span>Computer Video Format</div><div class="card"><span class="n">4</span>Animation Basics</div><div class="card"><span class="n">5</span>Animation Languages and Control</div><div class="card"><span class="n">6</span>Animation Display and Transmission</div></div></section>
-<section data-topic="Video and Visual Representation"><section><div class="sec"><div class="no">01</div><h2>Video and Visual Representation</h2><div class="lead">Unit 4 &middot; topic 1 of 6</div></div></section><section class="dense"><h2><small>Video and Visual Representation</small>What is video?</h2><ul>
+<section data-topic="Video and Visual Representation"><section><div class="sec"><div class="no">01</div><h2>Video and Visual Representation</h2><div class="lead">Unit 4 &middot; topic 1 of 6</div></div></section><section><h2><small>Video and Visual Representation</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Video is a fast sequence of still pictures. The eye blends them (persistence of vision), so we see smooth motion. TV sends brightness and colour separately.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A flip-book: flick the pages quickly and the drawing moves.</p></div><div class="card c3"><div class="ct">Remember it</div><p>25 frames per second means 40 ms per frame. PAL: 625 lines, 25 fps. NTSC: 525 lines, about 30 fps.</p></div></div></section><section class="dense"><h2><small>Video and Visual Representation</small>What is video?</h2><ul>
 <li class="fragment fade-up"><strong>Video</strong> is a combination of <strong>image and audio</strong>. It consists of a set of <strong>still images called frames</strong>, displayed at a fixed speed called the <strong>frame rate</strong> (frames per second, <strong>fps</strong>).</li>
 <li class="fragment fade-up">Because of <strong>persistence of vision</strong>, the eye cannot separate the frames when they are shown fast enough and sees an <strong>illusion of motion</strong>.</li>
 <li class="fragment fade-up">A frame rate of <strong>20 to 30 fps</strong> gives smooth, realistic motion.</li>
@@ -145,12 +148,12 @@ aside.notes{display:none}
 <p>Increase the refresh rate (at least 50 Hz) or use <strong>interlaced scanning</strong> (odd lines then even lines, two fields per frame).</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-04/video-representation/">Video and Visual Representation</a></aside></section><section class=""><h2><small>Video and Visual Representation</small>Checkpoint <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Find the video bandwidth for 800 × 600 at 60 fps (a = 800, b = 600).</p><div class="fragment ans">
 <p>800 × 600 × 60 / 2 = <strong>14,400,000 Hz = 14.4 MHz</strong>.</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-04/video-representation/">Video and Visual Representation</a></aside></section><section><h2><small>Video and Visual Representation</small>Scanning and luminance</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 584.493654 241.714359" xmlns="http://www.w3.org/2000/svg" version="1.1">
+</div></div><aside class="notes">Source note: <a href="../../unit-04/video-representation/">Video and Visual Representation</a></aside></section><section><h2><small>Video and Visual Representation</small>Key terms</h2><div class="terms"><div class="card term"><b>Frame</b><span>One complete still image of a video.</span></div><div class="card term"><b>Frame rate</b><span>Frames shown per second.</span></div><div class="card term"><b>Interlacing</b><span>Sending odd lines then even lines (two fields) to reduce flicker.</span></div><div class="card term"><b>Luminance (Y)</b><span>Brightness part of the signal.</span></div><div class="card term"><b>Chrominance</b><span>Colour information.</span></div><div class="card term"><b>Aspect ratio</b><span>Width to height, for example 4:3 or 16:9.</span></div></div></section><section><h2><small>Video and Visual Representation</small>Scanning and luminance</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 584.493654 241.714359" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.703650</dc:date>
+    <dc:date>2026-11-11T18:12:19.912002</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -449,8 +452,163 @@ z
   </clipPath>
  </defs>
 </svg>
-</div><div class="cap">Interlacing halves the flicker for the same bandwidth; Y gives the black-and-white picture, and U, V carry colour differences.</div></section></section>
-<section data-topic="Video Transmission and Digitization"><section><div class="sec"><div class="no">02</div><h2>Video Transmission and Digitization</h2><div class="lead">Unit 4 &middot; topic 2 of 6</div></div></section><section class=""><h2><small>Video Transmission and Digitization</small>Transmission standards and colour encoding</h2><ul>
+</div><div class="cap">Interlacing halves the flicker for the same bandwidth; Y gives the black-and-white picture, and U, V carry colour differences.</div></section><section><h2><small>Video and Visual Representation</small>Aspect ratios and TV standards</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 569.52 227.736" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T18:12:21.136495</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 227.736 
+L 569.52 227.736 
+L 569.52 0 
+L 0 0 
+L 0 227.736 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 13.006753 175.465403 
+L 105.765195 175.465403 
+L 105.765195 105.896571 
+L 13.006753 105.896571 
+z
+" clip-path="url(#p58d3abbbfb)" style="fill: #27306b; stroke: #818cf8; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 117.36 175.465403 
+L 256.497662 175.465403 
+L 256.497662 97.200468 
+L 117.36 97.200468 
+z
+" clip-path="url(#p58d3abbbfb)" style="fill: #3b2a6b; stroke: #f472b6; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 16px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="59.385974" y="144.837237" transform="rotate(-0 59.385974 144.837237)">4:3</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="59.385974" y="188.509558" transform="rotate(-0 59.385974 188.509558)">Standard TV</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 16px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="186.928831" y="140.489185" transform="rotate(-0 186.928831 140.489185)">16:9</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="186.928831" y="188.509558" transform="rotate(-0 186.928831 188.509558)">HDTV / wide</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_4">
+    <path d="M 310.123636 56.2104 
+L 563.76 56.2104 
+L 563.76 25.5798 
+L 310.123636 25.5798 
+z
+" clip-path="url(#pd233f70253)" style="fill: #27306b; stroke: #2a2f5c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 310.123636 94.0482 
+L 563.76 94.0482 
+L 563.76 63.4176 
+L 310.123636 63.4176 
+z
+" clip-path="url(#pd233f70253)" style="fill: #12152b; stroke: #2a2f5c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 310.123636 131.886 
+L 563.76 131.886 
+L 563.76 101.2554 
+L 310.123636 101.2554 
+z
+" clip-path="url(#pd233f70253)" style="fill: #12152b; stroke: #2a2f5c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 310.123636 169.7238 
+L 563.76 169.7238 
+L 563.76 139.0932 
+L 310.123636 139.0932 
+z
+" clip-path="url(#pd233f70253)" style="fill: #12152b; stroke: #2a2f5c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 310.123636 207.5616 
+L 563.76 207.5616 
+L 563.76 176.931 
+L 310.123636 176.931 
+z
+" clip-path="url(#pd233f70253)" style="fill: #12152b; stroke: #2a2f5c; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="315.196364" y="44.653852" transform="rotate(-0 315.196364 44.653852)">Standard</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="391.287273" y="44.653852" transform="rotate(-0 391.287273 44.653852)">Lines</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="452.16" y="44.653422" transform="rotate(-0 452.16 44.653422)">Frame rate</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="315.196364" y="82.491222" transform="rotate(-0 315.196364 82.491222)">NTSC</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="391.287273" y="82.491222" transform="rotate(-0 391.287273 82.491222)">525</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="452.16" y="82.491652" transform="rotate(-0 452.16 82.491652)">~30 fps (29.97)</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="315.196364" y="120.329022" transform="rotate(-0 315.196364 120.329022)">PAL</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="391.287273" y="120.329022" transform="rotate(-0 391.287273 120.329022)">625</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="452.16" y="120.329452" transform="rotate(-0 452.16 120.329452)">25 fps</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="315.196364" y="158.166822" transform="rotate(-0 315.196364 158.166822)">SECAM</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="391.287273" y="158.166822" transform="rotate(-0 391.287273 158.166822)">625</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="452.16" y="158.167252" transform="rotate(-0 452.16 158.167252)">25 fps</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="315.196364" y="196.004622" transform="rotate(-0 315.196364 196.004622)">HDTV</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="391.287273" y="196.004622" transform="rotate(-0 391.287273 196.004622)">720 / 1080</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="452.16" y="196.005052" transform="rotate(-0 452.16 196.005052)">24 to 60 fps</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p58d3abbbfb">
+   <rect x="5.76" y="30.530338" width="253.636364" height="166.675325"/>
+  </clipPath>
+  <clipPath id="pd233f70253">
+   <rect x="310.123636" y="5.76" width="253.636364" height="216.216"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">Aspect ratio = width : height. PAL frame time 40 ms; NTSC about 33.3 ms.</div></section></section>
+<section data-topic="Video Transmission and Digitization"><section><div class="sec"><div class="no">02</div><h2>Video Transmission and Digitization</h2><div class="lead">Unit 4 &middot; topic 2 of 6</div></div></section><section><h2><small>Video Transmission and Digitization</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>TV signals come in several forms: separate R, G, B; brightness plus colour differences (YUV or YIQ); or all mixed together in one composite signal.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Old TVs received a single composite cable; studios use component signals for the best quality.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Y = 0.30R + 0.59G + 0.11B. The eye is more sensitive to brightness than to colour, so colour can use less bandwidth.</p></div></div></section><section class=""><h2><small>Video Transmission and Digitization</small>Transmission standards and colour encoding</h2><ul>
 <li>Transmission standards: <strong>NTSC</strong> (National Television System Committee) and <strong>PAL</strong> (Phase Alternating Line).</li>
 <li>Colour encoding approaches: <strong>RGB, YUV, YIQ</strong> (together called <strong>component signals</strong>) and <strong>composite</strong>.</li>
 </ul><table>
@@ -531,8 +689,8 @@ $$U = 0.493\,(B - Y) \qquad V = 0.877\,(R - Y)</span></span><ul>
 <p><strong>YIQ</strong>; <strong>Q</strong> (purple–green), since the eye is less sensitive to it.</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-04/video-transmission/">Video Transmission and Digitization</a></aside></section><section class=""><h2><small>Video Transmission and Digitization</small>Checkpoint <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Define sampling and quantizing.</p><div class="fragment ans">
 <p>Sampling digitizes the <strong>spatial position</strong> (M × N points); quantizing digitizes the <strong>colour/brightness</strong> into grey-level values.</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-04/video-transmission/">Video Transmission and Digitization</a></aside></section></section>
-<section data-topic="Computer Video Format"><section><div class="sec"><div class="no">03</div><h2>Computer Video Format</h2><div class="lead">Unit 4 &middot; topic 3 of 6</div></div></section><section class=""><h2><small>Computer Video Format</small>Standard for digitization: CCIR-601</h2><p>The <strong>ITU-R</strong> (International Telecommunications Union – Radiocommunications Branch) defined <strong>Recommendation CCIR-601</strong> to standardise digitization of video pictures. Variants exist for <strong>TV broadcasting, video telephony and videoconferencing</strong>.</p><p>Video digitizers differ in <strong>image resolution, quantization and frame rate</strong>. Example: SGI <strong>VINO</strong> digitizer for NTSC: <strong>640 × 480, 8 bits/pixel, 4 frames/second</strong>.</p><aside class="notes">Source note: <a href="../../unit-04/computer-video-format/">Computer Video Format</a></aside></section><section class="dense"><h2><small>Computer Video Format</small>Raster display architecture <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>The output of digitized video depends on the input and output devices; the most common display is the <strong>raster display</strong>.</p><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mmad7efebda868" role="graphics-document document" viewbox="0 0 1217.65625 100" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mmad7efebda868{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmad7efebda868 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmad7efebda868 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmad7efebda868 .error-icon{fill:#1c2150;}#mmad7efebda868 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mmad7efebda868 .edge-thickness-normal{stroke-width:1px;}#mmad7efebda868 .edge-thickness-thick{stroke-width:3.5px;}#mmad7efebda868 .edge-pattern-solid{stroke-dasharray:0;}#mmad7efebda868 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmad7efebda868 .edge-pattern-dashed{stroke-dasharray:3;}#mmad7efebda868 .edge-pattern-dotted{stroke-dasharray:2;}#mmad7efebda868 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mmad7efebda868 .marker.cross{stroke:#a5b4fc;}#mmad7efebda868 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mmad7efebda868 p{margin:0;}#mmad7efebda868 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mmad7efebda868 .cluster-label text{fill:#e3deaf;}#mmad7efebda868 .cluster-label span{color:#e3deaf;}#mmad7efebda868 .cluster-label span p{background-color:transparent;}#mmad7efebda868 .label text,#mmad7efebda868 span{fill:#f4f4ff;color:#f4f4ff;}#mmad7efebda868 .node rect,#mmad7efebda868 .node circle,#mmad7efebda868 .node ellipse,#mmad7efebda868 .node polygon,#mmad7efebda868 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mmad7efebda868 .rough-node .label text,#mmad7efebda868 .node .label text,#mmad7efebda868 .image-shape .label,#mmad7efebda868 .icon-shape .label{text-anchor:middle;}#mmad7efebda868 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmad7efebda868 .rough-node .label,#mmad7efebda868 .node .label,#mmad7efebda868 .image-shape .label,#mmad7efebda868 .icon-shape .label{text-align:center;}#mmad7efebda868 .node.clickable{cursor:pointer;}#mmad7efebda868 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mmad7efebda868 .arrowheadPath{fill:#0b0b0b;}#mmad7efebda868 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mmad7efebda868 .flowchart-link{stroke:#a5b4fc;fill:none;}#mmad7efebda868 .edgeLabel{background-color:#12152b;text-align:center;}#mmad7efebda868 .edgeLabel p{background-color:#12152b;}#mmad7efebda868 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmad7efebda868 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mmad7efebda868 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mmad7efebda868 .cluster text{fill:#e3deaf;}#mmad7efebda868 .cluster span{color:#e3deaf;}#mmad7efebda868 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mmad7efebda868 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mmad7efebda868 rect.text{fill:none;stroke-width:0;}#mmad7efebda868 .icon-shape,#mmad7efebda868 .image-shape{background-color:#12152b;text-align:center;}#mmad7efebda868 .icon-shape p,#mmad7efebda868 .image-shape p{background-color:#12152b;padding:2px;}#mmad7efebda868 .icon-shape .label rect,#mmad7efebda868 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmad7efebda868 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmad7efebda868 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmad7efebda868 .node .neo-node{stroke:#818cf8;}#mmad7efebda868 [data-look="neo"].node rect,#mmad7efebda868 [data-look="neo"].cluster rect,#mmad7efebda868 [data-look="neo"].node polygon{stroke:url(#mmad7efebda868-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmad7efebda868 [data-look="neo"].swimlane.cluster rect{filter:none;}#mmad7efebda868 [data-look="neo"].node path{stroke:url(#mmad7efebda868-gradient);stroke-width:1px;}#mmad7efebda868 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmad7efebda868 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mmad7efebda868 [data-look="neo"].node circle{stroke:url(#mmad7efebda868-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmad7efebda868 [data-look="neo"].node circle .state-start{fill:#000000;}#mmad7efebda868 [data-look="neo"].icon-shape .icon{fill:url(#mmad7efebda868-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmad7efebda868 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mmad7efebda868-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmad7efebda868 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mmad7efebda868_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmad7efebda868_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmad7efebda868_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mmad7efebda868_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M221.172,50L225.339,50C229.505,50,237.839,50,245.505,50C253.172,50,260.172,50,263.672,50L267.172,50" data-edge="true" data-et="edge" data-id="L_G_D_0" data-look="classic" data-points="W3sieCI6MjIxLjE3MTg3NSwieSI6NTB9LHsieCI6MjQ2LjE3MTg3NSwieSI6NTB9LHsieCI6MjcxLjE3MTg3NSwieSI6NTB9XQ==" id="mmad7efebda868-L_G_D_0" marker-end="url(#mmad7efebda868_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M479.297,50L483.464,50C487.63,50,495.964,50,503.63,50C511.297,50,518.297,50,521.797,50L525.297,50" data-edge="true" data-et="edge" data-id="L_D_R_0" data-look="classic" data-points="W3sieCI6NDc5LjI5Njg3NSwieSI6NTB9LHsieCI6NTA0LjI5Njg3NSwieSI6NTB9LHsieCI6NTI5LjI5Njg3NSwieSI6NTB9XQ==" id="mmad7efebda868-L_D_R_0" marker-end="url(#mmad7efebda868_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M789.297,50L793.464,50C797.63,50,805.964,50,813.63,50C821.297,50,828.297,50,831.797,50L835.297,50" data-edge="true" data-et="edge" data-id="L_R_V_0" data-look="classic" data-points="W3sieCI6Nzg5LjI5Njg3NSwieSI6NTB9LHsieCI6ODE0LjI5Njg3NSwieSI6NTB9LHsieCI6ODM5LjI5Njg3NSwieSI6NTB9XQ==" id="mmad7efebda868-L_R_V_0" marker-end="url(#mmad7efebda868_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M1034.313,50L1038.479,50C1042.646,50,1050.979,50,1058.646,50C1066.313,50,1073.313,50,1076.813,50L1080.313,50" data-edge="true" data-et="edge" data-id="L_V_M_0" data-look="classic" data-points="W3sieCI6MTAzNC4zMTI1LCJ5Ijo1MH0seyJ4IjoxMDU5LjMxMjUsInkiOjUwfSx7IngiOjEwODQuMzEyNSwieSI6NTB9XQ==" id="mmad7efebda868-L_V_M_0" marker-end="url(#mmad7efebda868_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_G_D_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_R_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_R_V_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_V_M_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mmad7efebda868-flowchart-G-0" transform="translate(114.5859375, 50)"><rect class="basic label-container" height="57" style="" width="213.171875" x="-106.5859375" y="-28.5"></rect><g class="label" style="" transform="translate(-76.5859375, -13.5)"><rect></rect><foreignobject height="27" width="153.171875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Graphics program</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmad7efebda868-flowchart-D-1" transform="translate(375.234375, 50)"><rect class="basic label-container" height="57" style="" width="208.125" x="-104.0625" y="-28.5"></rect><g class="label" style="" transform="translate(-74.0625, -13.5)"><rect></rect><foreignobject height="27" width="148.125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Display controller</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmad7efebda868-flowchart-R-3" transform="translate(659.296875, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Refresh buffer (frame buffer)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmad7efebda868-flowchart-V-5" transform="translate(936.8046875, 50)"><rect class="basic label-container" height="57" style="" width="195.015625" x="-97.5078125" y="-28.5"></rect><g class="label" style="" transform="translate(-67.5078125, -13.5)"><rect></rect><foreignobject height="27" width="135.015625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Video controller</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmad7efebda868-flowchart-M-7" transform="translate(1146.984375, 50)"><rect class="basic label-container" height="57" style="" width="125.34375" x="-62.671875" y="-28.5"></rect><g class="label" style="" transform="translate(-32.671875, -13.5)"><rect></rect><foreignobject height="27" width="65.34375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Monitor</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mmad7efebda868-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mmad7efebda868-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mmad7efebda868-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-04/computer-video-format/">Computer Video Format</a></aside></section><section class=""><h2><small>Computer Video Format</small>Raster display architecture <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><ul>
+</div></div><aside class="notes">Source note: <a href="../../unit-04/video-transmission/">Video Transmission and Digitization</a></aside></section><section><h2><small>Video Transmission and Digitization</small>Key terms</h2><div class="terms"><div class="card term"><b>RGB</b><span>Three separate colour signals.</span></div><div class="card term"><b>YUV</b><span>Luminance plus two colour-difference signals (PAL).</span></div><div class="card term"><b>YIQ</b><span>Luminance plus in-phase and quadrature signals (NTSC).</span></div><div class="card term"><b>Composite</b><span>All components combined in one signal.</span></div><div class="card term"><b>Digitization</b><span>Sampling and quantizing the video signal.</span></div></div></section></section>
+<section data-topic="Computer Video Format"><section><div class="sec"><div class="no">03</div><h2>Computer Video Format</h2><div class="lead">Unit 4 &middot; topic 3 of 6</div></div></section><section><h2><small>Computer Video Format</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>A computer must digitise video. Resolution, colour depth and frame rate each multiply the amount of data.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Capturing from a webcam: 640 × 480 pixels, 3 bytes per pixel, 25 frames each second is already about 23 MB every second before compression.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Data rate = width × height × bytes per pixel × frames per second. CIF is 352 × 288.</p></div></div></section><section class=""><h2><small>Computer Video Format</small>Standard for digitization: CCIR-601</h2><p>The <strong>ITU-R</strong> (International Telecommunications Union – Radiocommunications Branch) defined <strong>Recommendation CCIR-601</strong> to standardise digitization of video pictures. Variants exist for <strong>TV broadcasting, video telephony and videoconferencing</strong>.</p><p>Video digitizers differ in <strong>image resolution, quantization and frame rate</strong>. Example: SGI <strong>VINO</strong> digitizer for NTSC: <strong>640 × 480, 8 bits/pixel, 4 frames/second</strong>.</p><aside class="notes">Source note: <a href="../../unit-04/computer-video-format/">Computer Video Format</a></aside></section><section class="dense"><h2><small>Computer Video Format</small>Raster display architecture <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>The output of digitized video depends on the input and output devices; the most common display is the <strong>raster display</strong>.</p><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mmad7efebda868" role="graphics-document document" viewbox="0 0 1217.65625 100" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mmad7efebda868{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmad7efebda868 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmad7efebda868 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmad7efebda868 .error-icon{fill:#1c2150;}#mmad7efebda868 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mmad7efebda868 .edge-thickness-normal{stroke-width:1px;}#mmad7efebda868 .edge-thickness-thick{stroke-width:3.5px;}#mmad7efebda868 .edge-pattern-solid{stroke-dasharray:0;}#mmad7efebda868 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmad7efebda868 .edge-pattern-dashed{stroke-dasharray:3;}#mmad7efebda868 .edge-pattern-dotted{stroke-dasharray:2;}#mmad7efebda868 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mmad7efebda868 .marker.cross{stroke:#a5b4fc;}#mmad7efebda868 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mmad7efebda868 p{margin:0;}#mmad7efebda868 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mmad7efebda868 .cluster-label text{fill:#e3deaf;}#mmad7efebda868 .cluster-label span{color:#e3deaf;}#mmad7efebda868 .cluster-label span p{background-color:transparent;}#mmad7efebda868 .label text,#mmad7efebda868 span{fill:#f4f4ff;color:#f4f4ff;}#mmad7efebda868 .node rect,#mmad7efebda868 .node circle,#mmad7efebda868 .node ellipse,#mmad7efebda868 .node polygon,#mmad7efebda868 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mmad7efebda868 .rough-node .label text,#mmad7efebda868 .node .label text,#mmad7efebda868 .image-shape .label,#mmad7efebda868 .icon-shape .label{text-anchor:middle;}#mmad7efebda868 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmad7efebda868 .rough-node .label,#mmad7efebda868 .node .label,#mmad7efebda868 .image-shape .label,#mmad7efebda868 .icon-shape .label{text-align:center;}#mmad7efebda868 .node.clickable{cursor:pointer;}#mmad7efebda868 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mmad7efebda868 .arrowheadPath{fill:#0b0b0b;}#mmad7efebda868 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mmad7efebda868 .flowchart-link{stroke:#a5b4fc;fill:none;}#mmad7efebda868 .edgeLabel{background-color:#12152b;text-align:center;}#mmad7efebda868 .edgeLabel p{background-color:#12152b;}#mmad7efebda868 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmad7efebda868 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mmad7efebda868 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mmad7efebda868 .cluster text{fill:#e3deaf;}#mmad7efebda868 .cluster span{color:#e3deaf;}#mmad7efebda868 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mmad7efebda868 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mmad7efebda868 rect.text{fill:none;stroke-width:0;}#mmad7efebda868 .icon-shape,#mmad7efebda868 .image-shape{background-color:#12152b;text-align:center;}#mmad7efebda868 .icon-shape p,#mmad7efebda868 .image-shape p{background-color:#12152b;padding:2px;}#mmad7efebda868 .icon-shape .label rect,#mmad7efebda868 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmad7efebda868 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmad7efebda868 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmad7efebda868 .node .neo-node{stroke:#818cf8;}#mmad7efebda868 [data-look="neo"].node rect,#mmad7efebda868 [data-look="neo"].cluster rect,#mmad7efebda868 [data-look="neo"].node polygon{stroke:url(#mmad7efebda868-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmad7efebda868 [data-look="neo"].swimlane.cluster rect{filter:none;}#mmad7efebda868 [data-look="neo"].node path{stroke:url(#mmad7efebda868-gradient);stroke-width:1px;}#mmad7efebda868 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmad7efebda868 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mmad7efebda868 [data-look="neo"].node circle{stroke:url(#mmad7efebda868-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmad7efebda868 [data-look="neo"].node circle .state-start{fill:#000000;}#mmad7efebda868 [data-look="neo"].icon-shape .icon{fill:url(#mmad7efebda868-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmad7efebda868 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mmad7efebda868-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmad7efebda868 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmad7efebda868_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mmad7efebda868_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmad7efebda868_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmad7efebda868_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mmad7efebda868_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M221.172,50L225.339,50C229.505,50,237.839,50,245.505,50C253.172,50,260.172,50,263.672,50L267.172,50" data-edge="true" data-et="edge" data-id="L_G_D_0" data-look="classic" data-points="W3sieCI6MjIxLjE3MTg3NSwieSI6NTB9LHsieCI6MjQ2LjE3MTg3NSwieSI6NTB9LHsieCI6MjcxLjE3MTg3NSwieSI6NTB9XQ==" id="mmad7efebda868-L_G_D_0" marker-end="url(#mmad7efebda868_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M479.297,50L483.464,50C487.63,50,495.964,50,503.63,50C511.297,50,518.297,50,521.797,50L525.297,50" data-edge="true" data-et="edge" data-id="L_D_R_0" data-look="classic" data-points="W3sieCI6NDc5LjI5Njg3NSwieSI6NTB9LHsieCI6NTA0LjI5Njg3NSwieSI6NTB9LHsieCI6NTI5LjI5Njg3NSwieSI6NTB9XQ==" id="mmad7efebda868-L_D_R_0" marker-end="url(#mmad7efebda868_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M789.297,50L793.464,50C797.63,50,805.964,50,813.63,50C821.297,50,828.297,50,831.797,50L835.297,50" data-edge="true" data-et="edge" data-id="L_R_V_0" data-look="classic" data-points="W3sieCI6Nzg5LjI5Njg3NSwieSI6NTB9LHsieCI6ODE0LjI5Njg3NSwieSI6NTB9LHsieCI6ODM5LjI5Njg3NSwieSI6NTB9XQ==" id="mmad7efebda868-L_R_V_0" marker-end="url(#mmad7efebda868_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M1034.313,50L1038.479,50C1042.646,50,1050.979,50,1058.646,50C1066.313,50,1073.313,50,1076.813,50L1080.313,50" data-edge="true" data-et="edge" data-id="L_V_M_0" data-look="classic" data-points="W3sieCI6MTAzNC4zMTI1LCJ5Ijo1MH0seyJ4IjoxMDU5LjMxMjUsInkiOjUwfSx7IngiOjEwODQuMzEyNSwieSI6NTB9XQ==" id="mmad7efebda868-L_V_M_0" marker-end="url(#mmad7efebda868_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_G_D_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_R_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_R_V_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_V_M_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mmad7efebda868-flowchart-G-0" transform="translate(114.5859375, 50)"><rect class="basic label-container" height="57" style="" width="213.171875" x="-106.5859375" y="-28.5"></rect><g class="label" style="" transform="translate(-76.5859375, -13.5)"><rect></rect><foreignobject height="27" width="153.171875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Graphics program</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmad7efebda868-flowchart-D-1" transform="translate(375.234375, 50)"><rect class="basic label-container" height="57" style="" width="208.125" x="-104.0625" y="-28.5"></rect><g class="label" style="" transform="translate(-74.0625, -13.5)"><rect></rect><foreignobject height="27" width="148.125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Display controller</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmad7efebda868-flowchart-R-3" transform="translate(659.296875, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Refresh buffer (frame buffer)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmad7efebda868-flowchart-V-5" transform="translate(936.8046875, 50)"><rect class="basic label-container" height="57" style="" width="195.015625" x="-97.5078125" y="-28.5"></rect><g class="label" style="" transform="translate(-67.5078125, -13.5)"><rect></rect><foreignobject height="27" width="135.015625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Video controller</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmad7efebda868-flowchart-M-7" transform="translate(1146.984375, 50)"><rect class="basic label-container" height="57" style="" width="125.34375" x="-62.671875" y="-28.5"></rect><g class="label" style="" transform="translate(-32.671875, -13.5)"><rect></rect><foreignobject height="27" width="65.34375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Monitor</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mmad7efebda868-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mmad7efebda868-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mmad7efebda868-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-04/computer-video-format/">Computer Video Format</a></aside></section><section class=""><h2><small>Computer Video Format</small>Raster display architecture <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><ul>
 <li>The <strong>graphics program</strong> creates the high-level image interactively. The <strong>display controller</strong> interprets display commands and writes <strong>pixel values into the refresh buffer</strong>.</li>
 <li>The <strong>video controller</strong> is hardware that reads the pixel values <strong>in time-synchronism with the scanning</strong> and converts them into <strong>red, green and blue analog signals</strong> for the display. It can also access memory.</li>
 </ul><aside class="notes">Source note: <a href="../../unit-04/computer-video-format/">Computer Video Format</a></aside></section><section class=""><h2><small>Computer Video Format</small>Colour look-up table (CLUT)</h2><ul><li class="fragment fade-up">A range of colour values is stored in a table; each <strong>pixel value is an address</strong> into the table, which holds the corresponding <strong>three colour values</strong>.</li><li class="fragment fade-up">This is the <strong>colour look-up table</strong>.</li><li class="fragment fade-up">It saves frame-buffer memory and allows colour changes by editing the table (see <a href="animation-basics.md">Animation Basics</a>).</li></ul><aside class="notes">Source note: <a href="../../unit-04/computer-video-format/">Computer Video Format</a></aside></section><section class=""><h2><small>Computer Video Format</small>Video controller standards</h2><p>CGA (Color Graphics Adapter) · EGA (Enhanced Graphics Adapter) · VGA (Video Graphics Array) · 8514/A display adapter mode · XGA (Extended Graphics Array) · Super VGA (SVGA).</p><div class="callout"><div class="ct">Extra</div>
@@ -594,12 +752,12 @@ $$\text{Data rate} = \text{frame size} \times \text{frame rate}</span></span><di
 <p>Reads pixel values from the refresh buffer in step with the scan and converts them into R, G, B analog signals for the monitor.</p>
 </div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">What is a CLUT?</p><div class="fragment ans">
 <p>A table whose entries hold colour values; the pixel value is the address into the table.</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-04/computer-video-format/">Computer Video Format</a></aside></section><section><h2><small>Computer Video Format</small>Chroma subsampling</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 569.52 205.512602" xmlns="http://www.w3.org/2000/svg" version="1.1">
+</div></div><aside class="notes">Source note: <a href="../../unit-04/computer-video-format/">Computer Video Format</a></aside></section><section><h2><small>Computer Video Format</small>Key terms</h2><div class="terms"><div class="card term"><b>Digitizer</b><span>Converts analog video into digital frames.</span></div><div class="card term"><b>Resolution</b><span>Pixels per frame.</span></div><div class="card term"><b>Frame rate</b><span>Frames per second.</span></div><div class="card term"><b>Chroma subsampling</b><span>Storing colour at lower resolution than brightness.</span></div><div class="card term"><b>CIF</b><span>Common Intermediate Format: 352 × 288 pixels.</span></div></div></section><section><h2><small>Computer Video Format</small>Chroma subsampling</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 569.52 205.512602" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.771195</dc:date>
+    <dc:date>2026-11-11T18:12:19.980244</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1061,7 +1219,7 @@ z
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.811041</dc:date>
+    <dc:date>2026-11-11T18:12:20.020039</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1301,7 +1459,7 @@ L 617.300938 223.280764
  </defs>
 </svg>
 </div><div class="cap">Rate = width × height × 3 bytes × 25 × 8. Even CIF needs ~61 Mbit/s uncompressed.</div></section></section>
-<section data-topic="Animation Basics"><section><div class="sec"><div class="no">04</div><h2>Animation Basics</h2><div class="lead">Unit 4 &middot; topic 4 of 6</div></div></section><section class="dense"><h2><small>Animation Basics</small>What is animation?</h2><ul>
+<section data-topic="Animation Basics"><section><div class="sec"><div class="no">04</div><h2>Animation Basics</h2><div class="lead">Unit 4 &middot; topic 4 of 6</div></div></section><section><h2><small>Animation Basics</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Animation shows a series of images or model positions fast enough to create the illusion of movement. The animator sets key poses and the computer fills in the rest.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A bouncing ball: draw it at the top, the floor and the top again; the computer creates the frames between.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Key frames define the motion, in-betweens (tweening) fill the gaps. Film uses about 24 frames per second.</p></div></div></section><section class="dense"><h2><small>Animation Basics</small>What is animation?</h2><ul>
 <li><strong>Animation</strong> is making something look and feel alive: it covers <strong>all changes that have a visual effect</strong> (time-varying position, shape, colour, transparency, structure, texture).</li>
 <li><strong>Computer-based animation</strong> is done with a computer having graphical tools; similar images are displayed quickly. It is based on the <strong>keyframe</strong> concept: a <strong>keyframe</strong> holds the positions (begin and end of a transition) of the objects.</li>
 </ul><p>Two categories:</p><table>
@@ -1349,12 +1507,12 @@ L 617.300938 223.280764
 <p>It joins key positions by straight lines, so the path is unrealistic; <strong>splines</strong> give a smooth curve.</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-04/animation-basics/">Animation Basics</a></aside></section><section class=""><h2><small>Animation Basics</small>Checkpoint <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Why is CLUT animation fast?</p><div class="fragment ans">
 <p>Only the small table is changed instead of sending a new pixmap for each frame.</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-04/animation-basics/">Animation Basics</a></aside></section><section><h2><small>Animation Basics</small>Key frames and in-betweens</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 432.864 222.192" xmlns="http://www.w3.org/2000/svg" version="1.1">
+</div></div><aside class="notes">Source note: <a href="../../unit-04/animation-basics/">Animation Basics</a></aside></section><section><h2><small>Animation Basics</small>Key terms</h2><div class="terms"><div class="card term"><b>Key frame</b><span>A frame that defines an important pose or position.</span></div><div class="card term"><b>In-between</b><span>A frame generated between two key frames.</span></div><div class="card term"><b>Tweening</b><span>Automatic creation of in-betweens by interpolation.</span></div><div class="card term"><b>Cel animation</b><span>Traditional method of drawing on transparent sheets.</span></div><div class="card term"><b>Persistence of vision</b><span>The eye keeps an image for a moment, blending frames.</span></div></div></section><section><h2><small>Animation Basics</small>Key frames and in-betweens</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 432.864 222.192" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.838290</dc:date>
+    <dc:date>2026-11-11T18:12:20.046777</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1617,7 +1775,7 @@ L 391.992 191.8536
  </defs>
 </svg>
 </div><div class="cap">The animator defines key poses; interpolation produces the frames between them.</div></section></section>
-<section data-topic="Animation Languages and Control"><section><div class="sec"><div class="no">05</div><h2>Animation Languages and Control</h2><div class="lead">Unit 4 &middot; topic 5 of 6</div></div></section><section class=""><h2><small>Animation languages (three categories)</small>1. Linear-list notations</h2><p>Text-based scripts where each event gives <strong>start frame, end frame and action</strong>, written sequentially like a list. Easy to follow; used in early multimedia and timeline-based engines.</p><div class="callout ex"><div class="ct">Example</div>
+<section data-topic="Animation Languages and Control"><section><div class="sec"><div class="no">05</div><h2>Animation Languages and Control</h2><div class="lead">Unit 4 &middot; topic 5 of 6</div></div></section><section><h2><small>Animation Languages and Control</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Instead of drawing every frame, an animator can describe motion in a script or program; the computer produces the frames.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A script that says 'move this logo from left to right over 2 seconds and make it spin'.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Describe the motion, not the pictures: this saves effort and data.</p></div></div></section><section class=""><h2><small>Animation languages (three categories)</small>1. Linear-list notations</h2><p>Text-based scripts where each event gives <strong>start frame, end frame and action</strong>, written sequentially like a list. Easy to follow; used in early multimedia and timeline-based engines.</p><div class="callout ex"><div class="ct">Example</div>
 <p><code>42, 53, B, ROTATE "PALM", 1, 30</code> means: between frames 42 and 53 rotate the object PALM about axis 1 by 30 degrees, the amount per frame being taken from table B.</p>
 </div><p>Examples: <strong>Scefo</strong> (SCEne FOrmat); <strong>SMIL</strong> (Synchronized Multimedia Integration Language) with <code>&lt;seq&gt;</code> and <code>&lt;par&gt;</code>; a traffic light script: <code>00s setColor light RED</code>, <code>05s … YELLOW</code>, <code>07s … GREEN</code>, <code>12s … RED</code>.</p><aside class="notes">Source note: <a href="../../unit-04/animation-languages-and-control/">Animation Languages and Control</a></aside></section><section class="dense"><h2><small>Animation languages (three categories)</small>2. General-purpose languages</h2><p>Animation capability <strong>embedded in a general programming language</strong>; variables of the language serve as parameters of animation routines. Example: <strong>ASAS</strong>, built on <strong>LISP</strong>, with many geometric transformations.</p><h3>3. Graphical languages</h3><p>Textual languages cannot visualise action. Graphical languages let the animator <strong>provide a picture of the action</strong>, to express, edit and understand simultaneous changes. Examples: <strong>GENESYS, DIAL, S-Dynamics System</strong>.</p><table>
 <thead>
@@ -1694,8 +1852,8 @@ L 391.992 191.8536
 <p>Drawing over film of live actors so that the animated characters copy their motion.</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-04/animation-languages-and-control/">Animation Languages and Control</a></aside></section><section class=""><h2><small>Animation Languages and Control</small>Checkpoint <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Differentiate kinematics and dynamics.</p><div class="fragment ans">
 <p>Kinematics: position and velocity. Dynamics: adds the physical laws and forces (mass, gravity).</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-04/animation-languages-and-control/">Animation Languages and Control</a></aside></section></section>
-<section data-topic="Animation Display and Transmission"><section><div class="sec"><div class="no">06</div><h2>Animation Display and Transmission</h2><div class="lead">Unit 4 &middot; topic 6 of 6</div></div></section><section class="dense"><h2><small>Animation Display and Transmission</small>Display of animation</h2><ul>
+</div></div><aside class="notes">Source note: <a href="../../unit-04/animation-languages-and-control/">Animation Languages and Control</a></aside></section><section><h2><small>Animation Languages and Control</small>Key terms</h2><div class="terms"><div class="card term"><b>Animation language</b><span>A notation for describing objects and their motion.</span></div><div class="card term"><b>Script</b><span>A sequence of commands that creates the animation.</span></div><div class="card term"><b>Procedural control</b><span>Motion produced by a program or rule.</span></div><div class="card term"><b>Constraint</b><span>A rule that limits how objects move or connect.</span></div><div class="card term"><b>Interpolation</b><span>Computing in-between values from start and end.</span></div></div></section></section>
+<section data-topic="Animation Display and Transmission"><section><div class="sec"><div class="no">06</div><h2>Animation Display and Transmission</h2><div class="lead">Unit 4 &middot; topic 6 of 6</div></div></section><section><h2><small>Animation Display and Transmission</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Animation can be shown with double buffering so the viewer never sees half-drawn frames, and it can be sent as commands that the receiver draws, which is far lighter than sending every frame.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A web animation that sends a few shapes and movement rules instead of 25 pictures per second.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Double buffering: draw the next frame off-screen, then swap. Symbolic transmission is smaller than pixel transmission.</p></div></div></section><section class="dense"><h2><small>Animation Display and Transmission</small>Display of animation</h2><ul>
 <li class="fragment fade-up">Animated objects (lines, polygons, …) must be <strong>scan-converted into a pixmap in the frame buffer</strong>. To show a rotating object, successive views from slightly different positions are scan-converted one after another.</li>
 <li class="fragment fade-up">A raster screen sweeps <strong>one row at a time, top to bottom</strong>; the <strong>refresh buffer</strong> holds the intensity values for the next picture.</li>
 <li class="fragment fade-up">Scan conversion must be done <strong>at least 10 (preferably 15 to 20) times per second</strong>, so a new image must be created in <strong>no more than 100 ms</strong>. </li>
@@ -1743,8 +1901,155 @@ L 391.992 191.8536
 <p>A single buffer cannot erase, redraw and show a frame within 100 ms (or 50 ms), causing distracting effects; two buffers allow one to display while the other is filled.</p>
 </div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Which transmission method has faster display?</p><div class="fragment ans">
 <p>Pixmap: it is directly displayed, but takes longer to transmit.</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-04/animation-display-and-transmission/">Animation Display and Transmission</a></aside></section></section>
+</div></div><aside class="notes">Source note: <a href="../../unit-04/animation-display-and-transmission/">Animation Display and Transmission</a></aside></section><section><h2><small>Animation Display and Transmission</small>Key terms</h2><div class="terms"><div class="card term"><b>Double buffering</b><span>Drawing into a hidden buffer and swapping it with the visible one.</span></div><div class="card term"><b>Frame buffer</b><span>Memory holding the displayed image.</span></div><div class="card term"><b>Symbolic transmission</b><span>Sending objects and commands.</span></div><div class="card term"><b>Pixel transmission</b><span>Sending the finished frames.</span></div><div class="card term"><b>Rendering</b><span>Producing the image at the receiver.</span></div></div></section><section><h2><small>Animation Display and Transmission</small>Double buffering</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 731.52 270.72" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T18:12:21.153932</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 270.72 
+L 731.52 270.72 
+L 731.52 0 
+L 0 0 
+L 0 270.72 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 25.302857 148.32 
+L 171.36 148.32 
+Q 175.474286 148.32 175.474286 143.136 
+L 175.474286 82.224 
+Q 175.474286 77.04 171.36 77.04 
+L 25.302857 77.04 
+Q 21.188571 77.04 21.188571 82.224 
+L 21.188571 143.136 
+Q 21.188571 148.32 25.302857 148.32 
+z
+" clip-path="url(#p9b956227d3)" style="fill: #27306b; stroke: #c084fc; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 246.445714 102.96 
+L 407.931429 102.96 
+Q 412.045714 102.96 412.045714 97.776 
+L 412.045714 43.344 
+Q 412.045714 38.16 407.931429 38.16 
+L 246.445714 38.16 
+Q 242.331429 38.16 242.331429 43.344 
+L 242.331429 97.776 
+Q 242.331429 102.96 246.445714 102.96 
+z
+" clip-path="url(#p9b956227d3)" style="fill: #27306b; stroke: #f472b6; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 246.445714 226.08 
+L 407.931429 226.08 
+Q 412.045714 226.08 412.045714 220.896 
+L 412.045714 166.464 
+Q 412.045714 161.28 407.931429 161.28 
+L 246.445714 161.28 
+Q 242.331429 161.28 242.331429 166.464 
+L 242.331429 220.896 
+Q 242.331429 226.08 246.445714 226.08 
+z
+" clip-path="url(#p9b956227d3)" style="fill: #27306b; stroke: #34d399; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 524.16 174.24 
+L 690.788571 174.24 
+Q 694.902857 174.24 694.902857 169.056 
+L 694.902857 88.704 
+Q 694.902857 83.52 690.788571 83.52 
+L 524.16 83.52 
+Q 520.045714 83.52 520.045714 88.704 
+L 520.045714 169.056 
+Q 520.045714 174.24 524.16 174.24 
+z
+" clip-path="url(#p9b956227d3)" style="fill: #27306b; stroke: #22d3ee; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 177.273846 102.087905 
+Q 208.903251 86.759809 238.922873 72.211839 
+" clip-path="url(#p9b956227d3)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 232.662362 72.134309 
+L 238.922873 72.211839 
+L 235.104543 77.173729 
+z
+" clip-path="url(#p9b956227d3)" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 413.927672 193.002495 
+Q 466.045919 174.239926 516.481055 156.083277 
+" clip-path="url(#p9b956227d3)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 510.263671 155.345622 
+L 516.481055 156.083277 
+L 512.1605 160.614591 
+z
+" clip-path="url(#p9b956227d3)" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 327.188571 107.192987 
+Q 327.188571 132.119811 327.188571 157.046635 
+" clip-path="url(#p9b956227d3)" style="fill: none; stroke: #fbbf24; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 324.388571 112.792987 
+L 327.188571 107.192987 
+L 329.988571 112.792987 
+z
+" clip-path="url(#p9b956227d3)" style="fill: #fbbf24; stroke: #fbbf24; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 329.988571 151.446635 
+L 327.188571 157.046635 
+L 324.388571 151.446635 
+z
+" clip-path="url(#p9b956227d3)" style="fill: #fbbf24; stroke: #fbbf24; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(55.007874 108.766182)">Program draws</text>
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(66.674983 122.569326)">frame N+1</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(294.243767 66.646182)">Back buffer</text>
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(302.977478 80.449326)">(hidden)</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(293.661579 189.766182)">Front buffer</text>
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(304.197556 203.569326)">(shown)</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(585.617098 124.966182)">Monitor</text>
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(564.611629 138.769326)">shows frame N</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #fbbf24" x="334.902857" y="132.12" transform="rotate(-0 334.902857 132.12)">swap</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="365.76" y="258.48" transform="rotate(-0 365.76 258.48)">The viewer never sees a half-drawn frame because drawing happens off-screen.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p9b956227d3">
+   <rect x="5.76" y="5.76" width="720" height="259.2"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap"></div></section></section>
 <section data-topic="Exam recap"><section><h2><small>Revision</small>Exam focus recap (1/2)</h2><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Quick practice</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div></section><section><h2><small>Revision</small>Exam focus recap (2/2)</h2><div class="callout exam"><div class="ct">Exam tip</div></section></section>
+<section data-topic="Sources"><section><h2><small>Go deeper</small>Sources and further reading</h2><ul class="small"><li>Steinmetz and Nahrstedt, <em>Multimedia Fundamentals Vol. 1</em>, chapters on video and animation.</li><li>ITU-R BT.601 (digital studio video) and ITU-R BT.709 (HDTV).</li><li>Li and Drew, <em>Fundamentals of Multimedia</em>, video chapters.</li></ul><div class="callout"><div class="ct">About the figures</div><p>Charts and diagrams in this deck were drawn for this course from standard formulas, specifications and textbook knowledge. They are original drawings, not copies of figures from any publication.</p></div></section></section>
 <section data-topic="Quick check"><section><div class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></div></section><section><h2><small>Quick check 1 / 6</small>23. The minimum refresh rate to avoid flicker is</h2><ul class="opts"><li>A. 15 Hz</li><li>B. 24 Hz</li><li>C. 50 Hz</li><li>D. 100 Hz</li></ul><div class="fragment ans"><strong>Answer: C.</strong></div></section><section><h2><small>Quick check 2 / 6</small>24. The PAL frame rate is</h2><ul class="opts"><li>A. 24</li><li>B. 25</li><li>C. 29.97</li><li>D. 30</li></ul><div class="fragment ans"><strong>Answer: B.</strong> NTSC is 29.97.</div></section><section><h2><small>Quick check 3 / 6</small>25. Which signal does NTSC use?</h2><ul class="opts"><li>A. YUV</li><li>B. YIQ</li><li>C. RGB only</li><li>D. S-video only</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 4 / 6</small>26. The Kell factor is about</h2><ul class="opts"><li>A. 0.3</li><li>B. 0.5</li><li>C. 0.7</li><li>D. 0.9</li></ul><div class="fragment ans"><strong>Answer: C.</strong></div></section><section><h2><small>Quick check 5 / 6</small>27. Which language is general purpose?</h2><ul class="opts"><li>A. Scefo</li><li>B. ASAS</li><li>C. GENESYS</li><li>D. SMIL</li></ul><div class="fragment ans"><strong>Answer: B.</strong> ASAS is built on LISP.</div></section><section><h2><small>Quick check 6 / 6</small>28. Which transmission method has shorter display time?</h2><ul class="opts"><li>A. Symbolic</li><li>B. Pixmap</li><li>C. Both equal</li><li>D. Neither</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section></section>
 <section><div class="title-slide"><div class="kick">End of Unit 4</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></div></section>
 </div></div>

@@ -61,6 +61,9 @@ aside.notes{display:none}
 .opts{list-style:none;margin:.4em 0!important;padding:0;display:grid;gap:.35em}
 .opts li{margin:0;padding:.4em .8em;border:1px solid var(--line);border-radius:10px;background:var(--card)}
 .ans{margin-top:.6em;padding:.5em .9em;border-radius:10px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.5)}
+.trio{display:grid;grid-template-columns:1fr;gap:.6em}.trio .card{padding:.55em 1em}.trio .card .ct{font-size:.55em;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.1em}.trio .card p{margin:.1em 0;font-size:.95em}
+.trio .c1{border-left:5px solid #818cf8}.trio .c1 .ct{color:#a5b4fc}.trio .c2{border-left:5px solid #34d399}.trio .c2 .ct{color:#6ee7b7}.trio .c3{border-left:5px solid #fb923c}.trio .c3 .ct{color:#fdba74}
+.terms{display:grid;grid-template-columns:1fr 1fr;gap:.55em}.card.term{display:flex;flex-direction:column;gap:.1em;padding:.45em .85em}.card.term b{color:#c4b5fd;font-size:.95em}.card.term span{font-size:.74em;line-height:1.35;color:#dfe2ff}
 .agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:.55em}
 .agenda .card{display:flex;gap:.7em;align-items:center;font-size:.85em;font-weight:600}
 .agenda .n{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:800;font-size:.85em;color:#fff}
@@ -102,7 +105,7 @@ aside.notes{display:none}
 <li class="fragment fade-up"><strong>Explain speech transmission</strong> (PCM, source encoding, recognition/synthesis) and compare the common <strong>audio file formats</strong>.</li>
 </ol></section>
 <section><h2><small>Roadmap</small>What we will cover</h2><div class="agenda"><div class="card"><span class="n">1</span>Basic Sound Concepts</div><div class="card"><span class="n">2</span>Digital Audio and File Formats</div><div class="card"><span class="n">3</span>MIDI</div><div class="card"><span class="n">4</span>Speech Generation</div><div class="card"><span class="n">5</span>Speech Analysis</div><div class="card"><span class="n">6</span>Speech Transmission</div></div></section>
-<section data-topic="Basic Sound Concepts"><section><div class="sec"><div class="no">01</div><h2>Basic Sound Concepts</h2><div class="lead">Unit 2 &middot; topic 1 of 6</div></div></section><section class=""><h2><small>Basic Sound Concepts</small>What is sound?</h2><p><strong>Sound is the physical phenomenon produced by the vibration of matter.</strong></p><p>When matter vibrates, <strong>pressure variations</strong> are created in the surrounding air. This alternation of <strong>high and low pressure</strong> travels through the air in a <strong>wave-like motion</strong>. When the wave reaches the human ear, a sound is heard.</p><aside class="notes">Source note: <a href="../../unit-02/sound-basics/">Basic Sound Concepts</a></aside></section><section class=""><h2><small>Basic Sound Concepts</small>Waveform and period</h2><ul>
+<section data-topic="Basic Sound Concepts"><section><div class="sec"><div class="no">01</div><h2>Basic Sound Concepts</h2><div class="lead">Unit 2 &middot; topic 1 of 6</div></div></section><section><h2><small>Basic Sound Concepts</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Sound is vibration of the air. A microphone turns it into an electrical signal. A bigger wave is louder; a faster wave is higher in pitch.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Pluck a guitar string harder and it gets louder (amplitude); press it on a fret to shorten it and it sounds higher (frequency).</p></div><div class="card c3"><div class="ct">Remember it</div><p>Amplitude decides loudness, frequency decides pitch. Humans hear about 20 Hz to 20 kHz. Frequency f = 1 / T.</p></div></div></section><section class=""><h2><small>Basic Sound Concepts</small>What is sound?</h2><p><strong>Sound is the physical phenomenon produced by the vibration of matter.</strong></p><p>When matter vibrates, <strong>pressure variations</strong> are created in the surrounding air. This alternation of <strong>high and low pressure</strong> travels through the air in a <strong>wave-like motion</strong>. When the wave reaches the human ear, a sound is heard.</p><aside class="notes">Source note: <a href="../../unit-02/sound-basics/">Basic Sound Concepts</a></aside></section><section class=""><h2><small>Basic Sound Concepts</small>Waveform and period</h2><ul>
 <li class="fragment fade-up">The pattern of the oscillation is called a <strong>waveform</strong>.</li>
 <li class="fragment fade-up">The waveform repeats the same shape at regular intervals. One such interval is called a <strong>period</strong>.</li>
 <li class="fragment fade-up">Natural sound waves are <strong>never perfectly smooth or uniformly periodic</strong>.</li>
@@ -230,12 +233,12 @@ aside.notes{display:none}
 <p>Amplitude is the displacement of the air pressure wave from its mean value. Humans perceive it as <strong>loudness</strong> and it is measured in <strong>decibels</strong>.</p>
 </div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Is a vowel sound periodic or non-periodic? And a consonant such as 's'?</p><div class="fragment ans">
 <p>A vowel sound is <strong>periodic</strong>. Consonants such as "t", "f" and "s" are <strong>non-periodic</strong>.</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-02/sound-basics/">Basic Sound Concepts</a></aside></section><section><h2><small>Basic Sound Concepts</small>Anatomy of a sound wave</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 579.045631 244.368" xmlns="http://www.w3.org/2000/svg" version="1.1">
+</div></div><aside class="notes">Source note: <a href="../../unit-02/sound-basics/">Basic Sound Concepts</a></aside></section><section><h2><small>Basic Sound Concepts</small>Key terms</h2><div class="terms"><div class="card term"><b>Sound</b><span>Mechanical wave energy that travels through a medium.</span></div><div class="card term"><b>Audio</b><span>Electrical signal (analog or digital) that represents sound.</span></div><div class="card term"><b>Amplitude</b><span>Height of the wave: loudness.</span></div><div class="card term"><b>Frequency</b><span>Cycles per second (Hz): pitch.</span></div><div class="card term"><b>Period T</b><span>Time of one full cycle; T = 1/f.</span></div><div class="card term"><b>Infrasound / ultrasound</b><span>Below 20 Hz / above 20 kHz: not heard by humans.</span></div></div></section><section><h2><small>Basic Sound Concepts</small>Anatomy of a sound wave</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 579.045631 244.368" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.192056</dc:date>
+    <dc:date>2026-11-11T18:12:19.319566</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -466,7 +469,7 @@ L 155.955918 114.265486
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.210182</dc:date>
+    <dc:date>2026-11-11T18:12:19.344081</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -615,13 +618,627 @@ L 563.76 188.712
   </clipPath>
  </defs>
 </svg>
-</div><div class="cap">Humans hear roughly 20 Hz to 20 kHz.</div></section></section>
-<section data-topic="Digital Audio and File Formats"><section><div class="sec"><div class="no">02</div><h2>Digital Audio and File Formats</h2><div class="lead">Unit 2 &middot; topic 2 of 6</div></div></section><section><h2><small>Digital Audio and File Formats</small>Analog to digital: sample, quantize, encode</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 569.52 250.854363" xmlns="http://www.w3.org/2000/svg" version="1.1">
+</div><div class="cap">Humans hear roughly 20 Hz to 20 kHz.</div></section><section><h2><small>Basic Sound Concepts</small>One sound, two views</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 571.490334 271.551219" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.246090</dc:date>
+    <dc:date>2026-11-11T18:12:20.836715</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 271.551219 
+L 571.490334 271.551219 
+L 571.490334 0 
+L 0 0 
+L 0 271.551219 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 5.76 230.790281 
+L 259.396364 230.790281 
+L 259.396364 20.118281 
+L 5.76 20.118281 
+L 5.76 230.790281 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mcc26f93cb3" d="M 0 0 
+L 0 3.5 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mcc26f93cb3" x="17.288926" y="230.790281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="17.288926" y="246.907469" transform="rotate(-0 17.288926 246.907469)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mcc26f93cb3" x="74.933554" y="230.790281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="74.933554" y="246.907469" transform="rotate(-0 74.933554 246.907469)">5</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mcc26f93cb3" x="132.578182" y="230.790281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="132.578182" y="246.907469" transform="rotate(-0 132.578182 246.907469)">10</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mcc26f93cb3" x="190.22281" y="230.790281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="190.22281" y="246.907469" transform="rotate(-0 190.22281 246.907469)">15</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mcc26f93cb3" x="247.867438" y="230.790281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="247.867438" y="246.907469" transform="rotate(-0 247.867438 246.907469)">20</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="132.578182" y="262.908406" transform="rotate(-0 132.578182 262.908406)">time (ms)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_6">
+    <path d="M 17.288926 125.454281 
+L 18.827398 90.11475 
+L 19.596634 76.250779 
+L 20.36587 66.327574 
+L 20.942797 61.72357 
+L 21.327415 59.989567 
+L 21.712033 59.25552 
+L 21.904342 59.234937 
+L 22.096651 59.426487 
+L 22.481269 60.380327 
+L 23.058196 62.960893 
+L 24.019741 68.977893 
+L 25.173595 75.98606 
+L 25.750522 78.404245 
+L 26.13514 79.437571 
+L 26.519758 79.976565 
+L 26.904377 80.030866 
+L 27.288995 79.64128 
+L 27.673613 78.877074 
+L 28.442849 76.618968 
+L 29.404394 73.695333 
+L 29.789012 72.915612 
+L 30.17363 72.542933 
+L 30.365939 72.541982 
+L 30.558248 72.679459 
+L 30.942866 73.40479 
+L 31.327484 74.771415 
+L 31.904411 78.063226 
+L 32.481338 82.777579 
+L 33.442883 93.118184 
+L 35.558282 117.219282 
+L 36.135209 121.441598 
+L 36.519827 123.231772 
+L 36.904445 124.100643 
+L 37.096754 124.172753 
+L 37.289063 123.998837 
+L 37.673682 122.91358 
+L 38.0583 120.869926 
+L 38.635227 116.154053 
+L 39.404463 107.384038 
+L 42.096789 73.629788 
+L 42.673716 69.895793 
+L 43.058334 68.649113 
+L 43.250643 68.423622 
+L 43.442952 68.469058 
+L 43.635261 68.786706 
+L 44.019879 70.231897 
+L 44.404497 72.722524 
+L 44.981424 78.252394 
+L 45.75066 88.360305 
+L 47.096823 110.075149 
+L 48.442987 130.8701 
+L 49.404532 142.212132 
+L 50.173768 148.621029 
+L 50.943004 152.936937 
+L 51.71224 155.861676 
+L 53.058403 160.543759 
+L 53.63533 163.43108 
+L 54.212257 167.285557 
+L 54.981493 174.141877 
+L 55.943038 185.219819 
+L 58.250746 213.647033 
+L 58.827673 218.243734 
+L 59.212292 220.203679 
+L 59.59691 221.147306 
+L 59.789219 221.211623 
+L 59.981528 220.994381 
+L 60.366146 219.699017 
+L 60.750764 217.252329 
+L 61.327691 211.497916 
+L 62.096927 200.379184 
+L 63.058472 182.520667 
+L 65.173871 141.68958 
+L 65.943107 130.921543 
+L 66.520034 125.259182 
+L 67.096961 121.80802 
+L 67.481579 120.705168 
+L 67.673888 120.491073 
+L 67.866197 120.487249 
+L 68.058506 120.680414 
+L 68.443124 121.596456 
+L 69.020051 124.030327 
+L 69.981597 129.588321 
+L 70.943142 134.834065 
+L 71.520069 136.925717 
+L 71.904687 137.675509 
+L 72.096996 137.835095 
+L 72.289305 137.846075 
+L 72.481614 137.707212 
+L 72.866232 136.985214 
+L 73.25085 135.699386 
+L 73.827777 132.852415 
+L 74.789322 126.487429 
+L 76.135485 117.51511 
+L 76.712412 114.837669 
+L 77.09703 113.688275 
+L 77.481648 113.113192 
+L 77.673957 113.049276 
+L 77.866266 113.134842 
+L 78.250884 113.743315 
+L 78.635502 114.896082 
+L 79.212429 117.476149 
+L 80.366283 124.215378 
+L 81.13552 128.229376 
+L 81.712447 130.062304 
+L 82.097065 130.444896 
+L 82.289374 130.337486 
+L 82.481683 130.01384 
+L 82.866301 128.677929 
+L 83.250919 126.378366 
+L 83.827846 121.081892 
+L 84.404773 113.654722 
+L 85.174009 100.925773 
+L 86.712481 70.318539 
+L 87.866335 48.952833 
+L 88.635571 38.285462 
+L 89.212498 32.937571 
+L 89.597116 30.777466 
+L 89.981734 29.770022 
+L 90.174043 29.694281 
+L 90.366352 29.896935 
+L 90.75097 31.103427 
+L 91.135588 33.301257 
+L 91.712516 38.193476 
+L 92.481752 46.911212 
+L 94.981769 77.730984 
+L 95.751005 84.340222 
+L 96.520241 89.027888 
+L 97.289477 92.224667 
+L 99.020258 98.417411 
+L 99.597185 101.644508 
+L 100.174112 106.019232 
+L 100.943348 113.912293 
+L 101.904893 126.966702 
+L 105.174147 175.674067 
+L 105.751074 180.149788 
+L 106.135692 181.861203 
+L 106.52031 182.496225 
+L 106.712619 182.405887 
+L 106.904928 182.046163 
+L 107.289546 180.540379 
+L 107.674164 178.045711 
+L 108.251091 172.681864 
+L 109.020327 163.274736 
+L 111.135726 135.712936 
+L 111.712653 130.692774 
+L 112.28958 127.632192 
+L 112.674198 126.791932 
+L 112.866507 126.741231 
+L 113.058817 126.935455 
+L 113.443435 128.040662 
+L 113.828053 130.049396 
+L 114.40498 134.549322 
+L 115.174216 142.637359 
+L 117.481924 169.007889 
+L 118.25116 174.676849 
+L 118.828087 177.223639 
+L 119.212705 178.105515 
+L 119.597323 178.38277 
+L 119.789632 178.316553 
+L 120.17425 177.83177 
+L 120.751177 176.432532 
+L 122.481958 171.426493 
+L 122.866576 170.935725 
+L 123.251194 170.87406 
+L 123.635812 171.289726 
+L 124.020431 172.200331 
+L 124.597358 174.453336 
+L 125.366594 178.785588 
+L 127.097375 189.384793 
+L 127.674302 191.311721 
+L 127.866611 191.603395 
+L 128.05892 191.690797 
+L 128.251229 191.55859 
+L 128.443538 191.193058 
+L 128.828156 189.716267 
+L 129.212774 187.189088 
+L 129.789701 181.358916 
+L 130.366628 173.126002 
+L 131.135864 158.825288 
+L 132.289718 132.473136 
+L 134.212808 88.193627 
+L 134.982045 74.781309 
+L 135.558972 67.333637 
+L 136.135899 62.32145 
+L 136.520517 60.326284 
+L 136.905135 59.349972 
+L 137.097444 59.217765 
+L 137.289753 59.305167 
+L 137.674371 60.076015 
+L 138.058989 61.52377 
+L 138.635916 64.622465 
+L 140.751315 77.317331 
+L 141.328242 79.225251 
+L 141.71286 79.88818 
+L 142.097478 80.061011 
+L 142.482096 79.776955 
+L 142.866714 79.098494 
+L 143.443641 77.539699 
+L 144.789804 73.468526 
+L 145.174422 72.779955 
+L 145.559041 72.525792 
+L 145.75135 72.592804 
+L 146.135968 73.164887 
+L 146.520586 74.367888 
+L 147.097513 77.412064 
+L 147.67444 81.900674 
+L 148.443676 89.767149 
+L 151.136002 119.543279 
+L 151.712929 122.8679 
+L 152.097547 123.973107 
+L 152.289856 124.167332 
+L 152.482165 124.11663 
+L 152.674474 123.819391 
+L 153.059092 122.490704 
+L 153.44371 120.215789 
+L 154.020637 115.195626 
+L 154.789873 106.140744 
+L 157.097582 76.244227 
+L 157.674509 71.4975 
+L 158.059127 69.486643 
+L 158.443745 68.502675 
+L 158.636054 68.412337 
+L 158.828363 68.593868 
+L 159.212981 69.770532 
+L 159.597599 72.00522 
+L 160.174526 77.193206 
+L 160.943762 86.959709 
+L 162.097616 105.268837 
+L 163.636088 129.543792 
+L 164.597633 141.244326 
+L 165.366869 147.944754 
+L 166.136105 152.491151 
+L 166.905342 155.540817 
+L 168.443814 160.967879 
+L 169.020741 164.000824 
+L 169.597668 168.033774 
+L 170.366904 175.135385 
+L 171.328449 186.441776 
+L 173.443848 212.715087 
+L 174.020775 217.607306 
+L 174.405393 219.805136 
+L 174.790011 221.011627 
+L 174.98232 221.214281 
+L 175.174629 221.13854 
+L 175.366938 220.778637 
+L 175.751556 219.194793 
+L 176.136174 216.463353 
+L 176.713101 210.309561 
+L 177.482337 198.756308 
+L 178.636192 176.690282 
+L 180.366973 143.263869 
+L 181.136209 132.075137 
+L 181.713136 126.050021 
+L 182.290063 122.230633 
+L 182.674681 120.894722 
+L 183.059299 120.463666 
+L 183.251608 120.560105 
+L 183.636226 121.306418 
+L 184.020844 122.679187 
+L 184.79008 126.693185 
+L 186.328552 135.253924 
+L 186.905479 137.165248 
+L 187.290097 137.77372 
+L 187.482406 137.859286 
+L 187.674715 137.795371 
+L 188.059333 137.220288 
+L 188.443952 136.070894 
+L 189.020879 133.393452 
+L 189.790115 128.524889 
+L 191.520896 116.998666 
+L 192.097823 114.498879 
+L 192.482441 113.489245 
+L 192.867059 113.062488 
+L 193.059368 113.073467 
+L 193.251677 113.233054 
+L 193.636295 113.982846 
+L 194.020913 115.261314 
+L 194.59784 117.984524 
+L 196.713239 129.312106 
+L 197.097857 130.228148 
+L 197.290166 130.421314 
+L 197.482475 130.417489 
+L 197.674784 130.203394 
+L 198.059402 129.100543 
+L 198.44402 127.045495 
+L 199.020947 122.117152 
+L 199.597875 115.031404 
+L 200.367111 102.664112 
+L 201.713274 76.180928 
+L 203.059437 50.529378 
+L 203.828673 39.410647 
+L 204.4056 33.656233 
+L 204.790218 31.209545 
+L 205.174836 29.914182 
+L 205.367145 29.696939 
+L 205.559454 29.761257 
+L 205.751763 30.100252 
+L 206.136381 31.564071 
+L 206.520999 33.992426 
+L 207.097926 39.166475 
+L 208.059471 50.584946 
+L 209.982562 74.751255 
+L 210.751798 82.09535 
+L 211.521034 87.477483 
+L 212.29027 91.155964 
+L 213.251815 94.423686 
+L 214.021051 97.144526 
+L 214.597978 99.903646 
+L 215.174905 103.674307 
+L 215.944141 110.669894 
+L 216.713377 120.038463 
+L 217.867231 137.652907 
+L 219.790321 167.935001 
+L 220.559557 176.569889 
+L 221.136485 180.676666 
+L 221.521103 182.121856 
+L 221.713412 182.439505 
+L 221.905721 182.484941 
+L 222.09803 182.25945 
+L 222.482648 181.012769 
+L 222.867266 178.757073 
+L 223.444193 173.695503 
+L 224.213429 164.550666 
+L 226.521137 134.75451 
+L 227.098064 130.038637 
+L 227.482682 127.994983 
+L 227.8673 126.909726 
+L 228.059609 126.73581 
+L 228.251918 126.807919 
+L 228.444227 127.123273 
+L 228.828845 128.461166 
+L 229.213463 130.682743 
+L 229.79039 135.448454 
+L 230.751935 146.058452 
+L 232.675026 168.130984 
+L 233.444262 174.107163 
+L 234.021189 176.902743 
+L 234.405807 177.944 
+L 234.790425 178.36658 
+L 234.982734 178.36563 
+L 235.367352 177.99295 
+L 235.75197 177.213229 
+L 236.521206 174.919925 
+L 237.482751 172.031488 
+L 238.059678 171.020707 
+L 238.444296 170.846106 
+L 238.828914 171.139553 
+L 239.213532 171.926522 
+L 239.790459 174.009191 
+L 240.559695 178.183326 
+L 242.482786 189.801922 
+L 242.867404 191.094472 
+L 243.252022 191.673625 
+L 243.444331 191.653042 
+L 243.63664 191.405779 
+L 244.021258 190.181721 
+L 244.405876 187.921979 
+L 244.982803 182.500774 
+L 245.55973 174.657784 
+L 246.328966 160.793812 
+L 247.48282 134.797493 
+L 247.867438 125.454281 
+L 247.867438 125.454281 
+" clip-path="url(#pb8f1fb1449)" style="fill: none; stroke: #22d3ee; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 5.76 230.790281 
+L 5.76 20.118281 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 5.76 230.790281 
+L 259.396364 230.790281 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="132.578182" y="14.118281" transform="rotate(-0 132.578182 14.118281)">Time domain: what a microphone sees</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_5">
+    <path d="M 310.123636 230.790281 
+L 563.76 230.790281 
+L 563.76 20.118281 
+L 310.123636 20.118281 
+L 310.123636 230.790281 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_6">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#mcc26f93cb3" x="310.123636" y="230.790281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="310.123636" y="246.907469" transform="rotate(-0 310.123636 246.907469)">0</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#mcc26f93cb3" x="349.144615" y="230.790281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="349.144615" y="246.907469" transform="rotate(-0 349.144615 246.907469)">200</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#mcc26f93cb3" x="388.165594" y="230.790281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="388.165594" y="246.907469" transform="rotate(-0 388.165594 246.907469)">400</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#mcc26f93cb3" x="427.186573" y="230.790281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="427.186573" y="246.907469" transform="rotate(-0 427.186573 246.907469)">600</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#mcc26f93cb3" x="466.207552" y="230.790281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="466.207552" y="246.907469" transform="rotate(-0 466.207552 246.907469)">800</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#mcc26f93cb3" x="505.228531" y="230.790281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="505.228531" y="246.907469" transform="rotate(-0 505.228531 246.907469)">1000</text>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#mcc26f93cb3" x="544.24951" y="230.790281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="544.24951" y="246.907469" transform="rotate(-0 544.24951 246.907469)">1200</text>
+     </g>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="436.941818" y="262.908406" transform="rotate(-0 436.941818 262.908406)">frequency (Hz)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4"/>
+   <g id="LineCollection_1">
+    <path d="M 349.144615 230.790281 
+L 349.144615 68.734897 
+" clip-path="url(#p945d21f629)" style="fill: none; stroke: #818cf8; stroke-width: 5"/>
+   </g>
+   <g id="LineCollection_2">
+    <path d="M 407.676084 230.790281 
+L 407.676084 133.55705 
+" clip-path="url(#p945d21f629)" style="fill: none; stroke: #c084fc; stroke-width: 5"/>
+   </g>
+   <g id="LineCollection_3">
+    <path d="M 505.228531 230.790281 
+L 505.228531 174.070897 
+" clip-path="url(#p945d21f629)" style="fill: none; stroke: #f472b6; stroke-width: 5"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 310.123636 230.790281 
+L 310.123636 20.118281 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 310.123636 230.790281 
+L 563.76 230.790281 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #818cf8" x="349.144615" y="60.632127" transform="rotate(-0 349.144615 60.632127)">200 Hz</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #c084fc" x="407.676084" y="125.454281" transform="rotate(-0 407.676084 125.454281)">500 Hz</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #f472b6" x="505.228531" y="165.968127" transform="rotate(-0 505.228531 165.968127)">1000 Hz</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="436.941818" y="14.118281" transform="rotate(-0 436.941818 14.118281)">Frequency domain: the same sound as 3 tones</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb8f1fb1449">
+   <rect x="5.76" y="20.118281" width="253.636364" height="210.672"/>
+  </clipPath>
+  <clipPath id="p945d21f629">
+   <rect x="310.123636" y="20.118281" width="253.636364" height="210.672"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">Any sound is a sum of sine waves. The spectrum shows which frequencies are present and how strong each is.</div></section></section>
+<section data-topic="Digital Audio and File Formats"><section><div class="sec"><div class="no">02</div><h2>Digital Audio and File Formats</h2><div class="lead">Unit 2 &middot; topic 2 of 6</div></div></section><section><h2><small>Digital Audio and File Formats</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>To digitise sound the computer measures the wave many times per second (sampling) and rounds each measurement to one of a fixed number of levels (quantization).</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>An audio CD takes 44,100 measurements every second and stores each one in 16 bits for each of two channels.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Sample at least twice the highest frequency (Nyquist). Size = rate × (bits/8) × channels × seconds.</p></div></div></section><section><h2><small>Digital Audio and File Formats</small>Analog to digital: sample, quantize, encode</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 569.52 250.854363" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T18:12:19.380880</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1337,12 +1954,12 @@ L 366.818824 245.094363
 <p>S = 44100 × (16/8) × 2 × 10 = <strong>1,764,000 bytes</strong>, which is about <strong>1722.7 KB</strong> or <strong>1.68 MB</strong>.</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-02/digital-audio/">Digital Audio and File Formats</a></aside></section><section class=""><h2><small>Digital Audio and File Formats</small>Checkpoint <span style="opacity:.55;font-size:.6em">(3/3)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Why are lossless formats used for archiving but lossy formats for streaming?</p><div class="fragment ans">
 <p>Lossless formats (FLAC, ALAC, APE) keep <strong>all</strong> the original quality while reducing size, so they suit archives. Lossy formats (MP3, AAC, OGG, WMA) give <strong>much smaller files</strong> with some quality loss, which suits streaming and portable devices.</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-02/digital-audio/">Digital Audio and File Formats</a></aside></section><section><h2><small>Digital Audio and File Formats</small>Nyquist: sampling too slowly creates aliases</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 569.52 211.104" xmlns="http://www.w3.org/2000/svg" version="1.1">
+</div></div><aside class="notes">Source note: <a href="../../unit-02/digital-audio/">Digital Audio and File Formats</a></aside></section><section><h2><small>Digital Audio and File Formats</small>Key terms</h2><div class="terms"><div class="card term"><b>Sampling rate</b><span>Number of samples per second, in Hz.</span></div><div class="card term"><b>Bit depth</b><span>Bits per sample; 16 bits gives 65,536 levels.</span></div><div class="card term"><b>Quantization</b><span>Rounding a sample to the nearest allowed level.</span></div><div class="card term"><b>PCM</b><span>Pulse Code Modulation: samples written as binary codes.</span></div><div class="card term"><b>Nyquist theorem</b><span>fs must be at least 2 × fmax to avoid aliasing.</span></div><div class="card term"><b>Channel</b><span>Mono = 1 channel, stereo = 2.</span></div></div></section><section><h2><small>Digital Audio and File Formats</small>Nyquist: sampling too slowly creates aliases</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 569.52 211.104" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.275553</dc:date>
+    <dc:date>2026-11-11T18:12:19.409607</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1936,7 +2553,7 @@ L 368.762109 46.705
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.308563</dc:date>
+    <dc:date>2026-11-11T18:12:19.444342</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -2213,7 +2830,7 @@ L 613.479687 224.372187
  </defs>
 </svg>
 </div><div class="cap">S = R × (b/8) × C × D, evaluated for D = 60 s.</div></section></section>
-<section data-topic="MIDI"><section><div class="sec"><div class="no">03</div><h2>MIDI</h2><div class="lead">Unit 2 &middot; topic 3 of 6</div></div></section><section class=""><h2><small>MIDI</small>Why MIDI exists <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><ul><li class="fragment fade-up">A <strong>sound signal</strong> can be stored as a <strong>digitised sequence of samples</strong>.</li><li class="fragment fade-up">But <strong>music</strong> can also be described in a <strong>symbolic way</strong>, the way a printed score lists notes.</li><li class="fragment fade-up">Computers and electronic musical instruments use a similar technique, and most of them use <strong>MIDI (Musical Instrument Digital Interface)</strong>, a standard developed in the <strong>early 1980s</strong>.</li></ul><aside class="notes">Source note: <a href="../../unit-02/midi/">MIDI</a></aside></section><section class="xdense"><h2><small>MIDI</small>Why MIDI exists <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><ul>
+<section data-topic="MIDI"><section><div class="sec"><div class="no">03</div><h2>MIDI</h2><div class="lead">Unit 2 &middot; topic 3 of 6</div></div></section><section><h2><small>MIDI</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>MIDI is sheet music for machines: it sends which note to play, how hard and on which instrument, not the sound itself.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A MIDI keyboard connected to a laptop: the keys send small messages and the laptop's software instruments make the sound.</p></div><div class="card c3"><div class="ct">Remember it</div><p>MIDI files are tiny and easy to edit, but they need a synthesizer to be heard. Note On = status byte + key number + velocity.</p></div></div></section><section class=""><h2><small>MIDI</small>Why MIDI exists <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><ul><li class="fragment fade-up">A <strong>sound signal</strong> can be stored as a <strong>digitised sequence of samples</strong>.</li><li class="fragment fade-up">But <strong>music</strong> can also be described in a <strong>symbolic way</strong>, the way a printed score lists notes.</li><li class="fragment fade-up">Computers and electronic musical instruments use a similar technique, and most of them use <strong>MIDI (Musical Instrument Digital Interface)</strong>, a standard developed in the <strong>early 1980s</strong>.</li></ul><aside class="notes">Source note: <a href="../../unit-02/midi/">MIDI</a></aside></section><section class="xdense"><h2><small>MIDI</small>Why MIDI exists <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><ul>
 <li class="fragment fade-up">The MIDI standard defines how to <strong>code all the elements of a musical score</strong>: sequences of notes, timing conditions, and the instrument that plays each note.</li>
 <li class="fragment fade-up">It is a set of <strong>specifications for instrument development</strong>, so instruments from <strong>different manufacturers</strong> can easily exchange musical information.</li>
 <li class="fragment fade-up">Each word describing an action in a musical performance is assigned a <strong>specific binary code</strong>.</li>
@@ -2367,12 +2984,12 @@ L 613.479687 224.372187
 <p><strong>16 channels</strong> and <strong>128 instruments</strong> (identified by number, including noise effects).</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-02/midi/">MIDI</a></aside></section><section class=""><h2><small>MIDI</small>Checkpoint <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Why does SMPTE not run over an ordinary MIDI connection?</p><div class="fragment ans">
 <p>Because SMPTE carries <strong>detailed timing information for every frame</strong>, which needs <strong>more bandwidth than a MIDI connection can support</strong>.</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-02/midi/">MIDI</a></aside></section><section><h2><small>MIDI</small>Anatomy of a MIDI message</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 731.52 263.52" xmlns="http://www.w3.org/2000/svg" version="1.1">
+</div></div><aside class="notes">Source note: <a href="../../unit-02/midi/">MIDI</a></aside></section><section><h2><small>MIDI</small>Key terms</h2><div class="terms"><div class="card term"><b>MIDI</b><span>Musical Instrument Digital Interface: hardware and message standard (early 1980s).</span></div><div class="card term"><b>Channel</b><span>One of 16 logical channels, each usually carries one instrument.</span></div><div class="card term"><b>Note On / Note Off</b><span>Messages that start and stop a note.</span></div><div class="card term"><b>Velocity</b><span>How hard a key is struck (0 to 127).</span></div><div class="card term"><b>Synthesizer</b><span>Device or software that makes sound from MIDI messages.</span></div><div class="card term"><b>Sequencer</b><span>Records, edits and plays back MIDI data.</span></div></div></section><section><h2><small>MIDI</small>Anatomy of a MIDI message</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 731.52 263.52" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.337978</dc:date>
+    <dc:date>2026-11-11T18:12:19.474553</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -2477,7 +3094,7 @@ z
  </defs>
 </svg>
 </div><div class="cap">MIDI sends instructions (which note, how loud), not audio samples, so files are tiny.</div></section></section>
-<section data-topic="Speech Generation"><section><div class="sec"><div class="no">04</div><h2>Speech Generation</h2><div class="lead">Unit 2 &middot; topic 4 of 6</div></div></section><section class=""><h2><small>Speech Generation</small>About speech</h2><p><strong>Speech</strong> is the vocalised form of human communication. It can be <strong>perceived, understood and generated</strong> by humans and also by machines.</p><ul>
+<section data-topic="Speech Generation"><section><div class="sec"><div class="no">04</div><h2>Speech Generation</h2><div class="lead">Unit 2 &middot; topic 4 of 6</div></div></section><section><h2><small>Speech Generation</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Computers create speech by joining small recorded pieces (phones, diphones, syllables) or by computing the sounds with a model of the vocal tract.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A navigation app speaking street names, or a screen reader reading a web page aloud.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Two steps of synthesis: text is transcribed into a sound script, then the sounds are synthesised into speech.</p></div></div></section><section class=""><h2><small>Speech Generation</small>About speech</h2><p><strong>Speech</strong> is the vocalised form of human communication. It can be <strong>perceived, understood and generated</strong> by humans and also by machines.</p><ul>
 <li class="fragment fade-up">A human adjusts very efficiently to different speakers and their speech habits.</li>
 <li class="fragment fade-up">The brain can recognise the very fine line between <strong>speech and noise</strong>.</li>
 <li class="fragment fade-up">The human speech signal contains a subjective lowest spectral component called the <strong>pitch</strong>, which is <strong>not proportional to frequency</strong>.</li>
@@ -2567,8 +3184,1950 @@ z
 <p><strong>Formants are frequency maxima in the spectrum of the speech signal.</strong> <strong>Frequency-dependent sound concatenation (formant synthesis)</strong> uses mathematical models of the vocal tract to control them.</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-02/speech-generation/">Speech Generation</a></aside></section><section class=""><h2><small>Speech Generation</small>Checkpoint <span style="opacity:.55;font-size:.6em">(3/3)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Describe the two steps of speech synthesis.</p><div class="fragment ans">
 <p><strong>Transcription:</strong> text is converted to a sound script using a dictionary. <strong>Synthesis:</strong> the sound script is converted to a speech signal, using time-dependent or frequency-dependent concatenation.</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-02/speech-generation/">Speech Generation</a></aside></section></section>
-<section data-topic="Speech Analysis"><section><div class="sec"><div class="no">05</div><h2>Speech Analysis</h2><div class="lead">Unit 2 &middot; topic 5 of 6</div></div></section><section class="dense"><h2><small>Speech Analysis</small>Speech Analysis</h2><p><strong>Speech analysis</strong> (speech input) asks three questions about a spoken signal. It is often drawn as a tree: <em>Speech analysis</em> splits into <strong>Who?</strong> (<em>verification</em> and <em>identification</em>), <strong>What?</strong> (<em>recognition</em> and <em>understanding</em>) and <strong>How?</strong>.</p><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mmc1c0381edacc" role="graphics-document document" viewbox="0 0 849.6171875 287" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mmc1c0381edacc{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmc1c0381edacc .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmc1c0381edacc .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmc1c0381edacc .error-icon{fill:#1c2150;}#mmc1c0381edacc .error-text{fill:#e3deaf;stroke:#e3deaf;}#mmc1c0381edacc .edge-thickness-normal{stroke-width:1px;}#mmc1c0381edacc .edge-thickness-thick{stroke-width:3.5px;}#mmc1c0381edacc .edge-pattern-solid{stroke-dasharray:0;}#mmc1c0381edacc .edge-thickness-invisible{stroke-width:0;fill:none;}#mmc1c0381edacc .edge-pattern-dashed{stroke-dasharray:3;}#mmc1c0381edacc .edge-pattern-dotted{stroke-dasharray:2;}#mmc1c0381edacc .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mmc1c0381edacc .marker.cross{stroke:#a5b4fc;}#mmc1c0381edacc svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mmc1c0381edacc p{margin:0;}#mmc1c0381edacc .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mmc1c0381edacc .cluster-label text{fill:#e3deaf;}#mmc1c0381edacc .cluster-label span{color:#e3deaf;}#mmc1c0381edacc .cluster-label span p{background-color:transparent;}#mmc1c0381edacc .label text,#mmc1c0381edacc span{fill:#f4f4ff;color:#f4f4ff;}#mmc1c0381edacc .node rect,#mmc1c0381edacc .node circle,#mmc1c0381edacc .node ellipse,#mmc1c0381edacc .node polygon,#mmc1c0381edacc .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mmc1c0381edacc .rough-node .label text,#mmc1c0381edacc .node .label text,#mmc1c0381edacc .image-shape .label,#mmc1c0381edacc .icon-shape .label{text-anchor:middle;}#mmc1c0381edacc .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmc1c0381edacc .rough-node .label,#mmc1c0381edacc .node .label,#mmc1c0381edacc .image-shape .label,#mmc1c0381edacc .icon-shape .label{text-align:center;}#mmc1c0381edacc .node.clickable{cursor:pointer;}#mmc1c0381edacc .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mmc1c0381edacc .arrowheadPath{fill:#0b0b0b;}#mmc1c0381edacc .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mmc1c0381edacc .flowchart-link{stroke:#a5b4fc;fill:none;}#mmc1c0381edacc .edgeLabel{background-color:#12152b;text-align:center;}#mmc1c0381edacc .edgeLabel p{background-color:#12152b;}#mmc1c0381edacc .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmc1c0381edacc .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mmc1c0381edacc .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mmc1c0381edacc .cluster text{fill:#e3deaf;}#mmc1c0381edacc .cluster span{color:#e3deaf;}#mmc1c0381edacc div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mmc1c0381edacc .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mmc1c0381edacc rect.text{fill:none;stroke-width:0;}#mmc1c0381edacc .icon-shape,#mmc1c0381edacc .image-shape{background-color:#12152b;text-align:center;}#mmc1c0381edacc .icon-shape p,#mmc1c0381edacc .image-shape p{background-color:#12152b;padding:2px;}#mmc1c0381edacc .icon-shape .label rect,#mmc1c0381edacc .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmc1c0381edacc .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmc1c0381edacc .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmc1c0381edacc .node .neo-node{stroke:#818cf8;}#mmc1c0381edacc [data-look="neo"].node rect,#mmc1c0381edacc [data-look="neo"].cluster rect,#mmc1c0381edacc [data-look="neo"].node polygon{stroke:url(#mmc1c0381edacc-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc1c0381edacc [data-look="neo"].swimlane.cluster rect{filter:none;}#mmc1c0381edacc [data-look="neo"].node path{stroke:url(#mmc1c0381edacc-gradient);stroke-width:1px;}#mmc1c0381edacc [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc1c0381edacc [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mmc1c0381edacc [data-look="neo"].node circle{stroke:url(#mmc1c0381edacc-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc1c0381edacc [data-look="neo"].node circle .state-start{fill:#000000;}#mmc1c0381edacc [data-look="neo"].icon-shape .icon{fill:url(#mmc1c0381edacc-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc1c0381edacc [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mmc1c0381edacc-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc1c0381edacc :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mmc1c0381edacc_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmc1c0381edacc_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmc1c0381edacc_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mmc1c0381edacc_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M527.883,48.727L472.092,55.606C416.302,62.485,304.721,76.242,248.931,86.621C193.141,97,193.141,104,193.141,107.5L193.141,111" data-edge="true" data-et="edge" data-id="L_SA_W_0" data-look="classic" data-points="W3sieCI6NTI3Ljg4MjgxMjUsInkiOjQ4LjcyNjc4MjQ5OTA5OTc1fSx7IngiOjE5My4xNDA2MjUsInkiOjkwfSx7IngiOjE5My4xNDA2MjUsInkiOjExNX1d" id="mmc1c0381edacc-L_SA_W_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M627.047,65L627.047,69.167C627.047,73.333,627.047,81.667,627.047,89.333C627.047,97,627.047,104,627.047,107.5L627.047,111" data-edge="true" data-et="edge" data-id="L_SA_WH_0" data-look="classic" data-points="W3sieCI6NjI3LjA0Njg3NSwieSI6NjV9LHsieCI6NjI3LjA0Njg3NSwieSI6OTB9LHsieCI6NjI3LjA0Njg3NSwieSI6MTE1fV0=" id="mmc1c0381edacc-L_SA_WH_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M712.643,65L725.157,69.167C737.671,73.333,762.699,81.667,775.213,89.333C787.727,97,787.727,104,787.727,107.5L787.727,111" data-edge="true" data-et="edge" data-id="L_SA_H_0" data-look="classic" data-points="W3sieCI6NzEyLjY0MjU5NjM3ODUwNDcsInkiOjY1fSx7IngiOjc4Ny43MjY1NjI1LCJ5Ijo5MH0seyJ4Ijo3ODcuNzI2NTYyNSwieSI6MTE1fV0=" id="mmc1c0381edacc-L_SA_H_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138.953,170.645L130.185,175.038C121.417,179.43,103.88,188.215,95.112,196.108C86.344,204,86.344,211,86.344,214.5L86.344,218" data-edge="true" data-et="edge" data-id="L_W_V_0" data-look="classic" data-points="W3sieCI6MTM4Ljk1MzEyNSwieSI6MTcwLjY0NTI4MTYzODYyNDc0fSx7IngiOjg2LjM0Mzc1LCJ5IjoxOTd9LHsieCI6ODYuMzQzNzUsInkiOjIyMn1d" id="mmc1c0381edacc-L_W_V_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M247.328,170.645L256.096,175.038C264.865,179.43,282.401,188.215,291.169,196.108C299.938,204,299.938,211,299.938,214.5L299.938,218" data-edge="true" data-et="edge" data-id="L_W_I_0" data-look="classic" data-points="W3sieCI6MjQ3LjMyODEyNSwieSI6MTcwLjY0NTI4MTYzODYyNDc0fSx7IngiOjI5OS45Mzc1LCJ5IjoxOTd9LHsieCI6Mjk5LjkzNzUsInkiOjIyMn1d" id="mmc1c0381edacc-L_W_I_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M570.258,170.735L561.13,175.113C552.003,179.49,533.747,188.245,524.62,196.123C515.492,204,515.492,211,515.492,214.5L515.492,218" data-edge="true" data-et="edge" data-id="L_WH_R_0" data-look="classic" data-points="W3sieCI6NTcwLjI1NzgxMjUsInkiOjE3MC43MzUyMDU1NDY2MDY5fSx7IngiOjUxNS40OTIxODc1LCJ5IjoxOTd9LHsieCI6NTE1LjQ5MjE4NzUsInkiOjIyMn1d" id="mmc1c0381edacc-L_WH_R_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M683.836,170.735L692.964,175.113C702.091,179.49,720.346,188.245,729.474,196.123C738.602,204,738.602,211,738.602,214.5L738.602,218" data-edge="true" data-et="edge" data-id="L_WH_U_0" data-look="classic" data-points="W3sieCI6NjgzLjgzNTkzNzUsInkiOjE3MC43MzUyMDU1NDY2MDY5fSx7IngiOjczOC42MDE1NjI1LCJ5IjoxOTd9LHsieCI6NzM4LjYwMTU2MjUsInkiOjIyMn1d" id="mmc1c0381edacc-L_WH_U_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_SA_W_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_SA_WH_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_SA_H_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_W_V_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_W_I_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_WH_R_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_WH_U_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-SA-0" transform="translate(627.046875, 36.5)"><rect class="basic label-container" height="57" style="" width="198.328125" x="-99.1640625" y="-28.5"></rect><g class="label" style="" transform="translate(-69.1640625, -13.5)"><rect></rect><foreignobject height="27" width="138.328125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Speech analysis</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-W-1" transform="translate(193.140625, 143.5)"><rect class="basic label-container" height="57" style="" width="108.375" x="-54.1875" y="-28.5"></rect><g class="label" style="" transform="translate(-24.1875, -13.5)"><rect></rect><foreignobject height="27" width="48.375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Who?</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-WH-3" transform="translate(627.046875, 143.5)"><rect class="basic label-container" height="57" style="" width="113.578125" x="-56.7890625" y="-28.5"></rect><g class="label" style="" transform="translate(-26.7890625, -13.5)"><rect></rect><foreignobject height="27" width="53.578125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>What?</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-H-5" transform="translate(787.7265625, 143.5)"><rect class="basic label-container" height="57" style="" width="107.78125" x="-53.890625" y="-28.5"></rect><g class="label" style="" transform="translate(-23.890625, -13.5)"><rect></rect><foreignobject height="27" width="47.78125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>How?</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-V-7" transform="translate(86.34375, 250.5)"><rect class="basic label-container" height="57" style="" width="156.6875" x="-78.34375" y="-28.5"></rect><g class="label" style="" transform="translate(-48.34375, -13.5)"><rect></rect><foreignobject height="27" width="96.6875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Verification</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-I-9" transform="translate(299.9375, 250.5)"><rect class="basic label-container" height="57" style="" width="170.5" x="-85.25" y="-28.5"></rect><g class="label" style="" transform="translate(-55.25, -13.5)"><rect></rect><foreignobject height="27" width="110.5"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Identification</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-R-11" transform="translate(515.4921875, 250.5)"><rect class="basic label-container" height="57" style="" width="160.609375" x="-80.3046875" y="-28.5"></rect><g class="label" style="" transform="translate(-50.3046875, -13.5)"><rect></rect><foreignobject height="27" width="100.609375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Recognition</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-U-13" transform="translate(738.6015625, 250.5)"><rect class="basic label-container" height="57" style="" width="185.609375" x="-92.8046875" y="-28.5"></rect><g class="label" style="" transform="translate(-62.8046875, -13.5)"><rect></rect><foreignobject height="27" width="125.609375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Understanding</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mmc1c0381edacc-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mmc1c0381edacc-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mmc1c0381edacc-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-02/speech-analysis/">Speech Analysis</a></aside></section><section class=""><h2><small>Speech Analysis</small>Who is speaking?</h2><p>Human speech has characteristics that are <strong>determined by the speaker</strong>. Speech analysis can therefore recognise a speaker for <strong>identification and verification</strong>.</p><ul>
+</div></div><aside class="notes">Source note: <a href="../../unit-02/speech-generation/">Speech Generation</a></aside></section><section><h2><small>Speech Generation</small>Key terms</h2><div class="terms"><div class="card term"><b>Phone</b><span>Smallest unit of sound in speech.</span></div><div class="card term"><b>Morph</b><span>Smallest unit of meaning.</span></div><div class="card term"><b>Diphone</b><span>Two neighbouring phones, which captures the transition between them.</span></div><div class="card term"><b>Syllable</b><span>A unit built from phones, used to make joins easier.</span></div><div class="card term"><b>Formant</b><span>A frequency band where the vocal tract strengthens sound; shapes vowels.</span></div><div class="card term"><b>Concatenation</b><span>Joining stored speech units.</span></div></div></section><section><h2><small>Speech Generation</small>Formants: the peaks that make a vowel</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 513.72 260.463219" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T18:12:20.908840</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 260.463219 
+L 513.72 260.463219 
+L 513.72 0 
+L 0 0 
+L 0 260.463219 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 5.76 219.702281 
+L 507.96 219.702281 
+L 507.96 20.118281 
+L 5.76 20.118281 
+L 5.76 219.702281 
+z
+" style="fill: none"/>
+   </g>
+   <g id="FillBetweenPolyCollection_1">
+    <defs>
+     <path id="md9d70473b4" d="M 28.587273 -49.832937 
+L 28.587273 -58.473457 
+L 29.158669 -58.473457 
+L 29.730065 -58.473457 
+L 30.301461 -58.473457 
+L 30.872857 -58.473457 
+L 31.444253 -58.473457 
+L 32.015649 -58.473457 
+L 32.587045 -58.473457 
+L 33.158441 -58.473457 
+L 33.729837 -58.473457 
+L 34.301233 -58.473457 
+L 34.872629 -58.473457 
+L 35.444025 -58.473457 
+L 36.015422 -58.473457 
+L 36.586818 -58.473457 
+L 37.158214 -58.473457 
+L 37.72961 -58.473457 
+L 38.301006 -58.473457 
+L 38.872402 -58.473457 
+L 39.443798 -58.473457 
+L 40.015194 -58.473457 
+L 40.58659 -58.473457 
+L 41.157986 -58.473457 
+L 41.729382 -58.473457 
+L 42.300778 -58.473457 
+L 42.872174 -58.473457 
+L 43.44357 -58.473457 
+L 44.014966 -58.473457 
+L 44.586362 -58.473457 
+L 45.157759 -58.473457 
+L 45.729155 -58.473457 
+L 46.300551 -58.473457 
+L 46.871947 -58.473457 
+L 47.443343 -58.473457 
+L 48.014739 -58.473457 
+L 48.586135 -58.473457 
+L 49.157531 -58.473457 
+L 49.728927 -58.473457 
+L 50.300323 -58.473457 
+L 50.871719 -58.473457 
+L 51.443115 -58.473457 
+L 52.014511 -58.473457 
+L 52.585907 -58.473457 
+L 53.157303 -58.473458 
+L 53.7287 -58.473458 
+L 54.300096 -58.473458 
+L 54.871492 -58.473459 
+L 55.442888 -58.47346 
+L 56.014284 -58.473461 
+L 56.58568 -58.473463 
+L 57.157076 -58.473466 
+L 57.728472 -58.473471 
+L 58.299868 -58.473477 
+L 58.871264 -58.473485 
+L 59.44266 -58.473498 
+L 60.014056 -58.473515 
+L 60.585452 -58.473539 
+L 61.156848 -58.473573 
+L 61.728244 -58.473621 
+L 62.29964 -58.473687 
+L 62.871037 -58.473777 
+L 63.442433 -58.473902 
+L 64.013829 -58.474072 
+L 64.585225 -58.474305 
+L 65.156621 -58.47462 
+L 65.728017 -58.475046 
+L 66.299413 -58.475619 
+L 66.870809 -58.476387 
+L 67.442205 -58.47741 
+L 68.013601 -58.478769 
+L 68.584997 -58.480565 
+L 69.156393 -58.48293 
+L 69.727789 -58.48603 
+L 70.299185 -58.490074 
+L 70.870581 -58.495329 
+L 71.441977 -58.502126 
+L 72.013374 -58.51088 
+L 72.58477 -58.522105 
+L 73.156166 -58.536435 
+L 73.727562 -58.55465 
+L 74.298958 -58.577701 
+L 74.870354 -58.606743 
+L 75.44175 -58.64317 
+L 76.013146 -58.688661 
+L 76.584542 -58.745216 
+L 77.155938 -58.815216 
+L 77.727334 -58.901469 
+L 78.29873 -59.007274 
+L 78.870126 -59.136483 
+L 79.441522 -59.293562 
+L 80.012918 -59.483661 
+L 80.584314 -59.712681 
+L 81.155711 -59.987336 
+L 81.727107 -60.31522 
+L 82.298503 -60.704855 
+L 82.869899 -61.165743 
+L 83.441295 -61.708398 
+L 84.012691 -62.34436 
+L 84.584087 -63.0862 
+L 85.155483 -63.947486 
+L 85.726879 -64.942735 
+L 86.298275 -66.087326 
+L 86.869671 -67.397382 
+L 87.441067 -68.88961 
+L 88.012463 -70.581102 
+L 88.583859 -72.489095 
+L 89.155255 -74.63069 
+L 89.726651 -77.022522 
+L 90.298048 -79.680393 
+L 90.869444 -82.618876 
+L 91.44084 -85.850873 
+L 92.012236 -89.387163 
+L 92.583632 -93.235924 
+L 93.155028 -97.402256 
+L 93.726424 -101.887709 
+L 94.29782 -106.68983 
+L 94.869216 -111.801746 
+L 95.440612 -117.211796 
+L 96.012008 -122.903226 
+L 96.583404 -128.853963 
+L 97.1548 -135.036485 
+L 97.726196 -141.417788 
+L 98.297592 -147.959483 
+L 98.868989 -154.617999 
+L 99.440385 -161.344927 
+L 100.011781 -168.08749 
+L 100.583177 -174.789138 
+L 101.154573 -181.390267 
+L 101.725969 -187.829044 
+L 102.297365 -194.042336 
+L 102.868761 -199.966705 
+L 103.440157 -205.539473 
+L 104.011553 -210.699809 
+L 104.582949 -215.389828 
+L 105.154345 -219.555663 
+L 105.725741 -223.1485 
+L 106.297137 -226.125521 
+L 106.868533 -228.450758 
+L 107.439929 -230.095811 
+L 108.011326 -231.040433 
+L 108.582722 -231.272938 
+L 109.154118 -230.790442 
+L 109.725514 -229.598929 
+L 110.29691 -227.71312 
+L 110.868306 -225.156177 
+L 111.439702 -221.959222 
+L 112.011098 -218.160717 
+L 112.582494 -213.805684 
+L 113.15389 -208.944828 
+L 113.725286 -203.633549 
+L 114.296682 -197.930897 
+L 114.868078 -191.898489 
+L 115.439474 -185.59941 
+L 116.01087 -179.097129 
+L 116.582266 -172.454461 
+L 117.153663 -165.732592 
+L 117.725059 -158.990188 
+L 118.296455 -152.282603 
+L 118.867851 -145.66121 
+L 119.439247 -139.172846 
+L 120.010643 -132.859395 
+L 120.582039 -126.757492 
+L 121.153435 -120.898362 
+L 121.724831 -115.307781 
+L 122.296227 -110.006138 
+L 122.867623 -105.008617 
+L 123.439019 -100.325452 
+L 124.010415 -95.962269 
+L 124.581811 -91.920477 
+L 125.153207 -88.197712 
+L 125.724603 -84.788311 
+L 126.296 -81.683797 
+L 126.867396 -78.873375 
+L 127.438792 -76.344411 
+L 128.010188 -74.082907 
+L 128.581584 -72.073938 
+L 129.15298 -70.302062 
+L 129.724376 -68.751695 
+L 130.295772 -67.407442 
+L 130.867168 -66.254389 
+L 131.438564 -65.278353 
+L 132.00996 -64.466087 
+L 132.581356 -63.805449 
+L 133.152752 -63.285532 
+L 133.724148 -62.896759 
+L 134.295544 -62.630942 
+L 134.86694 -62.481323 
+L 135.438337 -62.442574 
+L 136.009733 -62.51079 
+L 136.581129 -62.683451 
+L 137.152525 -62.959372 
+L 137.723921 -63.338633 
+L 138.295317 -63.822507 
+L 138.866713 -64.413358 
+L 139.438109 -65.114547 
+L 140.009505 -65.930312 
+L 140.580901 -66.865653 
+L 141.152297 -67.926195 
+L 141.723693 -69.118052 
+L 142.295089 -70.447675 
+L 142.866485 -71.921703 
+L 143.437881 -73.546792 
+L 144.009278 -75.329449 
+L 144.580674 -77.275854 
+L 145.15207 -79.391681 
+L 145.723466 -81.681911 
+L 146.294862 -84.150647 
+L 146.866258 -86.800927 
+L 147.437654 -89.634544 
+L 148.00905 -92.651867 
+L 148.580446 -95.851674 
+L 149.151842 -99.230993 
+L 149.723238 -102.784967 
+L 150.294634 -106.506727 
+L 150.86603 -110.387295 
+L 151.437426 -114.415511 
+L 152.008822 -118.577988 
+L 152.580218 -122.859098 
+L 153.151615 -127.240998 
+L 153.723011 -131.703683 
+L 154.294407 -136.225087 
+L 154.865803 -140.781212 
+L 155.437199 -145.346307 
+L 156.008595 -149.89307 
+L 156.579991 -154.392901 
+L 157.151387 -158.816176 
+L 157.722783 -163.132558 
+L 158.294179 -167.311329 
+L 158.865575 -171.321749 
+L 159.436971 -175.13342 
+L 160.008367 -178.716671 
+L 160.579763 -182.042934 
+L 161.151159 -185.085124 
+L 161.722555 -187.818008 
+L 162.293952 -190.218547 
+L 162.865348 -192.266221 
+L 163.436744 -193.943322 
+L 164.00814 -195.23521 
+L 164.579536 -196.130523 
+L 165.150932 -196.621343 
+L 165.722328 -196.703316 
+L 166.293724 -196.375714 
+L 166.86512 -195.641446 
+L 167.436516 -194.507014 
+L 168.007912 -192.98242 
+L 168.579308 -191.081016 
+L 169.150704 -188.819312 
+L 169.7221 -186.216734 
+L 170.293496 -183.295352 
+L 170.864892 -180.079561 
+L 171.436289 -176.595749 
+L 172.007685 -172.871934 
+L 172.579081 -168.937392 
+L 173.150477 -164.822273 
+L 173.721873 -160.557226 
+L 174.293269 -156.17302 
+L 174.864665 -151.700183 
+L 175.436061 -147.16866 
+L 176.007457 -142.607492 
+L 176.578853 -138.044525 
+L 177.150249 -133.506152 
+L 177.721645 -129.017085 
+L 178.293041 -124.600169 
+L 178.864437 -120.276228 
+L 179.435833 -116.063957 
+L 180.007229 -111.979846 
+L 180.578626 -108.038139 
+L 181.150022 -104.250833 
+L 181.721418 -100.627705 
+L 182.292814 -97.176373 
+L 182.86421 -93.902377 
+L 183.435606 -90.809288 
+L 184.007002 -87.898833 
+L 184.578398 -85.171038 
+L 185.149794 -82.624377 
+L 185.72119 -80.255938 
+L 186.292586 -78.061583 
+L 186.863982 -76.036118 
+L 187.435378 -74.173457 
+L 188.006774 -72.46678 
+L 188.57817 -70.908691 
+L 189.149567 -69.49136 
+L 189.720963 -68.20666 
+L 190.292359 -67.046294 
+L 190.863755 -66.001901 
+L 191.435151 -65.065161 
+L 192.006547 -64.227885 
+L 192.577943 -63.482081 
+L 193.149339 -62.820027 
+L 193.720735 -62.234313 
+L 194.292131 -61.717889 
+L 194.863527 -61.264089 
+L 195.434923 -60.866653 
+L 196.006319 -60.519741 
+L 196.577715 -60.217935 
+L 197.149111 -59.956237 
+L 197.720507 -59.730066 
+L 198.291904 -59.535239 
+L 198.8633 -59.367961 
+L 199.434696 -59.224805 
+L 200.006092 -59.102691 
+L 200.577488 -58.998863 
+L 201.148884 -58.910868 
+L 201.72028 -58.836532 
+L 202.291676 -58.773936 
+L 202.863072 -58.721396 
+L 203.434468 -58.677436 
+L 204.005864 -58.640774 
+L 204.57726 -58.610295 
+L 205.148656 -58.585036 
+L 205.720052 -58.564171 
+L 206.291448 -58.546989 
+L 206.862844 -58.532885 
+L 207.434241 -58.521344 
+L 208.005637 -58.511929 
+L 208.577033 -58.504275 
+L 209.148429 -58.49807 
+L 209.719825 -58.493056 
+L 210.291221 -58.489017 
+L 210.862617 -58.485774 
+L 211.434013 -58.483178 
+L 212.005409 -58.481107 
+L 212.576805 -58.479459 
+L 213.148201 -58.478152 
+L 213.719597 -58.477119 
+L 214.290993 -58.476304 
+L 214.862389 -58.475665 
+L 215.433785 -58.475163 
+L 216.005181 -58.474772 
+L 216.576578 -58.474468 
+L 217.147974 -58.474231 
+L 217.71937 -58.474048 
+L 218.290766 -58.473907 
+L 218.862162 -58.473799 
+L 219.433558 -58.473716 
+L 220.004954 -58.473652 
+L 220.57635 -58.473604 
+L 221.147746 -58.473567 
+L 221.719142 -58.47354 
+L 222.290538 -58.473519 
+L 222.861934 -58.473503 
+L 223.43333 -58.473491 
+L 224.004726 -58.473482 
+L 224.576122 -58.473476 
+L 225.147518 -58.473471 
+L 225.718915 -58.473467 
+L 226.290311 -58.473465 
+L 226.861707 -58.473463 
+L 227.433103 -58.473462 
+L 228.004499 -58.473461 
+L 228.575895 -58.47346 
+L 229.147291 -58.47346 
+L 229.718687 -58.47346 
+L 230.290083 -58.47346 
+L 230.861479 -58.473461 
+L 231.432875 -58.473461 
+L 232.004271 -58.473462 
+L 232.575667 -58.473463 
+L 233.147063 -58.473464 
+L 233.718459 -58.473466 
+L 234.289856 -58.473468 
+L 234.861252 -58.47347 
+L 235.432648 -58.473473 
+L 236.004044 -58.473476 
+L 236.57544 -58.47348 
+L 237.146836 -58.473485 
+L 237.718232 -58.473491 
+L 238.289628 -58.473499 
+L 238.861024 -58.473507 
+L 239.43242 -58.473518 
+L 240.003816 -58.47353 
+L 240.575212 -58.473546 
+L 241.146608 -58.473564 
+L 241.718004 -58.473585 
+L 242.2894 -58.473611 
+L 242.860796 -58.473642 
+L 243.432193 -58.473678 
+L 244.003589 -58.473721 
+L 244.574985 -58.473773 
+L 245.146381 -58.473834 
+L 245.717777 -58.473906 
+L 246.289173 -58.473992 
+L 246.860569 -58.474092 
+L 247.431965 -58.474211 
+L 248.003361 -58.474351 
+L 248.574757 -58.474516 
+L 249.146153 -58.474709 
+L 249.717549 -58.474936 
+L 250.288945 -58.475202 
+L 250.860341 -58.475513 
+L 251.431737 -58.475876 
+L 252.003133 -58.4763 
+L 252.57453 -58.476794 
+L 253.145926 -58.477369 
+L 253.717322 -58.478037 
+L 254.288718 -58.478813 
+L 254.860114 -58.479712 
+L 255.43151 -58.480754 
+L 256.002906 -58.481957 
+L 256.574302 -58.483347 
+L 257.145698 -58.48495 
+L 257.717094 -58.486796 
+L 258.28849 -58.488918 
+L 258.859886 -58.491357 
+L 259.431282 -58.494153 
+L 260.002678 -58.497357 
+L 260.574074 -58.501022 
+L 261.14547 -58.505209 
+L 261.716867 -58.509987 
+L 262.288263 -58.51543 
+L 262.859659 -58.521625 
+L 263.431055 -58.528664 
+L 264.002451 -58.536653 
+L 264.573847 -58.545708 
+L 265.145243 -58.555956 
+L 265.716639 -58.56754 
+L 266.288035 -58.580616 
+L 266.859431 -58.595357 
+L 267.430827 -58.611952 
+L 268.002223 -58.630609 
+L 268.573619 -58.651556 
+L 269.145015 -58.675042 
+L 269.716411 -58.701339 
+L 270.287807 -58.730744 
+L 270.859204 -58.76358 
+L 271.4306 -58.800197 
+L 272.001996 -58.840975 
+L 272.573392 -58.886324 
+L 273.144788 -58.936688 
+L 273.716184 -58.992544 
+L 274.28758 -59.054408 
+L 274.858976 -59.12283 
+L 275.430372 -59.198401 
+L 276.001768 -59.281754 
+L 276.573164 -59.373561 
+L 277.14456 -59.474541 
+L 277.715956 -59.585455 
+L 278.287352 -59.70711 
+L 278.858748 -59.840362 
+L 279.430144 -59.986109 
+L 280.001541 -60.145301 
+L 280.572937 -60.318931 
+L 281.144333 -60.508044 
+L 281.715729 -60.713726 
+L 282.287125 -60.937111 
+L 282.858521 -61.179379 
+L 283.429917 -61.441748 
+L 284.001313 -61.725479 
+L 284.572709 -62.031869 
+L 285.144105 -62.362249 
+L 285.715501 -62.717982 
+L 286.286897 -63.100453 
+L 286.858293 -63.511072 
+L 287.429689 -63.951263 
+L 288.001085 -64.422458 
+L 288.572482 -64.926094 
+L 289.143878 -65.463602 
+L 289.715274 -66.036401 
+L 290.28667 -66.64589 
+L 290.858066 -67.293438 
+L 291.429462 -67.980374 
+L 292.000858 -68.707977 
+L 292.572254 -69.477469 
+L 293.14365 -70.289999 
+L 293.715046 -71.146635 
+L 294.286442 -72.048351 
+L 294.857838 -72.996015 
+L 295.429234 -73.990378 
+L 296.00063 -75.032063 
+L 296.572026 -76.121549 
+L 297.143422 -77.259162 
+L 297.714819 -78.445065 
+L 298.286215 -79.679241 
+L 298.857611 -80.961487 
+L 299.429007 -82.2914 
+L 300.000403 -83.668371 
+L 300.571799 -85.09157 
+L 301.143195 -86.559944 
+L 301.714591 -88.072206 
+L 302.285987 -89.626829 
+L 302.857383 -91.222042 
+L 303.428779 -92.855826 
+L 304.000175 -94.52591 
+L 304.571571 -96.229773 
+L 305.142967 -97.964643 
+L 305.714363 -99.7275 
+L 306.285759 -101.515079 
+L 306.857156 -103.323877 
+L 307.428552 -105.15016 
+L 307.999948 -106.989972 
+L 308.571344 -108.839149 
+L 309.14274 -110.693326 
+L 309.714136 -112.547958 
+L 310.285532 -114.398334 
+L 310.856928 -116.239594 
+L 311.428324 -118.06675 
+L 311.99972 -119.874708 
+L 312.571116 -121.658288 
+L 313.142512 -123.412249 
+L 313.713908 -125.131315 
+L 314.285304 -126.8102 
+L 314.8567 -128.443634 
+L 315.428096 -130.02639 
+L 315.999493 -131.553312 
+L 316.570889 -133.019344 
+L 317.142285 -134.419556 
+L 317.713681 -135.749171 
+L 318.285077 -137.003594 
+L 318.856473 -138.178436 
+L 319.427869 -139.269543 
+L 319.999265 -140.273017 
+L 320.570661 -141.18524 
+L 321.142057 -142.002898 
+L 321.713453 -142.722996 
+L 322.284849 -143.342883 
+L 322.856245 -143.860264 
+L 323.427641 -144.273212 
+L 323.999037 -144.580187 
+L 324.570433 -144.780039 
+L 325.14183 -144.872019 
+L 325.713226 -144.85578 
+L 326.284622 -144.731384 
+L 326.856018 -144.499298 
+L 327.427414 -144.160392 
+L 327.99881 -143.715935 
+L 328.570206 -143.167583 
+L 329.141602 -142.517375 
+L 329.712998 -141.767714 
+L 330.284394 -140.921358 
+L 330.85579 -139.981398 
+L 331.427186 -138.951241 
+L 331.998582 -137.834591 
+L 332.569978 -136.635427 
+L 333.141374 -135.357976 
+L 333.712771 -134.006691 
+L 334.284167 -132.586224 
+L 334.855563 -131.101401 
+L 335.426959 -129.557192 
+L 335.998355 -127.958688 
+L 336.569751 -126.311068 
+L 337.141147 -124.619574 
+L 337.712543 -122.889484 
+L 338.283939 -121.126084 
+L 338.855335 -119.334643 
+L 339.426731 -117.520386 
+L 339.998127 -115.688468 
+L 340.569523 -113.843954 
+L 341.140919 -111.991798 
+L 341.712315 -110.136814 
+L 342.283711 -108.283668 
+L 342.855108 -106.436852 
+L 343.426504 -104.60067 
+L 343.9979 -102.779228 
+L 344.569296 -100.976414 
+L 345.140692 -99.195894 
+L 345.712088 -97.441102 
+L 346.283484 -95.715227 
+L 346.85488 -94.021218 
+L 347.426276 -92.361771 
+L 347.997672 -90.739332 
+L 348.569068 -89.156095 
+L 349.140464 -87.614006 
+L 349.71186 -86.114761 
+L 350.283256 -84.659814 
+L 350.854652 -83.250383 
+L 351.426048 -81.887453 
+L 351.997445 -80.571786 
+L 352.568841 -79.303928 
+L 353.140237 -78.084221 
+L 353.711633 -76.912812 
+L 354.283029 -75.789661 
+L 354.854425 -74.714557 
+L 355.425821 -73.687126 
+L 355.997217 -72.706844 
+L 356.568613 -71.773049 
+L 357.140009 -70.884954 
+L 357.711405 -70.041656 
+L 358.282801 -69.242154 
+L 358.854197 -68.485352 
+L 359.425593 -67.77008 
+L 359.996989 -67.095097 
+L 360.568385 -66.459109 
+L 361.139782 -65.860772 
+L 361.711178 -65.298708 
+L 362.282574 -64.771512 
+L 362.85397 -64.277759 
+L 363.425366 -63.816016 
+L 363.996762 -63.384847 
+L 364.568158 -62.982821 
+L 365.139554 -62.608518 
+L 365.71095 -62.260536 
+L 366.282346 -61.937494 
+L 366.853742 -61.63804 
+L 367.425138 -61.360852 
+L 367.996534 -61.104644 
+L 368.56793 -60.868167 
+L 369.139326 -60.650215 
+L 369.710722 -60.44962 
+L 370.282119 -60.265265 
+L 370.853515 -60.096073 
+L 371.424911 -59.941017 
+L 371.996307 -59.799116 
+L 372.567703 -59.669436 
+L 373.139099 -59.55109 
+L 373.710495 -59.443239 
+L 374.281891 -59.345089 
+L 374.853287 -59.255891 
+L 375.424683 -59.174942 
+L 375.996079 -59.10158 
+L 376.567475 -59.035186 
+L 377.138871 -58.975181 
+L 377.710267 -58.921024 
+L 378.281663 -58.872213 
+L 378.85306 -58.828281 
+L 379.424456 -58.788793 
+L 379.995852 -58.753349 
+L 380.567248 -58.721578 
+L 381.138644 -58.693137 
+L 381.71004 -58.667713 
+L 382.281436 -58.645017 
+L 382.852832 -58.624782 
+L 383.424228 -58.606767 
+L 383.995624 -58.590749 
+L 384.56702 -58.576527 
+L 385.138416 -58.563916 
+L 385.709812 -58.552748 
+L 386.281208 -58.542872 
+L 386.852604 -58.53415 
+L 387.424 -58.526458 
+L 387.995397 -58.519682 
+L 388.566793 -58.513722 
+L 389.138189 -58.508487 
+L 389.709585 -58.503894 
+L 390.280981 -58.499871 
+L 390.852377 -58.49635 
+L 391.423773 -58.493274 
+L 391.995169 -58.49059 
+L 392.566565 -58.48825 
+L 393.137961 -58.486214 
+L 393.709357 -58.484445 
+L 394.280753 -58.482909 
+L 394.852149 -58.481578 
+L 395.423545 -58.480425 
+L 395.994941 -58.479429 
+L 396.566337 -58.478568 
+L 397.137734 -58.477826 
+L 397.70913 -58.477187 
+L 398.280526 -58.476638 
+L 398.851922 -58.476166 
+L 399.423318 -58.475761 
+L 399.994714 -58.475414 
+L 400.56611 -58.475118 
+L 401.137506 -58.474864 
+L 401.708902 -58.474648 
+L 402.280298 -58.474464 
+L 402.851694 -58.474307 
+L 403.42309 -58.474174 
+L 403.994486 -58.47406 
+L 404.565882 -58.473964 
+L 405.137278 -58.473883 
+L 405.708674 -58.473815 
+L 406.280071 -58.473757 
+L 406.851467 -58.473708 
+L 407.422863 -58.473666 
+L 407.994259 -58.473632 
+L 408.565655 -58.473603 
+L 409.137051 -58.473578 
+L 409.708447 -58.473558 
+L 410.279843 -58.473541 
+L 410.851239 -58.473526 
+L 411.422635 -58.473515 
+L 411.994031 -58.473505 
+L 412.565427 -58.473496 
+L 413.136823 -58.473489 
+L 413.708219 -58.473484 
+L 414.279615 -58.473479 
+L 414.851011 -58.473475 
+L 415.422408 -58.473472 
+L 415.993804 -58.473469 
+L 416.5652 -58.473467 
+L 417.136596 -58.473465 
+L 417.707992 -58.473464 
+L 418.279388 -58.473462 
+L 418.850784 -58.473461 
+L 419.42218 -58.47346 
+L 419.993576 -58.47346 
+L 420.564972 -58.473459 
+L 421.136368 -58.473459 
+L 421.707764 -58.473458 
+L 422.27916 -58.473458 
+L 422.850556 -58.473458 
+L 423.421952 -58.473458 
+L 423.993349 -58.473458 
+L 424.564745 -58.473457 
+L 425.136141 -58.473457 
+L 425.707537 -58.473457 
+L 426.278933 -58.473457 
+L 426.850329 -58.473457 
+L 427.421725 -58.473457 
+L 427.993121 -58.473457 
+L 428.564517 -58.473457 
+L 429.135913 -58.473457 
+L 429.707309 -58.473457 
+L 430.278705 -58.473457 
+L 430.850101 -58.473457 
+L 431.421497 -58.473457 
+L 431.992893 -58.473457 
+L 432.564289 -58.473457 
+L 433.135686 -58.473457 
+L 433.707082 -58.473457 
+L 434.278478 -58.473457 
+L 434.849874 -58.473457 
+L 435.42127 -58.473457 
+L 435.992666 -58.473457 
+L 436.564062 -58.473457 
+L 437.135458 -58.473457 
+L 437.706854 -58.473457 
+L 438.27825 -58.473457 
+L 438.849646 -58.473457 
+L 439.421042 -58.473457 
+L 439.992438 -58.473457 
+L 440.563834 -58.473457 
+L 441.13523 -58.473457 
+L 441.706626 -58.473457 
+L 442.278023 -58.473457 
+L 442.849419 -58.473457 
+L 443.420815 -58.473457 
+L 443.992211 -58.473457 
+L 444.563607 -58.473457 
+L 445.135003 -58.473457 
+L 445.706399 -58.473457 
+L 446.277795 -58.473457 
+L 446.849191 -58.473457 
+L 447.420587 -58.473457 
+L 447.991983 -58.473457 
+L 448.563379 -58.473457 
+L 449.134775 -58.473457 
+L 449.706171 -58.473457 
+L 450.277567 -58.473457 
+L 450.848963 -58.473457 
+L 451.42036 -58.473457 
+L 451.991756 -58.473457 
+L 452.563152 -58.473457 
+L 453.134548 -58.473457 
+L 453.705944 -58.473457 
+L 454.27734 -58.473457 
+L 454.848736 -58.473457 
+L 455.420132 -58.473457 
+L 455.991528 -58.473457 
+L 456.562924 -58.473457 
+L 457.13432 -58.473457 
+L 457.705716 -58.473457 
+L 458.277112 -58.473457 
+L 458.848508 -58.473457 
+L 459.419904 -58.473457 
+L 459.9913 -58.473457 
+L 460.562697 -58.473457 
+L 461.134093 -58.473457 
+L 461.705489 -58.473457 
+L 462.276885 -58.473457 
+L 462.848281 -58.473457 
+L 463.419677 -58.473457 
+L 463.991073 -58.473457 
+L 464.562469 -58.473457 
+L 465.133865 -58.473457 
+L 465.705261 -58.473457 
+L 466.276657 -58.473457 
+L 466.848053 -58.473457 
+L 467.419449 -58.473457 
+L 467.990845 -58.473457 
+L 468.562241 -58.473457 
+L 469.133638 -58.473457 
+L 469.705034 -58.473457 
+L 470.27643 -58.473457 
+L 470.847826 -58.473457 
+L 471.419222 -58.473457 
+L 471.990618 -58.473457 
+L 472.562014 -58.473457 
+L 473.13341 -58.473457 
+L 473.704806 -58.473457 
+L 474.276202 -58.473457 
+L 474.847598 -58.473457 
+L 475.418994 -58.473457 
+L 475.99039 -58.473457 
+L 476.561786 -58.473457 
+L 477.133182 -58.473457 
+L 477.704578 -58.473457 
+L 478.275975 -58.473457 
+L 478.847371 -58.473457 
+L 479.418767 -58.473457 
+L 479.990163 -58.473457 
+L 480.561559 -58.473457 
+L 481.132955 -58.473457 
+L 481.704351 -58.473457 
+L 482.275747 -58.473457 
+L 482.847143 -58.473457 
+L 483.418539 -58.473457 
+L 483.989935 -58.473457 
+L 484.561331 -58.473457 
+L 485.132727 -58.473457 
+L 485.132727 -49.832937 
+L 485.132727 -49.832937 
+L 484.561331 -49.832937 
+L 483.989935 -49.832937 
+L 483.418539 -49.832937 
+L 482.847143 -49.832937 
+L 482.275747 -49.832937 
+L 481.704351 -49.832937 
+L 481.132955 -49.832937 
+L 480.561559 -49.832937 
+L 479.990163 -49.832937 
+L 479.418767 -49.832937 
+L 478.847371 -49.832937 
+L 478.275975 -49.832937 
+L 477.704578 -49.832937 
+L 477.133182 -49.832937 
+L 476.561786 -49.832937 
+L 475.99039 -49.832937 
+L 475.418994 -49.832937 
+L 474.847598 -49.832937 
+L 474.276202 -49.832937 
+L 473.704806 -49.832937 
+L 473.13341 -49.832937 
+L 472.562014 -49.832937 
+L 471.990618 -49.832937 
+L 471.419222 -49.832937 
+L 470.847826 -49.832937 
+L 470.27643 -49.832937 
+L 469.705034 -49.832937 
+L 469.133638 -49.832937 
+L 468.562241 -49.832937 
+L 467.990845 -49.832937 
+L 467.419449 -49.832937 
+L 466.848053 -49.832937 
+L 466.276657 -49.832937 
+L 465.705261 -49.832937 
+L 465.133865 -49.832937 
+L 464.562469 -49.832937 
+L 463.991073 -49.832937 
+L 463.419677 -49.832937 
+L 462.848281 -49.832937 
+L 462.276885 -49.832937 
+L 461.705489 -49.832937 
+L 461.134093 -49.832937 
+L 460.562697 -49.832937 
+L 459.9913 -49.832937 
+L 459.419904 -49.832937 
+L 458.848508 -49.832937 
+L 458.277112 -49.832937 
+L 457.705716 -49.832937 
+L 457.13432 -49.832937 
+L 456.562924 -49.832937 
+L 455.991528 -49.832937 
+L 455.420132 -49.832937 
+L 454.848736 -49.832937 
+L 454.27734 -49.832937 
+L 453.705944 -49.832937 
+L 453.134548 -49.832937 
+L 452.563152 -49.832937 
+L 451.991756 -49.832937 
+L 451.42036 -49.832937 
+L 450.848963 -49.832937 
+L 450.277567 -49.832937 
+L 449.706171 -49.832937 
+L 449.134775 -49.832937 
+L 448.563379 -49.832937 
+L 447.991983 -49.832937 
+L 447.420587 -49.832937 
+L 446.849191 -49.832937 
+L 446.277795 -49.832937 
+L 445.706399 -49.832937 
+L 445.135003 -49.832937 
+L 444.563607 -49.832937 
+L 443.992211 -49.832937 
+L 443.420815 -49.832937 
+L 442.849419 -49.832937 
+L 442.278023 -49.832937 
+L 441.706626 -49.832937 
+L 441.13523 -49.832937 
+L 440.563834 -49.832937 
+L 439.992438 -49.832937 
+L 439.421042 -49.832937 
+L 438.849646 -49.832937 
+L 438.27825 -49.832937 
+L 437.706854 -49.832937 
+L 437.135458 -49.832937 
+L 436.564062 -49.832937 
+L 435.992666 -49.832937 
+L 435.42127 -49.832937 
+L 434.849874 -49.832937 
+L 434.278478 -49.832937 
+L 433.707082 -49.832937 
+L 433.135686 -49.832937 
+L 432.564289 -49.832937 
+L 431.992893 -49.832937 
+L 431.421497 -49.832937 
+L 430.850101 -49.832937 
+L 430.278705 -49.832937 
+L 429.707309 -49.832937 
+L 429.135913 -49.832937 
+L 428.564517 -49.832937 
+L 427.993121 -49.832937 
+L 427.421725 -49.832937 
+L 426.850329 -49.832937 
+L 426.278933 -49.832937 
+L 425.707537 -49.832937 
+L 425.136141 -49.832937 
+L 424.564745 -49.832937 
+L 423.993349 -49.832937 
+L 423.421952 -49.832937 
+L 422.850556 -49.832937 
+L 422.27916 -49.832937 
+L 421.707764 -49.832937 
+L 421.136368 -49.832937 
+L 420.564972 -49.832937 
+L 419.993576 -49.832937 
+L 419.42218 -49.832937 
+L 418.850784 -49.832937 
+L 418.279388 -49.832937 
+L 417.707992 -49.832937 
+L 417.136596 -49.832937 
+L 416.5652 -49.832937 
+L 415.993804 -49.832937 
+L 415.422408 -49.832937 
+L 414.851011 -49.832937 
+L 414.279615 -49.832937 
+L 413.708219 -49.832937 
+L 413.136823 -49.832937 
+L 412.565427 -49.832937 
+L 411.994031 -49.832937 
+L 411.422635 -49.832937 
+L 410.851239 -49.832937 
+L 410.279843 -49.832937 
+L 409.708447 -49.832937 
+L 409.137051 -49.832937 
+L 408.565655 -49.832937 
+L 407.994259 -49.832937 
+L 407.422863 -49.832937 
+L 406.851467 -49.832937 
+L 406.280071 -49.832937 
+L 405.708674 -49.832937 
+L 405.137278 -49.832937 
+L 404.565882 -49.832937 
+L 403.994486 -49.832937 
+L 403.42309 -49.832937 
+L 402.851694 -49.832937 
+L 402.280298 -49.832937 
+L 401.708902 -49.832937 
+L 401.137506 -49.832937 
+L 400.56611 -49.832937 
+L 399.994714 -49.832937 
+L 399.423318 -49.832937 
+L 398.851922 -49.832937 
+L 398.280526 -49.832937 
+L 397.70913 -49.832937 
+L 397.137734 -49.832937 
+L 396.566337 -49.832937 
+L 395.994941 -49.832937 
+L 395.423545 -49.832937 
+L 394.852149 -49.832937 
+L 394.280753 -49.832937 
+L 393.709357 -49.832937 
+L 393.137961 -49.832937 
+L 392.566565 -49.832937 
+L 391.995169 -49.832937 
+L 391.423773 -49.832937 
+L 390.852377 -49.832937 
+L 390.280981 -49.832937 
+L 389.709585 -49.832937 
+L 389.138189 -49.832937 
+L 388.566793 -49.832937 
+L 387.995397 -49.832937 
+L 387.424 -49.832937 
+L 386.852604 -49.832937 
+L 386.281208 -49.832937 
+L 385.709812 -49.832937 
+L 385.138416 -49.832937 
+L 384.56702 -49.832937 
+L 383.995624 -49.832937 
+L 383.424228 -49.832937 
+L 382.852832 -49.832937 
+L 382.281436 -49.832937 
+L 381.71004 -49.832937 
+L 381.138644 -49.832937 
+L 380.567248 -49.832937 
+L 379.995852 -49.832937 
+L 379.424456 -49.832937 
+L 378.85306 -49.832937 
+L 378.281663 -49.832937 
+L 377.710267 -49.832937 
+L 377.138871 -49.832937 
+L 376.567475 -49.832937 
+L 375.996079 -49.832937 
+L 375.424683 -49.832937 
+L 374.853287 -49.832937 
+L 374.281891 -49.832937 
+L 373.710495 -49.832937 
+L 373.139099 -49.832937 
+L 372.567703 -49.832937 
+L 371.996307 -49.832937 
+L 371.424911 -49.832937 
+L 370.853515 -49.832937 
+L 370.282119 -49.832937 
+L 369.710722 -49.832937 
+L 369.139326 -49.832937 
+L 368.56793 -49.832937 
+L 367.996534 -49.832937 
+L 367.425138 -49.832937 
+L 366.853742 -49.832937 
+L 366.282346 -49.832937 
+L 365.71095 -49.832937 
+L 365.139554 -49.832937 
+L 364.568158 -49.832937 
+L 363.996762 -49.832937 
+L 363.425366 -49.832937 
+L 362.85397 -49.832937 
+L 362.282574 -49.832937 
+L 361.711178 -49.832937 
+L 361.139782 -49.832937 
+L 360.568385 -49.832937 
+L 359.996989 -49.832937 
+L 359.425593 -49.832937 
+L 358.854197 -49.832937 
+L 358.282801 -49.832937 
+L 357.711405 -49.832937 
+L 357.140009 -49.832937 
+L 356.568613 -49.832937 
+L 355.997217 -49.832937 
+L 355.425821 -49.832937 
+L 354.854425 -49.832937 
+L 354.283029 -49.832937 
+L 353.711633 -49.832937 
+L 353.140237 -49.832937 
+L 352.568841 -49.832937 
+L 351.997445 -49.832937 
+L 351.426048 -49.832937 
+L 350.854652 -49.832937 
+L 350.283256 -49.832937 
+L 349.71186 -49.832937 
+L 349.140464 -49.832937 
+L 348.569068 -49.832937 
+L 347.997672 -49.832937 
+L 347.426276 -49.832937 
+L 346.85488 -49.832937 
+L 346.283484 -49.832937 
+L 345.712088 -49.832937 
+L 345.140692 -49.832937 
+L 344.569296 -49.832937 
+L 343.9979 -49.832937 
+L 343.426504 -49.832937 
+L 342.855108 -49.832937 
+L 342.283711 -49.832937 
+L 341.712315 -49.832937 
+L 341.140919 -49.832937 
+L 340.569523 -49.832937 
+L 339.998127 -49.832937 
+L 339.426731 -49.832937 
+L 338.855335 -49.832937 
+L 338.283939 -49.832937 
+L 337.712543 -49.832937 
+L 337.141147 -49.832937 
+L 336.569751 -49.832937 
+L 335.998355 -49.832937 
+L 335.426959 -49.832937 
+L 334.855563 -49.832937 
+L 334.284167 -49.832937 
+L 333.712771 -49.832937 
+L 333.141374 -49.832937 
+L 332.569978 -49.832937 
+L 331.998582 -49.832937 
+L 331.427186 -49.832937 
+L 330.85579 -49.832937 
+L 330.284394 -49.832937 
+L 329.712998 -49.832937 
+L 329.141602 -49.832937 
+L 328.570206 -49.832937 
+L 327.99881 -49.832937 
+L 327.427414 -49.832937 
+L 326.856018 -49.832937 
+L 326.284622 -49.832937 
+L 325.713226 -49.832937 
+L 325.14183 -49.832937 
+L 324.570433 -49.832937 
+L 323.999037 -49.832937 
+L 323.427641 -49.832937 
+L 322.856245 -49.832937 
+L 322.284849 -49.832937 
+L 321.713453 -49.832937 
+L 321.142057 -49.832937 
+L 320.570661 -49.832937 
+L 319.999265 -49.832937 
+L 319.427869 -49.832937 
+L 318.856473 -49.832937 
+L 318.285077 -49.832937 
+L 317.713681 -49.832937 
+L 317.142285 -49.832937 
+L 316.570889 -49.832937 
+L 315.999493 -49.832937 
+L 315.428096 -49.832937 
+L 314.8567 -49.832937 
+L 314.285304 -49.832937 
+L 313.713908 -49.832937 
+L 313.142512 -49.832937 
+L 312.571116 -49.832937 
+L 311.99972 -49.832937 
+L 311.428324 -49.832937 
+L 310.856928 -49.832937 
+L 310.285532 -49.832937 
+L 309.714136 -49.832937 
+L 309.14274 -49.832937 
+L 308.571344 -49.832937 
+L 307.999948 -49.832937 
+L 307.428552 -49.832937 
+L 306.857156 -49.832937 
+L 306.285759 -49.832937 
+L 305.714363 -49.832937 
+L 305.142967 -49.832937 
+L 304.571571 -49.832937 
+L 304.000175 -49.832937 
+L 303.428779 -49.832937 
+L 302.857383 -49.832937 
+L 302.285987 -49.832937 
+L 301.714591 -49.832937 
+L 301.143195 -49.832937 
+L 300.571799 -49.832937 
+L 300.000403 -49.832937 
+L 299.429007 -49.832937 
+L 298.857611 -49.832937 
+L 298.286215 -49.832937 
+L 297.714819 -49.832937 
+L 297.143422 -49.832937 
+L 296.572026 -49.832937 
+L 296.00063 -49.832937 
+L 295.429234 -49.832937 
+L 294.857838 -49.832937 
+L 294.286442 -49.832937 
+L 293.715046 -49.832937 
+L 293.14365 -49.832937 
+L 292.572254 -49.832937 
+L 292.000858 -49.832937 
+L 291.429462 -49.832937 
+L 290.858066 -49.832937 
+L 290.28667 -49.832937 
+L 289.715274 -49.832937 
+L 289.143878 -49.832937 
+L 288.572482 -49.832937 
+L 288.001085 -49.832937 
+L 287.429689 -49.832937 
+L 286.858293 -49.832937 
+L 286.286897 -49.832937 
+L 285.715501 -49.832937 
+L 285.144105 -49.832937 
+L 284.572709 -49.832937 
+L 284.001313 -49.832937 
+L 283.429917 -49.832937 
+L 282.858521 -49.832937 
+L 282.287125 -49.832937 
+L 281.715729 -49.832937 
+L 281.144333 -49.832937 
+L 280.572937 -49.832937 
+L 280.001541 -49.832937 
+L 279.430144 -49.832937 
+L 278.858748 -49.832937 
+L 278.287352 -49.832937 
+L 277.715956 -49.832937 
+L 277.14456 -49.832937 
+L 276.573164 -49.832937 
+L 276.001768 -49.832937 
+L 275.430372 -49.832937 
+L 274.858976 -49.832937 
+L 274.28758 -49.832937 
+L 273.716184 -49.832937 
+L 273.144788 -49.832937 
+L 272.573392 -49.832937 
+L 272.001996 -49.832937 
+L 271.4306 -49.832937 
+L 270.859204 -49.832937 
+L 270.287807 -49.832937 
+L 269.716411 -49.832937 
+L 269.145015 -49.832937 
+L 268.573619 -49.832937 
+L 268.002223 -49.832937 
+L 267.430827 -49.832937 
+L 266.859431 -49.832937 
+L 266.288035 -49.832937 
+L 265.716639 -49.832937 
+L 265.145243 -49.832937 
+L 264.573847 -49.832937 
+L 264.002451 -49.832937 
+L 263.431055 -49.832937 
+L 262.859659 -49.832937 
+L 262.288263 -49.832937 
+L 261.716867 -49.832937 
+L 261.14547 -49.832937 
+L 260.574074 -49.832937 
+L 260.002678 -49.832937 
+L 259.431282 -49.832937 
+L 258.859886 -49.832937 
+L 258.28849 -49.832937 
+L 257.717094 -49.832937 
+L 257.145698 -49.832937 
+L 256.574302 -49.832937 
+L 256.002906 -49.832937 
+L 255.43151 -49.832937 
+L 254.860114 -49.832937 
+L 254.288718 -49.832937 
+L 253.717322 -49.832937 
+L 253.145926 -49.832937 
+L 252.57453 -49.832937 
+L 252.003133 -49.832937 
+L 251.431737 -49.832937 
+L 250.860341 -49.832937 
+L 250.288945 -49.832937 
+L 249.717549 -49.832937 
+L 249.146153 -49.832937 
+L 248.574757 -49.832937 
+L 248.003361 -49.832937 
+L 247.431965 -49.832937 
+L 246.860569 -49.832937 
+L 246.289173 -49.832937 
+L 245.717777 -49.832937 
+L 245.146381 -49.832937 
+L 244.574985 -49.832937 
+L 244.003589 -49.832937 
+L 243.432193 -49.832937 
+L 242.860796 -49.832937 
+L 242.2894 -49.832937 
+L 241.718004 -49.832937 
+L 241.146608 -49.832937 
+L 240.575212 -49.832937 
+L 240.003816 -49.832937 
+L 239.43242 -49.832937 
+L 238.861024 -49.832937 
+L 238.289628 -49.832937 
+L 237.718232 -49.832937 
+L 237.146836 -49.832937 
+L 236.57544 -49.832937 
+L 236.004044 -49.832937 
+L 235.432648 -49.832937 
+L 234.861252 -49.832937 
+L 234.289856 -49.832937 
+L 233.718459 -49.832937 
+L 233.147063 -49.832937 
+L 232.575667 -49.832937 
+L 232.004271 -49.832937 
+L 231.432875 -49.832937 
+L 230.861479 -49.832937 
+L 230.290083 -49.832937 
+L 229.718687 -49.832937 
+L 229.147291 -49.832937 
+L 228.575895 -49.832937 
+L 228.004499 -49.832937 
+L 227.433103 -49.832937 
+L 226.861707 -49.832937 
+L 226.290311 -49.832937 
+L 225.718915 -49.832937 
+L 225.147518 -49.832937 
+L 224.576122 -49.832937 
+L 224.004726 -49.832937 
+L 223.43333 -49.832937 
+L 222.861934 -49.832937 
+L 222.290538 -49.832937 
+L 221.719142 -49.832937 
+L 221.147746 -49.832937 
+L 220.57635 -49.832937 
+L 220.004954 -49.832937 
+L 219.433558 -49.832937 
+L 218.862162 -49.832937 
+L 218.290766 -49.832937 
+L 217.71937 -49.832937 
+L 217.147974 -49.832937 
+L 216.576578 -49.832937 
+L 216.005181 -49.832937 
+L 215.433785 -49.832937 
+L 214.862389 -49.832937 
+L 214.290993 -49.832937 
+L 213.719597 -49.832937 
+L 213.148201 -49.832937 
+L 212.576805 -49.832937 
+L 212.005409 -49.832937 
+L 211.434013 -49.832937 
+L 210.862617 -49.832937 
+L 210.291221 -49.832937 
+L 209.719825 -49.832937 
+L 209.148429 -49.832937 
+L 208.577033 -49.832937 
+L 208.005637 -49.832937 
+L 207.434241 -49.832937 
+L 206.862844 -49.832937 
+L 206.291448 -49.832937 
+L 205.720052 -49.832937 
+L 205.148656 -49.832937 
+L 204.57726 -49.832937 
+L 204.005864 -49.832937 
+L 203.434468 -49.832937 
+L 202.863072 -49.832937 
+L 202.291676 -49.832937 
+L 201.72028 -49.832937 
+L 201.148884 -49.832937 
+L 200.577488 -49.832937 
+L 200.006092 -49.832937 
+L 199.434696 -49.832937 
+L 198.8633 -49.832937 
+L 198.291904 -49.832937 
+L 197.720507 -49.832937 
+L 197.149111 -49.832937 
+L 196.577715 -49.832937 
+L 196.006319 -49.832937 
+L 195.434923 -49.832937 
+L 194.863527 -49.832937 
+L 194.292131 -49.832937 
+L 193.720735 -49.832937 
+L 193.149339 -49.832937 
+L 192.577943 -49.832937 
+L 192.006547 -49.832937 
+L 191.435151 -49.832937 
+L 190.863755 -49.832937 
+L 190.292359 -49.832937 
+L 189.720963 -49.832937 
+L 189.149567 -49.832937 
+L 188.57817 -49.832937 
+L 188.006774 -49.832937 
+L 187.435378 -49.832937 
+L 186.863982 -49.832937 
+L 186.292586 -49.832937 
+L 185.72119 -49.832937 
+L 185.149794 -49.832937 
+L 184.578398 -49.832937 
+L 184.007002 -49.832937 
+L 183.435606 -49.832937 
+L 182.86421 -49.832937 
+L 182.292814 -49.832937 
+L 181.721418 -49.832937 
+L 181.150022 -49.832937 
+L 180.578626 -49.832937 
+L 180.007229 -49.832937 
+L 179.435833 -49.832937 
+L 178.864437 -49.832937 
+L 178.293041 -49.832937 
+L 177.721645 -49.832937 
+L 177.150249 -49.832937 
+L 176.578853 -49.832937 
+L 176.007457 -49.832937 
+L 175.436061 -49.832937 
+L 174.864665 -49.832937 
+L 174.293269 -49.832937 
+L 173.721873 -49.832937 
+L 173.150477 -49.832937 
+L 172.579081 -49.832937 
+L 172.007685 -49.832937 
+L 171.436289 -49.832937 
+L 170.864892 -49.832937 
+L 170.293496 -49.832937 
+L 169.7221 -49.832937 
+L 169.150704 -49.832937 
+L 168.579308 -49.832937 
+L 168.007912 -49.832937 
+L 167.436516 -49.832937 
+L 166.86512 -49.832937 
+L 166.293724 -49.832937 
+L 165.722328 -49.832937 
+L 165.150932 -49.832937 
+L 164.579536 -49.832937 
+L 164.00814 -49.832937 
+L 163.436744 -49.832937 
+L 162.865348 -49.832937 
+L 162.293952 -49.832937 
+L 161.722555 -49.832937 
+L 161.151159 -49.832937 
+L 160.579763 -49.832937 
+L 160.008367 -49.832937 
+L 159.436971 -49.832937 
+L 158.865575 -49.832937 
+L 158.294179 -49.832937 
+L 157.722783 -49.832937 
+L 157.151387 -49.832937 
+L 156.579991 -49.832937 
+L 156.008595 -49.832937 
+L 155.437199 -49.832937 
+L 154.865803 -49.832937 
+L 154.294407 -49.832937 
+L 153.723011 -49.832937 
+L 153.151615 -49.832937 
+L 152.580218 -49.832937 
+L 152.008822 -49.832937 
+L 151.437426 -49.832937 
+L 150.86603 -49.832937 
+L 150.294634 -49.832937 
+L 149.723238 -49.832937 
+L 149.151842 -49.832937 
+L 148.580446 -49.832937 
+L 148.00905 -49.832937 
+L 147.437654 -49.832937 
+L 146.866258 -49.832937 
+L 146.294862 -49.832937 
+L 145.723466 -49.832937 
+L 145.15207 -49.832937 
+L 144.580674 -49.832937 
+L 144.009278 -49.832937 
+L 143.437881 -49.832937 
+L 142.866485 -49.832937 
+L 142.295089 -49.832937 
+L 141.723693 -49.832937 
+L 141.152297 -49.832937 
+L 140.580901 -49.832937 
+L 140.009505 -49.832937 
+L 139.438109 -49.832937 
+L 138.866713 -49.832937 
+L 138.295317 -49.832937 
+L 137.723921 -49.832937 
+L 137.152525 -49.832937 
+L 136.581129 -49.832937 
+L 136.009733 -49.832937 
+L 135.438337 -49.832937 
+L 134.86694 -49.832937 
+L 134.295544 -49.832937 
+L 133.724148 -49.832937 
+L 133.152752 -49.832937 
+L 132.581356 -49.832937 
+L 132.00996 -49.832937 
+L 131.438564 -49.832937 
+L 130.867168 -49.832937 
+L 130.295772 -49.832937 
+L 129.724376 -49.832937 
+L 129.15298 -49.832937 
+L 128.581584 -49.832937 
+L 128.010188 -49.832937 
+L 127.438792 -49.832937 
+L 126.867396 -49.832937 
+L 126.296 -49.832937 
+L 125.724603 -49.832937 
+L 125.153207 -49.832937 
+L 124.581811 -49.832937 
+L 124.010415 -49.832937 
+L 123.439019 -49.832937 
+L 122.867623 -49.832937 
+L 122.296227 -49.832937 
+L 121.724831 -49.832937 
+L 121.153435 -49.832937 
+L 120.582039 -49.832937 
+L 120.010643 -49.832937 
+L 119.439247 -49.832937 
+L 118.867851 -49.832937 
+L 118.296455 -49.832937 
+L 117.725059 -49.832937 
+L 117.153663 -49.832937 
+L 116.582266 -49.832937 
+L 116.01087 -49.832937 
+L 115.439474 -49.832937 
+L 114.868078 -49.832937 
+L 114.296682 -49.832937 
+L 113.725286 -49.832937 
+L 113.15389 -49.832937 
+L 112.582494 -49.832937 
+L 112.011098 -49.832937 
+L 111.439702 -49.832937 
+L 110.868306 -49.832937 
+L 110.29691 -49.832937 
+L 109.725514 -49.832937 
+L 109.154118 -49.832937 
+L 108.582722 -49.832937 
+L 108.011326 -49.832937 
+L 107.439929 -49.832937 
+L 106.868533 -49.832937 
+L 106.297137 -49.832937 
+L 105.725741 -49.832937 
+L 105.154345 -49.832937 
+L 104.582949 -49.832937 
+L 104.011553 -49.832937 
+L 103.440157 -49.832937 
+L 102.868761 -49.832937 
+L 102.297365 -49.832937 
+L 101.725969 -49.832937 
+L 101.154573 -49.832937 
+L 100.583177 -49.832937 
+L 100.011781 -49.832937 
+L 99.440385 -49.832937 
+L 98.868989 -49.832937 
+L 98.297592 -49.832937 
+L 97.726196 -49.832937 
+L 97.1548 -49.832937 
+L 96.583404 -49.832937 
+L 96.012008 -49.832937 
+L 95.440612 -49.832937 
+L 94.869216 -49.832937 
+L 94.29782 -49.832937 
+L 93.726424 -49.832937 
+L 93.155028 -49.832937 
+L 92.583632 -49.832937 
+L 92.012236 -49.832937 
+L 91.44084 -49.832937 
+L 90.869444 -49.832937 
+L 90.298048 -49.832937 
+L 89.726651 -49.832937 
+L 89.155255 -49.832937 
+L 88.583859 -49.832937 
+L 88.012463 -49.832937 
+L 87.441067 -49.832937 
+L 86.869671 -49.832937 
+L 86.298275 -49.832937 
+L 85.726879 -49.832937 
+L 85.155483 -49.832937 
+L 84.584087 -49.832937 
+L 84.012691 -49.832937 
+L 83.441295 -49.832937 
+L 82.869899 -49.832937 
+L 82.298503 -49.832937 
+L 81.727107 -49.832937 
+L 81.155711 -49.832937 
+L 80.584314 -49.832937 
+L 80.012918 -49.832937 
+L 79.441522 -49.832937 
+L 78.870126 -49.832937 
+L 78.29873 -49.832937 
+L 77.727334 -49.832937 
+L 77.155938 -49.832937 
+L 76.584542 -49.832937 
+L 76.013146 -49.832937 
+L 75.44175 -49.832937 
+L 74.870354 -49.832937 
+L 74.298958 -49.832937 
+L 73.727562 -49.832937 
+L 73.156166 -49.832937 
+L 72.58477 -49.832937 
+L 72.013374 -49.832937 
+L 71.441977 -49.832937 
+L 70.870581 -49.832937 
+L 70.299185 -49.832937 
+L 69.727789 -49.832937 
+L 69.156393 -49.832937 
+L 68.584997 -49.832937 
+L 68.013601 -49.832937 
+L 67.442205 -49.832937 
+L 66.870809 -49.832937 
+L 66.299413 -49.832937 
+L 65.728017 -49.832937 
+L 65.156621 -49.832937 
+L 64.585225 -49.832937 
+L 64.013829 -49.832937 
+L 63.442433 -49.832937 
+L 62.871037 -49.832937 
+L 62.29964 -49.832937 
+L 61.728244 -49.832937 
+L 61.156848 -49.832937 
+L 60.585452 -49.832937 
+L 60.014056 -49.832937 
+L 59.44266 -49.832937 
+L 58.871264 -49.832937 
+L 58.299868 -49.832937 
+L 57.728472 -49.832937 
+L 57.157076 -49.832937 
+L 56.58568 -49.832937 
+L 56.014284 -49.832937 
+L 55.442888 -49.832937 
+L 54.871492 -49.832937 
+L 54.300096 -49.832937 
+L 53.7287 -49.832937 
+L 53.157303 -49.832937 
+L 52.585907 -49.832937 
+L 52.014511 -49.832937 
+L 51.443115 -49.832937 
+L 50.871719 -49.832937 
+L 50.300323 -49.832937 
+L 49.728927 -49.832937 
+L 49.157531 -49.832937 
+L 48.586135 -49.832937 
+L 48.014739 -49.832937 
+L 47.443343 -49.832937 
+L 46.871947 -49.832937 
+L 46.300551 -49.832937 
+L 45.729155 -49.832937 
+L 45.157759 -49.832937 
+L 44.586362 -49.832937 
+L 44.014966 -49.832937 
+L 43.44357 -49.832937 
+L 42.872174 -49.832937 
+L 42.300778 -49.832937 
+L 41.729382 -49.832937 
+L 41.157986 -49.832937 
+L 40.58659 -49.832937 
+L 40.015194 -49.832937 
+L 39.443798 -49.832937 
+L 38.872402 -49.832937 
+L 38.301006 -49.832937 
+L 37.72961 -49.832937 
+L 37.158214 -49.832937 
+L 36.586818 -49.832937 
+L 36.015422 -49.832937 
+L 35.444025 -49.832937 
+L 34.872629 -49.832937 
+L 34.301233 -49.832937 
+L 33.729837 -49.832937 
+L 33.158441 -49.832937 
+L 32.587045 -49.832937 
+L 32.015649 -49.832937 
+L 31.444253 -49.832937 
+L 30.872857 -49.832937 
+L 30.301461 -49.832937 
+L 29.730065 -49.832937 
+L 29.158669 -49.832937 
+L 28.587273 -49.832937 
+z
+" style="stroke: #818cf8; stroke-opacity: 0.35"/>
+    </defs>
+    <g clip-path="url(#p5371aed723)">
+     <use xlink:href="#md9d70473b4" x="0" y="260.463219" style="fill: #818cf8; fill-opacity: 0.35; stroke: #818cf8; stroke-opacity: 0.35"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="me03a5bb3c6" d="M 0 0 
+L 0 3.5 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#me03a5bb3c6" x="28.587273" y="219.702281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="28.587273" y="235.819469" transform="rotate(-0 28.587273 235.819469)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#me03a5bb3c6" x="85.655455" y="219.702281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="85.655455" y="235.819469" transform="rotate(-0 85.655455 235.819469)">500</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#me03a5bb3c6" x="142.723636" y="219.702281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="142.723636" y="235.819469" transform="rotate(-0 142.723636 235.819469)">1000</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#me03a5bb3c6" x="199.791818" y="219.702281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="199.791818" y="235.819469" transform="rotate(-0 199.791818 235.819469)">1500</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#me03a5bb3c6" x="256.86" y="219.702281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="256.86" y="235.819469" transform="rotate(-0 256.86 235.819469)">2000</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#me03a5bb3c6" x="313.928182" y="219.702281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="313.928182" y="235.819469" transform="rotate(-0 313.928182 235.819469)">2500</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#me03a5bb3c6" x="370.996364" y="219.702281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="370.996364" y="235.819469" transform="rotate(-0 370.996364 235.819469)">3000</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#me03a5bb3c6" x="428.064545" y="219.702281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="428.064545" y="235.819469" transform="rotate(-0 428.064545 235.819469)">3500</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#me03a5bb3c6" x="485.132727" y="219.702281" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="485.132727" y="235.819469" transform="rotate(-0 485.132727 235.819469)">4000</text>
+     </g>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="256.86" y="251.820406" transform="rotate(-0 256.86 251.820406)">frequency (Hz)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="line2d_10">
+    <path d="M 28.587273 201.989762 
+L 74.298958 201.885518 
+L 77.155938 201.648003 
+L 78.870126 201.326736 
+L 80.584314 200.750538 
+L 81.727107 200.147999 
+L 82.869899 199.297476 
+L 84.012691 198.118858 
+L 85.155483 196.515733 
+L 86.298275 194.375892 
+L 87.441067 191.573609 
+L 88.583859 187.974123 
+L 89.726651 183.440697 
+L 90.869444 177.844343 
+L 92.012236 171.076055 
+L 93.155028 163.060963 
+L 94.29782 153.773389 
+L 96.012008 137.559993 
+L 97.726196 119.04543 
+L 102.868761 60.496514 
+L 104.011553 49.763409 
+L 105.154345 40.907555 
+L 106.297137 34.337697 
+L 106.868533 32.012461 
+L 107.439929 30.367407 
+L 108.011326 29.422785 
+L 108.582722 29.190281 
+L 109.154118 29.672777 
+L 109.725514 30.86429 
+L 110.29691 32.750098 
+L 110.868306 35.307042 
+L 112.011098 42.302502 
+L 113.15389 51.518391 
+L 114.296682 62.532322 
+L 116.01087 81.36609 
+L 120.582039 133.705727 
+L 122.296227 150.457081 
+L 124.010415 164.50095 
+L 125.153207 172.265507 
+L 126.296 178.779421 
+L 127.438792 184.118808 
+L 128.581584 188.389281 
+L 129.724376 191.711524 
+L 130.867168 194.20883 
+L 132.00996 195.997132 
+L 133.152752 197.177686 
+L 134.295544 197.832276 
+L 135.438337 198.020645 
+L 136.581129 197.779768 
+L 137.723921 197.124585 
+L 138.866713 196.04986 
+L 140.009505 194.532906 
+L 141.152297 192.537023 
+L 142.295089 190.015543 
+L 143.437881 186.916427 
+L 144.580674 183.187365 
+L 145.723466 178.781307 
+L 146.866258 173.662292 
+L 148.580446 164.611545 
+L 150.294634 153.956492 
+L 152.008822 141.885231 
+L 154.865803 119.682007 
+L 158.294179 93.151889 
+L 160.008367 81.746548 
+L 161.151159 75.378094 
+L 162.293952 70.244672 
+L 163.436744 66.519897 
+L 164.00814 65.228009 
+L 164.579536 64.332696 
+L 165.150932 63.841876 
+L 165.722328 63.759902 
+L 166.293724 64.087504 
+L 166.86512 64.821773 
+L 167.436516 65.956205 
+L 168.007912 67.480799 
+L 169.150704 71.643907 
+L 170.293496 77.167867 
+L 171.436289 83.867469 
+L 173.150477 95.640946 
+L 175.436061 113.294559 
+L 179.435833 144.399261 
+L 181.150022 156.212386 
+L 182.86421 166.560842 
+L 184.578398 175.292181 
+L 185.72119 180.207281 
+L 186.863982 184.4271 
+L 188.006774 187.996439 
+L 189.149567 190.971859 
+L 190.292359 193.416925 
+L 191.435151 195.398057 
+L 192.577943 196.981138 
+L 193.720735 198.228906 
+L 194.863527 199.19913 
+L 196.006319 199.943478 
+L 197.720507 200.733153 
+L 199.434696 201.238414 
+L 201.72028 201.626687 
+L 204.57726 201.852924 
+L 209.719825 201.970163 
+L 228.004499 201.989758 
+L 266.288035 201.882602 
+L 271.4306 201.663021 
+L 274.858976 201.340389 
+L 277.715956 200.877764 
+L 280.001541 200.317918 
+L 282.287125 199.526107 
+L 284.001313 198.73774 
+L 285.715501 197.745237 
+L 287.429689 196.511956 
+L 289.143878 194.999617 
+L 290.858066 193.169781 
+L 292.572254 190.985749 
+L 294.286442 188.414868 
+L 296.00063 185.431156 
+L 297.714819 182.018154 
+L 299.429007 178.171819 
+L 301.714591 172.391013 
+L 304.000175 165.937309 
+L 306.857156 157.139342 
+L 314.285304 133.653019 
+L 316.570889 127.443875 
+L 318.285077 123.459625 
+L 319.427869 121.193675 
+L 320.570661 119.277978 
+L 321.713453 117.740223 
+L 322.856245 116.602955 
+L 323.999037 115.883031 
+L 325.14183 115.5912 
+L 326.284622 115.731835 
+L 327.427414 116.302826 
+L 328.570206 117.295636 
+L 329.712998 118.695504 
+L 330.85579 120.481821 
+L 331.998582 122.628627 
+L 333.712771 126.456528 
+L 335.426959 130.906026 
+L 337.712543 137.573735 
+L 341.140919 148.471421 
+L 345.712088 163.022117 
+L 348.569068 171.307124 
+L 350.854652 177.212835 
+L 353.140237 182.378998 
+L 354.854425 185.748662 
+L 356.568613 188.69017 
+L 358.282801 191.221065 
+L 359.996989 193.368121 
+L 361.711178 195.164511 
+L 363.425366 196.647203 
+L 365.139554 197.854701 
+L 366.853742 198.825179 
+L 369.139326 199.813004 
+L 371.424911 200.522201 
+L 374.281891 201.11813 
+L 377.710267 201.542194 
+L 381.71004 201.795505 
+L 387.995397 201.943536 
+L 402.851694 201.988912 
+L 485.132727 201.989762 
+L 485.132727 201.989762 
+" clip-path="url(#p5371aed723)" style="fill: none; stroke: #818cf8; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 5.76 219.702281 
+L 5.76 20.118281 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 5.76 219.702281 
+L 507.96 219.702281 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #f472b6" x="108.482727" y="20.549762" transform="rotate(-0 108.482727 20.549762)">F1</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #f472b6" x="165.550909" y="55.119383" transform="rotate(-0 165.550909 55.119383)">F2</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 13px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #f472b6" x="325.341818" y="106.950681" transform="rotate(-0 325.341818 106.950681)">F3</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="256.86" y="14.118281" transform="rotate(-0 256.86 14.118281)">Vowel spectrum envelope (illustrative, vowel like /a/)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p5371aed723">
+   <rect x="5.76" y="20.118281" width="502.2" height="199.584"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">The vocal tract strengthens certain frequency bands (formants). Their positions identify the vowel, so synthesisers recreate them.</div></section></section>
+<section data-topic="Speech Analysis"><section><div class="sec"><div class="no">05</div><h2>Speech Analysis</h2><div class="lead">Unit 2 &middot; topic 5 of 6</div></div></section><section><h2><small>Speech Analysis</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Speech analysis asks three questions about a voice: who is speaking, what was said and how was it said?</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Voice unlock (who), voice typing on your phone (what), a call-centre tool that senses an angry caller (how).</p></div><div class="card c3"><div class="ct">Remember it</div><p>Who = verification and identification. What = recognition and understanding. How = emotion and state of the speaker.</p></div></div></section><section class="dense"><h2><small>Speech Analysis</small>Speech Analysis</h2><p><strong>Speech analysis</strong> (speech input) asks three questions about a spoken signal. It is often drawn as a tree: <em>Speech analysis</em> splits into <strong>Who?</strong> (<em>verification</em> and <em>identification</em>), <strong>What?</strong> (<em>recognition</em> and <em>understanding</em>) and <strong>How?</strong>.</p><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mmc1c0381edacc" role="graphics-document document" viewbox="0 0 849.6171875 287" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mmc1c0381edacc{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmc1c0381edacc .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmc1c0381edacc .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmc1c0381edacc .error-icon{fill:#1c2150;}#mmc1c0381edacc .error-text{fill:#e3deaf;stroke:#e3deaf;}#mmc1c0381edacc .edge-thickness-normal{stroke-width:1px;}#mmc1c0381edacc .edge-thickness-thick{stroke-width:3.5px;}#mmc1c0381edacc .edge-pattern-solid{stroke-dasharray:0;}#mmc1c0381edacc .edge-thickness-invisible{stroke-width:0;fill:none;}#mmc1c0381edacc .edge-pattern-dashed{stroke-dasharray:3;}#mmc1c0381edacc .edge-pattern-dotted{stroke-dasharray:2;}#mmc1c0381edacc .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mmc1c0381edacc .marker.cross{stroke:#a5b4fc;}#mmc1c0381edacc svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mmc1c0381edacc p{margin:0;}#mmc1c0381edacc .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mmc1c0381edacc .cluster-label text{fill:#e3deaf;}#mmc1c0381edacc .cluster-label span{color:#e3deaf;}#mmc1c0381edacc .cluster-label span p{background-color:transparent;}#mmc1c0381edacc .label text,#mmc1c0381edacc span{fill:#f4f4ff;color:#f4f4ff;}#mmc1c0381edacc .node rect,#mmc1c0381edacc .node circle,#mmc1c0381edacc .node ellipse,#mmc1c0381edacc .node polygon,#mmc1c0381edacc .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mmc1c0381edacc .rough-node .label text,#mmc1c0381edacc .node .label text,#mmc1c0381edacc .image-shape .label,#mmc1c0381edacc .icon-shape .label{text-anchor:middle;}#mmc1c0381edacc .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmc1c0381edacc .rough-node .label,#mmc1c0381edacc .node .label,#mmc1c0381edacc .image-shape .label,#mmc1c0381edacc .icon-shape .label{text-align:center;}#mmc1c0381edacc .node.clickable{cursor:pointer;}#mmc1c0381edacc .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mmc1c0381edacc .arrowheadPath{fill:#0b0b0b;}#mmc1c0381edacc .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mmc1c0381edacc .flowchart-link{stroke:#a5b4fc;fill:none;}#mmc1c0381edacc .edgeLabel{background-color:#12152b;text-align:center;}#mmc1c0381edacc .edgeLabel p{background-color:#12152b;}#mmc1c0381edacc .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmc1c0381edacc .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mmc1c0381edacc .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mmc1c0381edacc .cluster text{fill:#e3deaf;}#mmc1c0381edacc .cluster span{color:#e3deaf;}#mmc1c0381edacc div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mmc1c0381edacc .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mmc1c0381edacc rect.text{fill:none;stroke-width:0;}#mmc1c0381edacc .icon-shape,#mmc1c0381edacc .image-shape{background-color:#12152b;text-align:center;}#mmc1c0381edacc .icon-shape p,#mmc1c0381edacc .image-shape p{background-color:#12152b;padding:2px;}#mmc1c0381edacc .icon-shape .label rect,#mmc1c0381edacc .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmc1c0381edacc .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmc1c0381edacc .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmc1c0381edacc .node .neo-node{stroke:#818cf8;}#mmc1c0381edacc [data-look="neo"].node rect,#mmc1c0381edacc [data-look="neo"].cluster rect,#mmc1c0381edacc [data-look="neo"].node polygon{stroke:url(#mmc1c0381edacc-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc1c0381edacc [data-look="neo"].swimlane.cluster rect{filter:none;}#mmc1c0381edacc [data-look="neo"].node path{stroke:url(#mmc1c0381edacc-gradient);stroke-width:1px;}#mmc1c0381edacc [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc1c0381edacc [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mmc1c0381edacc [data-look="neo"].node circle{stroke:url(#mmc1c0381edacc-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc1c0381edacc [data-look="neo"].node circle .state-start{fill:#000000;}#mmc1c0381edacc [data-look="neo"].icon-shape .icon{fill:url(#mmc1c0381edacc-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc1c0381edacc [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mmc1c0381edacc-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc1c0381edacc :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc1c0381edacc_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mmc1c0381edacc_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmc1c0381edacc_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmc1c0381edacc_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mmc1c0381edacc_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M527.883,48.727L472.092,55.606C416.302,62.485,304.721,76.242,248.931,86.621C193.141,97,193.141,104,193.141,107.5L193.141,111" data-edge="true" data-et="edge" data-id="L_SA_W_0" data-look="classic" data-points="W3sieCI6NTI3Ljg4MjgxMjUsInkiOjQ4LjcyNjc4MjQ5OTA5OTc1fSx7IngiOjE5My4xNDA2MjUsInkiOjkwfSx7IngiOjE5My4xNDA2MjUsInkiOjExNX1d" id="mmc1c0381edacc-L_SA_W_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M627.047,65L627.047,69.167C627.047,73.333,627.047,81.667,627.047,89.333C627.047,97,627.047,104,627.047,107.5L627.047,111" data-edge="true" data-et="edge" data-id="L_SA_WH_0" data-look="classic" data-points="W3sieCI6NjI3LjA0Njg3NSwieSI6NjV9LHsieCI6NjI3LjA0Njg3NSwieSI6OTB9LHsieCI6NjI3LjA0Njg3NSwieSI6MTE1fV0=" id="mmc1c0381edacc-L_SA_WH_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M712.643,65L725.157,69.167C737.671,73.333,762.699,81.667,775.213,89.333C787.727,97,787.727,104,787.727,107.5L787.727,111" data-edge="true" data-et="edge" data-id="L_SA_H_0" data-look="classic" data-points="W3sieCI6NzEyLjY0MjU5NjM3ODUwNDcsInkiOjY1fSx7IngiOjc4Ny43MjY1NjI1LCJ5Ijo5MH0seyJ4Ijo3ODcuNzI2NTYyNSwieSI6MTE1fV0=" id="mmc1c0381edacc-L_SA_H_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138.953,170.645L130.185,175.038C121.417,179.43,103.88,188.215,95.112,196.108C86.344,204,86.344,211,86.344,214.5L86.344,218" data-edge="true" data-et="edge" data-id="L_W_V_0" data-look="classic" data-points="W3sieCI6MTM4Ljk1MzEyNSwieSI6MTcwLjY0NTI4MTYzODYyNDc0fSx7IngiOjg2LjM0Mzc1LCJ5IjoxOTd9LHsieCI6ODYuMzQzNzUsInkiOjIyMn1d" id="mmc1c0381edacc-L_W_V_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M247.328,170.645L256.096,175.038C264.865,179.43,282.401,188.215,291.169,196.108C299.938,204,299.938,211,299.938,214.5L299.938,218" data-edge="true" data-et="edge" data-id="L_W_I_0" data-look="classic" data-points="W3sieCI6MjQ3LjMyODEyNSwieSI6MTcwLjY0NTI4MTYzODYyNDc0fSx7IngiOjI5OS45Mzc1LCJ5IjoxOTd9LHsieCI6Mjk5LjkzNzUsInkiOjIyMn1d" id="mmc1c0381edacc-L_W_I_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M570.258,170.735L561.13,175.113C552.003,179.49,533.747,188.245,524.62,196.123C515.492,204,515.492,211,515.492,214.5L515.492,218" data-edge="true" data-et="edge" data-id="L_WH_R_0" data-look="classic" data-points="W3sieCI6NTcwLjI1NzgxMjUsInkiOjE3MC43MzUyMDU1NDY2MDY5fSx7IngiOjUxNS40OTIxODc1LCJ5IjoxOTd9LHsieCI6NTE1LjQ5MjE4NzUsInkiOjIyMn1d" id="mmc1c0381edacc-L_WH_R_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M683.836,170.735L692.964,175.113C702.091,179.49,720.346,188.245,729.474,196.123C738.602,204,738.602,211,738.602,214.5L738.602,218" data-edge="true" data-et="edge" data-id="L_WH_U_0" data-look="classic" data-points="W3sieCI6NjgzLjgzNTkzNzUsInkiOjE3MC43MzUyMDU1NDY2MDY5fSx7IngiOjczOC42MDE1NjI1LCJ5IjoxOTd9LHsieCI6NzM4LjYwMTU2MjUsInkiOjIyMn1d" id="mmc1c0381edacc-L_WH_U_0" marker-end="url(#mmc1c0381edacc_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_SA_W_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_SA_WH_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_SA_H_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_W_V_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_W_I_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_WH_R_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_WH_U_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-SA-0" transform="translate(627.046875, 36.5)"><rect class="basic label-container" height="57" style="" width="198.328125" x="-99.1640625" y="-28.5"></rect><g class="label" style="" transform="translate(-69.1640625, -13.5)"><rect></rect><foreignobject height="27" width="138.328125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Speech analysis</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-W-1" transform="translate(193.140625, 143.5)"><rect class="basic label-container" height="57" style="" width="108.375" x="-54.1875" y="-28.5"></rect><g class="label" style="" transform="translate(-24.1875, -13.5)"><rect></rect><foreignobject height="27" width="48.375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Who?</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-WH-3" transform="translate(627.046875, 143.5)"><rect class="basic label-container" height="57" style="" width="113.578125" x="-56.7890625" y="-28.5"></rect><g class="label" style="" transform="translate(-26.7890625, -13.5)"><rect></rect><foreignobject height="27" width="53.578125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>What?</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-H-5" transform="translate(787.7265625, 143.5)"><rect class="basic label-container" height="57" style="" width="107.78125" x="-53.890625" y="-28.5"></rect><g class="label" style="" transform="translate(-23.890625, -13.5)"><rect></rect><foreignobject height="27" width="47.78125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>How?</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-V-7" transform="translate(86.34375, 250.5)"><rect class="basic label-container" height="57" style="" width="156.6875" x="-78.34375" y="-28.5"></rect><g class="label" style="" transform="translate(-48.34375, -13.5)"><rect></rect><foreignobject height="27" width="96.6875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Verification</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-I-9" transform="translate(299.9375, 250.5)"><rect class="basic label-container" height="57" style="" width="170.5" x="-85.25" y="-28.5"></rect><g class="label" style="" transform="translate(-55.25, -13.5)"><rect></rect><foreignobject height="27" width="110.5"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Identification</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-R-11" transform="translate(515.4921875, 250.5)"><rect class="basic label-container" height="57" style="" width="160.609375" x="-80.3046875" y="-28.5"></rect><g class="label" style="" transform="translate(-50.3046875, -13.5)"><rect></rect><foreignobject height="27" width="100.609375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Recognition</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc1c0381edacc-flowchart-U-13" transform="translate(738.6015625, 250.5)"><rect class="basic label-container" height="57" style="" width="185.609375" x="-92.8046875" y="-28.5"></rect><g class="label" style="" transform="translate(-62.8046875, -13.5)"><rect></rect><foreignobject height="27" width="125.609375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Understanding</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mmc1c0381edacc-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mmc1c0381edacc-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mmc1c0381edacc-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-02/speech-analysis/">Speech Analysis</a></aside></section><section class=""><h2><small>Speech Analysis</small>Who is speaking?</h2><p>Human speech has characteristics that are <strong>determined by the speaker</strong>. Speech analysis can therefore recognise a speaker for <strong>identification and verification</strong>.</p><ul>
 <li>The computer identifies and verifies the speaker using an <strong>acoustic fingerprint</strong>.</li>
 <li>An <strong>acoustic fingerprint</strong> is a <strong>digitally stored speech probe</strong> of a person (for example, a certain statement).</li>
 </ul><aside class="notes">Source note: <a href="../../unit-02/speech-analysis/">Speech Analysis</a></aside></section><section class=""><h2><small>Speech Analysis</small>What has been said?</h2><p>This task analyses <strong>what was said</strong>: to <strong>recognise and understand</strong> the speech signal itself. A corresponding <strong>text</strong> is generated from the speech sequence. Applications:</p><ul>
@@ -2658,8 +5217,8 @@ z
 <p><strong>Who</strong> is speaking (identification and verification), <strong>what</strong> was said (recognition and understanding) and <strong>how</strong> it was said (for example angry or calm).</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-02/speech-analysis/">Speech Analysis</a></aside></section><section class=""><h2><small>Speech Analysis</small>Checkpoint <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Name the three stages of recognition and the knowledge each uses.</p><div class="fragment ans">
 <p><strong>Acoustic and phonetic analysis</strong> (sound patterns, word models), <strong>syntactical analysis</strong> (syntax), <strong>semantic analysis</strong> (semantics).</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-02/speech-analysis/">Speech Analysis</a></aside></section></section>
-<section data-topic="Speech Transmission"><section><div class="sec"><div class="no">06</div><h2>Speech Transmission</h2><div class="lead">Unit 2 &middot; topic 6 of 6</div></div></section><section class=""><h2><small>Speech Transmission</small>Speech Transmission</h2><p><strong>Speech transmission</strong> is the field of <strong>highly efficient encoding of speech signals</strong> so they can be sent at a <strong>low data rate</strong> while keeping <strong>noticeable quality loss to a minimum</strong>.</p><p>There are <strong>three principles</strong>:</p><ol>
+</div></div><aside class="notes">Source note: <a href="../../unit-02/speech-analysis/">Speech Analysis</a></aside></section><section><h2><small>Speech Analysis</small>Key terms</h2><div class="terms"><div class="card term"><b>Speaker verification</b><span>Checking a claimed identity from the voice.</span></div><div class="card term"><b>Speaker identification</b><span>Finding out who is speaking from a group.</span></div><div class="card term"><b>Speech recognition</b><span>Converting speech to words.</span></div><div class="card term"><b>Speech understanding</b><span>Working out the meaning of what was said.</span></div><div class="card term"><b>Feature extraction</b><span>Keeping only the characteristics needed, to reduce data.</span></div></div></section></section>
+<section data-topic="Speech Transmission"><section><div class="sec"><div class="no">06</div><h2>Speech Transmission</h2><div class="lead">Unit 2 &middot; topic 6 of 6</div></div></section><section><h2><small>Speech Transmission</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Sending speech costs bits. PCM keeps everything, source encoding uses properties of speech to save bits, and recognition plus synthesis sends only text.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A normal phone call uses 64 kbit/s (8,000 samples × 8 bits); a good voice codec can use much less.</p></div><div class="card c3"><div class="ct">Remember it</div><p>PCM = accurate but big. Source encoding = smaller. Recognise-then-synthesise = smallest, but the original voice is lost.</p></div></div></section><section class=""><h2><small>Speech Transmission</small>Speech Transmission</h2><p><strong>Speech transmission</strong> is the field of <strong>highly efficient encoding of speech signals</strong> so they can be sent at a <strong>low data rate</strong> while keeping <strong>noticeable quality loss to a minimum</strong>.</p><p>There are <strong>three principles</strong>:</p><ol>
 <li class="fragment fade-up"><strong>Pulse Code Modulation (PCM)</strong></li>
 <li class="fragment fade-up"><strong>Source coding</strong></li>
 <li class="fragment fade-up"><strong>Recognition and synthesis methods</strong></li>
@@ -2717,12 +5276,12 @@ z
 <p><strong>Suppression of silence</strong> in speech sequences, or a <strong>channel vocoder</strong> (a parametric system).</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-02/speech-transmission/">Speech Transmission</a></aside></section><section class=""><h2><small>Speech Transmission</small>Checkpoint <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">In the recognition/synthesis method, which side performs recognition?</p><div class="fragment ans">
 <p>The <strong>sender</strong>. The <strong>receiver</strong> performs synthesis, so only the characteristics of the speech elements travel over the channel.</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-02/speech-transmission/">Speech Transmission</a></aside></section><section><h2><small>Speech Transmission</small>Bit rates: what must the network carry?</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 716.44375 248.26775" xmlns="http://www.w3.org/2000/svg" version="1.1">
+</div></div><aside class="notes">Source note: <a href="../../unit-02/speech-transmission/">Speech Transmission</a></aside></section><section><h2><small>Speech Transmission</small>Key terms</h2><div class="terms"><div class="card term"><b>PCM</b><span>Digital representation by sampling and quantization.</span></div><div class="card term"><b>Source encoding</b><span>Compression that depends on the type of signal.</span></div><div class="card term"><b>ADPCM</b><span>Adaptive Differential PCM: sends small adaptive differences.</span></div><div class="card term"><b>Bit rate</b><span>Bits per second needed by a stream.</span></div><div class="card term"><b>Compression</b><span>Reducing data to save storage or bandwidth.</span></div></div></section><section><h2><small>Speech Transmission</small>Bit rates: what must the network carry?</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 716.44375 248.26775" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.382622</dc:date>
+    <dc:date>2026-11-11T18:12:19.533713</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -3056,8 +5615,466 @@ L 710.68375 205.344
   </clipPath>
  </defs>
 </svg>
-</div><div class="cap">CD: 44,100 × 16 × 2 = 1,411.2 kbit/s. Telephone PCM: 8,000 × 8 = 64 kbit/s. ADPCM: 8,000 × 4 = 32 kbit/s.</div></section></section>
+</div><div class="cap">CD: 44,100 × 16 × 2 = 1,411.2 kbit/s. Telephone PCM: 8,000 × 8 = 64 kbit/s. ADPCM: 8,000 × 4 = 32 kbit/s.</div></section><section><h2><small>Speech Transmission</small>Companding: more levels for quiet sounds</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 500.00375 279.421438" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T18:12:20.876743</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 279.421438 
+L 500.00375 279.421438 
+L 500.00375 0 
+L 0 0 
+L 0 279.421438 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 47.84375 238.608 
+L 494.24375 238.608 
+L 494.24375 5.76 
+L 47.84375 5.76 
+L 47.84375 238.608 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 68.134659 238.608 
+L 68.134659 5.76 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m272fcf6583" d="M 0 0 
+L 0 3.5 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m272fcf6583" x="68.134659" y="238.608" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="68.134659" y="254.725188" transform="rotate(-0 68.134659 254.725188)">0.0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 149.298295 238.608 
+L 149.298295 5.76 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m272fcf6583" x="149.298295" y="238.608" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="149.298295" y="254.725188" transform="rotate(-0 149.298295 254.725188)">0.2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 230.461932 238.608 
+L 230.461932 5.76 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m272fcf6583" x="230.461932" y="238.608" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="230.461932" y="254.725188" transform="rotate(-0 230.461932 254.725188)">0.4</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 311.625568 238.608 
+L 311.625568 5.76 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m272fcf6583" x="311.625568" y="238.608" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="311.625568" y="254.725188" transform="rotate(-0 311.625568 254.725188)">0.6</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 392.789205 238.608 
+L 392.789205 5.76 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m272fcf6583" x="392.789205" y="238.608" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="392.789205" y="254.725188" transform="rotate(-0 392.789205 254.725188)">0.8</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 473.952841 238.608 
+L 473.952841 5.76 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m272fcf6583" x="473.952841" y="238.608" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="473.952841" y="254.725188" transform="rotate(-0 473.952841 254.725188)">1.0</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="271.04375" y="270.778625" transform="rotate(-0 271.04375 270.778625)">input amplitude |x|</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_13">
+      <path d="M 47.84375 228.024 
+L 494.24375 228.024 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <defs>
+       <path id="m23acc233fe" d="M 0 0 
+L -3.5 0 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m23acc233fe" x="47.84375" y="228.024" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="40.84375" y="232.582594" transform="rotate(-0 40.84375 232.582594)">0.0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_15">
+      <path d="M 47.84375 185.688 
+L 494.24375 185.688 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m23acc233fe" x="47.84375" y="185.688" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="40.84375" y="190.246594" transform="rotate(-0 40.84375 190.246594)">0.2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_17">
+      <path d="M 47.84375 143.352 
+L 494.24375 143.352 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m23acc233fe" x="47.84375" y="143.352" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="40.84375" y="147.910594" transform="rotate(-0 40.84375 147.910594)">0.4</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_19">
+      <path d="M 47.84375 101.016 
+L 494.24375 101.016 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m23acc233fe" x="47.84375" y="101.016" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="40.84375" y="105.574594" transform="rotate(-0 40.84375 105.574594)">0.6</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_21">
+      <path d="M 47.84375 58.68 
+L 494.24375 58.68 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m23acc233fe" x="47.84375" y="58.68" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="40.84375" y="63.238594" transform="rotate(-0 40.84375 63.238594)">0.8</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_23">
+      <path d="M 47.84375 16.344 
+L 494.24375 16.344 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m23acc233fe" x="47.84375" y="16.344" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="40.84375" y="20.902594" transform="rotate(-0 40.84375 20.902594)">1.0</text>
+     </g>
+    </g>
+    <g id="text_14">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="14.877188" y="122.184" transform="rotate(-90 14.877188 122.184)">output F(x)</text>
+    </g>
+   </g>
+   <g id="line2d_25">
+    <path d="M 68.134659 228.024 
+L 69.151747 209.160616 
+L 70.168835 196.59239 
+L 71.185924 187.153079 
+L 72.203012 179.591247 
+L 73.2201 173.282523 
+L 74.237188 167.870035 
+L 76.271364 158.915002 
+L 78.305541 151.666654 
+L 80.339717 145.577435 
+L 82.373894 140.327227 
+L 84.40807 135.712574 
+L 86.442246 131.596086 
+L 88.476423 127.88061 
+L 91.527687 122.908381 
+L 94.578952 118.509796 
+L 97.630216 114.566079 
+L 100.681481 110.991907 
+L 103.732745 107.723918 
+L 107.801098 103.760917 
+L 111.869451 100.170916 
+L 115.937803 96.8897 
+L 120.006156 93.868333 
+L 125.091597 90.399689 
+L 130.177038 87.220136 
+L 135.262479 84.285172 
+L 141.365008 81.037367 
+L 147.467537 78.044349 
+L 154.587154 74.825481 
+L 161.706771 71.857053 
+L 169.843477 68.725173 
+L 177.980182 65.830872 
+L 187.133976 62.817304 
+L 197.304857 59.726246 
+L 207.475739 56.866841 
+L 218.663709 53.950686 
+L 230.868767 51.004569 
+L 244.090913 48.050314 
+L 258.330148 45.105375 
+L 273.58647 42.183456 
+L 289.859881 39.295117 
+L 307.15038 36.44832 
+L 326.475056 33.499254 
+L 346.816819 30.622985 
+L 369.192759 27.690892 
+L 392.585787 24.848766 
+L 418.012991 21.982082 
+L 445.474372 19.110242 
+L 473.952841 16.344 
+L 473.952841 16.344 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #f472b6; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_26">
+    <path d="M 68.134659 228.024 
+L 69.151747 217.766173 
+L 70.168835 209.388382 
+L 71.185924 202.307073 
+L 72.203012 196.174238 
+L 74.237188 185.927916 
+L 76.271364 177.557791 
+L 78.305541 170.481955 
+L 80.339717 164.353222 
+L 82.373894 158.947725 
+L 84.40807 154.112644 
+L 86.442246 149.739002 
+L 88.476423 145.746346 
+L 91.527687 140.341912 
+L 94.578952 135.507681 
+L 97.630216 131.134734 
+L 100.681481 127.142658 
+L 103.732745 123.470388 
+L 107.801098 118.990947 
+L 111.869451 114.910318 
+L 115.937803 111.163257 
+L 120.006156 107.699326 
+L 125.091597 103.707713 
+L 130.177038 100.035836 
+L 135.262479 96.63625 
+L 141.365008 92.863748 
+L 147.467537 89.378089 
+L 153.570066 86.138719 
+L 160.689683 82.6277 
+L 167.8093 79.366438 
+L 175.946006 75.902835 
+L 184.082711 72.682519 
+L 193.236505 69.310934 
+L 202.390298 66.170308 
+L 212.56118 62.915761 
+L 223.74915 59.583826 
+L 234.93712 56.477631 
+L 247.142178 53.312979 
+L 260.364324 50.114374 
+L 274.603559 46.902238 
+L 289.859881 43.693324 
+L 306.133292 40.501176 
+L 323.423791 37.336577 
+L 341.731378 34.207976 
+L 362.073142 30.965054 
+L 383.431993 27.790044 
+L 406.825021 24.547635 
+L 431.235138 21.392149 
+L 457.67943 18.20219 
+L 473.952841 16.344 
+L 473.952841 16.344 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #c084fc; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_27">
+    <path d="M 68.134659 228.024 
+L 71.185924 221.624284 
+L 74.237188 215.657323 
+L 78.305541 208.281226 
+L 82.373894 201.4742 
+L 86.442246 195.154693 
+L 90.510599 189.257515 
+L 94.578952 183.729737 
+L 98.647304 178.527795 
+L 103.732745 172.428863 
+L 108.818186 166.724203 
+L 113.903627 161.36592 
+L 118.989068 156.314346 
+L 124.074509 151.536264 
+L 130.177038 146.124309 
+L 136.279567 141.025062 
+L 142.382096 136.204351 
+L 149.501713 130.893971 
+L 156.62133 125.884994 
+L 163.740948 121.145037 
+L 171.877653 116.022358 
+L 180.014358 111.18071 
+L 188.151064 106.590857 
+L 197.304857 101.697383 
+L 206.458651 97.060981 
+L 216.629533 92.179836 
+L 226.800414 87.554503 
+L 236.971296 83.159498 
+L 248.159266 78.565029 
+L 260.364324 73.811395 
+L 272.569382 69.300712 
+L 285.791529 64.660976 
+L 299.013675 60.25297 
+L 313.252909 55.739815 
+L 328.509232 51.147375 
+L 343.765555 46.782078 
+L 360.038965 42.352053 
+L 377.329464 37.876687 
+L 395.637051 33.373037 
+L 414.961727 28.855975 
+L 435.30349 24.338366 
+L 456.662342 19.831247 
+L 473.952841 16.344 
+L 473.952841 16.344 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke: #22d3ee; stroke-width: 2.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_28">
+    <path d="M 68.134659 228.024 
+L 473.952841 16.344 
+L 473.952841 16.344 
+" clip-path="url(#pd1ff8dd081)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #9aa0cc; stroke-width: 1.4"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 47.84375 238.608 
+L 47.84375 5.76 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 47.84375 238.608 
+L 494.24375 238.608 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="80.309205" y="45.9792" transform="rotate(-0 80.309205 45.9792)">F(x) = ln(1 + μ|x|) / ln(1 + μ)</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_29">
+     <path d="M 309.580625 166.722375 
+L 321.580625 166.722375 
+L 333.580625 166.722375 
+" style="fill: none; stroke: #f472b6; stroke-width: 2.2; stroke-linecap: square"/>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="343.180625" y="170.922375" transform="rotate(-0 343.180625 170.922375)">μ = 255</text>
+    </g>
+    <g id="line2d_30">
+     <path d="M 309.580625 184.723313 
+L 321.580625 184.723313 
+L 333.580625 184.723313 
+" style="fill: none; stroke: #c084fc; stroke-width: 2.2; stroke-linecap: square"/>
+    </g>
+    <g id="text_17">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="343.180625" y="188.923313" transform="rotate(-0 343.180625 188.923313)">μ = 100</text>
+    </g>
+    <g id="line2d_31">
+     <path d="M 309.580625 202.72425 
+L 321.580625 202.72425 
+L 333.580625 202.72425 
+" style="fill: none; stroke: #22d3ee; stroke-width: 2.2; stroke-linecap: square"/>
+    </g>
+    <g id="text_18">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="343.180625" y="206.92425" transform="rotate(-0 343.180625 206.92425)">μ = 10</text>
+    </g>
+    <g id="line2d_32">
+     <path d="M 309.580625 220.725188 
+L 321.580625 220.725188 
+L 333.580625 220.725188 
+" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #9aa0cc; stroke-width: 1.4"/>
+    </g>
+    <g id="text_19">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="343.180625" y="224.925188" transform="rotate(-0 343.180625 224.925188)">linear (no companding)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd1ff8dd081">
+   <rect x="47.84375" y="5.76" width="446.4" height="232.848"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">Telephone systems use μ-law (μ = 255) or A-law so quiet speech gets finer steps than loud speech: 8 bits sound like about 12.</div></section></section>
 <section data-topic="Exam recap"><section><h2><small>Revision</small>Exam focus recap (1/2)</h2><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Nyquist sampling theorem</div><div class="callout exam"><div class="ct">Exam tip</div></section><section><h2><small>Revision</small>Exam focus recap (2/2)</h2><div class="callout exam"><div class="ct">Samples versus instructions</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div></section></section>
+<section data-topic="Sources"><section><h2><small>Go deeper</small>Sources and further reading</h2><ul class="small"><li>Steinmetz and Nahrstedt, <em>Multimedia Fundamentals Vol. 1</em>, chapter on sound and audio.</li><li>H. Nyquist, 'Certain topics in telegraph transmission theory', 1928; C. E. Shannon, 'Communication in the presence of noise', 1949.</li><li>MIDI Manufacturers Association, <em>MIDI 1.0 Detailed Specification</em>. ITU-T G.711 (PCM, μ-law / A-law).</li></ul><div class="callout"><div class="ct">About the figures</div><p>Charts and diagrams in this deck were drawn for this course from standard formulas, specifications and textbook knowledge. They are original drawings, not copies of figures from any publication.</p></div></section></section>
 <section data-topic="Quick check"><section><div class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></div></section><section><h2><small>Quick check 1 / 6</small>14. The human audible range is</h2><ul class="opts"><li>A. 0 to 20 Hz</li><li>B. 20 Hz to 20 kHz</li><li>C. 20 kHz to 1 GHz</li><li>D. 1 GHz to 10 THz</li></ul><div class="fragment ans"><strong>Answer: B.</strong> A is infrasound, C ultrasound, D hypersound.</div></section><section><h2><small>Quick check 2 / 6</small>15. A CD sampling rate of 44,100 Hz can represent frequencies up to</h2><ul class="opts"><li>A. 44,100 Hz</li><li>B. 22,050 Hz</li><li>C. 88,200 Hz</li><li>D. 16,000 Hz</li></ul><div class="fragment ans"><strong>Answer: B.</strong> By the Nyquist theorem the maximum frequency is half the sampling rate.</div></section><section><h2><small>Quick check 3 / 6</small>16. How many levels does 16-bit quantization give?</h2><ul class="opts"><li>A. 256</li><li>B. 4,096</li><li>C. 65,536</li><li>D. 16</li></ul><div class="fragment ans"><strong>Answer: C.</strong> 2¹⁶ = 65,536. 256 is 8-bit.</div></section><section><h2><small>Quick check 4 / 6</small>17. In the file-size formula S = R × (b/8) × C × D, what does C stand for?</h2><ul class="opts"><li>A. Compression ratio</li><li>B. Number of channels</li><li>C. Clock rate</li><li>D. Codec</li></ul><div class="fragment ans"><strong>Answer: B.</strong> C is the number of channels (1 = mono, 2 = stereo).</div></section><section><h2><small>Quick check 5 / 6</small>18. How many channels does the MIDI standard specify?</h2><ul class="opts"><li>A. 8</li><li>B. 16</li><li>C. 64</li><li>D. 128</li></ul><div class="fragment ans"><strong>Answer: B.</strong> 16 channels. 128 is the number of instruments.</div></section><section><h2><small>Quick check 6 / 6</small>19. SMPTE time code is expressed as</h2><ul class="opts"><li>A. HH:MM:SS:FF</li><li>B. DD:MM:YYYY</li><li>C. kbps:fps</li><li>D. Hz:dB</li></ul><div class="fragment ans"><strong>Answer: A.</strong> Hours, minutes, seconds and frames.</div></section></section>
 <section><div class="title-slide"><div class="kick">End of Unit 2</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></div></section>
 </div></div>

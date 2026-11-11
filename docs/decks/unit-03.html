@@ -61,6 +61,9 @@ aside.notes{display:none}
 .opts{list-style:none;margin:.4em 0!important;padding:0;display:grid;gap:.35em}
 .opts li{margin:0;padding:.4em .8em;border:1px solid var(--line);border-radius:10px;background:var(--card)}
 .ans{margin-top:.6em;padding:.5em .9em;border-radius:10px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.5)}
+.trio{display:grid;grid-template-columns:1fr;gap:.6em}.trio .card{padding:.55em 1em}.trio .card .ct{font-size:.55em;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.1em}.trio .card p{margin:.1em 0;font-size:.95em}
+.trio .c1{border-left:5px solid #818cf8}.trio .c1 .ct{color:#a5b4fc}.trio .c2{border-left:5px solid #34d399}.trio .c2 .ct{color:#6ee7b7}.trio .c3{border-left:5px solid #fb923c}.trio .c3 .ct{color:#fdba74}
+.terms{display:grid;grid-template-columns:1fr 1fr;gap:.55em}.card.term{display:flex;flex-direction:column;gap:.1em;padding:.45em .85em}.card.term b{color:#c4b5fd;font-size:.95em}.card.term span{font-size:.74em;line-height:1.35;color:#dfe2ff}
 .agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:.55em}
 .agenda .card{display:flex;gap:.7em;align-items:center;font-size:.85em;font-weight:600}
 .agenda .n{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:800;font-size:.85em;color:#fff}
@@ -101,12 +104,12 @@ aside.notes{display:none}
 <li class="fragment fade-up"><strong>Describe</strong> the three ways of transmitting an image (raw, compressed, symbolic) and calculate raw image size.</li>
 </ol></section>
 <section><h2><small>Roadmap</small>What we will cover</h2><div class="agenda"><div class="card"><span class="n">1</span>Image and Graphics Basics</div><div class="card"><span class="n">2</span>Image and Graphics Formats</div><div class="card"><span class="n">3</span>Image Synthesis and Graphics Systems</div><div class="card"><span class="n">4</span>Image Analysis and Recognition</div><div class="card"><span class="n">5</span>Image Transmission</div></div></section>
-<section data-topic="Image and Graphics Basics"><section><div class="sec"><div class="no">01</div><h2>Image and Graphics Basics</h2><div class="lead">Unit 3 &middot; topic 1 of 5</div></div></section><section><h2><small>Image and Graphics Basics</small>Bitmap vs vector</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 561.575855 269.814281" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<section data-topic="Image and Graphics Basics"><section><div class="sec"><div class="no">01</div><h2>Image and Graphics Basics</h2><div class="lead">Unit 3 &middot; topic 1 of 5</div></div></section><section><h2><small>Image and Graphics Basics</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>A digital image is a grid of tiny squares called pixels; each pixel holds a number for its brightness or colour. More pixels give more detail but more data.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Zoom far into a phone photo and you see the individual coloured squares.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Bitmap size = width × height × bits per pixel ÷ 8. Bitmaps store pixels; vector graphics store shapes.</p></div></div></section><section><h2><small>Image and Graphics Basics</small>Bitmap vs vector</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 561.575855 269.814281" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.470274</dc:date>
+    <dc:date>2026-11-11T18:12:19.652613</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1186,12 +1189,12 @@ L 432.091636 50.610281
 <p>16 × 16 = 256 pixels at 1 bit each = 256 bits = <strong>32 bytes</strong>.</p>
 </div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Why does a 24-bit image give 16,777,216 colours?</p><div class="fragment ans">
 <p>24 bits per pixel gives 2²⁴ = <strong>16,777,216</strong> combinations: 8 bits each for red, green and blue, each with 256 levels.</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-03/image-basics/">Image and Graphics Basics</a></aside></section><section><h2><small>Image and Graphics Basics</small>Colour models</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 548.731636 273.030363" xmlns="http://www.w3.org/2000/svg" version="1.1">
+</div></div><aside class="notes">Source note: <a href="../../unit-03/image-basics/">Image and Graphics Basics</a></aside></section><section><h2><small>Image and Graphics Basics</small>Key terms</h2><div class="terms"><div class="card term"><b>Pixel</b><span>Picture element: the smallest unit of an image.</span></div><div class="card term"><b>Resolution</b><span>Number of pixels, for example 640 × 480.</span></div><div class="card term"><b>Bit depth</b><span>Bits per pixel: 1 = black/white, 8 = 256 values, 24 = true colour.</span></div><div class="card term"><b>Bitmap</b><span>Image stored pixel by pixel.</span></div><div class="card term"><b>Vector graphic</b><span>Picture stored as shapes and formulas.</span></div><div class="card term"><b>RGB / CMY</b><span>Additive screen colours / subtractive print colours.</span></div></div></section><section><h2><small>Image and Graphics Basics</small>Colour models</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 548.731636 273.030363" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.573705</dc:date>
+    <dc:date>2026-11-11T18:12:19.771118</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1244,8 +1247,112 @@ iVBORw0KGgoAAAANSUhEUgAAAocAAAKHCAYAAADzFOLiAABVeklEQVR4Xu3dB7h0ZXW38ZvPiID0jkiX
   </clipPath>
  </defs>
 </svg>
-</div><div class="cap">Screens add light (RGB); printing subtracts light with inks (CMY + K).</div></section></section>
-<section data-topic="Image and Graphics Formats"><section><div class="sec"><div class="no">02</div><h2>Image and Graphics Formats</h2><div class="lead">Unit 3 &middot; topic 2 of 5</div></div></section><section class=""><h2><small>Image and Graphics Formats</small>Image and Graphics Formats</h2><p>Two kinds of two distinct kinds of <strong>image format</strong>: the format in which the image is <strong>created during digitising</strong> (capturing format), and the format in which images are <strong>stored and often transmitted</strong> (storage format). <strong>Graphics formats</strong> are a separate case.</p><aside class="notes">Source note: <a href="../../unit-03/formats/">Image and Graphics Formats</a></aside></section><section class=""><h2><small>Image and Graphics Formats</small>Image capturing format</h2><p>The format is specified by <strong>two main parameters</strong>:</p><ol>
+</div><div class="cap">Screens add light (RGB); printing subtracts light with inks (CMY + K).</div></section><section><h2><small>Image and Graphics Basics</small>Resolution and colour depth</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 569.52 242.094281" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T18:12:20.983507</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 242.094281 
+L 569.52 242.094281 
+L 569.52 0 
+L 0 0 
+L 0 242.094281 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g clip-path="url(#p7fbc09f7c7)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAABKgAAAEACAYAAACXqk4BAAAHyUlEQVR4Xu3YW07jQBBAUSc7YHHsfykZofmaAKKUtHOZ1jl/RI4f5baBezmO43bcuVwu/3xy//OHyWeTbb7a107f2+lanrlX967X66fPprN6ZF9f7fsr9+d15jl99xztcn1nz3yy/8k6m97jR9+Lj9zPZ561yXmuXPuT401n/NOspvt55Tmdfa9WrfOzz/N/XVOPzuXstfjTs/Dd749Va//s61t1npN19+g93u171tTsfxdr6q/JMzqZ1eRdMtlmek6TfU22WXm8yZxWHu/V17fyeJNZrTzeZF+rtll5jydzWnm8yQxWHu9zJQAAAACAFxKoAAAAAEgJVAAAAACkBCoAAAAAUgIVAAAAACmBCgAAAICUQAUAAABASqACAAAAICVQAQAAAJASqAAAAABICVQAAAAApAQqAAAAAFICFQAAAAApgQoAAACAlEAFAAAAQEqgAgAAACAlUAEAAACQEqgAAAAASAlUAAAAAKQEKgAAAABSAhUAAAAAKYEKAAAAgJRABQAAAEBKoAIAAAAgJVABAAAAkBKoAAAAAEgJVAAAAACkBCoAAAAAUgIVAAAAACmBCgAAAICUQAUAAABASqACAAAAICVQAQAAAJASqAAAAABICVQAAAAApAQqAAAAAFICFQAAAAApgQoAAACAlEAFAAAAQEqgAgAAACAlUAEAAACQEqgAAAAASAlUAAAAAKQEKgAAAABSAhUAAAAAKYEKAAAAgJRABQAAAEBKoAIAAAAgJVABAAAAkBKoAAAAAEgJVAAAAACkBCoAAAAAUgIVAAAAACmBCgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWOpyHMdt6R439vb2tvHVrWNOc2Y1Y05zZjVjTnNmNWNOc2Y1Y05zZjVjTnNmNWNOc2Y1c51tBgAAAADnEKgAAAAASAlUAAAAAKQEKgAAAABSAhUAAAAAKYEKAAAAgJRABQAAAEBKoAIAAAAgJVABAAAAkBKoAAAAAEgJVAAAAACkBCoAAAAAUgIVAAAAACmBCgAAAICUQAUAAABASqACAAAAICVQAQAAAJASqAAAAABICVQAAAAApAQqAAAAAFICFQAAAAApgQoAAACAlEAFAAAAQEqgAgAAACAlUAEAAACQEqgAAAAASAlUAAAAAKQEKgAAAABSAhUAAAAAKYEKAAAAgJRABQAAAEBKoAIAAAAgJVABAAAAkBKoAAAAAEgJVAAAAACkBCoAAAAAUgIVAAAAACmBCgAAAICUQAUAAABASqACAAAAICVQAQAAAJASqAAAAABICVQAAAAApAQqAAAAAFICFQAAAAApgQoAAACAlEAFAAAAQEqgAgAAACAlUAEAAACQEqgAAAAASAlUAAAAAKQEKgAAAABSAhUAAAAAKYEKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYD+X4zhu+10WsJP39/edLgfYkPcU8Nt5TwG/3fW3nyAAAAAAexOoAAAAAEgJVAAAAACkBCoAAAAAUgIVAAAAACmBCgAAAICUQAUAAABASqACAAAAICVQAQAAAJASqAAAAABICVQAAAAApAQqAAAAAFICFQAAAAApgQoAAACAlEAFAAAAQEqgAgAAACAlUAEAAACQEqgAAAAASAlUAAAAAKQEKgAAAABSAhUAAAAAKYEKAAAAgJRABQAAAEBKoAIAAAAgJVABAAAAkBKoAAAAAEgJVAAAAACkBCoAAAAAUgIVAAAAACmBCgAAAICUQAUAAABASqACAAAAICVQAQAAAJASqAAAAABICVQAAAAApAQqAAAAAFICFQAAAAApgQoAAACAlEAFAAAAQEqgAgAAACAlUAEAAACQEqgAAAAASAlUAAAAAKQEKgAAAABSAhUAAAAAKYEKAAAAgJRABQAAAEBKoAIAAAAgJVABAAAAkBKoAAAAAEgJVAAAAACkBCoAAAAAUgIVAAAAACmBCgAAAICUQAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwn8txHLf9LgsA4HVuN39OAQA84/rMlwEAAADgWQIVAAAAACmBCgAAAICUQAUAAABASqACAAAAICVQAQAAAJASqAAAAABICVQAAAAApAQqAAAAAFICFQAAAAApgQoAAACAlEAFAAAAQEqgAgAAACAlUAEAAACQEqgAAAAASAlUAAAAAKQEKgAAAABSAhUAAAAAKYEKAAAAgJRABQAAAEBKoAIAAAAgJVABAAAAkBKoAAAAAEgJVAAAAACkBCoAAAAAUgIVAAAAACmBCgAAAICUQAUAAABASqACAAAAICVQAQAAAJASqAAAAABICVQAAAAApAQqAAAAAFICFQAAAAApgQoAAACAlEAFAAAAQEqgAgAAACAlUAEAAACQEqgAAAAASAlUAAAAAKQEKgAAAABSAhUAAAAAKYEKAAAAgJRABQAAAEBKoAIAAAAgJVABAAAAkBKoAAAAAEgJVAAAAACkBCoAAAAAUgIVAAAAACmBCgAAAICUQAUAAABASqACAAAAICVQAQAAAJASqAAAAABI/QHEyRGpkxLq4gAAAABJRU5ErkJggg==" id="imaged7fbeb172e" transform="scale(1 -1) translate(0 -92.16)" x="6" y="-21.934281" width="429.12" height="92.16"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="443.575385" y="35.010419" transform="rotate(-0 443.575385 35.010419)">1-bit = 2 levels</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="443.575385" y="59.07899" transform="rotate(-0 443.575385 59.07899)">2-bit = 4 levels</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="443.575385" y="83.147561" transform="rotate(-0 443.575385 83.147561)">4-bit = 16 levels</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="443.575385" y="107.216133" transform="rotate(-0 443.575385 107.216133)">8-bit = 256 levels</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="284.76" y="14.118281" transform="rotate(-0 284.76 14.118281)">Colour depth (grey levels)</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g clip-path="url(#pefa8fd203f)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAREAAAERCAYAAABclJOOAAAGIElEQVR4Xu3d2VJaSwBAUaHyLQ6l/v+PJJUoH5NbPN3QOZUGNirDWm8O9Bmwtm1Xg6u7u7vfdxOr1WrnOw79eMkxY4yPGc3G3Jp9z+wYx44xG3d2Xvscd3Y/9hljn/OYHWfpWg8dd58xRuv1evajfPB5LI156HO5ZBx3NubScze7/o8Yc+k85ncd4B9EBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEhEBEi+pUfzqd7e3naOt1qtDvp4a3zMaDbmkvV693fR7BhL5zE+5uHh4VPvLcczEwESEQESEQESayJn4v39fedM9llXuGbj/dga78n9/f0134KLYSYCJCICJCICJCICJBZWP8C4KWzrmE1c/NtsMXppcdomttMzEwESEQESEQESayInsLQxivM0PlfWSDozESARESARESCxJjKxzwvBuFyz9azHx8fLvbhPYiYCJCICJCICJNZEBkuve+F2Lf08WCfZZSYCJCICJCICJCICJDe/sGohlUP9+vVr5yG3vtBqJgIkIgIkIgIkN7cmMv49C9X4M/X09FSHvChmIkAiIkAiIkBy1Wsi9oDwFX7+/PnXYa95ncRMBEhEBEhEBEhEBEiuamF19s7d8FXGxdbn5+evOpWTMxMBEhEBEhEBEhEBEhEBEhEBEhEBkoveJ2JfCJfqx48fO6f+8vJyqZdiJgI0/pwBEhEBkotaE/EmQ1yr79+/X+waiZkIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkKzu7u5+z0ZYrbbf9r9DP14yG2PpDYdmjxm/vo/1erejs2Ns7fM9o9ljZl8/5h4u3Y/ZPTrmPGb38JzO/dDrm92vz/T6+vrPw53ieRiNYy79/JuJAImIAImIAImIAImIAImIAImIAImIAMnZbDbbbDbTC5ltFDpmY9Bsg84+G7b2Oe6h5/4RY27Nxp2d55LZPVwyO84+9300G3Pp+g+9H+dk3Hx2iudhZLMZ8OH8OQMkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIk39KjT+j+/n5ntPf39xOODpfv9fX1LC/CTARIRARIRARIRARIRARIRARIRARIRARIzmaz2ejh4eGvz9mAxq14eXn561JXq9VZXr6ZCJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCc7QvwlowvyvOCPK7F0gvuLoWZCJCICJCICJBc1JrIaPyveZvNJt0M+CzPz887hzrXNxzah5kIkIgIkIgIkIgIkIgIkIgIkIgIkFz0PpHRuG/Ea2s4F09PTzunsl5fz+/v67kS4EuICJCICJCICJBc1cLqaHwTo623t7d0w2BmXES9dmYiQCIiQCIiQHLVayJLHh8fdz5tQxrV+DN1yW8wdAwzESARESARESC5uTWRkX+IxaHGNZBbZyYCJCICJCICJCICJDe/sDqy0Mqfll7EeWubyWbMRIBERIBERIDEmsjE+A7yW+PfxJvNZjYMZ2rp+f3TNb0r+0cxEwESEQESEQESayIn4D/vXY7xubLnozMTARIRARIRARJrIh/gmNdb2GtyuHF9Y589HdZATs9MBEhEBEhEBEhEBEgsrJ6JfTZB3dJ/69vnhY+cBzMRIBERIBERILEmckHGTWyzjVNLXx8/d+jHS2ZjbO3zPX+aXRvnw0wESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESP4DFyd7iR2K0GAAAAAASUVORK5CYII=" id="image2bf3351b34" transform="scale(1 -1) translate(0 -98.28)" x="17.28" y="-138.054281" width="98.28" height="98.28"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="66.412174" y="132.054281" transform="rotate(-0 66.412174 132.054281)">64 × 64 pixels</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g clip-path="url(#pccf4679d51)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAREAAAERCAYAAABclJOOAAAFnUlEQVR4Xu3cvU1caRiG4TnzE44FfVCCYzogx7FliT6c0wKhZTqgAhdAFwaGkNUEm+1KK90vq5G5rpxH52d0c6JvWZblbRVtNpu4sBrZOJq4lu12exL3M3EvExun8jzW63V+LxP3MrEx8V4mNiaeaX8rwIcmIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkAiIkCyTX/9h9rv9/nObm5u8sbV1VXeOD8/zxvrdf9f8/r6mq/j/v4+b9ze3uaNw+GQN/4k/dcBfGgiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiTLsixvaWG1Wm02mzoxsnF0cXGRr+Xu7i5vTBwGdCrPdeJQot1ul5/pxPN4eXnJ13F9fZ03Hh8f88bE85h4t75EgEREgEREgEREgEREgEREgEREgEREgEREgEREgEREgEREgEREgEREgEREgEREgORkDiWaOMTn6OHhIT2Qo4lr2W63+TomDp2Z2Jg4uOZUDiWaeB7Pz8/53V5eXuaNw+GQNyberS8RIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIOkn5wz59u3byNJ+vx/ZgX8z8Rv7+vVrfsDfv3/PGxN8iQCJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiADJsizLW1pYrVabzaZOrH79+pU3js7OzvLOdtvPaprYmHiuExvrdf9fs9vt8nuZuJeJjWVZ8r08PT3ljc+fP+eNiXfbfx3AhyYiQCIiQCIiQCIiQCIiQCIiQCIiQCIiQCIiQCIiQCIiQCIiQCIiQCIiQCIiQNJP3xny6dOnoSU4ffv9/vQv8j/yJQIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIk2/TXg37//j2ydnZ2NrID7+np6ek95/9XvkSARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESA5GQOJfrx40e6kb99+fJlZAfe08+fP99z/n/lSwRIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIlmVZ3tLCarXabDZ1YnV+fp43jh4eHvLOxLVst/28p4nnOrGxXvf/NbvdLr+XiXuZ2Hh+fs73cnl5mTcOh0PemHi3/dcBfGgiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQncyjRxGExRxcXF+mBHN3d3eWNiYONJp7JxMbEwTWncijRy8tLfrfX19d54/HxMW+cyrv1JQIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkIgIkf9yhRBMHtUwcKHRzc5NezNHV1VXemLiXiUOJXl9f873c39/njdvb27xxOBzyxsTvdGJj4t36EgESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQEShxL9g+12mx7q0cSBMaeycSrPY+IAnYl7mdg4lXc78Ux9iQCJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiACJiADJXy35YNVRBLfkAAAAAElFTkSuQmCC" id="imaged2ffb9902a" transform="scale(1 -1) translate(0 -98.28)" x="162.72" y="-138.054281" width="98.28" height="98.28"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="211.977391" y="132.054281" transform="rotate(-0 211.977391 132.054281)">16 × 16 pixels</text>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g clip-path="url(#pa315c3f8b0)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAREAAAERCAYAAABclJOOAAAEZUlEQVR4Xu3WMU7jQACGUWIR28p5uEia3AaJKqLlKggpBWfhJiBWW1Kuvym86L1+fjkD+jSHaZq+73ZgWZYdfMXd3TzPu/gO9/HTXu7jeDzu4v/jr3Vdd/Et0y6+AvhviQiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQiAiQ3KfTA51Op4Fr2z0/P28/PND5fB64tt2yLNsPD/T+/j5wbbvr9br98GCfn5+DF7fxEgESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQGSwzRN32lhkJeXl0FLzeVyaQODzPM8aKlZlqUNDLKX+7jdboN+Uff4+NhHBvASARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRAZLDNE3faWGQj4+PQUvN6XRqA4PM8zxoqVmWpQ0Mspf72JOHh4ddfI6XCJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJCICJDcp9MDvb29DVzb7nK5bD/Mr3e73X79b/xXXiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAIiJAcp9OD/T09DRwbbt1XbcfHuh8Pg9c2+7r62v74YFeX18Hrm13vV63H/6lvESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESARESA5DBN03daGGRZlkFLzTzPbWAQ9/HTXu7jeDwO+gt367r2kQG8RIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIBERIDkD2nGKUN/i+L2AAAAAElFTkSuQmCC" id="image7067f584a0" transform="scale(1 -1) translate(0 -98.28)" x="308.52" y="-138.054281" width="98.28" height="98.28"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="357.542609" y="132.054281" transform="rotate(-0 357.542609 132.054281)">8 × 8 pixels</text>
+   </g>
+  </g>
+  <g id="axes_5">
+   <g clip-path="url(#pe1a6558e0b)">
+    <image xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAREAAAERCAYAAABclJOOAAADlUlEQVR4Xu3WsY3DMBQFQZ/hQIDA9tSAKlE7aoDlnTPDd+lmxEwBH+ALFvzZtu33wcd5ntb4Z4xhky9zTnt8eVoDKEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESEQESF7HcaQDq7mua7UnZWOMfGMl+76v9JzMTwRIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIXvd9pwOrGWOs9qTMJn/NOfOmK/ETARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRARIRAZI3YbYN8OJL80wAAAAASUVORK5CYII=" id="image3d7b8b1888" transform="scale(1 -1) translate(0 -98.28)" x="453.96" y="-138.054281" width="98.28" height="98.28"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="503.107826" y="132.054281" transform="rotate(-0 503.107826 132.054281)">4 × 4 pixels</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p7fbc09f7c7">
+   <rect x="5.76" y="20.118281" width="558" height="98.28"/>
+  </clipPath>
+  <clipPath id="pefa8fd203f">
+   <rect x="17.272174" y="138.054281" width="98.28" height="98.28"/>
+  </clipPath>
+  <clipPath id="pccf4679d51">
+   <rect x="162.837391" y="138.054281" width="98.28" height="98.28"/>
+  </clipPath>
+  <clipPath id="pa315c3f8b0">
+   <rect x="308.402609" y="138.054281" width="98.28" height="98.28"/>
+  </clipPath>
+  <clipPath id="pe1a6558e0b">
+   <rect x="453.967826" y="138.054281" width="98.28" height="98.28"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">Fewer pixels lose detail (blocks appear); fewer bits per pixel lose smooth shading (banding).</div></section></section>
+<section data-topic="Image and Graphics Formats"><section><div class="sec"><div class="no">02</div><h2>Image and Graphics Formats</h2><div class="lead">Unit 3 &middot; topic 2 of 5</div></div></section><section><h2><small>Image and Graphics Formats</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>A file format is the rule book for storing an image: some keep every pixel exactly (lossless), some throw away detail to be smaller (lossy).</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Photos on social media are usually JPEG; logos and screenshots are usually PNG; small web animations are GIF.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Photos use JPEG. Sharp-edged graphics use PNG or GIF. TIFF is for high-quality storage.</p></div></div></section><section class=""><h2><small>Image and Graphics Formats</small>Image and Graphics Formats</h2><p>Two kinds of two distinct kinds of <strong>image format</strong>: the format in which the image is <strong>created during digitising</strong> (capturing format), and the format in which images are <strong>stored and often transmitted</strong> (storage format). <strong>Graphics formats</strong> are a separate case.</p><aside class="notes">Source note: <a href="../../unit-03/formats/">Image and Graphics Formats</a></aside></section><section class=""><h2><small>Image and Graphics Formats</small>Image capturing format</h2><p>The format is specified by <strong>two main parameters</strong>:</p><ol>
 <li><strong>Spatial resolution</strong>, indicated in <strong>pixels</strong> (pixels × pixels).</li>
 <li><strong>Colour encoding</strong>, specified by <strong>bits per pixel</strong>.</li>
 </ol><p>The values of both depend on the <strong>hardware and software</strong> used to input and output images.</p><ul>
@@ -1394,8 +1501,8 @@ iVBORw0KGgoAAAANSUhEUgAAAocAAAKHCAYAAADzFOLiAABVeklEQVR4Xu3dB7h0ZXW38ZvPiID0jkiX
 <p><strong>Advantage:</strong> less data to store and simpler manipulation. <strong>Disadvantage:</strong> an extra conversion step from primitives and attributes to pixels.</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-03/formats/">Image and Graphics Formats</a></aside></section><section class=""><h2><small>Image and Graphics Formats</small>Checkpoint <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Name four image file formats with their extensions.</p><div class="fragment ans">
 <p>For example <strong>GIF (.gif)</strong>, <strong>JPEG (.jpg)</strong>, <strong>PNG (.png)</strong>, <strong>Windows DIB (.bmp)</strong>; also TIFF, DXF (.dxf) and PICT (.pict).</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-03/formats/">Image and Graphics Formats</a></aside></section></section>
-<section data-topic="Image Synthesis and Graphics Systems"><section><div class="sec"><div class="no">03</div><h2>Image Synthesis and Graphics Systems</h2><div class="lead">Unit 3 &middot; topic 3 of 5</div></div></section><section class=""><h2><small>Image Synthesis and Graphics Systems</small>Computer image processing <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>Two linked ideas, opposite in direction:</p><ul>
+</div></div><aside class="notes">Source note: <a href="../../unit-03/formats/">Image and Graphics Formats</a></aside></section><section><h2><small>Image and Graphics Formats</small>Key terms</h2><div class="terms"><div class="card term"><b>BMP</b><span>Simple, usually uncompressed bitmap.</span></div><div class="card term"><b>GIF</b><span>Up to 256 colours, lossless, supports animation.</span></div><div class="card term"><b>JPEG</b><span>Lossy compression suited to photographs.</span></div><div class="card term"><b>PNG</b><span>Lossless compression with true colour and transparency.</span></div><div class="card term"><b>TIFF</b><span>Flexible, high-quality format used in publishing and scanning.</span></div><div class="card term"><b>Lossless vs lossy</b><span>Exact copy after decoding / some information lost.</span></div></div></section></section>
+<section data-topic="Image Synthesis and Graphics Systems"><section><div class="sec"><div class="no">03</div><h2>Image Synthesis and Graphics Systems</h2><div class="lead">Unit 3 &middot; topic 3 of 5</div></div></section><section><h2><small>Image Synthesis and Graphics Systems</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Image synthesis builds pictures from descriptions (shapes, colours, light) instead of capturing them with a camera. A graphics system is the hardware and software that draws and displays them.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A 3D game or a CAD program drawing a building plan.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Flow: host sends display commands, display controller draws into the refresh buffer, video controller reads the buffer and drives the monitor.</p></div></div></section><section class=""><h2><small>Image Synthesis and Graphics Systems</small>Computer image processing <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>Two linked ideas, opposite in direction:</p><ul>
 <li><strong>Computer graphics</strong> is the <strong>pictorial synthesis</strong> of real or imaginary objects <strong>from their computer-based models</strong>.</li>
 <li><strong>Image processing</strong> is the <strong>converse</strong>: <strong>analysis of scenes</strong>, or <strong>reconstruction of models</strong> from pictures of 2D and 3D objects.</li>
 </ul><p><strong>Computer image processing</strong> therefore has two parts: <strong>image synthesis</strong> (generation) and <strong>image analysis</strong> (recognition).</p><aside class="notes">Source note: <a href="../../unit-03/synthesis-and-graphics-systems/">Image Synthesis and Graphics Systems</a></aside></section><section class=""><h2><small>Image Synthesis and Graphics Systems</small>Computer image processing <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm1d350b07d8c0" role="graphics-document document" viewbox="0 0 1122.09375 100" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm1d350b07d8c0{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm1d350b07d8c0 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm1d350b07d8c0 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm1d350b07d8c0 .error-icon{fill:#1c2150;}#mm1d350b07d8c0 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm1d350b07d8c0 .edge-thickness-normal{stroke-width:1px;}#mm1d350b07d8c0 .edge-thickness-thick{stroke-width:3.5px;}#mm1d350b07d8c0 .edge-pattern-solid{stroke-dasharray:0;}#mm1d350b07d8c0 .edge-thickness-invisible{stroke-width:0;fill:none;}#mm1d350b07d8c0 .edge-pattern-dashed{stroke-dasharray:3;}#mm1d350b07d8c0 .edge-pattern-dotted{stroke-dasharray:2;}#mm1d350b07d8c0 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm1d350b07d8c0 .marker.cross{stroke:#a5b4fc;}#mm1d350b07d8c0 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm1d350b07d8c0 p{margin:0;}#mm1d350b07d8c0 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm1d350b07d8c0 .cluster-label text{fill:#e3deaf;}#mm1d350b07d8c0 .cluster-label span{color:#e3deaf;}#mm1d350b07d8c0 .cluster-label span p{background-color:transparent;}#mm1d350b07d8c0 .label text,#mm1d350b07d8c0 span{fill:#f4f4ff;color:#f4f4ff;}#mm1d350b07d8c0 .node rect,#mm1d350b07d8c0 .node circle,#mm1d350b07d8c0 .node ellipse,#mm1d350b07d8c0 .node polygon,#mm1d350b07d8c0 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm1d350b07d8c0 .rough-node .label text,#mm1d350b07d8c0 .node .label text,#mm1d350b07d8c0 .image-shape .label,#mm1d350b07d8c0 .icon-shape .label{text-anchor:middle;}#mm1d350b07d8c0 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm1d350b07d8c0 .rough-node .label,#mm1d350b07d8c0 .node .label,#mm1d350b07d8c0 .image-shape .label,#mm1d350b07d8c0 .icon-shape .label{text-align:center;}#mm1d350b07d8c0 .node.clickable{cursor:pointer;}#mm1d350b07d8c0 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm1d350b07d8c0 .arrowheadPath{fill:#0b0b0b;}#mm1d350b07d8c0 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm1d350b07d8c0 .flowchart-link{stroke:#a5b4fc;fill:none;}#mm1d350b07d8c0 .edgeLabel{background-color:#12152b;text-align:center;}#mm1d350b07d8c0 .edgeLabel p{background-color:#12152b;}#mm1d350b07d8c0 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm1d350b07d8c0 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm1d350b07d8c0 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm1d350b07d8c0 .cluster text{fill:#e3deaf;}#mm1d350b07d8c0 .cluster span{color:#e3deaf;}#mm1d350b07d8c0 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm1d350b07d8c0 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm1d350b07d8c0 rect.text{fill:none;stroke-width:0;}#mm1d350b07d8c0 .icon-shape,#mm1d350b07d8c0 .image-shape{background-color:#12152b;text-align:center;}#mm1d350b07d8c0 .icon-shape p,#mm1d350b07d8c0 .image-shape p{background-color:#12152b;padding:2px;}#mm1d350b07d8c0 .icon-shape .label rect,#mm1d350b07d8c0 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm1d350b07d8c0 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm1d350b07d8c0 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm1d350b07d8c0 .node .neo-node{stroke:#818cf8;}#mm1d350b07d8c0 [data-look="neo"].node rect,#mm1d350b07d8c0 [data-look="neo"].cluster rect,#mm1d350b07d8c0 [data-look="neo"].node polygon{stroke:url(#mm1d350b07d8c0-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm1d350b07d8c0 [data-look="neo"].swimlane.cluster rect{filter:none;}#mm1d350b07d8c0 [data-look="neo"].node path{stroke:url(#mm1d350b07d8c0-gradient);stroke-width:1px;}#mm1d350b07d8c0 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm1d350b07d8c0 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm1d350b07d8c0 [data-look="neo"].node circle{stroke:url(#mm1d350b07d8c0-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm1d350b07d8c0 [data-look="neo"].node circle .state-start{fill:#000000;}#mm1d350b07d8c0 [data-look="neo"].icon-shape .icon{fill:url(#mm1d350b07d8c0-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm1d350b07d8c0 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm1d350b07d8c0-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm1d350b07d8c0 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm1d350b07d8c0_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm1d350b07d8c0_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm1d350b07d8c0_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm1d350b07d8c0_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm1d350b07d8c0_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm1d350b07d8c0_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm1d350b07d8c0_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm1d350b07d8c0_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm1d350b07d8c0_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm1d350b07d8c0_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm1d350b07d8c0_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm1d350b07d8c0_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M268,50L288.833,50C309.667,50,351.333,50,392.333,50C433.333,50,473.667,50,493.833,50L514,50" data-edge="true" data-et="edge" data-id="L_M_P_0" data-look="classic" data-points="W3sieCI6MjY4LCJ5Ijo1MH0seyJ4IjozOTMsInkiOjUwfSx7IngiOjUxOCwieSI6NTB9XQ==" id="mm1d350b07d8c0-L_M_P_0" marker-end="url(#mm1d350b07d8c0_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M637.656,50L658.49,50C679.323,50,720.99,50,761.99,50C802.99,50,843.323,50,863.49,50L883.656,50" data-edge="true" data-et="edge" data-id="L_P_M2_0" data-look="classic" data-points="W3sieCI6NjM3LjY1NjI1LCJ5Ijo1MH0seyJ4Ijo3NjIuNjU2MjUsInkiOjUwfSx7IngiOjg4Ny42NTYyNSwieSI6NTB9XQ==" id="mm1d350b07d8c0-L_P_M2_0" marker-end="url(#mm1d350b07d8c0_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(393, 50)"><g class="label" data-id="L_M_P_0" transform="translate(-100, -27)"><foreignobject height="54" width="200"><div class="labelBkg" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>Image synthesis (computer graphics)</p></span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(762.65625, 50)"><g class="label" data-id="L_P_M2_0" transform="translate(-100, -27)"><foreignobject height="54" width="200"><div class="labelBkg" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"><p>Image analysis (image processing)</p></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm1d350b07d8c0-flowchart-M-0" transform="translate(138, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Model (data, primitives)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm1d350b07d8c0-flowchart-P-1" transform="translate(577.828125, 50)"><rect class="basic label-container" height="57" style="" width="119.65625" x="-59.828125" y="-28.5"></rect><g class="label" style="" transform="translate(-29.828125, -13.5)"><rect></rect><foreignobject height="27" width="59.65625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Picture</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm1d350b07d8c0-flowchart-M2-3" transform="translate(1000.875, 50)"><rect class="basic label-container" height="57" style="" width="226.4375" x="-113.21875" y="-28.5"></rect><g class="label" style="" transform="translate(-83.21875, -13.5)"><rect></rect><foreignobject height="27" width="166.4375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Description / model</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm1d350b07d8c0-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm1d350b07d8c0-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm1d350b07d8c0-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-03/synthesis-and-graphics-systems/">Image Synthesis and Graphics Systems</a></aside></section><section class="dense"><h2><small>Image Synthesis and Graphics Systems</small>Image synthesis</h2><p><strong>Image synthesis</strong> deals with the <strong>generation of images of real or imaginary objects</strong>. It is an integral part of all computer <strong>user interfaces</strong> and is indispensable for visualising <strong>2D, 3D and higher-dimensional</strong> objects.</p><h3>Applications of image synthesis</h3><table>
@@ -1489,13 +1596,13 @@ iVBORw0KGgoAAAANSUhEUgAAAocAAAKHCAYAAADzFOLiAABVeklEQVR4Xu3dB7h0ZXW38ZvPiID0jkiX
 <p>The <strong>application model</strong>, the <strong>application program</strong> and the <strong>graphics system</strong>.</p>
 </div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">How can a 2 × 2 dither pattern give 125 colours?</p><div class="fragment ans">
 <p>A 2 × 2 pattern gives <strong>5 intensities</strong> per channel (0 to 4 dots lit). With red, green and blue channels: 5 × 5 × 5 = <strong>125</strong> colours.</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-03/synthesis-and-graphics-systems/">Image Synthesis and Graphics Systems</a></aside></section></section>
-<section data-topic="Image Analysis and Recognition"><section><div class="sec"><div class="no">04</div><h2>Image Analysis and Recognition</h2><div class="lead">Unit 3 &middot; topic 4 of 5</div></div></section><section><h2><small>Image Analysis and Recognition</small>Uncompressed bitmap size = width × height × bits / 8</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 600.155938 266.236937" xmlns="http://www.w3.org/2000/svg" version="1.1">
+</div></div><aside class="notes">Source note: <a href="../../unit-03/synthesis-and-graphics-systems/">Image Synthesis and Graphics Systems</a></aside></section><section><h2><small>Image Synthesis and Graphics Systems</small>Key terms</h2><div class="terms"><div class="card term"><b>Display controller</b><span>Turns display commands into a scanned image.</span></div><div class="card term"><b>Refresh buffer</b><span>Memory holding the image to show.</span></div><div class="card term"><b>Video controller</b><span>Reads the buffer repeatedly and drives the monitor.</span></div><div class="card term"><b>Raster display</b><span>Image drawn line by line as pixels.</span></div><div class="card term"><b>Rendering</b><span>Computing an image from a scene description.</span></div></div></section></section>
+<section data-topic="Image Analysis and Recognition"><section><div class="sec"><div class="no">04</div><h2>Image Analysis and Recognition</h2><div class="lead">Unit 3 &middot; topic 4 of 5</div></div></section><section><h2><small>Image Analysis and Recognition</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Image analysis lets a computer understand a picture: find edges and regions, then decide what objects they form.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A phone that detects faces in the camera view, or a system that reads car number plates.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Recognition pipeline: capture, pre-process, find features, label, interpret.</p></div></div></section><section><h2><small>Image Analysis and Recognition</small>Uncompressed bitmap size = width × height × bits / 8</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 600.155938 266.236937" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:59:03.644203</dc:date>
+    <dc:date>2026-11-11T18:12:19.849006</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1869,8 +1976,8 @@ L 594.395937 229.472249
 <p>Because a dynamic recogniser records the <strong>sequence, direction, speed and pressure</strong> of each stroke as it is written.</p>
 </div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">List the steps of image recognition in order.</p><div class="fragment ans">
 <p><strong>Formatting, conditioning, labeling, grouping, extracting, matching.</strong></p>
-</div></div><aside class="notes">Source note: <a href="../../unit-03/image-analysis/">Image Analysis and Recognition</a></aside></section></section>
-<section data-topic="Image Transmission"><section><div class="sec"><div class="no">05</div><h2>Image Transmission</h2><div class="lead">Unit 3 &middot; topic 5 of 5</div></div></section><section class=""><h2><small>Image Transmission</small>Image Transmission</h2><p><strong>Image transmission</strong> is the sending of <strong>digital images through computer networks</strong>.</p><aside class="notes">Source note: <a href="../../unit-03/image-transmission/">Image Transmission</a></aside></section><section class="dense"><h2><small>Image Transmission</small>Requirements on the network</h2><table>
+</div></div><aside class="notes">Source note: <a href="../../unit-03/image-analysis/">Image Analysis and Recognition</a></aside></section><section><h2><small>Image Analysis and Recognition</small>Key terms</h2><div class="terms"><div class="card term"><b>Image analysis</b><span>Extracting information from images.</span></div><div class="card term"><b>Image recognition</b><span>Deciding what the image or an object in it is.</span></div><div class="card term"><b>Pre-processing</b><span>Cleaning the image: noise removal, contrast.</span></div><div class="card term"><b>Segmentation</b><span>Splitting the image into regions or objects.</span></div><div class="card term"><b>Edge</b><span>A line where brightness changes sharply.</span></div><div class="card term"><b>Labeling</b><span>Assigning names or classes to found structures.</span></div></div></section></section>
+<section data-topic="Image Transmission"><section><div class="sec"><div class="no">05</div><h2>Image Transmission</h2><div class="lead">Unit 3 &middot; topic 5 of 5</div></div></section><section><h2><small>Image Transmission</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>To send an image you send its bits. The time depends on the size in bits and the speed of the link, so compression makes pictures arrive faster.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A web page that shows a blurry picture first and sharpens it as more data arrives.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Transmission time = size in bits ÷ link rate. A 640 × 480 8-bit image is 307,200 bytes: about 38.4 s at 64 kbit/s.</p></div></div></section><section class=""><h2><small>Image Transmission</small>Image Transmission</h2><p><strong>Image transmission</strong> is the sending of <strong>digital images through computer networks</strong>.</p><aside class="notes">Source note: <a href="../../unit-03/image-transmission/">Image Transmission</a></aside></section><section class="dense"><h2><small>Image Transmission</small>Requirements on the network</h2><table>
 <thead>
 <tr>
 <th>Requirement</th>
@@ -1942,8 +2049,539 @@ L 594.395937 229.472249
 <p>640 × 480 × 8 = <strong>2,457,600 bits</strong> = <strong>307,200 bytes</strong>.</p>
 </div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">When is symbolic image transmission used?</p><div class="fragment ans">
 <p>In <strong>computer graphics</strong>, where the image is represented by primitives, attributes and control information, and its size equals the size of that structure.</p>
-</div></div><aside class="notes">Source note: <a href="../../unit-03/image-transmission/">Image Transmission</a></aside></section></section>
+</div></div><aside class="notes">Source note: <a href="../../unit-03/image-transmission/">Image Transmission</a></aside></section><section><h2><small>Image Transmission</small>Key terms</h2><div class="terms"><div class="card term"><b>Bit rate</b><span>Bits transmitted per second.</span></div><div class="card term"><b>Bandwidth</b><span>Capacity of a link.</span></div><div class="card term"><b>Transmission time</b><span>Size in bits divided by bit rate.</span></div><div class="card term"><b>Compression</b><span>Makes the image smaller, so it is sent faster.</span></div><div class="card term"><b>Progressive display</b><span>Showing a rough image early and refining it.</span></div></div></section><section><h2><small>Image Transmission</small>How long does a 640×480, 8-bit image take?</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 564.920938 258.741469" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-11T18:12:21.077197</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 258.741469 
+L 564.920938 258.741469 
+L 564.920938 0 
+L 0 0 
+L 0 258.741469 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 56.960938 221.976 
+L 559.160938 221.976 
+L 559.160938 5.76 
+L 56.960938 5.76 
+L 56.960938 221.976 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mca807d3cab" d="M 0 0 
+L 0 3.5 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mca807d3cab" x="109.562914" y="221.976" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(87.903539 237.575414)">56 kbit/s</text>
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(90.512133 249.578148)">modem</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mca807d3cab" x="208.811926" y="221.976" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(187.152551 237.575414)">64 kbit/s</text>
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(196.572082 249.577367)">ISDN</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mca807d3cab" x="308.060938" y="221.976" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(288.164062 237.575414)">1 Mbit/s</text>
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(298.250781 249.577367)">DSL</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mca807d3cab" x="407.309949" y="221.976" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(384.231824 237.575414)">10 Mbit/s</text>
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(385.771668 249.578148)">Ethernet</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mca807d3cab" x="506.558961" y="221.976" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="506.558961" y="236.574437" transform="rotate(-0 506.558961 236.574437)">100 Mbit/s</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6">
+      <path d="M 56.960938 221.976 
+L 559.160938 221.976 
+" clip-path="url(#p5a3ed891db)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_7">
+      <defs>
+       <path id="m92b34deabb" d="M 0 0 
+L -3.5 0 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m92b34deabb" x="56.960938" y="221.976" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <!-- $\mathdefault{10^{-2}}$ -->
+      <g style="fill: #9aa0cc" transform="translate(21.760938 227.616)">
+       <text>
+        <tspan x="0" y="-0.809625" style="font-size: 12px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">1</tspan>
+        <tspan x="7.634766" y="-0.809625" style="font-size: 12px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">0</tspan>
+        <tspan x="15.384375" y="-5.765625" style="font-size: 8.4px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">−</tspan>
+        <tspan x="22.422656" y="-5.765625" style="font-size: 8.4px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">2</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_8">
+      <path d="M 56.960938 171.705251 
+L 559.160938 171.705251 
+" clip-path="url(#p5a3ed891db)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m92b34deabb" x="56.960938" y="171.705251" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <!-- $\mathdefault{10^{-1}}$ -->
+      <g style="fill: #9aa0cc" transform="translate(21.760938 177.285251)">
+       <text>
+        <tspan x="0" y="-0.919" style="font-size: 12px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">1</tspan>
+        <tspan x="7.634766" y="-0.919" style="font-size: 12px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">0</tspan>
+        <tspan x="15.384375" y="-5.875" style="font-size: 8.4px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">−</tspan>
+        <tspan x="22.422656" y="-5.875" style="font-size: 8.4px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">1</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_10">
+      <path d="M 56.960938 121.434502 
+L 559.160938 121.434502 
+" clip-path="url(#p5a3ed891db)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m92b34deabb" x="56.960938" y="121.434502" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <!-- $\mathdefault{10^{0}}$ -->
+      <g style="fill: #9aa0cc" transform="translate(28.840938 127.074502)">
+       <text>
+        <tspan x="0" y="-0.809625" style="font-size: 12px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">1</tspan>
+        <tspan x="7.634766" y="-0.809625" style="font-size: 12px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">0</tspan>
+        <tspan x="15.384375" y="-5.765625" style="font-size: 8.4px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">0</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_12">
+      <path d="M 56.960938 71.163753 
+L 559.160938 71.163753 
+" clip-path="url(#p5a3ed891db)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m92b34deabb" x="56.960938" y="71.163753" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <!-- $\mathdefault{10^{1}}$ -->
+      <g style="fill: #9aa0cc" transform="translate(28.840938 76.743753)">
+       <text>
+        <tspan x="0" y="-0.919" style="font-size: 12px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">1</tspan>
+        <tspan x="7.634766" y="-0.919" style="font-size: 12px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">0</tspan>
+        <tspan x="15.384375" y="-5.875" style="font-size: 8.4px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">1</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_14">
+      <path d="M 56.960938 20.893003 
+L 559.160938 20.893003 
+" clip-path="url(#p5a3ed891db)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m92b34deabb" x="56.960938" y="20.893003" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <!-- $\mathdefault{10^{2}}$ -->
+      <g style="fill: #9aa0cc" transform="translate(28.840938 26.533003)">
+       <text>
+        <tspan x="0" y="-0.809625" style="font-size: 12px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">1</tspan>
+        <tspan x="7.634766" y="-0.809625" style="font-size: 12px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">0</tspan>
+        <tspan x="15.384375" y="-5.765625" style="font-size: 8.4px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc">2</tspan>
+       </text>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_16">
+      <defs>
+       <path id="me64136f36a" d="M 0 0 
+L -2 0 
+" style="stroke: #9aa0cc; stroke-width: 0.6"/>
+      </defs>
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="206.842997" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="197.990757" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="191.709993" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="186.838254" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="182.857754" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="179.492288" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="176.57699" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="174.005514" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="156.572247" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="147.720008" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_16">
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="141.439244" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_17">
+     <g id="line2d_27">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="136.567505" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_18">
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="132.587005" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_19">
+     <g id="line2d_29">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="129.221539" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_20">
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="126.306241" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_21">
+     <g id="line2d_31">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="123.734765" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_22">
+     <g id="line2d_32">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="106.301498" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_23">
+     <g id="line2d_33">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="97.449259" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_24">
+     <g id="line2d_34">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="91.168495" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_25">
+     <g id="line2d_35">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="86.296756" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_26">
+     <g id="line2d_36">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="82.316255" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_27">
+     <g id="line2d_37">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="78.95079" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_28">
+     <g id="line2d_38">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="76.035492" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_29">
+     <g id="line2d_39">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="73.464016" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_30">
+     <g id="line2d_40">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="56.030749" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_31">
+     <g id="line2d_41">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="47.17851" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_32">
+     <g id="line2d_42">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="40.897746" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_33">
+     <g id="line2d_43">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="36.026007" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_34">
+     <g id="line2d_44">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="32.045506" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_35">
+     <g id="line2d_45">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="28.680041" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_36">
+     <g id="line2d_46">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="25.764742" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_37">
+     <g id="line2d_47">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="23.193267" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_38">
+     <g id="line2d_48">
+      <g>
+       <use xlink:href="#me64136f36a" x="56.960938" y="5.76" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.6"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="14.878125" y="113.868" transform="rotate(-90 14.878125 113.868)">seconds (log)</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 79.78821 50392.183652 
+L 139.337617 50392.183652 
+L 139.337617 38.873686 
+L 79.78821 38.873686 
+z
+" clip-path="url(#p5a3ed891db)" style="fill: #f472b6"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 179.037222 50392.183652 
+L 238.586629 50392.183652 
+L 238.586629 41.788984 
+L 179.037222 41.788984 
+z
+" clip-path="url(#p5a3ed891db)" style="fill: #c084fc"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 278.286234 50392.183652 
+L 337.835641 50392.183652 
+L 337.835641 101.803211 
+L 278.286234 101.803211 
+z
+" clip-path="url(#p5a3ed891db)" style="fill: #818cf8"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 377.535246 50392.183652 
+L 437.084653 50392.183652 
+L 437.084653 152.07396 
+L 377.535246 152.07396 
+z
+" clip-path="url(#p5a3ed891db)" style="fill: #22d3ee"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 476.784258 50392.183652 
+L 536.333665 50392.183652 
+L 536.333665 202.34471 
+L 476.784258 202.34471 
+z
+" clip-path="url(#p5a3ed891db)" style="fill: #34d399"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 56.960938 221.976 
+L 56.960938 5.76 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 56.960938 221.976 
+L 559.160938 221.976 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="109.562914" y="34.001947" transform="rotate(-0 109.562914 34.001947)">43.9 s</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="208.811926" y="36.917245" transform="rotate(-0 208.811926 36.917245)">38.4 s</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="308.060938" y="96.931472" transform="rotate(-0 308.060938 96.931472)">2.46 s</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="407.309949" y="147.202221" transform="rotate(-0 407.309949 147.202221)">0.246 s</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="506.558961" y="197.472971" transform="rotate(-0 506.558961 197.472971)">0.0246 s</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p5a3ed891db">
+   <rect x="56.960938" y="5.76" width="502.2" height="216.216"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">307,200 bytes = 2,457,600 bits. Time = bits ÷ link rate (ignoring protocol overhead).</div></section></section>
 <section data-topic="Exam recap"><section><h2><small>Revision</small>Exam focus recap (1/1)</h2><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Compare with audio and video</div></section></section>
+<section data-topic="Sources"><section><h2><small>Go deeper</small>Sources and further reading</h2><ul class="small"><li>Steinmetz and Nahrstedt, <em>Multimedia Fundamentals Vol. 1</em>, chapter on graphics and images.</li><li>R. C. Gonzalez and R. E. Woods, <em>Digital Image Processing</em>, Pearson.</li><li>J. D. Foley et al., <em>Computer Graphics: Principles and Practice</em>, Addison-Wesley.</li></ul><div class="callout"><div class="ct">About the figures</div><p>Charts and diagrams in this deck were drawn for this course from standard formulas, specifications and textbook knowledge. They are original drawings, not copies of figures from any publication.</p></div></section></section>
 <section data-topic="Quick check"><section><div class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></div></section><section><h2><small>Quick check 1 / 6</small>16. Which is true of a bitmap compared with graphics?</h2><ul class="opts"><li>A. It needs less storage</li><li>B. It needs no processing before display</li><li>C. Its objects can be individually moved</li><li>D. It stores primitives and attributes</li></ul><div class="fragment ans"><strong>Answer: B.</strong> A, C and D describe graphics.</div></section><section><h2><small>Quick check 2 / 6</small>17. A 16 × 16 monochrome bitmap needs</h2><ul class="opts"><li>A. 16 bytes</li><li>B. 32 bytes</li><li>C. 256 bytes</li><li>D. 2,048 bytes</li></ul><div class="fragment ans"><strong>Answer: B.</strong> 256 pixels × 1 bit = 256 bits = 32 bytes.</div></section><section><h2><small>Quick check 3 / 6</small>18. How many colours does an 8-bit pixel allow?</h2><ul class="opts"><li>A. 8</li><li>B. 128</li><li>C. 256</li><li>D. 65,536</li></ul><div class="fragment ans"><strong>Answer: C.</strong> 2⁸ = 256.</div></section><section><h2><small>Quick check 4 / 6</small>19. Which pair describes graphics formats?</h2><ul class="opts"><li>A. Pixels and resolution</li><li>B. Primitives and attributes</li><li>C. Dpi and bit depth</li><li>D. Fields and frames</li></ul><div class="fragment ans"><strong>Answer: B.</strong> Graphics formats are specified through primitives (lines, circles, polyhedra) and attributes (line style, width, colour).</div></section><section><h2><small>Quick check 5 / 6</small>20. Which technique suits devices that cannot display individual dots, such as laser printers?</h2><ul class="opts"><li>A. Dispersed-dot ordered dithering</li><li>B. Clustered-dot ordered dithering</li><li>C. Edge detection</li><li>D. Pulse code modulation</li></ul><div class="fragment ans"><strong>Answer: B.</strong> Dispersed-dot dithering is for devices (such as CRTs) that can display individual dots.</div></section><section><h2><small>Quick check 6 / 6</small>21. In image recognition, which step compares objects with stored models?</h2><ul class="opts"><li>A. Conditioning</li><li>B. Labeling</li><li>C. Extracting</li><li>D. Matching</li></ul><div class="fragment ans"><strong>Answer: D.</strong> Matching compares each object with stored models and selects the best match.</div></section></section>
 <section><div class="title-slide"><div class="kick">End of Unit 3</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></div></section>
 </div></div>
