@@ -46,6 +46,7 @@ html,body{background:#080a14}
 aside.notes{display:none}
 .callout.split .sp{display:grid;grid-template-columns:1fr 1.1fr;gap:1em;align-items:center}
 .callout.split .diagram svg{max-height:430px}
+.callout.split.long{font-size:.72em;margin-top:.2em}.callout.split.long .diagram svg{max-height:420px}
 .diagram{text-align:center;margin:.4em 0}.diagram svg{max-width:100%;height:auto;max-height:470px;width:auto}
 .diagram.tall svg{max-height:540px}
 .diagram .cap,.cap{font-size:.55em;color:var(--mut);margin-top:.3em;text-align:center}
@@ -63,13 +64,13 @@ aside.notes{display:none}
 .agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:.55em}
 .agenda .card{display:flex;gap:.7em;align-items:center;font-size:.85em;font-weight:600}
 .agenda .n{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:800;font-size:.85em;color:#fff}
-.title-slide{display:flex!important;flex-direction:column;justify-content:center;height:100%}
+.title-slide{display:flex;flex-direction:column;justify-content:center;height:100%}
 .title-slide .kick{font-size:.62em;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);font-weight:700;margin-bottom:1em}
 .title-slide h1{font-size:2.9em;line-height:1.02;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:.25em}
 .title-slide .by{font-size:.8em;color:var(--mut);margin-top:1.2em}
 .chips{display:flex;gap:.6em;flex-wrap:wrap;margin-top:1.2em}
 .chips span{font-size:.55em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.35em .9em;border-radius:999px;border:1px solid var(--line);background:var(--card)}
-.sec{display:flex!important;flex-direction:column;justify-content:center;height:100%}
+.sec{display:flex;flex-direction:column;justify-content:center;height:100%}
 .sec .no{font-size:5em;font-weight:900;line-height:1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
 .sec h2{font-size:2.1em}
 .sec .lead{color:var(--mut);font-size:.85em;max-width:80%}
@@ -88,9 +89,9 @@ aside.notes{display:none}
 <div id="hud"></div>
 <div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved. &middot; Press <b>?</b> for shortcuts, <b>Esc</b> for overview</div>
 <div class="reveal"><div class="slides">
-<section class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 8<br>Multimedia Communication</h1><p style="max-width:75%;color:#aab0d6">Application and transport subsystems, QoS and protocols.</p><div class="chips"><span>4 teaching hours</span><span>4 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></section>
+<section><div class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 8<br>Multimedia Communication</h1><p style="max-width:75%;color:#aab0d6">Application and transport subsystems, QoS and protocols.</p><div class="chips"><span>4 teaching hours</span><span>4 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></div></section>
 <section><h2><small>Roadmap</small>What we will cover</h2><div class="agenda"><div class="card"><span class="n">1</span>Introduction</div><div class="card"><span class="n">2</span>Application Subsystem</div><div class="card"><span class="n">3</span>Transport Subsystem</div><div class="card"><span class="n">4</span>QoS and Resource Management</div></div></section>
-<section data-topic="Introduction"><section class="sec"><div class="no">01</div><h2>Introduction</h2><div class="lead">Unit 8 &middot; topic 1 of 4</div></section><section class="dense"><h2><small>Introduction</small>Introduction</h2><p><strong>Multimedia communication</strong> is the exchange of multimedia data (text, image, audio, video) between systems over a network, often with <strong>real-time</strong> requirements, in a <strong>distributed</strong> environment.</p><h3>Why it is harder than data communication</h3><table>
+<section data-topic="Introduction"><section><div class="sec"><div class="no">01</div><h2>Introduction</h2><div class="lead">Unit 8 &middot; topic 1 of 4</div></div></section><section class="dense"><h2><small>Introduction</small>Introduction</h2><p><strong>Multimedia communication</strong> is the exchange of multimedia data (text, image, audio, video) between systems over a network, often with <strong>real-time</strong> requirements, in a <strong>distributed</strong> environment.</p><h3>Why it is harder than data communication</h3><table>
 <thead>
 <tr>
 <th>Aspect</th>
@@ -137,7 +138,7 @@ aside.notes{display:none}
 </ol><aside class="notes">Source note: <a href="../../unit-08/introduction/">Introduction</a></aside></section><section class=""><h2><small>Introduction</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Why is multimedia traffic harder to carry than file transfer?</p><div class="fragment ans">
 <p>It needs large bandwidth, bounded delay and jitter, multicast and stream synchronisation; it tolerates some loss but not late delivery.</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-08/introduction/">Introduction</a></aside></section></section>
-<section data-topic="Application Subsystem"><section class="sec"><div class="no">02</div><h2>Application Subsystem</h2><div class="lead">Unit 8 &middot; topic 2 of 4</div></section><section class="dense"><h2><small>Application Subsystem</small>Application Subsystem</h2><p>The application subsystem contains the services that make <strong>collaborative and distributed multimedia applications</strong> possible. It uses the transport subsystem below it.</p><h3>Collaborative computing</h3><p><strong>Computer-supported cooperative work (CSCW)</strong>: people at different places work together with shared multimedia tools: video conferencing, shared whiteboard, shared applications, shared documents.</p><ul>
+<section data-topic="Application Subsystem"><section><div class="sec"><div class="no">02</div><h2>Application Subsystem</h2><div class="lead">Unit 8 &middot; topic 2 of 4</div></div></section><section class="dense"><h2><small>Application Subsystem</small>Application Subsystem</h2><p>The application subsystem contains the services that make <strong>collaborative and distributed multimedia applications</strong> possible. It uses the transport subsystem below it.</p><h3>Collaborative computing</h3><p><strong>Computer-supported cooperative work (CSCW)</strong>: people at different places work together with shared multimedia tools: video conferencing, shared whiteboard, shared applications, shared documents.</p><ul>
 <li><strong>Synchronous</strong> (same time, for example a video conference) and <strong>asynchronous</strong> (different times, for example multimedia mail).</li>
 <li><strong>Shared workspace</strong>: one application's output is shown at several sites. <strong>Shared execution environment</strong>: each site runs the same application on the same data.</li>
 </ul><aside class="notes">Source note: <a href="../../unit-08/application-subsystem/">Application Subsystem</a></aside></section><section class="dense"><h2><small>Application Subsystem</small>Session management</h2><p>A <strong>session</strong> is the period during which the participants and their media connections exist. Session management covers:</p><table>
@@ -177,7 +178,7 @@ aside.notes{display:none}
 </div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Differentiate synchronous and asynchronous collaboration.</p><div class="fragment ans">
 <p>Synchronous: at the same time (video conference). Asynchronous: at different times (multimedia mail).</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-08/application-subsystem/">Application Subsystem</a></aside></section></section>
-<section data-topic="Transport Subsystem"><section class="sec"><div class="no">03</div><h2>Transport Subsystem</h2><div class="lead">Unit 8 &middot; topic 3 of 4</div></section><section class=""><h2><small>Transport Subsystem</small>Requirements on a multimedia transport subsystem</h2><ol>
+<section data-topic="Transport Subsystem"><section><div class="sec"><div class="no">03</div><h2>Transport Subsystem</h2><div class="lead">Unit 8 &middot; topic 3 of 4</div></div></section><section class=""><h2><small>Transport Subsystem</small>Requirements on a multimedia transport subsystem</h2><ol>
 <li class="fragment fade-up"><strong>High throughput</strong> for large continuous streams.</li>
 <li class="fragment fade-up"><strong>Bounded delay and small jitter</strong> (about 150 ms end-to-end for interactive audio and video).</li>
 <li class="fragment fade-up"><strong>QoS support</strong>: applications can specify and get guaranteed service.</li>
@@ -246,7 +247,7 @@ aside.notes{display:none}
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:40:37.368719</dc:date>
+    <dc:date>2026-11-11T17:55:21.649490</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -396,7 +397,7 @@ z
  </defs>
 </svg>
 </div><div class="cap">Sequence numbers detect loss and reordering; timestamps let the receiver play media at the right time and measure jitter.</div></section></section>
-<section data-topic="QoS and Resource Management"><section class="sec"><div class="no">04</div><h2>QoS and Resource Management</h2><div class="lead">Unit 8 &middot; topic 4 of 4</div></section><section class=""><h2><small>QoS and Resource Management</small>QoS and Resource Management</h2><p><strong>Quality of Service (QoS)</strong> is the set of parameters describing how well a service is delivered, and the <strong>guarantee</strong> that it will be delivered at that level.</p><h3>QoS layers</h3><table>
+<section data-topic="QoS and Resource Management"><section><div class="sec"><div class="no">04</div><h2>QoS and Resource Management</h2><div class="lead">Unit 8 &middot; topic 4 of 4</div></div></section><section class=""><h2><small>QoS and Resource Management</small>QoS and Resource Management</h2><p><strong>Quality of Service (QoS)</strong> is the set of parameters describing how well a service is delivered, and the <strong>guarantee</strong> that it will be delivered at that level.</p><h3>QoS layers</h3><table>
 <thead>
 <tr>
 <th>Layer</th>
@@ -494,7 +495,7 @@ z
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:40:37.332404</dc:date>
+    <dc:date>2026-11-11T17:55:21.622740</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -841,8 +842,8 @@ L 74.480938 35.26418
 </svg>
 </div><div class="cap">A flow conforms if its cumulative traffic never exceeds b + r·t: bursts up to b are allowed, the long-term rate is limited to r.</div></section></section>
 <section data-topic="Exam recap"><section><h2><small>Revision</small>Exam focus recap (1/1)</h2><div class="callout exam"><div class="ct">Exam tip</div></section></section>
-<section data-topic="Quick check"><section class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></section><section><h2><small>Quick check 1 / 4</small>15. RTP normally runs over</h2><ul class="opts"><li>A. TCP</li><li>B. UDP</li><li>C. ATM only</li><li>D. HTTP only</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 2 / 4</small>16. Jitter is</h2><ul class="opts"><li>A. Average delay</li><li>B. Variation of delay</li><li>C. Loss rate</li><li>D. Bandwidth</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 3 / 4</small>17. Which shaper allows bursts?</h2><ul class="opts"><li>A. Leaky bucket</li><li>B. Token bucket</li><li>C. Neither</li><li>D. Both exactly the same</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 4 / 4</small>18. Interactive audio end-to-end delay should be at most about</h2><ul class="opts"><li>A. 15 ms</li><li>B. 150 ms</li><li>C. 1.5 s</li><li>D. 15 s</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section></section>
-<section class="title-slide"><div class="kick">End of Unit 8</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></section>
+<section data-topic="Quick check"><section><div class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></div></section><section><h2><small>Quick check 1 / 4</small>15. RTP normally runs over</h2><ul class="opts"><li>A. TCP</li><li>B. UDP</li><li>C. ATM only</li><li>D. HTTP only</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 2 / 4</small>16. Jitter is</h2><ul class="opts"><li>A. Average delay</li><li>B. Variation of delay</li><li>C. Loss rate</li><li>D. Bandwidth</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 3 / 4</small>17. Which shaper allows bursts?</h2><ul class="opts"><li>A. Leaky bucket</li><li>B. Token bucket</li><li>C. Neither</li><li>D. Both exactly the same</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 4 / 4</small>18. Interactive audio end-to-end delay should be at most about</h2><ul class="opts"><li>A. 15 ms</li><li>B. 150 ms</li><li>C. 1.5 s</li><li>D. 15 s</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section></section>
+<section><div class="title-slide"><div class="kick">End of Unit 8</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/notes.js"></script>

@@ -365,7 +365,10 @@ def unit_deck(n, cfgunits):
     sections.append(f'<section class="title-slide"><div class="kick">End of Unit {n}</div><h1>Thank you</h1>'
                     f'<p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p>'
                     f'<div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></section>')
-    out = TEMPLATE.replace("@@N@@", str(n)).replace("@@TITLE@@", title).replace("@@SLIDES@@", "\n".join(sections))
+    body = "\n".join(sections)
+    # never force display on <section> itself (reveal.js toggles it): wrap in an inner div instead
+    body = re.sub(r'<section class="(sec|title-slide)">(.*?)</section>', r'<section><div class="\1">\2</div></section>', body, flags=re.S)
+    out = TEMPLATE.replace("@@N@@", str(n)).replace("@@TITLE@@", title).replace("@@SLIDES@@", body)
     open(os.path.join(DOCS, "decks", f"unit-{n:02d}.html"), "w", encoding="utf-8").write(out)
     cnt = out.count("<section")
     print(f"unit {n}: {len(topics)} topics, {cnt} sections, {len(out)//1024} KB")

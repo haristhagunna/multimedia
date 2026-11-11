@@ -46,6 +46,7 @@ html,body{background:#080a14}
 aside.notes{display:none}
 .callout.split .sp{display:grid;grid-template-columns:1fr 1.1fr;gap:1em;align-items:center}
 .callout.split .diagram svg{max-height:430px}
+.callout.split.long{font-size:.72em;margin-top:.2em}.callout.split.long .diagram svg{max-height:420px}
 .diagram{text-align:center;margin:.4em 0}.diagram svg{max-width:100%;height:auto;max-height:470px;width:auto}
 .diagram.tall svg{max-height:540px}
 .diagram .cap,.cap{font-size:.55em;color:var(--mut);margin-top:.3em;text-align:center}
@@ -63,13 +64,13 @@ aside.notes{display:none}
 .agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:.55em}
 .agenda .card{display:flex;gap:.7em;align-items:center;font-size:.85em;font-weight:600}
 .agenda .n{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:800;font-size:.85em;color:#fff}
-.title-slide{display:flex!important;flex-direction:column;justify-content:center;height:100%}
+.title-slide{display:flex;flex-direction:column;justify-content:center;height:100%}
 .title-slide .kick{font-size:.62em;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);font-weight:700;margin-bottom:1em}
 .title-slide h1{font-size:2.9em;line-height:1.02;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:.25em}
 .title-slide .by{font-size:.8em;color:var(--mut);margin-top:1.2em}
 .chips{display:flex;gap:.6em;flex-wrap:wrap;margin-top:1.2em}
 .chips span{font-size:.55em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.35em .9em;border-radius:999px;border:1px solid var(--line);background:var(--card)}
-.sec{display:flex!important;flex-direction:column;justify-content:center;height:100%}
+.sec{display:flex;flex-direction:column;justify-content:center;height:100%}
 .sec .no{font-size:5em;font-weight:900;line-height:1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
 .sec h2{font-size:2.1em}
 .sec .lead{color:var(--mut);font-size:.85em;max-width:80%}
@@ -88,9 +89,9 @@ aside.notes{display:none}
 <div id="hud"></div>
 <div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved. &middot; Press <b>?</b> for shortcuts, <b>Esc</b> for overview</div>
 <div class="reveal"><div class="slides">
-<section class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 9<br>Documents, Hypertext and MHEG</h1><p style="max-width:75%;color:#aab0d6">Hypermedia, the Dexter model, SGML, ODA and MHEG.</p><div class="chips"><span>4 teaching hours</span><span>4 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></section>
+<section><div class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 9<br>Documents, Hypertext and MHEG</h1><p style="max-width:75%;color:#aab0d6">Hypermedia, the Dexter model, SGML, ODA and MHEG.</p><div class="chips"><span>4 teaching hours</span><span>4 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></div></section>
 <section><h2><small>Roadmap</small>What we will cover</h2><div class="agenda"><div class="card"><span class="n">1</span>Multimedia Documents</div><div class="card"><span class="n">2</span>Hypertext and Hypermedia</div><div class="card"><span class="n">3</span>Hypermedia Systems</div><div class="card"><span class="n">4</span>SGML, ODA and MHEG</div></div></section>
-<section data-topic="Multimedia Documents"><section class="sec"><div class="no">01</div><h2>Multimedia Documents</h2><div class="lead">Unit 9 &middot; topic 1 of 4</div></section><section class=""><h2><small>Multimedia Documents</small>What is a document?</h2><p>A <strong>document</strong> is a <strong>structured</strong> collection of information intended for presentation to a reader. A <strong>multimedia document</strong> combines <strong>discrete media</strong> (text, graphics, images) and <strong>continuous media</strong> (audio, video, animation) with <strong>temporal, spatial and logical relations</strong> among them.</p><aside class="notes">Source note: <a href="../../unit-09/documents/">Multimedia Documents</a></aside></section><section class="dense"><h2><small>Multimedia Documents</small>Document architecture</h2><p>A <strong>document architecture</strong> defines how the document is <strong>structured and represented</strong> so that it can be created, edited, exchanged and presented on different systems. It separates three things:</p><table>
+<section data-topic="Multimedia Documents"><section><div class="sec"><div class="no">01</div><h2>Multimedia Documents</h2><div class="lead">Unit 9 &middot; topic 1 of 4</div></div></section><section class=""><h2><small>Multimedia Documents</small>What is a document?</h2><p>A <strong>document</strong> is a <strong>structured</strong> collection of information intended for presentation to a reader. A <strong>multimedia document</strong> combines <strong>discrete media</strong> (text, graphics, images) and <strong>continuous media</strong> (audio, video, animation) with <strong>temporal, spatial and logical relations</strong> among them.</p><aside class="notes">Source note: <a href="../../unit-09/documents/">Multimedia Documents</a></aside></section><section class="dense"><h2><small>Multimedia Documents</small>Document architecture</h2><p>A <strong>document architecture</strong> defines how the document is <strong>structured and represented</strong> so that it can be created, edited, exchanged and presented on different systems. It separates three things:</p><table>
 <thead>
 <tr>
 <th>Structure</th>
@@ -129,7 +130,7 @@ aside.notes{display:none}
 </div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Which form of a document can be re-edited?</p><div class="fragment ans">
 <p>The processable form.</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-09/documents/">Multimedia Documents</a></aside></section></section>
-<section data-topic="Hypertext and Hypermedia"><section class="sec"><div class="no">02</div><h2>Hypertext and Hypermedia</h2><div class="lead">Unit 9 &middot; topic 2 of 4</div></section><section class="dense"><h2><small>Hypertext and Hypermedia</small>Hypertext</h2><p><strong>Hypertext</strong> is <strong>text organised as a network of linked nodes</strong> that the reader can follow in a <strong>non-linear</strong> order, in contrast with ordinary text that is read from start to end.</p><ul>
+<section data-topic="Hypertext and Hypermedia"><section><div class="sec"><div class="no">02</div><h2>Hypertext and Hypermedia</h2><div class="lead">Unit 9 &middot; topic 2 of 4</div></div></section><section class="dense"><h2><small>Hypertext and Hypermedia</small>Hypertext</h2><p><strong>Hypertext</strong> is <strong>text organised as a network of linked nodes</strong> that the reader can follow in a <strong>non-linear</strong> order, in contrast with ordinary text that is read from start to end.</p><ul>
 <li>Idea: <strong>Vannevar Bush</strong>'s <strong>Memex</strong> (1945), a machine to link and follow associative trails.</li>
 <li>The word <strong>hypertext</strong> was coined by <strong>Ted Nelson</strong> (1965). <strong>Xanadu</strong> was his project; <strong>HyperCard</strong> (1987) and the <strong>World Wide Web</strong> (1989–91, Berners-Lee) made it popular.</li>
 </ul><h3>Hypermedia</h3><p><strong>Hypermedia</strong> extends hypertext so that the nodes may contain <strong>any media</strong> (graphics, audio, video), not only text.</p><aside class="notes">Source note: <a href="../../unit-09/hypertext/">Hypertext and Hypermedia</a></aside></section><section class=""><h2><small>Hypertext and Hypermedia</small>Multimedia <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p><strong>Multimedia</strong> is the <strong>integrated presentation of several media</strong>; it does not by itself require non-linear navigation.</p><table>
@@ -182,7 +183,7 @@ aside.notes{display:none}
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:40:37.425255</dc:date>
+    <dc:date>2026-11-11T17:55:21.689054</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -359,7 +360,7 @@ z
  </defs>
 </svg>
 </div><div class="cap"></div></section></section>
-<section data-topic="Hypermedia Systems"><section class="sec"><div class="no">03</div><h2>Hypermedia Systems</h2><div class="lead">Unit 9 &middot; topic 3 of 4</div></section><section class=""><h2><small>Hypermedia Systems</small>Nodes</h2><p>A <strong>node</strong> (also card, page, frame) is a unit of information: text, image, audio, video, or a <strong>composite</strong> node containing other nodes. Good practice: one node per <strong>single idea</strong>, so it can be linked in several contexts.</p><aside class="notes">Source note: <a href="../../unit-09/hypermedia-systems/">Hypermedia Systems</a></aside></section><section class="dense"><h2><small>Hypermedia Systems</small>Links (pointers)</h2><p>A <strong>link</strong> connects a <strong>source</strong> to a <strong>destination</strong>. The <strong>anchor</strong> is the active part inside a node (a word, a region of a picture, a time range of a video).</p><table>
+<section data-topic="Hypermedia Systems"><section><div class="sec"><div class="no">03</div><h2>Hypermedia Systems</h2><div class="lead">Unit 9 &middot; topic 3 of 4</div></div></section><section class=""><h2><small>Hypermedia Systems</small>Nodes</h2><p>A <strong>node</strong> (also card, page, frame) is a unit of information: text, image, audio, video, or a <strong>composite</strong> node containing other nodes. Good practice: one node per <strong>single idea</strong>, so it can be linked in several contexts.</p><aside class="notes">Source note: <a href="../../unit-09/hypermedia-systems/">Hypermedia Systems</a></aside></section><section class="dense"><h2><small>Hypermedia Systems</small>Links (pointers)</h2><p>A <strong>link</strong> connects a <strong>source</strong> to a <strong>destination</strong>. The <strong>anchor</strong> is the active part inside a node (a word, a region of a picture, a time range of a video).</p><table>
 <thead>
 <tr>
 <th>Property</th>
@@ -416,12 +417,12 @@ z
 </div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Which Dexter layer stores the links?</p><div class="fragment ans">
 <p>The storage layer.</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-09/hypermedia-systems/">Hypermedia Systems</a></aside></section></section>
-<section data-topic="SGML, ODA and MHEG"><section class="sec"><div class="no">04</div><h2>SGML, ODA and MHEG</h2><div class="lead">Unit 9 &middot; topic 4 of 4</div></section><section><h2><small>SGML, ODA and MHEG</small>Logical structure of a document</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 731.52 342.72" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<section data-topic="SGML, ODA and MHEG"><section><div class="sec"><div class="no">04</div><h2>SGML, ODA and MHEG</h2><div class="lead">Unit 9 &middot; topic 4 of 4</div></div></section><section><h2><small>SGML, ODA and MHEG</small>Logical structure of a document</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 731.52 342.72" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-11T17:40:37.399134</dc:date>
+    <dc:date>2026-11-11T17:55:21.669253</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -798,8 +799,8 @@ L 635.76 259.68
 <p>Logical and layout structure.</p>
 </div></div><aside class="notes">Source note: <a href="../../unit-09/sgml-oda-mheg/">SGML, ODA and MHEG</a></aside></section></section>
 <section data-topic="Exam recap"><section><h2><small>Revision</small>Exam focus recap (1/1)</h2><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div></section></section>
-<section data-topic="Quick check"><section class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></section><section><h2><small>Quick check 1 / 4</small>14. Which standard is ISO 13522?</h2><ul class="opts"><li>A. SGML</li><li>B. ODA</li><li>C. MHEG</li><li>D. HTML</li></ul><div class="fragment ans"><strong>Answer: C.</strong></div></section><section><h2><small>Quick check 2 / 4</small>15. The layer of the Dexter model that stores nodes and links is</h2><ul class="opts"><li>A. Run-time</li><li>B. Storage</li><li>C. Within-component</li><li>D. Presentation</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 3 / 4</small>16. HTML is an application of</h2><ul class="opts"><li>A. ODA</li><li>B. MHEG</li><li>C. SGML</li><li>D. HyTime</li></ul><div class="fragment ans"><strong>Answer: C.</strong></div></section><section><h2><small>Quick check 4 / 4</small>17. Hypertext contains</h2><ul class="opts"><li>A. Only video</li><li>B. Linked text nodes</li><li>C. Only audio</li><li>D. No links</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section></section>
-<section class="title-slide"><div class="kick">End of Unit 9</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></section>
+<section data-topic="Quick check"><section><div class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></div></section><section><h2><small>Quick check 1 / 4</small>14. Which standard is ISO 13522?</h2><ul class="opts"><li>A. SGML</li><li>B. ODA</li><li>C. MHEG</li><li>D. HTML</li></ul><div class="fragment ans"><strong>Answer: C.</strong></div></section><section><h2><small>Quick check 2 / 4</small>15. The layer of the Dexter model that stores nodes and links is</h2><ul class="opts"><li>A. Run-time</li><li>B. Storage</li><li>C. Within-component</li><li>D. Presentation</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 3 / 4</small>16. HTML is an application of</h2><ul class="opts"><li>A. ODA</li><li>B. MHEG</li><li>C. SGML</li><li>D. HyTime</li></ul><div class="fragment ans"><strong>Answer: C.</strong></div></section><section><h2><small>Quick check 4 / 4</small>17. Hypertext contains</h2><ul class="opts"><li>A. Only video</li><li>B. Linked text nodes</li><li>C. Only audio</li><li>D. No links</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section></section>
+<section><div class="title-slide"><div class="kick">End of Unit 9</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/notes.js"></script>
