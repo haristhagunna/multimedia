@@ -447,3 +447,20 @@ body { -webkit-font-smoothing: antialiased; }
 .ms-row input { width: 5rem; padding: .25rem .4rem; border-radius: 8px; border: 1px solid var(--md-default-fg-color--lighter); background: transparent; color: inherit; }
 .ms-total { margin-top: .6rem; font-size: 1rem; }
 @media print { .mock-timer { display: none !important; } }
+
+/* cheat sheets */
+.cheat-bar { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin-bottom: 1rem; font-size: .8rem; }
+.cheat { border: 1px solid var(--md-default-fg-color--lightest); border-radius: 14px; padding: .4rem 1.1rem 1rem; margin: 1rem 0; font-size: .78rem; }
+.cheat h2 { margin-top: .6rem; }
+.cheat ul { margin: .2rem 0 .6rem; }
+.cheat-terms dl { display: grid; grid-template-columns: 11rem 1fr; gap: .15rem .8rem; margin: .3rem 0; }
+.cheat-terms dt { font-weight: 700; margin: 0; }
+.cheat-terms dd { margin: 0; }
+.cheat-foot { font-size: .65rem; opacity: .6; margin: .6rem 0 0; }
+@media print {
+  .cheat { break-after: page; border: 0; padding: 0; font-size: 9.5pt; }
+  .cheat:last-of-type { break-after: auto; }
+  .cheat-bar, .md-content__button { display: none !important; }
+  .cheat-terms dl { grid-template-columns: 9rem 1fr; }
+}
+@media (max-width: 600px) { .cheat-terms dl { grid-template-columns: 1fr; } }
