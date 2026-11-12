@@ -1,0 +1,1034 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://unpkg.com; img-src 'self' data: blob:; connect-src 'self' https://api.github.com; worker-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="author" content="Er. Harish Thagunna">
+<title>Unit 10: Synchronization - Class slides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<style>
+:root{--g:linear-gradient(120deg,#818cf8,#c084fc 55%,#f472b6);--card:rgba(255,255,255,.055);--line:rgba(255,255,255,.12);--mut:#aab0d6;--ac:#a5b4fc}
+html,body{background:#080a14}
+.reveal-viewport{background:radial-gradient(55% 70% at 12% 8%,rgba(99,102,241,.35),transparent 65%),radial-gradient(50% 65% at 92% 95%,rgba(236,72,153,.26),transparent 65%),radial-gradient(40% 50% at 85% 10%,rgba(6,182,212,.14),transparent 70%),#080a14}
+.reveal{font-family:Inter,system-ui,sans-serif;font-size:27px;color:#e8eaff;font-weight:400}
+.reveal .slides section{text-align:left;height:100%}
+.reveal h1,.reveal h2,.reveal h3{font-family:Inter,system-ui,sans-serif;text-transform:none;letter-spacing:-.025em;font-weight:800;margin:0 0 .45em}
+.reveal h2{font-size:1.5em;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.15}
+.reveal h2 small{display:block;font-size:.42em;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);-webkit-text-fill-color:var(--mut);font-weight:700;margin-bottom:.35em}
+.reveal h3{font-size:1.05em;color:#fff}
+.reveal h4{font-size:.9em;color:var(--ac);margin:.6em 0 .2em}
+.reveal p{margin:.35em 0;line-height:1.45}
+.reveal ul,.reveal ol{display:block;margin:.3em 0 .3em 1.1em;width:calc(100% - 1.1em)}
+.reveal li{margin:.3em 0;line-height:1.38}
+.reveal ul li::marker{color:#c084fc}.reveal ol li::marker{color:#818cf8;font-weight:700}
+.reveal strong{color:#fff;font-weight:700}.reveal em{color:#d9dcff}
+.reveal a{color:var(--ac)}
+.reveal code{font-family:'JetBrains Mono',monospace;font-size:.85em;background:rgba(129,140,248,.16);border-radius:6px;padding:.06em .35em;color:#e0e4ff}
+.reveal pre{width:100%;box-shadow:none;font-size:.62em;margin:.5em 0}
+.reveal pre code{display:block;padding:.8em 1em;border-radius:12px;background:rgba(0,0,0,.4);border:1px solid var(--line);max-height:none}
+.reveal mark{background:linear-gradient(transparent 55%,rgba(244,114,182,.4) 55%);color:inherit}
+.reveal table{margin:.5em 0;border-collapse:separate;border-spacing:0;font-size:.66em;width:100%;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.reveal th{background:rgba(129,140,248,.2);font-weight:700;color:#fff;text-align:left;padding:.5em .8em}
+.reveal td{padding:.42em .8em;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.reveal tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+.dense{font-size:.86em}.xdense{font-size:.74em}
+.callout{border:1px solid var(--line);border-left:5px solid #818cf8;border-radius:12px;background:var(--card);padding:.55em 1em;margin:.7em 0;font-size:.88em}
+.callout .ct{font-size:.68em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.15em;color:#a5b4fc}
+.callout p,.callout li{margin:.2em 0}.callout>*:last-child{margin-bottom:0}
+.callout.exam{border-left-color:#fb923c;background:rgba(251,146,60,.09)}.callout.exam .ct{color:#fdba74}
+.callout.warn{border-left-color:#f87171;background:rgba(248,113,113,.09)}.callout.warn .ct{color:#fca5a5}
+.callout.tip{border-left-color:#34d399;background:rgba(52,211,153,.09)}.callout.tip .ct{color:#6ee7b7}
+.callout.ex{border-left-color:#c084fc;background:rgba(192,132,252,.09)}.callout.ex .ct{color:#d8b4fe}
+aside.notes{display:none}
+.callout.split .sp{display:grid;grid-template-columns:1fr 1.1fr;gap:1em;align-items:center}
+.callout.split .diagram svg{max-height:430px}
+.callout.split.long{font-size:.72em;margin-top:.2em}.callout.split.long .diagram svg{max-height:420px}
+.diagram{text-align:center;margin:.4em 0}.diagram svg{max-width:100%;height:auto;max-height:470px;width:auto}
+.diagram.tall svg{max-height:540px}
+.diagram .cap,.cap{font-size:.55em;color:var(--mut);margin-top:.3em;text-align:center}
+.vis{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:.5em;text-align:center}
+.vis svg{max-width:100%;height:auto;max-height:480px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1em;align-items:start}
+.two>*{min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6em .9em}
+.q{font-weight:700;color:#fff}
+.chk{border:1px solid rgba(192,132,252,.5);border-radius:14px;padding:.7em 1em;background:rgba(192,132,252,.08);margin:.5em 0}
+.chk .lab{font-size:.55em;letter-spacing:.14em;font-weight:800;color:#d8b4fe;text-transform:uppercase}
+.opts{list-style:none;margin:.4em 0!important;padding:0;display:grid;gap:.35em}
+.opts li{margin:0;padding:.4em .8em;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.ans{margin-top:.6em;padding:.5em .9em;border-radius:10px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.5)}
+.trio{display:grid;grid-template-columns:1fr;gap:.6em}.trio .card{padding:.55em 1em}.trio .card .ct{font-size:.55em;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.1em}.trio .card p{margin:.1em 0;font-size:.95em}
+.trio .c1{border-left:5px solid #818cf8}.trio .c1 .ct{color:#a5b4fc}.trio .c2{border-left:5px solid #34d399}.trio .c2 .ct{color:#6ee7b7}.trio .c3{border-left:5px solid #fb923c}.trio .c3 .ct{color:#fdba74}
+.terms{display:grid;grid-template-columns:1fr 1fr;gap:.55em}.card.term{display:flex;flex-direction:column;gap:.1em;padding:.45em .85em}.card.term b{color:#c4b5fd;font-size:.95em}.card.term span{font-size:.74em;line-height:1.35;color:#dfe2ff}
+.agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:.55em}
+.agenda .card{display:flex;gap:.7em;align-items:center;font-size:.85em;font-weight:600}
+.agenda .n{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:800;font-size:.85em;color:#fff}
+.title-slide{display:flex;flex-direction:column;justify-content:center;height:100%}
+.title-slide .kick{font-size:.62em;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);font-weight:700;margin-bottom:1em}
+.title-slide h1{font-size:2.9em;line-height:1.02;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:.25em}
+.title-slide .by{font-size:.8em;color:var(--mut);margin-top:1.2em}
+.chips{display:flex;gap:.6em;flex-wrap:wrap;margin-top:1.2em}
+.chips span{font-size:.55em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.35em .9em;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.sec{display:flex;flex-direction:column;justify-content:center;height:100%}
+.sec .no{font-size:5em;font-weight:900;line-height:1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+.sec h2{font-size:2.1em}
+.sec .lead{color:var(--mut);font-size:.85em;max-width:80%}
+#hud{position:fixed;left:18px;top:12px;z-index:30;font:700 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8e94c4;pointer-events:none}
+.copyright-foot{position:fixed;left:0;right:0;bottom:8px;text-align:center;font:600 11px Inter,system-ui,sans-serif;color:#7f86b8;z-index:30;pointer-events:none}
+.reveal .progress{height:4px;color:#c084fc}
+.reveal .controls{color:#a5b4fc}
+.reveal .slide-number{background:transparent;color:#8e94c4;font-size:12px;font-weight:700;right:14px;bottom:8px}
+.reveal .fragment.highlight-current-blue.current-fragment{color:#a5b4fc}
+.reveal .katex{font-size:1.05em}.mathx.blk{display:block;text-align:center;margin:.4em 0}.reveal .arithmatex{color:#fff}
+.reveal .arithmatex.block,.reveal div.arithmatex{margin:.5em 0;text-align:center}
+@media print{#hud,.copyright-foot{display:none}}
+</style>
+</head>
+<body>
+<div id="hud"></div>
+<div id="loaderr" style="display:none;position:fixed;inset:0;z-index:99;padding:12vh 8vw;background:#080a14;color:#e8eaff;font:600 20px Inter,system-ui,sans-serif">The slide engine could not be loaded.<br><br><span style="font-weight:400;color:#aab0d6">These slides need an internet connection to load reveal.js from cdn.jsdelivr.net. Check your connection or any ad-blocker / firewall, then reload.</span></div>
+<div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved. &middot; Press <b>?</b> for shortcuts, <b>Esc</b> for overview</div>
+<div class="reveal"><div class="slides">
+<section><div class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 10<br>Synchronization</h1><p style="max-width:75%;color:#aab0d6">Skew, reference model, specification and distributed sync.</p><div class="chips"><span>4 teaching hours</span><span>5 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></div></section>
+<section><h2><small>Roadmap</small>What we will cover</h2><div class="agenda"><div class="card"><span class="n">1</span>Notion of Synchronization</div><div class="card"><span class="n">2</span>Presentation Requirements</div><div class="card"><span class="n">3</span>Reference Model</div><div class="card"><span class="n">4</span>Synchronization Specification</div><div class="card"><span class="n">5</span>Synchronization in a Distributed Environment</div></div></section>
+<section data-topic="Notion of Synchronization"><section><div class="sec"><div class="no">01</div><h2>Notion of Synchronization</h2><div class="lead">Unit 10 &middot; topic 1 of 5</div></div></section><section><h2><small>Notion of Synchronization</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Synchronization means the right media shown at the right time. It happens inside one stream (intra) and between streams (inter).</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Lip-sync: the speaker's lips must match the sound.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Intra = smooth within a stream. Inter = aligned between streams. Live = real time source, synthetic = pre-planned.</p></div></div><aside class="notes"><p><b>Say:</b> Synchronization means the right media shown at the right time. It happens inside one stream (intra) and between streams (inter).</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: Lip-sync: the speaker's lips must match the sound.)</p><p><b>Board:</b> write the memory hook: Intra = smooth within a stream. Inter = aligned between streams. Live = real time source, synthetic = pre-planned.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>Notion of Synchronization</small>Introduction</h2><ul><li class="fragment fade-up">The word <strong>synchronization</strong> refers to <strong>time</strong>.</li><li class="fragment fade-up">In multimedia it means the <strong>temporal relation between media objects</strong> in the system: between <strong>time-dependent</strong> (continuous) objects and between time-dependent and <strong>time-independent</strong> (discrete) ones.</li><li class="fragment fade-up">A common example is the synchronization of <strong>visual and acoustical information in television</strong>.</li></ul><p>In short: coordinating several media types in time to give a <strong>seamless presentation</strong>, for example lip movement matching speech.</p><aside class="notes">Source note: <a href="../../unit-10/notion/">Notion of Synchronization</a></aside></section><section class=""><h2><small>Notion of Synchronization</small>Basic synchronization issues <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm63412ec8630f" role="graphics-document document" viewbox="0 0 798.203125 234" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm63412ec8630f{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm63412ec8630f .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm63412ec8630f .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm63412ec8630f .error-icon{fill:#1c2150;}#mm63412ec8630f .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm63412ec8630f .edge-thickness-normal{stroke-width:1px;}#mm63412ec8630f .edge-thickness-thick{stroke-width:3.5px;}#mm63412ec8630f .edge-pattern-solid{stroke-dasharray:0;}#mm63412ec8630f .edge-thickness-invisible{stroke-width:0;fill:none;}#mm63412ec8630f .edge-pattern-dashed{stroke-dasharray:3;}#mm63412ec8630f .edge-pattern-dotted{stroke-dasharray:2;}#mm63412ec8630f .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm63412ec8630f .marker.cross{stroke:#a5b4fc;}#mm63412ec8630f svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm63412ec8630f p{margin:0;}#mm63412ec8630f .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm63412ec8630f .cluster-label text{fill:#e3deaf;}#mm63412ec8630f .cluster-label span{color:#e3deaf;}#mm63412ec8630f .cluster-label span p{background-color:transparent;}#mm63412ec8630f .label text,#mm63412ec8630f span{fill:#f4f4ff;color:#f4f4ff;}#mm63412ec8630f .node rect,#mm63412ec8630f .node circle,#mm63412ec8630f .node ellipse,#mm63412ec8630f .node polygon,#mm63412ec8630f .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm63412ec8630f .rough-node .label text,#mm63412ec8630f .node .label text,#mm63412ec8630f .image-shape .label,#mm63412ec8630f .icon-shape .label{text-anchor:middle;}#mm63412ec8630f .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm63412ec8630f .rough-node .label,#mm63412ec8630f .node .label,#mm63412ec8630f .image-shape .label,#mm63412ec8630f .icon-shape .label{text-align:center;}#mm63412ec8630f .node.clickable{cursor:pointer;}#mm63412ec8630f .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm63412ec8630f .arrowheadPath{fill:#0b0b0b;}#mm63412ec8630f .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm63412ec8630f .flowchart-link{stroke:#a5b4fc;fill:none;}#mm63412ec8630f .edgeLabel{background-color:#12152b;text-align:center;}#mm63412ec8630f .edgeLabel p{background-color:#12152b;}#mm63412ec8630f .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm63412ec8630f .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm63412ec8630f .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm63412ec8630f .cluster text{fill:#e3deaf;}#mm63412ec8630f .cluster span{color:#e3deaf;}#mm63412ec8630f div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm63412ec8630f .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm63412ec8630f rect.text{fill:none;stroke-width:0;}#mm63412ec8630f .icon-shape,#mm63412ec8630f .image-shape{background-color:#12152b;text-align:center;}#mm63412ec8630f .icon-shape p,#mm63412ec8630f .image-shape p{background-color:#12152b;padding:2px;}#mm63412ec8630f .icon-shape .label rect,#mm63412ec8630f .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm63412ec8630f .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm63412ec8630f .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm63412ec8630f .node .neo-node{stroke:#818cf8;}#mm63412ec8630f [data-look="neo"].node rect,#mm63412ec8630f [data-look="neo"].cluster rect,#mm63412ec8630f [data-look="neo"].node polygon{stroke:url(#mm63412ec8630f-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm63412ec8630f [data-look="neo"].swimlane.cluster rect{filter:none;}#mm63412ec8630f [data-look="neo"].node path{stroke:url(#mm63412ec8630f-gradient);stroke-width:1px;}#mm63412ec8630f [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm63412ec8630f [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm63412ec8630f [data-look="neo"].node circle{stroke:url(#mm63412ec8630f-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm63412ec8630f [data-look="neo"].node circle .state-start{fill:#000000;}#mm63412ec8630f [data-look="neo"].icon-shape .icon{fill:url(#mm63412ec8630f-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm63412ec8630f [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm63412ec8630f-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm63412ec8630f :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm63412ec8630f_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm63412ec8630f_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm63412ec8630f_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm63412ec8630f_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm63412ec8630f_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm63412ec8630f_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm63412ec8630f_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm63412ec8630f_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm63412ec8630f_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm63412ec8630f_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm63412ec8630f_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm63412ec8630f_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M262.984,80.833L237.569,86.861C212.154,92.888,161.323,104.944,135.908,116.722C110.492,128.5,110.492,140,110.492,145.75L110.492,151.5" data-edge="true" data-et="edge" data-id="L_S_C_0" data-look="classic" data-points="W3sieCI6MjYyLjk4NDM3NSwieSI6ODAuODMyNzExMDgxNjExNzZ9LHsieCI6MTEwLjQ5MjE4NzUsInkiOjExN30seyJ4IjoxMTAuNDkyMTg3NSwieSI6MTU1LjV9XQ==" id="mm63412ec8630f-L_S_C_0" marker-end="url(#mm63412ec8630f_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M392.984,92L392.984,96.167C392.984,100.333,392.984,108.667,392.984,116.333C392.984,124,392.984,131,392.984,134.5L392.984,138" data-edge="true" data-et="edge" data-id="L_S_P_0" data-look="classic" data-points="W3sieCI6MzkyLjk4NDM3NSwieSI6OTJ9LHsieCI6MzkyLjk4NDM3NSwieSI6MTE3fSx7IngiOjM5Mi45ODQzNzUsInkiOjE0Mn1d" id="mm63412ec8630f-L_S_P_0" marker-end="url(#mm63412ec8630f_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M522.984,80.179L549.419,86.316C575.854,92.453,628.724,104.726,655.159,116.613C681.594,128.5,681.594,140,681.594,145.75L681.594,151.5" data-edge="true" data-et="edge" data-id="L_S_T_0" data-look="classic" data-points="W3sieCI6NTIyLjk4NDM3NSwieSI6ODAuMTc5MTk5ODI2NzU1NDV9LHsieCI6NjgxLjU5Mzc1LCJ5IjoxMTd9LHsieCI6NjgxLjU5Mzc1LCJ5IjoxNTUuNX1d" id="mm63412ec8630f-L_S_T_0" marker-end="url(#mm63412ec8630f_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_S_C_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_S_P_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_S_T_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm63412ec8630f-flowchart-S-0" transform="translate(392.984375, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Relations between media objects</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm63412ec8630f-flowchart-C-1" transform="translate(110.4921875, 184)"><rect class="basic label-container" height="57" style="" width="204.984375" x="-102.4921875" y="-28.5"></rect><g class="label" style="" transform="translate(-72.4921875, -13.5)"><rect></rect><foreignobject height="27" width="144.984375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Content relations</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm63412ec8630f-flowchart-P-3" transform="translate(392.984375, 184)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Spatial relations (layout)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm63412ec8630f-flowchart-T-5" transform="translate(681.59375, 184)"><rect class="basic label-container" height="57" style="" width="217.21875" x="-108.609375" y="-28.5"></rect><g class="label" style="" transform="translate(-78.609375, -13.5)"><rect></rect><foreignobject height="27" width="157.21875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Temporal relations</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm63412ec8630f-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm63412ec8630f-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm63412ec8630f-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-10/notion/">Notion of Synchronization</a></aside></section><section class=""><h2><small>Notion of Synchronization</small>Basic synchronization issues <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><table>
+<thead>
+<tr>
+<th>Relation</th>
+<th>Defines</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Content relation</strong></td>
+<td><strong>Dependency of media objects on some data</strong></td>
+<td>A <strong>spreadsheet</strong> and the <strong>graph</strong> drawn from its data</td>
+</tr>
+<tr>
+<td><strong>Spatial relation (layout)</strong></td>
+<td>The <strong>space</strong> used on the output device at a given time; on a 2D device, the 2D area</td>
+<td>Position and size of a video window on the screen</td>
+</tr>
+<tr>
+<td><strong>Temporal relation</strong></td>
+<td><strong>Temporal dependencies</strong> between objects; of interest when time-dependent objects exist</td>
+<td><strong>Video and audio recorded at a concert</strong></td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-10/notion/">Notion of Synchronization</a></aside></section><section class=""><h2><small>Notion of Synchronization</small>Intra-object and inter-object synchronization</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>Intra-object (intra-media)</th>
+<th>Inter-object (inter-media)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Concerns</td>
+<td>The <strong>time relation between the presentation units (LDUs) of one</strong> time-dependent object</td>
+<td>The synchronization <strong>between media objects</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td>Frames of a video of a <strong>bouncing ball</strong>: at <strong>25 fps each frame is shown for 40 ms</strong></td>
+<td>A presentation that starts with an <strong>audio/video sequence</strong>, followed by <strong>several pictures</strong> and an <strong>animation commented by an audio sequence</strong></td>
+</tr>
+</tbody>
+</table><div class="callout ex"><div class="ct">Check</div>
+<p>1 s ÷ 25 frames = <strong>40 ms</strong> per frame.</p>
+</div><aside class="notes">Source note: <a href="../../unit-10/notion/">Notion of Synchronization</a></aside></section><section class=""><h2><small>Notion of Synchronization</small>Live and synthetic synchronization</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>Live</th>
+<th>Synthetic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Goal</td>
+<td><strong>Exactly reproduce the temporal relations as they were at capture</strong></td>
+<td>Temporal relations are <strong>artificially specified</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td><strong>Video conferencing</strong></td>
+<td>Moving along the path of a <strong>car race</strong> (a pre-authored presentation)</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-10/notion/">Notion of Synchronization</a></aside></section><section class=""><h2><small>Notion of Synchronization</small>Hard and soft synchronization</h2><ul>
+<li class="fragment fade-up"><strong>Hard sync:</strong> strict timing, for example a <strong>live news broadcast</strong>.</li>
+<li class="fragment fade-up"><strong>Soft sync:</strong> some delay is acceptable, for example <strong>offline playback</strong>.</li>
+<li class="fragment fade-up">Intra-media example: video frame order; inter-media example: audio + video; a music video whose beat matches the visuals.</li>
+</ul><div class="callout exam"><div class="ct">Exam tip</div>
+<p>"Explain the basic synchronization issues" = content, spatial, temporal relations with one example each. Then intra vs inter and live vs synthetic as two small tables.</p>
+</div><aside class="notes">Source note: <a href="../../unit-10/notion/">Notion of Synchronization</a></aside></section><section class=""><h2><small>Notion of Synchronization</small>Checkpoint <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Give an example of a content relation.</p><div class="fragment ans">
+<p>A graph that depends on the data of a spreadsheet.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">What is the display time of one frame in a 30 fps video?</p><div class="fragment ans">
+<p>1 ÷ 30 s ≈ 33.3 ms. (25 fps gives 40 ms.)</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-10/notion/">Notion of Synchronization</a></aside></section><section class=""><h2><small>Notion of Synchronization</small>Checkpoint <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Is video conferencing live or synthetic synchronization?</p><div class="fragment ans">
+<p>Live, because the capture-time relations must be reproduced.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-10/notion/">Notion of Synchronization</a></aside></section><section><h2><small>Notion of Synchronization</small>Key terms</h2><div class="terms"><div class="card term"><b>Intra-object sync</b><span>Correct timing inside one medium.</span></div><div class="card term"><b>Inter-object sync</b><span>Correct timing between different media.</span></div><div class="card term"><b>Live synchronization</b><span>Sync of live, captured media.</span></div><div class="card term"><b>Synthetic synchronization</b><span>Planned timing of stored media.</span></div><div class="card term"><b>Hard / soft sync</b><span>Strict / tolerant timing relation.</span></div><div class="card term"><b>Skew</b><span>Time difference between streams.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section><section><h2><small>Notion of Synchronization</small>Synchronisation as a timeline</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 731.52 357.12" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-12T07:41:45.148247</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 357.12 
+L 731.52 357.12 
+L 731.52 0 
+L 0 0 
+L 0 357.12 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 161.76 83.222069 
+L 641.76 83.222069 
+L 641.76 50.449655 
+L 161.76 50.449655 
+z
+" clip-path="url(#pb7b79ed1fe)" style="fill: #f472b6; opacity: 0.85; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 161.76 130.891034 
+L 641.76 130.891034 
+L 641.76 98.118621 
+L 161.76 98.118621 
+z
+" clip-path="url(#pb7b79ed1fe)" style="fill: #22d3ee; opacity: 0.85; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 161.76 178.56 
+L 401.76 178.56 
+L 401.76 145.787586 
+L 161.76 145.787586 
+z
+" clip-path="url(#pb7b79ed1fe)" style="fill: #818cf8; opacity: 0.85; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 401.76 226.228966 
+L 641.76 226.228966 
+L 641.76 193.456552 
+L 401.76 193.456552 
+z
+" clip-path="url(#pb7b79ed1fe)" style="fill: #c084fc; opacity: 0.85; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 281.76 273.897931 
+L 521.76 273.897931 
+L 521.76 241.125517 
+L 281.76 241.125517 
+z
+" clip-path="url(#pb7b79ed1fe)" style="fill: #34d399; opacity: 0.85; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 163.762075 294.753103 
+Q 425.759783 294.753103 685.968636 294.753103 
+" clip-path="url(#pb7b79ed1fe)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 680.368636 291.953103 
+L 685.968636 294.753103 
+L 680.368636 297.553103 
+z
+" clip-path="url(#pb7b79ed1fe)" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 161.76 312.628966 
+L 161.76 303.691034 
+" clip-path="url(#pb7b79ed1fe)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 221.76 312.628966 
+L 221.76 303.691034 
+" clip-path="url(#pb7b79ed1fe)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 281.76 312.628966 
+L 281.76 303.691034 
+" clip-path="url(#pb7b79ed1fe)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 341.76 312.628966 
+L 341.76 303.691034 
+" clip-path="url(#pb7b79ed1fe)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 401.76 312.628966 
+L 401.76 303.691034 
+" clip-path="url(#pb7b79ed1fe)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 461.76 312.628966 
+L 461.76 303.691034 
+" clip-path="url(#pb7b79ed1fe)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 521.76 312.628966 
+L 521.76 303.691034 
+" clip-path="url(#pb7b79ed1fe)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 581.76 312.628966 
+L 581.76 303.691034 
+" clip-path="url(#pb7b79ed1fe)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 641.76 312.628966 
+L 641.76 303.691034 
+" clip-path="url(#pb7b79ed1fe)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="11.76" y="26.615172" transform="rotate(-0 11.76 26.615172)">Temporal relations between media objects on a timeline</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #e8eaff" x="149.76" y="69.861742" transform="rotate(-0 149.76 69.861742)">Video</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #e8eaff" x="149.76" y="117.530708" transform="rotate(-0 149.76 117.530708)">Audio narration</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #e8eaff" x="149.76" y="165.199673" transform="rotate(-0 149.76 165.199673)">Slide 1</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #e8eaff" x="149.76" y="212.868639" transform="rotate(-0 149.76 212.868639)">Slide 2</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #e8eaff" x="149.76" y="260.537604" transform="rotate(-0 149.76 260.537604)">Subtitle</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #9aa0cc" x="695.76" y="297.870291" transform="rotate(-0 695.76 297.870291)">t</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9.5px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #9aa0cc" x="161.76" y="336.463448" transform="rotate(-0 161.76 336.463448)">Video &amp; audio: equal (inter-stream sync) · Slide 2 starts when Slide 1 ends (meets) · Subtitle overlaps both slides</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb7b79ed1fe">
+   <rect x="5.76" y="5.76" width="720" height="345.6"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">Intra-object sync keeps one stream smooth; inter-object sync keeps different objects in the right temporal relation.</div></section></section>
+<section data-topic="Presentation Requirements"><section><div class="sec"><div class="no">02</div><h2>Presentation Requirements</h2><div class="lead">Unit 10 &middot; topic 2 of 5</div></div></section><section><h2><small>Presentation Requirements</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Humans accept small timing errors, but not large ones. Meeting these limits is a presentation requirement.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>If a speaker's voice is 200 ms behind the lips, viewers notice and get annoyed.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Lip sync tolerance: audio may be 80 ms behind to 80 ms ahead of the video.</p></div></div><aside class="notes"><p><b>Say:</b> Humans accept small timing errors, but not large ones. Meeting these limits is a presentation requirement.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: If a speaker's voice is 200 ms behind the lips, viewers notice and get annoyed.)</p><p><b>Board:</b> write the memory hook: Lip sync tolerance: audio may be 80 ms behind to 80 ms ahead of the video.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>Presentation Requirements</small>Presentation Requirements</h2><p>For correct delivery at the user interface, synchronization is essential. A <strong>presentation requirement</strong> consists of:</p><ul>
+<li>for <strong>intra-object</strong> synchronization: the <strong>accuracy of delays</strong> in presenting the <strong>LDUs</strong> (logical data units);</li>
+<li>for <strong>inter-object</strong> synchronization: the <strong>accuracy of the parallel presentation</strong> of media objects.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-10/presentation-requirements/">Presentation Requirements</a></aside></section><section class=""><h2><small>Presentation Requirements</small>Lip synchronization <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p><strong>Lip synchronization</strong> is the temporal relation between an <strong>audio</strong> and a <strong>video</strong> stream when a <strong>person speaks</strong>.</p><ul>
+<li class="fragment fade-up">The time difference between related audio and video LDUs is the <strong>skew</strong>.</li>
+<li class="fragment fade-up">Streams in perfect synchronization have <strong>skew = 0 ms</strong>.</li>
+<li class="fragment fade-up">Lip synchronization is tolerated within a skew of <strong>−80 ms (audio behind video)</strong> to <strong>+80 ms (audio ahead of video)</strong>.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-10/presentation-requirements/">Presentation Requirements</a></aside></section><section class=""><h2><small>Presentation Requirements</small>Lip synchronization <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm80352df7be01" role="graphics-document document" viewbox="0 0 809.3125 100" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm80352df7be01{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm80352df7be01 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm80352df7be01 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm80352df7be01 .error-icon{fill:#1c2150;}#mm80352df7be01 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm80352df7be01 .edge-thickness-normal{stroke-width:1px;}#mm80352df7be01 .edge-thickness-thick{stroke-width:3.5px;}#mm80352df7be01 .edge-pattern-solid{stroke-dasharray:0;}#mm80352df7be01 .edge-thickness-invisible{stroke-width:0;fill:none;}#mm80352df7be01 .edge-pattern-dashed{stroke-dasharray:3;}#mm80352df7be01 .edge-pattern-dotted{stroke-dasharray:2;}#mm80352df7be01 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm80352df7be01 .marker.cross{stroke:#a5b4fc;}#mm80352df7be01 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm80352df7be01 p{margin:0;}#mm80352df7be01 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm80352df7be01 .cluster-label text{fill:#e3deaf;}#mm80352df7be01 .cluster-label span{color:#e3deaf;}#mm80352df7be01 .cluster-label span p{background-color:transparent;}#mm80352df7be01 .label text,#mm80352df7be01 span{fill:#f4f4ff;color:#f4f4ff;}#mm80352df7be01 .node rect,#mm80352df7be01 .node circle,#mm80352df7be01 .node ellipse,#mm80352df7be01 .node polygon,#mm80352df7be01 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm80352df7be01 .rough-node .label text,#mm80352df7be01 .node .label text,#mm80352df7be01 .image-shape .label,#mm80352df7be01 .icon-shape .label{text-anchor:middle;}#mm80352df7be01 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm80352df7be01 .rough-node .label,#mm80352df7be01 .node .label,#mm80352df7be01 .image-shape .label,#mm80352df7be01 .icon-shape .label{text-align:center;}#mm80352df7be01 .node.clickable{cursor:pointer;}#mm80352df7be01 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm80352df7be01 .arrowheadPath{fill:#0b0b0b;}#mm80352df7be01 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm80352df7be01 .flowchart-link{stroke:#a5b4fc;fill:none;}#mm80352df7be01 .edgeLabel{background-color:#12152b;text-align:center;}#mm80352df7be01 .edgeLabel p{background-color:#12152b;}#mm80352df7be01 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm80352df7be01 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm80352df7be01 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm80352df7be01 .cluster text{fill:#e3deaf;}#mm80352df7be01 .cluster span{color:#e3deaf;}#mm80352df7be01 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm80352df7be01 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm80352df7be01 rect.text{fill:none;stroke-width:0;}#mm80352df7be01 .icon-shape,#mm80352df7be01 .image-shape{background-color:#12152b;text-align:center;}#mm80352df7be01 .icon-shape p,#mm80352df7be01 .image-shape p{background-color:#12152b;padding:2px;}#mm80352df7be01 .icon-shape .label rect,#mm80352df7be01 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm80352df7be01 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm80352df7be01 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm80352df7be01 .node .neo-node{stroke:#818cf8;}#mm80352df7be01 [data-look="neo"].node rect,#mm80352df7be01 [data-look="neo"].cluster rect,#mm80352df7be01 [data-look="neo"].node polygon{stroke:url(#mm80352df7be01-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm80352df7be01 [data-look="neo"].swimlane.cluster rect{filter:none;}#mm80352df7be01 [data-look="neo"].node path{stroke:url(#mm80352df7be01-gradient);stroke-width:1px;}#mm80352df7be01 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm80352df7be01 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm80352df7be01 [data-look="neo"].node circle{stroke:url(#mm80352df7be01-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm80352df7be01 [data-look="neo"].node circle .state-start{fill:#000000;}#mm80352df7be01 [data-look="neo"].icon-shape .icon{fill:url(#mm80352df7be01-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm80352df7be01 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm80352df7be01-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm80352df7be01 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm80352df7be01_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm80352df7be01_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm80352df7be01_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm80352df7be01_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm80352df7be01_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm80352df7be01_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm80352df7be01_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm80352df7be01_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm80352df7be01_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm80352df7be01_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm80352df7be01_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm80352df7be01_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M268,50L272.167,50C276.333,50,284.667,50,293,50C301.333,50,309.667,50,313.833,50L318,50" data-edge="true" data-et="edge" data-id="L_A_B_0" data-look="classic" data-points="W3sieCI6MjY4LCJ5Ijo1MH0seyJ4IjoyOTMsInkiOjUwfSx7IngiOjMxOCwieSI6NTB9XQ==" id="mm80352df7be01-L_A_B_0" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M491.313,50L495.479,50C499.646,50,507.979,50,516.313,50C524.646,50,532.979,50,537.146,50L541.313,50" data-edge="true" data-et="edge" data-id="L_B_C_0" data-look="classic" data-points="W3sieCI6NDkxLjMxMjUsInkiOjUwfSx7IngiOjUxNi4zMTI1LCJ5Ijo1MH0seyJ4Ijo1NDEuMzEyNSwieSI6NTB9XQ==" id="mm80352df7be01-L_B_C_0" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_A_B_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_B_C_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm80352df7be01-flowchart-A-0" transform="translate(138, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Audio 80 ms behind video: limit</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm80352df7be01-flowchart-B-1" transform="translate(404.65625, 50)"><rect class="basic label-container" height="57" style="" width="173.3125" x="-86.65625" y="-28.5"></rect><g class="label" style="" transform="translate(-56.65625, -13.5)"><rect></rect><foreignobject height="27" width="113.3125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>0 ms: perfect</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm80352df7be01-flowchart-C-2" transform="translate(671.3125, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Audio 80 ms ahead of video: limit</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm80352df7be01-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm80352df7be01-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm80352df7be01-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-10/presentation-requirements/">Presentation Requirements</a></aside></section><section class=""><h2><small>Presentation Requirements</small>Pointer synchronization</h2><p>In a <strong>CSCW</strong> (computer-supported cooperative work) environment, cameras and microphones are attached to each user's workstation. A speaker uses a <strong>pointer</strong> to indicate elements of a graphic while talking, so <strong>audio and pointer</strong> must be synchronized. Experiments gave:</p><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Tolerated skew</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Audio ahead of pointing</strong></td>
+<td><strong>750 ms</strong></td>
+</tr>
+<tr>
+<td><strong>Pointing ahead of audio</strong></td>
+<td><strong>500 ms</strong></td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-10/presentation-requirements/">Presentation Requirements</a></aside></section><section class=""><h2><small>Presentation Requirements</small>Other requirements <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Timeliness</strong></td>
+<td>Items shown at the right time</td>
+<td>Subtitles match spoken dialogue</td>
+</tr>
+<tr>
+<td><strong>Continuity</strong></td>
+<td>No skipping or breaks</td>
+<td>Smooth streaming</td>
+</tr>
+<tr>
+<td><strong>Skew tolerance</strong></td>
+<td>Allowed deviation</td>
+<td>Lip sync <strong>&lt; 80 ms</strong></td>
+</tr>
+<tr>
+<td><strong>Latency</strong></td>
+<td>Delay from source to display</td>
+<td>Delay in live sports commentary</td>
+</tr>
+<tr>
+<td><strong>Jitter</strong></td>
+<td>Variation of delay</td>
+<td>Choppy audio in a video call</td>
+</tr>
+</tbody>
+</table><div class="callout warn"><div class="ct">Wording</div>
+<p>Lip sync is sometimes stated as "&lt; 80 ms" and sometimes as "−80 ms to +80 ms". They agree: the allowed band is <strong>±80 ms</strong>.</p>
+</div><aside class="notes">Source note: <a href="../../unit-10/presentation-requirements/">Presentation Requirements</a></aside></section><section class=""><h2><small>Presentation Requirements</small>Other requirements <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout"><div class="ct">Extra</div>
+<p>Textbooks also give bounds for other combinations (for example audio with animation, audio with image slides, audio-audio), generally looser than for lip sync. Check the prescribed textbook if your exam is set from it.</p>
+</div><div class="callout exam"><div class="ct">Exam tip</div>
+<p>Learn the three numbers <strong>±80 ms</strong>, <strong>750 ms</strong> and <strong>500 ms</strong>, and define <strong>skew</strong>.</p>
+</div><aside class="notes">Source note: <a href="../../unit-10/presentation-requirements/">Presentation Requirements</a></aside></section><section class=""><h2><small>Presentation Requirements</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Define skew.</p><div class="fragment ans">
+<p>The time difference between related LDUs of two streams, for example audio and video.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">State the tolerated lip-sync skew.</p><div class="fragment ans">
+<p>From −80 ms (audio behind video) to +80 ms (audio ahead of video).</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-10/presentation-requirements/">Presentation Requirements</a></aside></section><section><h2><small>Presentation Requirements</small>Key terms</h2><div class="terms"><div class="card term"><b>Lip synchronization</b><span>Matching speech to lip movement.</span></div><div class="card term"><b>Skew</b><span>Difference in presentation time.</span></div><div class="card term"><b>Tolerance</b><span>The error people still accept.</span></div><div class="card term"><b>Jitter</b><span>Short-term delay variation.</span></div><div class="card term"><b>Presentation requirement</b><span>Timing limit that quality depends on.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section><section><h2><small>Presentation Requirements</small>Lip synchronisation tolerance</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 597.452812 246.104938" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-12T07:41:45.123780</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 246.104938 
+L 597.452812 246.104938 
+L 597.452812 0 
+L 0 0 
+L 0 246.104938 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 22.240313 205.344 
+L 580.240312 205.344 
+L 580.240312 5.76 
+L 22.240313 5.76 
+L 22.240313 205.344 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 226.840313 205.344 
+L 375.640313 205.344 
+L 375.640313 5.76 
+L 226.840313 5.76 
+z
+" clip-path="url(#pc590f0a1be)" style="fill: #34d399; opacity: 0.25; stroke: #34d399; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 22.240313 205.344 
+L 226.840313 205.344 
+L 226.840313 5.76 
+L 22.240313 5.76 
+z
+" clip-path="url(#pc590f0a1be)" style="fill: #fb923c; opacity: 0.18; stroke: #fb923c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 375.640313 205.344 
+L 580.240313 205.344 
+L 580.240313 5.76 
+L 375.640313 5.76 
+z
+" clip-path="url(#pc590f0a1be)" style="fill: #fb923c; opacity: 0.18; stroke: #fb923c; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m01a6cace3f" d="M 0 0 
+L 0 3.5 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m01a6cace3f" x="22.240313" y="205.344" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="22.240313" y="221.461187" transform="rotate(-0 22.240313 221.461187)">−300</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m01a6cace3f" x="115.240313" y="205.344" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="115.240313" y="221.461187" transform="rotate(-0 115.240313 221.461187)">−200</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m01a6cace3f" x="208.240313" y="205.344" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="208.240313" y="221.461187" transform="rotate(-0 208.240313 221.461187)">−100</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m01a6cace3f" x="301.240313" y="205.344" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="301.240313" y="221.461187" transform="rotate(-0 301.240313 221.461187)">0</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m01a6cace3f" x="394.240313" y="205.344" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="394.240313" y="221.461187" transform="rotate(-0 394.240313 221.461187)">100</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m01a6cace3f" x="487.240313" y="205.344" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="487.240313" y="221.461187" transform="rotate(-0 487.240313 221.461187)">200</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m01a6cace3f" x="580.240313" y="205.344" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="580.240313" y="221.461187" transform="rotate(-0 580.240313 221.461187)">300</text>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="301.240313" y="237.462125" transform="rotate(-0 301.240313 237.462125)">audio–video skew (ms)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="patch_6">
+    <path d="M 22.240313 205.344 
+L 580.240313 205.344 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; fill: #34d399" transform="translate(277.513125 81.170456)">in sync</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; fill: #34d399" transform="translate(270.466875 95.5728)">(±80 ms)</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; fill: #fb923c" transform="translate(74.304375 82.969929)">audio behind video</text>
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; fill: #fb923c" transform="translate(97.12793 95.5728)">noticeable</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; fill: #fb923c" transform="translate(422.659453 82.969929)">audio ahead of video</text>
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; fill: #fb923c" transform="translate(450.52793 95.5728)">noticeable</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pc590f0a1be">
+   <rect x="22.240313" y="5.76" width="558" height="199.584"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">Skew between −80 ms (audio behind) and +80 ms (audio ahead) is generally unnoticed.</div></section></section>
+<section data-topic="Reference Model"><section><div class="sec"><div class="no">03</div><h2>Reference Model</h2><div class="lead">Unit 10 &middot; topic 3 of 5</div></div></section><section><h2><small>Reference Model</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>A reference model organises synchronization into layers so that each layer solves one problem: from raw media up to the author's specification.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Like postal service layers: the truck (media), the sorting centre (stream), the parcel (object), the order form (specification).</p></div><div class="card c3"><div class="ct">Remember it</div><p>Four layers: media, stream, object, specification.</p></div></div><aside class="notes"><p><b>Say:</b> A reference model organises synchronization into layers so that each layer solves one problem: from raw media up to the author's specification.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: Like postal service layers: the truck (media), the sorting centre (stream), the parcel (object), the order form (specification).)</p><p><b>Board:</b> write the memory hook: Four layers: media, stream, object, specification.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class="dense"><h2><small>Reference Model</small>Why a reference model?</h2><p>Synchronization is needed at several points and by several kinds of users, from a device programmer to an author. A <strong>reference model</strong> divides the problem into <strong>layers</strong>, each giving a <strong>synchronization mechanism through an interface</strong>.</p><ul>
+<li class="fragment fade-up">The interfaces can be used to <strong>specify</strong> or <strong>enforce</strong> temporal relations.</li>
+<li class="fragment fade-up">Each interface defines <strong>services</strong>, offering the user a way to <strong>state requirements</strong>.</li>
+<li class="fragment fade-up">Each layer can be used <strong>directly by an application</strong> or <strong>by the next higher layer</strong> to build its own interface.</li>
+</ul><p>It lets us compare existing systems, place each function where it belongs, and design new systems in a modular way.</p><aside class="notes">Source note: <a href="../../unit-10/reference-model/">Reference Model</a></aside></section><section class=""><h2><small>Reference Model</small>The four layers <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm780134acd754" role="graphics-document document" viewbox="0 0 276 610" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm780134acd754{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm780134acd754 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm780134acd754 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm780134acd754 .error-icon{fill:#1c2150;}#mm780134acd754 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm780134acd754 .edge-thickness-normal{stroke-width:1px;}#mm780134acd754 .edge-thickness-thick{stroke-width:3.5px;}#mm780134acd754 .edge-pattern-solid{stroke-dasharray:0;}#mm780134acd754 .edge-thickness-invisible{stroke-width:0;fill:none;}#mm780134acd754 .edge-pattern-dashed{stroke-dasharray:3;}#mm780134acd754 .edge-pattern-dotted{stroke-dasharray:2;}#mm780134acd754 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm780134acd754 .marker.cross{stroke:#a5b4fc;}#mm780134acd754 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm780134acd754 p{margin:0;}#mm780134acd754 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm780134acd754 .cluster-label text{fill:#e3deaf;}#mm780134acd754 .cluster-label span{color:#e3deaf;}#mm780134acd754 .cluster-label span p{background-color:transparent;}#mm780134acd754 .label text,#mm780134acd754 span{fill:#f4f4ff;color:#f4f4ff;}#mm780134acd754 .node rect,#mm780134acd754 .node circle,#mm780134acd754 .node ellipse,#mm780134acd754 .node polygon,#mm780134acd754 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm780134acd754 .rough-node .label text,#mm780134acd754 .node .label text,#mm780134acd754 .image-shape .label,#mm780134acd754 .icon-shape .label{text-anchor:middle;}#mm780134acd754 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm780134acd754 .rough-node .label,#mm780134acd754 .node .label,#mm780134acd754 .image-shape .label,#mm780134acd754 .icon-shape .label{text-align:center;}#mm780134acd754 .node.clickable{cursor:pointer;}#mm780134acd754 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm780134acd754 .arrowheadPath{fill:#0b0b0b;}#mm780134acd754 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm780134acd754 .flowchart-link{stroke:#a5b4fc;fill:none;}#mm780134acd754 .edgeLabel{background-color:#12152b;text-align:center;}#mm780134acd754 .edgeLabel p{background-color:#12152b;}#mm780134acd754 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm780134acd754 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm780134acd754 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm780134acd754 .cluster text{fill:#e3deaf;}#mm780134acd754 .cluster span{color:#e3deaf;}#mm780134acd754 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm780134acd754 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm780134acd754 rect.text{fill:none;stroke-width:0;}#mm780134acd754 .icon-shape,#mm780134acd754 .image-shape{background-color:#12152b;text-align:center;}#mm780134acd754 .icon-shape p,#mm780134acd754 .image-shape p{background-color:#12152b;padding:2px;}#mm780134acd754 .icon-shape .label rect,#mm780134acd754 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm780134acd754 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm780134acd754 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm780134acd754 .node .neo-node{stroke:#818cf8;}#mm780134acd754 [data-look="neo"].node rect,#mm780134acd754 [data-look="neo"].cluster rect,#mm780134acd754 [data-look="neo"].node polygon{stroke:url(#mm780134acd754-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm780134acd754 [data-look="neo"].swimlane.cluster rect{filter:none;}#mm780134acd754 [data-look="neo"].node path{stroke:url(#mm780134acd754-gradient);stroke-width:1px;}#mm780134acd754 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm780134acd754 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm780134acd754 [data-look="neo"].node circle{stroke:url(#mm780134acd754-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm780134acd754 [data-look="neo"].node circle .state-start{fill:#000000;}#mm780134acd754 [data-look="neo"].icon-shape .icon{fill:url(#mm780134acd754-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm780134acd754 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm780134acd754-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm780134acd754 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm780134acd754_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm780134acd754_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm780134acd754_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm780134acd754_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm780134acd754_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm780134acd754_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm780134acd754_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm780134acd754_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm780134acd754_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm780134acd754_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm780134acd754_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm780134acd754_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,119L138,123.167C138,127.333,138,135.667,138,143.333C138,151,138,158,138,161.5L138,165" data-edge="true" data-et="edge" data-id="L_S_O_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5IjoxMTl9LHsieCI6MTM4LCJ5IjoxNDR9LHsieCI6MTM4LCJ5IjoxNjl9XQ==" id="mm780134acd754-L_S_O_0" marker-end="url(#mm780134acd754_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,280L138,284.167C138,288.333,138,296.667,138,304.333C138,312,138,319,138,322.5L138,326" data-edge="true" data-et="edge" data-id="L_O_ST_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5IjoyODB9LHsieCI6MTM4LCJ5IjozMDV9LHsieCI6MTM4LCJ5IjozMzB9XQ==" id="mm780134acd754-L_O_ST_0" marker-end="url(#mm780134acd754_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,441L138,445.167C138,449.333,138,457.667,138,465.333C138,473,138,480,138,483.5L138,487" data-edge="true" data-et="edge" data-id="L_ST_M_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5Ijo0NDF9LHsieCI6MTM4LCJ5Ijo0NjZ9LHsieCI6MTM4LCJ5Ijo0OTF9XQ==" id="mm780134acd754-L_ST_M_0" marker-end="url(#mm780134acd754_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_S_O_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_O_ST_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_ST_M_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm780134acd754-flowchart-S-0" transform="translate(138, 63.5)"><rect class="basic label-container" height="111" style="" width="260" x="-130" y="-55.5"></rect><g class="label" style="" transform="translate(-100, -40.5)"><rect></rect><foreignobject height="81" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Specification layer (open layer): tools and editors</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm780134acd754-flowchart-O-1" transform="translate(138, 224.5)"><rect class="basic label-container" height="111" style="" width="260" x="-130" y="-55.5"></rect><g class="label" style="" transform="translate(-100, -40.5)"><rect></rect><foreignobject height="81" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Object layer: complete synchronized presentation</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm780134acd754-flowchart-ST-3" transform="translate(138, 385.5)"><rect class="basic label-container" height="111" style="" width="260" x="-130" y="-55.5"></rect><g class="label" style="" transform="translate(-100, -40.5)"><rect></rect><foreignobject height="81" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Stream layer: groups of streams, inter-stream sync</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm780134acd754-flowchart-M-5" transform="translate(138, 546.5)"><rect class="basic label-container" height="111" style="" width="260" x="-130" y="-55.5"></rect><g class="label" style="" transform="translate(-100, -40.5)"><rect></rect><foreignobject height="81" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Media layer: single stream as sequence of LDUs</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm780134acd754-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm780134acd754-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm780134acd754-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-10/reference-model/">Reference Model</a></aside></section><section class=""><h2><small>Reference Model</small>The four layers <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Operates on</th>
+<th>Abstraction offered</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Media layer</strong></td>
+<td><strong>One continuous media stream</strong>, a sequence of <strong>LDUs</strong></td>
+<td>A <strong>device-independent interface</strong> with operations such as <strong>read and write</strong></td>
+<td>Simple implementations, or ones that handle <strong>two interleaved</strong> streams</td>
+</tr>
+<tr>
+<td><strong>Stream layer</strong></td>
+<td><strong>Streams and groups of streams</strong></td>
+<td>Continuous media as a <strong>data flow with implicit time constraints</strong>; <strong>individual LDUs are not visible</strong></td>
+<td>Runs in a <strong>real-time environment</strong>; the application <strong>starts, stops and groups</strong> streams and defines <strong>QoS</strong> in timing parameters; <strong>inter-stream synchronization</strong> inside a group; the application synchronizes streams with <strong>time-independent</strong> media</td>
+</tr>
+<tr>
+<td><strong>Object layer</strong></td>
+<td><strong>All media types</strong>; hides the difference between <strong>discrete and continuous</strong> media</td>
+<td>The complete, <strong>synchronized presentation</strong></td>
+<td>Takes a <strong>synchronization specification</strong> as input; <strong>computes and executes the presentation schedule</strong> including discrete objects and <strong>calls to the stream layer</strong>; closes the gap between the needs of a synchronized presentation and the stream services</td>
+</tr>
+<tr>
+<td><strong>Specification layer</strong></td>
+<td>Tools</td>
+<td>An <strong>open layer with no explicit interface</strong></td>
+<td><strong>Synchronization editors, multimedia document editors, authoring systems</strong>; <strong>converts</strong> specifications to the object-layer format; <strong>maps user-level QoS</strong> to the qualities of the object-layer interface</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-10/reference-model/">Reference Model</a></aside></section><section class=""><h2><small>Reference Model</small>Alternative naming <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>Some courses name the layers <strong>Media</strong> (raw files such as .mp4, .mp3), <strong>Stream</strong> (streams and buffering, for example YouTube), <strong>Session</strong> (manages sessions, for example Netflix) and <strong>Sync</strong> (coordinates all media timing).</p><div class="callout warn"><div class="ct">Which to write in the exam</div>
+<p>The textbook version (media, stream, <strong>object, specification</strong>) is standard and the assignment questions ask for the "four-layer synchronization reference model". Write the textbook version and, if useful, add one line that some courses call the upper layers "session" and "sync".</p>
+</div><aside class="notes">Source note: <a href="../../unit-10/reference-model/">Reference Model</a></aside></section><section class=""><h2><small>Reference Model</small>Alternative naming <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout exam"><div class="ct">Exam tip</div>
+<p>A common 8-mark question: "Why is a reference model required? Discuss the four-layer model." Give the reasons above, a four-row table, and the idea that <strong>each layer uses the one below</strong>.</p>
+</div><aside class="notes">Source note: <a href="../../unit-10/reference-model/">Reference Model</a></aside></section><section class=""><h2><small>Reference Model</small>Checkpoint <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Which layer hides the difference between discrete and continuous media?</p><div class="fragment ans">
+<p>The object layer.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Which layer has no explicit interface?</p><div class="fragment ans">
+<p>The specification layer: it holds tools such as editors and authoring systems.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-10/reference-model/">Reference Model</a></aside></section><section class=""><h2><small>Reference Model</small>Checkpoint <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">At which layer are individual LDUs visible?</p><div class="fragment ans">
+<p>The media layer; the stream layer sees a data flow, not individual LDUs.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-10/reference-model/">Reference Model</a></aside></section><section><h2><small>Reference Model</small>Key terms</h2><div class="terms"><div class="card term"><b>Media layer</b><span>Single continuous stream of LDUs.</span></div><div class="card term"><b>Stream layer</b><span>Groups of streams and their sync.</span></div><div class="card term"><b>Object layer</b><span>Complete multimedia objects, including discrete media.</span></div><div class="card term"><b>Specification layer</b><span>Author's description of the presentation.</span></div><div class="card term"><b>Reference model</b><span>Structured view that guides system design.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section></section>
+<section data-topic="Synchronization Specification"><section><div class="sec"><div class="no">04</div><h2>Synchronization Specification</h2><div class="lead">Unit 10 &middot; topic 4 of 5</div></div></section><section><h2><small>Synchronization Specification</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>A specification tells the system how media are related in time. Different methods describe this in different ways.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A slide show script: 'show slide 2 when narration clip 1 ends'.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Four common categories: interval-based, axes (timeline) based, control-flow based, event-based.</p></div></div><aside class="notes"><p><b>Say:</b> A specification tells the system how media are related in time. Different methods describe this in different ways.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: A slide show script: 'show slide 2 when narration clip 1 ends'.)</p><p><b>Board:</b> write the memory hook: Four common categories: interval-based, axes (timeline) based, control-flow based, event-based.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class="dense"><h2><small>Synchronization Specification</small>Synchronization Specification</h2><p>A <strong>synchronization specification</strong> of a multimedia object describes <strong>all temporal dependencies</strong> of the objects it contains. It is <strong>produced with the tools of the specification layer</strong> and <strong>used at the interface to the object layer</strong>.</p><h3>What it contains</h3><ol>
+<li class="fragment fade-up"><strong>Intra-object</strong> synchronization specification for each media object.</li>
+<li class="fragment fade-up"><strong>QoS description</strong> for intra-object synchronization.</li>
+<li class="fragment fade-up"><strong>Inter-object</strong> synchronization specification.</li>
+<li class="fragment fade-up"><strong>QoS description</strong> for inter-object synchronization.</li>
+</ol><p>QoS levels: <strong>QoS for one media object</strong>, <strong>for two related objects</strong>, and <strong>for several related objects</strong>.</p><aside class="notes">Source note: <a href="../../unit-10/specification/">Synchronization Specification</a></aside></section><section class=""><h2><small>Synchronization Specification</small>Categories of specification methods <span style="opacity:.55;font-size:.6em">(1/3)</span></h2><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Idea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Interval-based</strong></td>
+<td>Relates the <strong>time intervals of presentation</strong> of objects (for example <em>before, meets, overlaps, during</em>); durations for time-dependent and time-independent objects</td>
+</tr>
+<tr>
+<td><strong>Axes-based</strong></td>
+<td>Relates <strong>presentation events to axes shared by the objects</strong>: a <strong>global timer</strong> or <strong>virtual axes</strong></td>
+</tr>
+<tr>
+<td><strong>Control-flow based</strong></td>
+<td>The presentation flow is synchronized at <strong>predefined points</strong>: <strong>basic hierarchical specification</strong>, <strong>reference points</strong>, <strong>time Petri nets</strong></td>
+</tr>
+<tr>
+<td><strong>Event-based</strong></td>
+<td><strong>Presentation actions are started by synchronization events</strong>: <strong>start</strong>, <strong>stop</strong>, <strong>prepare</strong> presentation</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-10/specification/">Synchronization Specification</a></aside></section><section class="dense"><h2><small>Synchronization Specification</small>Categories of specification methods <span style="opacity:.55;font-size:.6em">(2/3)</span></h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm17e0497f7838" role="graphics-document document" viewbox="0 0 1011.71875 314" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm17e0497f7838{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm17e0497f7838 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm17e0497f7838 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm17e0497f7838 .error-icon{fill:#1c2150;}#mm17e0497f7838 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm17e0497f7838 .edge-thickness-normal{stroke-width:1px;}#mm17e0497f7838 .edge-thickness-thick{stroke-width:3.5px;}#mm17e0497f7838 .edge-pattern-solid{stroke-dasharray:0;}#mm17e0497f7838 .edge-thickness-invisible{stroke-width:0;fill:none;}#mm17e0497f7838 .edge-pattern-dashed{stroke-dasharray:3;}#mm17e0497f7838 .edge-pattern-dotted{stroke-dasharray:2;}#mm17e0497f7838 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm17e0497f7838 .marker.cross{stroke:#a5b4fc;}#mm17e0497f7838 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm17e0497f7838 p{margin:0;}#mm17e0497f7838 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm17e0497f7838 .cluster-label text{fill:#e3deaf;}#mm17e0497f7838 .cluster-label span{color:#e3deaf;}#mm17e0497f7838 .cluster-label span p{background-color:transparent;}#mm17e0497f7838 .label text,#mm17e0497f7838 span{fill:#f4f4ff;color:#f4f4ff;}#mm17e0497f7838 .node rect,#mm17e0497f7838 .node circle,#mm17e0497f7838 .node ellipse,#mm17e0497f7838 .node polygon,#mm17e0497f7838 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm17e0497f7838 .rough-node .label text,#mm17e0497f7838 .node .label text,#mm17e0497f7838 .image-shape .label,#mm17e0497f7838 .icon-shape .label{text-anchor:middle;}#mm17e0497f7838 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm17e0497f7838 .rough-node .label,#mm17e0497f7838 .node .label,#mm17e0497f7838 .image-shape .label,#mm17e0497f7838 .icon-shape .label{text-align:center;}#mm17e0497f7838 .node.clickable{cursor:pointer;}#mm17e0497f7838 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm17e0497f7838 .arrowheadPath{fill:#0b0b0b;}#mm17e0497f7838 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm17e0497f7838 .flowchart-link{stroke:#a5b4fc;fill:none;}#mm17e0497f7838 .edgeLabel{background-color:#12152b;text-align:center;}#mm17e0497f7838 .edgeLabel p{background-color:#12152b;}#mm17e0497f7838 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm17e0497f7838 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm17e0497f7838 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm17e0497f7838 .cluster text{fill:#e3deaf;}#mm17e0497f7838 .cluster span{color:#e3deaf;}#mm17e0497f7838 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm17e0497f7838 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm17e0497f7838 rect.text{fill:none;stroke-width:0;}#mm17e0497f7838 .icon-shape,#mm17e0497f7838 .image-shape{background-color:#12152b;text-align:center;}#mm17e0497f7838 .icon-shape p,#mm17e0497f7838 .image-shape p{background-color:#12152b;padding:2px;}#mm17e0497f7838 .icon-shape .label rect,#mm17e0497f7838 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm17e0497f7838 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm17e0497f7838 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm17e0497f7838 .node .neo-node{stroke:#818cf8;}#mm17e0497f7838 [data-look="neo"].node rect,#mm17e0497f7838 [data-look="neo"].cluster rect,#mm17e0497f7838 [data-look="neo"].node polygon{stroke:url(#mm17e0497f7838-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm17e0497f7838 [data-look="neo"].swimlane.cluster rect{filter:none;}#mm17e0497f7838 [data-look="neo"].node path{stroke:url(#mm17e0497f7838-gradient);stroke-width:1px;}#mm17e0497f7838 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm17e0497f7838 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm17e0497f7838 [data-look="neo"].node circle{stroke:url(#mm17e0497f7838-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm17e0497f7838 [data-look="neo"].node circle .state-start{fill:#000000;}#mm17e0497f7838 [data-look="neo"].icon-shape .icon{fill:url(#mm17e0497f7838-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm17e0497f7838 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm17e0497f7838-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm17e0497f7838 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm17e0497f7838_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm17e0497f7838_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm17e0497f7838_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm17e0497f7838_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm17e0497f7838_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm17e0497f7838_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm17e0497f7838_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm17e0497f7838_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm17e0497f7838_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm17e0497f7838_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm17e0497f7838_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm17e0497f7838_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M392.762,52.512L343.955,58.76C295.148,65.008,197.535,77.504,148.729,89.502C99.922,101.5,99.922,113,99.922,118.75L99.922,124.5" data-edge="true" data-et="edge" data-id="L_SP_I_0" data-look="classic" data-points="W3sieCI6MzkyLjc2MTcxODc1LCJ5Ijo1Mi41MTE5NDUzNzY1NDEwOH0seyJ4Ijo5OS45MjE4NzUsInkiOjkwfSx7IngiOjk5LjkyMTg3NSwieSI6MTI4LjV9XQ==" id="mm17e0497f7838-L_SP_I_0" marker-end="url(#mm17e0497f7838_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M440.066,65L428.696,69.167C417.325,73.333,394.585,81.667,383.214,89.333C371.844,97,371.844,104,371.844,107.5L371.844,111" data-edge="true" data-et="edge" data-id="L_SP_A_0" data-look="classic" data-points="W3sieCI6NDQwLjA2NjIyMzcxNDk1MzI1LCJ5Ijo2NX0seyJ4IjozNzEuODQzNzUsInkiOjkwfSx7IngiOjM3MS44NDM3NSwieSI6MTE1fV0=" id="mm17e0497f7838-L_SP_A_0" marker-end="url(#mm17e0497f7838_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M595.613,65L606.984,69.167C618.354,73.333,641.095,81.667,652.466,91.583C663.836,101.5,663.836,113,663.836,118.75L663.836,124.5" data-edge="true" data-et="edge" data-id="L_SP_C_0" data-look="classic" data-points="W3sieCI6NTk1LjYxMzQ2Mzc4NTA0NjcsInkiOjY1fSx7IngiOjY2My44MzU5Mzc1LCJ5Ijo5MH0seyJ4Ijo2NjMuODM1OTM3NSwieSI6MTI4LjV9XQ==" id="mm17e0497f7838-L_SP_C_0" marker-end="url(#mm17e0497f7838_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M642.918,53.574L687.391,59.645C731.865,65.716,820.811,77.858,865.285,89.679C909.758,101.5,909.758,113,909.758,118.75L909.758,124.5" data-edge="true" data-et="edge" data-id="L_SP_E_0" data-look="classic" data-points="W3sieCI6NjQyLjkxNzk2ODc1LCJ5Ijo1My41NzQxODQ0NDk0NzIyNX0seyJ4Ijo5MDkuNzU3ODEyNSwieSI6OTB9LHsieCI6OTA5Ljc1NzgxMjUsInkiOjEyOC41fV0=" id="mm17e0497f7838-L_SP_E_0" marker-end="url(#mm17e0497f7838_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M564.78,185.5L542.479,191.917C520.177,198.333,475.573,211.167,453.271,221.083C430.969,231,430.969,238,430.969,241.5L430.969,245" data-edge="true" data-et="edge" data-id="L_C_C1_0" data-look="classic" data-points="W3sieCI6NTY0Ljc4MDQ5MjA3MDg5NTUsInkiOjE4NS41fSx7IngiOjQzMC45Njg3NSwieSI6MjI0fSx7IngiOjQzMC45Njg3NSwieSI6MjQ5fV0=" id="mm17e0497f7838-L_C_C1_0" marker-end="url(#mm17e0497f7838_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M663.836,185.5L663.836,191.917C663.836,198.333,663.836,211.167,663.836,221.083C663.836,231,663.836,238,663.836,241.5L663.836,245" data-edge="true" data-et="edge" data-id="L_C_C2_0" data-look="classic" data-points="W3sieCI6NjYzLjgzNTkzNzUsInkiOjE4NS41fSx7IngiOjY2My44MzU5Mzc1LCJ5IjoyMjR9LHsieCI6NjYzLjgzNTkzNzUsInkiOjI0OX1d" id="mm17e0497f7838-L_C_C2_0" marker-end="url(#mm17e0497f7838_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M768.444,185.5L791.997,191.917C815.549,198.333,862.653,211.167,886.206,221.083C909.758,231,909.758,238,909.758,241.5L909.758,245" data-edge="true" data-et="edge" data-id="L_C_C3_0" data-look="classic" data-points="W3sieCI6NzY4LjQ0NDQ5NjI2ODY1NjcsInkiOjE4NS41fSx7IngiOjkwOS43NTc4MTI1LCJ5IjoyMjR9LHsieCI6OTA5Ljc1NzgxMjUsInkiOjI0OX1d" id="mm17e0497f7838-L_C_C3_0" marker-end="url(#mm17e0497f7838_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_SP_I_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_SP_A_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_SP_C_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_SP_E_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_C_C1_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_C_C2_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_C_C3_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm17e0497f7838-flowchart-SP-0" transform="translate(517.83984375, 36.5)"><rect class="basic label-container" height="57" style="" width="250.15625" x="-125.078125" y="-28.5"></rect><g class="label" style="" transform="translate(-95.078125, -13.5)"><rect></rect><foreignobject height="27" width="190.15625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Specification methods</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm17e0497f7838-flowchart-I-1" transform="translate(99.921875, 157)"><rect class="basic label-container" height="57" style="" width="183.84375" x="-91.921875" y="-28.5"></rect><g class="label" style="" transform="translate(-61.921875, -13.5)"><rect></rect><foreignobject height="27" width="123.84375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Interval-based</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm17e0497f7838-flowchart-A-3" transform="translate(371.84375, 157)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Axes-based (global timer)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm17e0497f7838-flowchart-C-5" transform="translate(663.8359375, 157)"><rect class="basic label-container" height="57" style="" width="223.984375" x="-111.9921875" y="-28.5"></rect><g class="label" style="" transform="translate(-81.9921875, -13.5)"><rect></rect><foreignobject height="27" width="163.984375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Control-flow based</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm17e0497f7838-flowchart-E-7" transform="translate(909.7578125, 157)"><rect class="basic label-container" height="57" style="" width="167.859375" x="-83.9296875" y="-28.5"></rect><g class="label" style="" transform="translate(-53.9296875, -13.5)"><rect></rect><foreignobject height="27" width="107.859375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Event-based</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm17e0497f7838-flowchart-C1-9" transform="translate(430.96875, 277.5)"><rect class="basic label-container" height="57" style="" width="161.8125" x="-80.90625" y="-28.5"></rect><g class="label" style="" transform="translate(-50.90625, -13.5)"><rect></rect><foreignobject height="27" width="101.8125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Hierarchical</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm17e0497f7838-flowchart-C2-11" transform="translate(663.8359375, 277.5)"><rect class="basic label-container" height="57" style="" width="203.921875" x="-101.9609375" y="-28.5"></rect><g class="label" style="" transform="translate(-71.9609375, -13.5)"><rect></rect><foreignobject height="27" width="143.921875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Reference points</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm17e0497f7838-flowchart-C3-13" transform="translate(909.7578125, 277.5)"><rect class="basic label-container" height="57" style="" width="187.921875" x="-93.9609375" y="-28.5"></rect><g class="label" style="" transform="translate(-63.9609375, -13.5)"><rect></rect><foreignobject height="27" width="127.921875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Time Petri nets</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm17e0497f7838-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm17e0497f7838-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm17e0497f7838-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><p><strong>Scripts</strong> are a <strong>textual description</strong> of a synchronization scenario; they are powerful because they provide a <strong>full programming environment</strong>.</p><aside class="notes">Source note: <a href="../../unit-10/specification/">Synchronization Specification</a></aside></section><section class=""><h2><small>Synchronization Specification</small>Categories of specification methods <span style="opacity:.55;font-size:.6em">(3/3)</span></h2><p>Slide-deck techniques: <strong>timeline models</strong> (Gantt style), <strong>time-stamping</strong> (for example MP4 metadata) and <strong>script-based</strong> (for example <strong>SMIL</strong>); example: slide narration in an e-learning module.</p><aside class="notes">Source note: <a href="../../unit-10/specification/">Synchronization Specification</a></aside></section><section class="dense"><h2><small>Synchronization Specification</small>Requirements on a specification method <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><ol>
+<li class="fragment fade-up">Support <strong>object consistency</strong> and maintenance of the specification.</li>
+<li class="fragment fade-up">Give an <strong>abstraction of the content</strong> of a media object so temporal relations can be stated.</li>
+<li class="fragment fade-up">Describe <strong>all types of synchronization relations</strong> easily.</li>
+<li class="fragment fade-up"><strong>Integrate time-dependent and time-independent</strong> media.</li>
+<li class="fragment fade-up">Support <strong>QoS requirements</strong>.</li>
+<li class="fragment fade-up">Support <strong>hierarchical levels</strong> of synchronization.</li>
+</ol><div class="callout ex"><div class="ct">Interval-based example</div>
+<p>Slide 1 (10 s) is shown during the narration clip (10 s); slide 2 starts when slide 1 ends and the animation <strong>overlaps</strong> the last 5 s of slide 2. Each statement relates two intervals.</p>
+</div><aside class="notes">Source note: <a href="../../unit-10/specification/">Synchronization Specification</a></aside></section><section class="dense"><h2><small>Synchronization Specification</small>Requirements on a specification method <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout"><div class="ct">Extra</div>
+<p>The thirteen interval relations of Allen's algebra (before, meets, overlaps, starts, during, finishes, equals and their inverses) underlie interval-based specification. Time Petri nets use places and transitions with durations. Learn the names above, not the formalism, unless your teacher asks.</p>
+</div><div class="callout exam"><div class="ct">Exam tip</div>
+<p>"Briefly describe synchronization specification" = what it contains, the four method categories with one line each, and one or two of the six requirements.</p>
+</div><aside class="notes">Source note: <a href="../../unit-10/specification/">Synchronization Specification</a></aside></section><section class=""><h2><small>Synchronization Specification</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Which method uses a global timer?</p><div class="fragment ans">
+<p>Axes-based specification.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">What are the three actions of event-based synchronization?</p><div class="fragment ans">
+<p>Start, stop and prepare presentation.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-10/specification/">Synchronization Specification</a></aside></section><section><h2><small>Synchronization Specification</small>Key terms</h2><div class="terms"><div class="card term"><b>Specification</b><span>Formal description of timing relations.</span></div><div class="card term"><b>Interval-based</b><span>Uses time intervals and their relations.</span></div><div class="card term"><b>Axes-based</b><span>Places events on a common timeline.</span></div><div class="card term"><b>Control-flow based</b><span>Uses points in a flow of control.</span></div><div class="card term"><b>Event-based</b><span>Actions triggered by events.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section></section>
+<section data-topic="Synchronization in a Distributed Environment"><section><div class="sec"><div class="no">05</div><h2>Synchronization in a Distributed Environment</h2><div class="lead">Unit 10 &middot; topic 5 of 5</div></div></section><section><h2><small>Synchronization in a Distributed Environment</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>In a network the sender and receiver have different clocks and the delay varies, so synchronization needs buffering and clock agreement.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Two friends watch a stream together; each device downloads at a different speed.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Delay variation is removed by buffers; clock drift by clock sync.</p></div></div><aside class="notes"><p><b>Say:</b> In a network the sender and receiver have different clocks and the delay varies, so synchronization needs buffering and clock agreement.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: Two friends watch a stream together; each device downloads at a different speed.)</p><p><b>Board:</b> write the memory hook: Delay variation is removed by buffers; clock drift by clock sync.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>Synchronization in a Distributed Environment</small>Synchronization in a Distributed Environment <span style="opacity:.55;font-size:.6em">(1/5)</span></h2><p>Synchronization is <strong>more complex</strong> in a distributed environment than in a local one, because the source, the network and the sink are separate and have separate clocks. The elements:</p><aside class="notes">Source note: <a href="../../unit-10/distributed/">Synchronization in a Distributed Environment</a></aside></section><section class="dense"><h2><small>Synchronization in a Distributed Environment</small>Synchronization in a Distributed Environment <span style="opacity:.55;font-size:.6em">(2/5)</span></h2><ol start="1"><li class="fragment fade-up"><strong>Transport of the synchronization specification.</strong> Three approaches:<ol>
+<li>deliver the <strong>complete synchronized information before the presentation</strong> starts;</li>
+<li>use an <strong>additional synchronization channel</strong>;</li>
+<li>use a <strong>multiplexed data stream</strong> (specification and media in one stream).</li>
+</ol>
+</li><li class="fragment fade-up"><strong>Location of synchronization:</strong> synchronize media objects by <strong>combining them into a new media object</strong>, at the source or at the sink.</li><li class="fragment fade-up"><strong>Clock synchronization:</strong> the <strong>accuracy between the clocks of source and sink</strong> nodes must be considered.</li><li class="fragment fade-up"><strong>Multiple communication relations:</strong> communication patterns with <strong>several sinks</strong> need run-time handling.</li></ol><aside class="notes">Source note: <a href="../../unit-10/distributed/">Synchronization in a Distributed Environment</a></aside></section><section class=""><h2><small>Synchronization in a Distributed Environment</small>Synchronization in a Distributed Environment <span style="opacity:.55;font-size:.6em">(3/5)</span></h2><ol start="5"><li><strong>Multi-step synchronization:</strong> it must be maintained through all steps so that the sink can do the <strong>final synchronization</strong>:<ol>
+<li>during <strong>object acquisition</strong> (digitizing a video frame);</li>
+<li>during <strong>retrieval</strong> (synchronized access to frames of stored video);</li>
+<li>during <strong>delivery of LDUs to the network</strong>;</li>
+<li>during <strong>transport</strong>;</li>
+<li>at the <strong>sink</strong>;</li>
+<li><strong>within the output device</strong>.</li>
+</ol>
+</li></ol><aside class="notes">Source note: <a href="../../unit-10/distributed/">Synchronization in a Distributed Environment</a></aside></section><section class=""><h2><small>Synchronization in a Distributed Environment</small>Synchronization in a Distributed Environment <span style="opacity:.55;font-size:.6em">(4/5)</span></h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mmd904ec6ef134" role="graphics-document document" viewbox="0 0 1197.875 73" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mmd904ec6ef134{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd904ec6ef134 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd904ec6ef134 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd904ec6ef134 .error-icon{fill:#1c2150;}#mmd904ec6ef134 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mmd904ec6ef134 .edge-thickness-normal{stroke-width:1px;}#mmd904ec6ef134 .edge-thickness-thick{stroke-width:3.5px;}#mmd904ec6ef134 .edge-pattern-solid{stroke-dasharray:0;}#mmd904ec6ef134 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd904ec6ef134 .edge-pattern-dashed{stroke-dasharray:3;}#mmd904ec6ef134 .edge-pattern-dotted{stroke-dasharray:2;}#mmd904ec6ef134 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mmd904ec6ef134 .marker.cross{stroke:#a5b4fc;}#mmd904ec6ef134 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mmd904ec6ef134 p{margin:0;}#mmd904ec6ef134 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mmd904ec6ef134 .cluster-label text{fill:#e3deaf;}#mmd904ec6ef134 .cluster-label span{color:#e3deaf;}#mmd904ec6ef134 .cluster-label span p{background-color:transparent;}#mmd904ec6ef134 .label text,#mmd904ec6ef134 span{fill:#f4f4ff;color:#f4f4ff;}#mmd904ec6ef134 .node rect,#mmd904ec6ef134 .node circle,#mmd904ec6ef134 .node ellipse,#mmd904ec6ef134 .node polygon,#mmd904ec6ef134 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mmd904ec6ef134 .rough-node .label text,#mmd904ec6ef134 .node .label text,#mmd904ec6ef134 .image-shape .label,#mmd904ec6ef134 .icon-shape .label{text-anchor:middle;}#mmd904ec6ef134 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmd904ec6ef134 .rough-node .label,#mmd904ec6ef134 .node .label,#mmd904ec6ef134 .image-shape .label,#mmd904ec6ef134 .icon-shape .label{text-align:center;}#mmd904ec6ef134 .node.clickable{cursor:pointer;}#mmd904ec6ef134 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mmd904ec6ef134 .arrowheadPath{fill:#0b0b0b;}#mmd904ec6ef134 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mmd904ec6ef134 .flowchart-link{stroke:#a5b4fc;fill:none;}#mmd904ec6ef134 .edgeLabel{background-color:#12152b;text-align:center;}#mmd904ec6ef134 .edgeLabel p{background-color:#12152b;}#mmd904ec6ef134 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmd904ec6ef134 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mmd904ec6ef134 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mmd904ec6ef134 .cluster text{fill:#e3deaf;}#mmd904ec6ef134 .cluster span{color:#e3deaf;}#mmd904ec6ef134 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mmd904ec6ef134 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mmd904ec6ef134 rect.text{fill:none;stroke-width:0;}#mmd904ec6ef134 .icon-shape,#mmd904ec6ef134 .image-shape{background-color:#12152b;text-align:center;}#mmd904ec6ef134 .icon-shape p,#mmd904ec6ef134 .image-shape p{background-color:#12152b;padding:2px;}#mmd904ec6ef134 .icon-shape .label rect,#mmd904ec6ef134 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmd904ec6ef134 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmd904ec6ef134 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmd904ec6ef134 .node .neo-node{stroke:#818cf8;}#mmd904ec6ef134 [data-look="neo"].node rect,#mmd904ec6ef134 [data-look="neo"].cluster rect,#mmd904ec6ef134 [data-look="neo"].node polygon{stroke:url(#mmd904ec6ef134-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmd904ec6ef134 [data-look="neo"].swimlane.cluster rect{filter:none;}#mmd904ec6ef134 [data-look="neo"].node path{stroke:url(#mmd904ec6ef134-gradient);stroke-width:1px;}#mmd904ec6ef134 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmd904ec6ef134 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mmd904ec6ef134 [data-look="neo"].node circle{stroke:url(#mmd904ec6ef134-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmd904ec6ef134 [data-look="neo"].node circle .state-start{fill:#000000;}#mmd904ec6ef134 [data-look="neo"].icon-shape .icon{fill:url(#mmd904ec6ef134-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmd904ec6ef134 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mmd904ec6ef134-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmd904ec6ef134 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mmd904ec6ef134_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmd904ec6ef134_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmd904ec6ef134_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmd904ec6ef134_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mmd904ec6ef134_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmd904ec6ef134_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmd904ec6ef134_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmd904ec6ef134_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mmd904ec6ef134_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmd904ec6ef134_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmd904ec6ef134_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mmd904ec6ef134_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M162.266,36.5L166.432,36.5C170.599,36.5,178.932,36.5,186.599,36.5C194.266,36.5,201.266,36.5,204.766,36.5L208.266,36.5" data-edge="true" data-et="edge" data-id="L_A_R_0" data-look="classic" data-points="W3sieCI6MTYyLjI2NTYyNSwieSI6MzYuNX0seyJ4IjoxODcuMjY1NjI1LCJ5IjozNi41fSx7IngiOjIxMi4yNjU2MjUsInkiOjM2LjV9XQ==" id="mmd904ec6ef134-L_A_R_0" marker-end="url(#mmd904ec6ef134_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M346.031,36.5L350.198,36.5C354.365,36.5,362.698,36.5,370.365,36.5C378.031,36.5,385.031,36.5,388.531,36.5L392.031,36.5" data-edge="true" data-et="edge" data-id="L_R_D_0" data-look="classic" data-points="W3sieCI6MzQ2LjAzMTI1LCJ5IjozNi41fSx7IngiOjM3MS4wMzEyNSwieSI6MzYuNX0seyJ4IjozOTYuMDMxMjUsInkiOjM2LjV9XQ==" id="mmd904ec6ef134-L_R_D_0" marker-end="url(#mmd904ec6ef134_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M621.719,36.5L625.885,36.5C630.052,36.5,638.385,36.5,646.052,36.5C653.719,36.5,660.719,36.5,664.219,36.5L667.719,36.5" data-edge="true" data-et="edge" data-id="L_D_T_0" data-look="classic" data-points="W3sieCI6NjIxLjcxODc1LCJ5IjozNi41fSx7IngiOjY0Ni43MTg3NSwieSI6MzYuNX0seyJ4Ijo2NzEuNzE4NzUsInkiOjM2LjV9XQ==" id="mmd904ec6ef134-L_D_T_0" marker-end="url(#mmd904ec6ef134_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M814.109,36.5L818.276,36.5C822.443,36.5,830.776,36.5,838.443,36.5C846.109,36.5,853.109,36.5,856.609,36.5L860.109,36.5" data-edge="true" data-et="edge" data-id="L_T_S_0" data-look="classic" data-points="W3sieCI6ODE0LjEwOTM3NSwieSI6MzYuNX0seyJ4Ijo4MzkuMTA5Mzc1LCJ5IjozNi41fSx7IngiOjg2NC4xMDkzNzUsInkiOjM2LjV9XQ==" id="mmd904ec6ef134-L_T_S_0" marker-end="url(#mmd904ec6ef134_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M960.531,36.5L964.698,36.5C968.865,36.5,977.198,36.5,984.865,36.5C992.531,36.5,999.531,36.5,1003.031,36.5L1006.531,36.5" data-edge="true" data-et="edge" data-id="L_S_O_0" data-look="classic" data-points="W3sieCI6OTYwLjUzMTI1LCJ5IjozNi41fSx7IngiOjk4NS41MzEyNSwieSI6MzYuNX0seyJ4IjoxMDEwLjUzMTI1LCJ5IjozNi41fV0=" id="mmd904ec6ef134-L_S_O_0" marker-end="url(#mmd904ec6ef134_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_A_R_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_R_D_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_T_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_T_S_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_S_O_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mmd904ec6ef134-flowchart-A-0" transform="translate(85.1328125, 36.5)"><rect class="basic label-container" height="57" style="" width="154.265625" x="-77.1328125" y="-28.5"></rect><g class="label" style="" transform="translate(-47.1328125, -13.5)"><rect></rect><foreignobject height="27" width="94.265625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Acquisition</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmd904ec6ef134-flowchart-R-1" transform="translate(279.1484375, 36.5)"><rect class="basic label-container" height="57" style="" width="133.765625" x="-66.8828125" y="-28.5"></rect><g class="label" style="" transform="translate(-36.8828125, -13.5)"><rect></rect><foreignobject height="27" width="73.765625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Retrieval</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmd904ec6ef134-flowchart-D-2" transform="translate(508.875, 36.5)"><rect class="basic label-container" height="57" style="" width="225.6875" x="-112.84375" y="-28.5"></rect><g class="label" style="" transform="translate(-82.84375, -13.5)"><rect></rect><foreignobject height="27" width="165.6875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Delivery to network</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmd904ec6ef134-flowchart-T-3" transform="translate(742.9140625, 36.5)"><rect class="basic label-container" height="57" style="" width="142.390625" x="-71.1953125" y="-28.5"></rect><g class="label" style="" transform="translate(-41.1953125, -13.5)"><rect></rect><foreignobject height="27" width="82.390625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Transport</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmd904ec6ef134-flowchart-S-4" transform="translate(912.3203125, 36.5)"><rect class="basic label-container" height="57" style="" width="96.421875" x="-48.2109375" y="-28.5"></rect><g class="label" style="" transform="translate(-18.2109375, -13.5)"><rect></rect><foreignobject height="27" width="36.421875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Sink</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmd904ec6ef134-flowchart-O-5" transform="translate(1100.203125, 36.5)"><rect class="basic label-container" height="57" style="" width="179.34375" x="-89.671875" y="-28.5"></rect><g class="label" style="" transform="translate(-59.671875, -13.5)"><rect></rect><foreignobject height="27" width="119.34375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Output device</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mmd904ec6ef134-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mmd904ec6ef134-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mmd904ec6ef134-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-10/distributed/">Synchronization in a Distributed Environment</a></aside></section><section class=""><h2><small>Synchronization in a Distributed Environment</small>Synchronization in a Distributed Environment <span style="opacity:.55;font-size:.6em">(5/5)</span></h2><div class="callout ex"><div class="ct">Why clocks matter</div>
+<p>If the sender's clock runs 0.1 % fast relative to the receiver's, after 10 minutes (600 s) the receiver has accumulated 600 × 0.001 = <strong>0.6 s</strong> of drift, far beyond the ±80 ms lip-sync limit. Clock synchronization or buffer adaptation is needed.</p>
+</div><aside class="notes">Source note: <a href="../../unit-10/distributed/">Synchronization in a Distributed Environment</a></aside></section><section class="dense"><h2><small>Synchronization in a Distributed Environment</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">List three ways to deliver the synchronization specification.</p><div class="fragment ans">
+<p>Complete before the start; an extra synchronization channel; multiplexed with the media stream.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Name the six steps of multi-step synchronization.</p><div class="fragment ans">
+<p>Acquisition, retrieval, delivery to network, transport, sink, output device.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-10/distributed/">Synchronization in a Distributed Environment</a></aside></section><section><h2><small>Synchronization in a Distributed Environment</small>Key terms</h2><div class="terms"><div class="card term"><b>Clock drift</b><span>Gradual difference between two clocks.</span></div><div class="card term"><b>Buffering</b><span>Delaying data to remove jitter.</span></div><div class="card term"><b>Global time</b><span>Common time reference.</span></div><div class="card term"><b>Master / slave</b><span>One stream leads, the other follows.</span></div><div class="card term"><b>Distributed system</b><span>Computers connected by a network.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section><section><h2><small>Synchronization in a Distributed Environment</small>Why clock drift matters</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 559.625937 257.192937" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-12T07:41:45.956115</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 257.192937 
+L 559.625937 257.192937 
+L 559.625937 0 
+L 0 0 
+L 0 257.192937 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 51.665938 216.432 
+L 553.865938 216.432 
+L 553.865938 5.76 
+L 51.665938 5.76 
+L 51.665938 216.432 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 51.665938 269.1 
+L 553.865938 269.1 
+L 553.865938 128.652 
+L 51.665938 128.652 
+z
+" clip-path="url(#p3e8edb65b2)" style="fill: #34d399; opacity: 0.2; stroke: #34d399; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 74.49321 216.432 
+L 74.49321 5.76 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m9273c7b229" d="M 0 0 
+L 0 3.5 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m9273c7b229" x="74.49321" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="74.49321" y="232.549187" transform="rotate(-0 74.49321 232.549187)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 131.561392 216.432 
+L 131.561392 5.76 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m9273c7b229" x="131.561392" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="131.561392" y="232.549187" transform="rotate(-0 131.561392 232.549187)">25</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 188.629574 216.432 
+L 188.629574 5.76 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m9273c7b229" x="188.629574" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="188.629574" y="232.549187" transform="rotate(-0 188.629574 232.549187)">50</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 245.697756 216.432 
+L 245.697756 5.76 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m9273c7b229" x="245.697756" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="245.697756" y="232.549187" transform="rotate(-0 245.697756 232.549187)">75</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 302.765938 216.432 
+L 302.765938 5.76 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m9273c7b229" x="302.765938" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="302.765938" y="232.549187" transform="rotate(-0 302.765938 232.549187)">100</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 359.834119 216.432 
+L 359.834119 5.76 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m9273c7b229" x="359.834119" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="359.834119" y="232.549187" transform="rotate(-0 359.834119 232.549187)">125</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 416.902301 216.432 
+L 416.902301 5.76 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m9273c7b229" x="416.902301" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="416.902301" y="232.549187" transform="rotate(-0 416.902301 232.549187)">150</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_15">
+      <path d="M 473.970483 216.432 
+L 473.970483 5.76 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m9273c7b229" x="473.970483" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="473.970483" y="232.549187" transform="rotate(-0 473.970483 232.549187)">175</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_17">
+      <path d="M 531.038665 216.432 
+L 531.038665 5.76 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m9273c7b229" x="531.038665" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="531.038665" y="232.549187" transform="rotate(-0 531.038665 232.549187)">200</text>
+     </g>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="302.765938" y="248.550125" transform="rotate(-0 302.765938 248.550125)">time (s)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_19">
+      <path d="M 51.665938 198.876 
+L 553.865938 198.876 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20">
+      <defs>
+       <path id="m64f39a56ea" d="M 0 0 
+L -3.5 0 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m64f39a56ea" x="51.665938" y="198.876" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="44.665938" y="203.434594" transform="rotate(-0 44.665938 203.434594)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_21">
+      <path d="M 51.665938 154.986 
+L 553.865938 154.986 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m64f39a56ea" x="51.665938" y="154.986" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="44.665938" y="159.544594" transform="rotate(-0 44.665938 159.544594)">50</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_23">
+      <path d="M 51.665938 111.096 
+L 553.865938 111.096 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m64f39a56ea" x="51.665938" y="111.096" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="44.665938" y="115.654594" transform="rotate(-0 44.665938 115.654594)">100</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_25">
+      <path d="M 51.665938 67.206 
+L 553.865938 67.206 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#m64f39a56ea" x="51.665938" y="67.206" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="44.665938" y="71.764594" transform="rotate(-0 44.665938 71.764594)">150</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_27">
+      <path d="M 51.665938 23.316 
+L 553.865938 23.316 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#m64f39a56ea" x="51.665938" y="23.316" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="44.665938" y="27.874594" transform="rotate(-0 44.665938 27.874594)">200</text>
+     </g>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="14.878125" y="111.096" transform="rotate(-90 14.878125 111.096)">audio–video skew (ms)</text>
+    </g>
+   </g>
+   <g id="line2d_29">
+    <path d="M 74.49321 198.876 
+L 531.038665 23.316 
+L 531.038665 23.316 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke: #f472b6; stroke-width: 2.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_30">
+    <path d="M 257.111392 216.432 
+L 257.111392 5.76 
+" clip-path="url(#p3e8edb65b2)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #fb923c; stroke-width: 1.5"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 51.665938 216.432 
+L 51.665938 5.76 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 51.665938 216.432 
+L 553.865937 216.432 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #34d399" x="348.420483" y="172.542" transform="rotate(-0 348.420483 172.542)">lip-sync tolerance (±80 ms)</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; fill: #fb923c" transform="translate(261.676847 54.603129)">limit reached</text>
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; fill: #fb923c" transform="translate(261.676847 67.206)">after 80 s</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_31">
+     <path d="M 62.465938 21.478125 
+L 74.465938 21.478125 
+L 86.465938 21.478125 
+" style="fill: none; stroke: #f472b6; stroke-width: 2.4; stroke-linecap: square"/>
+    </g>
+    <g id="text_19">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="96.065938" y="25.678125" transform="rotate(-0 96.065938 25.678125)">skew from 0.1 % clock difference (1 ms per second)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3e8edb65b2">
+   <rect x="51.665938" y="5.76" width="502.2" height="210.672"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">A 0.1 % difference between sender and receiver clocks adds 1 ms of skew every second: after 80 s it is already outside the lip-sync limit, and after 10 minutes it is 0.6 s.</div></section></section>
+<section data-topic="Exam recap"><section><h2><small>Revision</small>Exam focus recap (1/1)</h2><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div></section></section>
+<section data-topic="Sources"><section><h2><small>Go deeper</small>Sources and further reading</h2><ul class="small"><li>R. Steinmetz, 'Synchronization properties in multimedia systems', <em>IEEE JSAC</em>, 1990.</li><li>G. Blakowski and R. Steinmetz, 'A media synchronization survey: reference model, specification and case studies', <em>IEEE JSAC</em>, 1996.</li><li>Steinmetz and Nahrstedt, <em>Multimedia Systems</em>, synchronization chapter.</li></ul><div class="callout"><div class="ct">About the figures</div><p>Charts and diagrams in this deck were drawn for this course from standard formulas, specifications and textbook knowledge. They are original drawings, not copies of figures from any publication.</p></div></section></section>
+<section data-topic="Quick check"><section><div class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></div></section><section><h2><small>Quick check 1 / 4</small>15. A 25 fps video needs each frame displayed for</h2><ul class="opts"><li>A. 25 ms</li><li>B. 40 ms</li><li>C. 80 ms</li><li>D. 250 ms</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 2 / 4</small>16. The layer with no explicit interface is the</h2><ul class="opts"><li>A. Media layer</li><li>B. Stream layer</li><li>C. Object layer</li><li>D. Specification layer</li></ul><div class="fragment ans"><strong>Answer: D.</strong></div></section><section><h2><small>Quick check 3 / 4</small>17. Pointing ahead of audio is tolerated up to</h2><ul class="opts"><li>A. 80 ms</li><li>B. 500 ms</li><li>C. 750 ms</li><li>D. 1000 ms</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 4 / 4</small>18. Time Petri nets belong to which specification category?</h2><ul class="opts"><li>A. Interval-based</li><li>B. Axes-based</li><li>C. Control-flow based</li><li>D. Event-based</li></ul><div class="fragment ans"><strong>Answer: C.</strong></div></section></section>
+<section><div class="title-slide"><div class="kick">End of Unit 10</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></div></section>
+</div></div>
+<script>window.__t=setTimeout(function(){if(!window.Reveal){var m=document.getElementById("loaderr");if(m)m.style.display="block";}},5000);</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js" onerror="document.getElementById('loaderr').style.display='block'"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/zoom.js"></script>
+<script>
+var plugins=[];['RevealNotes','RevealSearch','RevealZoom'].forEach(function(n){if(window[n])plugins.push(window[n]);});
+Reveal.initialize({width:1280,height:720,margin:.04,hash:true,slideNumber:'c/t',progress:true,controls:true,controlsTutorial:false,
+  transition:'slide',backgroundTransition:'fade',autoAnimateDuration:.5,fragments:true,center:false,plugins:plugins});
+function hud(){var s=Reveal.getCurrentSlide();var t=s&&s.parentNode&&s.parentNode.getAttribute&&s.parentNode.getAttribute('data-topic');
+  var h=document.getElementById('hud');h.textContent='Unit 10'+(t?' · '+t:'');}
+Reveal.on('ready',hud);Reveal.on('slidechanged',hud);
+</script>
+</body>
+</html>

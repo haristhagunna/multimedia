@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://unpkg.com; img-src 'self' data: blob:; connect-src 'self' https://api.github.com; worker-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="author" content="Er. Harish Thagunna">
+<title>Unit 11: Abstraction of Programming - Class slides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<style>
+:root{--g:linear-gradient(120deg,#818cf8,#c084fc 55%,#f472b6);--card:rgba(255,255,255,.055);--line:rgba(255,255,255,.12);--mut:#aab0d6;--ac:#a5b4fc}
+html,body{background:#080a14}
+.reveal-viewport{background:radial-gradient(55% 70% at 12% 8%,rgba(99,102,241,.35),transparent 65%),radial-gradient(50% 65% at 92% 95%,rgba(236,72,153,.26),transparent 65%),radial-gradient(40% 50% at 85% 10%,rgba(6,182,212,.14),transparent 70%),#080a14}
+.reveal{font-family:Inter,system-ui,sans-serif;font-size:27px;color:#e8eaff;font-weight:400}
+.reveal .slides section{text-align:left;height:100%}
+.reveal h1,.reveal h2,.reveal h3{font-family:Inter,system-ui,sans-serif;text-transform:none;letter-spacing:-.025em;font-weight:800;margin:0 0 .45em}
+.reveal h2{font-size:1.5em;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.15}
+.reveal h2 small{display:block;font-size:.42em;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);-webkit-text-fill-color:var(--mut);font-weight:700;margin-bottom:.35em}
+.reveal h3{font-size:1.05em;color:#fff}
+.reveal h4{font-size:.9em;color:var(--ac);margin:.6em 0 .2em}
+.reveal p{margin:.35em 0;line-height:1.45}
+.reveal ul,.reveal ol{display:block;margin:.3em 0 .3em 1.1em;width:calc(100% - 1.1em)}
+.reveal li{margin:.3em 0;line-height:1.38}
+.reveal ul li::marker{color:#c084fc}.reveal ol li::marker{color:#818cf8;font-weight:700}
+.reveal strong{color:#fff;font-weight:700}.reveal em{color:#d9dcff}
+.reveal a{color:var(--ac)}
+.reveal code{font-family:'JetBrains Mono',monospace;font-size:.85em;background:rgba(129,140,248,.16);border-radius:6px;padding:.06em .35em;color:#e0e4ff}
+.reveal pre{width:100%;box-shadow:none;font-size:.62em;margin:.5em 0}
+.reveal pre code{display:block;padding:.8em 1em;border-radius:12px;background:rgba(0,0,0,.4);border:1px solid var(--line);max-height:none}
+.reveal mark{background:linear-gradient(transparent 55%,rgba(244,114,182,.4) 55%);color:inherit}
+.reveal table{margin:.5em 0;border-collapse:separate;border-spacing:0;font-size:.66em;width:100%;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.reveal th{background:rgba(129,140,248,.2);font-weight:700;color:#fff;text-align:left;padding:.5em .8em}
+.reveal td{padding:.42em .8em;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.reveal tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+.dense{font-size:.86em}.xdense{font-size:.74em}
+.callout{border:1px solid var(--line);border-left:5px solid #818cf8;border-radius:12px;background:var(--card);padding:.55em 1em;margin:.7em 0;font-size:.88em}
+.callout .ct{font-size:.68em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.15em;color:#a5b4fc}
+.callout p,.callout li{margin:.2em 0}.callout>*:last-child{margin-bottom:0}
+.callout.exam{border-left-color:#fb923c;background:rgba(251,146,60,.09)}.callout.exam .ct{color:#fdba74}
+.callout.warn{border-left-color:#f87171;background:rgba(248,113,113,.09)}.callout.warn .ct{color:#fca5a5}
+.callout.tip{border-left-color:#34d399;background:rgba(52,211,153,.09)}.callout.tip .ct{color:#6ee7b7}
+.callout.ex{border-left-color:#c084fc;background:rgba(192,132,252,.09)}.callout.ex .ct{color:#d8b4fe}
+aside.notes{display:none}
+.callout.split .sp{display:grid;grid-template-columns:1fr 1.1fr;gap:1em;align-items:center}
+.callout.split .diagram svg{max-height:430px}
+.callout.split.long{font-size:.72em;margin-top:.2em}.callout.split.long .diagram svg{max-height:420px}
+.diagram{text-align:center;margin:.4em 0}.diagram svg{max-width:100%;height:auto;max-height:470px;width:auto}
+.diagram.tall svg{max-height:540px}
+.diagram .cap,.cap{font-size:.55em;color:var(--mut);margin-top:.3em;text-align:center}
+.vis{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:.5em;text-align:center}
+.vis svg{max-width:100%;height:auto;max-height:480px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1em;align-items:start}
+.two>*{min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6em .9em}
+.q{font-weight:700;color:#fff}
+.chk{border:1px solid rgba(192,132,252,.5);border-radius:14px;padding:.7em 1em;background:rgba(192,132,252,.08);margin:.5em 0}
+.chk .lab{font-size:.55em;letter-spacing:.14em;font-weight:800;color:#d8b4fe;text-transform:uppercase}
+.opts{list-style:none;margin:.4em 0!important;padding:0;display:grid;gap:.35em}
+.opts li{margin:0;padding:.4em .8em;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.ans{margin-top:.6em;padding:.5em .9em;border-radius:10px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.5)}
+.trio{display:grid;grid-template-columns:1fr;gap:.6em}.trio .card{padding:.55em 1em}.trio .card .ct{font-size:.55em;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.1em}.trio .card p{margin:.1em 0;font-size:.95em}
+.trio .c1{border-left:5px solid #818cf8}.trio .c1 .ct{color:#a5b4fc}.trio .c2{border-left:5px solid #34d399}.trio .c2 .ct{color:#6ee7b7}.trio .c3{border-left:5px solid #fb923c}.trio .c3 .ct{color:#fdba74}
+.terms{display:grid;grid-template-columns:1fr 1fr;gap:.55em}.card.term{display:flex;flex-direction:column;gap:.1em;padding:.45em .85em}.card.term b{color:#c4b5fd;font-size:.95em}.card.term span{font-size:.74em;line-height:1.35;color:#dfe2ff}
+.agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:.55em}
+.agenda .card{display:flex;gap:.7em;align-items:center;font-size:.85em;font-weight:600}
+.agenda .n{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:800;font-size:.85em;color:#fff}
+.title-slide{display:flex;flex-direction:column;justify-content:center;height:100%}
+.title-slide .kick{font-size:.62em;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);font-weight:700;margin-bottom:1em}
+.title-slide h1{font-size:2.9em;line-height:1.02;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:.25em}
+.title-slide .by{font-size:.8em;color:var(--mut);margin-top:1.2em}
+.chips{display:flex;gap:.6em;flex-wrap:wrap;margin-top:1.2em}
+.chips span{font-size:.55em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.35em .9em;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.sec{display:flex;flex-direction:column;justify-content:center;height:100%}
+.sec .no{font-size:5em;font-weight:900;line-height:1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+.sec h2{font-size:2.1em}
+.sec .lead{color:var(--mut);font-size:.85em;max-width:80%}
+#hud{position:fixed;left:18px;top:12px;z-index:30;font:700 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8e94c4;pointer-events:none}
+.copyright-foot{position:fixed;left:0;right:0;bottom:8px;text-align:center;font:600 11px Inter,system-ui,sans-serif;color:#7f86b8;z-index:30;pointer-events:none}
+.reveal .progress{height:4px;color:#c084fc}
+.reveal .controls{color:#a5b4fc}
+.reveal .slide-number{background:transparent;color:#8e94c4;font-size:12px;font-weight:700;right:14px;bottom:8px}
+.reveal .fragment.highlight-current-blue.current-fragment{color:#a5b4fc}
+.reveal .katex{font-size:1.05em}.mathx.blk{display:block;text-align:center;margin:.4em 0}.reveal .arithmatex{color:#fff}
+.reveal .arithmatex.block,.reveal div.arithmatex{margin:.5em 0;text-align:center}
+@media print{#hud,.copyright-foot{display:none}}
+</style>
+</head>
+<body>
+<div id="hud"></div>
+<div id="loaderr" style="display:none;position:fixed;inset:0;z-index:99;padding:12vh 8vw;background:#080a14;color:#e8eaff;font:600 20px Inter,system-ui,sans-serif">The slide engine could not be loaded.<br><br><span style="font-weight:400;color:#aab0d6">These slides need an internet connection to load reveal.js from cdn.jsdelivr.net. Check your connection or any ad-blocker / firewall, then reload.</span></div>
+<div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved. &middot; Press <b>?</b> for shortcuts, <b>Esc</b> for overview</div>
+<div class="reveal"><div class="slides">
+<section><div class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 11<br>Abstraction of Programming</h1><p style="max-width:75%;color:#aab0d6">Libraries, toolkits, languages and object-oriented design.</p><div class="chips"><span>2 teaching hours</span><span>4 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></div></section>
+<section><h2><small>Roadmap</small>What we will cover</h2><div class="agenda"><div class="card"><span class="n">1</span>Abstraction Levels and Libraries</div><div class="card"><span class="n">2</span>System Software</div><div class="card"><span class="n">3</span>Toolkits and Higher Programming Languages</div><div class="card"><span class="n">4</span>Object-Oriented Approaches</div></div></section>
+<section data-topic="Abstraction Levels and Libraries"><section><div class="sec"><div class="no">01</div><h2>Abstraction Levels and Libraries</h2><div class="lead">Unit 11 &middot; topic 1 of 4</div></div></section><section><h2><small>Abstraction Levels and Libraries</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Programming for multimedia can happen at different levels of detail: from raw device access up to object-oriented applications.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Driving a car versus building an engine: higher levels hide the details.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Low to high: device, library, system software, toolkit, higher language, object-oriented.</p></div></div><aside class="notes"><p><b>Say:</b> Programming for multimedia can happen at different levels of detail: from raw device access up to object-oriented applications.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: Driving a car versus building an engine: higher levels hide the details.)</p><p><b>Board:</b> write the memory hook: Low to high: device, library, system software, toolkit, higher language, object-oriented.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>Abstraction Levels and Libraries</small>The state of the art (introduction)</h2><ul><li class="fragment fade-up">Most commercially available multimedia applications are written in <strong>procedure-oriented languages</strong>.</li><li class="fragment fade-up">Application code is highly <strong>dependent on the hardware</strong>, so changing a multimedia device often needs <strong>re-implementation</strong>.</li><li class="fragment fade-up">Operating system extensions try to solve this, and there are different ways to <strong>access and represent multimedia data</strong>.</li></ul><aside class="notes">Source note: <a href="../../unit-11/abstraction-levels/">Abstraction Levels and Libraries</a></aside></section><section class="dense"><h2><small>Abstraction Levels and Libraries</small>Abstraction levels <span style="opacity:.55;font-size:.6em">(1/3)</span></h2><p><strong>Abstraction levels</strong> in programming are different approaches with a varying <strong>degree of detail</strong> for <strong>representing, accessing and manipulating data</strong>.</p><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm446b9cebf4dd" role="graphics-document document" viewbox="0 0 276 1066" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm446b9cebf4dd{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm446b9cebf4dd .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm446b9cebf4dd .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm446b9cebf4dd .error-icon{fill:#1c2150;}#mm446b9cebf4dd .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm446b9cebf4dd .edge-thickness-normal{stroke-width:1px;}#mm446b9cebf4dd .edge-thickness-thick{stroke-width:3.5px;}#mm446b9cebf4dd .edge-pattern-solid{stroke-dasharray:0;}#mm446b9cebf4dd .edge-thickness-invisible{stroke-width:0;fill:none;}#mm446b9cebf4dd .edge-pattern-dashed{stroke-dasharray:3;}#mm446b9cebf4dd .edge-pattern-dotted{stroke-dasharray:2;}#mm446b9cebf4dd .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm446b9cebf4dd .marker.cross{stroke:#a5b4fc;}#mm446b9cebf4dd svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm446b9cebf4dd p{margin:0;}#mm446b9cebf4dd .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm446b9cebf4dd .cluster-label text{fill:#e3deaf;}#mm446b9cebf4dd .cluster-label span{color:#e3deaf;}#mm446b9cebf4dd .cluster-label span p{background-color:transparent;}#mm446b9cebf4dd .label text,#mm446b9cebf4dd span{fill:#f4f4ff;color:#f4f4ff;}#mm446b9cebf4dd .node rect,#mm446b9cebf4dd .node circle,#mm446b9cebf4dd .node ellipse,#mm446b9cebf4dd .node polygon,#mm446b9cebf4dd .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm446b9cebf4dd .rough-node .label text,#mm446b9cebf4dd .node .label text,#mm446b9cebf4dd .image-shape .label,#mm446b9cebf4dd .icon-shape .label{text-anchor:middle;}#mm446b9cebf4dd .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm446b9cebf4dd .rough-node .label,#mm446b9cebf4dd .node .label,#mm446b9cebf4dd .image-shape .label,#mm446b9cebf4dd .icon-shape .label{text-align:center;}#mm446b9cebf4dd .node.clickable{cursor:pointer;}#mm446b9cebf4dd .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm446b9cebf4dd .arrowheadPath{fill:#0b0b0b;}#mm446b9cebf4dd .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm446b9cebf4dd .flowchart-link{stroke:#a5b4fc;fill:none;}#mm446b9cebf4dd .edgeLabel{background-color:#12152b;text-align:center;}#mm446b9cebf4dd .edgeLabel p{background-color:#12152b;}#mm446b9cebf4dd .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm446b9cebf4dd .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm446b9cebf4dd .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm446b9cebf4dd .cluster text{fill:#e3deaf;}#mm446b9cebf4dd .cluster span{color:#e3deaf;}#mm446b9cebf4dd div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm446b9cebf4dd .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm446b9cebf4dd rect.text{fill:none;stroke-width:0;}#mm446b9cebf4dd .icon-shape,#mm446b9cebf4dd .image-shape{background-color:#12152b;text-align:center;}#mm446b9cebf4dd .icon-shape p,#mm446b9cebf4dd .image-shape p{background-color:#12152b;padding:2px;}#mm446b9cebf4dd .icon-shape .label rect,#mm446b9cebf4dd .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm446b9cebf4dd .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm446b9cebf4dd .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm446b9cebf4dd .node .neo-node{stroke:#818cf8;}#mm446b9cebf4dd [data-look="neo"].node rect,#mm446b9cebf4dd [data-look="neo"].cluster rect,#mm446b9cebf4dd [data-look="neo"].node polygon{stroke:url(#mm446b9cebf4dd-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm446b9cebf4dd [data-look="neo"].swimlane.cluster rect{filter:none;}#mm446b9cebf4dd [data-look="neo"].node path{stroke:url(#mm446b9cebf4dd-gradient);stroke-width:1px;}#mm446b9cebf4dd [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm446b9cebf4dd [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm446b9cebf4dd [data-look="neo"].node circle{stroke:url(#mm446b9cebf4dd-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm446b9cebf4dd [data-look="neo"].node circle .state-start{fill:#000000;}#mm446b9cebf4dd [data-look="neo"].icon-shape .icon{fill:url(#mm446b9cebf4dd-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm446b9cebf4dd [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm446b9cebf4dd-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm446b9cebf4dd :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm446b9cebf4dd_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm446b9cebf4dd_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm446b9cebf4dd_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm446b9cebf4dd_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm446b9cebf4dd_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm446b9cebf4dd_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm446b9cebf4dd_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm446b9cebf4dd_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm446b9cebf4dd_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm446b9cebf4dd_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm446b9cebf4dd_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm446b9cebf4dd_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,65L138,69.167C138,73.333,138,81.667,138,89.333C138,97,138,104,138,107.5L138,111" data-edge="true" data-et="edge" data-id="L_A_O_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5Ijo2NX0seyJ4IjoxMzgsInkiOjkwfSx7IngiOjEzOCwieSI6MTE1fV0=" id="mm446b9cebf4dd-L_A_O_0" marker-end="url(#mm446b9cebf4dd_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,253L138,257.167C138,261.333,138,269.667,138,277.333C138,285,138,292,138,295.5L138,299" data-edge="true" data-et="edge" data-id="L_O_H_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5IjoyNTN9LHsieCI6MTM4LCJ5IjoyNzh9LHsieCI6MTM4LCJ5IjozMDN9XQ==" id="mm446b9cebf4dd-L_O_H_0" marker-end="url(#mm446b9cebf4dd_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,414L138,418.167C138,422.333,138,430.667,138,438.333C138,446,138,453,138,456.5L138,460" data-edge="true" data-et="edge" data-id="L_H_T_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5Ijo0MTR9LHsieCI6MTM4LCJ5Ijo0Mzl9LHsieCI6MTM4LCJ5Ijo0NjR9XQ==" id="mm446b9cebf4dd-L_H_T_0" marker-end="url(#mm446b9cebf4dd_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,575L138,579.167C138,583.333,138,591.667,138,599.333C138,607,138,614,138,617.5L138,621" data-edge="true" data-et="edge" data-id="L_T_S_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5Ijo1NzV9LHsieCI6MTM4LCJ5Ijo2MDB9LHsieCI6MTM4LCJ5Ijo2MjV9XQ==" id="mm446b9cebf4dd-L_T_S_0" marker-end="url(#mm446b9cebf4dd_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,763L138,767.167C138,771.333,138,779.667,138,787.333C138,795,138,802,138,805.5L138,809" data-edge="true" data-et="edge" data-id="L_S_L_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5Ijo3NjN9LHsieCI6MTM4LCJ5Ijo3ODh9LHsieCI6MTM4LCJ5Ijo4MTN9XQ==" id="mm446b9cebf4dd-L_S_L_0" marker-end="url(#mm446b9cebf4dd_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,897L138,901.167C138,905.333,138,913.667,138,921.333C138,929,138,936,138,939.5L138,943" data-edge="true" data-et="edge" data-id="L_L_D_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5Ijo4OTd9LHsieCI6MTM4LCJ5Ijo5MjJ9LHsieCI6MTM4LCJ5Ijo5NDd9XQ==" id="mm446b9cebf4dd-L_L_D_0" marker-end="url(#mm446b9cebf4dd_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_A_O_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_O_H_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_H_T_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_T_S_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_S_L_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_L_D_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm446b9cebf4dd-flowchart-A-0" transform="translate(138, 36.5)"><rect class="basic label-container" height="57" style="" width="164.9375" x="-82.46875" y="-28.5"></rect><g class="label" style="" transform="translate(-52.46875, -13.5)"><rect></rect><foreignobject height="27" width="104.9375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Applications</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm446b9cebf4dd-flowchart-O-1" transform="translate(138, 184)"><rect class="basic label-container" height="138" style="" width="260" x="-130" y="-69"></rect><g class="label" style="" transform="translate(-100, -54)"><rect></rect><foreignobject height="108" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Object-oriented approaches (class hierarchy for multimedia)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm446b9cebf4dd-flowchart-H-3" transform="translate(138, 358.5)"><rect class="basic label-container" height="111" style="" width="260" x="-130" y="-55.5"></rect><g class="label" style="" transform="translate(-100, -40.5)"><rect></rect><foreignobject height="81" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Higher programming languages (media as types, files, processes)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm446b9cebf4dd-flowchart-T-5" transform="translate(138, 519.5)"><rect class="basic label-container" height="111" style="" width="260" x="-130" y="-55.5"></rect><g class="label" style="" transform="translate(-100, -40.5)"><rect></rect><foreignobject height="81" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Toolkits (uniform interface, client-server)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm446b9cebf4dd-flowchart-S-7" transform="translate(138, 694)"><rect class="basic label-container" height="138" style="" width="260" x="-130" y="-69"></rect><g class="label" style="" transform="translate(-100, -54)"><rect></rect><foreignobject height="108" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>System software (device access, schedulers: RM / EDF, streams)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm446b9cebf4dd-flowchart-L-9" transform="translate(138, 855)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Libraries (functions per device)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm446b9cebf4dd-flowchart-D-11" transform="translate(138, 1002.5)"><rect class="basic label-container" height="111" style="" width="260" x="-130" y="-55.5"></rect><g class="label" style="" transform="translate(-100, -40.5)"><rect></rect><foreignobject height="81" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Device (separate processing component) with driver</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm446b9cebf4dd-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm446b9cebf4dd-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm446b9cebf4dd-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-11/abstraction-levels/">Abstraction Levels and Libraries</a></aside></section><section class="dense"><h2><small>Abstraction Levels and Libraries</small>Abstraction levels <span style="opacity:.55;font-size:.6em">(2/3)</span></h2><table>
+<thead>
+<tr>
+<th>Level (low to high)</th>
+<th>Idea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Device</strong></td>
+<td>A component for continuous media can exist <strong>separately</strong> in the computer. It is <strong>not part of the OS</strong> but is directly accessible to every component and application</td>
+</tr>
+<tr>
+<td><strong>Library</strong></td>
+<td>The <strong>simplest</strong> level; functions for <strong>controlling the hardware</strong> with specific device-access operations</td>
+</tr>
+<tr>
+<td><strong>System software</strong></td>
+<td>Processing of continuous data becomes <strong>part of the OS</strong>; needs <strong>schedulers</strong> such as <strong>rate monotonic</strong> or <strong>earliest deadline first</strong>; a <strong>device driver</strong> embedded in the OS simplifies access and scheduling</td>
+</tr>
+<tr>
+<td><strong>Toolkit</strong></td>
+<td>A simpler programming-environment approach to control audio and video; <strong>hides process structures</strong></td>
+</tr>
+<tr>
+<td><strong>Higher programming language</strong></td>
+<td>The language contains <strong>abstractions of multimedia data</strong> (a <em>higher procedural language</em>)</td>
+</tr>
+<tr>
+<td><strong>Object-oriented approach</strong></td>
+<td>First introduced to <strong>reduce complexity</strong>; gives a <strong>class hierarchy</strong> for manipulating multimedia</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-11/abstraction-levels/">Abstraction Levels and Libraries</a></aside></section><section class=""><h2><small>Abstraction Levels and Libraries</small>Abstraction levels <span style="opacity:.55;font-size:.6em">(3/3)</span></h2><p>Higher in the diagram means <strong>more abstraction, more hardware independence, easier programming</strong>, usually at some cost in speed.</p><aside class="notes">Source note: <a href="../../unit-11/abstraction-levels/">Abstraction Levels and Libraries</a></aside></section><section class=""><h2><small>Abstraction Levels and Libraries</small>Libraries <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><ul>
+<li class="fragment fade-up"><strong>Libraries</strong> contain <strong>sets of functions used to process continuous media</strong>. They are <strong>supplied with the corresponding hardware</strong>.</li>
+<li class="fragment fade-up">Some are <strong>extensions of the GUI</strong>; others are <strong>control instructions passed as control blocks to the drivers</strong>.</li>
+<li class="fragment fade-up">Very useful at the <strong>OS level</strong>. Because the OS gives <strong>insufficient support for continuous data</strong> and there is <strong>no integration into the programming environment</strong>, a <strong>variety of interfaces and libraries</strong> will always exist.</li>
+<li class="fragment fade-up">Libraries <strong>differ in their degree of abstraction</strong>, and there is <strong>no agreement on which functions are best</strong> for different drivers.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-11/abstraction-levels/">Abstraction Levels and Libraries</a></aside></section><section class=""><h2><small>Abstraction Levels and Libraries</small>Libraries <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout exam"><div class="ct">Exam tip</div>
+<p>"Explain the abstraction levels in multimedia programming" = the diagram and one line per level, from library at the bottom to object-oriented at the top.</p>
+</div><aside class="notes">Source note: <a href="../../unit-11/abstraction-levels/">Abstraction Levels and Libraries</a></aside></section><section class="dense"><h2><small>Abstraction Levels and Libraries</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Why do libraries not solve portability?</p><div class="fragment ans">
+<p>Each device vendor supplies its own library with its own functions and abstraction level, so applications stay hardware dependent.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Which level introduces schedulers such as EDF and RM?</p><div class="fragment ans">
+<p>System software.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-11/abstraction-levels/">Abstraction Levels and Libraries</a></aside></section><section><h2><small>Abstraction Levels and Libraries</small>Key terms</h2><div class="terms"><div class="card term"><b>Abstraction level</b><span>Degree of detail used to represent and manipulate data.</span></div><div class="card term"><b>Library</b><span>Functions supplied with a device.</span></div><div class="card term"><b>Toolkit</b><span>Uniform interface that hides process structure.</span></div><div class="card term"><b>Programming language</b><span>Language with abstractions for media.</span></div><div class="card term"><b>Object-oriented approach</b><span>Class hierarchy for multimedia.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section><section><h2><small>Abstraction Levels and Libraries</small>Layers of abstraction for multimedia programming</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 734.320781 385.92" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-12T07:41:45.169461</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 385.92 
+L 734.320781 385.92 
+L 734.320781 0 
+L 0 0 
+L 0 385.92 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 48.96 64.693333 
+L 675.36 64.693333 
+Q 682.56 64.693333 682.56 57.76 
+L 682.56 32.8 
+Q 682.56 25.866667 675.36 25.866667 
+L 48.96 25.866667 
+Q 41.76 25.866667 41.76 32.8 
+L 41.76 57.76 
+Q 41.76 64.693333 48.96 64.693333 
+z
+" clip-path="url(#p3e8a35fcbc)" style="fill: #1c2150; stroke: #f472b6; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 48.96 111.84 
+L 675.36 111.84 
+Q 682.56 111.84 682.56 104.906667 
+L 682.56 79.946667 
+Q 682.56 73.013333 675.36 73.013333 
+L 48.96 73.013333 
+Q 41.76 73.013333 41.76 79.946667 
+L 41.76 104.906667 
+Q 41.76 111.84 48.96 111.84 
+z
+" clip-path="url(#p3e8a35fcbc)" style="fill: #1c2150; stroke: #c084fc; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 48.96 158.986667 
+L 675.36 158.986667 
+Q 682.56 158.986667 682.56 152.053333 
+L 682.56 127.093333 
+Q 682.56 120.16 675.36 120.16 
+L 48.96 120.16 
+Q 41.76 120.16 41.76 127.093333 
+L 41.76 152.053333 
+Q 41.76 158.986667 48.96 158.986667 
+z
+" clip-path="url(#p3e8a35fcbc)" style="fill: #1c2150; stroke: #818cf8; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 48.96 206.133333 
+L 675.36 206.133333 
+Q 682.56 206.133333 682.56 199.2 
+L 682.56 174.24 
+Q 682.56 167.306667 675.36 167.306667 
+L 48.96 167.306667 
+Q 41.76 167.306667 41.76 174.24 
+L 41.76 199.2 
+Q 41.76 206.133333 48.96 206.133333 
+z
+" clip-path="url(#p3e8a35fcbc)" style="fill: #1c2150; stroke: #38bdf8; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 48.96 253.28 
+L 675.36 253.28 
+Q 682.56 253.28 682.56 246.346667 
+L 682.56 221.386667 
+Q 682.56 214.453333 675.36 214.453333 
+L 48.96 214.453333 
+Q 41.76 214.453333 41.76 221.386667 
+L 41.76 246.346667 
+Q 41.76 253.28 48.96 253.28 
+z
+" clip-path="url(#p3e8a35fcbc)" style="fill: #1c2150; stroke: #22d3ee; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 48.96 300.426667 
+L 675.36 300.426667 
+Q 682.56 300.426667 682.56 293.493333 
+L 682.56 268.533333 
+Q 682.56 261.6 675.36 261.6 
+L 48.96 261.6 
+Q 41.76 261.6 41.76 268.533333 
+L 41.76 293.493333 
+Q 41.76 300.426667 48.96 300.426667 
+z
+" clip-path="url(#p3e8a35fcbc)" style="fill: #1c2150; stroke: #34d399; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 48.96 347.573333 
+L 675.36 347.573333 
+Q 682.56 347.573333 682.56 340.64 
+L 682.56 315.68 
+Q 682.56 308.746667 675.36 308.746667 
+L 48.96 308.746667 
+Q 41.76 308.746667 41.76 315.68 
+L 41.76 340.64 
+Q 41.76 347.573333 48.96 347.573333 
+z
+" clip-path="url(#p3e8a35fcbc)" style="fill: #1c2150; stroke: #fb923c; stroke-width: 1.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 707.76 357.361758 
+Q 707.76 192.961572 707.76 30.350241 
+" clip-path="url(#p3e8a35fcbc)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 704.96 35.950241 
+L 707.76 30.350241 
+L 710.56 35.950241 
+z
+" clip-path="url(#p3e8a35fcbc)" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="365.76" y="48.267754" transform="rotate(-0 365.76 48.267754)">Applications</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="365.76" y="95.414421" transform="rotate(-0 365.76 95.414421)">Object-oriented approach: class hierarchy</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="365.76" y="142.561087" transform="rotate(-0 365.76 142.561087)">Higher programming language: media as types</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="365.76" y="189.707754" transform="rotate(-0 365.76 189.707754)">Toolkit: uniform interface, hides process structure</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="365.76" y="236.854421" transform="rotate(-0 365.76 236.854421)">System software: OS device driver + RM/EDF scheduler</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="365.76" y="284.001087" transform="rotate(-0 365.76 284.001087)">Library: functions per device</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="365.76" y="331.147754" transform="rotate(-0 365.76 331.147754)">Device: separate component with its own driver</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; fill: #9aa0cc" transform="translate(726.158438 228.132656) rotate(-90)">more abstract</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3e8a35fcbc">
+   <rect x="5.76" y="5.76" width="720" height="374.4"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">Higher layers hide device and timing detail so programmers can work with media objects instead of raw hardware.</div></section></section>
+<section data-topic="System Software"><section><div class="sec"><div class="no">02</div><h2>System Software</h2><div class="lead">Unit 11 &middot; topic 2 of 4</div></div></section><section><h2><small>System Software</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>System software gives a standard way to use multimedia: streams, time-aware data and scheduling, so applications do not handle each device.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A media framework that plays any file without the app knowing the codec.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Two models: data as time capsules, data as streams.</p></div></div><aside class="notes"><p><b>Say:</b> System software gives a standard way to use multimedia: streams, time-aware data and scheduling, so applications do not handle each device.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: A media framework that plays any file without the app knowing the codec.)</p><p><b>Board:</b> write the memory hook: Two models: data as time capsules, data as streams.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>System Software</small>System Software</h2><p>Instead of a separate library per device, <strong>device access becomes part of the operating system</strong>. Continuous-data processing needs <strong>real-time schedulers</strong> (see <a href="../unit-07/scheduling.md">Unit 7</a>).</p><h3>Example: the Nemo system</h3><p>Nemo consists of the <strong>Nemo Trusted Supervisor Call (NTSC)</strong> running in <strong>supervisor mode</strong> and <strong>three domains in user mode</strong>: <strong>system, device drivers and application</strong>.</p><div class="callout warn"><div class="ct">Not the TV standard</div>
+<p>NTSC here means <em>Nemo Trusted Supervisor Call</em>. It has nothing to do with the NTSC television standard of <a href="../unit-04/video-transmission.md">Unit 4</a>.</p>
+</div><aside class="notes">Source note: <a href="../../unit-11/system-software/">System Software</a></aside></section><section class="xdense"><h2><small>System Software</small>Example: the Nemo system <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><ul>
+<li class="fragment fade-up">The <strong>NTSC code</strong> implements the functions needed by user-mode processes and supports <strong>three kinds of processes</strong>:<ul>
+<li><strong>System processes:</strong> implement most of the OS services.</li>
+<li><strong>Device processes:</strong> like system processes but attached to <strong>device interrupt stubs</strong> that run in supervisor mode.</li>
+<li><strong>Application processes:</strong> contain user programs.</li>
+</ul>
+</li>
+<li class="fragment fade-up">NTSC calls are in <strong>two classes</strong>: calls only a <strong>privileged system process</strong> (for example the kernel) may execute, and calls <strong>any process</strong> may execute.</li>
+<li class="fragment fade-up">NTSC provides the <strong>interface between a multimedia hardware device and its driver process</strong>, so even a device with only a low-level hardware interface can be used.</li>
+<li class="fragment fade-up">Processes talk through <strong>IPC (inter-process communication)</strong>, built on low-level <strong>events</strong> and, if needed, <strong>shared memory</strong>.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-11/system-software/">System Software</a></aside></section><section class=""><h2><small>System Software</small>Data as time capsules</h2><p>A <strong>time capsule</strong> is an abstraction related to <strong>file systems</strong>: a file extension for <strong>storing, modifying and accessing continuous media</strong>. Each <strong>LDU</strong> carries, besides its <strong>data type and value</strong>, its <strong>valid life span</strong>. The concept is used <strong>more for video than for audio</strong>.</p><aside class="notes">Source note: <a href="../../unit-11/system-software/">System Software</a></aside></section><section class=""><h2><small>System Software</small>Data as streams</h2><p>A <strong>stream</strong> is the <strong>continuous flow of audio and video data</strong>. It is <strong>established between a source and a sink before the flow</strong> starts. Operations on a stream: <strong>play, fast forward, rewind, stop</strong>.</p><p>In <strong>Microsoft Windows</strong> the <strong>Media Control Interface (MCI)</strong> gives access to continuous media streams and their devices.</p><div class="callout exam"><div class="ct">Exam tip</div>
+<p>Define time capsule (data plus life span), stream (source to sink), and name MCI. If Nemo is asked, give supervisor call plus three domains and three process types.</p>
+</div><aside class="notes">Source note: <a href="../../unit-11/system-software/">System Software</a></aside></section><section class=""><h2><small>System Software</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">What does a time capsule contain?</p><div class="fragment ans">
+<p>Each LDU's data type, value and valid life span.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">What is MCI?</p><div class="fragment ans">
+<p>The Media Control Interface of Microsoft Windows for accessing continuous media streams and devices.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-11/system-software/">System Software</a></aside></section><section><h2><small>System Software</small>Key terms</h2><div class="terms"><div class="card term"><b>Stream</b><span>Flow of data units from a source to a sink.</span></div><div class="card term"><b>Time capsule</b><span>Data stored with its timing information.</span></div><div class="card term"><b>Nemo system</b><span>Example of multimedia system software.</span></div><div class="card term"><b>Scheduler</b><span>Allocates CPU time.</span></div><div class="card term"><b>Driver</b><span>Controls hardware.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section></section>
+<section data-topic="Toolkits and Higher Programming Languages"><section><div class="sec"><div class="no">03</div><h2>Toolkits and Higher Programming Languages</h2><div class="lead">Unit 11 &middot; topic 3 of 4</div></div></section><section><h2><small>Toolkits and Higher Programming Languages</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Toolkits hide complexity and give programmers ready-made media components. Some languages treat audio and video as normal data types.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A toolkit lets you add a video player to your app with a few lines.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Toolkit = ready-made parts. Language = media as data types (for example OCCAM-2 with parallel processes).</p></div></div><aside class="notes"><p><b>Say:</b> Toolkits hide complexity and give programmers ready-made media components. Some languages treat audio and video as normal data types.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: A toolkit lets you add a video player to your app with a few lines.)</p><p><b>Board:</b> write the memory hook: Toolkit = ready-made parts. Language = media as data types (for example OCCAM-2 with parallel processes).</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>Toolkits and Higher Programming Languages</small>Toolkits</h2><p><strong>Toolkits</strong> control audio and video processing <strong>in a programming environment</strong>. They <strong>represent interfaces at the system-software level</strong>, can be embedded into programming languages or object-oriented environments, and are used to:</p><ul>
+<li class="fragment fade-up"><strong>abstract from the physical layer</strong>;</li>
+<li class="fragment fade-up">give a <strong>uniform interface</strong> for all different continuous-media devices;</li>
+<li class="fragment fade-up">introduce the <strong>client-server paradigm</strong>;</li>
+<li class="fragment fade-up"><strong>hide process structures</strong>.</li>
+</ul><p>It would be valuable to have the <strong>same toolkit on all platforms</strong>, but experience shows this <strong>remains a wish</strong> and would <strong>reduce performance</strong>.</p><aside class="notes">Source note: <a href="../../unit-11/toolkits-and-languages/">Toolkits and Higher Programming Languages</a></aside></section><section class=""><h2><small>Toolkits and Higher Programming Languages</small>Higher programming languages</h2><ul><li class="fragment fade-up">In a <strong>higher (high-level) language (HLL)</strong>, processing of continuous media is done by <strong>groups of similarly built functions</strong>.</li><li class="fragment fade-up">The calls are mostly <strong>hardware and driver independent</strong>.</li><li class="fragment fade-up">Programs either <strong>access multimedia data structures directly</strong> or <strong>communicate with the active processes of the real-time environment</strong>; devices are controlled through drivers.</li></ul><p>Media can be seen in three ways inside a language.</p><aside class="notes">Source note: <a href="../../unit-11/toolkits-and-languages/">Toolkits and Higher Programming Languages</a></aside></section><section class=""><h2><small>Higher programming languages</small>1. Media as types</h2><ul><li class="fragment fade-up">Audio and video are <strong>data types</strong>, just as <strong>character</strong> is the type for text (the smallest addressable element).</li><li class="fragment fade-up">A program can copy, compare, delete, read, store and display them, and use them in other data structures.</li><li class="fragment fade-up">Example (OCCAM-2, derived from <strong>Communicating Sequential Processes</strong> for <strong>transputers</strong>): two audio LDUs from two microphones are read in parallel and <strong>mixed</strong>:</li></ul><div class="highlight"><pre><span></span><code>a, b REAL;
+ldu.left1, ldu.left2, ldu.left_mixed AUDIO_LDU;
+WHILE
+  COBEGIN
+    PROCESS_1  Input(micro1, ldu.left1)
+    PROCESS_2  Input(micro2, ldu.left2)
+  ldu.left_mixed := a * ldu.left1 + b * ldu.left2;
+END WHILE
+</code></pre></div><aside class="notes">Source note: <a href="../../unit-11/toolkits-and-languages/">Toolkits and Higher Programming Languages</a></aside></section><section class=""><h2><small>Higher programming languages</small>2. Media as files</h2><p>A continuous stream is treated as a <strong>file</strong>: <code>open</code> associates a device with a file name and returns a <strong>file descriptor</strong>; <code>read</code>, <code>mix</code>, <code>activate</code>, <code>deactivate</code> and <code>close</code> follow.</p><div class="highlight"><pre><span></span><code>file_h1 = open(MICROPHONE_1, ...)
+file_h2 = open(MICROPHONE_2, ...)
+file_h3 = open(SPEAKER, ...)
+read(file_h1); read(file_h2)
+mix(file_h3, file_h1, file_h2)
+activate(file_h1, file_h2, file_h3)
+...
+deactivate(...);  rc1 = close(file_h1) ...
+</code></pre></div><p>Difference from discrete files: <strong>continuous read/write</strong> keep assigning <strong>new values continuously</strong> to a variable bound to one <code>read</code>, whereas for discrete data <strong>each read call fetches the next value</strong>.</p><aside class="notes">Source note: <a href="../../unit-11/toolkits-and-languages/">Toolkits and Higher Programming Languages</a></aside></section><section class=""><h2><small>Higher programming languages</small>3. Media as processes</h2><p>Processing continuous data is <strong>time dependent</strong>: the <strong>life span of a process equals the life span of a connection</strong> between source and destination (local or remote). The process is created, <strong>reserves the devices</strong> at creation, and its actions are controlled by <strong>IPC messages</strong>:</p><div class="highlight"><pre><span></span><code>PROCESS cont_process_a;
+  on_message_do
+    set_volume ...
+    set_loudness ...
+pid = create(cont_process_a)
+send(pid, set_volume, 3)
+send(pid, set_loudness)
+</code></pre></div><aside class="notes">Source note: <a href="../../unit-11/toolkits-and-languages/">Toolkits and Higher Programming Languages</a></aside></section><section class="xdense"><h2><small>Toolkits and Higher Programming Languages</small>Language requirements <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><ul>
+<li class="fragment fade-up">The HLL must support <strong>parallel processing</strong>; the <strong>number of processes</strong> is known at compile time, and processes can also be <strong>defined dynamically</strong> at run time.</li>
+<li class="fragment fade-up">The <strong>IPC mechanism</strong> must transmit audio and video <strong>in time</strong> (they have a limited life span). It must:<ul>
+<li>understand <strong>a priori or implicitly specified time requirements</strong>;</li>
+<li><strong>transmit</strong> the data according to those requirements;</li>
+<li><strong>start processing</strong> the received data <strong>on time</strong>.</li>
+</ul>
+</li>
+<li class="fragment fade-up"><strong>Language:</strong> the authors see <strong>no demand for a new dedicated language</strong>. Replacing a language is difficult because cooperation between the real-time environment and other programs needs semantic changes. A <strong>language extension</strong> is proposed, a <strong>simple language</strong> meeting the requirements; examples: <strong>OCCAM-2, Ada, parallel C variants for transputers</strong>.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-11/toolkits-and-languages/">Toolkits and Higher Programming Languages</a></aside></section><section class=""><h2><small>Toolkits and Higher Programming Languages</small>Language requirements <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><table>
+<thead>
+<tr>
+<th>View</th>
+<th>Media is a</th>
+<th>Typical operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Types</strong></td>
+<td>Data type (like <code>char</code>)</td>
+<td>Assign, copy, mix with operators</td>
+</tr>
+<tr>
+<td><strong>Files</strong></td>
+<td>File</td>
+<td>open, read, write, activate, close</td>
+</tr>
+<tr>
+<td><strong>Processes</strong></td>
+<td>Process (life span = connection)</td>
+<td>create, send messages</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-11/toolkits-and-languages/">Toolkits and Higher Programming Languages</a></aside></section><section class="dense"><h2><small>Toolkits and Higher Programming Languages</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Name the three views of media in a programming language.</p><div class="fragment ans">
+<p>As types, as files, as processes.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">What must the IPC mechanism of a real-time language do?</p><div class="fragment ans">
+<p>Understand time requirements, transmit continuous data according to them, and start processing on time.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-11/toolkits-and-languages/">Toolkits and Higher Programming Languages</a></aside></section><section><h2><small>Toolkits and Higher Programming Languages</small>Key terms</h2><div class="terms"><div class="card term"><b>Toolkit</b><span>Library of reusable multimedia components.</span></div><div class="card term"><b>API</b><span>Application Programming Interface.</span></div><div class="card term"><b>Client-server toolkit</b><span>Toolkit where a server controls devices for clients.</span></div><div class="card term"><b>OCCAM-2</b><span>Parallel language based on Communicating Sequential Processes.</span></div><div class="card term"><b>Process</b><span>A running program unit.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section></section>
+<section data-topic="Object-Oriented Approaches"><section><div class="sec"><div class="no">04</div><h2>Object-Oriented Approaches</h2><div class="lead">Unit 11 &middot; topic 4 of 4</div></div></section><section><h2><small>Object-Oriented Approaches</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>In the object-oriented view media, devices and processing units become classes with methods such as play and stop, so programs are easier to build and reuse.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A Video class with play(), pause() and seek(); a DVD player object is a Video object with a device.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Simple objects (BMO), simple multimedia objects (SMO) and compound multimedia objects (CMO).</p></div></div><aside class="notes"><p><b>Say:</b> In the object-oriented view media, devices and processing units become classes with methods such as play and stop, so programs are easier to build and reuse.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: A Video class with play(), pause() and seek(); a DVD player object is a Video object with a device.)</p><p><b>Board:</b> write the memory hook: Simple objects (BMO), simple multimedia objects (SMO) and compound multimedia objects (CMO).</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>Object-Oriented Approaches</small>Object-Oriented Approaches</h2><p>The <strong>object-oriented (OO) approach</strong> was introduced to <strong>reduce complexity</strong> and to enable <strong>reuse of software components</strong>. Its basic ideas are <strong>data encapsulation</strong> and <strong>inheritance</strong>, with <strong>classes, objects and methods</strong> instead of functions and data structures.</p><aside class="notes">Source note: <a href="../../unit-11/object-oriented/">Object-Oriented Approaches</a></aside></section><section class=""><h2><small>Object-Oriented Approaches</small>Basic concepts</h2><table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Class</strong></td>
+<td>A collection of objects with the same properties and behaviour; a <strong>blueprint</strong>. Creating an object is <strong>instantiation</strong></td>
+<td>Class <strong>Circle</strong> with attributes x-coord, y-coord, radius a and methods findArea(), findCircumference(), scale()</td>
+</tr>
+<tr>
+<td><strong>Object</strong></td>
+<td>A real-world element with <strong>identity</strong>, <strong>state</strong> and <strong>behaviour</strong>; physical (a car) or conceptual (a project)</td>
+<td>A particular circle</td>
+</tr>
+<tr>
+<td><strong>Inheritance</strong></td>
+<td>A subclass acquires attributes and methods of a <strong>parent (super)class</strong>: an <strong>"is-a"</strong> relation, giving <strong>code reuse</strong>; the subclass may add or modify</td>
+<td>Cow <strong>is a</strong> Mammal</td>
+</tr>
+<tr>
+<td><strong>Polymorphism</strong></td>
+<td>Same operation name, <strong>different implementation</strong> by object; <strong>common external interface</strong> with different internals</td>
+<td>findArea() in Circle and Square</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-11/object-oriented/">Object-Oriented Approaches</a></aside></section><section class=""><h2><small>Multimedia classes (ways to build the hierarchy)</small>Application-specific metaphors as classes</h2><p>A <strong>metaphor</strong> is a set of UI visuals, actions and procedures exploiting what users already know from other domains. A class hierarchy designed for <strong>one application</strong> is simple, but the <strong>reuse advantage is lost</strong>.</p><h3>Application-generic metaphors as classes</h3><p>Combine functions <strong>common to all applications</strong> into classes; an application is defined by <strong>binding</strong> these classes, and <strong>application-specific subclasses inherit the general methods</strong>.</p><aside class="notes">Source note: <a href="../../unit-11/object-oriented/">Object-Oriented Approaches</a></aside></section><section class=""><h2><small>Multimedia classes (ways to build the hierarchy)</small>Devices as classes</h2><ul><li class="fragment fade-up">Objects reflect the <strong>physical view</strong>: each device is an object representing its <strong>behaviour and interface</strong>.</li><li class="fragment fade-up">Similar methods such as <strong>start, stop, seek</strong> are defined <strong>device-independently</strong>.</li><li class="fragment fade-up">Some units handle <strong>several media together</strong> (a computer-controlled <strong>VCR</strong> or <strong>laser disc player</strong> binds video and audio).</li><li class="fragment fade-up">Abstract devices such as <strong>camera</strong> and <strong>monitor</strong> can be defined.</li><li class="fragment fade-up">Defining a general interface for many audio/video units is a <strong>difficult design task</strong>.</li></ul><aside class="notes">Source note: <a href="../../unit-11/object-oriented/">Object-Oriented Approaches</a></aside></section><section class="xdense"><h2><small>Multimedia classes (ways to build the hierarchy)</small>Processing units as classes</h2><p><strong>Source objects, destination objects and combined source-destination objects</strong> that process continuous data between them. Like a <strong>"Lego" system</strong>, a <strong>data-flow path</strong> is built by connecting outputs to inputs, directly or through <strong>channel objects</strong>.</p><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mmcafec5581e27" role="graphics-document document" viewbox="0 0 1328.6875 73" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mmcafec5581e27{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmcafec5581e27 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmcafec5581e27 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmcafec5581e27 .error-icon{fill:#1c2150;}#mmcafec5581e27 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mmcafec5581e27 .edge-thickness-normal{stroke-width:1px;}#mmcafec5581e27 .edge-thickness-thick{stroke-width:3.5px;}#mmcafec5581e27 .edge-pattern-solid{stroke-dasharray:0;}#mmcafec5581e27 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmcafec5581e27 .edge-pattern-dashed{stroke-dasharray:3;}#mmcafec5581e27 .edge-pattern-dotted{stroke-dasharray:2;}#mmcafec5581e27 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mmcafec5581e27 .marker.cross{stroke:#a5b4fc;}#mmcafec5581e27 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mmcafec5581e27 p{margin:0;}#mmcafec5581e27 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mmcafec5581e27 .cluster-label text{fill:#e3deaf;}#mmcafec5581e27 .cluster-label span{color:#e3deaf;}#mmcafec5581e27 .cluster-label span p{background-color:transparent;}#mmcafec5581e27 .label text,#mmcafec5581e27 span{fill:#f4f4ff;color:#f4f4ff;}#mmcafec5581e27 .node rect,#mmcafec5581e27 .node circle,#mmcafec5581e27 .node ellipse,#mmcafec5581e27 .node polygon,#mmcafec5581e27 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mmcafec5581e27 .rough-node .label text,#mmcafec5581e27 .node .label text,#mmcafec5581e27 .image-shape .label,#mmcafec5581e27 .icon-shape .label{text-anchor:middle;}#mmcafec5581e27 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmcafec5581e27 .rough-node .label,#mmcafec5581e27 .node .label,#mmcafec5581e27 .image-shape .label,#mmcafec5581e27 .icon-shape .label{text-align:center;}#mmcafec5581e27 .node.clickable{cursor:pointer;}#mmcafec5581e27 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mmcafec5581e27 .arrowheadPath{fill:#0b0b0b;}#mmcafec5581e27 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mmcafec5581e27 .flowchart-link{stroke:#a5b4fc;fill:none;}#mmcafec5581e27 .edgeLabel{background-color:#12152b;text-align:center;}#mmcafec5581e27 .edgeLabel p{background-color:#12152b;}#mmcafec5581e27 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmcafec5581e27 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mmcafec5581e27 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mmcafec5581e27 .cluster text{fill:#e3deaf;}#mmcafec5581e27 .cluster span{color:#e3deaf;}#mmcafec5581e27 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mmcafec5581e27 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mmcafec5581e27 rect.text{fill:none;stroke-width:0;}#mmcafec5581e27 .icon-shape,#mmcafec5581e27 .image-shape{background-color:#12152b;text-align:center;}#mmcafec5581e27 .icon-shape p,#mmcafec5581e27 .image-shape p{background-color:#12152b;padding:2px;}#mmcafec5581e27 .icon-shape .label rect,#mmcafec5581e27 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmcafec5581e27 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmcafec5581e27 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmcafec5581e27 .node .neo-node{stroke:#818cf8;}#mmcafec5581e27 [data-look="neo"].node rect,#mmcafec5581e27 [data-look="neo"].cluster rect,#mmcafec5581e27 [data-look="neo"].node polygon{stroke:url(#mmcafec5581e27-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmcafec5581e27 [data-look="neo"].swimlane.cluster rect{filter:none;}#mmcafec5581e27 [data-look="neo"].node path{stroke:url(#mmcafec5581e27-gradient);stroke-width:1px;}#mmcafec5581e27 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmcafec5581e27 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mmcafec5581e27 [data-look="neo"].node circle{stroke:url(#mmcafec5581e27-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmcafec5581e27 [data-look="neo"].node circle .state-start{fill:#000000;}#mmcafec5581e27 [data-look="neo"].icon-shape .icon{fill:url(#mmcafec5581e27-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmcafec5581e27 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mmcafec5581e27-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmcafec5581e27 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mmcafec5581e27_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmcafec5581e27_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmcafec5581e27_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmcafec5581e27_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mmcafec5581e27_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmcafec5581e27_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmcafec5581e27_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmcafec5581e27_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mmcafec5581e27_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmcafec5581e27_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmcafec5581e27_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mmcafec5581e27_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M245.953,36.5L250.12,36.5C254.286,36.5,262.62,36.5,270.286,36.5C277.953,36.5,284.953,36.5,288.453,36.5L291.953,36.5" data-edge="true" data-et="edge" data-id="L_M_F_0" data-look="classic" data-points="W3sieCI6MjQ1Ljk1MzEyNSwieSI6MzYuNX0seyJ4IjoyNzAuOTUzMTI1LCJ5IjozNi41fSx7IngiOjI5NS45NTMxMjUsInkiOjM2LjV9XQ==" id="mmcafec5581e27-L_M_F_0" marker-end="url(#mmcafec5581e27_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M510.844,36.5L515.01,36.5C519.177,36.5,527.51,36.5,535.177,36.5C542.844,36.5,549.844,36.5,553.344,36.5L556.844,36.5" data-edge="true" data-et="edge" data-id="L_F_C_0" data-look="classic" data-points="W3sieCI6NTEwLjg0Mzc1LCJ5IjozNi41fSx7IngiOjUzNS44NDM3NSwieSI6MzYuNX0seyJ4Ijo1NjAuODQzNzUsInkiOjM2LjV9XQ==" id="mmcafec5581e27-L_F_C_0" marker-end="url(#mmcafec5581e27_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M725.125,36.5L729.292,36.5C733.458,36.5,741.792,36.5,749.458,36.5C757.125,36.5,764.125,36.5,767.625,36.5L771.125,36.5" data-edge="true" data-et="edge" data-id="L_C_N_0" data-look="classic" data-points="W3sieCI6NzI1LjEyNSwieSI6MzYuNX0seyJ4Ijo3NTAuMTI1LCJ5IjozNi41fSx7IngiOjc3NS4xMjUsInkiOjM2LjV9XQ==" id="mmcafec5581e27-L_C_N_0" marker-end="url(#mmcafec5581e27_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M905.156,36.5L909.323,36.5C913.49,36.5,921.823,36.5,929.49,36.5C937.156,36.5,944.156,36.5,947.656,36.5L951.156,36.5" data-edge="true" data-et="edge" data-id="L_N_D_0" data-look="classic" data-points="W3sieCI6OTA1LjE1NjI1LCJ5IjozNi41fSx7IngiOjkzMC4xNTYyNSwieSI6MzYuNX0seyJ4Ijo5NTUuMTU2MjUsInkiOjM2LjV9XQ==" id="mmcafec5581e27-L_N_D_0" marker-end="url(#mmcafec5581e27_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M1088.016,36.5L1092.182,36.5C1096.349,36.5,1104.682,36.5,1112.349,36.5C1120.016,36.5,1127.016,36.5,1130.516,36.5L1134.016,36.5" data-edge="true" data-et="edge" data-id="L_D_S_0" data-look="classic" data-points="W3sieCI6MTA4OC4wMTU2MjUsInkiOjM2LjV9LHsieCI6MTExMy4wMTU2MjUsInkiOjM2LjV9LHsieCI6MTEzOC4wMTU2MjUsInkiOjM2LjV9XQ==" id="mmcafec5581e27-L_D_S_0" marker-end="url(#mmcafec5581e27_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_M_F_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_F_C_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_C_N_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_N_D_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_S_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mmcafec5581e27-flowchart-M-0" transform="translate(126.9765625, 36.5)"><rect class="basic label-container" height="57" style="" width="237.953125" x="-118.9765625" y="-28.5"></rect><g class="label" style="" transform="translate(-88.9765625, -13.5)"><rect></rect><foreignobject height="27" width="177.953125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Microphone (source)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmcafec5581e27-flowchart-F-1" transform="translate(403.3984375, 36.5)"><rect class="basic label-container" height="57" style="" width="214.890625" x="-107.4453125" y="-28.5"></rect><g class="label" style="" transform="translate(-77.4453125, -13.5)"><rect></rect><foreignobject height="27" width="154.890625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Filter (processing)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmcafec5581e27-flowchart-C-2" transform="translate(642.984375, 36.5)"><rect class="basic label-container" height="57" style="" width="164.28125" x="-82.140625" y="-28.5"></rect><g class="label" style="" transform="translate(-52.140625, -13.5)"><rect></rect><foreignobject height="27" width="104.28125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Compressor</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmcafec5581e27-flowchart-N-3" transform="translate(840.140625, 36.5)"><rect class="basic label-container" height="57" style="" width="130.03125" x="-65.015625" y="-28.5"></rect><g class="label" style="" transform="translate(-35.015625, -13.5)"><rect></rect><foreignobject height="27" width="70.03125"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Channel</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmcafec5581e27-flowchart-D-4" transform="translate(1021.5859375, 36.5)"><rect class="basic label-container" height="57" style="" width="132.859375" x="-66.4296875" y="-28.5"></rect><g class="label" style="" transform="translate(-36.4296875, -13.5)"><rect></rect><foreignobject height="27" width="72.859375"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Decoder</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmcafec5581e27-flowchart-S-5" transform="translate(1229.3515625, 36.5)"><rect class="basic label-container" height="57" style="" width="182.671875" x="-91.3359375" y="-28.5"></rect><g class="label" style="" transform="translate(-61.3359375, -13.5)"><rect></rect><foreignobject height="27" width="122.671875"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Speaker (sink)</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mmcafec5581e27-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mmcafec5581e27-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mmcafec5581e27-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-11/object-oriented/">Object-Oriented Approaches</a></aside></section><section class=""><h2><small>Multimedia classes (ways to build the hierarchy)</small>Media as classes</h2><ul><li class="fragment fade-up">A <strong>media class hierarchy</strong> relates the media: <strong>Medium</strong> → <em>Acoustic medium</em> (music, speech, with <em>Opus, Note, Audio_Block, Sample value</em>), <em>Optical medium</em> (video, <em>Video_Scene, Image, Image_Segment, Pixel</em>, line, column; animation; text), <em>other continuous medium</em>, <em>discrete medium</em>.</li><li class="fragment fade-up">A class such as <strong>Pixel</strong> uses <strong>multiple inheritance</strong>.</li><li class="fragment fade-up">A special property of all multimedia objects is the <strong>continuous change of their internal state</strong> during their life span; data transfer lasts as long as the <strong>connection is active</strong>.</li></ul><aside class="notes">Source note: <a href="../../unit-11/object-oriented/">Object-Oriented Approaches</a></aside></section><section class=""><h2><small>Multimedia classes (ways to build the hierarchy)</small>Communication-specific metaphors as classes</h2><p>For <strong>distributed environments</strong>, classes tied to a communication system. <strong>Blakowski</strong> defines <strong>information, presentation and transport</strong> classes: <strong>information objects</strong> build <strong>presentation objects</strong> and are converted into <strong>transport objects</strong> for transmission.</p><aside class="notes">Source note: <a href="../../unit-11/object-oriented/">Object-Oriented Approaches</a></aside></section><section class="xdense"><h2><small>Object-Oriented Approaches</small>Simple and compound multimedia objects (BMO, SMO, CMO) <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BMO (Basic Multimedia Object)</strong></td>
+<td>The <strong>long data string</strong> of an SMO. <strong>SG:BMO</strong> (segmented): <strong>definite length</strong> (single image, screen or text record). <strong>ST:BMO</strong> (streamed): <strong>a priori undetermined duration</strong> (real-time voice or video)</td>
+</tr>
+<tr>
+<td><strong>SMO (Simple Multimedia Object)</strong></td>
+<td>A BMO with <strong>two headers</strong></td>
+</tr>
+<tr>
+<td><strong>CMO (Compound Multimedia Object)</strong></td>
+<td>A combination of SMOs with <strong>two headers</strong>: <strong>orchestration header</strong> (temporal relations; the SMOs are individually synchronized <strong>and jointly orchestrated</strong>) and <strong>concatenation header</strong> (<strong>logical and spatial</strong> relations)</td>
+</tr>
+</tbody>
+</table><p>Example: an <strong>image</strong>, a <strong>voice annotation</strong> and a <strong>pointer movement</strong> annotating the voice form one CMO.</p><p>A CMO can be created and managed by <strong>N users at multiple locations</strong>. The system must allow users to <strong>create</strong> SMOs and CMOs, <strong>share, store or modify</strong> a CMO, <strong>preserve temporal, logical and spatial relations</strong> at all users at all times, <strong>define, manage and monitor</strong> the activity, and <strong>monitor and restore services</strong> after failure or degradation.</p><aside class="notes">Source note: <a href="../../unit-11/object-oriented/">Object-Oriented Approaches</a></aside></section><section class=""><h2><small>Object-Oriented Approaches</small>Simple and compound multimedia objects (BMO, SMO, CMO) <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout exam"><div class="ct">Exam tip</div>
+<p>Short answers: class/object/inheritance/polymorphism with the Circle and Mammal examples; BMO/SMO/CMO with the two CMO headers. Long answer: the multimedia class approaches, one paragraph each.</p>
+</div><aside class="notes">Source note: <a href="../../unit-11/object-oriented/">Object-Oriented Approaches</a></aside></section><section class="dense"><h2><small>Object-Oriented Approaches</small>Checkpoint <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">What are the two headers of a CMO?</p><div class="fragment ans">
+<p>The orchestration header (temporal relations) and the concatenation header (logical and spatial relations).</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Give an example of polymorphism.</p><div class="fragment ans">
+<p>findArea() in Circle and Square: same name, different calculation.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-11/object-oriented/">Object-Oriented Approaches</a></aside></section><section class=""><h2><small>Object-Oriented Approaches</small>Checkpoint <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Difference between SG:BMO and ST:BMO?</p><div class="fragment ans">
+<p>SG:BMO has a definite length (single image); ST:BMO has an undetermined duration (live voice or video).</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-11/object-oriented/">Object-Oriented Approaches</a></aside></section><section><h2><small>Object-Oriented Approaches</small>Key terms</h2><div class="terms"><div class="card term"><b>Class</b><span>Blueprint of an object.</span></div><div class="card term"><b>Object</b><span>An instance of a class.</span></div><div class="card term"><b>Inheritance</b><span>A class gets features from a parent class.</span></div><div class="card term"><b>BMO</b><span>Basic Media Object.</span></div><div class="card term"><b>SMO / CMO</b><span>Simple / Compound Multimedia Object.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section></section>
+<section data-topic="Exam recap"><section><h2><small>Revision</small>Exam focus recap (1/1)</h2><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div></section></section>
+<section data-topic="Sources"><section><h2><small>Go deeper</small>Sources and further reading</h2><ul class="small"><li>Steinmetz and Nahrstedt, <em>Multimedia Systems</em>, chapter on abstractions for programming.</li><li>C. A. R. Hoare, <em>Communicating Sequential Processes</em>, Prentice Hall (background to OCCAM).</li><li>Vendor documentation of multimedia toolkits and media frameworks.</li></ul><div class="callout"><div class="ct">About the figures</div><p>Charts and diagrams in this deck were drawn for this course from standard formulas, specifications and textbook knowledge. They are original drawings, not copies of figures from any publication.</p></div></section></section>
+<section data-topic="Quick check"><section><div class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></div></section><section><h2><small>Quick check 1 / 4</small>15. The simplest abstraction level is the</h2><ul class="opts"><li>A. Library</li><li>B. Toolkit</li><li>C. Object-oriented</li><li>D. HLL</li></ul><div class="fragment ans"><strong>Answer: A.</strong></div></section><section><h2><small>Quick check 2 / 4</small>16. A cow 'is a' mammal shows</h2><ul class="opts"><li>A. Polymorphism</li><li>B. Inheritance</li><li>C. Instantiation</li><li>D. Encapsulation only</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 3 / 4</small>17. The orchestration header of a CMO describes</h2><ul class="opts"><li>A. Spatial relations</li><li>B. Temporal relations</li><li>C. Colour</li><li>D. Compression</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 4 / 4</small>18. In Windows, the interface for continuous media streams is</h2><ul class="opts"><li>A. MCI</li><li>B. SMIL</li><li>C. DTD</li><li>D. MHEG</li></ul><div class="fragment ans"><strong>Answer: A.</strong></div></section></section>
+<section><div class="title-slide"><div class="kick">End of Unit 11</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></div></section>
+</div></div>
+<script>window.__t=setTimeout(function(){if(!window.Reveal){var m=document.getElementById("loaderr");if(m)m.style.display="block";}},5000);</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js" onerror="document.getElementById('loaderr').style.display='block'"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/zoom.js"></script>
+<script>
+var plugins=[];['RevealNotes','RevealSearch','RevealZoom'].forEach(function(n){if(window[n])plugins.push(window[n]);});
+Reveal.initialize({width:1280,height:720,margin:.04,hash:true,slideNumber:'c/t',progress:true,controls:true,controlsTutorial:false,
+  transition:'slide',backgroundTransition:'fade',autoAnimateDuration:.5,fragments:true,center:false,plugins:plugins});
+function hud(){var s=Reveal.getCurrentSlide();var t=s&&s.parentNode&&s.parentNode.getAttribute&&s.parentNode.getAttribute('data-topic');
+  var h=document.getElementById('hud');h.textContent='Unit 11'+(t?' · '+t:'');}
+Reveal.on('ready',hud);Reveal.on('slidechanged',hud);
+</script>
+</body>
+</html>

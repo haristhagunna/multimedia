@@ -1,0 +1,991 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://unpkg.com; img-src 'self' data: blob:; connect-src 'self' https://api.github.com; worker-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="author" content="Er. Harish Thagunna">
+<title>Unit 9: Documents, Hypertext and MHEG - Class slides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<style>
+:root{--g:linear-gradient(120deg,#818cf8,#c084fc 55%,#f472b6);--card:rgba(255,255,255,.055);--line:rgba(255,255,255,.12);--mut:#aab0d6;--ac:#a5b4fc}
+html,body{background:#080a14}
+.reveal-viewport{background:radial-gradient(55% 70% at 12% 8%,rgba(99,102,241,.35),transparent 65%),radial-gradient(50% 65% at 92% 95%,rgba(236,72,153,.26),transparent 65%),radial-gradient(40% 50% at 85% 10%,rgba(6,182,212,.14),transparent 70%),#080a14}
+.reveal{font-family:Inter,system-ui,sans-serif;font-size:27px;color:#e8eaff;font-weight:400}
+.reveal .slides section{text-align:left;height:100%}
+.reveal h1,.reveal h2,.reveal h3{font-family:Inter,system-ui,sans-serif;text-transform:none;letter-spacing:-.025em;font-weight:800;margin:0 0 .45em}
+.reveal h2{font-size:1.5em;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.15}
+.reveal h2 small{display:block;font-size:.42em;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);-webkit-text-fill-color:var(--mut);font-weight:700;margin-bottom:.35em}
+.reveal h3{font-size:1.05em;color:#fff}
+.reveal h4{font-size:.9em;color:var(--ac);margin:.6em 0 .2em}
+.reveal p{margin:.35em 0;line-height:1.45}
+.reveal ul,.reveal ol{display:block;margin:.3em 0 .3em 1.1em;width:calc(100% - 1.1em)}
+.reveal li{margin:.3em 0;line-height:1.38}
+.reveal ul li::marker{color:#c084fc}.reveal ol li::marker{color:#818cf8;font-weight:700}
+.reveal strong{color:#fff;font-weight:700}.reveal em{color:#d9dcff}
+.reveal a{color:var(--ac)}
+.reveal code{font-family:'JetBrains Mono',monospace;font-size:.85em;background:rgba(129,140,248,.16);border-radius:6px;padding:.06em .35em;color:#e0e4ff}
+.reveal pre{width:100%;box-shadow:none;font-size:.62em;margin:.5em 0}
+.reveal pre code{display:block;padding:.8em 1em;border-radius:12px;background:rgba(0,0,0,.4);border:1px solid var(--line);max-height:none}
+.reveal mark{background:linear-gradient(transparent 55%,rgba(244,114,182,.4) 55%);color:inherit}
+.reveal table{margin:.5em 0;border-collapse:separate;border-spacing:0;font-size:.66em;width:100%;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.reveal th{background:rgba(129,140,248,.2);font-weight:700;color:#fff;text-align:left;padding:.5em .8em}
+.reveal td{padding:.42em .8em;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.reveal tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+.dense{font-size:.86em}.xdense{font-size:.74em}
+.callout{border:1px solid var(--line);border-left:5px solid #818cf8;border-radius:12px;background:var(--card);padding:.55em 1em;margin:.7em 0;font-size:.88em}
+.callout .ct{font-size:.68em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.15em;color:#a5b4fc}
+.callout p,.callout li{margin:.2em 0}.callout>*:last-child{margin-bottom:0}
+.callout.exam{border-left-color:#fb923c;background:rgba(251,146,60,.09)}.callout.exam .ct{color:#fdba74}
+.callout.warn{border-left-color:#f87171;background:rgba(248,113,113,.09)}.callout.warn .ct{color:#fca5a5}
+.callout.tip{border-left-color:#34d399;background:rgba(52,211,153,.09)}.callout.tip .ct{color:#6ee7b7}
+.callout.ex{border-left-color:#c084fc;background:rgba(192,132,252,.09)}.callout.ex .ct{color:#d8b4fe}
+aside.notes{display:none}
+.callout.split .sp{display:grid;grid-template-columns:1fr 1.1fr;gap:1em;align-items:center}
+.callout.split .diagram svg{max-height:430px}
+.callout.split.long{font-size:.72em;margin-top:.2em}.callout.split.long .diagram svg{max-height:420px}
+.diagram{text-align:center;margin:.4em 0}.diagram svg{max-width:100%;height:auto;max-height:470px;width:auto}
+.diagram.tall svg{max-height:540px}
+.diagram .cap,.cap{font-size:.55em;color:var(--mut);margin-top:.3em;text-align:center}
+.vis{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:.5em;text-align:center}
+.vis svg{max-width:100%;height:auto;max-height:480px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1em;align-items:start}
+.two>*{min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6em .9em}
+.q{font-weight:700;color:#fff}
+.chk{border:1px solid rgba(192,132,252,.5);border-radius:14px;padding:.7em 1em;background:rgba(192,132,252,.08);margin:.5em 0}
+.chk .lab{font-size:.55em;letter-spacing:.14em;font-weight:800;color:#d8b4fe;text-transform:uppercase}
+.opts{list-style:none;margin:.4em 0!important;padding:0;display:grid;gap:.35em}
+.opts li{margin:0;padding:.4em .8em;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.ans{margin-top:.6em;padding:.5em .9em;border-radius:10px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.5)}
+.trio{display:grid;grid-template-columns:1fr;gap:.6em}.trio .card{padding:.55em 1em}.trio .card .ct{font-size:.55em;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.1em}.trio .card p{margin:.1em 0;font-size:.95em}
+.trio .c1{border-left:5px solid #818cf8}.trio .c1 .ct{color:#a5b4fc}.trio .c2{border-left:5px solid #34d399}.trio .c2 .ct{color:#6ee7b7}.trio .c3{border-left:5px solid #fb923c}.trio .c3 .ct{color:#fdba74}
+.terms{display:grid;grid-template-columns:1fr 1fr;gap:.55em}.card.term{display:flex;flex-direction:column;gap:.1em;padding:.45em .85em}.card.term b{color:#c4b5fd;font-size:.95em}.card.term span{font-size:.74em;line-height:1.35;color:#dfe2ff}
+.agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:.55em}
+.agenda .card{display:flex;gap:.7em;align-items:center;font-size:.85em;font-weight:600}
+.agenda .n{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:800;font-size:.85em;color:#fff}
+.title-slide{display:flex;flex-direction:column;justify-content:center;height:100%}
+.title-slide .kick{font-size:.62em;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);font-weight:700;margin-bottom:1em}
+.title-slide h1{font-size:2.9em;line-height:1.02;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:.25em}
+.title-slide .by{font-size:.8em;color:var(--mut);margin-top:1.2em}
+.chips{display:flex;gap:.6em;flex-wrap:wrap;margin-top:1.2em}
+.chips span{font-size:.55em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.35em .9em;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.sec{display:flex;flex-direction:column;justify-content:center;height:100%}
+.sec .no{font-size:5em;font-weight:900;line-height:1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+.sec h2{font-size:2.1em}
+.sec .lead{color:var(--mut);font-size:.85em;max-width:80%}
+#hud{position:fixed;left:18px;top:12px;z-index:30;font:700 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8e94c4;pointer-events:none}
+.copyright-foot{position:fixed;left:0;right:0;bottom:8px;text-align:center;font:600 11px Inter,system-ui,sans-serif;color:#7f86b8;z-index:30;pointer-events:none}
+.reveal .progress{height:4px;color:#c084fc}
+.reveal .controls{color:#a5b4fc}
+.reveal .slide-number{background:transparent;color:#8e94c4;font-size:12px;font-weight:700;right:14px;bottom:8px}
+.reveal .fragment.highlight-current-blue.current-fragment{color:#a5b4fc}
+.reveal .katex{font-size:1.05em}.mathx.blk{display:block;text-align:center;margin:.4em 0}.reveal .arithmatex{color:#fff}
+.reveal .arithmatex.block,.reveal div.arithmatex{margin:.5em 0;text-align:center}
+@media print{#hud,.copyright-foot{display:none}}
+</style>
+</head>
+<body>
+<div id="hud"></div>
+<div id="loaderr" style="display:none;position:fixed;inset:0;z-index:99;padding:12vh 8vw;background:#080a14;color:#e8eaff;font:600 20px Inter,system-ui,sans-serif">The slide engine could not be loaded.<br><br><span style="font-weight:400;color:#aab0d6">These slides need an internet connection to load reveal.js from cdn.jsdelivr.net. Check your connection or any ad-blocker / firewall, then reload.</span></div>
+<div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved. &middot; Press <b>?</b> for shortcuts, <b>Esc</b> for overview</div>
+<div class="reveal"><div class="slides">
+<section><div class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 9<br>Documents, Hypertext and MHEG</h1><p style="max-width:75%;color:#aab0d6">Hypermedia, the Dexter model, SGML, ODA and MHEG.</p><div class="chips"><span>4 teaching hours</span><span>4 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></div></section>
+<section><h2><small>Roadmap</small>What we will cover</h2><div class="agenda"><div class="card"><span class="n">1</span>Multimedia Documents</div><div class="card"><span class="n">2</span>Hypertext and Hypermedia</div><div class="card"><span class="n">3</span>Hypermedia Systems</div><div class="card"><span class="n">4</span>SGML, ODA and MHEG</div></div></section>
+<section data-topic="Multimedia Documents"><section><div class="sec"><div class="no">01</div><h2>Multimedia Documents</h2><div class="lead">Unit 9 &middot; topic 1 of 4</div></div></section><section><h2><small>Multimedia Documents</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>A multimedia document is more than data: it has content, a logical structure (chapters, sections) and a layout (how it is shown).</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A web page: the text is the content, headings define the structure and CSS defines the layout.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Content, structure, layout: keep them separate for flexibility.</p></div></div><aside class="notes"><p><b>Say:</b> A multimedia document is more than data: it has content, a logical structure (chapters, sections) and a layout (how it is shown).</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: A web page: the text is the content, headings define the structure and CSS defines the layout.)</p><p><b>Board:</b> write the memory hook: Content, structure, layout: keep them separate for flexibility.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>Multimedia Documents</small>What is a document?</h2><p>A <strong>document</strong> is a <strong>structured</strong> collection of information intended for presentation to a reader. A <strong>multimedia document</strong> combines <strong>discrete media</strong> (text, graphics, images) and <strong>continuous media</strong> (audio, video, animation) with <strong>temporal, spatial and logical relations</strong> among them.</p><aside class="notes">Source note: <a href="../../unit-09/documents/">Multimedia Documents</a></aside></section><section class="dense"><h2><small>Multimedia Documents</small>Document architecture</h2><p>A <strong>document architecture</strong> defines how the document is <strong>structured and represented</strong> so that it can be created, edited, exchanged and presented on different systems. It separates three things:</p><table>
+<thead>
+<tr>
+<th>Structure</th>
+<th>Describes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Logical structure</strong></td>
+<td>The <strong>meaning-based organisation</strong>: chapters, sections, paragraphs, figures, captions</td>
+</tr>
+<tr>
+<td><strong>Layout structure</strong></td>
+<td>The <strong>presentation</strong>: pages, columns, fonts, positions on the output device</td>
+</tr>
+<tr>
+<td><strong>Content</strong></td>
+<td>The data itself: character text, raster or geometric graphics, audio, video</td>
+</tr>
+</tbody>
+</table><p>A multimedia architecture adds the <strong>temporal structure</strong> (when each object is presented) and <strong>hyperlinks</strong> (see <a href="hypertext.md">Hypertext</a>).</p><aside class="notes">Source note: <a href="../../unit-09/documents/">Multimedia Documents</a></aside></section><section class=""><h2><small>Document architecture</small>Forms of a document</h2><ul>
+<li class="fragment fade-up"><strong>Formatted form:</strong> ready to present; cannot be edited easily (like a printout).</li>
+<li class="fragment fade-up"><strong>Processable form:</strong> carries the logical structure, so it can be edited and reformatted.</li>
+<li class="fragment fade-up"><strong>Formatted processable form:</strong> both.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-09/documents/">Multimedia Documents</a></aside></section><section class="dense"><h2><small>Multimedia Documents</small>Manipulation of multimedia data <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>Operations on multimedia documents:</p><ol>
+<li class="fragment fade-up"><strong>Creation and capture</strong> of media objects (scanning, recording).</li>
+<li class="fragment fade-up"><strong>Editing</strong>: cut, copy, paste, rearrange; edit the structure.</li>
+<li class="fragment fade-up"><strong>Integration</strong>: combine media (<strong>authoring tools</strong>); specify layout, time and interaction.</li>
+<li class="fragment fade-up"><strong>Storage and retrieval</strong>: databases, indexing and search of text, image, audio and video.</li>
+<li class="fragment fade-up"><strong>Transformation and conversion</strong>: change format and resolution; compress.</li>
+<li class="fragment fade-up"><strong>Presentation and interchange</strong>: formatting, play-out, and transfer between systems using a <strong>standard</strong> (SGML, ODA, MHEG).</li>
+</ol><aside class="notes">Source note: <a href="../../unit-09/documents/">Multimedia Documents</a></aside></section><section class=""><h2><small>Multimedia Documents</small>Manipulation of multimedia data <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout exam"><div class="ct">Exam tip</div>
+<p>"Why are document architectures needed?" Answer: interchange between different systems and editors, separate logical content from layout, reuse, and consistent presentation.</p>
+</div><aside class="notes">Source note: <a href="../../unit-09/documents/">Multimedia Documents</a></aside></section><section class=""><h2><small>Multimedia Documents</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Differentiate logical and layout structure.</p><div class="fragment ans">
+<p>Logical: meaning (chapter, paragraph). Layout: appearance (page, font, position).</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Which form of a document can be re-edited?</p><div class="fragment ans">
+<p>The processable form.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-09/documents/">Multimedia Documents</a></aside></section><section><h2><small>Multimedia Documents</small>Key terms</h2><div class="terms"><div class="card term"><b>Document</b><span>Structured collection of information, shown to a reader.</span></div><div class="card term"><b>Logical structure</b><span>Organisation into chapters, sections, paragraphs.</span></div><div class="card term"><b>Layout structure</b><span>How content is placed on the page or screen.</span></div><div class="card term"><b>Content</b><span>The actual text, images, audio.</span></div><div class="card term"><b>Document architecture</b><span>Model describing how a document is built.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section></section>
+<section data-topic="Hypertext and Hypermedia"><section><div class="sec"><div class="no">02</div><h2>Hypertext and Hypermedia</h2><div class="lead">Unit 9 &middot; topic 2 of 4</div></div></section><section><h2><small>Hypertext and Hypermedia</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Hypertext connects pieces of information with links, and the reader chooses the path. Hypermedia does the same with all media.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Wikipedia: every blue word leads to another article.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Hypertext = nodes + links + anchors. The Dexter model describes the layers.</p></div></div><aside class="notes"><p><b>Say:</b> Hypertext connects pieces of information with links, and the reader chooses the path. Hypermedia does the same with all media.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: Wikipedia: every blue word leads to another article.)</p><p><b>Board:</b> write the memory hook: Hypertext = nodes + links + anchors. The Dexter model describes the layers.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class="dense"><h2><small>Hypertext and Hypermedia</small>Hypertext</h2><p><strong>Hypertext</strong> is <strong>text organised as a network of linked nodes</strong> that the reader can follow in a <strong>non-linear</strong> order, in contrast with ordinary text that is read from start to end.</p><ul>
+<li>Idea: <strong>Vannevar Bush</strong>'s <strong>Memex</strong> (1945), a machine to link and follow associative trails.</li>
+<li>The word <strong>hypertext</strong> was coined by <strong>Ted Nelson</strong> (1965). <strong>Xanadu</strong> was his project; <strong>HyperCard</strong> (1987) and the <strong>World Wide Web</strong> (1989–91, Berners-Lee) made it popular.</li>
+</ul><h3>Hypermedia</h3><p><strong>Hypermedia</strong> extends hypertext so that the nodes may contain <strong>any media</strong> (graphics, audio, video), not only text.</p><aside class="notes">Source note: <a href="../../unit-09/hypertext/">Hypertext and Hypermedia</a></aside></section><section class=""><h2><small>Hypertext and Hypermedia</small>Multimedia <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p><strong>Multimedia</strong> is the <strong>integrated presentation of several media</strong>; it does not by itself require non-linear navigation.</p><table>
+<thead>
+<tr>
+<th></th>
+<th>Multimedia</th>
+<th>Hypertext</th>
+<th>Hypermedia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Media</td>
+<td>Several</td>
+<td><strong>Text only</strong></td>
+<td><strong>Several</strong></td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>Often linear or time based</td>
+<td><strong>Linked network</strong></td>
+<td><strong>Linked network</strong></td>
+</tr>
+<tr>
+<td>Navigation</td>
+<td>May be sequential</td>
+<td><strong>Non-linear, by links</strong></td>
+<td><strong>Non-linear, by links</strong></td>
+</tr>
+<tr>
+<td>Example</td>
+<td>A film, a slide show</td>
+<td>A help system of text pages</td>
+<td>The Web with images and video</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-09/hypertext/">Hypertext and Hypermedia</a></aside></section><section class="dense"><h2><small>Hypertext and Hypermedia</small>Multimedia <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mmc28fa89dc363" role="graphics-document document" viewbox="0 0 489.90625 234" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mmc28fa89dc363{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmc28fa89dc363 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmc28fa89dc363 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmc28fa89dc363 .error-icon{fill:#1c2150;}#mmc28fa89dc363 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mmc28fa89dc363 .edge-thickness-normal{stroke-width:1px;}#mmc28fa89dc363 .edge-thickness-thick{stroke-width:3.5px;}#mmc28fa89dc363 .edge-pattern-solid{stroke-dasharray:0;}#mmc28fa89dc363 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmc28fa89dc363 .edge-pattern-dashed{stroke-dasharray:3;}#mmc28fa89dc363 .edge-pattern-dotted{stroke-dasharray:2;}#mmc28fa89dc363 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mmc28fa89dc363 .marker.cross{stroke:#a5b4fc;}#mmc28fa89dc363 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mmc28fa89dc363 p{margin:0;}#mmc28fa89dc363 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mmc28fa89dc363 .cluster-label text{fill:#e3deaf;}#mmc28fa89dc363 .cluster-label span{color:#e3deaf;}#mmc28fa89dc363 .cluster-label span p{background-color:transparent;}#mmc28fa89dc363 .label text,#mmc28fa89dc363 span{fill:#f4f4ff;color:#f4f4ff;}#mmc28fa89dc363 .node rect,#mmc28fa89dc363 .node circle,#mmc28fa89dc363 .node ellipse,#mmc28fa89dc363 .node polygon,#mmc28fa89dc363 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mmc28fa89dc363 .rough-node .label text,#mmc28fa89dc363 .node .label text,#mmc28fa89dc363 .image-shape .label,#mmc28fa89dc363 .icon-shape .label{text-anchor:middle;}#mmc28fa89dc363 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmc28fa89dc363 .rough-node .label,#mmc28fa89dc363 .node .label,#mmc28fa89dc363 .image-shape .label,#mmc28fa89dc363 .icon-shape .label{text-align:center;}#mmc28fa89dc363 .node.clickable{cursor:pointer;}#mmc28fa89dc363 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mmc28fa89dc363 .arrowheadPath{fill:#0b0b0b;}#mmc28fa89dc363 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mmc28fa89dc363 .flowchart-link{stroke:#a5b4fc;fill:none;}#mmc28fa89dc363 .edgeLabel{background-color:#12152b;text-align:center;}#mmc28fa89dc363 .edgeLabel p{background-color:#12152b;}#mmc28fa89dc363 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmc28fa89dc363 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mmc28fa89dc363 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mmc28fa89dc363 .cluster text{fill:#e3deaf;}#mmc28fa89dc363 .cluster span{color:#e3deaf;}#mmc28fa89dc363 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mmc28fa89dc363 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mmc28fa89dc363 rect.text{fill:none;stroke-width:0;}#mmc28fa89dc363 .icon-shape,#mmc28fa89dc363 .image-shape{background-color:#12152b;text-align:center;}#mmc28fa89dc363 .icon-shape p,#mmc28fa89dc363 .image-shape p{background-color:#12152b;padding:2px;}#mmc28fa89dc363 .icon-shape .label rect,#mmc28fa89dc363 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mmc28fa89dc363 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmc28fa89dc363 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmc28fa89dc363 .node .neo-node{stroke:#818cf8;}#mmc28fa89dc363 [data-look="neo"].node rect,#mmc28fa89dc363 [data-look="neo"].cluster rect,#mmc28fa89dc363 [data-look="neo"].node polygon{stroke:url(#mmc28fa89dc363-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc28fa89dc363 [data-look="neo"].swimlane.cluster rect{filter:none;}#mmc28fa89dc363 [data-look="neo"].node path{stroke:url(#mmc28fa89dc363-gradient);stroke-width:1px;}#mmc28fa89dc363 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc28fa89dc363 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mmc28fa89dc363 [data-look="neo"].node circle{stroke:url(#mmc28fa89dc363-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc28fa89dc363 [data-look="neo"].node circle .state-start{fill:#000000;}#mmc28fa89dc363 [data-look="neo"].icon-shape .icon{fill:url(#mmc28fa89dc363-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc28fa89dc363 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mmc28fa89dc363-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mmc28fa89dc363 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mmc28fa89dc363_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc28fa89dc363_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc28fa89dc363_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mmc28fa89dc363_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mmc28fa89dc363_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc28fa89dc363_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc28fa89dc363_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mmc28fa89dc363_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mmc28fa89dc363_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmc28fa89dc363_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mmc28fa89dc363_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mmc28fa89dc363_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M268,50L272.167,50C276.333,50,284.667,50,298.511,56.063C312.356,62.125,331.712,74.251,341.39,80.314L351.068,86.376" data-edge="true" data-et="edge" data-id="L_M_H_0" data-look="classic" data-points="W3sieCI6MjY4LCJ5Ijo1MH0seyJ4IjoyOTMsInkiOjUwfSx7IngiOjM1NC40NTgxMzg5OTI1MzczMywieSI6ODguNX1d" id="mmc28fa89dc363-L_M_H_0" marker-end="url(#mmc28fa89dc363_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M268,184L272.167,184C276.333,184,284.667,184,298.511,177.937C312.356,171.875,331.712,159.749,341.39,153.686L351.068,147.624" data-edge="true" data-et="edge" data-id="L_T_H_0" data-look="classic" data-points="W3sieCI6MjY4LCJ5IjoxODR9LHsieCI6MjkzLCJ5IjoxODR9LHsieCI6MzU0LjQ1ODEzODk5MjUzNzMzLCJ5IjoxNDUuNX1d" id="mmc28fa89dc363-L_T_H_0" marker-end="url(#mmc28fa89dc363_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_M_H_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_T_H_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mmc28fa89dc363-flowchart-M-0" transform="translate(138, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Multimedia: many media</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc28fa89dc363-flowchart-H-1" transform="translate(399.953125, 117)"><rect class="basic label-container" height="57" style="" width="163.90625" x="-81.953125" y="-28.5"></rect><g class="label" style="" transform="translate(-51.953125, -13.5)"><rect></rect><foreignobject height="27" width="103.90625"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Hypermedia</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mmc28fa89dc363-flowchart-T-2" transform="translate(138, 184)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Hypertext: links between text nodes</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mmc28fa89dc363-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mmc28fa89dc363-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mmc28fa89dc363-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><div class="callout"><div class="ct">Hypermedia = hypertext + multimedia</div>
+<p>Hypermedia is the <strong>union</strong>: the <strong>links</strong> of hypertext with the <strong>media</strong> of multimedia.</p>
+</div><aside class="notes">Source note: <a href="../../unit-09/hypertext/">Hypertext and Hypermedia</a></aside></section><section class=""><h2><small>Hypertext and Hypermedia</small>Advantages and problems</h2><ul>
+<li class="fragment fade-up"><strong>Advantages:</strong> flexible access, associative browsing, user control, rich presentation.</li>
+<li class="fragment fade-up"><strong>Problems:</strong> <strong>disorientation ("lost in hyperspace")</strong>, <strong>cognitive overhead</strong> (too many choices), difficulty keeping a sense of the whole.</li>
+<li class="fragment fade-up"><strong>Remedies:</strong> <strong>overview maps</strong>, <strong>history</strong> and back button, <strong>bookmarks</strong>, <strong>guided tours</strong>, clear link labels.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-09/hypertext/">Hypertext and Hypermedia</a></aside></section><section class=""><h2><small>Hypertext and Hypermedia</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Differentiate hypertext and hypermedia.</p><div class="fragment ans">
+<p>Hypertext links text nodes only; hypermedia links nodes of any media.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Name two navigation aids.</p><div class="fragment ans">
+<p>Overview maps, history/back, bookmarks, guided tours.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-09/hypertext/">Hypertext and Hypermedia</a></aside></section><section><h2><small>Hypertext and Hypermedia</small>Key terms</h2><div class="terms"><div class="card term"><b>Node</b><span>A unit of information.</span></div><div class="card term"><b>Link</b><span>A connection between nodes or anchors.</span></div><div class="card term"><b>Anchor</b><span>The active spot inside a node where a link starts or ends.</span></div><div class="card term"><b>Hypermedia</b><span>Hypertext with audio, video and images.</span></div><div class="card term"><b>Dexter model</b><span>Reference model for hypertext systems.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section><section><h2><small>Hypertext and Hypermedia</small>Nodes, anchors and links</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 731.52 328.32" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-12T07:41:45.096592</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 328.32 
+L 731.52 328.32 
+L 731.52 0 
+L 0 0 
+L 0 328.32 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 71.76 116.64 
+L 179.76 116.64 
+L 179.76 46.944 
+L 71.76 46.944 
+z
+" clip-path="url(#pc279998b76)" style="fill: #27306b; stroke: #818cf8; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 311.76 91.296 
+L 419.76 91.296 
+L 419.76 21.6 
+L 311.76 21.6 
+z
+" clip-path="url(#pc279998b76)" style="fill: #27306b; stroke: #818cf8; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 551.76 129.312 
+L 659.76 129.312 
+L 659.76 59.616 
+L 551.76 59.616 
+z
+" clip-path="url(#pc279998b76)" style="fill: #27306b; stroke: #818cf8; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 161.76 275.04 
+L 269.76 275.04 
+L 269.76 205.344 
+L 161.76 205.344 
+z
+" clip-path="url(#pc279998b76)" style="fill: #27306b; stroke: #818cf8; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 431.76 256.032 
+L 539.76 256.032 
+L 539.76 186.336 
+L 431.76 186.336 
+z
+" clip-path="url(#pc279998b76)" style="fill: #27306b; stroke: #818cf8; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 188.227148 75.195469 
+Q 245.758725 69.120135 301.511339 63.232659 
+" clip-path="url(#pc279998b76)" style="fill: none; stroke: #c084fc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 295.648259 61.036231 
+L 301.511339 63.232659 
+L 296.236349 66.605266 
+z
+" clip-path="url(#pc279998b76)" style="fill: #c084fc; stroke: #c084fc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 428.212617 66.340495 
+Q 485.758481 75.455759 541.537519 84.291159 
+" clip-path="url(#pc279998b76)" style="fill: none; stroke: #c084fc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 536.444536 80.649521 
+L 541.537519 84.291159 
+L 535.568419 86.180563 
+z
+" clip-path="url(#pc279998b76)" style="fill: #c084fc; stroke: #c084fc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 148.923684 122.560084 
+Q 170.759782 160.991616 191.712169 197.867817 
+" clip-path="url(#pc279998b76)" style="fill: none; stroke: #c084fc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 191.380194 191.615634 
+L 191.712169 197.867817 
+L 186.511238 194.382087 
+z
+" clip-path="url(#pc279998b76)" style="fill: #c084fc; stroke: #c084fc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 395.368064 97.09395 
+Q 425.759631 138.815493 455.097942 179.091126 
+" clip-path="url(#pc279998b76)" style="fill: none; stroke: #c084fc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 454.063936 172.91611 
+L 455.097942 179.091126 
+L 449.537525 176.213321 
+z
+" clip-path="url(#pc279998b76)" style="fill: #c084fc; stroke: #c084fc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 278.236721 235.793639 
+Q 350.759913 230.688006 421.498667 225.707998 
+" clip-path="url(#pc279998b76)" style="fill: none; stroke: #c084fc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 415.71586 223.308177 
+L 421.498667 225.707998 
+L 416.109126 228.894352 
+z
+" clip-path="url(#pc279998b76)" style="fill: #c084fc; stroke: #c084fc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_1">
+    <defs>
+     <path id="ma569e109ea" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #f472b6"/>
+    </defs>
+    <g clip-path="url(#pc279998b76)">
+     <use xlink:href="#ma569e109ea" x="149.76" y="100.8" style="fill: #f472b6; stroke: #f472b6"/>
+    </g>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="125.76" y="72.288" transform="rotate(-0 125.76 72.288)">Node A</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 8px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="125.76" y="97.632" transform="rotate(-0 125.76 97.632)">text / image / audio</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="365.76" y="46.944" transform="rotate(-0 365.76 46.944)">Node B</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 8px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="365.76" y="72.288" transform="rotate(-0 365.76 72.288)">text / image / audio</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="605.76" y="84.96" transform="rotate(-0 605.76 84.96)">Node C</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="605.76" y="110.304" transform="rotate(-0 605.76 110.304)">text / image / audio</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="215.76" y="230.688" transform="rotate(-0 215.76 230.688)">Node D</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 8px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="215.76" y="256.032" transform="rotate(-0 215.76 256.032)">text / image / audio</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="485.76" y="211.68" transform="rotate(-0 485.76 211.68)">Node E</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 8px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="485.76" y="237.024" transform="rotate(-0 485.76 237.024)">text / image / audio</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="17.76" y="24.768" transform="rotate(-0 17.76 24.768)">Hypertext/hypermedia = nodes + links + anchors</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #9aa0cc" x="17.76" y="303.552" transform="rotate(-0 17.76 303.552)">Pink dot = anchor (the active spot inside a node). Following a link moves you to another node, so reading order is chosen by the reader.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pc279998b76">
+   <rect x="5.76" y="5.76" width="720" height="316.8"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap"></div></section></section>
+<section data-topic="Hypermedia Systems"><section><div class="sec"><div class="no">03</div><h2>Hypermedia Systems</h2><div class="lead">Unit 9 &middot; topic 3 of 4</div></div></section><section><h2><small>Hypermedia Systems</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Hypermedia systems grew from an early idea in 1945 to the World Wide Web, which made linked multimedia available to everyone.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>From Vannevar Bush's imagined Memex to the browser you use today.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Remember the line: Memex (1945), hypertext term (1965), Web (1989 to 1991).</p></div></div><aside class="notes"><p><b>Say:</b> Hypermedia systems grew from an early idea in 1945 to the World Wide Web, which made linked multimedia available to everyone.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: From Vannevar Bush's imagined Memex to the browser you use today.)</p><p><b>Board:</b> write the memory hook: Remember the line: Memex (1945), hypertext term (1965), Web (1989 to 1991).</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>Hypermedia Systems</small>Nodes</h2><p>A <strong>node</strong> (also card, page, frame) is a unit of information: text, image, audio, video, or a <strong>composite</strong> node containing other nodes. Good practice: one node per <strong>single idea</strong>, so it can be linked in several contexts.</p><aside class="notes">Source note: <a href="../../unit-09/hypermedia-systems/">Hypermedia Systems</a></aside></section><section class="dense"><h2><small>Hypermedia Systems</small>Links (pointers)</h2><p>A <strong>link</strong> connects a <strong>source</strong> to a <strong>destination</strong>. The <strong>anchor</strong> is the active part inside a node (a word, a region of a picture, a time range of a video).</p><table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Options</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Direction</strong></td>
+<td>Unidirectional or bidirectional</td>
+</tr>
+<tr>
+<td><strong>Cardinality</strong></td>
+<td>One-to-one, one-to-many, many-to-many</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td><strong>Embedded</strong> in the node (as in HTML) or <strong>external</strong> (kept in a separate link base)</td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td>Navigational, reference, annotation, structural (part-of), temporal (for time-based media)</td>
+</tr>
+<tr>
+<td><strong>Activation</strong></td>
+<td>By the reader (click), automatic, or by time</td>
+</tr>
+</tbody>
+</table><p>A link may also be to a <strong>point</strong> or a <strong>range</strong> in the destination, and may trigger an <strong>action</strong> (play a clip).</p><aside class="notes">Source note: <a href="../../unit-09/hypermedia-systems/">Hypermedia Systems</a></aside></section><section class=""><h2><small>Hypermedia Systems</small>Architecture: the Dexter hypertext reference model <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>The <strong>Dexter model</strong> describes hypertext systems in three layers:</p><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm6150c05c1ea8" role="graphics-document document" viewbox="0 0 276 530" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm6150c05c1ea8{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm6150c05c1ea8 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm6150c05c1ea8 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm6150c05c1ea8 .error-icon{fill:#1c2150;}#mm6150c05c1ea8 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm6150c05c1ea8 .edge-thickness-normal{stroke-width:1px;}#mm6150c05c1ea8 .edge-thickness-thick{stroke-width:3.5px;}#mm6150c05c1ea8 .edge-pattern-solid{stroke-dasharray:0;}#mm6150c05c1ea8 .edge-thickness-invisible{stroke-width:0;fill:none;}#mm6150c05c1ea8 .edge-pattern-dashed{stroke-dasharray:3;}#mm6150c05c1ea8 .edge-pattern-dotted{stroke-dasharray:2;}#mm6150c05c1ea8 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm6150c05c1ea8 .marker.cross{stroke:#a5b4fc;}#mm6150c05c1ea8 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm6150c05c1ea8 p{margin:0;}#mm6150c05c1ea8 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm6150c05c1ea8 .cluster-label text{fill:#e3deaf;}#mm6150c05c1ea8 .cluster-label span{color:#e3deaf;}#mm6150c05c1ea8 .cluster-label span p{background-color:transparent;}#mm6150c05c1ea8 .label text,#mm6150c05c1ea8 span{fill:#f4f4ff;color:#f4f4ff;}#mm6150c05c1ea8 .node rect,#mm6150c05c1ea8 .node circle,#mm6150c05c1ea8 .node ellipse,#mm6150c05c1ea8 .node polygon,#mm6150c05c1ea8 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm6150c05c1ea8 .rough-node .label text,#mm6150c05c1ea8 .node .label text,#mm6150c05c1ea8 .image-shape .label,#mm6150c05c1ea8 .icon-shape .label{text-anchor:middle;}#mm6150c05c1ea8 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm6150c05c1ea8 .rough-node .label,#mm6150c05c1ea8 .node .label,#mm6150c05c1ea8 .image-shape .label,#mm6150c05c1ea8 .icon-shape .label{text-align:center;}#mm6150c05c1ea8 .node.clickable{cursor:pointer;}#mm6150c05c1ea8 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm6150c05c1ea8 .arrowheadPath{fill:#0b0b0b;}#mm6150c05c1ea8 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm6150c05c1ea8 .flowchart-link{stroke:#a5b4fc;fill:none;}#mm6150c05c1ea8 .edgeLabel{background-color:#12152b;text-align:center;}#mm6150c05c1ea8 .edgeLabel p{background-color:#12152b;}#mm6150c05c1ea8 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm6150c05c1ea8 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm6150c05c1ea8 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm6150c05c1ea8 .cluster text{fill:#e3deaf;}#mm6150c05c1ea8 .cluster span{color:#e3deaf;}#mm6150c05c1ea8 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm6150c05c1ea8 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm6150c05c1ea8 rect.text{fill:none;stroke-width:0;}#mm6150c05c1ea8 .icon-shape,#mm6150c05c1ea8 .image-shape{background-color:#12152b;text-align:center;}#mm6150c05c1ea8 .icon-shape p,#mm6150c05c1ea8 .image-shape p{background-color:#12152b;padding:2px;}#mm6150c05c1ea8 .icon-shape .label rect,#mm6150c05c1ea8 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm6150c05c1ea8 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm6150c05c1ea8 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm6150c05c1ea8 .node .neo-node{stroke:#818cf8;}#mm6150c05c1ea8 [data-look="neo"].node rect,#mm6150c05c1ea8 [data-look="neo"].cluster rect,#mm6150c05c1ea8 [data-look="neo"].node polygon{stroke:url(#mm6150c05c1ea8-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm6150c05c1ea8 [data-look="neo"].swimlane.cluster rect{filter:none;}#mm6150c05c1ea8 [data-look="neo"].node path{stroke:url(#mm6150c05c1ea8-gradient);stroke-width:1px;}#mm6150c05c1ea8 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm6150c05c1ea8 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm6150c05c1ea8 [data-look="neo"].node circle{stroke:url(#mm6150c05c1ea8-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm6150c05c1ea8 [data-look="neo"].node circle .state-start{fill:#000000;}#mm6150c05c1ea8 [data-look="neo"].icon-shape .icon{fill:url(#mm6150c05c1ea8-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm6150c05c1ea8 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm6150c05c1ea8-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm6150c05c1ea8 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm6150c05c1ea8_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm6150c05c1ea8_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm6150c05c1ea8_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm6150c05c1ea8_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm6150c05c1ea8_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm6150c05c1ea8_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm6150c05c1ea8_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm6150c05c1ea8_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm6150c05c1ea8_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm6150c05c1ea8_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm6150c05c1ea8_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm6150c05c1ea8_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,146L138,150.167C138,154.333,138,162.667,138,170.333C138,178,138,185,138,188.5L138,192" data-edge="true" data-et="edge" data-id="L_R_S_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5IjoxNDZ9LHsieCI6MTM4LCJ5IjoxNzF9LHsieCI6MTM4LCJ5IjoxOTZ9XQ==" id="mm6150c05c1ea8-L_R_S_0" marker-end="url(#mm6150c05c1ea8_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,307L138,311.167C138,315.333,138,323.667,138,331.333C138,339,138,346,138,349.5L138,353" data-edge="true" data-et="edge" data-id="L_S_W_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5IjozMDd9LHsieCI6MTM4LCJ5IjozMzJ9LHsieCI6MTM4LCJ5IjozNTd9XQ==" id="mm6150c05c1ea8-L_S_W_0" marker-end="url(#mm6150c05c1ea8_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_R_S_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_S_W_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm6150c05c1ea8-flowchart-R-0" transform="translate(138, 77)"><rect class="basic label-container" height="138" style="" width="260" x="-130" y="-69"></rect><g class="label" style="" transform="translate(-100, -54)"><rect></rect><foreignobject height="108" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Run-time layer: presentation of the hypertext; user interaction, sessions</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm6150c05c1ea8-flowchart-S-1" transform="translate(138, 251.5)"><rect class="basic label-container" height="111" style="" width="260" x="-130" y="-55.5"></rect><g class="label" style="" transform="translate(-100, -40.5)"><rect></rect><foreignobject height="81" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Storage layer: network of nodes and links (components)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm6150c05c1ea8-flowchart-W-3" transform="translate(138, 439.5)"><rect class="basic label-container" height="165" style="" width="260" x="-130" y="-82.5"></rect><g class="label" style="" transform="translate(-100, -67.5)"><rect></rect><foreignobject height="135" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Within-component layer: contents and structure inside a node (text, graphics, video)</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm6150c05c1ea8-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm6150c05c1ea8-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm6150c05c1ea8-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-09/hypermedia-systems/">Hypermedia Systems</a></aside></section><section class=""><h2><small>Hypermedia Systems</small>Architecture: the Dexter hypertext reference model <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Run-time layer</strong></td>
+<td>How the hypertext is <strong>presented</strong> and how users interact</td>
+</tr>
+<tr>
+<td><strong>Storage layer</strong></td>
+<td>The <strong>database of nodes (components) and links</strong> with their identifiers and anchoring</td>
+</tr>
+<tr>
+<td><strong>Within-component layer</strong></td>
+<td>The <strong>content and internal structure</strong> of each node, outside the model</td>
+</tr>
+</tbody>
+</table><p>Interfaces: <strong>presentation specifications</strong> (between run-time and storage) and <strong>anchoring</strong> (between storage and within-component).</p><aside class="notes">Source note: <a href="../../unit-09/hypermedia-systems/">Hypermedia Systems</a></aside></section><section class=""><h2><small>Hypermedia Systems</small>A typical hypermedia system</h2><p>A <strong>hypermedia system</strong> has an <strong>authoring</strong> part (create nodes and links), a <strong>database</strong> (nodes, link base, indexes), a <strong>browser/navigation</strong> part (follow links, maps, history, search) and, for multimedia, a <strong>presentation engine</strong> for time-based media. Examples: HyperCard, early CD-ROM encyclopedias, the <strong>World Wide Web</strong>.</p><div class="callout exam"><div class="ct">Exam tip</div>
+<p>Draw the three-layer Dexter diagram, name the two interfaces, and give anchors, links, nodes with one line each.</p>
+</div><aside class="notes">Source note: <a href="../../unit-09/hypermedia-systems/">Hypermedia Systems</a></aside></section><section class=""><h2><small>Hypermedia Systems</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">What is an anchor?</p><div class="fragment ans">
+<p>The part of a node that is the start or end of a link (a word, a picture area, a video segment).</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Which Dexter layer stores the links?</p><div class="fragment ans">
+<p>The storage layer.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-09/hypermedia-systems/">Hypermedia Systems</a></aside></section><section><h2><small>Hypermedia Systems</small>Key terms</h2><div class="terms"><div class="card term"><b>Memex</b><span>Vannevar Bush's 1945 idea of a linked personal information machine.</span></div><div class="card term"><b>Hypertext</b><span>Term coined by Ted Nelson in 1965.</span></div><div class="card term"><b>World Wide Web</b><span>Proposed by Tim Berners-Lee in 1989; first web site in 1991.</span></div><div class="card term"><b>Browser</b><span>Program that displays and follows links.</span></div><div class="card term"><b>Authoring system</b><span>Tool used to create hypermedia.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section></section>
+<section data-topic="SGML, ODA and MHEG"><section><div class="sec"><div class="no">04</div><h2>SGML, ODA and MHEG</h2><div class="lead">Unit 9 &middot; topic 4 of 4</div></div></section><section><h2><small>SGML, ODA and MHEG</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Three standards describe documents and objects: SGML separates content from formatting, ODA exchanges office documents and MHEG describes multimedia objects for interchange.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>HTML grew from SGML ideas: tags describe the meaning of parts, a style sheet decides the look.</p></div><div class="card c3"><div class="ct">Remember it</div><p>SGML = markup with a DTD. ODA = logical + layout structure. MHEG = multimedia objects for exchange.</p></div></div><aside class="notes"><p><b>Say:</b> Three standards describe documents and objects: SGML separates content from formatting, ODA exchanges office documents and MHEG describes multimedia objects for interchange.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: HTML grew from SGML ideas: tags describe the meaning of parts, a style sheet decides the look.)</p><p><b>Board:</b> write the memory hook: SGML = markup with a DTD. ODA = logical + layout structure. MHEG = multimedia objects for exchange.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section><h2><small>SGML, ODA and MHEG</small>Logical structure of a document</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 731.52 342.72" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-12T07:41:45.071041</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 342.72 
+L 731.52 342.72 
+L 731.52 0 
+L 0 0 
+L 0 342.72 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 319.56 94.08 
+L 411.96 94.08 
+Q 416.76 94.08 416.76 89.664 
+L 416.76 65.376 
+Q 416.76 60.96 411.96 60.96 
+L 319.56 60.96 
+Q 314.76 60.96 314.76 65.376 
+L 314.76 89.664 
+Q 314.76 94.08 319.56 94.08 
+z
+" clip-path="url(#p4a60aa9ddf)" style="fill: #27306b; stroke: #c084fc; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 139.56 160.32 
+L 231.96 160.32 
+Q 236.76 160.32 236.76 155.904 
+L 236.76 131.616 
+Q 236.76 127.2 231.96 127.2 
+L 139.56 127.2 
+Q 134.76 127.2 134.76 131.616 
+L 134.76 155.904 
+Q 134.76 160.32 139.56 160.32 
+z
+" clip-path="url(#p4a60aa9ddf)" style="fill: #27306b; stroke: #818cf8; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 499.56 160.32 
+L 591.96 160.32 
+Q 596.76 160.32 596.76 155.904 
+L 596.76 131.616 
+Q 596.76 127.2 591.96 127.2 
+L 499.56 127.2 
+Q 494.76 127.2 494.76 131.616 
+L 494.76 155.904 
+Q 494.76 160.32 499.56 160.32 
+z
+" clip-path="url(#p4a60aa9ddf)" style="fill: #27306b; stroke: #818cf8; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 61.56 226.56 
+L 129.96 226.56 
+Q 134.76 226.56 134.76 222.144 
+L 134.76 197.856 
+Q 134.76 193.44 129.96 193.44 
+L 61.56 193.44 
+Q 56.76 193.44 56.76 197.856 
+L 56.76 222.144 
+Q 56.76 226.56 61.56 226.56 
+z
+" clip-path="url(#p4a60aa9ddf)" style="fill: #27306b; stroke: #22d3ee; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 205.56 226.56 
+L 285.96 226.56 
+Q 290.76 226.56 290.76 222.144 
+L 290.76 197.856 
+Q 290.76 193.44 285.96 193.44 
+L 205.56 193.44 
+Q 200.76 193.44 200.76 197.856 
+L 200.76 222.144 
+Q 200.76 226.56 205.56 226.56 
+z
+" clip-path="url(#p4a60aa9ddf)" style="fill: #27306b; stroke: #34d399; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 451.56 226.56 
+L 519.96 226.56 
+Q 524.76 226.56 524.76 222.144 
+L 524.76 197.856 
+Q 524.76 193.44 519.96 193.44 
+L 451.56 193.44 
+Q 446.76 193.44 446.76 197.856 
+L 446.76 222.144 
+Q 446.76 226.56 451.56 226.56 
+z
+" clip-path="url(#p4a60aa9ddf)" style="fill: #27306b; stroke: #22d3ee; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 595.56 226.56 
+L 675.96 226.56 
+Q 680.76 226.56 680.76 222.144 
+L 680.76 197.856 
+Q 680.76 193.44 675.96 193.44 
+L 595.56 193.44 
+Q 590.76 193.44 590.76 197.856 
+L 590.76 222.144 
+Q 590.76 226.56 595.56 226.56 
+z
+" clip-path="url(#p4a60aa9ddf)" style="fill: #27306b; stroke: #34d399; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 151.56 292.8 
+L 219.96 292.8 
+Q 224.76 292.8 224.76 288.384 
+L 224.76 264.096 
+Q 224.76 259.68 219.96 259.68 
+L 151.56 259.68 
+Q 146.76 259.68 146.76 264.096 
+L 146.76 288.384 
+Q 146.76 292.8 151.56 292.8 
+z
+" clip-path="url(#p4a60aa9ddf)" style="fill: #27306b; stroke: #f472b6; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 271.56 292.8 
+L 339.96 292.8 
+Q 344.76 292.8 344.76 288.384 
+L 344.76 264.096 
+Q 344.76 259.68 339.96 259.68 
+L 271.56 259.68 
+Q 266.76 259.68 266.76 264.096 
+L 266.76 288.384 
+Q 266.76 292.8 271.56 292.8 
+z
+" clip-path="url(#p4a60aa9ddf)" style="fill: #27306b; stroke: #fb923c; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 601.56 292.8 
+L 669.96 292.8 
+Q 674.76 292.8 674.76 288.384 
+L 674.76 264.096 
+Q 674.76 259.68 669.96 259.68 
+L 601.56 259.68 
+Q 596.76 259.68 596.76 264.096 
+L 596.76 288.384 
+Q 596.76 292.8 601.56 292.8 
+z
+" clip-path="url(#p4a60aa9ddf)" style="fill: #27306b; stroke: #f472b6; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 365.76 94.08 
+L 185.76 127.2 
+" clip-path="url(#p4a60aa9ddf)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 365.76 94.08 
+L 545.76 127.2 
+" clip-path="url(#p4a60aa9ddf)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 185.76 160.32 
+L 95.76 193.44 
+" clip-path="url(#p4a60aa9ddf)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 185.76 160.32 
+L 245.76 193.44 
+" clip-path="url(#p4a60aa9ddf)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 545.76 160.32 
+L 485.76 193.44 
+" clip-path="url(#p4a60aa9ddf)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 545.76 160.32 
+L 635.76 193.44 
+" clip-path="url(#p4a60aa9ddf)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 245.76 226.56 
+L 185.76 259.68 
+" clip-path="url(#p4a60aa9ddf)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 245.76 226.56 
+L 305.76 259.68 
+" clip-path="url(#p4a60aa9ddf)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 635.76 226.56 
+L 635.76 259.68 
+" clip-path="url(#p4a60aa9ddf)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 12.5px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="17.76" y="27.84" transform="rotate(-0 17.76 27.84)">Document = hierarchy of elements (SGML / structured documents)</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="365.76" y="80.247949" transform="rotate(-0 365.76 80.247949)">&lt;book&gt;</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="185.76" y="146.487949" transform="rotate(-0 185.76 146.487949)">&lt;chapter&gt;</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="545.76" y="146.487949" transform="rotate(-0 545.76 146.487949)">&lt;chapter&gt;</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="95.76" y="212.727949" transform="rotate(-0 95.76 212.727949)">&lt;title&gt;</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="245.76" y="212.727949" transform="rotate(-0 245.76 212.727949)">&lt;section&gt;</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="485.76" y="212.727949" transform="rotate(-0 485.76 212.727949)">&lt;title&gt;</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="635.76" y="212.727949" transform="rotate(-0 635.76 212.727949)">&lt;section&gt;</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="185.76" y="278.967539" transform="rotate(-0 185.76 278.967539)">&lt;para&gt;</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="305.76" y="278.967949" transform="rotate(-0 305.76 278.967949)">&lt;figure&gt;</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="635.76" y="278.967539" transform="rotate(-0 635.76 278.967539)">&lt;para&gt;</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #9aa0cc" x="17.76" y="323.16" transform="rotate(-0 17.76 323.16)">The DTD defines which elements are allowed and how they nest; content is separated from layout.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4a60aa9ddf">
+   <rect x="5.76" y="5.76" width="720" height="331.2"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap"></div></section><section class="xdense"><h2><small>SGML, ODA and MHEG</small>SGML: Standard Generalized Markup Language (ISO 8879, 1986) <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><ul>
+<li class="fragment fade-up">A <strong>meta-language</strong> for defining <strong>markup languages</strong>. The document is <strong>text with tags</strong> that mark its <strong>logical structure</strong>; <strong>layout is not specified</strong> (left to the application).</li>
+<li class="fragment fade-up">Parts of an SGML system:</li>
+<li class="fragment fade-up"><strong>Document Type Definition (DTD):</strong> declares the <strong>allowed elements</strong>, their <strong>order and nesting</strong> and <strong>attributes</strong>.</li>
+<li class="fragment fade-up">The <strong>document instance:</strong> the marked-up content.</li>
+<li class="fragment fade-up"><strong>Entities:</strong> named pieces of text or data.</li>
+<li class="fragment fade-up"><strong>HTML</strong> is an SGML application; <strong>XML</strong> is a simplified subset.</li>
+</ul><div class="highlight"><pre><span></span><code>&lt;!ELEMENT book (title, chapter+)&gt;
+&lt;!ELEMENT chapter (heading, paragraph*)&gt;
+&lt;!ELEMENT title (#PCDATA)&gt;
+
+&lt;book&gt;
+  &lt;title&gt;Multimedia&lt;/title&gt;
+  &lt;chapter&gt;&lt;heading&gt;Audio&lt;/heading&gt;&lt;paragraph&gt;Sound is ...&lt;/paragraph&gt;&lt;/chapter&gt;
+&lt;/book&gt;
+</code></pre></div><aside class="notes">Source note: <a href="../../unit-09/sgml-oda-mheg/">SGML, ODA and MHEG</a></aside></section><section class="dense"><h2><small>SGML, ODA and MHEG</small>SGML: Standard Generalized Markup Language (ISO 8879, 1986) <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><ul>
+<li><strong>Advantages:</strong> platform independent, long-lived, validated by the DTD, reusable. <strong>Limits:</strong> no layout, no time or multimedia synchronisation (hence <strong>HyTime</strong>, an SGML-based standard for hypermedia and time).</li>
+</ul><h3>ODA: Open Document Architecture (ISO 8613)</h3><ul>
+<li>An architecture for <strong>interchange of documents</strong> between systems of different vendors, covering <strong>structure, content and layout</strong>.</li>
+<li><strong>Two structures</strong> per document:</li>
+</ul><table>
+<thead>
+<tr>
+<th>Structure</th>
+<th>Contains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Logical structure</strong></td>
+<td>Chapters, sections, paragraphs (the author's view)</td>
+</tr>
+<tr>
+<td><strong>Layout structure</strong></td>
+<td>Pages, blocks, frames (the reader's view)</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-09/sgml-oda-mheg/">SGML, ODA and MHEG</a></aside></section><section class=""><h2><small>SGML, ODA and MHEG</small>ODA: Open Document Architecture (ISO 8613) <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><ul>
+<li class="fragment fade-up">A <strong>document profile</strong> holds attributes of the document as a whole.</li>
+<li class="fragment fade-up"><strong>Content architectures:</strong> <strong>character</strong> content, <strong>raster graphics</strong> and <strong>geometric graphics</strong>. (Later extensions added audio and video.)</li>
+<li class="fragment fade-up"><strong>Forms:</strong> <strong>formatted</strong> (FF), <strong>processable</strong> (PF), <strong>formatted processable</strong> (FPF).</li>
+<li class="fragment fade-up"><strong>Interchange formats:</strong> ODIF (data stream) and ODL (language).</li>
+<li class="fragment fade-up">Compared with SGML: ODA includes <strong>layout</strong> as well as logical structure.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-09/sgml-oda-mheg/">SGML, ODA and MHEG</a></aside></section><section class=""><h2><small>SGML, ODA and MHEG</small>MHEG: Multimedia and Hypermedia information coding Experts Group (ISO/IEC 13522) <span style="opacity:.55;font-size:.6em">(1/3)</span></h2><ul>
+<li class="fragment fade-up">A standard for the <strong>coding of multimedia and hypermedia information objects for interchange</strong> between applications and systems, especially <strong>interactive TV and set-top boxes</strong> (final-form, run-time use).</li>
+<li class="fragment fade-up"><strong>Object-oriented:</strong> a document is a set of <strong>MHEG objects</strong> that a receiver (the <strong>MHEG engine</strong>) interprets and presents. It is <strong>not an authoring or editing format</strong>: it is the <strong>final form</strong>.</li>
+<li class="fragment fade-up">Main classes of objects:</li>
+</ul><aside class="notes">Source note: <a href="../../unit-09/sgml-oda-mheg/">SGML, ODA and MHEG</a></aside></section><section class="dense"><h2><small>SGML, ODA and MHEG</small>MHEG: Multimedia and Hypermedia information coding Experts Group (ISO/IEC 13522) <span style="opacity:.55;font-size:.6em">(2/3)</span></h2><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Content</strong></td>
+<td>Wraps the media data (text, graphic, audio, video) and its coding</td>
+</tr>
+<tr>
+<td><strong>Selection / Modification / Interaction</strong></td>
+<td>Offer user choices and interaction</td>
+</tr>
+<tr>
+<td><strong>Composite</strong></td>
+<td>Groups other objects into a presentation or scene</td>
+</tr>
+<tr>
+<td><strong>Action</strong></td>
+<td>Operations on objects (start, stop, set volume)</td>
+</tr>
+<tr>
+<td><strong>Link</strong></td>
+<td><strong>Condition → action</strong>: when an event happens, do the actions</td>
+</tr>
+<tr>
+<td><strong>Script</strong></td>
+<td>Embeds a program for complex behaviour</td>
+</tr>
+<tr>
+<td><strong>Descriptor</strong></td>
+<td>Describes the resources an object needs, for negotiation</td>
+</tr>
+<tr>
+<td><strong>Container</strong></td>
+<td>A package of objects for interchange</td>
+</tr>
+<tr>
+<td><strong>Macro</strong></td>
+<td>Reusable definitions</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-09/sgml-oda-mheg/">SGML, ODA and MHEG</a></aside></section><section class="xdense"><h2><small>SGML, ODA and MHEG</small>MHEG: Multimedia and Hypermedia information coding Experts Group (ISO/IEC 13522) <span style="opacity:.55;font-size:.6em">(3/3)</span></h2><ul>
+<li>MHEG supports <strong>time-based presentation</strong>, <strong>spatial layout</strong>, <strong>links and interaction</strong>, so it covers what SGML and ODA do not (synchronised multimedia).</li>
+<li><strong>MHEG-5</strong> (a simplified, widely used version) is used for <strong>digital TV</strong> in several countries.</li>
+</ul><table>
+<thead>
+<tr>
+<th></th>
+<th>SGML</th>
+<th>ODA</th>
+<th>MHEG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Describes</td>
+<td>Logical structure by markup</td>
+<td>Logical + layout of documents</td>
+<td>Final-form multimedia objects</td>
+</tr>
+<tr>
+<td>Time and media</td>
+<td>No</td>
+<td>Limited</td>
+<td><strong>Yes (synchronised)</strong></td>
+</tr>
+<tr>
+<td>Typical use</td>
+<td>Publishing, HTML/XML</td>
+<td>Office document interchange</td>
+<td>Interactive TV, multimedia interchange</td>
+</tr>
+</tbody>
+</table><div class="callout exam"><div class="ct">Exam tip</div>
+<p>"Compare SGML, ODA and MHEG" is a table question. For MHEG always mention <strong>objects</strong>, <strong>final form</strong>, <strong>links (condition–action)</strong> and <strong>interactive TV</strong>.</p>
+</div><aside class="notes">Source note: <a href="../../unit-09/sgml-oda-mheg/">SGML, ODA and MHEG</a></aside></section><section class=""><h2><small>SGML, ODA and MHEG</small>Checkpoint <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">What does a DTD define?</p><div class="fragment ans">
+<p>The elements, their allowed structure and order, and attributes of an SGML document type.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Which standard of the three handles time-based multimedia?</p><div class="fragment ans">
+<p>MHEG.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-09/sgml-oda-mheg/">SGML, ODA and MHEG</a></aside></section><section class=""><h2><small>SGML, ODA and MHEG</small>Checkpoint <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="chk"><div class="lab">Check yourself</div><p class="q">What are the two structures of an ODA document?</p><div class="fragment ans">
+<p>Logical and layout structure.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-09/sgml-oda-mheg/">SGML, ODA and MHEG</a></aside></section><section><h2><small>SGML, ODA and MHEG</small>Key terms</h2><div class="terms"><div class="card term"><b>SGML</b><span>Standard Generalized Markup Language, ISO 8879.</span></div><div class="card term"><b>DTD</b><span>Document Type Definition: the allowed elements and structure.</span></div><div class="card term"><b>ODA</b><span>Open Document Architecture, ISO 8613.</span></div><div class="card term"><b>MHEG</b><span>Multimedia and Hypermedia Experts Group, ISO/IEC 13522.</span></div><div class="card term"><b>Markup</b><span>Tags added to text to describe structure.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section><section><h2><small>SGML, ODA and MHEG</small>How SGML works</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 731.52 270.72" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-12T07:41:45.894553</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 270.72 
+L 731.52 270.72 
+L 731.52 0 
+L 0 0 
+L 0 270.72 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 25.302857 96.48 
+L 186.788571 96.48 
+Q 190.902857 96.48 190.902857 91.296 
+L 190.902857 43.344 
+Q 190.902857 38.16 186.788571 38.16 
+L 25.302857 38.16 
+Q 21.188571 38.16 21.188571 43.344 
+L 21.188571 91.296 
+Q 21.188571 96.48 25.302857 96.48 
+z
+" clip-path="url(#pa0e0f84353)" style="fill: #27306b; stroke: #c084fc; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 25.302857 232.56 
+L 186.788571 232.56 
+Q 190.902857 232.56 190.902857 227.376 
+L 190.902857 179.424 
+Q 190.902857 174.24 186.788571 174.24 
+L 25.302857 174.24 
+Q 21.188571 174.24 21.188571 179.424 
+L 21.188571 227.376 
+Q 21.188571 232.56 25.302857 232.56 
+z
+" clip-path="url(#pa0e0f84353)" style="fill: #27306b; stroke: #818cf8; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 277.302857 167.76 
+L 402.788571 167.76 
+Q 406.902857 167.76 406.902857 162.576 
+L 406.902857 101.664 
+Q 406.902857 96.48 402.788571 96.48 
+L 277.302857 96.48 
+Q 273.188571 96.48 273.188571 101.664 
+L 273.188571 162.576 
+Q 273.188571 167.76 277.302857 167.76 
+z
+" clip-path="url(#pa0e0f84353)" style="fill: #27306b; stroke: #f472b6; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 493.302857 96.48 
+L 680.502857 96.48 
+Q 684.617143 96.48 684.617143 91.296 
+L 684.617143 43.344 
+Q 684.617143 38.16 680.502857 38.16 
+L 493.302857 38.16 
+Q 489.188571 38.16 489.188571 43.344 
+L 489.188571 91.296 
+Q 489.188571 96.48 493.302857 96.48 
+z
+" clip-path="url(#pa0e0f84353)" style="fill: #27306b; stroke: #34d399; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 493.302857 232.56 
+L 680.502857 232.56 
+Q 684.617143 232.56 684.617143 227.376 
+L 684.617143 179.424 
+Q 684.617143 174.24 680.502857 174.24 
+L 493.302857 174.24 
+Q 489.188571 174.24 489.188571 179.424 
+L 489.188571 227.376 
+Q 489.188571 232.56 493.302857 232.56 
+z
+" clip-path="url(#pa0e0f84353)" style="fill: #27306b; stroke: #22d3ee; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 192.623002 68.335961 
+Q 232.044024 91.619002 269.924783 113.992325 
+" clip-path="url(#pa0e0f84353)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 266.526929 108.733562 
+L 269.924783 113.992325 
+L 263.67906 113.55535 
+z
+" clip-path="url(#pa0e0f84353)" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 192.562734 202.28892 
+Q 232.045232 175.860323 270.041174 150.426789 
+" clip-path="url(#pa0e0f84353)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 263.829997 151.215002 
+L 270.041174 150.426789 
+L 266.945039 155.868658 
+z
+" clip-path="url(#pa0e0f84353)" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 408.623002 114.904039 
+Q 448.044024 91.620998 485.924783 69.247675 
+" clip-path="url(#pa0e0f84353)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 479.67906 69.68465 
+L 485.924783 69.247675 
+L 482.526929 74.506438 
+z
+" clip-path="url(#pa0e0f84353)" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 408.562734 149.43108 
+Q 448.045232 175.859677 486.041174 201.293211 
+" clip-path="url(#pa0e0f84353)" style="fill: none; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 482.945039 195.851342 
+L 486.041174 201.293211 
+L 479.829997 200.504998 
+z
+" clip-path="url(#pa0e0f84353)" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(94.216417 63.575918)">DTD</text>
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(43.050949 76.778926)">(rules of the language)</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(52.504933 199.656348)">Document instance</text>
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(59.335246 212.859355)">(marked-up text)</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(298.808331 128.205732)">SGML parser</text>
+    <text style="font-weight: 700; font-size: 11.5px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(305.152199 142.008877)">(validates)</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(559.719967 63.575918)">Formatter</text>
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(546.056763 76.778926)">(print / screen)</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(543.195904 199.656348)">Other programs</text>
+    <text style="font-size: 11px; font-family: Inter, system-ui, sans-serif; fill: #e8eaff" transform="translate(539.913951 212.859355)">(search, convert)</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="365.76" y="261.72" transform="rotate(-0 365.76 261.72)">Content is kept separate from layout, so one document can be used in many ways.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa0e0f84353">
+   <rect x="5.76" y="5.76" width="720" height="259.2"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap"></div></section></section>
+<section data-topic="Exam recap"><section><h2><small>Revision</small>Exam focus recap (1/1)</h2><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div><div class="callout exam"><div class="ct">Exam tip</div></section></section>
+<section data-topic="Sources"><section><h2><small>Go deeper</small>Sources and further reading</h2><ul class="small"><li>ISO 8879 (SGML), ISO 8613 (ODA), ISO/IEC 13522 (MHEG).</li><li>V. Bush, 'As we may think', <em>The Atlantic Monthly</em>, 1945.</li><li>F. Halasz and M. Schwartz, 'The Dexter hypertext reference model', <em>Communications of the ACM</em>, 1994.</li></ul><div class="callout"><div class="ct">About the figures</div><p>Charts and diagrams in this deck were drawn for this course from standard formulas, specifications and textbook knowledge. They are original drawings, not copies of figures from any publication.</p></div></section></section>
+<section data-topic="Quick check"><section><div class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></div></section><section><h2><small>Quick check 1 / 4</small>14. Which standard is ISO 13522?</h2><ul class="opts"><li>A. SGML</li><li>B. ODA</li><li>C. MHEG</li><li>D. HTML</li></ul><div class="fragment ans"><strong>Answer: C.</strong></div></section><section><h2><small>Quick check 2 / 4</small>15. The layer of the Dexter model that stores nodes and links is</h2><ul class="opts"><li>A. Run-time</li><li>B. Storage</li><li>C. Within-component</li><li>D. Presentation</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 3 / 4</small>16. HTML is an application of</h2><ul class="opts"><li>A. ODA</li><li>B. MHEG</li><li>C. SGML</li><li>D. HyTime</li></ul><div class="fragment ans"><strong>Answer: C.</strong></div></section><section><h2><small>Quick check 4 / 4</small>17. Hypertext contains</h2><ul class="opts"><li>A. Only video</li><li>B. Linked text nodes</li><li>C. Only audio</li><li>D. No links</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section></section>
+<section><div class="title-slide"><div class="kick">End of Unit 9</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></div></section>
+</div></div>
+<script>window.__t=setTimeout(function(){if(!window.Reveal){var m=document.getElementById("loaderr");if(m)m.style.display="block";}},5000);</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js" onerror="document.getElementById('loaderr').style.display='block'"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/zoom.js"></script>
+<script>
+var plugins=[];['RevealNotes','RevealSearch','RevealZoom'].forEach(function(n){if(window[n])plugins.push(window[n]);});
+Reveal.initialize({width:1280,height:720,margin:.04,hash:true,slideNumber:'c/t',progress:true,controls:true,controlsTutorial:false,
+  transition:'slide',backgroundTransition:'fade',autoAnimateDuration:.5,fragments:true,center:false,plugins:plugins});
+function hud(){var s=Reveal.getCurrentSlide();var t=s&&s.parentNode&&s.parentNode.getAttribute&&s.parentNode.getAttribute('data-topic');
+  var h=document.getElementById('hud');h.textContent='Unit 9'+(t?' · '+t:'');}
+Reveal.on('ready',hud);Reveal.on('slidechanged',hud);
+</script>
+</body>
+</html>

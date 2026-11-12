@@ -1,0 +1,1757 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://unpkg.com; img-src 'self' data: blob:; connect-src 'self' https://api.github.com; worker-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="author" content="Er. Harish Thagunna">
+<title>Unit 7: Multimedia Operating System - Class slides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<style>
+:root{--g:linear-gradient(120deg,#818cf8,#c084fc 55%,#f472b6);--card:rgba(255,255,255,.055);--line:rgba(255,255,255,.12);--mut:#aab0d6;--ac:#a5b4fc}
+html,body{background:#080a14}
+.reveal-viewport{background:radial-gradient(55% 70% at 12% 8%,rgba(99,102,241,.35),transparent 65%),radial-gradient(50% 65% at 92% 95%,rgba(236,72,153,.26),transparent 65%),radial-gradient(40% 50% at 85% 10%,rgba(6,182,212,.14),transparent 70%),#080a14}
+.reveal{font-family:Inter,system-ui,sans-serif;font-size:27px;color:#e8eaff;font-weight:400}
+.reveal .slides section{text-align:left;height:100%}
+.reveal h1,.reveal h2,.reveal h3{font-family:Inter,system-ui,sans-serif;text-transform:none;letter-spacing:-.025em;font-weight:800;margin:0 0 .45em}
+.reveal h2{font-size:1.5em;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.15}
+.reveal h2 small{display:block;font-size:.42em;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);-webkit-text-fill-color:var(--mut);font-weight:700;margin-bottom:.35em}
+.reveal h3{font-size:1.05em;color:#fff}
+.reveal h4{font-size:.9em;color:var(--ac);margin:.6em 0 .2em}
+.reveal p{margin:.35em 0;line-height:1.45}
+.reveal ul,.reveal ol{display:block;margin:.3em 0 .3em 1.1em;width:calc(100% - 1.1em)}
+.reveal li{margin:.3em 0;line-height:1.38}
+.reveal ul li::marker{color:#c084fc}.reveal ol li::marker{color:#818cf8;font-weight:700}
+.reveal strong{color:#fff;font-weight:700}.reveal em{color:#d9dcff}
+.reveal a{color:var(--ac)}
+.reveal code{font-family:'JetBrains Mono',monospace;font-size:.85em;background:rgba(129,140,248,.16);border-radius:6px;padding:.06em .35em;color:#e0e4ff}
+.reveal pre{width:100%;box-shadow:none;font-size:.62em;margin:.5em 0}
+.reveal pre code{display:block;padding:.8em 1em;border-radius:12px;background:rgba(0,0,0,.4);border:1px solid var(--line);max-height:none}
+.reveal mark{background:linear-gradient(transparent 55%,rgba(244,114,182,.4) 55%);color:inherit}
+.reveal table{margin:.5em 0;border-collapse:separate;border-spacing:0;font-size:.66em;width:100%;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.reveal th{background:rgba(129,140,248,.2);font-weight:700;color:#fff;text-align:left;padding:.5em .8em}
+.reveal td{padding:.42em .8em;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.reveal tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+.dense{font-size:.86em}.xdense{font-size:.74em}
+.callout{border:1px solid var(--line);border-left:5px solid #818cf8;border-radius:12px;background:var(--card);padding:.55em 1em;margin:.7em 0;font-size:.88em}
+.callout .ct{font-size:.68em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.15em;color:#a5b4fc}
+.callout p,.callout li{margin:.2em 0}.callout>*:last-child{margin-bottom:0}
+.callout.exam{border-left-color:#fb923c;background:rgba(251,146,60,.09)}.callout.exam .ct{color:#fdba74}
+.callout.warn{border-left-color:#f87171;background:rgba(248,113,113,.09)}.callout.warn .ct{color:#fca5a5}
+.callout.tip{border-left-color:#34d399;background:rgba(52,211,153,.09)}.callout.tip .ct{color:#6ee7b7}
+.callout.ex{border-left-color:#c084fc;background:rgba(192,132,252,.09)}.callout.ex .ct{color:#d8b4fe}
+aside.notes{display:none}
+.callout.split .sp{display:grid;grid-template-columns:1fr 1.1fr;gap:1em;align-items:center}
+.callout.split .diagram svg{max-height:430px}
+.callout.split.long{font-size:.72em;margin-top:.2em}.callout.split.long .diagram svg{max-height:420px}
+.diagram{text-align:center;margin:.4em 0}.diagram svg{max-width:100%;height:auto;max-height:470px;width:auto}
+.diagram.tall svg{max-height:540px}
+.diagram .cap,.cap{font-size:.55em;color:var(--mut);margin-top:.3em;text-align:center}
+.vis{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:.5em;text-align:center}
+.vis svg{max-width:100%;height:auto;max-height:480px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1em;align-items:start}
+.two>*{min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.6em .9em}
+.q{font-weight:700;color:#fff}
+.chk{border:1px solid rgba(192,132,252,.5);border-radius:14px;padding:.7em 1em;background:rgba(192,132,252,.08);margin:.5em 0}
+.chk .lab{font-size:.55em;letter-spacing:.14em;font-weight:800;color:#d8b4fe;text-transform:uppercase}
+.opts{list-style:none;margin:.4em 0!important;padding:0;display:grid;gap:.35em}
+.opts li{margin:0;padding:.4em .8em;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.ans{margin-top:.6em;padding:.5em .9em;border-radius:10px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.5)}
+.trio{display:grid;grid-template-columns:1fr;gap:.6em}.trio .card{padding:.55em 1em}.trio .card .ct{font-size:.55em;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.1em}.trio .card p{margin:.1em 0;font-size:.95em}
+.trio .c1{border-left:5px solid #818cf8}.trio .c1 .ct{color:#a5b4fc}.trio .c2{border-left:5px solid #34d399}.trio .c2 .ct{color:#6ee7b7}.trio .c3{border-left:5px solid #fb923c}.trio .c3 .ct{color:#fdba74}
+.terms{display:grid;grid-template-columns:1fr 1fr;gap:.55em}.card.term{display:flex;flex-direction:column;gap:.1em;padding:.45em .85em}.card.term b{color:#c4b5fd;font-size:.95em}.card.term span{font-size:.74em;line-height:1.35;color:#dfe2ff}
+.agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:.55em}
+.agenda .card{display:flex;gap:.7em;align-items:center;font-size:.85em;font-weight:600}
+.agenda .n{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:800;font-size:.85em;color:#fff}
+.title-slide{display:flex;flex-direction:column;justify-content:center;height:100%}
+.title-slide .kick{font-size:.62em;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);font-weight:700;margin-bottom:1em}
+.title-slide h1{font-size:2.9em;line-height:1.02;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:.25em}
+.title-slide .by{font-size:.8em;color:var(--mut);margin-top:1.2em}
+.chips{display:flex;gap:.6em;flex-wrap:wrap;margin-top:1.2em}
+.chips span{font-size:.55em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.35em .9em;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.sec{display:flex;flex-direction:column;justify-content:center;height:100%}
+.sec .no{font-size:5em;font-weight:900;line-height:1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+.sec h2{font-size:2.1em}
+.sec .lead{color:var(--mut);font-size:.85em;max-width:80%}
+#hud{position:fixed;left:18px;top:12px;z-index:30;font:700 11px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8e94c4;pointer-events:none}
+.copyright-foot{position:fixed;left:0;right:0;bottom:8px;text-align:center;font:600 11px Inter,system-ui,sans-serif;color:#7f86b8;z-index:30;pointer-events:none}
+.reveal .progress{height:4px;color:#c084fc}
+.reveal .controls{color:#a5b4fc}
+.reveal .slide-number{background:transparent;color:#8e94c4;font-size:12px;font-weight:700;right:14px;bottom:8px}
+.reveal .fragment.highlight-current-blue.current-fragment{color:#a5b4fc}
+.reveal .katex{font-size:1.05em}.mathx.blk{display:block;text-align:center;margin:.4em 0}.reveal .arithmatex{color:#fff}
+.reveal .arithmatex.block,.reveal div.arithmatex{margin:.5em 0;text-align:center}
+@media print{#hud,.copyright-foot{display:none}}
+</style>
+</head>
+<body>
+<div id="hud"></div>
+<div id="loaderr" style="display:none;position:fixed;inset:0;z-index:99;padding:12vh 8vw;background:#080a14;color:#e8eaff;font:600 20px Inter,system-ui,sans-serif">The slide engine could not be loaded.<br><br><span style="font-weight:400;color:#aab0d6">These slides need an internet connection to load reveal.js from cdn.jsdelivr.net. Check your connection or any ad-blocker / firewall, then reload.</span></div>
+<div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved. &middot; Press <b>?</b> for shortcuts, <b>Esc</b> for overview</div>
+<div class="reveal"><div class="slides">
+<section><div class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 7<br>Multimedia Operating System</h1><p style="max-width:75%;color:#aab0d6">Real time, resource management, EDF and rate monotonic.</p><div class="chips"><span>4 teaching hours</span><span>4 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></div></section>
+<section><h2><small>Roadmap</small>What we will cover</h2><div class="agenda"><div class="card"><span class="n">1</span>Introduction and Real Time</div><div class="card"><span class="n">2</span>Resource Management</div><div class="card"><span class="n">3</span>Process Management and Real-Time Scheduling</div><div class="card"><span class="n">4</span>System Architecture</div></div></section>
+<section data-topic="Introduction and Real Time"><section><div class="sec"><div class="no">01</div><h2>Introduction and Real Time</h2><div class="lead">Unit 7 &middot; topic 1 of 4</div></div></section><section><h2><small>Introduction and Real Time</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>A real-time system must produce the right result at the right time. A correct answer that arrives late is a wrong answer.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Video playback: if frame 100 is not ready at 4.00 s, the picture stutters, even though the frame is correct.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Hard real time: a missed deadline is a failure. Soft real time: a miss reduces quality.</p></div></div><aside class="notes"><p><b>Say:</b> A real-time system must produce the right result at the right time. A correct answer that arrives late is a wrong answer.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: Video playback: if frame 100 is not ready at 4.00 s, the picture stutters, even though the frame is correct.)</p><p><b>Board:</b> write the memory hook: Hard real time: a missed deadline is a failure. Soft real time: a miss reduces quality.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>Introduction and Real Time</small>Why an ordinary OS is not enough <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>An <strong>operating system (OS)</strong> manages the hardware resources (CPU, memory, disk, network) and offers them to applications. Conventional OSs were designed for <strong>discrete data</strong> and fairness: they give each process a fair share, with no promise about <em>when</em> a result appears.</p><p>Multimedia needs more because <strong>continuous media</strong> (audio, video) have <strong>time constraints</strong>: each logical data unit (LDU, for example one video frame every 40 ms at 25 fps) must be processed and presented on time, or the user sees jerky video and hears clicks.</p><aside class="notes">Source note: <a href="../../unit-07/introduction-real-time/">Introduction and Real Time</a></aside></section><section class=""><h2><small>Introduction and Real Time</small>Why an ordinary OS is not enough <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout exam"><div class="ct">Requirements on a multimedia OS</div>
+<ol>
+<li><strong>Real-time processing</strong> of continuous media (meet deadlines).</li>
+<li><strong>Resource management</strong> with <strong>QoS guarantees</strong> (CPU, memory, bandwidth, buffers).</li>
+<li><strong>Efficient data handling</strong>: large data volumes, <strong>continuous media file system</strong>, fast copying.</li>
+<li><strong>Synchronisation</strong> support (audio and video together).</li>
+<li><strong>Support for both discrete and continuous media</strong> at the same time.</li>
+<li><strong>Low latency</strong> and <strong>small jitter</strong>, with predictable behaviour.</li>
+</ol>
+</div><aside class="notes">Source note: <a href="../../unit-07/introduction-real-time/">Introduction and Real Time</a></aside></section><section class="dense"><h2><small>Introduction and Real Time</small>Real time <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>A <strong>real-time process</strong> is a process that <strong>delivers its result within a given time span</strong>. A <strong>real-time system</strong> is a system that delivers results within given time limits. Correctness depends on <strong>both the value and the time</strong> of the result.</p><ul>
+<li>The time limit is the <strong>deadline</strong>.</li>
+<li>A <strong>real-time system</strong> must be <strong>predictable</strong>: the worst-case behaviour must be known.</li>
+</ul><table>
+<thead>
+<tr>
+<th></th>
+<th>Hard real time</th>
+<th>Soft real time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deadline miss</td>
+<td><strong>Not allowed</strong>: failure may be catastrophic</td>
+<td><strong>Tolerated</strong> occasionally; quality drops</td>
+</tr>
+<tr>
+<td>Guarantee</td>
+<td><strong>Deterministic</strong>, based on worst case</td>
+<td><strong>Statistical</strong> or best effort</td>
+</tr>
+<tr>
+<td>Examples</td>
+<td>Nuclear plant control, flight control, airbag</td>
+<td><strong>Video and audio playback</strong>, video conferencing</td>
+</tr>
+<tr>
+<td>In multimedia</td>
+<td>Rare (for example some medical or studio uses)</td>
+<td><strong>Typical</strong></td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-07/introduction-real-time/">Introduction and Real Time</a></aside></section><section class="dense"><h2><small>Introduction and Real Time</small>Real time <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout"><div class="ct">Deadlines in multimedia</div>
+<p>A deadline is the latest time by which the work must finish. For a video at 25 fps, each frame's period is 1 ÷ 25 = <strong>40 ms</strong>; the frame must be decoded and displayed within its period. For CD-quality audio in 1 ms blocks, the period is 1 ms.</p>
+</div><h3>Characteristics of real-time processing</h3><ul>
+<li class="fragment fade-up"><strong>Periodic</strong> (continuous media: one LDU every period P) or <strong>aperiodic</strong> (event driven, for example a mouse click).</li>
+<li class="fragment fade-up"><strong>Predictable and bounded</strong> execution time.</li>
+<li class="fragment fade-up"><strong>Latency</strong> (delay from request to result) and <strong>jitter</strong> (variation of the delay) must be small.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-07/introduction-real-time/">Introduction and Real Time</a></aside></section><section class="dense"><h2><small>Introduction and Real Time</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Differentiate hard and soft real time with examples.</p><div class="fragment ans">
+<p>Hard: a missed deadline is a failure (flight control). Soft: occasional misses are tolerated (video playback).</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Why does a general-purpose OS fail for video?</p><div class="fragment ans">
+<p>It gives fair sharing but no time guarantees, so frames may be late.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-07/introduction-real-time/">Introduction and Real Time</a></aside></section><section><h2><small>Introduction and Real Time</small>Key terms</h2><div class="terms"><div class="card term"><b>Deadline</b><span>Latest time by which a task must finish.</span></div><div class="card term"><b>Hard real time</b><span>Missing a deadline is unacceptable.</span></div><div class="card term"><b>Soft real time</b><span>Occasional misses degrade quality only.</span></div><div class="card term"><b>Periodic task</b><span>Task that repeats with a fixed period.</span></div><div class="card term"><b>Jitter</b><span>Variation in timing.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section><section><h2><small>Introduction and Real Time</small>A periodic task: release, computation C and deadline</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 569.52 200.016" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-12T07:41:45.781564</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 200.016 
+L 569.52 200.016 
+L 569.52 0 
+L 0 0 
+L 0 200.016 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 37.1475 138.216649 
+L 106.8975 138.216649 
+L 106.8975 97.460757 
+L 37.1475 97.460757 
+z
+" clip-path="url(#pc472e11ad1)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 211.5225 138.216649 
+L 281.2725 138.216649 
+L 281.2725 97.460757 
+L 211.5225 97.460757 
+z
+" clip-path="url(#pc472e11ad1)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 385.8975 138.216649 
+L 455.6475 138.216649 
+L 455.6475 97.460757 
+L 385.8975 97.460757 
+z
+" clip-path="url(#pc472e11ad1)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 197.5725 138.216649 
+L 197.5725 56.704865 
+" clip-path="url(#pc472e11ad1)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #f472b6; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 371.9475 138.216649 
+L 371.9475 56.704865 
+" clip-path="url(#pc472e11ad1)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #f472b6; stroke-width: 1.6"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 546.3225 138.216649 
+L 546.3225 56.704865 
+" clip-path="url(#pc472e11ad1)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #f472b6; stroke-width: 1.6"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="72.0225" y="120.95589" transform="rotate(-0 72.0225 120.95589)">C</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 23.1975 92.91213 
+Q 23.1975 68.167732 23.1975 45.659402 
+" style="fill: none; stroke: #34d399; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 20.7975 50.459402 
+L 23.1975 45.659402 
+L 25.5975 50.459402 
+z
+" style="fill: #34d399; stroke: #34d399; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 9.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #34d399" x="23.1975" y="33.779676" transform="rotate(-0 23.1975 33.779676)">release</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="246.3975" y="120.95589" transform="rotate(-0 246.3975 120.95589)">C</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 197.5725 92.91213 
+Q 197.5725 68.167732 197.5725 45.659402 
+" style="fill: none; stroke: #34d399; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 195.1725 50.459402 
+L 197.5725 45.659402 
+L 199.9725 50.459402 
+z
+" style="fill: #34d399; stroke: #34d399; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #34d399" x="197.5725" y="33.779676" transform="rotate(-0 197.5725 33.779676)">release</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="420.7725" y="120.95589" transform="rotate(-0 420.7725 120.95589)">C</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 371.9475 92.91213 
+Q 371.9475 68.167732 371.9475 45.659402 
+" style="fill: none; stroke: #34d399; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 369.5475 50.459402 
+L 371.9475 45.659402 
+L 374.3475 50.459402 
+z
+" style="fill: #34d399; stroke: #34d399; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9.5px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #34d399" x="371.9475" y="33.779676" transform="rotate(-0 371.9475 33.779676)">release</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9.5px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #f472b6" x="194.085" y="49.063135" transform="rotate(-0 194.085 49.063135)">deadline = next release</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 194.456242 161.141838 
+Q 110.386702 161.141838 26.317163 161.141838 
+" style="fill: none; stroke: #9aa0cc; stroke-linecap: round"/>
+    <path d="M 189.656242 158.741838 
+L 194.456242 161.141838 
+L 189.656242 163.541838 
+" style="fill: none; stroke: #9aa0cc; stroke-linecap: round"/>
+    <path d="M 31.117163 163.541838 
+L 26.317163 161.141838 
+L 31.117163 158.741838 
+" style="fill: none; stroke: #9aa0cc; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="110.385" y="178.972541" transform="rotate(-0 110.385 178.972541)">period P</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pc472e11ad1">
+   <rect x="5.76" y="5.76" width="558" height="188.496"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">Each period the task must receive C units of CPU time before its deadline. Its utilisation is C/P (here 2/5 = 0.4).</div></section></section>
+<section data-topic="Resource Management"><section><div class="sec"><div class="no">02</div><h2>Resource Management</h2><div class="lead">Unit 7 &middot; topic 2 of 4</div></div></section><section><h2><small>Resource Management</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Multimedia needs CPU time, memory and bandwidth reserved in advance. Admission control decides whether a new stream can be accepted without hurting existing ones.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>A cinema does not sell more tickets than seats: it refuses extra customers to keep quality for those inside.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Reserve first, then guarantee. LBAP model: B + R·t, the data that may arrive by time t.</p></div></div><aside class="notes"><p><b>Say:</b> Multimedia needs CPU time, memory and bandwidth reserved in advance. Admission control decides whether a new stream can be accepted without hurting existing ones.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: A cinema does not sell more tickets than seats: it refuses extra customers to keep quality for those inside.)</p><p><b>Board:</b> write the memory hook: Reserve first, then guarantee. LBAP model: B + R·t, the data that may arrive by time t.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>Resource Management</small>Resources</h2><p>A <strong>resource</strong> is anything a process needs to run.</p><table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Active</strong> (provide a service over time)</td>
+<td><strong>CPU</strong>, network adapter, disk controller</td>
+</tr>
+<tr>
+<td><strong>Passive</strong> (provide capacity)</td>
+<td><strong>Main memory</strong>, <strong>bandwidth</strong> of bus, network and disk, buffer space</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-07/resource-management/">Resource Management</a></aside></section><section class=""><h2><small>Resource Management</small>Requirements</h2><p>For continuous media the resource manager must:</p><ol>
+<li class="fragment fade-up"><strong>Share</strong> resources among competing processes (and with discrete-media work).</li>
+<li class="fragment fade-up"><strong>Guarantee</strong> the capacity each continuous media stream needs (deadlines, bandwidth, buffers).</li>
+<li class="fragment fade-up">Handle <strong>several streams at once</strong> with different QoS.</li>
+<li class="fragment fade-up"><strong>Reject</strong> a new request if it would break existing guarantees (<strong>admission control</strong>).</li>
+</ol><aside class="notes">Source note: <a href="../../unit-07/resource-management/">Resource Management</a></aside></section><section class=""><h2><small>Resource Management</small>Allocation schemes <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>Resource allocation works with <strong>reservation</strong> of resources before use.</p><ol>
+<li class="fragment fade-up">The application states its <strong>QoS</strong> requirements (for example frame rate, delay).</li>
+<li class="fragment fade-up">The system maps them into <strong>resource requirements</strong>.</li>
+<li class="fragment fade-up"><strong>Admission control (schedulability test)</strong>: can the request be served <strong>together with all existing guarantees</strong>?</li>
+<li class="fragment fade-up">If yes, the resources are <strong>reserved</strong> (<strong>accepted</strong>); if no, the request is <strong>rejected</strong> or <strong>renegotiated</strong> with lower QoS.</li>
+<li class="fragment fade-up">During the run the system <strong>enforces</strong> the reservation and <strong>monitors</strong> it.</li>
+</ol><aside class="notes">Source note: <a href="../../unit-07/resource-management/">Resource Management</a></aside></section><section class=""><h2><small>Resource Management</small>Allocation schemes <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><table>
+<thead>
+<tr>
+<th>Guarantee</th>
+<th>Meaning</th>
+<th>Reservation based on</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Deterministic (hard)</strong></td>
+<td>QoS always met</td>
+<td><strong>Worst case</strong>; may waste resources</td>
+</tr>
+<tr>
+<td><strong>Statistical</strong></td>
+<td>QoS met with a given probability</td>
+<td><strong>Average</strong> case; better use</td>
+</tr>
+<tr>
+<td><strong>Best effort</strong></td>
+<td>No guarantee</td>
+<td>Whatever is left</td>
+</tr>
+</tbody>
+</table><div class="callout ex"><div class="ct">Admission control by utilisation</div>
+<p>Two audio and one video streams already use 70 % of the CPU. A new stream needs 40 %. 70 + 40 = 110 % &gt; 100 %, so it is <strong>rejected</strong> (or offered a lower frame rate needing, say, 25 %).</p>
+</div><aside class="notes">Source note: <a href="../../unit-07/resource-management/">Resource Management</a></aside></section><section class="dense"><h2><small>Resource Management</small>Continuous media resource model (LBAP) <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>The model describes the <strong>workload</strong> a stream puts on a resource and the <strong>guarantee</strong> the system gives. The <strong>Linear Bounded Arrival Process (LBAP)</strong> characterises a stream by three parameters:</p><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>M</strong></td>
+<td><strong>Maximum message (LDU) size</strong></td>
+</tr>
+<tr>
+<td><strong>R</strong></td>
+<td><strong>Maximum message rate</strong> (messages per second)</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td><strong>Maximum burst</strong> (number of messages that may arrive back to back)</td>
+</tr>
+</tbody>
+</table><p>The number of messages arriving in any interval of length <em>t</em> is bounded <strong>linearly</strong>:</p><p>164\text{messages in } t \;\le\; B + R\cdot t164</p><aside class="notes">Source note: <a href="../../unit-07/resource-management/">Resource Management</a></aside></section><section class="dense"><h2><small>Resource Management</small>Continuous media resource model (LBAP) <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout ex"><div class="ct">Check</div>
+<p>A video stream with R = 25 messages/s and burst B = 3: in 2 s at most 3 + 25 × 2 = <strong>53</strong> messages. If M = 10 KB per frame, the peak data rate is M × R = <strong>250 KB/s</strong>.</p>
+</div><p>Associated ideas in the model:</p><ul>
+<li class="fragment fade-up">Each message needs <strong>processing time</strong> on the resource and has a <strong>deadline</strong> (delay bound).</li>
+<li class="fragment fade-up">A <strong>resource manager</strong> per resource performs the schedulability test and the reservation.</li>
+<li class="fragment fade-up"><strong>Buffers</strong> absorb the burst B and the jitter.</li>
+<li class="fragment fade-up">The <strong>end-to-end QoS</strong> is the combination of the guarantees of all resources along the path (disk, CPU, network).</li>
+</ul><aside class="notes">Source note: <a href="../../unit-07/resource-management/">Resource Management</a></aside></section><section class="dense"><h2><small>Resource Management</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Why is admission control needed?</p><div class="fragment ans">
+<p>To protect the guarantees already given: a new stream is accepted only if the resources remain sufficient for all.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">What do M, R and B stand for in LBAP?</p><div class="fragment ans">
+<p>Maximum message size, maximum message rate, maximum burst.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-07/resource-management/">Resource Management</a></aside></section><section><h2><small>Resource Management</small>Key terms</h2><div class="terms"><div class="card term"><b>Resource</b><span>Anything a stream needs: CPU, memory, bandwidth, disk.</span></div><div class="card term"><b>Admission control</b><span>Accepting or rejecting a new request.</span></div><div class="card term"><b>Reservation</b><span>Setting resources aside in advance.</span></div><div class="card term"><b>LBAP</b><span>Linear Bounded Arrival Process model.</span></div><div class="card term"><b>Utilisation</b><span>Fraction of a resource in use.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section></section>
+<section data-topic="Process Management and Real-Time Scheduling"><section><div class="sec"><div class="no">03</div><h2>Process Management and Real-Time Scheduling</h2><div class="lead">Unit 7 &middot; topic 3 of 4</div></div></section><section><h2><small>Process Management and Real-Time Scheduling</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>Scheduling decides which task runs next. EDF always runs the task with the nearest deadline; Rate Monotonic gives higher fixed priority to tasks with shorter periods.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Doing homework: EDF is 'do the one due soonest first'; RM is 'always do the daily task before the weekly task'.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Utilisation U = Σ C/P. EDF works if U ≤ 1. RM is guaranteed if U ≤ n(2^(1/n) − 1).</p></div></div><aside class="notes"><p><b>Say:</b> Scheduling decides which task runs next. EDF always runs the task with the nearest deadline; Rate Monotonic gives higher fixed priority to tasks with shorter periods.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: Doing homework: EDF is 'do the one due soonest first'; RM is 'always do the daily task before the weekly task'.)</p><p><b>Board:</b> write the memory hook: Utilisation U = Σ C/P. EDF works if U ≤ 1. RM is guaranteed if U ≤ n(2^(1/n) − 1).</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>Process Management and Real-Time Scheduling</small>Real-time processing requirement <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>For continuous media the <strong>process manager</strong> must schedule processes so that every periodic task meets its deadline. A periodic task is described by:</p><table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C</strong></td>
+<td>Computation (execution) time per period</td>
+</tr>
+<tr>
+<td><strong>P</strong></td>
+<td><strong>Period</strong> (a new instance is released every P)</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>Deadline, usually <strong>D = P</strong> (finish before the next instance)</td>
+</tr>
+<tr>
+<td><strong>U = C ÷ P</strong></td>
+<td><strong>Utilisation</strong>: the fraction of the CPU the task needs</td>
+</tr>
+</tbody>
+</table><p>Total utilisation of <em>n</em> tasks: <strong>U = Σ Cᵢ ÷ Pᵢ</strong>. If U &gt; 1, no scheduler can succeed.</p><aside class="notes">Source note: <a href="../../unit-07/scheduling/">Process Management and Real-Time Scheduling</a></aside></section><section class="dense"><h2><small>Process Management and Real-Time Scheduling</small>Real-time processing requirement <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout ex"><div class="ct">A video task</div>
+<p>Decoding a frame takes C = 10 ms and frames come every P = 40 ms (25 fps): U = 10 ÷ 40 = <strong>0.25</strong> (25 % of the CPU).</p>
+</div><h3>Real-time scheduling</h3><ul>
+<li class="fragment fade-up">A <strong>conventional scheduler</strong> (round robin, priority, FIFO) ignores deadlines.</li>
+<li class="fragment fade-up">A <strong>real-time scheduler</strong> orders tasks by their <strong>timing</strong>. Two classical algorithms are used for continuous media: <strong>Earliest Deadline First</strong> and <strong>Rate Monotonic</strong>.</li>
+<li class="fragment fade-up">Both are <strong>preemptive</strong>: a higher-priority task can interrupt the running one.</li>
+<li class="fragment fade-up">Assumptions: periodic tasks, D = P, independent tasks, negligible switching time.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-07/scheduling/">Process Management and Real-Time Scheduling</a></aside></section><section class=""><h2><small>Process Management and Real-Time Scheduling</small>Earliest Deadline First (EDF)</h2><ul>
+<li class="fragment fade-up"><strong>Rule:</strong> at every moment run the ready task whose <strong>absolute deadline is nearest</strong>.</li>
+<li class="fragment fade-up"><strong>Dynamic priority</strong> (priorities change as deadlines approach); <strong>optimal</strong> for a single CPU: if any algorithm can meet all deadlines, EDF can.</li>
+<li class="fragment fade-up"><strong>Schedulability test (D = P):</strong> the task set is schedulable <strong>if and only if U ≤ 1</strong>.</li>
+</ul><aside class="notes">Source note: <a href="../../unit-07/scheduling/">Process Management and Real-Time Scheduling</a></aside></section><section class="dense"><h2><small>Process Management and Real-Time Scheduling</small>Rate Monotonic (RM)</h2><ul>
+<li class="fragment fade-up"><strong>Rule:</strong> assign <strong>static priorities by rate</strong>: the task with the <strong>shortest period (highest rate) gets the highest priority</strong>; run the highest-priority ready task.</li>
+<li class="fragment fade-up"><strong>Static priority</strong>, simple to implement, predictable; <strong>optimal among static-priority algorithms</strong>.</li>
+<li class="fragment fade-up"><strong>Sufficient test (Liu and Layland):</strong></li>
+</ul><p>181U \le n\left(2^{1/n}-1\right)181</p><table>
+<thead>
+<tr>
+<th>n</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>→ ∞</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bound</td>
+<td>1.000</td>
+<td>0.828</td>
+<td>0.780</td>
+<td>0.757</td>
+<td><strong>0.693</strong></td>
+</tr>
+</tbody>
+</table><p>If U is below the bound, RM surely works. If U is above it but ≤ 1, RM <strong>may or may not</strong> work (a timeline decides). EDF works up to <strong>U = 1</strong>.</p><aside class="notes">Source note: <a href="../../unit-07/scheduling/">Process Management and Real-Time Scheduling</a></aside></section><section class=""><h2><small>Process Management and Real-Time Scheduling</small>Worked example 1: both succeed</h2><p>Tasks: <strong>T1 (C = 1, P = 4)</strong> and <strong>T2 (C = 2, P = 6)</strong>. U = 1/4 + 2/6 = 0.25 + 0.333 = <strong>0.583</strong>. RM bound for n = 2 is 0.828, so RM is guaranteed.</p><p>Timeline over 12 time units (RM, T1 has the higher priority; EDF gives the same here):</p><table>
+<thead>
+<tr>
+<th>t</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Running</td>
+<td>T1</td>
+<td>T2</td>
+<td>T2</td>
+<td>idle</td>
+<td>T1</td>
+<td>idle</td>
+<td>T2</td>
+<td>T2</td>
+<td>T1</td>
+<td>idle</td>
+<td>idle</td>
+<td>idle</td>
+</tr>
+</tbody>
+</table><p>All instances finish before their deadlines.</p><aside class="notes">Source note: <a href="../../unit-07/scheduling/">Process Management and Real-Time Scheduling</a></aside></section><section class="dense"><h2><small>Process Management and Real-Time Scheduling</small>Worked example 2: EDF succeeds, RM fails <span style="opacity:.55;font-size:.6em">(1/3)</span></h2><p>Tasks: <strong>T1 (C = 2, P = 5)</strong> and <strong>T2 (C = 4, P = 7)</strong>. U = 2/5 + 4/7 = 0.400 + 0.571 = <strong>0.971</strong>.</p><ul>
+<li><strong>EDF:</strong> U ≤ 1, so schedulable. Timeline in the table below.</li>
+<li><strong>RM:</strong> U = 0.971 is above the n = 2 bound 0.828, and the timeline shows a miss.</li>
+</ul><table>
+<thead>
+<tr>
+<th>t</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RM</strong></td>
+<td>T1</td>
+<td>T1</td>
+<td>T2</td>
+<td>T2</td>
+<td>T2</td>
+<td>T1</td>
+<td>T1</td>
+<td><strong>T2</strong></td>
+<td>T1</td>
+<td>T1</td>
+<td>T2</td>
+<td>T2</td>
+</tr>
+<tr>
+<td><strong>EDF</strong></td>
+<td>T1</td>
+<td>T1</td>
+<td>T2</td>
+<td>T2</td>
+<td>T2</td>
+<td>T2</td>
+<td>T1</td>
+<td>T1</td>
+<td>T2</td>
+<td>T2</td>
+<td>T2</td>
+<td>T2</td>
+</tr>
+</tbody>
+</table><p>Under RM, the first T2 instance (deadline 7) has had only 3 of its 4 units by t = 7 and finishes in slot 7, i.e. at time 8: <strong>deadline missed</strong>. Under EDF it finishes at time 6 and nothing misses.</p><aside class="notes">Source note: <a href="../../unit-07/scheduling/">Process Management and Real-Time Scheduling</a></aside></section><section class="xdense"><h2><small>Process Management and Real-Time Scheduling</small>Worked example 2: EDF succeeds, RM fails <span style="opacity:.55;font-size:.6em">(2/3)</span></h2><div class="callout warn"><div class="ct">Method check</div>
+<p>Timelines like these are easy to get wrong by hand. The tables above were produced by a small simulation (unit time steps, deadline = period) and agree with the hand analysis. In the exam, mark each release and deadline on the time axis and state the priority rule you use at each decision.</p>
+</div><div class="callout exam"><div class="ct">Comparison to memorise</div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>EDF</th>
+<th>RM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Priority</td>
+<td><strong>Dynamic</strong> (nearest deadline)</td>
+<td><strong>Static</strong> (shortest period)</td>
+</tr>
+<tr>
+<td>Schedulable if</td>
+<td><strong>U ≤ 1</strong></td>
+<td>U ≤ n(2^{1/n} − 1) (sufficient)</td>
+</tr>
+<tr>
+<td>CPU use</td>
+<td>Up to 100 %</td>
+<td>About 69 % guaranteed for large n</td>
+</tr>
+<tr>
+<td>Overhead</td>
+<td>Higher (priorities recomputed)</td>
+<td>Lower</td>
+</tr>
+<tr>
+<td>Overload</td>
+<td>Many tasks may miss</td>
+<td>Low-priority tasks miss first</td>
+</tr>
+</tbody>
+</table>
+</div><aside class="notes">Source note: <a href="../../unit-07/scheduling/">Process Management and Real-Time Scheduling</a></aside></section><section class=""><h2><small>Process Management and Real-Time Scheduling</small>Worked example 2: EDF succeeds, RM fails <span style="opacity:.55;font-size:.6em">(3/3)</span></h2><div class="callout"><div class="ct">Other points</div>
+<p>Textbooks also mention <strong>priority inversion</strong> (a low-priority task holds a resource needed by a high-priority one) and <strong>overload handling</strong>. These are not in the syllabus text.</p>
+</div><aside class="notes">Source note: <a href="../../unit-07/scheduling/">Process Management and Real-Time Scheduling</a></aside></section><section class="xdense"><h2><small>Process Management and Real-Time Scheduling</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">A task set has U = 0.9. Is it schedulable by EDF? By RM?</p><div class="fragment ans">
+<p>EDF: yes (U ≤ 1). RM: the sufficient bound (at most 0.828 for n = 2, tends to 0.693) is exceeded, so RM is not guaranteed; check with a timeline.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Which priority does RM give to a 20 ms task and a 50 ms task?</p><div class="fragment ans">
+<p>The 20 ms task (shorter period, higher rate) has the higher priority.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-07/scheduling/">Process Management and Real-Time Scheduling</a></aside></section><section><h2><small>Process Management and Real-Time Scheduling</small>Key terms</h2><div class="terms"><div class="card term"><b>Period P</b><span>Time between releases of a periodic task.</span></div><div class="card term"><b>Computation time C</b><span>CPU time needed per period.</span></div><div class="card term"><b>Utilisation U</b><span>Sum of C/P over all tasks.</span></div><div class="card term"><b>EDF</b><span>Earliest Deadline First: dynamic priority, optimal.</span></div><div class="card term"><b>RM</b><span>Rate Monotonic: static priority by period.</span></div><div class="card term"><b>Preemption</b><span>Interrupting a running task for a more urgent one.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section><section><h2><small>Process Management and Real-Time Scheduling</small>Same task set, two policies</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 705.588984 302.400898" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-12T07:41:44.920479</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 302.400898 
+L 705.588984 302.400898 
+L 705.588984 0 
+L 0 0 
+L 0 302.400898 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 78.430234 125.720898 
+L 692.193984 125.720898 
+L 692.193984 20.498203 
+L 78.430234 20.498203 
+L 78.430234 125.720898 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 78.430234 115.856271 
+L 122.270502 115.856271 
+L 122.270502 89.550597 
+L 78.430234 89.550597 
+z
+" clip-path="url(#ped34e9746c)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 122.270502 115.856271 
+L 166.11077 115.856271 
+L 166.11077 89.550597 
+L 122.270502 89.550597 
+z
+" clip-path="url(#ped34e9746c)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 166.11077 82.974178 
+L 209.951038 82.974178 
+L 209.951038 56.668505 
+L 166.11077 56.668505 
+z
+" clip-path="url(#ped34e9746c)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 209.951038 82.974178 
+L 253.791306 82.974178 
+L 253.791306 56.668505 
+L 209.951038 56.668505 
+z
+" clip-path="url(#ped34e9746c)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 253.791306 82.974178 
+L 297.631574 82.974178 
+L 297.631574 56.668505 
+L 253.791306 56.668505 
+z
+" clip-path="url(#ped34e9746c)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 297.631574 115.856271 
+L 341.471842 115.856271 
+L 341.471842 89.550597 
+L 297.631574 89.550597 
+z
+" clip-path="url(#ped34e9746c)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 341.471842 115.856271 
+L 385.312109 115.856271 
+L 385.312109 89.550597 
+L 341.471842 89.550597 
+z
+" clip-path="url(#ped34e9746c)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 385.312109 82.974178 
+L 429.152377 82.974178 
+L 429.152377 56.668505 
+L 385.312109 56.668505 
+z
+" clip-path="url(#ped34e9746c)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 429.152377 82.974178 
+L 472.992645 82.974178 
+L 472.992645 56.668505 
+L 429.152377 56.668505 
+z
+" clip-path="url(#ped34e9746c)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 472.992645 82.974178 
+L 516.832913 82.974178 
+L 516.832913 56.668505 
+L 472.992645 56.668505 
+z
+" clip-path="url(#ped34e9746c)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 516.832913 115.856271 
+L 560.673181 115.856271 
+L 560.673181 89.550597 
+L 516.832913 89.550597 
+z
+" clip-path="url(#ped34e9746c)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 560.673181 115.856271 
+L 604.513449 115.856271 
+L 604.513449 89.550597 
+L 560.673181 89.550597 
+z
+" clip-path="url(#ped34e9746c)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 604.513449 82.974178 
+L 648.353717 82.974178 
+L 648.353717 56.668505 
+L 604.513449 56.668505 
+z
+" clip-path="url(#ped34e9746c)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m9c0db504b3" d="M 0 0 
+L 0 3.5 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m9c0db504b3" x="78.430234" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="78.430234" y="141.838086" transform="rotate(-0 78.430234 141.838086)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="122.270502" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="122.270502" y="141.838086" transform="rotate(-0 122.270502 141.838086)">1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="166.11077" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="166.11077" y="141.838086" transform="rotate(-0 166.11077 141.838086)">2</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="209.951038" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="209.951038" y="141.838086" transform="rotate(-0 209.951038 141.838086)">3</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="253.791306" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="253.791306" y="141.838086" transform="rotate(-0 253.791306 141.838086)">4</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="297.631574" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="297.631574" y="141.838086" transform="rotate(-0 297.631574 141.838086)">5</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="341.471842" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="341.471842" y="141.838086" transform="rotate(-0 341.471842 141.838086)">6</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="385.312109" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="385.312109" y="141.838086" transform="rotate(-0 385.312109 141.838086)">7</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="429.152377" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="429.152377" y="141.838086" transform="rotate(-0 429.152377 141.838086)">8</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="472.992645" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="472.992645" y="141.838086" transform="rotate(-0 472.992645 141.838086)">9</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="516.832913" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="516.832913" y="141.838086" transform="rotate(-0 516.832913 141.838086)">10</text>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="560.673181" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="560.673181" y="141.838086" transform="rotate(-0 560.673181 141.838086)">11</text>
+     </g>
+    </g>
+    <g id="xtick_13">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="604.513449" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="604.513449" y="141.838086" transform="rotate(-0 604.513449 141.838086)">12</text>
+     </g>
+    </g>
+    <g id="xtick_14">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="648.353717" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="648.353717" y="141.838086" transform="rotate(-0 648.353717 141.838086)">13</text>
+     </g>
+    </g>
+    <g id="xtick_15">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="692.193984" y="125.720898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="692.193984" y="141.838086" transform="rotate(-0 692.193984 141.838086)">14</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_16">
+      <defs>
+       <path id="mf53c0ec353" d="M 0 0 
+L -3.5 0 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mf53c0ec353" x="78.430234" y="102.703434" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 9.5px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="71.430234" y="106.312321" transform="rotate(-0 71.430234 106.312321)">T1 (C=2,P=5)</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#mf53c0ec353" x="78.430234" y="69.821342" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 9.5px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="71.430234" y="73.430228" transform="rotate(-0 71.430234 73.430228)">T2 (C=4,P=7)</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_18">
+    <path d="M 78.430234 115.856271 
+L 78.430234 115.856271 
+" clip-path="url(#ped34e9746c)" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_19">
+    <path d="M 297.631574 115.856271 
+L 297.631574 115.856271 
+" clip-path="url(#ped34e9746c)" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_20">
+    <path d="M 516.832913 115.856271 
+L 516.832913 115.856271 
+" clip-path="url(#ped34e9746c)" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_21">
+    <path d="M 78.430234 82.974178 
+L 78.430234 115.856271 
+" clip-path="url(#ped34e9746c)" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_22">
+    <path d="M 385.312109 82.974178 
+L 385.312109 115.856271 
+" clip-path="url(#ped34e9746c)" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_23">
+    <path d="M 692.193984 82.974178 
+L 692.193984 115.856271 
+" clip-path="url(#ped34e9746c)" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_24">
+    <path d="M 385.312109 119.14448 
+L 385.312109 53.380295 
+" clip-path="url(#ped34e9746c)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #f87171; stroke-width: 1.5"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 78.430234 125.720898 
+L 692.193984 125.720898 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 9px; font-family: Inter, system-ui, sans-serif; fill: #f87171" transform="translate(363.44 36.001416)">deadline</text>
+    <text style="font-weight: 700; font-size: 9px; font-family: Inter, system-ui, sans-serif; fill: #f87171" transform="translate(367.450625 46.803877)">missed</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #f87171" x="78.430234" y="14.498203" transform="rotate(-0 78.430234 14.498203)">RM: static priority by period  →  MISS</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_17">
+    <path d="M 78.430234 277.640898 
+L 692.193984 277.640898 
+L 692.193984 172.418203 
+L 78.430234 172.418203 
+L 78.430234 277.640898 
+z
+" style="fill: none"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 78.430234 267.776271 
+L 122.270502 267.776271 
+L 122.270502 241.470597 
+L 78.430234 241.470597 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 122.270502 267.776271 
+L 166.11077 267.776271 
+L 166.11077 241.470597 
+L 122.270502 241.470597 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 166.11077 234.894178 
+L 209.951038 234.894178 
+L 209.951038 208.588505 
+L 166.11077 208.588505 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 209.951038 234.894178 
+L 253.791306 234.894178 
+L 253.791306 208.588505 
+L 209.951038 208.588505 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 253.791306 234.894178 
+L 297.631574 234.894178 
+L 297.631574 208.588505 
+L 253.791306 208.588505 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 297.631574 234.894178 
+L 341.471842 234.894178 
+L 341.471842 208.588505 
+L 297.631574 208.588505 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 341.471842 267.776271 
+L 385.312109 267.776271 
+L 385.312109 241.470597 
+L 341.471842 241.470597 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 385.312109 267.776271 
+L 429.152377 267.776271 
+L 429.152377 241.470597 
+L 385.312109 241.470597 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 429.152377 234.894178 
+L 472.992645 234.894178 
+L 472.992645 208.588505 
+L 429.152377 208.588505 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 472.992645 234.894178 
+L 516.832913 234.894178 
+L 516.832913 208.588505 
+L 472.992645 208.588505 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 516.832913 234.894178 
+L 560.673181 234.894178 
+L 560.673181 208.588505 
+L 516.832913 208.588505 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 560.673181 234.894178 
+L 604.513449 234.894178 
+L 604.513449 208.588505 
+L 560.673181 208.588505 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #f472b6; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 604.513449 267.776271 
+L 648.353717 267.776271 
+L 648.353717 241.470597 
+L 604.513449 241.470597 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 648.353717 267.776271 
+L 692.193984 267.776271 
+L 692.193984 241.470597 
+L 648.353717 241.470597 
+z
+" clip-path="url(#p3c5aada038)" style="fill: #818cf8; stroke: #0b0d1c; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_16">
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="78.430234" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="78.430234" y="293.758086" transform="rotate(-0 78.430234 293.758086)">0</text>
+     </g>
+    </g>
+    <g id="xtick_17">
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="122.270502" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="122.270502" y="293.758086" transform="rotate(-0 122.270502 293.758086)">1</text>
+     </g>
+    </g>
+    <g id="xtick_18">
+     <g id="line2d_27">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="166.11077" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="166.11077" y="293.758086" transform="rotate(-0 166.11077 293.758086)">2</text>
+     </g>
+    </g>
+    <g id="xtick_19">
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="209.951038" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="209.951038" y="293.758086" transform="rotate(-0 209.951038 293.758086)">3</text>
+     </g>
+    </g>
+    <g id="xtick_20">
+     <g id="line2d_29">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="253.791306" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="253.791306" y="293.758086" transform="rotate(-0 253.791306 293.758086)">4</text>
+     </g>
+    </g>
+    <g id="xtick_21">
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="297.631574" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_25">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="297.631574" y="293.758086" transform="rotate(-0 297.631574 293.758086)">5</text>
+     </g>
+    </g>
+    <g id="xtick_22">
+     <g id="line2d_31">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="341.471842" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_26">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="341.471842" y="293.758086" transform="rotate(-0 341.471842 293.758086)">6</text>
+     </g>
+    </g>
+    <g id="xtick_23">
+     <g id="line2d_32">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="385.312109" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_27">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="385.312109" y="293.758086" transform="rotate(-0 385.312109 293.758086)">7</text>
+     </g>
+    </g>
+    <g id="xtick_24">
+     <g id="line2d_33">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="429.152377" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_28">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="429.152377" y="293.758086" transform="rotate(-0 429.152377 293.758086)">8</text>
+     </g>
+    </g>
+    <g id="xtick_25">
+     <g id="line2d_34">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="472.992645" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_29">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="472.992645" y="293.758086" transform="rotate(-0 472.992645 293.758086)">9</text>
+     </g>
+    </g>
+    <g id="xtick_26">
+     <g id="line2d_35">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="516.832913" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_30">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="516.832913" y="293.758086" transform="rotate(-0 516.832913 293.758086)">10</text>
+     </g>
+    </g>
+    <g id="xtick_27">
+     <g id="line2d_36">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="560.673181" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_31">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="560.673181" y="293.758086" transform="rotate(-0 560.673181 293.758086)">11</text>
+     </g>
+    </g>
+    <g id="xtick_28">
+     <g id="line2d_37">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="604.513449" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_32">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="604.513449" y="293.758086" transform="rotate(-0 604.513449 293.758086)">12</text>
+     </g>
+    </g>
+    <g id="xtick_29">
+     <g id="line2d_38">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="648.353717" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_33">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="648.353717" y="293.758086" transform="rotate(-0 648.353717 293.758086)">13</text>
+     </g>
+    </g>
+    <g id="xtick_30">
+     <g id="line2d_39">
+      <g>
+       <use xlink:href="#m9c0db504b3" x="692.193984" y="277.640898" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_34">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="692.193984" y="293.758086" transform="rotate(-0 692.193984 293.758086)">14</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_3">
+     <g id="line2d_40">
+      <g>
+       <use xlink:href="#mf53c0ec353" x="78.430234" y="254.623434" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_35">
+      <text style="font-size: 9.5px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="71.430234" y="258.232321" transform="rotate(-0 71.430234 258.232321)">T1 (C=2,P=5)</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_41">
+      <g>
+       <use xlink:href="#mf53c0ec353" x="78.430234" y="221.741342" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_36">
+      <text style="font-size: 9.5px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="71.430234" y="225.350228" transform="rotate(-0 71.430234 225.350228)">T2 (C=4,P=7)</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_42">
+    <path d="M 78.430234 267.776271 
+L 78.430234 267.776271 
+" clip-path="url(#p3c5aada038)" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_43">
+    <path d="M 297.631574 267.776271 
+L 297.631574 267.776271 
+" clip-path="url(#p3c5aada038)" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_44">
+    <path d="M 516.832913 267.776271 
+L 516.832913 267.776271 
+" clip-path="url(#p3c5aada038)" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_45">
+    <path d="M 78.430234 234.894178 
+L 78.430234 267.776271 
+" clip-path="url(#p3c5aada038)" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_46">
+    <path d="M 385.312109 234.894178 
+L 385.312109 267.776271 
+" clip-path="url(#p3c5aada038)" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_47">
+    <path d="M 692.193984 234.894178 
+L 692.193984 267.776271 
+" clip-path="url(#p3c5aada038)" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="patch_32">
+    <path d="M 78.430234 277.640898 
+L 692.193984 277.640898 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 11.5px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #34d399" x="78.430234" y="166.418203" transform="rotate(-0 78.430234 166.418203)">EDF: earliest deadline first  →  all deadlines met</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="ped34e9746c">
+   <rect x="78.430234" y="20.498203" width="613.76375" height="105.222695"/>
+  </clipPath>
+  <clipPath id="p3c5aada038">
+   <rect x="78.430234" y="172.418203" width="613.76375" height="105.222695"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">U = 2/5 + 4/7 = 0.971 ≤ 1, so EDF can schedule it; it exceeds the RM bound for n=2 (0.828), and here RM misses T2's first deadline at t = 7.</div></section><section><h2><small>Process Management and Real-Time Scheduling</small>Schedulability bounds</h2><div class="vis"><svg xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 611.604687 257.192937" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-12T07:41:44.966256</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 257.192937 
+L 611.604687 257.192937 
+L 611.604687 0 
+L 0 0 
+L 0 257.192937 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 47.844687 216.432 
+L 605.844687 216.432 
+L 605.844687 5.76 
+L 47.844687 5.76 
+L 47.844687 216.432 
+z
+" style="fill: none"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 113.256171 216.432 
+L 113.256171 5.76 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="mf8cdbdc664" d="M 0 0 
+L 0 3.5 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mf8cdbdc664" x="113.256171" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="113.256171" y="232.549187" transform="rotate(-0 113.256171 232.549187)">2.5</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 180.002582 216.432 
+L 180.002582 5.76 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mf8cdbdc664" x="180.002582" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="180.002582" y="232.549187" transform="rotate(-0 180.002582 232.549187)">5.0</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 246.748994 216.432 
+L 246.748994 5.76 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mf8cdbdc664" x="246.748994" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="246.748994" y="232.549187" transform="rotate(-0 246.748994 232.549187)">7.5</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 313.495405 216.432 
+L 313.495405 5.76 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#mf8cdbdc664" x="313.495405" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="313.495405" y="232.549187" transform="rotate(-0 313.495405 232.549187)">10.0</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 380.241817 216.432 
+L 380.241817 5.76 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#mf8cdbdc664" x="380.241817" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="380.241817" y="232.549187" transform="rotate(-0 380.241817 232.549187)">12.5</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 446.988228 216.432 
+L 446.988228 5.76 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#mf8cdbdc664" x="446.988228" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="446.988228" y="232.549187" transform="rotate(-0 446.988228 232.549187)">15.0</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 513.73464 216.432 
+L 513.73464 5.76 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#mf8cdbdc664" x="513.73464" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="513.73464" y="232.549187" transform="rotate(-0 513.73464 232.549187)">17.5</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_15">
+      <path d="M 580.481051 216.432 
+L 580.481051 5.76 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#mf8cdbdc664" x="580.481051" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #9aa0cc" x="580.481051" y="232.549187" transform="rotate(-0 580.481051 232.549187)">20.0</text>
+     </g>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="326.844688" y="248.550125" transform="rotate(-0 326.844688 248.550125)">number of tasks n</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_17">
+      <path d="M 47.844687 216.432 
+L 605.844687 216.432 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <defs>
+       <path id="m05ca0e154a" d="M 0 0 
+L -3.5 0 
+" style="stroke: #9aa0cc; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m05ca0e154a" x="47.844687" y="216.432" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="40.844687" y="220.990594" transform="rotate(-0 40.844687 220.990594)">0.6</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_19">
+      <path d="M 47.844687 169.616 
+L 605.844687 169.616 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m05ca0e154a" x="47.844687" y="169.616" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="40.844687" y="174.174594" transform="rotate(-0 40.844687 174.174594)">0.7</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_21">
+      <path d="M 47.844687 122.8 
+L 605.844687 122.8 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m05ca0e154a" x="47.844687" y="122.8" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="40.844687" y="127.358594" transform="rotate(-0 40.844687 127.358594)">0.8</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_23">
+      <path d="M 47.844687 75.984 
+L 605.844687 75.984 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m05ca0e154a" x="47.844687" y="75.984" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="40.844687" y="80.542594" transform="rotate(-0 40.844687 80.542594)">0.9</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_25">
+      <path d="M 47.844687 29.168 
+L 605.844687 29.168 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #2a2f5c; stroke-opacity: 0.3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#m05ca0e154a" x="47.844687" y="29.168" style="fill: #9aa0cc; stroke: #9aa0cc; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: end; fill: #9aa0cc" x="40.844687" y="33.726594" transform="rotate(-0 40.844687 33.726594)">1.0</text>
+     </g>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 12px; font-family: Inter, system-ui, sans-serif; text-anchor: middle; fill: #e8eaff" x="14.878125" y="111.096" transform="rotate(-90 14.878125 111.096)">utilisation U</text>
+    </g>
+   </g>
+   <g id="line2d_27">
+    <path d="M 73.208324 29.168 
+L 99.906888 109.491557 
+L 126.605453 132.274084 
+L 153.304018 143.011188 
+L 180.002582 149.254891 
+L 206.701147 153.337005 
+L 233.399711 156.214173 
+L 260.098276 158.351199 
+L 286.796841 160.001094 
+L 313.495405 161.313358 
+L 340.19397 162.381999 
+L 366.892534 163.269093 
+L 393.591099 164.017277 
+L 420.289664 164.656809 
+L 446.988228 165.209752 
+L 473.686793 165.692576 
+L 500.385357 166.117824 
+L 527.083922 166.495213 
+L 553.782487 166.832393 
+L 580.481051 167.135465 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #c084fc; stroke-width: 2.2; stroke-linecap: square"/>
+    <defs>
+     <path id="m6a5c9c1935" d="M 0 2.5 
+C 0.663008 2.5 1.29895 2.236584 1.767767 1.767767 
+C 2.236584 1.29895 2.5 0.663008 2.5 0 
+C 2.5 -0.663008 2.236584 -1.29895 1.767767 -1.767767 
+C 1.29895 -2.236584 0.663008 -2.5 0 -2.5 
+C -0.663008 -2.5 -1.29895 -2.236584 -1.767767 -1.767767 
+C -2.236584 -1.29895 -2.5 -0.663008 -2.5 0 
+C -2.5 0.663008 -2.236584 1.29895 -1.767767 1.767767 
+C -1.29895 2.236584 -0.663008 2.5 0 2.5 
+z
+" style="stroke: #c084fc"/>
+    </defs>
+    <g clip-path="url(#pda7bda8217)">
+     <use xlink:href="#m6a5c9c1935" x="73.208324" y="29.168" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="99.906888" y="109.491557" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="126.605453" y="132.274084" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="153.304018" y="143.011188" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="180.002582" y="149.254891" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="206.701147" y="153.337005" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="233.399711" y="156.214173" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="260.098276" y="158.351199" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="286.796841" y="160.001094" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="313.495405" y="161.313358" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="340.19397" y="162.381999" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="366.892534" y="163.269093" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="393.591099" y="164.017277" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="420.289664" y="164.656809" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="446.988228" y="165.209752" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="473.686793" y="165.692576" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="500.385357" y="166.117824" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="527.083922" y="166.495213" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="553.782487" y="166.832393" style="fill: #c084fc; stroke: #c084fc"/>
+     <use xlink:href="#m6a5c9c1935" x="580.481051" y="167.135465" style="fill: #c084fc; stroke: #c084fc"/>
+    </g>
+   </g>
+   <g id="line2d_28">
+    <path d="M 47.844687 29.168 
+L 605.844687 29.168 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke: #34d399; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_29">
+    <path d="M 47.844687 172.824216 
+L 605.844687 172.824216 
+" clip-path="url(#pda7bda8217)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #f472b6; stroke-width: 1.4"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 47.844687 216.432 
+L 47.844687 5.76 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 47.844687 216.432 
+L 605.844687 216.432 
+" style="fill: none; stroke: #4b5190; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_30">
+     <path d="M 384.386875 95.193266 
+L 394.386875 95.193266 
+L 404.386875 95.193266 
+" style="fill: none; stroke: #c084fc; stroke-width: 2.2; stroke-linecap: square"/>
+     <g>
+      <use xlink:href="#m6a5c9c1935" x="394.386875" y="95.193266" style="fill: #c084fc; stroke: #c084fc"/>
+     </g>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="412.386875" y="98.693266" transform="rotate(-0 412.386875 98.693266)">RM sufficient bound  n(2^{1/n} − 1)</text>
+    </g>
+    <g id="line2d_31">
+     <path d="M 384.386875 110.194047 
+L 394.386875 110.194047 
+L 404.386875 110.194047 
+" style="fill: none; stroke: #34d399; stroke-width: 2; stroke-linecap: square"/>
+    </g>
+    <g id="text_17">
+     <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="412.386875" y="113.694047" transform="rotate(-0 412.386875 113.694047)">EDF bound (U ≤ 1)</text>
+    </g>
+    <g id="line2d_32">
+     <path d="M 384.386875 125.194828 
+L 394.386875 125.194828 
+L 404.386875 125.194828 
+" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #f472b6; stroke-width: 1.4"/>
+    </g>
+    <g id="text_18">
+     <text style="font-size: 10px; font-family: Inter, system-ui, sans-serif; text-anchor: start; fill: #e8eaff" x="412.386875" y="128.694828" transform="rotate(-0 412.386875 128.694828)">limit ln 2 ≈ 0.693</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pda7bda8217">
+   <rect x="47.844687" y="5.76" width="558" height="210.672"/>
+  </clipPath>
+ </defs>
+</svg>
+</div><div class="cap">n=1: 1.000, n=2: 0.828, n=3: 0.780, → 0.693 as n grows. Above the RM bound a set may still pass an exact test; EDF is optimal up to U = 1.</div></section></section>
+<section data-topic="System Architecture"><section><div class="sec"><div class="no">04</div><h2>System Architecture</h2><div class="lead">Unit 7 &middot; topic 4 of 4</div></div></section><section><h2><small>System Architecture</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>A multimedia operating system adds real-time scheduling, a file system built for continuous data and fast buffer handling on top of an ordinary OS.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Streaming a film from a server: the server must read the disk in time for every viewer's next block.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Goal: guarantee timing. Layers: device, driver, kernel scheduler, file system, application interface.</p></div></div><aside class="notes"><p><b>Say:</b> A multimedia operating system adds real-time scheduling, a file system built for continuous data and fast buffer handling on top of an ordinary OS.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: Streaming a film from a server: the server must read the disk in time for every viewer's next block.)</p><p><b>Board:</b> write the memory hook: Goal: guarantee timing. Layers: device, driver, kernel scheduler, file system, application interface.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>System Architecture</small>Goal</h2><p>Provide, on top of the hardware, a <strong>real-time environment</strong> that serves continuous media with guaranteed QoS <strong>together with</strong> ordinary applications.</p><aside class="notes">Source note: <a href="../../unit-07/system-architecture/">System Architecture</a></aside></section><section class=""><h2><small>System Architecture</small>Layers</h2><div class="diagram"><svg aria-roledescription="flowchart-v2" class="flowchart" id="mm7655e2527d65" role="graphics-document document" viewbox="0 0 896 905" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mm7655e2527d65{font-family:Inter,Arial,sans-serif;font-size:18px;fill:#f4f4ff;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mm7655e2527d65 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mm7655e2527d65 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mm7655e2527d65 .error-icon{fill:#1c2150;}#mm7655e2527d65 .error-text{fill:#e3deaf;stroke:#e3deaf;}#mm7655e2527d65 .edge-thickness-normal{stroke-width:1px;}#mm7655e2527d65 .edge-thickness-thick{stroke-width:3.5px;}#mm7655e2527d65 .edge-pattern-solid{stroke-dasharray:0;}#mm7655e2527d65 .edge-thickness-invisible{stroke-width:0;fill:none;}#mm7655e2527d65 .edge-pattern-dashed{stroke-dasharray:3;}#mm7655e2527d65 .edge-pattern-dotted{stroke-dasharray:2;}#mm7655e2527d65 .marker{fill:#a5b4fc;stroke:#a5b4fc;}#mm7655e2527d65 .marker.cross{stroke:#a5b4fc;}#mm7655e2527d65 svg{font-family:Inter,Arial,sans-serif;font-size:18px;}#mm7655e2527d65 p{margin:0;}#mm7655e2527d65 .label{font-family:Inter,Arial,sans-serif;color:#f4f4ff;}#mm7655e2527d65 .cluster-label text{fill:#e3deaf;}#mm7655e2527d65 .cluster-label span{color:#e3deaf;}#mm7655e2527d65 .cluster-label span p{background-color:transparent;}#mm7655e2527d65 .label text,#mm7655e2527d65 span{fill:#f4f4ff;color:#f4f4ff;}#mm7655e2527d65 .node rect,#mm7655e2527d65 .node circle,#mm7655e2527d65 .node ellipse,#mm7655e2527d65 .node polygon,#mm7655e2527d65 .node path{fill:#27306b;stroke:#818cf8;stroke-width:1px;}#mm7655e2527d65 .rough-node .label text,#mm7655e2527d65 .node .label text,#mm7655e2527d65 .image-shape .label,#mm7655e2527d65 .icon-shape .label{text-anchor:middle;}#mm7655e2527d65 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mm7655e2527d65 .rough-node .label,#mm7655e2527d65 .node .label,#mm7655e2527d65 .image-shape .label,#mm7655e2527d65 .icon-shape .label{text-align:center;}#mm7655e2527d65 .node.clickable{cursor:pointer;}#mm7655e2527d65 .root .anchor path{fill:#a5b4fc!important;stroke-width:0;stroke:#a5b4fc;}#mm7655e2527d65 .arrowheadPath{fill:#0b0b0b;}#mm7655e2527d65 .edgePath .path{stroke:#a5b4fc;stroke-width:1px;}#mm7655e2527d65 .flowchart-link{stroke:#a5b4fc;fill:none;}#mm7655e2527d65 .edgeLabel{background-color:#12152b;text-align:center;}#mm7655e2527d65 .edgeLabel p{background-color:#12152b;}#mm7655e2527d65 .edgeLabel rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm7655e2527d65 .labelBkg{background-color:rgba(18, 21, 43, 0.5);}#mm7655e2527d65 .cluster rect{fill:#1c2150;stroke:#6366f1;stroke-width:1px;}#mm7655e2527d65 .cluster text{fill:#e3deaf;}#mm7655e2527d65 .cluster span{color:#e3deaf;}#mm7655e2527d65 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:Inter,Arial,sans-serif;font-size:12px;background:#1c2150;border:1px solid hsl(234.2307692308, 8.1481481481%, 11.1764705882%);border-radius:2px;pointer-events:none;z-index:100;}#mm7655e2527d65 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#f4f4ff;}#mm7655e2527d65 rect.text{fill:none;stroke-width:0;}#mm7655e2527d65 .icon-shape,#mm7655e2527d65 .image-shape{background-color:#12152b;text-align:center;}#mm7655e2527d65 .icon-shape p,#mm7655e2527d65 .image-shape p{background-color:#12152b;padding:2px;}#mm7655e2527d65 .icon-shape .label rect,#mm7655e2527d65 .image-shape .label rect{opacity:0.5;background-color:#12152b;fill:#12152b;}#mm7655e2527d65 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mm7655e2527d65 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mm7655e2527d65 .node .neo-node{stroke:#818cf8;}#mm7655e2527d65 [data-look="neo"].node rect,#mm7655e2527d65 [data-look="neo"].cluster rect,#mm7655e2527d65 [data-look="neo"].node polygon{stroke:url(#mm7655e2527d65-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm7655e2527d65 [data-look="neo"].swimlane.cluster rect{filter:none;}#mm7655e2527d65 [data-look="neo"].node path{stroke:url(#mm7655e2527d65-gradient);stroke-width:1px;}#mm7655e2527d65 [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm7655e2527d65 [data-look="neo"].node .neo-line path{stroke:#818cf8;filter:none;}#mm7655e2527d65 [data-look="neo"].node circle{stroke:url(#mm7655e2527d65-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm7655e2527d65 [data-look="neo"].node circle .state-start{fill:#000000;}#mm7655e2527d65 [data-look="neo"].icon-shape .icon{fill:url(#mm7655e2527d65-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm7655e2527d65 [data-look="neo"].icon-shape .icon-neo path{stroke:url(#mm7655e2527d65-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#mm7655e2527d65 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker class="marker flowchart-v2" id="mm7655e2527d65_flowchart-v2-pointEnd" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm7655e2527d65_flowchart-v2-pointStart" markerheight="8" markerunits="userSpaceOnUse" markerwidth="8" orient="auto" refx="4.5" refy="5" viewbox="0 0 10 10"><path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm7655e2527d65_flowchart-v2-pointEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="10.5" orient="auto" refx="11.5" refy="7" viewbox="0 0 11.5 14"><path class="arrowMarkerPath" d="M 0 0 L 11.5 7 L 0 14 z" style="stroke-width: 0; stroke-dasharray: 1, 0;"></path></marker><marker class="marker flowchart-v2" id="mm7655e2527d65_flowchart-v2-pointStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="11.5" orient="auto" refx="1" refy="7" viewbox="0 0 11.5 14"><polygon class="arrowMarkerPath" points="0,7 11.5,14 11.5,0" style="stroke-width: 0; stroke-dasharray: 1, 0;"></polygon></marker><marker class="marker flowchart-v2" id="mm7655e2527d65_flowchart-v2-circleEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="11" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm7655e2527d65_flowchart-v2-circleStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm7655e2527d65_flowchart-v2-circleEnd-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="12.25" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker flowchart-v2" id="mm7655e2527d65_flowchart-v2-circleStart-margin" markerheight="14" markerunits="userSpaceOnUse" markerwidth="14" orient="auto" refx="-2" refy="5" viewbox="0 0 10 10"><circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 0; stroke-dasharray: 1, 0;"></circle></marker><marker class="marker cross flowchart-v2" id="mm7655e2527d65_flowchart-v2-crossEnd" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="12" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm7655e2527d65_flowchart-v2-crossStart" markerheight="11" markerunits="userSpaceOnUse" markerwidth="11" orient="auto" refx="-1" refy="5.2" viewbox="0 0 11 11"><path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker class="marker cross flowchart-v2" id="mm7655e2527d65_flowchart-v2-crossEnd-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="17.7" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5;"></path></marker><marker class="marker cross flowchart-v2" id="mm7655e2527d65_flowchart-v2-crossStart-margin" markerheight="12" markerunits="userSpaceOnUse" markerwidth="12" orient="auto" refx="-3.5" refy="7.5" viewbox="0 0 15 15"><path class="arrowMarkerPath" d="M 1,1 L 14,14 M 1,14 L 14,1" style="stroke-width: 2.5; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M448,92L448,96.167C448,100.333,448,108.667,448,116.333C448,124,448,131,448,134.5L448,138" data-edge="true" data-et="edge" data-id="L_A_API_0" data-look="classic" data-points="W3sieCI6NDQ4LCJ5Ijo5Mn0seyJ4Ijo0NDgsInkiOjExN30seyJ4Ijo0NDgsInkiOjE0Mn1d" id="mm7655e2527d65-L_A_API_0" marker-end="url(#mm7655e2527d65_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M448,226L448,230.167C448,234.333,448,242.667,448,250.333C448,258,448,265,448,268.5L448,272" data-edge="true" data-et="edge" data-id="L_API_QM_0" data-look="classic" data-points="W3sieCI6NDQ4LCJ5IjoyMjZ9LHsieCI6NDQ4LCJ5IjoyNTF9LHsieCI6NDQ4LCJ5IjoyNzZ9XQ==" id="mm7655e2527d65-L_API_QM_0" marker-end="url(#mm7655e2527d65_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M448,414L448,418.167C448,422.333,448,430.667,448,438.333C448,446,448,453,448,456.5L448,460" data-edge="true" data-et="edge" data-id="L_QM_K_0" data-look="classic" data-points="W3sieCI6NDQ4LCJ5Ijo0MTR9LHsieCI6NDQ4LCJ5Ijo0Mzl9LHsieCI6NDQ4LCJ5Ijo0NjR9XQ==" id="mm7655e2527d65-L_QM_K_0" marker-end="url(#mm7655e2527d65_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M318,572.419L288,581.516C258,590.613,198,608.806,168,621.403C138,634,138,641,138,644.5L138,648" data-edge="true" data-et="edge" data-id="L_K_FS_0" data-look="classic" data-points="W3sieCI6MzE4LCJ5Ijo1NzIuNDE5MzU0ODM4NzA5Nn0seyJ4IjoxMzgsInkiOjYyN30seyJ4IjoxMzgsInkiOjY1Mn1d" id="mm7655e2527d65-L_K_FS_0" marker-end="url(#mm7655e2527d65_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M448,602L448,606.167C448,610.333,448,618.667,448,626.333C448,634,448,641,448,644.5L448,648" data-edge="true" data-et="edge" data-id="L_K_NET_0" data-look="classic" data-points="W3sieCI6NDQ4LCJ5Ijo2MDJ9LHsieCI6NDQ4LCJ5Ijo2Mjd9LHsieCI6NDQ4LCJ5Ijo2NTJ9XQ==" id="mm7655e2527d65-L_K_NET_0" marker-end="url(#mm7655e2527d65_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M578,572.419L608,581.516C638,590.613,698,608.806,728,621.403C758,634,758,641,758,644.5L758,648" data-edge="true" data-et="edge" data-id="L_K_DD_0" data-look="classic" data-points="W3sieCI6NTc4LCJ5Ijo1NzIuNDE5MzU0ODM4NzA5Nn0seyJ4Ijo3NTgsInkiOjYyN30seyJ4Ijo3NTgsInkiOjY1Mn1d" id="mm7655e2527d65-L_K_DD_0" marker-end="url(#mm7655e2527d65_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M138,736L138,740.167C138,744.333,138,752.667,167.355,764.456C196.709,776.246,255.419,791.491,284.774,799.114L314.128,806.737" data-edge="true" data-et="edge" data-id="L_FS_HW_0" data-look="classic" data-points="W3sieCI6MTM4LCJ5Ijo3MzZ9LHsieCI6MTM4LCJ5Ijo3NjF9LHsieCI6MzE4LCJ5Ijo4MDcuNzQxOTM1NDgzODcxfV0=" id="mm7655e2527d65-L_FS_HW_0" marker-end="url(#mm7655e2527d65_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M448,736L448,740.167C448,744.333,448,752.667,448,760.333C448,768,448,775,448,778.5L448,782" data-edge="true" data-et="edge" data-id="L_NET_HW_0" data-look="classic" data-points="W3sieCI6NDQ4LCJ5Ijo3MzZ9LHsieCI6NDQ4LCJ5Ijo3NjF9LHsieCI6NDQ4LCJ5Ijo3ODZ9XQ==" id="mm7655e2527d65-L_NET_HW_0" marker-end="url(#mm7655e2527d65_flowchart-v2-pointEnd)" style=";"></path><path class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" d="M758,736L758,740.167C758,744.333,758,752.667,728.645,764.456C699.291,776.246,640.581,791.491,611.226,799.114L581.872,806.737" data-edge="true" data-et="edge" data-id="L_DD_HW_0" data-look="classic" data-points="W3sieCI6NzU4LCJ5Ijo3MzZ9LHsieCI6NzU4LCJ5Ijo3NjF9LHsieCI6NTc4LCJ5Ijo4MDcuNzQxOTM1NDgzODcxfV0=" id="mm7655e2527d65-L_DD_HW_0" marker-end="url(#mm7655e2527d65_flowchart-v2-pointEnd)" style=";"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_A_API_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_API_QM_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_QM_K_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_K_FS_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_K_NET_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_K_DD_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_FS_HW_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_NET_HW_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" data-id="L_DD_HW_0" transform="translate(0, 0)"><foreignobject height="0" width="0"><div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" data-look="classic" id="mm7655e2527d65-flowchart-A-0" transform="translate(448, 50)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Multimedia applications</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm7655e2527d65-flowchart-API-1" transform="translate(448, 184)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Multimedia API / toolkits / libraries</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm7655e2527d65-flowchart-QM-3" transform="translate(448, 345)"><rect class="basic label-container" height="138" style="" width="260" x="-130" y="-69"></rect><g class="label" style="" transform="translate(-100, -54)"><rect></rect><foreignobject height="108" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>QoS manager and resource managers (admission control, reservation)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm7655e2527d65-flowchart-K-5" transform="translate(448, 533)"><rect class="basic label-container" height="138" style="" width="260" x="-130" y="-69"></rect><g class="label" style="" transform="translate(-100, -54)"><rect></rect><foreignobject height="108" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Real-time kernel: scheduler (EDF/RM), process and memory management, IPC</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm7655e2527d65-flowchart-FS-7" transform="translate(138, 694)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Continuous media file system</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm7655e2527d65-flowchart-NET-9" transform="translate(448, 694)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Communication subsystem (protocols)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm7655e2527d65-flowchart-DD-11" transform="translate(758, 694)"><rect class="basic label-container" height="84" style="" width="260" x="-130" y="-42"></rect><g class="label" style="" transform="translate(-100, -27)"><rect></rect><foreignobject height="54" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Device drivers (audio, video, capture)</p></span></div></foreignobject></g></g><g class="node default" data-look="classic" id="mm7655e2527d65-flowchart-HW-13" transform="translate(448, 841.5)"><rect class="basic label-container" height="111" style="" width="260" x="-130" y="-55.5"></rect><g class="label" style="" transform="translate(-100, -40.5)"><rect></rect><foreignobject height="81" width="200"><div style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Hardware: CPU, memory, disk, network, A/V devices</p></span></div></foreignobject></g></g></g></g></g><defs><filter height="130%" id="mm7655e2527d65-drop-shadow" width="130%"><fedropshadow dx="4" dy="4" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><defs><filter height="150%" id="mm7655e2527d65-drop-shadow-small" width="150%"><fedropshadow dx="2" dy="2" flood-color="#000000" flood-opacity="0.06" stddeviation="0"></fedropshadow></filter></defs><lineargradient gradientunits="objectBoundingBox" id="mm7655e2527d65-gradient" x1="0%" x2="100%" y1="0%" y2="0%"><stop offset="0%" stop-color="#818cf8" stop-opacity="1"></stop><stop offset="100%" stop-color="hsl(255.6923076923, 3.6241610738%, 19.2156862745%)" stop-opacity="1"></stop></lineargradient></svg></div><aside class="notes">Source note: <a href="../../unit-07/system-architecture/">System Architecture</a></aside></section><section class="dense"><h2><small>System Architecture</small>Components</h2><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Real-time scheduler</strong></td>
+<td>EDF or rate monotonic scheduling of continuous media processes</td>
+</tr>
+<tr>
+<td><strong>Resource managers and QoS manager</strong></td>
+<td>Admission control, reservation, monitoring (see <a href="resource-management.md">Resource Management</a>)</td>
+</tr>
+<tr>
+<td><strong>Memory management</strong></td>
+<td>Pinned (non-swappable) buffers, avoid page faults, avoid copying (shared buffers)</td>
+</tr>
+<tr>
+<td><strong>Continuous media file system</strong></td>
+<td>Placement and <strong>disk scheduling</strong> (for example EDF or SCAN-EDF) for steady rates; large files; multiple streams</td>
+</tr>
+<tr>
+<td><strong>IPC</strong></td>
+<td>Timely transfer of continuous data between processes</td>
+</tr>
+<tr>
+<td><strong>Device drivers</strong></td>
+<td>Hide audio/video hardware, with time-bounded interrupt handling</td>
+</tr>
+<tr>
+<td><strong>Network subsystem</strong></td>
+<td>Real-time transport (see <a href="../unit-08/index.md">Unit 8</a>)</td>
+</tr>
+</tbody>
+</table><aside class="notes">Source note: <a href="../../unit-07/system-architecture/">System Architecture</a></aside></section><section class="dense"><h2><small>System Architecture</small>Architectural approaches</h2><table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Idea</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Extend a conventional OS</strong></td>
+<td>Add real-time classes, QoS and a continuous media file system to Unix or Windows</td>
+<td>Practical; incomplete guarantees</td>
+</tr>
+<tr>
+<td><strong>Real-time micro-kernel</strong></td>
+<td>Small kernel offers scheduling, memory, IPC; services run as user-level servers</td>
+<td>Predictable and flexible</td>
+</tr>
+<tr>
+<td><strong>Dedicated multimedia OS</strong></td>
+<td>Built around QoS and resources from the start (the Nemo idea in <a href="../unit-11/system-software.md">Unit 11</a>)</td>
+<td>Best guarantees, little software</td>
+</tr>
+</tbody>
+</table><div class="callout"><div class="ct">Design rules</div>
+<p>Keep <strong>kernel paths short and bounded</strong>, <strong>avoid copying</strong> data between layers, make resource accounting explicit, and let applications <strong>adapt</strong> when the system cannot give full QoS.</p>
+</div><aside class="notes">Source note: <a href="../../unit-07/system-architecture/">System Architecture</a></aside></section><section class="dense"><h2><small>System Architecture</small>Checkpoint</h2><div class="chk"><div class="lab">Check yourself</div><p class="q">Why does a multimedia OS pin memory and avoid copying?</p><div class="fragment ans">
+<p>Page faults and copies add unbounded delay and CPU load; pinned shared buffers give predictable timing.</p>
+</div></div><div class="chk"><div class="lab">Check yourself</div><p class="q">Name the two main ways of building a multimedia OS.</p><div class="fragment ans">
+<p>Extend a conventional OS with real-time features, or build on a real-time micro-kernel.</p>
+</div></div><aside class="notes">Source note: <a href="../../unit-07/system-architecture/">System Architecture</a></aside></section><section><h2><small>System Architecture</small>Key terms</h2><div class="terms"><div class="card term"><b>Continuous-media file system</b><span>Stores and retrieves streams at guaranteed rates.</span></div><div class="card term"><b>Disk scheduling</b><span>Orders disk requests to meet deadlines.</span></div><div class="card term"><b>Buffer</b><span>Memory used to smooth out timing differences.</span></div><div class="card term"><b>Device driver</b><span>Software controlling a device.</span></div><div class="card term"><b>Kernel</b><span>Core of the operating system.</span></div></div><aside class="notes">Cold-call a student for each term before you reveal the meaning aloud. Students should be able to define every term in one sentence for the exam.</aside></section></section>
+<section data-topic="Exam recap"><section><h2><small>Revision</small>Exam focus recap (1/1)</h2><div class="callout exam"><div class="ct">Requirements on a multimedia OS</div><div class="callout exam"><div class="ct">Comparison to memorise</div></section></section>
+<section data-topic="Sources"><section><h2><small>Go deeper</small>Sources and further reading</h2><ul class="small"><li>C. L. Liu and J. W. Layland, 'Scheduling algorithms for multiprogramming in a hard-real-time environment', <em>Journal of the ACM</em>, 1973.</li><li>R. Steinmetz and K. Nahrstedt, <em>Multimedia Systems</em>, Springer, chapters on operating systems.</li><li>A. Burns and A. Wellings, <em>Real-Time Systems and Programming Languages</em>, Addison-Wesley.</li></ul><div class="callout"><div class="ct">About the figures</div><p>Charts and diagrams in this deck were drawn for this course from standard formulas, specifications and textbook knowledge. They are original drawings, not copies of figures from any publication.</p></div></section></section>
+<section data-topic="Quick check"><section><div class="sec"><div class="no">?</div><h2>Quick check</h2><div class="lead">Try each question before revealing the answer.</div></div></section><section><h2><small>Quick check 1 / 4</small>15. Which algorithm uses static priorities?</h2><ul class="opts"><li>A. EDF</li><li>B. Rate monotonic</li><li>C. Round robin only</li><li>D. Random</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 2 / 4</small>16. EDF schedulability condition (D = P)</h2><ul class="opts"><li>A. U ≤ 0.69</li><li>B. U ≤ 1</li><li>C. U ≤ 2</li><li>D. U = 0</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 3 / 4</small>17. Soft real time applies to</h2><ul class="opts"><li>A. Airbag control</li><li>B. Video playback</li><li>C. Reactor shutdown</li><li>D. Flight control</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section><section><h2><small>Quick check 4 / 4</small>18. RM bound as n becomes large</h2><ul class="opts"><li>A. 0.5</li><li>B. 0.693</li><li>C. 0.9</li><li>D. 1.0</li></ul><div class="fragment ans"><strong>Answer: B.</strong></div></section></section>
+<section><div class="title-slide"><div class="kick">End of Unit 7</div><h1>Thank you</h1><p style="color:#aab0d6;max-width:70%">Revise with the topic notes, attempt the practice questions, and use the flashcards on the practice page.</p><div class="by">&copy; 2026 Er. Harish Thagunna. All rights reserved.</div></div></section>
+</div></div>
+<script>window.__t=setTimeout(function(){if(!window.Reveal){var m=document.getElementById("loaderr");if(m)m.style.display="block";}},5000);</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js" onerror="document.getElementById('loaderr').style.display='block'"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/zoom.js"></script>
+<script>
+var plugins=[];['RevealNotes','RevealSearch','RevealZoom'].forEach(function(n){if(window[n])plugins.push(window[n]);});
+Reveal.initialize({width:1280,height:720,margin:.04,hash:true,slideNumber:'c/t',progress:true,controls:true,controlsTutorial:false,
+  transition:'slide',backgroundTransition:'fade',autoAnimateDuration:.5,fragments:true,center:false,plugins:plugins});
+function hud(){var s=Reveal.getCurrentSlide();var t=s&&s.parentNode&&s.parentNode.getAttribute&&s.parentNode.getAttribute('data-topic');
+  var h=document.getElementById('hud');h.textContent='Unit 7'+(t?' · '+t:'');}
+Reveal.on('ready',hud);Reveal.on('slidechanged',hud);
+</script>
+</body>
+</html>
