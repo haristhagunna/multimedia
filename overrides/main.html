@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://unpkg.com; img-src 'self' data: blob:; connect-src 'self' https://api.github.com; worker-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="author" content="Er. Harish Thagunna">
   <meta name="copyright" content="&copy; 2026 Er. Harish Thagunna. All rights reserved.">
   <meta name="theme-color" content="#4f46e5">
