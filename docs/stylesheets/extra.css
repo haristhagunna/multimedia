@@ -465,3 +465,7 @@ body { -webkit-font-smoothing: antialiased; }
 }
 @media (max-width: 600px) { .cheat-terms dl { grid-template-columns: 1fr; } }
 .report-err { margin-top: 2rem; padding-top: .8rem; border-top: 1px dashed var(--md-default-fg-color--lighter); font-size: .7rem; opacity: .8; } @media print { .report-err { display: none; } }
+
+/* syllabus scans */
+.syl-scans { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1rem 0; }
+.syl-scans img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--md-default-fg-color--lightest); box-shadow: 0 6px 20px rgba(0,0,0,.1); }

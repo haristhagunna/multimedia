@@ -101,3 +101,14 @@ The main objective is to introduce the technologies, concepts and techniques ass
 3. 2D and 3D animation in OpenGL, Maya, Flash or C++
 4. Image compression algorithm: JPEG
 5. Real-time scheduling algorithm
+
+## Original syllabus pages
+
+Scanned copies of the official syllabus pages, for reference. Click an image to open it full size.
+
+<div class="syl-scans" markdown>
+[![Original syllabus, page 1: course objectives and Units 1 to 6](../assets/syllabus-page-1.jpg)](../assets/syllabus-page-1.jpg){ target=_blank }
+[![Original syllabus, page 2: Units 7 to 12 and laboratory work](../assets/syllabus-page-2.jpg)](../assets/syllabus-page-2.jpg){ target=_blank }
+</div>
+
+Download: [page 1](../assets/syllabus-page-1.jpg){ download } · [page 2](../assets/syllabus-page-2.jpg){ download }
