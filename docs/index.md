@@ -1,9 +1,9 @@
 ---
 template: home.html
-title: Multimedia and Application
+title: Home
 hide:
   - navigation
   - toc
 ---
 
-Multimedia and Application (BCA429CO) study site by Er. Harish Thagunna.
+Multimedia System (BIT477MS) study site by Er. Harish Thagunna.

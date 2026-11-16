@@ -5,7 +5,7 @@ hide:
 
 # About this course site
 
-**Multimedia and Application (BCA429CO)** is an exam-focused study site covering all twelve units: topic notes, practice questions with model answers, and class slides.
+**Multimedia System (BIT477MS)** is an exam-focused study site covering all twelve units: topic notes, practice questions with model answers, and class slides.
 
 ## Author
 

@@ -95,7 +95,7 @@ aside.notes{display:none}
 <div id="loaderr" style="display:none;position:fixed;inset:0;z-index:99;padding:12vh 8vw;background:#080a14;color:#e8eaff;font:600 20px Inter,system-ui,sans-serif">The slide engine could not be loaded.<br><br><span style="font-weight:400;color:#aab0d6">These slides need an internet connection to load reveal.js from cdn.jsdelivr.net. Check your connection or any ad-blocker / firewall, then reload.</span></div>
 <div class="copyright-foot">&copy; 2026 Er. Harish Thagunna. All rights reserved. &middot; Press <b>?</b> for shortcuts, <b>Esc</b> for overview</div>
 <div class="reveal"><div class="slides">
-<section><div class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit 7<br>Multimedia Operating System</h1><p style="max-width:75%;color:#aab0d6">Real time, resource management, EDF and rate monotonic.</p><div class="chips"><span>4 teaching hours</span><span>4 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></div></section>
+<section><div class="title-slide"><div class="kick">Multimedia System &middot; BIT477MS</div><h1>Unit 7<br>Multimedia Operating System</h1><p style="max-width:75%;color:#aab0d6">Real time, resource management, EDF and rate monotonic.</p><div class="chips"><span>4 teaching hours</span><span>4 topics</span><span>Interactive deck</span></div><div class="by">Er. Harish Thagunna</div><aside class="notes">Navigate: arrows, Space. Esc for overview, S for speaker view, F fullscreen, Ctrl+Shift+F search, Alt+click zoom.</aside></div></section>
 <section><h2><small>Roadmap</small>What we will cover</h2><div class="agenda"><div class="card"><span class="n">1</span>Introduction and Real Time</div><div class="card"><span class="n">2</span>Resource Management</div><div class="card"><span class="n">3</span>Process Management and Real-Time Scheduling</div><div class="card"><span class="n">4</span>System Architecture</div></div></section>
 <section data-topic="Introduction and Real Time"><section><div class="sec"><div class="no">01</div><h2>Introduction and Real Time</h2><div class="lead">Unit 7 &middot; topic 1 of 4</div></div></section><section><h2><small>Introduction and Real Time</small>In plain words</h2><div class="trio"><div class="card c1"><div class="ct">The idea</div><p>A real-time system must produce the right result at the right time. A correct answer that arrives late is a wrong answer.</p></div><div class="card c2"><div class="ct">Real-life picture</div><p>Video playback: if frame 100 is not ready at 4.00 s, the picture stutters, even though the frame is correct.</p></div><div class="card c3"><div class="ct">Remember it</div><p>Hard real time: a missed deadline is a failure. Soft real time: a miss reduces quality.</p></div></div><aside class="notes"><p><b>Say:</b> A real-time system must produce the right result at the right time. A correct answer that arrives late is a wrong answer.</p><p><b>Ask the class:</b> where have you met this in daily life? (Example: Video playback: if frame 100 is not ready at 4.00 s, the picture stutters, even though the frame is correct.)</p><p><b>Board:</b> write the memory hook: Hard real time: a missed deadline is a failure. Soft real time: a miss reduces quality.</p><p><b>Timing:</b> about 3 minutes; then continue to the detailed slides.</p></aside></section><section class=""><h2><small>Introduction and Real Time</small>Why an ordinary OS is not enough <span style="opacity:.55;font-size:.6em">(1/2)</span></h2><p>An <strong>operating system (OS)</strong> manages the hardware resources (CPU, memory, disk, network) and offers them to applications. Conventional OSs were designed for <strong>discrete data</strong> and fairness: they give each process a fair share, with no promise about <em>when</em> a result appears.</p><p>Multimedia needs more because <strong>continuous media</strong> (audio, video) have <strong>time constraints</strong>: each logical data unit (LDU, for example one video frame every 40 ms at 25 fps) must be processed and presented on time, or the user sees jerky video and hears clicks.</p><aside class="notes">Source note: <a href="../../unit-07/introduction-real-time/">Introduction and Real Time</a></aside></section><section class=""><h2><small>Introduction and Real Time</small>Why an ordinary OS is not enough <span style="opacity:.55;font-size:.6em">(2/2)</span></h2><div class="callout exam"><div class="ct">Requirements on a multimedia OS</div>
 <ol>
@@ -154,7 +154,7 @@ aside.notes{display:none}
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-15T14:44:49.852207</dc:date>
+    <dc:date>2026-11-16T09:35:18.476830</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -580,7 +580,7 @@ L 31.117163 158.741838
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-15T14:44:48.805036</dc:date>
+    <dc:date>2026-11-16T09:35:17.417313</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1299,7 +1299,7 @@ L 692.193984 277.640898
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-15T14:44:48.876660</dc:date>
+    <dc:date>2026-11-16T09:35:17.490489</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>

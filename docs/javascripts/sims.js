@@ -1,4 +1,4 @@
-/* Multimedia and Application - interactive simulators
+/* Multimedia System - interactive simulators
    Copyright (c) 2026 Er. Harish Thagunna. All rights reserved. */
 (function () {
   "use strict";

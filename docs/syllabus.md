@@ -1,6 +1,6 @@
 # Course Syllabus
 
-**Multimedia and Application: BCA429CO** (Year I, Semester I)
+**Multimedia System: BIT477MS** (Year I, Semester I)
 
 | Teaching hours per week | | | Internal | | Final | | Total |
 |---|---|---|---|---|---|---|---|

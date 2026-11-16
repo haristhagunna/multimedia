@@ -35,6 +35,6 @@ for n, title in units:
         for t, d in p.get("terms", []):
             if t not in seen: seen.add(t); rows.append((t, d))
     out.append('<div class="cheat-terms"><b>Key terms</b><dl>' + ''.join(f'<dt>{html.escape(t)}</dt><dd>{html.escape(d)}</dd>' for t, d in rows[:16]) + '</dl></div>')
-    out.append(f'<p class="cheat-foot">© 2026 Er. Harish Thagunna · Multimedia and Application (BCA429CO)</p></section>')
+    out.append(f'<p class="cheat-foot">© 2026 Er. Harish Thagunna · Multimedia System (BIT477MS)</p></section>')
 open("docs/revision/cheat-sheets.md", "w").write("\n".join(out) + "\n")
 print("ok", len(units))

@@ -332,7 +332,7 @@ def unit_deck(n, cfgunits):
     sections = []
     # title slide
     stats_topics = len(topics)
-    sections.append(f'<section class="title-slide"><div class="kick">Multimedia and Application &middot; BCA429CO</div><h1>Unit {n}<br>{title}</h1>'
+    sections.append(f'<section class="title-slide"><div class="kick">Multimedia System &middot; BIT477MS</div><h1>Unit {n}<br>{title}</h1>'
                     f'<p style="max-width:75%;color:#aab0d6">{u.get("blurb","")}</p>'
                     f'<div class="chips"><span>{u["hours"]} teaching hours</span><span>{stats_topics} topics</span><span>Interactive deck</span></div>'
                     f'<div class="by">Er. Harish Thagunna</div>'

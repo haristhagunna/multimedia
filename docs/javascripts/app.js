@@ -1,4 +1,4 @@
-/* Multimedia and Application - interactive features
+/* Multimedia System - interactive features
    Copyright (c) 2026 Er. Harish Thagunna. All rights reserved. */
 (function () {
   "use strict";
