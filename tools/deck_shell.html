@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://unpkg.com; img-src 'self' data: blob:; connect-src 'self' https://api.github.com; worker-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<title>Class slides</title>
+<style>body{margin:0;background:#080b16;color:#e8eaff;font:600 18px system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;text-align:center;padding:2rem}</style></head>
+<body><div id="m">Unlocking slides&hellip;</div><div id="v" hidden data-vault="@@VAULT@@"></div>
+<script>
+(function(){
+var P=JSON.parse(document.getElementById('v').dataset.vault),m=document.getElementById('m');
+function b(s){var x=atob(s),a=new Uint8Array(x.length);for(var i=0;i<x.length;i++)a[i]=x.charCodeAt(i);return a}
+function K(){var r=null;try{r=sessionStorage.getItem('mm:vk')||localStorage.getItem('mm:vk')}catch(e){}return r&&JSON.parse(r)}
+async function dec(key,o){return new Uint8Array(await crypto.subtle.decrypt({name:'AES-GCM',iv:b(o.iv)},key,b(o.ct)))}
+(async function(){
+ var k=K();if(!k){m.textContent='Please sign in on the main site to view these slides.';return}
+ var w=k.role==='a'?P.wa:P.ws;if(!w){m.textContent='These slides are locked until they are taught in class.';return}
+ try{
+  var kek=await crypto.subtle.importKey('raw',b(k.key),'AES-GCM',false,['decrypt']);
+  var dek=await crypto.subtle.importKey('raw',await dec(kek,w),'AES-GCM',false,['decrypt']);
+  var html=new TextDecoder().decode(await dec(dek,P));document.head.innerHTML='';document.body.innerHTML='';document.open();document.write(html);document.close();
+ }catch(e){m.textContent='Could not unlock these slides. Please sign in again.'}
+})();
+})();
+</script></body></html>

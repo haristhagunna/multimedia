@@ -102,26 +102,8 @@ def on_config(config):
     return config
 
 
-LOCK_HTML = """
-
-<div class="lock-panel">
-  <div class="lock-panel__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5m-3 5a3 3 0 1 1 6 0v3H9V6m3 7a2 2 0 0 1 1 3.73V18h-2v-1.27A2 2 0 0 1 12 13Z"/></svg></div>
-  <h2>This material is locked</h2>
-  <p>It will be unlocked after it has been taught in class. Please check again after your next lecture.</p>
-  <p><a class="md-button md-button--primary" href="{home}">Back to the home page</a></p>
-</div>
-"""
-
-
 def on_page_markdown(markdown, page, config, files):
     src = page.file.src_uri
-    key = src[:-3] if src.endswith(".md") else src
-    always, unlocked = _release()
-    if not is_open(key, always, unlocked):
-        first = markdown.split("\n", 1)[0]
-        title = first if first.startswith("# ") else "# " + (page.title or "Locked")
-        home = "../" * _url(key).count("/") or "./"
-        return title + LOCK_HTML.replace("{home}", home)
     m = UNIT_RE.match(src)
     if not m:
         return markdown
@@ -144,34 +126,3 @@ def on_page_markdown(markdown, page, config, files):
         slot = f'<div class="track-slot" data-unit="{n}" data-page="{name}"></div>'
     lines.insert(1, "\n" + meta + "\n" + slot + "\n")
     return "\n".join(lines)
-
-
-def on_post_build(config):
-    """Remove files that belong to locked pages from the built site."""
-    always, unlocked = _release()
-    site = config["site_dir"]
-    op = lambda k: is_open(k, always, unlocked)
-
-    def rm(rel):
-        p = os.path.join(site, rel)
-        if os.path.isdir(p):
-            shutil.rmtree(p, ignore_errors=True)
-        elif os.path.exists(p):
-            os.remove(p)
-
-    for u in config["extra"]["units"]:
-        if not op("unit-%02d/slides" % u["n"]):
-            rm("decks/unit-%02d.html" % u["n"])
-    if not op("class-01"):
-        rm("decks/class-01-introduction.html")
-    if not op("instructor"):
-        rm("downloads/question-bank.csv")
-    if not op("revision/cheat-sheets"):
-        rm("downloads/cheat-sheets.pdf")
-    if not (op("labs") or any(op("labs/" + n) for n in ("lab-sampling", "lab-images", "lab-ffmpeg", "lab-huffman", "lab-dct", "lab-scheduler", "lab-sync"))):
-        rm("labs/code")
-    if not op("syllabus"):
-        rm("assets/syllabus-page-1.jpg")
-        rm("assets/syllabus-page-2.jpg")
-    if os.path.isdir(os.path.join(site, "downloads")) and not os.listdir(os.path.join(site, "downloads")):
-        rm("downloads")

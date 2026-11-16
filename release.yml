@@ -1,9 +1,11 @@
 # ---------------------------------------------------------------------------
 # RELEASE CONTROL: choose what students can see.  (c) 2026 Er. Harish Thagunna
 #
-# Everything is LOCKED by default. Locked pages are published only as a
-# "locked" notice: their text, slides, downloads and search entries are NOT
-# included in the public website at all.
+# Everything is LOCKED by default. Students (class password) can read only the
+# pages listed below; the administrator (admin password) can read everything.
+# Locked content is published encrypted, so it cannot be read without the admin
+# password. You can also change this list from the site: sign in as Admin and
+# open the "Admin" page (it edits this file for you).
 #
 # After you teach a class, add the matching line(s) under "unlocked:" below,
 # save (commit) this file on GitHub, and the site redeploys in about 2 minutes.
