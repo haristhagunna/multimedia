@@ -506,3 +506,22 @@ body { -webkit-font-smoothing: antialiased; }
 .md-footer-meta { background: #070b17; }
 @media print { .md-header::after { display: none; } }
 [data-md-color-scheme="slate"] .stat__num { color: #e6b95c; -webkit-text-fill-color: #e6b95c; background: none; }
+
+/* ---------- Locked content ---------- */
+.lock-panel { text-align: center; max-width: 34rem; margin: 3rem auto; padding: 2.4rem 1.6rem; border: 1px solid var(--card-border); border-radius: 20px; background: var(--card-bg); box-shadow: var(--shadow-2); }
+.lock-panel__icon { width: 4.2rem; height: 4.2rem; margin: 0 auto 1rem; border-radius: 50%; display: grid; place-items: center; background: color-mix(in srgb, var(--brand-2) 14%, transparent); }
+.lock-panel__icon svg { width: 2rem; height: 2rem; fill: var(--brand-2); }
+.lock-panel h2 { border: 0; margin: 0 0 .4rem; padding: 0; }
+.lock-panel h2::after { display: none; }
+a.is-locked { opacity: .55; }
+a.is-locked::after {
+  content: ""; display: inline-block; width: .8em; height: .8em; margin-left: .45em; vertical-align: -.08em; background: currentColor; opacity: .7;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5m-3 5a3 3 0 1 1 6 0v3H9V6Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5m-3 5a3 3 0 1 1 6 0v3H9V6Z"/></svg>') center/contain no-repeat;
+}
+.unit-card--locked { opacity: .78; }
+.unit-card--locked .unit-card__icon { filter: grayscale(.6); }
+.unit-card__state { margin-left: auto; font-size: .62rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; padding: .25em .7em; border-radius: 999px; border: 1px solid var(--card-border); background: var(--soft); }
+.unit-card__state--open { color: #0f7a55; border-color: rgba(16,185,129,.4); background: rgba(16,185,129,.1); }
+.unit-card__state--partial { color: var(--md-accent-fg-color); border-color: color-mix(in srgb, var(--brand-2) 40%, transparent); background: color-mix(in srgb, var(--brand-2) 10%, transparent); }
+.release-note { margin-top: 1rem; font-size: .75rem; opacity: .85; }

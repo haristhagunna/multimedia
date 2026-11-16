@@ -59,3 +59,7 @@ python3 tools/build_labs.py          # lab pages (embeds tested code)
 python3 tools/build_assets.py        # share image and favicon
 python3 tools/build_decks.py         # class decks
 ```
+
+## Releasing content class by class
+
+Everything is locked by default. Edit `release.yml`, add a line under `unlocked:` after each class (for example `unit-01/multimedia-system` or `unit-01`), commit, and the site redeploys. Locked pages are built as a "locked" notice only: their text, slides, downloads and search entries are not published. Note that the source repository itself is public; make it private (or publish only the built site from a private repository) if the source files must also stay hidden.

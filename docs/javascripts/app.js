@@ -132,6 +132,16 @@
     };
   }
 
+  /* mark locked pages in the navigation */
+  function lockNav() {
+    var L = window.MM_LOCKED || []; if (!L.length) return;
+    document.querySelectorAll("a.md-nav__link[href], .md-tabs__link[href]").forEach(function (a) {
+      var p; try { p = new URL(a.getAttribute("href"), location.href).pathname; } catch (e) { return; }
+      var hit = L.some(function (u) { return p.endsWith("/" + u) && u !== ""; });
+      a.classList.toggle("is-locked", hit);
+    });
+  }
+
   /* report-an-error link */
   function report() {
     var art = document.querySelector(".md-content__inner"); if (!art || art.querySelector(".report-err") || /\/decks\//.test(location.pathname)) return;
@@ -248,7 +258,7 @@
   }
 
   function init() {
-    if (document.querySelector(".md-content")) { bar(); track(); nav(); unitBars(); practice(); mock(); report(); planner(); counters(); countdown(); }
+    if (document.querySelector(".md-content")) { bar(); track(); nav(); unitBars(); practice(); mock(); report(); lockNav(); planner(); counters(); countdown(); }
     document.querySelectorAll(".md-nav__link").length && nav();
   }
   window.addEventListener("beforeprint", function () { document.querySelectorAll("details").forEach(function (d) { d.open = true; }); });
