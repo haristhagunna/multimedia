@@ -17,7 +17,6 @@
         <a class="btn btn--ghost" href="{{ 'revision/' | url }}">Revision hub</a>
         <a class="btn btn--ghost" href="{{ 'syllabus/' | url }}">Syllabus</a>
       </div>
-      <p class="hero__author hero__signin">Students: sign in with the class password (top right) to read the unlocked material.</p>
       <p class="hero__author">Written and maintained by <strong>Er. Harish Thagunna</strong></p>
     </div>
     <div class="hero__stats">
@@ -51,17 +50,16 @@
   <section class="section">
     <div class="section__head">
       <h2>All units</h2>
-      <p>Content is released class by class: <strong>{{ config.extra.released_units }} of {{ config.extra.stats.units }}</strong> units have material unlocked so far.</p>
+      <p>Every unit has an overview, class slides, topic notes and practice questions.</p>
     </div>
     <div class="unit-grid">
     {% for u in config.extra.units %}
       {% set slug = 'unit-%02d' % u.n %}
-      <article class="unit-card{% if u.state == 'locked' %} unit-card--locked{% endif %}" data-unit="{{ u.n }}" data-pages="{{ u.pages }}" style="--i: {{ loop.index0 }}">
+      <article class="unit-card" data-unit="{{ u.n }}" data-pages="{{ u.pages }}" style="--i: {{ loop.index0 }}">
         <a class="unit-card__link" href="{{ (slug ~ '/') | url }}" aria-label="Unit {{ u.n }}: {{ u.title }}"></a>
         <div class="unit-card__top">
           <span class="unit-card__icon">{% set ic = {'layers':'layers-triple','wave':'waveform','image':'image-multiple','video':'video','compress':'zip-box','disc':'disc','cpu':'cpu-64-bit','network':'lan','link':'link-variant','clock':'clock-outline','code':'code-braces','app':'application-cog'}[u.icon] %}{% include ".icons/material/" ~ ic ~ ".svg" %}</span>
           <span class="unit-card__num">Unit {{ '%02d' % u.n }}</span>
-          <span class="unit-card__state unit-card__state--{{ u.state }}">{% if u.state == 'open' %}Unlocked{% elif u.state == 'partial' %}Partly unlocked{% else %}Locked{% endif %}</span>
         </div>
         <h3>{{ u.title }}</h3>
         <p>{{ u.blurb }}</p>
@@ -69,7 +67,7 @@
         <div class="bar"><span class="bar__fill" style="width:0%"></span></div>
         <div class="unit-card__foot">
           <span class="unit-card__pct">0% done</span>
-          <span class="unit-card__links"><a href="{{ (slug ~ '/slides/') | url }}"{% if not u.slides_open %} class="is-locked"{% endif %}>Slides</a><a href="{{ (slug ~ '/practice/') | url }}"{% if not u.practice_open %} class="is-locked"{% endif %}>Practice</a></span>
+          <span class="unit-card__links"><a href="{{ (slug ~ '/slides/') | url }}">Slides</a><a href="{{ (slug ~ '/practice/') | url }}">Practice</a></span>
         </div>
       </article>
     {% endfor %}

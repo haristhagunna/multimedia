@@ -59,14 +59,3 @@ python3 tools/build_labs.py          # lab pages (embeds tested code)
 python3 tools/build_assets.py        # share image and favicon
 python3 tools/build_decks.py         # class decks
 ```
-
-## Passwords and releasing content class by class
-
-All lessons are encrypted in the published site (`tools/vault.py` runs in the deploy workflow).
-
-1. In the repository go to **Settings -> Secrets and variables -> Actions** and add two secrets: `STUDENT_PASSWORD` (give this to students) and `ADMIN_PASSWORD` (keep it private). Use different, long passwords. The deploy refuses to publish without them.
-2. Under **Settings -> Pages**, set **Source** to **GitHub Actions**.
-3. Students sign in (top right) and see only what `release.yml` lists under `unlocked:`. The administrator sees everything and can lock or unlock pages from the **Admin** page (it needs a fine-grained GitHub token with *Contents: Read and write* for this repository, kept only in the browser tab). You can also edit `release.yml` by hand.
-4. Changing a password: change the secret and run the workflow; everybody signs in again.
-
-Security note: the encrypted site is safe to publish, but the **source files in this repository are plain text**. Anyone who can open the repository can read them. Keep the source in a private repository and publish only the built `site/` folder if the lessons must stay confidential.

@@ -4,46 +4,6 @@ Copyright (c) 2026 Er. Harish Thagunna. All rights reserved.
 """
 import os
 import re
-import shutil
-
-try:
-    import yaml
-except ImportError:  # pragma: no cover
-    yaml = None
-
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-def _release():
-    path = os.path.join(ROOT, "release.yml")
-    data = {}
-    if yaml and os.path.exists(path):
-        data = yaml.safe_load(open(path, encoding="utf-8")) or {}
-    norm = lambda xs: [str(x).strip().strip("/").removesuffix(".md") for x in (xs or [])]
-    return norm(data.get("always_open")), norm(data.get("unlocked"))
-
-
-def _match(key, entries):
-    return any(key == e or key.startswith(e + "/") for e in entries)
-
-
-def is_open(key, always, unlocked):
-    """key is a page path without .md, e.g. 'unit-05/slides'."""
-    if key in ("404",) or _match(key, always):
-        return True
-    if _match(key, unlocked):
-        return True
-    m = re.match(r"^(unit-\d\d)/index$", key)
-    if m and any(e == m.group(1) or e.startswith(m.group(1) + "/") for e in unlocked):
-        return True
-    return False
-
-
-def _url(key):
-    if key == "index":
-        return ""
-    return key[:-6] + "/" if key.endswith("/index") else key + "/"
-
 
 UNIT_RE = re.compile(r"^unit-(\d\d)/(.+)\.md$")
 
@@ -82,23 +42,6 @@ def on_config(config):
     for u in config["extra"]["units"]:
         u["pages"] = pages.get(u["n"], 0)
     config["extra"]["stats"] = stats
-    always, unlocked = _release()
-    locked_urls = []
-    for root, _, files in os.walk(docs):
-        for f in files:
-            if f.endswith(".md") and "includes" not in root:
-                key = os.path.relpath(os.path.join(root, f), docs).replace(os.sep, "/")[:-3]
-                if not is_open(key, always, unlocked):
-                    locked_urls.append(_url(key))
-    config["extra"]["locked_urls"] = sorted(locked_urls)
-    for u in config["extra"]["units"]:
-        k = "unit-%02d" % u["n"]
-        full = _match(k, unlocked)
-        part = any(e.startswith(k + "/") for e in unlocked)
-        u["state"] = "open" if full else ("partial" if part else "locked")
-        u["slides_open"] = is_open(k + "/slides", always, unlocked)
-        u["practice_open"] = is_open(k + "/practice", always, unlocked)
-    config["extra"]["released_units"] = sum(1 for u in config["extra"]["units"] if u["state"] != "locked")
     return config
 
 
