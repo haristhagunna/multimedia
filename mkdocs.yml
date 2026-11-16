@@ -123,6 +123,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Course:
+      - "Class 1 · Introduction and Syllabus Overview": class-01.md
       - Syllabus: syllabus.md
       - Course map: course-map.md
       - Syllabus coverage: coverage.md
