@@ -1,6 +1,6 @@
 # Course Syllabus
 
-**Multimedia System: BIT477MS** (Year I, Semester I)
+**Multimedia System: BIT477MS** (Year IV, Semester VII)
 
 | Teaching hours per week | | | Internal | | Final | | Total |
 |---|---|---|---|---|---|---|---|
