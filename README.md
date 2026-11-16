@@ -46,7 +46,7 @@ Needs `markdown`, `pymdown-extensions`, `beautifulsoup4`, `matplotlib`, `numpy` 
 
 ## Custom domain (optional)
 
-1. Buy a domain (for example `multimedia.example.com`) and add a `CNAME` DNS record pointing to `thagunnaharish1-netizen.github.io`.
+1. Buy a domain (for example `multimedia.example.com`) and add a `CNAME` DNS record pointing to `haristhagunna.github.io`.
 2. In the GitHub repository open **Settings → Pages → Custom domain**, enter the domain and tick **Enforce HTTPS**.
 3. Put the same domain in `site_url` in `mkdocs.yml` (the share image and canonical links use it) and push.
 
