@@ -1,6 +1,6 @@
 # Multimedia System (BIT477MS): study site
 
-Notes, class slides and practice questions, built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/).
+Notes, class slides and practice questions.
 
 ## Preview on your computer
 

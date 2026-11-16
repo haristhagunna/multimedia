@@ -68,6 +68,7 @@ extra_javascript:
   - javascripts/app.js
 
 extra:
+  generator: false
   exam_date_hint: "Set your exam date in the Revision planner"
   units:
     - {n: 1,  title: "Multimedia System",              hours: 3, weeks: "1",     blurb: "What multimedia is, its structure, media types and data streams.", icon: "layers"}
